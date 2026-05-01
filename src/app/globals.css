@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bone: #f4f1ea;
+  --cream: #efe9dc;
+  --ink: #0e0e0c;
+  --graphite: #1a1a17;
+  --amber: #e9b949;
+  --moss: #3f5236;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--bone);
+    color: var(--ink);
+    font-family: var(--font-inter), Inter, system-ui, sans-serif;
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection {
+    background: var(--amber);
+    color: var(--ink);
+  }
+  h1,
+  h2,
+  h3,
+  .display {
+    font-family: var(--font-fraunces), "Fraunces", Georgia, serif;
+    letter-spacing: -0.035em;
+    font-feature-settings: "ss01";
+  }
+}
+
+@layer components {
+  .container-edge {
+    @apply mx-auto w-full max-w-[1480px] px-6 sm:px-10 lg:px-16;
+  }
+  .eyebrow {
+    @apply font-mono text-[11px] uppercase tracking-[0.18em] text-ink/60;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-ink px-6 py-3.5 text-sm font-medium text-bone transition-all hover:bg-graphite hover:scale-[1.02] active:scale-[0.99];
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-ink/15 bg-transparent px-6 py-3.5 text-sm font-medium text-ink transition-all hover:border-ink/40 hover:bg-ink/5;
+  }
+  .btn-amber {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-amber px-6 py-3.5 text-sm font-medium text-ink transition-all hover:bg-amber-deep hover:scale-[1.02];
+  }
+  .card {
+    @apply rounded-3xl border border-ink/10 bg-cream/60 backdrop-blur-sm;
+  }
+  .hairline {
+    @apply h-px w-full bg-gradient-to-r from-transparent via-ink/15 to-transparent;
+  }
+  .blueprint-bg {
+    background-image: linear-gradient(
+        rgba(63, 82, 54, 0.08) 1px,
+        transparent 1px
+      ),
+      linear-gradient(90deg, rgba(63, 82, 54, 0.08) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+  .ticker-mask {
+    -webkit-mask-image: linear-gradient(
+      90deg,
+      transparent,
+      black 10%,
+      black 90%,
+      transparent
+    );
+    mask-image: linear-gradient(
+      90deg,
+      transparent,
+      black 10%,
+      black 90%,
+      transparent
+    );
+  }
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

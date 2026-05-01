@@ -1,0 +1,546 @@
+"use client";
+
+import { useMemo, useState } from "react";
+import Link from "next/link";
+import {
+  PANELS,
+  INVERTERS,
+  BATTERIES,
+  HEAT_PUMPS,
+  HEAT_PUMP_BRANDS,
+  CHARGERS,
+  TURBINES,
+  EMS_OPTIONS,
+} from "@/lib/catalog";
+import { computeCalc, formatKr, formatNumber, type CalcInput } from "@/lib/calc";
+import { CalcScene } from "@/components/3d/CalcScene";
+import { ArrowRight } from "lucide-react";
+
+const initial: CalcInput = {
+  panelId: PANELS[0].id,
+  panelCount: 18,
+  inverterId: INVERTERS[1].id,
+  batteryId: BATTERIES[0].id,
+  heatPumpId: HEAT_PUMPS[0].id,
+  chargerId: CHARGERS[0].id,
+  turbineId: null,
+  emsId: EMS_OPTIONS[0].id,
+  houseAreaM2: 145,
+  evKmPerYear: 18000,
+  baseConsumptionKWh: 4500,
+};
+
+export function CalcStudio() {
+  const [input, setInput] = useState<CalcInput>(initial);
+  const result = useMemo(() => computeCalc(input), [input]);
+
+  const update = <K extends keyof CalcInput>(key: K, v: CalcInput[K]) =>
+    setInput((s) => ({ ...s, [key]: v }));
+
+  const queryString = new URLSearchParams({
+    panel: input.panelId,
+    n: String(input.panelCount),
+    inv: input.inverterId,
+    bat: input.batteryId ?? "",
+    pump: input.heatPumpId ?? "",
+    chrg: input.chargerId ?? "",
+    wind: input.turbineId ?? "",
+    ems: input.emsId ?? "",
+  }).toString();
+
+  const heatPumpsForBrand = (brand: string) =>
+    HEAT_PUMPS.filter((h) => h.brand === brand);
+  const currentPump = HEAT_PUMPS.find((h) => h.id === input.heatPumpId);
+  const currentBrand = currentPump?.brand ?? HEAT_PUMP_BRANDS[0];
+
+  return (
+    <div className="grid grid-cols-1 xl:grid-cols-12 gap-8">
+      <div className="xl:col-span-5 space-y-6">
+        <Card>
+          <Eyebrow>01 · Solpaneler</Eyebrow>
+          <Select
+            label="Märke & modell"
+            value={input.panelId}
+            onChange={(v) => update("panelId", v)}
+            options={PANELS.map((p) => ({
+              value: p.id,
+              label: `${p.brand} · ${p.watt} W`,
+            }))}
+          />
+          <Slider
+            label="Antal paneler"
+            min={4}
+            max={48}
+            step={1}
+            value={input.panelCount}
+            onChange={(v) => update("panelCount", v)}
+            suffix={`= ${formatNumber((PANELS.find((p) => p.id === input.panelId)?.watt ?? 0) * input.panelCount / 1000, 1)} kWp`}
+          />
+        </Card>
+
+        <Card>
+          <Eyebrow>02 · Växelriktare</Eyebrow>
+          <Select
+            label="Märke"
+            value={input.inverterId}
+            onChange={(v) => update("inverterId", v)}
+            options={INVERTERS.map((i) => ({
+              value: i.id,
+              label: `${i.brand} · ${i.efficiency}% verkningsgrad`,
+            }))}
+          />
+        </Card>
+
+        <Card>
+          <Eyebrow>03 · Batteri</Eyebrow>
+          <Toggle
+            on={!!input.batteryId}
+            onToggle={(b) =>
+              update("batteryId", b ? BATTERIES[0].id : null)
+            }
+            label="Inkludera batterilagring"
+          />
+          {input.batteryId && (
+            <Select
+              label="Märke"
+              value={input.batteryId}
+              onChange={(v) => update("batteryId", v)}
+              options={BATTERIES.map((b) => ({
+                value: b.id,
+                label: `${b.brand} · ${b.capacityKWh} kWh`,
+              }))}
+            />
+          )}
+        </Card>
+
+        <Card>
+          <Eyebrow>04 · Värmepump</Eyebrow>
+          <Toggle
+            on={!!input.heatPumpId}
+            onToggle={(b) =>
+              update("heatPumpId", b ? HEAT_PUMPS[0].id : null)
+            }
+            label="Inkludera värmepump"
+          />
+          {input.heatPumpId && (
+            <>
+              <PillGroup
+                label="Märke"
+                options={HEAT_PUMP_BRANDS.map((b) => ({ value: b, label: b }))}
+                value={currentBrand}
+                onChange={(brand) => {
+                  const first = heatPumpsForBrand(brand)[0];
+                  if (first) update("heatPumpId", first.id);
+                }}
+              />
+              <Select
+                label="Modell"
+                value={input.heatPumpId}
+                onChange={(v) => update("heatPumpId", v)}
+                options={heatPumpsForBrand(currentBrand).map((h) => ({
+                  value: h.id,
+                  label: `${h.model} · ${h.type} · SCOP ${h.scop}`,
+                }))}
+              />
+              <Slider
+                label="Bostadsyta (m²)"
+                min={60}
+                max={400}
+                step={5}
+                value={input.houseAreaM2}
+                onChange={(v) => update("houseAreaM2", v)}
+                suffix="m²"
+              />
+            </>
+          )}
+        </Card>
+
+        <Card>
+          <Eyebrow>05 · Laddbox</Eyebrow>
+          <Toggle
+            on={!!input.chargerId}
+            onToggle={(b) =>
+              update("chargerId", b ? CHARGERS[0].id : null)
+            }
+            label="Inkludera laddbox"
+          />
+          {input.chargerId && (
+            <>
+              <Select
+                label="Märke"
+                value={input.chargerId}
+                onChange={(v) => update("chargerId", v)}
+                options={CHARGERS.map((c) => ({
+                  value: c.id,
+                  label: `${c.brand} · ${c.maxKW} kW`,
+                }))}
+              />
+              <Slider
+                label="Körsträcka (km/år)"
+                min={5000}
+                max={45000}
+                step={500}
+                value={input.evKmPerYear}
+                onChange={(v) => update("evKmPerYear", v)}
+                suffix="km"
+              />
+            </>
+          )}
+        </Card>
+
+        <Card>
+          <Eyebrow>06 · Vindsnurra (valbart)</Eyebrow>
+          <Toggle
+            on={!!input.turbineId}
+            onToggle={(b) =>
+              update("turbineId", b ? TURBINES[0].id : null)
+            }
+            label="Inkludera småskalig vindkraft"
+          />
+          {input.turbineId && (
+            <Select
+              label="Märke"
+              value={input.turbineId}
+              onChange={(v) => update("turbineId", v)}
+              options={TURBINES.map((t) => ({
+                value: t.id,
+                label: `${t.brand} · ${t.ratedKW} kW`,
+              }))}
+            />
+          )}
+        </Card>
+
+        <Card>
+          <Eyebrow>07 · Energihantering (EMS)</Eyebrow>
+          <p className="text-[13px] text-ink/60 leading-relaxed">
+            En EMS är hjärnan som styr när batteriet laddar, när värmepumpen
+            jobbar och när du säljer mot spotpris. Rätt EMS kan höja din
+            besparing med 10–22%.
+          </p>
+          <Toggle
+            on={!!input.emsId}
+            onToggle={(b) =>
+              update("emsId", b ? EMS_OPTIONS[0].id : null)
+            }
+            label="Inkludera energihanteringssystem"
+          />
+          {input.emsId && (
+            <>
+              <PillGroup
+                label="Plattform"
+                options={EMS_OPTIONS.map((e) => ({
+                  value: e.id,
+                  label: e.brand,
+                }))}
+                value={input.emsId}
+                onChange={(v) => update("emsId", v)}
+              />
+              {(() => {
+                const ems = EMS_OPTIONS.find((e) => e.id === input.emsId)!;
+                return (
+                  <div className="rounded-2xl border border-ink/10 bg-cream/50 p-4">
+                    <div className="text-[14px] text-ink/75 leading-relaxed">
+                      {ems.blurb}
+                    </div>
+                    <div className="mt-3 flex flex-wrap gap-1.5">
+                      {ems.features.map((f) => (
+                        <span
+                          key={f}
+                          className="rounded-full border border-ink/12 px-2.5 py-1 text-[11.5px] text-ink/65"
+                        >
+                          {f}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="mt-3 flex items-center gap-4 font-mono text-[11px] text-ink/55">
+                      <span>+{Math.round(ems.spotOptimization * 100)}% besparing</span>
+                      <span>·</span>
+                      <span>{formatKr(ems.priceKr)} engångs</span>
+                      {ems.monthlyKr > 0 && (
+                        <>
+                          <span>·</span>
+                          <span>{formatKr(ems.monthlyKr)}/mån</span>
+                        </>
+                      )}
+                    </div>
+                  </div>
+                );
+              })()}
+            </>
+          )}
+        </Card>
+
+        <Card>
+          <Eyebrow>08 · Hushåll</Eyebrow>
+          <Slider
+            label="Övrig elförbrukning (kWh/år)"
+            min={1500}
+            max={12000}
+            step={100}
+            value={input.baseConsumptionKWh}
+            onChange={(v) => update("baseConsumptionKWh", v)}
+            suffix="kWh"
+          />
+        </Card>
+      </div>
+
+      <div className="xl:col-span-7 space-y-6 xl:sticky xl:top-24 self-start">
+        <div className="rounded-[28px] border border-ink/10 overflow-hidden bg-cream blueprint-bg">
+          <div className="aspect-[16/11] relative">
+            <CalcScene input={input} />
+            <div className="absolute top-4 left-4 rounded-full bg-bone/85 backdrop-blur px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-ink/65 border border-ink/10">
+              Live · digital tvilling
+            </div>
+            <div className="absolute top-4 right-4 rounded-full bg-ink text-bone backdrop-blur px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.18em] border border-ink">
+              {formatNumber(result.systemKWp, 1)} kWp
+            </div>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-2 gap-4">
+          <Tile
+            label="Total investering"
+            value={formatKr(result.totalCostKr)}
+            sub={`varav ${formatKr(result.installCostKr)} installation`}
+          />
+          <Tile
+            label="Efter grönt avdrag"
+            value={formatKr(result.netCostKr)}
+            sub={`grönt avdrag ${formatKr(result.greenDeductionKr)}`}
+          />
+          <Tile
+            label="Årlig besparing"
+            value={formatKr(result.yearlySavingKr)}
+            sub={`+ stödtjänster ${formatKr(result.yearlySupportRevenueKr)}/år`}
+            accent
+          />
+          <Tile
+            label="Payback"
+            value={`${formatNumber(result.paybackYears, 1)} år`}
+            sub={`20-års-vinst ${formatKr(result.yearly20YearKr)}`}
+          />
+          <Tile
+            label="Solproduktion"
+            value={`${formatNumber(result.yearlyProductionKWh, 0)} kWh/år`}
+            sub={`självförbrukning ${formatNumber(result.selfConsumptionShare * 100, 0)}%`}
+          />
+          <Tile
+            label="CO₂ undvikt"
+            value={`${formatNumber(result.co2KgPerYear, 0)} kg/år`}
+            sub={`= ${formatNumber(result.co2KgPerYear / 120, 0)} mil bilkörning`}
+          />
+        </div>
+
+        <div className="rounded-[28px] bg-ink text-bone p-8 flex flex-col md:flex-row gap-6 items-start md:items-center justify-between">
+          <div>
+            <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-bone/50">
+              Klar att gå vidare?
+            </div>
+            <h3 className="mt-3 font-display text-3xl tracking-display-tight max-w-md leading-tight">
+              Vi tar med din konfiguration på hembesöket.
+            </h3>
+          </div>
+          <Link
+            href={`/offert?${queryString}`}
+            className="inline-flex items-center gap-2 rounded-full bg-amber px-7 py-4 font-medium text-ink hover:bg-amber-deep transition"
+          >
+            Begär offert <ArrowRight size={16} />
+          </Link>
+        </div>
+
+        <p className="text-[12.5px] text-ink/55 leading-relaxed max-w-2xl">
+          Siffrorna är estimat baserade på normalår, mellansvenskt klimat och
+          aktuella spotpriser i snitt. Vid hembesök bygger vi en exakt digital
+          tvilling av just ditt hus och ger dig bindande siffror.
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function Card({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="rounded-3xl border border-ink/10 bg-bone p-7 space-y-5">
+      {children}
+    </div>
+  );
+}
+
+function Eyebrow({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink/55">
+      {children}
+    </div>
+  );
+}
+
+function Select({
+  label,
+  value,
+  onChange,
+  options,
+}: {
+  label: string;
+  value: string;
+  onChange: (v: string) => void;
+  options: { value: string; label: string }[];
+}) {
+  return (
+    <label className="block">
+      <span className="block text-[13px] text-ink/65 mb-2">{label}</span>
+      <select
+        className="w-full rounded-2xl border border-ink/15 bg-cream/60 px-4 py-3 text-[14.5px] outline-none focus:border-ink/40 transition"
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+      >
+        {options.map((o) => (
+          <option key={o.value} value={o.value}>
+            {o.label}
+          </option>
+        ))}
+      </select>
+    </label>
+  );
+}
+
+function Slider({
+  label,
+  min,
+  max,
+  step,
+  value,
+  onChange,
+  suffix,
+}: {
+  label: string;
+  min: number;
+  max: number;
+  step: number;
+  value: number;
+  onChange: (v: number) => void;
+  suffix?: string;
+}) {
+  return (
+    <label className="block">
+      <div className="flex items-baseline justify-between mb-2">
+        <span className="text-[13px] text-ink/65">{label}</span>
+        <span className="font-mono text-[12px] text-ink/75">
+          {value} {suffix ? <span className="text-ink/45">{suffix}</span> : null}
+        </span>
+      </div>
+      <input
+        type="range"
+        min={min}
+        max={max}
+        step={step}
+        value={value}
+        onChange={(e) => onChange(Number(e.target.value))}
+        className="w-full accent-ink"
+      />
+    </label>
+  );
+}
+
+function PillGroup({
+  label,
+  options,
+  value,
+  onChange,
+}: {
+  label: string;
+  options: { value: string; label: string }[];
+  value: string;
+  onChange: (v: string) => void;
+}) {
+  return (
+    <div>
+      <span className="block text-[13px] text-ink/65 mb-2">{label}</span>
+      <div className="flex flex-wrap gap-1.5">
+        {options.map((o) => {
+          const active = o.value === value;
+          return (
+            <button
+              key={o.value}
+              type="button"
+              onClick={() => onChange(o.value)}
+              className={[
+                "rounded-full px-3 py-1.5 text-[12.5px] border transition",
+                active
+                  ? "bg-ink text-bone border-ink"
+                  : "bg-bone text-ink/75 border-ink/15 hover:border-ink/40",
+              ].join(" ")}
+            >
+              {o.label}
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+function Toggle({
+  on,
+  onToggle,
+  label,
+}: {
+  on: boolean;
+  onToggle: (v: boolean) => void;
+  label: string;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={() => onToggle(!on)}
+      className="flex w-full items-center justify-between gap-4 rounded-2xl border border-ink/10 bg-cream/50 px-4 py-3 text-left hover:border-ink/30 transition"
+    >
+      <span className="text-[14px]">{label}</span>
+      <span
+        className={[
+          "inline-flex h-6 w-11 rounded-full border transition-colors items-center px-0.5",
+          on ? "bg-ink border-ink" : "bg-bone border-ink/20",
+        ].join(" ")}
+      >
+        <span
+          className={[
+            "h-5 w-5 rounded-full transition-transform",
+            on ? "translate-x-5 bg-amber" : "translate-x-0 bg-ink/30",
+          ].join(" ")}
+        />
+      </span>
+    </button>
+  );
+}
+
+function Tile({
+  label,
+  value,
+  sub,
+  accent,
+}: {
+  label: string;
+  value: string;
+  sub?: string;
+  accent?: boolean;
+}) {
+  return (
+    <div
+      className={[
+        "rounded-3xl border p-6",
+        accent
+          ? "bg-amber/15 border-amber/40"
+          : "bg-bone border-ink/10",
+      ].join(" ")}
+    >
+      <div className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-ink/55">
+        {label}
+      </div>
+      <div className="mt-3 font-display text-3xl tracking-display-tight leading-tight">
+        {value}
+      </div>
+      {sub && (
+        <div className="mt-2 text-[12.5px] text-ink/55 leading-snug">{sub}</div>
+      )}
+    </div>
+  );
+}
