@@ -7,10 +7,24 @@ import * as THREE from "three";
 import type { CalcInput } from "@/lib/calc";
 import { PANELS, INVERTERS } from "@/lib/catalog";
 
+// ----- Hus-mått (metaforisk skala). Allt 3D-arbete utgår från dessa.
+const HOUSE = {
+  width: 3.4, // x-led (gavel-till-gavel = nockens längd)
+  depth: 2.6, // z-led (takfot-till-takfot)
+  wallH: 1.0,
+  ridgeH: 0.95, // höjd från vägg-toppen upp till nocken
+  wallY: 0, // mittpunkt på väggen (centrum y)
+};
+const wallTopY = HOUSE.wallY + HOUSE.wallH / 2; // y där taket börjar
+const ridgeY = wallTopY + HOUSE.ridgeH; // y för nocken
+const slopeRun = HOUSE.depth / 2;
+const slopeAngle = Math.atan2(HOUSE.ridgeH, slopeRun); // taklutning
+
 export function CalcScene({ input }: { input: CalcInput }) {
+  const en = input.enabled;
   return (
     <Canvas
-      camera={{ position: [5.5, 4, 6.5], fov: 36 }}
+      camera={{ position: [5.5, 3.4, 6.5], fov: 36 }}
       shadows
       dpr={[1, 2]}
       gl={{ antialias: true, alpha: true }}
@@ -28,7 +42,7 @@ export function CalcScene({ input }: { input: CalcInput }) {
       <directionalLight position={[-4, 3, -3]} intensity={0.3} color="#E9B949" />
 
       <Grid
-        position={[0, -1, 0]}
+        position={[0, HOUSE.wallY - HOUSE.wallH / 2, 0]}
         args={[40, 40]}
         cellSize={0.4}
         cellThickness={0.5}
@@ -42,17 +56,20 @@ export function CalcScene({ input }: { input: CalcInput }) {
       />
 
       <House />
-      <PanelArray
-        count={input.panelCount}
-        glow={
-          PANELS.find((p) => p.id === input.panelId)?.efficiency ?? 22
-        }
-      />
-      <Inverter brandId={input.inverterId} />
-      {input.batteryId && <Battery />}
-      {input.heatPumpId && <HeatPumpUnit />}
-      {input.chargerId && <ChargerUnit />}
-      {input.turbineId && <TurbineUnit />}
+
+      {en.sol && (
+        <PanelArray
+          count={input.panelCount}
+          glow={
+            PANELS.find((p) => p.id === input.panelId)?.efficiency ?? 22
+          }
+        />
+      )}
+      {(en.sol || en.batteri) && <Inverter brandId={input.inverterId} />}
+      {en.batteri && <Battery />}
+      {en.värmepump && <HeatPumpUnit />}
+      {en.laddbox && <ChargerUnit />}
+      {en.vindkraft && <TurbineUnit />}
 
       <FlowLines input={input} />
 
@@ -69,35 +86,74 @@ export function CalcScene({ input }: { input: CalcInput }) {
   );
 }
 
+// ============= HUS (sadeltak) =============
+
 function House() {
+  const w = HOUSE.width;
+  const d = HOUSE.depth;
+  const h = HOUSE.wallH;
+  const ridge = HOUSE.ridgeH;
+
+  // Sadeltakets två fall som sneda lådor
+  const slopeLength = Math.hypot(slopeRun, ridge);
+  const slopeY = wallTopY + ridge / 2;
+
   return (
-    <group position={[0, 0, 0]}>
-      {/* base */}
-      <mesh position={[0, -0.4, 0]} castShadow receiveShadow>
-        <boxGeometry args={[3.2, 1.2, 2.4]} />
+    <group>
+      {/* Vägg-volym */}
+      <mesh position={[0, HOUSE.wallY, 0]} castShadow receiveShadow>
+        <boxGeometry args={[w, h, d]} />
         <meshStandardMaterial color="#F4F1EA" roughness={0.85} />
       </mesh>
-      {/* roof */}
-      <mesh
-        position={[0, 0.45, 0]}
-        rotation={[0, Math.PI / 4, 0]}
-        castShadow
-      >
-        <coneGeometry args={[2.45, 0.9, 4]} />
-        <meshStandardMaterial color="#3F5236" roughness={0.65} />
+
+      {/* Sadeltakets gavel-trianglar (front + back) */}
+      <mesh position={[0, wallTopY, d / 2 + 0.001]}>
+        <shapeGeometry args={[gableShape(w, ridge)]} />
+        <meshStandardMaterial color="#F4F1EA" roughness={0.85} />
       </mesh>
-      {/* door */}
-      <mesh position={[0, -0.55, 1.21]}>
+      <mesh
+        position={[0, wallTopY, -d / 2 - 0.001]}
+        rotation={[0, Math.PI, 0]}
+      >
+        <shapeGeometry args={[gableShape(w, ridge)]} />
+        <meshStandardMaterial color="#F4F1EA" roughness={0.85} />
+      </mesh>
+
+      {/* Två takfall (sadel). Lutas runt x-axeln så de möts vid nocken. */}
+      {[1, -1].map((sign) => (
+        <mesh
+          key={sign}
+          position={[0, slopeY, (sign * d) / 4]}
+          rotation={[sign * -slopeAngle, 0, 0]}
+          castShadow
+        >
+          <boxGeometry args={[w + 0.1, 0.05, slopeLength + 0.05]} />
+          <meshStandardMaterial color="#3F5236" roughness={0.7} />
+        </mesh>
+      ))}
+
+      {/* Dörr på framsidan (z = +d/2) */}
+      <mesh position={[0, HOUSE.wallY - 0.15, d / 2 + 0.005]}>
         <planeGeometry args={[0.45, 0.7]} />
         <meshStandardMaterial color="#1A1A17" />
       </mesh>
-      {/* window glow */}
-      <Window position={[-1, -0.4, 1.21]} />
-      <Window position={[1, -0.4, 1.21]} />
-      <Window position={[-1, -0.4, -1.21]} flip />
-      <Window position={[1, -0.4, -1.21]} flip />
+
+      {/* Fönster med varmt sken */}
+      <Window position={[-1.05, HOUSE.wallY, d / 2 + 0.005]} />
+      <Window position={[1.05, HOUSE.wallY, d / 2 + 0.005]} />
+      <Window position={[-1.05, HOUSE.wallY, -d / 2 - 0.005]} flip />
+      <Window position={[1.05, HOUSE.wallY, -d / 2 - 0.005]} flip />
     </group>
   );
+}
+
+function gableShape(width: number, ridgeHeight: number) {
+  const s = new THREE.Shape();
+  s.moveTo(-width / 2, 0);
+  s.lineTo(width / 2, 0);
+  s.lineTo(0, ridgeHeight);
+  s.lineTo(-width / 2, 0);
+  return s;
 }
 
 function Window({
@@ -127,28 +183,37 @@ function Window({
   );
 }
 
+// ============= SOLPANELER på takfallet =============
+
 function PanelArray({ count, glow }: { count: number; glow: number }) {
-  // dynamiskt antal: två rader, växer så det får plats på taket
-  const rows = 2;
-  const cols = Math.ceil(count / rows);
+  // Vi placerar panelerna i ett rutmönster på det södra takfallet (z = +d/4).
+  // Panelens lokala koordinatsystem är samma som takfallets (efter rotation).
+  const cols = 6;
+  const rows = Math.min(4, Math.ceil(count / cols));
+  const slopeLength = Math.hypot(slopeRun, HOUSE.ridgeH);
+  const panelW = (HOUSE.width - 0.2) / cols;
+  const panelD = (slopeLength - 0.2) / 4; // platsen tar plats för max 4 rader
+  const offsetY = wallTopY + HOUSE.ridgeH / 2;
+
   return (
-    <group rotation={[-0.55, Math.PI / 4, 0]} position={[0, 0.95, 0]}>
+    <group
+      position={[0, offsetY, HOUSE.depth / 4]}
+      rotation={[-slopeAngle, 0, 0]}
+    >
       {Array.from({ length: rows }).map((_, r) =>
         Array.from({ length: cols }).map((__, c) => {
           const idx = r * cols + c;
           if (idx >= count) return null;
-          const x = (c - (cols - 1) / 2) * 0.42;
-          const y = (r - (rows - 1) / 2) * -0.32;
+          const x = (c - (cols - 1) / 2) * panelW;
+          const z = (r - (rows - 1) / 2) * panelD;
           return (
-            <mesh
-              key={`${r}-${c}`}
-              position={[x, 0, y]}
-              castShadow
-            >
-              <boxGeometry args={[0.4, 0.04, 0.3]} />
-              <meshStandardMaterial color="#0E0E0C" />
+            <group key={`${r}-${c}`} position={[x, 0.035, z]}>
+              <mesh castShadow>
+                <boxGeometry args={[panelW * 0.92, 0.04, panelD * 0.92]} />
+                <meshStandardMaterial color="#0E0E0C" />
+              </mesh>
               <mesh position={[0, 0.025, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-                <planeGeometry args={[0.36, 0.27]} />
+                <planeGeometry args={[panelW * 0.85, panelD * 0.85]} />
                 <meshStandardMaterial
                   color="#0a3a4e"
                   emissive="#0a3a4e"
@@ -157,13 +222,19 @@ function PanelArray({ count, glow }: { count: number; glow: number }) {
                   roughness={0.15}
                 />
               </mesh>
-            </mesh>
+            </group>
           );
         }),
       )}
     </group>
   );
 }
+
+// ============= GAVEL-SIDAN: alla utomhusenheter ligger på samma sida =============
+// Vi använder höger gavel (x = +HOUSE.width/2). Batteriet sätts inomhus mot
+// väggen och visas till höger om huset. Värmepumpen står utanpå höger gavel.
+const GABLE_X = HOUSE.width / 2 + 0.3;
+const GABLE_GROUND_Y = HOUSE.wallY - HOUSE.wallH / 2;
 
 function Inverter({ brandId }: { brandId: string }) {
   const inv = INVERTERS.find((i) => i.id === brandId) ?? INVERTERS[0];
@@ -175,13 +246,13 @@ function Inverter({ brandId }: { brandId: string }) {
     }
   });
   return (
-    <group position={[-2.0, -0.55, 1.0]}>
+    <group position={[GABLE_X, GABLE_GROUND_Y + 0.55, -0.7]}>
       <mesh castShadow>
-        <boxGeometry args={[0.5, 0.7, 0.18]} />
+        <boxGeometry args={[0.18, 0.5, 0.4]} />
         <meshStandardMaterial color="#1A1A17" />
       </mesh>
-      <mesh position={[0, 0.1, 0.1]}>
-        <planeGeometry args={[0.28, 0.18]} />
+      <mesh position={[0.095, 0.05, 0]} rotation={[0, Math.PI / 2, 0]}>
+        <planeGeometry args={[0.22, 0.14]} />
         <meshStandardMaterial
           ref={ref}
           color="#3F5236"
@@ -189,7 +260,7 @@ function Inverter({ brandId }: { brandId: string }) {
           emissiveIntensity={0.4}
         />
       </mesh>
-      <Html position={[0, -0.55, 0]} center>
+      <Html position={[0.4, -0.25, 0]}>
         <div className="font-mono text-[9.5px] uppercase tracking-[0.18em] text-ink/65 bg-bone/85 backdrop-blur px-2 py-0.5 rounded-full border border-ink/10 whitespace-nowrap">
           {inv.brand.split(" ")[0]} · {inv.efficiency}%
         </div>
@@ -207,20 +278,21 @@ function Battery() {
     }
   });
   return (
-    <group position={[-2.5, -0.6, 1.0]}>
+    <group position={[GABLE_X, GABLE_GROUND_Y + 0.45, -0.05]}>
       <mesh castShadow>
-        <boxGeometry args={[0.45, 0.85, 0.3]} />
+        <boxGeometry args={[0.22, 0.85, 0.45]} />
         <meshStandardMaterial color="#F4F1EA" />
       </mesh>
-      <mesh ref={ref as never} position={[0.235, 0, 0]}>
-        <boxGeometry args={[0.015, 0.7, 0.18]} />
+      <mesh position={[0.115, 0.0, 0]} rotation={[0, Math.PI / 2, 0]}>
+        <boxGeometry args={[0.18, 0.7, 0.015]} />
         <meshStandardMaterial
+          ref={ref as never}
           color="#E9B949"
           emissive="#E9B949"
           emissiveIntensity={0.5}
         />
       </mesh>
-      <Html position={[0, -0.65, 0]} center>
+      <Html position={[0.4, -0.45, 0]}>
         <div className="font-mono text-[9.5px] uppercase tracking-[0.18em] text-ink/65 bg-bone/85 backdrop-blur px-2 py-0.5 rounded-full border border-ink/10 whitespace-nowrap">
           Batteri
         </div>
@@ -232,19 +304,20 @@ function Battery() {
 function HeatPumpUnit() {
   const fan = useRef<THREE.Group>(null);
   useFrame((_, d) => {
-    if (fan.current) fan.current.rotation.z += d * 4.5;
+    if (fan.current) fan.current.rotation.x += d * 4.5;
   });
   return (
-    <group position={[2.4, -0.55, 0.5]}>
+    <group position={[GABLE_X + 0.05, GABLE_GROUND_Y + 0.45, 0.7]}>
       <mesh castShadow>
-        <boxGeometry args={[0.95, 0.65, 0.4]} />
+        <boxGeometry args={[0.4, 0.65, 0.95]} />
         <meshStandardMaterial color="#2A2A26" />
       </mesh>
-      <mesh position={[0, 0, 0.21]}>
+      {/* Fläkten sitter på gavelsidan (lokal +x) och pekar utåt */}
+      <mesh position={[0.205, 0, 0]} rotation={[0, Math.PI / 2, 0]}>
         <ringGeometry args={[0.13, 0.27, 32]} />
         <meshStandardMaterial color="#0E0E0C" />
       </mesh>
-      <group ref={fan} position={[0, 0, 0.23]}>
+      <group ref={fan} position={[0.215, 0, 0]} rotation={[0, Math.PI / 2, 0]}>
         {Array.from({ length: 5 }).map((_, i) => (
           <mesh key={i} rotation={[0, 0, (i / 5) * Math.PI * 2]}>
             <boxGeometry args={[0.04, 0.24, 0.02]} />
@@ -252,7 +325,7 @@ function HeatPumpUnit() {
           </mesh>
         ))}
       </group>
-      <Html position={[0, -0.5, 0]} center>
+      <Html position={[0.5, -0.4, 0]}>
         <div className="font-mono text-[9.5px] uppercase tracking-[0.18em] text-ink/65 bg-bone/85 backdrop-blur px-2 py-0.5 rounded-full border border-ink/10 whitespace-nowrap">
           Värmepump
         </div>
@@ -262,10 +335,11 @@ function HeatPumpUnit() {
 }
 
 function ChargerUnit() {
+  // Laddbox sätts på framsidan (z+) men nära höger gavel
   return (
-    <group position={[1.7, -0.5, 1.5]}>
+    <group position={[HOUSE.width / 2 - 0.15, GABLE_GROUND_Y + 0.45, HOUSE.depth / 2 + 0.07]}>
       <mesh castShadow>
-        <boxGeometry args={[0.22, 0.48, 0.1]} />
+        <boxGeometry args={[0.22, 0.5, 0.1]} />
         <meshStandardMaterial color="#E9B949" />
       </mesh>
       <mesh position={[0, 0.1, 0.06]}>
@@ -285,78 +359,95 @@ function ChargerUnit() {
   );
 }
 
+// ============= VINDKRAFTVERK – propellrar runt centerhubb =============
 function TurbineUnit() {
   const blades = useRef<THREE.Group>(null);
   useFrame((_, d) => {
     if (blades.current) blades.current.rotation.z += d * 1.6;
   });
+  const towerH = 1.8;
+  const towerY = GABLE_GROUND_Y + towerH / 2;
+  const hubY = GABLE_GROUND_Y + towerH;
+  const bladeLength = 0.7;
   return (
-    <group position={[2.6, 0.5, -1.3]}>
-      <mesh position={[0, -0.5, 0]}>
-        <cylinderGeometry args={[0.04, 0.06, 1.6, 16]} />
+    <group position={[-GABLE_X - 0.2, 0, -1.4]}>
+      {/* Mast */}
+      <mesh position={[0, towerY, 0]}>
+        <cylinderGeometry args={[0.04, 0.06, towerH, 16]} />
         <meshStandardMaterial color="#F4F1EA" />
       </mesh>
-      <mesh position={[0, 0.35, 0.05]}>
-        <sphereGeometry args={[0.08, 16, 16]} />
+      {/* Generatorhus, sitter framför masten */}
+      <mesh position={[0, hubY, 0.08]}>
+        <boxGeometry args={[0.14, 0.14, 0.22]} />
         <meshStandardMaterial color="#1A1A17" />
       </mesh>
-      <group ref={blades} position={[0, 0.35, 0.1]}>
+      {/* Hubb */}
+      <mesh position={[0, hubY, 0.2]}>
+        <sphereGeometry args={[0.07, 16, 16]} />
+        <meshStandardMaterial color="#1A1A17" />
+      </mesh>
+      {/* Tre blad – centrerade vid hubben och pekar utåt */}
+      <group ref={blades} position={[0, hubY, 0.21]}>
         {[0, 1, 2].map((i) => (
-          <mesh
-            key={i}
-            rotation={[0, 0, (i / 3) * Math.PI * 2]}
-            position={[0, 0.35, 0]}
-          >
-            <boxGeometry args={[0.05, 0.7, 0.02]} />
-            <meshStandardMaterial color="#F4F1EA" />
-          </mesh>
+          <group key={i} rotation={[0, 0, (i / 3) * Math.PI * 2]}>
+            <mesh position={[0, bladeLength / 2, 0]}>
+              <boxGeometry args={[0.06, bladeLength, 0.02]} />
+              <meshStandardMaterial color="#F4F1EA" />
+            </mesh>
+          </group>
         ))}
       </group>
     </group>
   );
 }
 
+// ============= ENERGIFLÖDEN =============
+
 function FlowLines({ input }: { input: CalcInput }) {
-  // Animerade partiklar mellan komponenterna för att illustrera energiflöde.
+  const en = input.enabled;
   const points = useMemo(() => {
-    const list: { from: THREE.Vector3; to: THREE.Vector3; color: string }[] = [
-      // sol -> växelriktare
-      {
-        from: new THREE.Vector3(0, 0.95, 0),
-        to: new THREE.Vector3(-2, -0.4, 1.0),
-        color: "#E9B949",
-      },
-    ];
-    if (input.batteryId) {
-      list.push({
-        from: new THREE.Vector3(-2, -0.4, 1.0),
-        to: new THREE.Vector3(-2.5, -0.6, 1.0),
-        color: "#E9B949",
-      });
+    const list: { from: THREE.Vector3; to: THREE.Vector3; color: string }[] =
+      [];
+
+    const inverterPos = new THREE.Vector3(GABLE_X, GABLE_GROUND_Y + 0.55, -0.7);
+    const batteryPos = new THREE.Vector3(GABLE_X, GABLE_GROUND_Y + 0.45, -0.05);
+    const heatPos = new THREE.Vector3(GABLE_X + 0.05, GABLE_GROUND_Y + 0.45, 0.7);
+    const chargerPos = new THREE.Vector3(
+      HOUSE.width / 2 - 0.15,
+      GABLE_GROUND_Y + 0.45,
+      HOUSE.depth / 2 + 0.07,
+    );
+    const turbinePos = new THREE.Vector3(-GABLE_X - 0.2, GABLE_GROUND_Y + 1.8, -1.4);
+
+    const roofCenter = new THREE.Vector3(
+      0,
+      wallTopY + HOUSE.ridgeH / 2,
+      HOUSE.depth / 4,
+    );
+
+    if (en.sol) {
+      list.push({ from: roofCenter, to: inverterPos, color: "#E9B949" });
     }
-    if (input.heatPumpId) {
-      list.push({
-        from: new THREE.Vector3(-2, -0.4, 1.0),
-        to: new THREE.Vector3(2.4, -0.55, 0.5),
-        color: "#3F5236",
-      });
+    if (en.batteri) {
+      list.push({ from: inverterPos, to: batteryPos, color: "#E9B949" });
     }
-    if (input.chargerId) {
-      list.push({
-        from: new THREE.Vector3(-2, -0.4, 1.0),
-        to: new THREE.Vector3(1.7, -0.4, 1.5),
-        color: "#B86F3C",
-      });
+    if (en.värmepump) {
+      list.push({ from: inverterPos, to: heatPos, color: "#3F5236" });
     }
-    if (input.turbineId) {
-      list.push({
-        from: new THREE.Vector3(2.6, 0.7, -1.3),
-        to: new THREE.Vector3(-2, -0.4, 1.0),
-        color: "#3F5236",
-      });
+    if (en.laddbox) {
+      list.push({ from: inverterPos, to: chargerPos, color: "#B86F3C" });
+    }
+    if (en.vindkraft) {
+      list.push({ from: turbinePos, to: inverterPos, color: "#3F5236" });
     }
     return list;
-  }, [input]);
+  }, [
+    en.sol,
+    en.batteri,
+    en.värmepump,
+    en.laddbox,
+    en.vindkraft,
+  ]);
 
   return (
     <>
@@ -387,7 +478,6 @@ function FlowLine({
     }
   });
 
-  // Render line + moving dot
   const geometry = useMemo(() => {
     const g = new THREE.BufferGeometry().setFromPoints([from, to]);
     return g;

@@ -42,6 +42,7 @@ export default function OffertPage({
             n: get("n") ?? null,
             inv: get("inv") ?? null,
             bat: get("bat") ?? null,
+            batkwh: get("batkwh") ?? null,
             pump: get("pump") ?? null,
             chrg: get("chrg") ?? null,
             wind: get("wind") ?? null,

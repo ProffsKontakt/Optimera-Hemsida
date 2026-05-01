@@ -15,10 +15,19 @@ import {
 } from "./catalog";
 
 export type CalcInput = {
+  // Vilka delar av lösningen kunden har valt att räkna på.
+  enabled: {
+    sol: boolean;
+    batteri: boolean;
+    värmepump: boolean;
+    laddbox: boolean;
+    vindkraft: boolean;
+  };
   panelId: string;
   panelCount: number;
   inverterId: string;
   batteryId: string | null;
+  batteryCapacityKWh: number; // användarens valda storlek inom märkets tillåtna lista
   heatPumpId: string | null;
   chargerId: string | null;
   turbineId: string | null;
@@ -30,6 +39,8 @@ export type CalcInput = {
 
 export type CalcResult = {
   systemKWp: number;
+  batteryKWh: number;
+  batteryPriceKr: number;
   yearlyProductionKWh: number;
   yearlyConsumptionKWh: number;
   selfConsumptionShare: number; // 0..1
@@ -49,25 +60,37 @@ export type CalcResult = {
 };
 
 export function computeCalc(input: CalcInput): CalcResult {
+  const en = input.enabled;
   const panel = PANELS.find((p) => p.id === input.panelId) ?? PANELS[0];
   const inverter =
     INVERTERS.find((i) => i.id === input.inverterId) ?? INVERTERS[0];
-  const battery =
-    input.batteryId ? BATTERIES.find((b) => b.id === input.batteryId) : null;
+  const batteryBrand =
+    en.batteri && input.batteryId
+      ? BATTERIES.find((b) => b.id === input.batteryId)
+      : null;
+  const batteryKWh = batteryBrand
+    ? closest(input.batteryCapacityKWh, batteryBrand.capacities)
+    : 0;
+  const batteryPriceKr = batteryBrand
+    ? Math.round(batteryKWh * batteryBrand.pricePerKWhKr)
+    : 0;
   const heat =
-    input.heatPumpId
+    en.värmepump && input.heatPumpId
       ? HEAT_PUMPS.find((h) => h.id === input.heatPumpId)
       : null;
   const charger =
-    input.chargerId
+    en.laddbox && input.chargerId
       ? CHARGERS.find((c) => c.id === input.chargerId)
       : null;
   const turbine =
-    input.turbineId ? TURBINES.find((t) => t.id === input.turbineId) : null;
+    en.vindkraft && input.turbineId
+      ? TURBINES.find((t) => t.id === input.turbineId)
+      : null;
   const ems =
     input.emsId ? EMS_OPTIONS.find((e) => e.id === input.emsId) : null;
 
-  const systemKWp = (panel.watt * input.panelCount) / 1000;
+  const panelCount = en.sol ? input.panelCount : 0;
+  const systemKWp = (panel.watt * panelCount) / 1000;
 
   const yearlyProductionKWh =
     systemKWp * SUN_HOURS_KWH_PER_KWP * (inverter.efficiency / 100) +
@@ -82,8 +105,8 @@ export function computeCalc(input: CalcInput): CalcResult {
   const yearlyConsumptionKWh =
     input.baseConsumptionKWh + yearlyHeatKWh + yearlyEvKWh;
 
-  const selfConsumptionShare = battery
-    ? clamp(0.45 + (battery.capacityKWh / 30) * 0.4, 0.45, 0.85)
+  const selfConsumptionShare = batteryBrand
+    ? clamp(0.45 + (batteryKWh / 30) * 0.4, 0.45, 0.92)
     : 0.32;
 
   const selfUsedKWh = Math.min(
@@ -96,33 +119,31 @@ export function computeCalc(input: CalcInput): CalcResult {
   const baseSavingKr =
     selfUsedKWh * SPOT_AVG_KR_KWH +
     exportedKWh * FEED_IN_KR_KWH -
-    importedKWh * SPOT_AVG_KR_KWH * 0.05; // nätavgift skattning
+    importedKWh * SPOT_AVG_KR_KWH * 0.05;
 
-  // EMS lyfter besparingen genom smartare styrning
   const emsBoost = ems ? 1 + ems.spotOptimization : 1;
   const yearlySavingKr = baseSavingKr * emsBoost;
 
-  const yearlySupportRevenueKr = battery
-    ? battery.capacityKWh *
+  const yearlySupportRevenueKr = batteryBrand
+    ? batteryKWh *
       SUPPORT_REVENUE_PER_KWH_INSTALLED *
       (ems ? 1 + ems.spotOptimization * 0.6 : 0.6)
     : 0;
 
-  // Hårdvarukostnad
-  const panelsKr = panel.pricePerPanelKr * input.panelCount;
+  const panelsKr = panel.pricePerPanelKr * panelCount;
+  const inverterKr = en.sol || en.batteri ? inverter.priceKr : 0;
   const hardwareCostKr =
     panelsKr +
-    inverter.priceKr +
-    (battery?.priceKr ?? 0) +
+    inverterKr +
+    batteryPriceKr +
     (heat?.priceKr ?? 0) +
     (charger?.priceKr ?? 0) +
     (turbine?.priceKr ?? 0) +
     (ems?.priceKr ?? 0);
 
-  // Installation: ~20% av materielen + fast rigg-kostnad per delsystem
   const fixedInstallKr =
-    25000 + // sol grund
-    (battery ? 12000 : 0) +
+    (en.sol ? 25000 : 0) +
+    (batteryBrand ? 12000 : 0) +
     (heat ? 35000 : 0) +
     (charger ? 9000 : 0) +
     (turbine ? 85000 : 0);
@@ -135,7 +156,7 @@ export function computeCalc(input: CalcInput): CalcResult {
     50000,
     Math.round(
       panelsKr * 0.2 +
-        (battery ? battery.priceKr * 0.5 : 0) +
+        batteryPriceKr * 0.5 +
         (charger ? charger.priceKr * 0.5 : 0),
     ),
   );
@@ -152,6 +173,8 @@ export function computeCalc(input: CalcInput): CalcResult {
 
   return {
     systemKWp,
+    batteryKWh,
+    batteryPriceKr,
     yearlyProductionKWh,
     yearlyConsumptionKWh,
     selfConsumptionShare,
@@ -173,6 +196,11 @@ export function computeCalc(input: CalcInput): CalcResult {
 
 const clamp = (x: number, min: number, max: number) =>
   Math.max(min, Math.min(max, x));
+
+const closest = (target: number, options: number[]) =>
+  options.reduce((best, v) =>
+    Math.abs(v - target) < Math.abs(best - target) ? v : best,
+  options[0]);
 
 export const formatKr = (n: number) =>
   new Intl.NumberFormat("sv-SE", {

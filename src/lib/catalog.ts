@@ -20,9 +20,9 @@ export type Inverter = {
 export type Battery = {
   id: string;
   brand: string;
-  capacityKWh: number;
   cycles: number;
-  priceKr: number;
+  pricePerKWhKr: number; // riktpris per kWh installerad kapacitet
+  capacities: number[]; // tillgängliga storlekar i kWh
   chemistry: "LFP" | "NMC";
 };
 
@@ -81,19 +81,49 @@ export const INVERTERS: Inverter[] = [
 ];
 
 export const BATTERIES: Battery[] = [
-  { id: "easyway-h", brand: "Easyway HomeStack", capacityKWh: 10.0, cycles: 6000, priceKr: 64000, chemistry: "LFP" },
-  { id: "easyway-h15", brand: "Easyway HomeStack 15", capacityKWh: 15.0, cycles: 6000, priceKr: 92000, chemistry: "LFP" },
-  { id: "enershare-c", brand: "Enershare Cube 10", capacityKWh: 10.24, cycles: 7000, priceKr: 71000, chemistry: "LFP" },
-  { id: "enershare-c20", brand: "Enershare Cube 20", capacityKWh: 20.48, cycles: 7000, priceKr: 132000, chemistry: "LFP" },
-  { id: "emaldo-ps", brand: "Emaldo Power Station 2", capacityKWh: 12.5, cycles: 6500, priceKr: 88000, chemistry: "LFP" },
-  { id: "emaldo-ps20", brand: "Emaldo Power Station 2 (20)", capacityKWh: 20.0, cycles: 6500, priceKr: 138000, chemistry: "LFP" },
-  { id: "pylon-fc-h2", brand: "Pylontech Force-H2", capacityKWh: 10.65, cycles: 6000, priceKr: 64000, chemistry: "LFP" },
-  { id: "pylon-fc-l2", brand: "Pylontech Force-L2", capacityKWh: 14.2, cycles: 6000, priceKr: 84000, chemistry: "LFP" },
-  { id: "saj-bs", brand: "SAJ B2 (10 kWh)", capacityKWh: 10.24, cycles: 6000, priceKr: 58000, chemistry: "LFP" },
-  { id: "saj-bs15", brand: "SAJ B2 (15 kWh)", capacityKWh: 15.36, cycles: 6000, priceKr: 84000, chemistry: "LFP" },
-  { id: "byd-hvs", brand: "BYD HVS Premium", capacityKWh: 10.24, cycles: 6000, priceKr: 78000, chemistry: "LFP" },
-  { id: "tesla-pw", brand: "Tesla Powerwall 3", capacityKWh: 13.5, cycles: 6000, priceKr: 95000, chemistry: "LFP" },
-  { id: "huawei-luna2", brand: "Huawei LUNA2000", capacityKWh: 10.0, cycles: 6000, priceKr: 72000, chemistry: "LFP" },
+  {
+    id: "pylontech-h3",
+    brand: "Pylontech Force H3",
+    cycles: 6000,
+    pricePerKWhKr: 6200,
+    capacities: [10.24, 15.36, 20.48, 25.6, 30.72, 35.84, 40.96],
+    chemistry: "LFP",
+  },
+  {
+    id: "easyway-univ7600",
+    brand: "Easyway UNIV7600 HP",
+    cycles: 6500,
+    pricePerKWhKr: 5800,
+    capacities: [15.36, 23.04, 30.72, 38.4, 46.08, 53.76, 61.44],
+    chemistry: "LFP",
+  },
+  {
+    id: "saj-hs3",
+    brand: "SAJ HS3",
+    cycles: 6000,
+    pricePerKWhKr: 5400,
+    capacities: [10, 15, 20, 25, 30, 35, 40],
+    chemistry: "LFP",
+  },
+  {
+    id: "enershare-core",
+    brand: "Enershare Energy Core",
+    cycles: 7000,
+    pricePerKWhKr: 6500,
+    capacities: [
+      9.6, 12.8, 16, 19.2, 22.4, 25.6, 28.8, 32, 35.2, 38.4, 41.6, 44.8, 48,
+      51.2,
+    ],
+    chemistry: "LFP",
+  },
+  {
+    id: "emaldo-store",
+    brand: "Emaldo Power Store",
+    cycles: 6500,
+    pricePerKWhKr: 6800,
+    capacities: [15.36, 30.72, 46.08],
+    chemistry: "LFP",
+  },
 ];
 
 export const HEAT_PUMPS: HeatPump[] = [
@@ -198,6 +228,10 @@ export const FEED_IN_KR_KWH = 0.85; // försäljning
 export const SUN_HOURS_KWH_PER_KWP = 1050; // Mellansverige normalår
 export const HOUSE_HEAT_DEMAND_KWH_PER_M2 = 110; // 70-tal villa
 export const EV_KM_PER_KWH = 6;
+
+// Maxgränser för en normalvilla (söderläge, sadeltak ~ 60 m² per fall)
+export const MAX_PANELS_PER_HOUSE = 24;
+export const PANEL_AREA_M2 = 1.95; // ungefärlig panelyta
 
 // Stödtjänster (FCR-D / aFRR) – grov estimering
 export const SUPPORT_REVENUE_PER_KWH_INSTALLED = 4500; // kr/år/kWh batteri

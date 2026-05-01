@@ -173,14 +173,12 @@ function Turbine() {
       </mesh>
       <group ref={blades} position={[0, 0.4, 0.1]}>
         {[0, 1, 2].map((i) => (
-          <mesh
-            key={i}
-            rotation={[0, 0, (i / 3) * Math.PI * 2]}
-            position={[0, 0.4, 0]}
-          >
-            <boxGeometry args={[0.05, 0.85, 0.025]} />
-            <meshStandardMaterial color="#F4F1EA" />
-          </mesh>
+          <group key={i} rotation={[0, 0, (i / 3) * Math.PI * 2]}>
+            <mesh position={[0, 0.425, 0]}>
+              <boxGeometry args={[0.05, 0.85, 0.025]} />
+              <meshStandardMaterial color="#F4F1EA" />
+            </mesh>
+          </group>
         ))}
       </group>
     </group>

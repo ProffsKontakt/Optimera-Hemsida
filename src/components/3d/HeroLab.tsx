@@ -168,14 +168,12 @@ function WindTurbine({ position }: { position: [number, number, number] }) {
       </mesh>
       <group ref={blades} position={[0, 0.2, 0.08]}>
         {[0, 1, 2].map((i) => (
-          <mesh
-            key={i}
-            rotation={[0, 0, (i / 3) * Math.PI * 2]}
-            position={[0, 0.25, 0]}
-          >
-            <boxGeometry args={[0.04, 0.55, 0.02]} />
-            <meshStandardMaterial color="#F4F1EA" />
-          </mesh>
+          <group key={i} rotation={[0, 0, (i / 3) * Math.PI * 2]}>
+            <mesh position={[0, 0.275, 0]}>
+              <boxGeometry args={[0.04, 0.55, 0.02]} />
+              <meshStandardMaterial color="#F4F1EA" />
+            </mesh>
+          </group>
         ))}
       </group>
     </group>
