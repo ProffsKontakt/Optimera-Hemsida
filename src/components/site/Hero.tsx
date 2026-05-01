@@ -134,7 +134,7 @@ function Marquee() {
             key={i}
             className="font-mono text-[12.5px] uppercase tracking-[0.22em] text-ink/55 whitespace-nowrap"
           >
-            {it} · märkesoberoende
+            {it}
           </span>
         ))}
       </div>
