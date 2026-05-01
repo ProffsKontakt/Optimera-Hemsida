@@ -13,7 +13,7 @@ const team = [
     name: "Petter Lindqvist",
     role: "Grundare · Auktoriserad elinstallatör",
     bio:
-      "13 år som driftsättare på SolarEdge och Vattenfall. Tröttnade på offerter med asterisker och startade istället en firma där priset på offerten är priset på fakturan.",
+      "13 år som driftsättare på SolarEdge och Vattenfall. Tröttnade på offerter med dolda påslag och startade istället en firma där priset på offerten är priset på fakturan.",
     color: "from-[#3F5236] to-[#1A1A17]",
   },
   {
@@ -27,7 +27,7 @@ const team = [
     name: "Albin Norén",
     role: "Förste montör · Tak­specialist",
     bio:
-      "Lärling i 4:e generation. Vet exakt var infästningarna ska sitta — och bakar dessutom kanelbullarna som följer med på hembesöken.",
+      "Lärling i 4:e generation. Vet exakt var infästningarna ska sitta – och bakar dessutom kanelbullarna som följer med på hembesöken.",
     color: "from-[#0a3a4e] to-[#0E0E0C]",
   },
 ];
@@ -56,12 +56,12 @@ export default function AboutPage() {
         eyebrow="Vad vi tror på"
         title={
           <>
-            Premium betyder inte dyrt.
+            Kvalitet betyder inte dyrt.
             <br />
             <span className="italic">Det betyder gjort på riktigt.</span>
           </>
         }
-        intro="Vi tror att ingenjörskonst och familjär service inte är motsatser — de är samma sak, tillämpat på olika ställen i kedjan."
+        intro="Vi tror att ingenjörskonst och familjär service inte är motsatser – de är samma sak, tillämpat på olika ställen i kedjan."
       >
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <Belief
@@ -71,13 +71,13 @@ export default function AboutPage() {
           />
           <Belief
             n="02"
-            title="Ingen klocka — bara klockrent"
+            title="Ingen klocka – bara klockrent"
             body="Vi debiterar inte per påbörjad kvart. Vi gör jobbet ordentligt, går när det är klart och tar med oss kabelresterna hem."
           />
           <Belief
             n="03"
-            title="Människor över processer"
-            body="Du har en kontaktperson från första mejlet till sista uppföljningen. Inga ärendenummer, inga callcenter."
+            title="Människor framför processer"
+            body="Du har en kontaktperson från första mejlet till sista uppföljningen. Inga ärendenummer, inga växelköer."
           />
         </div>
       </Section>
@@ -115,7 +115,7 @@ export default function AboutPage() {
       <Section
         eyebrow="Bakom kulisserna"
         title={<>En vanlig vecka i Kloka.</>}
-        intro="Vi tror på dokumentation av riktigt arbete — inte stockfoton från ett annat land. Här är teamet på riktigt."
+        intro="Vi dokumenterar riktigt arbete från riktiga hem. Här är teamet i full gång."
       >
         <HousecallStrip />
       </Section>
@@ -124,8 +124,8 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
           <Roadmap
             year="2026"
-            title="Stockholm-rooten"
-            body="Vi öppnar med eget montageteam i Hammarby Sjöstad. 80 hembesök första halvåret."
+            title="Stockholm – rotsystemet"
+            body="Vi öppnar med eget montageteam i Hammarby Sjöstad. 80 hembesök under första halvåret."
           />
           <Roadmap
             year="2027"
@@ -153,17 +153,17 @@ export default function AboutPage() {
                 Kom förbi
               </div>
               <h3 className="mt-4 font-display text-4xl md:text-6xl tracking-display-tight leading-tight">
-                Hammarby Sjöstad — fika på fredagar.
+                Hammarby Sjöstad – fika på fredagar.
               </h3>
               <p className="mt-6 max-w-md text-bone/70 leading-relaxed">
-                Vi har öppet hus varje fredag mellan 14–17. Drop-in, inga
-                bokningar, alltid kaffe.
+                Vi har öppet hus varje fredag mellan 14–17. Inga bokningar,
+                bara dyk in – det finns alltid kaffe.
               </p>
             </div>
             <div className="font-mono text-[13px] text-bone/75 leading-relaxed space-y-1">
               <div>Heliosgatan 26</div>
               <div>120 30 Stockholm</div>
-              <div className="pt-3">hej@klokatankar.se</div>
+              <div className="pt-3">hej@klokatankar.com</div>
               <div>+46 (0)8 123 45 67</div>
               <div className="pt-6">
                 <Link
@@ -185,7 +185,7 @@ function Belief({ n, title, body }: { n: string; title: string; body: string }) 
   return (
     <div className="rounded-3xl border border-ink/10 bg-cream/70 p-8">
       <div className="font-mono text-[11px] tracking-[0.18em] text-ink/55">
-        BELIEF {n}
+        ÖVERTYGELSE {n}
       </div>
       <h3 className="mt-4 font-display text-2xl tracking-display-tight leading-snug">
         {title}

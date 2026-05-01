@@ -5,21 +5,21 @@ import { motion } from "framer-motion";
 const items = [
   {
     eyebrow: "01 · Hela ansvaret",
-    title: "Ett team — från ritning till idrifttagning",
+    title: "Ett team – från ritning till driftsättning",
     body:
-      "Vi anlitar inte underentreprenörer för det vi inte förstår. Sol, batteri, värmepump, laddbox och vind: vi kan dem alla, och vi installerar dem alla. När något krånglar tre år senare ringer du oss — inte fyra olika leverantörer.",
+      "Vi anlitar inte underentreprenörer för det vi inte förstår. Sol, batteri, värmepump, laddbox och vind: vi kan dem alla, och vi installerar dem alla. När något krånglar tre år senare ringer du oss – inte fyra olika leverantörer.",
   },
   {
-    eyebrow: "02 · Premium ingenjörskonst",
+    eyebrow: "02 · Förstklassig ingenjörskonst",
     title: "Vi optimerar för 25 år, inte för budgeten i nästa kvartal",
     body:
-      "Glas-glas-paneler. LFP-batterier. Modulerande växelriktare. Marina kontaktdon. Det syns inte på offerten, men du märker det när det första snöovädret kommer — och det andra, och det tjugofjärde.",
+      "Glas-glas-paneler. LFP-batterier. Modulerande växelriktare. Marina kontaktdon. Det syns inte på offerten, men du märker det när det första snöovädret kommer – och det andra, och det tjugofjärde.",
   },
   {
     eyebrow: "03 · Familjär service",
-    title: "Vi kommer hem till dig — med kanelbullar",
+    title: "Vi kommer hem till dig – med kanelbullar",
     body:
-      "Vi tror att energiomställningen är ett samtal vid köksbordet, inte ett 47-sidigt PDF-dokument. Vi tar oss tid. Vi tar av oss skorna. Och vi har alltid med oss en burk bullar — för att det är så vi är uppfostrade.",
+      "Vi tror att energiomställningen är ett samtal vid köksbordet, inte ett 47-sidigt PDF-dokument. Vi tar oss tid. Vi tar av oss skorna. Och vi har alltid med oss en burk bullar – för att det är så vi är uppfostrade.",
   },
 ];
 

@@ -14,7 +14,7 @@ export default function HomePage() {
       <Hero />
 
       <Section
-        eyebrow="Allt under ett tak — bokstavligt"
+        eyebrow="Allt under ett tak – bokstavligt"
         title={
           <>
             Fem installations&shy;tjänster.
@@ -22,7 +22,7 @@ export default function HomePage() {
             <span className="italic text-moss">Ett team som tar ansvaret.</span>
           </>
         }
-        intro="Vi specialiserar oss på att inte specialisera oss på en sak. När sol, batteri, värme och laddning pratar med varandra — då blir helheten större än delarna."
+        intro="Vi specialiserar oss på att inte specialisera oss på en sak. När sol, batteri, värme och laddning pratar med varandra – då blir helheten större än delarna."
       >
         <ServicesGrid />
       </Section>
@@ -31,7 +31,7 @@ export default function HomePage() {
         eyebrow="Vår hållning"
         title={
           <>
-            Premium kommer från
+            Kvalitet kommer från
             <br />
             <span className="italic">småskaliga beslut.</span>
           </>
@@ -43,7 +43,7 @@ export default function HomePage() {
       <Section
         eyebrow="Familjen Kloka på vägen"
         title={<>Vi dyker upp. Med bullar.</>}
-        intro="Hembesök, montage, idrifttagning. Det här är hur vi faktiskt ser ut när vi jobbar — inte stockfoto, inte AI, utan teamet som kommer hem till dig."
+        intro="Hembesök, montage, driftsättning. Det här är hur vi faktiskt ser ut när vi jobbar."
       >
         <HousecallStrip />
       </Section>

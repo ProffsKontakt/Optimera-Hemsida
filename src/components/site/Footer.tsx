@@ -8,11 +8,11 @@ export function Footer() {
           <div className="font-display text-4xl md:text-5xl tracking-display-tight leading-[1.05]">
             Energin är inte bara
             <br />
-            ström — den är en hållning.
+            ström – den är en hållning.
           </div>
           <p className="mt-6 text-bone/65 max-w-md text-[15px] leading-relaxed">
             Vi installerar solpaneler, batterier, värmepumpar, laddboxar och
-            vindsnurror. Men vi gör det familjärt — med fika, raka besked och
+            vindkraft. Men vi gör det familjärt – med fika, raka besked och
             ingenjörskonst utan kompromiss.
           </p>
         </div>
@@ -25,7 +25,7 @@ export function Footer() {
               ["/tjanster/batterier", "Batterier"],
               ["/tjanster/vaermepumpar", "Värmepumpar"],
               ["/tjanster/laddboxar", "Laddboxar"],
-              ["/tjanster/vindsnurror", "Vindsnurror"],
+              ["/tjanster/vindsnurror", "Vindkraft"],
             ]}
           />
         </div>
@@ -45,7 +45,7 @@ export function Footer() {
         <div className="md:col-span-3">
           <Heading>Kontakt</Heading>
           <ul className="space-y-2 text-bone/70 text-[14.5px]">
-            <li>hej@klokatankar.se</li>
+            <li>hej@klokatankar.com</li>
             <li>+46 (0)8 123 45 67</li>
             <li className="text-bone/50 pt-3 text-[13px]">
               Hammarby Sjöstad, Stockholm

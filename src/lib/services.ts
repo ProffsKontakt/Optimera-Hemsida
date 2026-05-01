@@ -26,11 +26,11 @@ export const SERVICES: Service[] = [
     badge: "Producerar",
     oneLiner: "Tysta tak som arbetar varje minut det är ljust ute.",
     lede:
-      "Vi designar solanläggningar som faktiskt passar ditt tak — orientering, skuggning, taklutning, infästning och kabeldragning. Inga universalsystem, inga genvägar.",
+      "Vi designar solanläggningar som faktiskt passar ditt tak – orientering, skuggning, taklutning, infästning och kabeldragning. Inga universalsystem, inga genvägar.",
     highlights: [
       "Glas-glas paneler med 30 års produktgaranti",
       "Optimering per panel där skugga gör skada",
-      "Snyggt dolda kabelvägar — vi syr ihop arkitekturen",
+      "Snyggt dolda kabelvägar – vi syr ihop arkitekturen",
     ],
     bullets: [
       "Modulnivå-optimering",
@@ -43,23 +43,23 @@ export const SERVICES: Service[] = [
         step: "01",
         title: "Hembesök",
         body:
-          "Vi tar med kanelbullar, mäter taket på riktigt och pratar med dig — inte sälj-snacket.",
+          "Vi tar med kanelbullar, mäter taket på riktigt och pratar med dig – inte sälj-snacket.",
       },
       {
         step: "02",
-        title: "Digital tvilling",
+        title: "1:1-modell av huset",
         body:
-          "Vi bygger en 3D-modell av ditt tak och simulerar produktionen timme för timme i 25 år.",
+          "Vi bygger en exakt 3D-modell av ditt tak och simulerar produktionen timme för timme över 25 år.",
       },
       {
         step: "03",
         title: "Installation",
         body:
-          "Vårt egna team — inga underentreprenörer. Två-tre dagar för normalvilla, oftast färre.",
+          "Vårt egna team – inga underentreprenörer. Två-tre dagar för normalvilla, oftast färre.",
       },
       {
         step: "04",
-        title: "Idrifttagning",
+        title: "Driftsättning",
         body:
           "Vi visar dig appen, går igenom säkringsskåpet och stannar tills du är trygg.",
       },
@@ -71,7 +71,7 @@ export const SERVICES: Service[] = [
       },
       {
         q: "Behöver jag bygglov?",
-        a: "I de flesta fall nej — paneler som följer takets lutning är bygglovsbefriade på en- och tvåbostadshus. Vi kollar din kommun innan vi börjar.",
+        a: "I de flesta fall nej – paneler som följer takets lutning är bygglovsbefriade på en- och tvåbostadshus. Vi kollar din kommun innan vi börjar.",
       },
       {
         q: "Vad händer vid strömavbrott?",
@@ -84,18 +84,18 @@ export const SERVICES: Service[] = [
     name: "Batterier",
     short: "Batteri",
     badge: "Lagrar",
-    oneLiner: "Spara solen till kvällen — eller sälj den när priset är högt.",
+    oneLiner: "Spara solen till kvällen – eller sälj den när priset är högt.",
     lede:
-      "Ett batteri är inte bara en låda — det är en strategi. Vi dimensionerar för din konsumtion, ditt elavtal och hur du faktiskt lever, inte för en datablad.",
+      "Ett batteri är inte bara en låda – det är en strategi. Vi dimensionerar utifrån din förbrukning, ditt elavtal och hur du faktiskt lever, inte utifrån ett datablad.",
     highlights: [
       "LFP-kemi: säkrare, längre livslängd, ingen kobolt",
       "Stödtjänster (FCR-D, aFRR) gör batteriet betalt på 4–6 år",
       "Skalbart från 5 kWh till 50 kWh",
     ],
     bullets: [
-      "Backup-strömställare ingår",
+      "Reservkraftsbrytare ingår",
       "Cykelgaranti 6000+",
-      "Smart dispatch mot Nord Pool",
+      "Smart styrning mot spotpris",
       "Fjärrövervakning från vår jourcentral",
     ],
     workflow: [
@@ -108,7 +108,7 @@ export const SERVICES: Service[] = [
       {
         step: "02",
         title: "Dimensionering",
-        body: "Rätt storlek — inte störst möjlig. Vi visar payback per kWh.",
+        body: "Rätt storlek – inte störst möjligt. Vi visar återbetalningstid per kWh.",
       },
       {
         step: "03",
@@ -134,7 +134,7 @@ export const SERVICES: Service[] = [
       },
       {
         q: "Kan jag ladda från elnätet när det är billigt?",
-        a: "Absolut. Vår styrning köper när priset dippar och säljer på topparna — automatiskt.",
+        a: "Absolut. Vår styrning köper när priset dippar och säljer på topparna – automatiskt.",
       },
     ],
   },
@@ -144,13 +144,13 @@ export const SERVICES: Service[] = [
     short: "Värme",
     badge: "Värmer",
     oneLiner:
-      "Tre kilowatt värme för varje kilowatt el — fysik, inte marknadsföring.",
+      "Tre kilowatt värme för varje kilowatt el – fysik, inte marknadsföring.",
     lede:
-      "Vi installerar luft-vatten, bergvärme och frånluftsvärmepumpar. Det viktiga är inte vilket märke vi sätter — utan att flödet, dimensioneringen och styrningen är rätt för ditt hus.",
+      "Vi installerar luft-vatten, bergvärme och frånluftsvärmepumpar. Det viktiga är inte vilket märke vi sätter – utan att flödet, dimensioneringen och styrningen är rätt för ditt hus.",
     highlights: [
-      "SCOP upp till 5,2 i nordiskt klimat",
-      "Tysta utomhusenheter — under 35 dB(A)",
-      "Modulerande inverter — inga av/på-cykler",
+      "Årsvärmefaktor (SCOP) upp till 5,2 i nordiskt klimat",
+      "Tysta utomhusenheter – under 35 dB(A)",
+      "Modulerande växelriktare – inga av/på-cykler",
     ],
     bullets: [
       "Lasttest av huset på riktigt",
@@ -175,7 +175,7 @@ export const SERVICES: Service[] = [
         step: "03",
         title: "Installation",
         body:
-          "Vi byter inte bara pumpen — vi balanserar systemet och ritar om kurvor om det behövs.",
+          "Vi byter inte bara pumpen – vi balanserar systemet och ritar om kurvor om det behövs.",
       },
       {
         step: "04",
@@ -187,7 +187,7 @@ export const SERVICES: Service[] = [
     faq: [
       {
         q: "Kan jag kombinera värmepump med solel?",
-        a: "Ja, och det är just då magin händer. Värmepumpen drar mest ström under den årstid då solen producerar minst — men kombineras de med batteri och smart styrning kan du höja självförbrukningen till 65–80%.",
+        a: "Ja, och det är just då magin händer. Värmepumpen drar mest ström under den årstid då solen producerar minst – men kombineras de med batteri och smart styrning kan du höja självförbrukningen till 65–80%.",
       },
       {
         q: "Hur länge tar installationen?",
@@ -195,7 +195,7 @@ export const SERVICES: Service[] = [
       },
       {
         q: "Vilka märken jobbar ni med?",
-        a: "Vi är märkesoberoende. Vi rekommenderar det som passar ditt hus — oftast NIBE, Bosch, Mitsubishi, Daikin, eller Thermia.",
+        a: "Vi är märkesoberoende. Vi rekommenderar det som passar ditt hus – oftast NIBE, Bosch, Mitsubishi, Daikin, eller Thermia.",
       },
     ],
   },
@@ -206,7 +206,7 @@ export const SERVICES: Service[] = [
     badge: "Laddar",
     oneLiner: "Hemmaladdning som är lika enkel som att stänga garageporten.",
     lede:
-      "Inte bara en kontakt på väggen — ett laddsystem som pratar med din sol, ditt batteri och Nord Pool. Och som inte slår ut säkringen när torktumlaren går.",
+      "Inte bara en kontakt på väggen – ett laddsystem som pratar med din sol, ditt batteri och Nord Pool. Och som inte slår ut säkringen när torktumlaren går.",
     highlights: [
       "Lastbalansering ingår alltid",
       "Solöverskotts-laddning",
@@ -217,7 +217,7 @@ export const SERVICES: Service[] = [
       "OCPP 1.6/2.0",
       "Egen separat säkring",
       "Energimätning per laddning",
-      "Skalning till 22 kW",
+      "Skalbart upp till 22 kW",
     ],
     workflow: [
       {
@@ -230,13 +230,13 @@ export const SERVICES: Service[] = [
         step: "02",
         title: "Val av box",
         body:
-          "Easee, Zaptec, Wallbox, Garo — vi förklarar skillnaderna istället för att sälja en.",
+          "Easee, Zaptec, Wallbox, Garo – vi förklarar skillnaderna istället för att sälja en.",
       },
       {
         step: "03",
         title: "Installation",
         body:
-          "Snygga kabelvägar, ny grupp, jordfelsbrytare typ B — gjort på en halvdag.",
+          "Snygga kabelvägar, ny grupp, jordfelsbrytare typ B – gjort på en halvdag.",
       },
       {
         step: "04",
@@ -261,30 +261,30 @@ export const SERVICES: Service[] = [
   },
   {
     slug: "vindsnurror",
-    name: "Vindsnurror",
+    name: "Vindkraft",
     short: "Vind",
-    badge: "Snurrar",
+    badge: "Producerar",
     oneLiner:
       "Småskalig vindkraft som kompletterar solen när himlen är grå.",
     lede:
-      "Vi bygger små vindsnurror för fastigheter och gårdar — design som tål nordliga vintrar och som inte stör grannarna. Ofta perfekt komplement till solpaneler.",
+      "Vi bygger små vindkraftverk för fastigheter och gårdar – konstruerade för att tåla nordliga vintrar utan att störa grannarna. Ofta ett perfekt komplement till solpaneler.",
     highlights: [
-      "Vertikal-axel design — tystare än horisontella",
+      "Vertikal axel – tystare än horisontella verk",
       "Producerar mest under vinterhalvåret",
-      "Modulär: 1, 3, 5 eller 10 kW",
+      "Modulärt: 1, 3, 5 eller 10 kW",
     ],
     bullets: [
       "Vindmätning innan installation",
       "Bygglovshantering ingår",
-      "12 m mast standard, 18 m option",
-      "Synkning med befintlig sol/batteri",
+      "12 m mast som standard, 18 m som tillval",
+      "Synkning med befintlig sol- eller batterianläggning",
     ],
     workflow: [
       {
         step: "01",
         title: "Vindmätning",
         body:
-          "Vi sätter upp en mätmast i 8 veckor — för utan mätdata är det gissningar.",
+          "Vi sätter upp en mätmast i 8 veckor – för utan mätdata är det gissningar.",
       },
       {
         step: "02",
@@ -296,19 +296,19 @@ export const SERVICES: Service[] = [
         step: "03",
         title: "Fundament & resning",
         body:
-          "Betongfundament, kran, montage och idrifttagning — vi tar helheten.",
+          "Betongfundament, kran, montage och driftsättning – vi tar helheten.",
       },
       {
         step: "04",
         title: "Övervakning",
         body:
-          "Vibrationsövervakning och fjärrtillsyn dygnet runt — du behöver aldrig klättra upp.",
+          "Vibrationsövervakning och fjärrtillsyn dygnet runt – du behöver aldrig klättra upp.",
       },
     ],
     faq: [
       {
         q: "Är det lönsamt?",
-        a: "På rätt plats (medelvind > 5 m/s vid 10 m höjd) — absolut. På fel plats — nej. Vi ljuger inte om det.",
+        a: "På rätt plats (medelvind > 5 m/s vid 10 m höjd) – absolut. På fel plats – nej. Vi ljuger inte om det.",
       },
       {
         q: "Stör det grannarna?",

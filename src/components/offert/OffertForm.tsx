@@ -3,27 +3,27 @@
 import { useState } from "react";
 import { ArrowRight, Check } from "lucide-react";
 import { SERVICES } from "@/lib/services";
+import { CalendarPicker, type SlotSelection } from "./CalendarPicker";
 
 type Defaults = Record<string, string | null>;
 
 const housingTypes = ["Villa", "Radhus", "Fritidshus", "Lantbruk", "Brf / styrelse"];
-const timelines = [
-  "Så snart som möjligt",
-  "Inom 3 månader",
-  "Senare i år",
-  "Bara nyfiken just nu",
-];
 
 export function OffertForm({ defaults }: { defaults: Defaults }) {
   const [services, setServices] = useState<string[]>(
     defaults.tjanst ? [defaults.tjanst] : ["solpaneler"],
   );
+  const [slot, setSlot] = useState<SlotSelection | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (!slot) {
+      setError("Välj en dag och tid för hembesöket innan du skickar.");
+      return;
+    }
     setSubmitting(true);
     setError(null);
     const fd = new FormData(e.currentTarget);
@@ -31,6 +31,7 @@ export function OffertForm({ defaults }: { defaults: Defaults }) {
     const body = {
       ...payload,
       services,
+      slot,
       config: {
         panel: defaults.panel,
         antalPaneler: defaults.n,
@@ -38,7 +39,7 @@ export function OffertForm({ defaults }: { defaults: Defaults }) {
         batteri: defaults.bat,
         värmepump: defaults.pump,
         laddbox: defaults.chrg,
-        vindsnurra: defaults.wind,
+        vindkraft: defaults.wind,
         ems: defaults.ems,
       },
     };
@@ -52,7 +53,7 @@ export function OffertForm({ defaults }: { defaults: Defaults }) {
       setDone(true);
     } catch (err) {
       setError(
-        "Något krånglade. Mejla oss på hej@klokatankar.se så löser vi det.",
+        "Något krånglade. Mejla oss på hej@klokatankar.com så löser vi det.",
       );
     } finally {
       setSubmitting(false);
@@ -66,12 +67,12 @@ export function OffertForm({ defaults }: { defaults: Defaults }) {
           <Check size={20} />
         </div>
         <h2 className="mt-6 font-display text-4xl tracking-display-tight">
-          Tack — vi hörs.
+          Tack – vi hörs.
         </h2>
         <p className="mt-4 text-ink/70 leading-relaxed">
-          Vi har fått din förfrågan och hör av oss inom 24 timmar med förslag
-          på datum för hembesök. Under tiden — håll utkik efter ett mejl från
-          ronja@klokatankar.se.
+          Vi har bokat in {slot?.weekday} {slot?.dateLabel} kl {slot?.time}.
+          Du får en bekräftelse på e-post inom kort, och vi ringer dagen innan
+          för att säga vilken kollega som kommer förbi.
         </p>
       </div>
     );
@@ -125,11 +126,13 @@ export function OffertForm({ defaults }: { defaults: Defaults }) {
         </Card>
 
         <Card>
-          <FieldHead n="03" title="Tidsperspektiv" />
-          <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-2">
-            {timelines.map((t) => (
-              <RadioCard name="tid" key={t} value={t} label={t} />
-            ))}
+          <FieldHead n="03" title="När vill ni installera?" />
+          <p className="mt-3 text-[14px] text-ink/65 leading-relaxed">
+            Välj dag och tid – kalendern visar lediga slottar för hembesök
+            de kommande tre veckorna. Vi ringer dagen innan och bekräftar.
+          </p>
+          <div className="mt-4">
+            <CalendarPicker value={slot} onChange={setSlot} />
           </div>
         </Card>
 
@@ -182,10 +185,10 @@ export function OffertForm({ defaults }: { defaults: Defaults }) {
             </div>
             <ul className="mt-4 space-y-3 text-[14.5px] text-ink/80">
               {[
-                "Hembesök inom 14 dagar",
+                "Hembesök på en tid ni själva väljer",
                 "Drönarbesiktning av tak",
-                "Digital tvilling i 3D",
-                "Tydlig prislista — utan asterisker",
+                "1:1 kopia av ert hus i 3D",
+                "Alltid samma pris som står på offerten",
                 "Fika från lokala bagerier",
               ].map((b) => (
                 <li key={b} className="flex items-start gap-3">
@@ -211,7 +214,7 @@ export function OffertForm({ defaults }: { defaults: Defaults }) {
                   Batteri: defaults.bat,
                   Värmepump: defaults.pump,
                   Laddbox: defaults.chrg,
-                  Vindsnurra: defaults.wind,
+                  Vindkraft: defaults.wind,
                   EMS: defaults.ems,
                 })
                   .filter(([, v]) => !!v)

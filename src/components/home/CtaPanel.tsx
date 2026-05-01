@@ -17,7 +17,7 @@ export function CtaPanel() {
           </h2>
           <p className="mt-6 text-bone/70 max-w-xl text-[15.5px] leading-relaxed">
             Berätta lite om ditt hus, så hör vi av oss inom 24 timmar med ett
-            förslag på datum. Helt utan kostnad eller förpliktelse — och ja, vi
+            förslag på datum. Helt utan kostnad eller förpliktelse – och ja, vi
             tar med bullar (om du inte är allergisk; säg bara till så fixar vi
             något annat).
           </p>

@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 const quotes = [
   {
     quote:
-      "De kom hem med kanelbullar och stannade i två timmar — ingen pitch, bara prat. Sen ritade de upp en lösning som faktiskt funkar för vårt skogshem. Två år senare har vi 81 % självförsörjning.",
+      "En jättetrevlig och kunnig kille kom faktiskt över med kanelbullar och stannade i två timmar för att få fram vilken lösning som var bäst för oss. Han pitchade inget utan var genuin och hjälpte oss. Han och hans kollega tog ett varv runt huset och ritade senare upp en lösning som faktiskt funkar för vårt skogshem. Två år senare är vi helt självgående på vår- och sommarhalvåret, med riktigt låga räkningar på höst- och vinterhalvåret. Kan varmt rekommendera Dexter och hans gäng.",
     author: "Familjen Lindh",
     place: "Vaxholm · Sol + batteri",
   },

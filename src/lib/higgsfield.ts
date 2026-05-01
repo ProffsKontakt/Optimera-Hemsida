@@ -1,7 +1,7 @@
 // Tunn klient mot Higgsfield video-API.
 // Endpointarna nedan är baserade på publik dokumentation och kan behöva
 // justeras när du har din slutliga API-nyckel och kontotyp. Allt som rör
-// auth ska bara köras server-side — aldrig från klienten.
+// auth ska bara köras server-side – aldrig från klienten.
 
 export type HiggsfieldGenerateRequest = {
   prompt: string;

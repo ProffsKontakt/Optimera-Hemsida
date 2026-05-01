@@ -25,14 +25,14 @@ const jetbrains = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "https://klokatankar.se",
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://klokatankar.com",
   ),
   title: {
-    default: "Kloka Tankar El — Hela energiomställningen under ett tak",
+    default: "Kloka Tankar El – Hela energiomställningen under ett tak",
     template: "%s · Kloka Tankar El",
   },
   description:
-    "Solpaneler, batterier, värmepumpar, laddboxar och vindsnurror — installerade av samma team som dyker upp med bullar och respekt för ditt hem.",
+    "Solpaneler, batterier, värmepumpar, laddboxar och vindkraft – installerade av samma gäng som dyker upp med bullar och respekt för ditt hem.",
   openGraph: {
     title: "Kloka Tankar El",
     description:

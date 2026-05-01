@@ -289,7 +289,7 @@ export function CalcStudio() {
           <div className="aspect-[16/11] relative">
             <CalcScene input={input} />
             <div className="absolute top-4 left-4 rounded-full bg-bone/85 backdrop-blur px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-ink/65 border border-ink/10">
-              Live · digital tvilling
+              Live · 1:1-modell av huset
             </div>
             <div className="absolute top-4 right-4 rounded-full bg-ink text-bone backdrop-blur px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.18em] border border-ink">
               {formatNumber(result.systemKWp, 1)} kWp
@@ -315,7 +315,7 @@ export function CalcStudio() {
             accent
           />
           <Tile
-            label="Payback"
+            label="Återbetalningstid"
             value={`${formatNumber(result.paybackYears, 1)} år`}
             sub={`20-års-vinst ${formatKr(result.yearly20YearKr)}`}
           />
@@ -334,7 +334,7 @@ export function CalcStudio() {
         <div className="rounded-[28px] bg-ink text-bone p-8 flex flex-col md:flex-row gap-6 items-start md:items-center justify-between">
           <div>
             <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-bone/50">
-              Klar att gå vidare?
+              Redo att gå vidare?
             </div>
             <h3 className="mt-3 font-display text-3xl tracking-display-tight max-w-md leading-tight">
               Vi tar med din konfiguration på hembesöket.
@@ -349,9 +349,9 @@ export function CalcStudio() {
         </div>
 
         <p className="text-[12.5px] text-ink/55 leading-relaxed max-w-2xl">
-          Siffrorna är estimat baserade på normalår, mellansvenskt klimat och
-          aktuella spotpriser i snitt. Vid hembesök bygger vi en exakt digital
-          tvilling av just ditt hus och ger dig bindande siffror.
+          Siffrorna är uppskattningar baserade på normalår, mellansvenskt klimat
+          och genomsnittliga spotpriser. Vid hembesök bygger vi en exakt
+          1:1-modell av just ditt hus och ger dig bindande siffror.
         </p>
       </div>
     </div>

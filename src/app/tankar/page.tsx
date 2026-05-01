@@ -1,25 +1,25 @@
 import { Section } from "@/components/site/Section";
 
 export const metadata = {
-  title: "Tankar — bloggen",
+  title: "Tankar – bloggen",
   description:
     "Tankar om energi, ingenjörskonst och småskaliga beslut som bygger framtiden.",
 };
 
 const drafts = [
   {
-    title: "Varför vi bygger en digital tvilling innan vi sätter en skruv",
-    body: "En genomgång av processen — från drönarbesiktning till timsimulering över 25 år.",
+    title: "Varför vi bygger en 1:1-modell av huset innan vi sätter en skruv",
+    body: "En genomgång av processen – från drönarbesiktning till timsimulering över 25 år.",
     label: "Process",
   },
   {
     title: "LFP vs NMC: Varför vi alltid väljer järnfosfat hemma hos kunder",
-    body: "Brandsäkerhet, livslängd, kobolt — och varför specifikationsbladet inte berättar hela sanningen.",
+    body: "Brandsäkerhet, livslängd, kobolt – och varför specifikationsbladet inte berättar hela sanningen.",
     label: "Teknik",
   },
   {
     title: "Stödtjänster på riktigt: Hur ditt batteri kan tjäna 50 000 kr/år",
-    body: "FCR-D, aFRR, mFRR — vad de är, vilka batterier som klarar dem, och hur intäkten faktiskt ser ut 2026.",
+    body: "FCR-D, aFRR, mFRR – vad de är, vilka batterier som klarar dem, och hur intäkten faktiskt ser ut 2026.",
     label: "Ekonomi",
   },
 ];
@@ -37,7 +37,7 @@ export default function TankarPage() {
           </h1>
           <p className="mt-6 max-w-2xl text-ink/70 text-lg leading-relaxed">
             Långsam, ärlig journalistik om energi, hus och hur vi tänker när vi
-            jobbar. Snart kommer riktiga inlägg — här är vad som ligger på
+            jobbar. Snart kommer riktiga inlägg – här är vad som ligger på
             ritbordet.
           </p>
         </div>

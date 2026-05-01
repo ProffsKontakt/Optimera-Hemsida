@@ -6,7 +6,7 @@ const steps = [
   {
     n: "01",
     label: "Du hör av dig",
-    body: "Mejl, telefon eller offertformulär. Vi svarar inom 24 timmar — alltid en människa, aldrig ett bot-flöde.",
+    body: "Mejl, telefon eller offertformulär. Vi svarar inom 24 timmar – alltid en människa, aldrig ett bot-flöde.",
   },
   {
     n: "02",
@@ -15,13 +15,13 @@ const steps = [
   },
   {
     n: "03",
-    label: "Digital tvilling",
-    body: "Vi modellerar ditt hus i 3D, simulerar produktion timme-för-timme i 25 år och ger dig en payback du kan stå för.",
+    label: "1:1-modell av huset",
+    body: "Vi bygger en exakt 3D-modell av ditt hus och simulerar produktionen timme för timme över 25 år – så att du kan se din återbetalningstid innan du tackar ja.",
   },
   {
     n: "04",
     label: "Tydlig offert",
-    body: "Inga *-asterisker, inga 'från'-priser. Materielspec, märken, garantier, tidplan och totalpris på en sida.",
+    body: "Inga påslag, inga 'från'-priser. Materielspecifikation, märken, garantier, tidplan och totalpris på en sida – och det priset håller hela vägen till fakturan.",
   },
   {
     n: "05",
@@ -30,7 +30,7 @@ const steps = [
   },
   {
     n: "06",
-    label: "Idrifttagning & uppföljning",
+    label: "Driftsättning & uppföljning",
     body: "Vi visar dig appen, märker upp i skåpet, och ringer dig efter 14 dagar och 6 månader för finjustering.",
   },
 ];

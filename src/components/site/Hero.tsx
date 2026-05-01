@@ -39,9 +39,9 @@ export function Hero() {
               transition={{ duration: 0.7, delay: 0.25 }}
               className="mt-8 max-w-xl text-ink/70 text-lg leading-relaxed"
             >
-              Solpaneler, batterier, värmepumpar, laddboxar och vindsnurror —
-              installerade av samma team som dyker upp med kanelbullar och
-              respekt för ditt hem. Premium ingenjörskonst, familjär service.
+              Solpaneler, batterier, värmepumpar, laddboxar och vindkraft –
+              installerade av samma gäng som dyker upp med kanelbullar och
+              respekt för ditt hem. Förstklassig ingenjörskonst, familjär ton.
             </motion.p>
 
             <motion.div
@@ -65,7 +65,7 @@ export function Hero() {
               transition={{ duration: 1, delay: 0.7 }}
               className="mt-14 grid grid-cols-3 max-w-md"
             >
-              <Stat n="5" label="installations­tjänster" />
+              <Stat n="5" label="installationstjänster" />
               <Stat n="100%" label="eget montageteam" />
               <Stat n="14d" label="från offert till tak" />
             </motion.div>
@@ -77,7 +77,7 @@ export function Hero() {
               <div className="absolute inset-x-0 bottom-0 p-5 flex items-end justify-between">
                 <div className="rounded-2xl bg-bone/85 backdrop-blur px-4 py-3 border border-ink/10">
                   <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink/55">
-                    Live · digital tvilling
+                    Live · 1:1-modell av huset
                   </div>
                   <div className="font-display text-lg leading-tight">
                     Hus #048 · Bromma
@@ -85,10 +85,10 @@ export function Hero() {
                 </div>
                 <div className="rounded-2xl bg-ink/90 text-bone backdrop-blur px-4 py-3 border border-bone/10">
                   <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-bone/55">
-                    SCOP
+                    Årsvärmefaktor
                   </div>
                   <div className="font-display text-lg leading-tight">
-                    4.92
+                    4,92
                   </div>
                 </div>
               </div>

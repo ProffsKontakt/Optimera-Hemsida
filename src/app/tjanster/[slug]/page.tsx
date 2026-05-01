@@ -55,7 +55,7 @@ export default function ServicePage({
         </div>
       </section>
 
-      <Section eyebrow="Vad du får" title={<>Inte specs — utan beteende.</>}>
+      <Section eyebrow="Vad du får" title={<>Inte bara specifikationer – så det faktiskt beter sig.</>}>
         <ul className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {s.highlights.map((h, i) => (
             <li
@@ -107,7 +107,7 @@ export default function ServicePage({
         </div>
       </Section>
 
-      <Section eyebrow="Vanliga frågor" title={<>Klara svar, utan asterisker.</>}>
+      <Section eyebrow="Vanliga frågor" title={<>Klara svar, helt transparent.</>}>
         <div className="divide-y divide-ink/10 border-y border-ink/10">
           {s.faq.map((f, i) => (
             <details

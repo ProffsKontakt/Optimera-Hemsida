@@ -130,7 +130,7 @@ export function computeCalc(input: CalcInput): CalcResult {
 
   const totalCostKr = hardwareCostKr + installCostKr;
 
-  // Grönt avdrag — 20% solel, 50% batteri/laddbox, max 50 000 kr/år
+  // Grönt avdrag – 20% solel, 50% batteri/laddbox, max 50 000 kr/år
   const greenDeductionKr = Math.min(
     50000,
     Math.round(

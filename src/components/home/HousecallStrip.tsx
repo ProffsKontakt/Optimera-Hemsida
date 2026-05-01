@@ -12,7 +12,7 @@ type Tile = {
 
 const tiles: Tile[] = [
   {
-    caption: "Bilen lastad i Hammarby — Ronja, Albin & Petter",
+    caption: "Bilen lastad i Hammarby – Ronja, Albin & Petter",
     alt: "Tre installatörer lastar materialet i en elbil",
     ratio: "aspect-[4/5]",
     bg: "from-[#3F5236] to-[#1A1A17]",
@@ -37,10 +37,10 @@ const tiles: Tile[] = [
     alt: "Familj framför nyinstallerad laddbox",
     ratio: "aspect-[5/4]",
     bg: "from-[#EFE9DC] to-[#9aa590]",
-    hue: "Idrift · 16:30",
+    hue: "Drift · 16:30",
   },
   {
-    caption: "Säkringsskåpet — innan & efter",
+    caption: "Säkringsskåpet – innan & efter",
     alt: "Renoverat elskåp med tydlig märkning",
     ratio: "aspect-[1/1]",
     bg: "from-[#1A1A17] to-[#3F5236]",

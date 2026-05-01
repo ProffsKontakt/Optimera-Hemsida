@@ -1,4 +1,4 @@
-// Hårdvarukatalog för kalkylatorn. Värden är realistiska men förenklade —
+// Hårdvarukatalog för kalkylatorn. Värden är realistiska men förenklade –
 // uppdatera mot leverantörens datablad innan du publicerar bindande siffror.
 
 export type Panel = {
@@ -154,7 +154,7 @@ export const EMS_OPTIONS: EMS[] = [
     id: "tibber",
     brand: "Tibber Bridge",
     blurb:
-      "Pluggar in i mätarens HAN-port — du får realtidsdata och styr värmepump, laddbox och batteri via Tibber-appen.",
+      "Pluggar in i mätarens HAN-port – du får realtidsdata och styr värmepump, laddbox och batteri via Tibber-appen.",
     features: ["HAN-port", "Tibber-app", "Smart Charging"],
     spotOptimization: 0.10,
     priceKr: 1490,
@@ -174,7 +174,7 @@ export const EMS_OPTIONS: EMS[] = [
     id: "markedroid",
     brand: "Markedroid",
     blurb:
-      "Marknadsoptimerare som kör batteriet mot Nord Pool och balansmarknaden — perfekt för dig som vill maxa intäkten.",
+      "Marknadsoptimerare som kör batteriet mot Nord Pool och balansmarknaden – perfekt för dig som vill maxa intäkten.",
     features: ["Spotpris", "Reglermarknad", "Auto-trading"],
     spotOptimization: 0.22,
     priceKr: 9900,
@@ -184,7 +184,7 @@ export const EMS_OPTIONS: EMS[] = [
     id: "homeassistant",
     brand: "HomeAssistant",
     blurb:
-      "Open source. Vi sätter upp och underhåller din egen lokala installation — alla data stannar i ditt hus.",
+      "Open source. Vi sätter upp och underhåller din egen lokala installation – alla data stannar i ditt hus.",
     features: ["Open Source", "Lokal kontroll", "1000+ integrationer"],
     spotOptimization: 0.12,
     priceKr: 8900,
@@ -192,7 +192,7 @@ export const EMS_OPTIONS: EMS[] = [
   },
 ];
 
-// Energimarknad — kan uppdateras dynamiskt mot Nord Pool API
+// Energimarknad – kan uppdateras dynamiskt mot Nord Pool API
 export const SPOT_AVG_KR_KWH = 1.45; // helår, snitt
 export const FEED_IN_KR_KWH = 0.85; // försäljning
 export const SUN_HOURS_KWH_PER_KWP = 1050; // Mellansverige normalår

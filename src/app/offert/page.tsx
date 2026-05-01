@@ -3,7 +3,7 @@ import { OffertForm } from "@/components/offert/OffertForm";
 export const metadata = {
   title: "Begär offert",
   description:
-    "Berätta lite om ditt hus så hör vi av oss inom 24 timmar med ett förslag på datum för hembesök. Och ja — vi tar med bullar.",
+    "Boka ett kostnadsfritt hembesök direkt i kalendern – välj dag och tid, så ringer vi dagen innan och bekräftar. Och ja, vi tar med bullar.",
 };
 
 export default function OffertPage({
@@ -26,9 +26,10 @@ export default function OffertPage({
             <span className="italic text-moss">drömmer om.</span>
           </h1>
           <p className="mt-6 max-w-2xl text-ink/70 text-lg leading-relaxed">
-            Vi hör av oss inom 24 timmar med ett förslag på datum. Hembesöket
-            är kostnadsfritt och utan förpliktelser. Är du allergisk mot kanel
-            säger du bara till så fixar vi något annat.
+            Välj en tid som passar er nedan, så ringer vi dagen innan och
+            bekräftar vem som kommer förbi. Hembesöket är kostnadsfritt och
+            utan förpliktelser. Är du allergisk mot kanel säger du bara till
+            så fixar vi något annat.
           </p>
         </div>
       </section>
