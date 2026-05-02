@@ -24,6 +24,23 @@ export type Battery = {
   pricePerKWhKr: number; // riktpris per kWh installerad kapacitet
   capacities: number[]; // tillgängliga storlekar i kWh
   chemistry: "LFP" | "NMC";
+  /**
+   * Vilken växelriktare som monteras till en given kapacitet.
+   * Returnerar antingen `{ external: <Inverter>, priceKr }` eller
+   * `{ builtIn: { kw, label } }` för batterier som har egen växelriktare.
+   */
+  inverterFor: (kWh: number) => InverterAssignment;
+};
+
+export type InverterAssignment =
+  | { kind: "external"; brand: string; kw: number; priceKr: number }
+  | { kind: "builtIn"; kw: number; label: string };
+
+// --- Solis S6-priser (riktpris för kalkylen)
+const SOLIS = {
+  10: { kind: "external" as const, brand: "Solis S6", kw: 10, priceKr: 24500 },
+  15: { kind: "external" as const, brand: "Solis S6", kw: 15, priceKr: 31500 },
+  20: { kind: "external" as const, brand: "Solis S6", kw: 20, priceKr: 39000 },
 };
 
 export type HeatPump = {
@@ -88,6 +105,11 @@ export const BATTERIES: Battery[] = [
     pricePerKWhKr: 6200,
     capacities: [10.24, 15.36, 20.48, 25.6, 30.72, 35.84, 40.96],
     chemistry: "LFP",
+    inverterFor: (kWh) => {
+      if (kWh <= 20.48) return SOLIS[10];
+      if (kWh <= 30.72) return SOLIS[15];
+      return SOLIS[20];
+    },
   },
   {
     id: "easyway-univ7600",
@@ -96,6 +118,11 @@ export const BATTERIES: Battery[] = [
     pricePerKWhKr: 5800,
     capacities: [15.36, 23.04, 30.72, 38.4, 46.08, 53.76, 61.44],
     chemistry: "LFP",
+    inverterFor: (kWh) => {
+      if (kWh <= 23.04) return SOLIS[10];
+      if (kWh <= 46.08) return SOLIS[15];
+      return SOLIS[20];
+    },
   },
   {
     id: "saj-hs3",
@@ -104,6 +131,11 @@ export const BATTERIES: Battery[] = [
     pricePerKWhKr: 5400,
     capacities: [10, 15, 20, 25, 30, 35, 40],
     chemistry: "LFP",
+    inverterFor: () => ({
+      kind: "builtIn",
+      kw: 12,
+      label: "Inbyggd 12 kW växelriktare",
+    }),
   },
   {
     id: "enershare-core",
@@ -115,6 +147,11 @@ export const BATTERIES: Battery[] = [
       51.2,
     ],
     chemistry: "LFP",
+    inverterFor: (kWh) => {
+      if (kWh <= 16) return SOLIS[10];
+      if (kWh <= 38.4) return SOLIS[15];
+      return SOLIS[20];
+    },
   },
   {
     id: "emaldo-store",
@@ -123,6 +160,11 @@ export const BATTERIES: Battery[] = [
     pricePerKWhKr: 6800,
     capacities: [15.36, 30.72, 46.08],
     chemistry: "LFP",
+    inverterFor: () => ({
+      kind: "builtIn",
+      kw: 10.8,
+      label: "Inbyggd 10,8 kW växelriktare",
+    }),
   },
 ];
 

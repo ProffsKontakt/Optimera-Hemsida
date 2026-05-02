@@ -157,6 +157,94 @@ src/
     higgsfield.ts      # API-klient
 ```
 
+## 3D-batterier – byta procedurmodellerna mot riktiga GLB/GLTF
+
+Just nu tecknar vi varje batterimärke procedurellt i three.js (se
+`src/components/3d/BatteryModels.tsx`). Vill ni ha pixelriktiga 3D-modeller
+av riktiga produkter – så här gör ni:
+
+### Steg 1: Skaffa modellerna
+
+Lättast i fallande ordning:
+
+1. **Be tillverkaren direkt.** Pylontech, SAJ, Emaldo m.fl. har ofta
+   STEP/STP- eller IFC-filer för installatörer (för CAD-ritning).
+   Mejla `partners@<varumärke>` och fråga efter "3D model for
+   installer planning – STEP, FBX or glTF preferred".
+2. **Sök på Sketchfab och GrabCAD** – ofta finns färdiga modeller där.
+   Filtrera på "downloadable" + CC-licens.
+3. **Bygg själva i Blender.** Importera produktbilder (front + sida) som
+   referens, modellera i ~30 min per produkt med raka primitiver +
+   bevels. Det är vad procedurmodellerna i koden hade kunnat varit om
+   vi tog 4 timmar i Blender per pjäs.
+
+### Steg 2: Konvertera till GLB
+
+three.js läser bäst **GLB** (binärt glTF 2.0). Verktyg:
+
+- Blender (gratis): `File → Export → glTF 2.0 (.glb/.gltf)`. Välj `glb`
+  med "Compression" → "Draco" på, "Apply Modifiers" på, och under
+  "Materials" välj "Export Original PBR".
+- Online: <https://anyconv.com/step-to-glb-converter/> för en STEP-fil
+- CLI: `gltf-pipeline -i input.gltf -o output.glb -d` (Draco
+  compressed)
+
+Mål-storlek per fil: **< 500 kB**. Större och vi får tunga
+laddningstider på `/kalkylator`. Använd `gltf-pipeline -d` för Draco
+om någon fil är stor; lägg till `<DracoLoader>` i three.js i så fall.
+
+### Steg 3: Lägg in dem i projektet
+
+```bash
+mkdir -p public/models/batteries
+cp pylontech-h3.glb public/models/batteries/
+cp easyway-univ7600.glb public/models/batteries/
+cp saj-hs3.glb public/models/batteries/
+cp enershare-core.glb public/models/batteries/
+cp emaldo-store.glb public/models/batteries/
+```
+
+### Steg 4: Byt procedurkomponenten mot `<Gltf>`
+
+I `src/components/3d/BatteryModels.tsx`, ersätt en
+procedurkomponent med:
+
+```tsx
+import { Gltf } from "@react-three/drei";
+
+export function PylontechH3({ capacityKWh }: { capacityKWh: number }) {
+  // Pylontech har 5 kWh per modul – stapla flera modeller på höjden
+  const modules = Math.max(2, Math.round(capacityKWh / 5));
+  return (
+    <group>
+      {Array.from({ length: modules }).map((_, i) => (
+        <Gltf
+          key={i}
+          src="/models/batteries/pylontech-h3.glb"
+          position={[0, i * 0.13, 0]}
+          scale={1}
+        />
+      ))}
+    </group>
+  );
+}
+```
+
+För SAJ HS3 och Emaldo (fasta storlekar med inbyggd växelriktare)
+behöver ni bara byta hela kroppen mot `<Gltf src="..." />` och
+eventuellt skala beroende på vald kapacitet.
+
+### Steg 5: Testa lokalt
+
+```bash
+npm run dev
+# Gå till /kalkylator, kryssa i "Batteri", växla mellan märkena.
+# Modellerna ska bytas direkt utan reload.
+```
+
+> Tips: använd `useGLTF.preload("/models/batteries/pylontech-h3.glb")`
+> i moduletop för snabbare första render.
+
 ## Vidare arbete
 
 - [ ] Riktig fotografering, ersätta gradient-tiles

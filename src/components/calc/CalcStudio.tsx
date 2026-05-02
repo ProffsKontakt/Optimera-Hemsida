@@ -4,7 +4,6 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import {
   PANELS,
-  INVERTERS,
   BATTERIES,
   HEAT_PUMPS,
   HEAT_PUMP_BRANDS,
@@ -42,7 +41,6 @@ const initial: CalcInput = {
   },
   panelId: PANELS[0].id,
   panelCount: 14,
-  inverterId: INVERTERS[1].id,
   batteryId: BATTERIES[0].id,
   batteryCapacityKWh: BATTERIES[0].capacities[0],
   heatPumpId: HEAT_PUMPS[0].id,
@@ -69,10 +67,15 @@ export function CalcStudio() {
 
   const anyEnabled = Object.values(input.enabled).some(Boolean);
 
+  const inverterLabel =
+    result.inverter.kind === "external"
+      ? `${result.inverter.brand} ${result.inverter.kw} kW`
+      : result.inverter.label;
+
   const queryString = new URLSearchParams({
     panel: input.enabled.sol ? input.panelId : "",
     n: input.enabled.sol ? String(input.panelCount) : "",
-    inv: input.enabled.sol || input.enabled.batteri ? input.inverterId : "",
+    inv: input.enabled.sol || input.enabled.batteri ? inverterLabel : "",
     bat: input.enabled.batteri && input.batteryId ? input.batteryId : "",
     batkwh: input.enabled.batteri ? String(input.batteryCapacityKWh) : "",
     pump: input.enabled.värmepump && input.heatPumpId ? input.heatPumpId : "",
@@ -168,21 +171,6 @@ export function CalcStudio() {
           </Card>
         )}
 
-        {(input.enabled.sol || input.enabled.batteri) && (
-          <Card>
-            <Eyebrow>Växelriktare</Eyebrow>
-            <Select
-              label="Märke"
-              value={input.inverterId}
-              onChange={(v) => update("inverterId", v)}
-              options={INVERTERS.map((i) => ({
-                value: i.id,
-                label: `${i.brand} · ${i.efficiency}% verkningsgrad`,
-              }))}
-            />
-          </Card>
-        )}
-
         {input.enabled.batteri && currentBattery && (
           <Card>
             <Eyebrow>Batteri</Eyebrow>
@@ -207,6 +195,22 @@ export function CalcStudio() {
               capacities={currentBattery.capacities}
               value={input.batteryCapacityKWh}
               onChange={(v) => update("batteryCapacityKWh", v)}
+            />
+            <InverterInfo
+              assignment={result.inverter}
+              kWp={result.systemKWp}
+              hasSol={input.enabled.sol}
+            />
+          </Card>
+        )}
+
+        {input.enabled.sol && !input.enabled.batteri && (
+          <Card>
+            <Eyebrow>Växelriktare</Eyebrow>
+            <InverterInfo
+              assignment={result.inverter}
+              kWp={result.systemKWp}
+              hasSol
             />
           </Card>
         )}
@@ -665,6 +669,37 @@ function Toggle({
         />
       </span>
     </button>
+  );
+}
+
+function InverterInfo({
+  assignment,
+  kWp,
+  hasSol,
+}: {
+  assignment: import("@/lib/calc").CalcResult["inverter"];
+  kWp: number;
+  hasSol: boolean;
+}) {
+  const isBuiltIn = assignment.kind === "builtIn";
+  return (
+    <div className="rounded-2xl border border-ink/10 bg-cream/50 px-4 py-3">
+      <div className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-ink/55">
+        Växelriktare · auto
+      </div>
+      <div className="mt-1 font-display text-lg tracking-display-tight">
+        {isBuiltIn
+          ? assignment.label
+          : `${assignment.brand} ${assignment.kw} kW`}
+      </div>
+      <p className="mt-1 text-[12px] text-ink/55 leading-snug">
+        {isBuiltIn
+          ? "Inbyggd i batteriet – ingen separat enhet behövs."
+          : hasSol && kWp > 0
+          ? `Dimensionerad för ${kWp.toFixed(1).replace(".", ",")} kWp solpaneler.`
+          : "Dimensionerad för anläggningens kapacitet."}
+      </p>
+    </div>
   );
 }
 

@@ -1,6 +1,5 @@
 import {
   PANELS,
-  INVERTERS,
   BATTERIES,
   HEAT_PUMPS,
   CHARGERS,
@@ -12,10 +11,10 @@ import {
   HOUSE_HEAT_DEMAND_KWH_PER_M2,
   EV_KM_PER_KWH,
   SUPPORT_REVENUE_PER_KWH_INSTALLED,
+  type InverterAssignment,
 } from "./catalog";
 
 export type CalcInput = {
-  // Vilka delar av lösningen kunden har valt att räkna på.
   enabled: {
     sol: boolean;
     batteri: boolean;
@@ -25,9 +24,8 @@ export type CalcInput = {
   };
   panelId: string;
   panelCount: number;
-  inverterId: string;
   batteryId: string | null;
-  batteryCapacityKWh: number; // användarens valda storlek inom märkets tillåtna lista
+  batteryCapacityKWh: number;
   heatPumpId: string | null;
   chargerId: string | null;
   turbineId: string | null;
@@ -41,9 +39,10 @@ export type CalcResult = {
   systemKWp: number;
   batteryKWh: number;
   batteryPriceKr: number;
+  inverter: InverterAssignment;
   yearlyProductionKWh: number;
   yearlyConsumptionKWh: number;
-  selfConsumptionShare: number; // 0..1
+  selfConsumptionShare: number;
   yearlyHeatKWh: number;
   yearlyEvKWh: number;
   hardwareCostKr: number;
@@ -59,11 +58,31 @@ export type CalcResult = {
   co2KgPerYear: number;
 };
 
+// Auto-pickar växelriktare. Prio:
+//   1. Om batteri finns – använd batteriets `inverterFor(kWh)`
+//   2. Annars (rena solpaneler) – Solis S6 dimensionerad efter kWp
+export function pickInverter(
+  systemKWp: number,
+  batteryBrandId: string | null,
+  batteryKWh: number,
+): InverterAssignment {
+  if (batteryBrandId) {
+    const b = BATTERIES.find((b) => b.id === batteryBrandId);
+    if (b) return b.inverterFor(batteryKWh);
+  }
+  if (systemKWp <= 10)
+    return { kind: "external", brand: "Solis S6", kw: 10, priceKr: 24500 };
+  if (systemKWp <= 15)
+    return { kind: "external", brand: "Solis S6", kw: 15, priceKr: 31500 };
+  return { kind: "external", brand: "Solis S6", kw: 20, priceKr: 39000 };
+}
+
+// Verkningsgrad för Solis S6 / inbyggda växelriktare – platsutgivande
+const INVERTER_EFFICIENCY = 97.5;
+
 export function computeCalc(input: CalcInput): CalcResult {
   const en = input.enabled;
   const panel = PANELS.find((p) => p.id === input.panelId) ?? PANELS[0];
-  const inverter =
-    INVERTERS.find((i) => i.id === input.inverterId) ?? INVERTERS[0];
   const batteryBrand =
     en.batteri && input.batteryId
       ? BATTERIES.find((b) => b.id === input.batteryId)
@@ -92,8 +111,14 @@ export function computeCalc(input: CalcInput): CalcResult {
   const panelCount = en.sol ? input.panelCount : 0;
   const systemKWp = (panel.watt * panelCount) / 1000;
 
+  const inverter = pickInverter(
+    systemKWp,
+    batteryBrand?.id ?? null,
+    batteryKWh,
+  );
+
   const yearlyProductionKWh =
-    systemKWp * SUN_HOURS_KWH_PER_KWP * (inverter.efficiency / 100) +
+    systemKWp * SUN_HOURS_KWH_PER_KWP * (INVERTER_EFFICIENCY / 100) +
     (turbine ? turbine.ratedKW * 1800 : 0);
 
   const yearlyHeatKWh = heat
@@ -131,7 +156,10 @@ export function computeCalc(input: CalcInput): CalcResult {
     : 0;
 
   const panelsKr = panel.pricePerPanelKr * panelCount;
-  const inverterKr = en.sol || en.batteri ? inverter.priceKr : 0;
+  const inverterKr =
+    inverter.kind === "external" && (en.sol || en.batteri)
+      ? inverter.priceKr
+      : 0;
   const hardwareCostKr =
     panelsKr +
     inverterKr +
@@ -151,7 +179,6 @@ export function computeCalc(input: CalcInput): CalcResult {
 
   const totalCostKr = hardwareCostKr + installCostKr;
 
-  // Grönt avdrag – 20% solel, 50% batteri/laddbox, max 50 000 kr/år
   const greenDeductionKr = Math.min(
     50000,
     Math.round(
@@ -168,13 +195,14 @@ export function computeCalc(input: CalcInput): CalcResult {
   const paybackYears = totalYearly > 0 ? netCostKr / totalYearly : 0;
   const yearly20YearKr = totalYearly * 20 - netCostKr;
 
-  // CO2: 0.27 kg/kWh nordisk mix
-  const co2KgPerYear = (yearlyProductionKWh + (heat ? yearlyHeatKWh : 0) * 0.4) * 0.27;
+  const co2KgPerYear =
+    (yearlyProductionKWh + (heat ? yearlyHeatKWh : 0) * 0.4) * 0.27;
 
   return {
     systemKWp,
     batteryKWh,
     batteryPriceKr,
+    inverter,
     yearlyProductionKWh,
     yearlyConsumptionKWh,
     selfConsumptionShare,
@@ -198,9 +226,10 @@ const clamp = (x: number, min: number, max: number) =>
   Math.max(min, Math.min(max, x));
 
 const closest = (target: number, options: number[]) =>
-  options.reduce((best, v) =>
-    Math.abs(v - target) < Math.abs(best - target) ? v : best,
-  options[0]);
+  options.reduce(
+    (best, v) => (Math.abs(v - target) < Math.abs(best - target) ? v : best),
+    options[0],
+  );
 
 export const formatKr = (n: number) =>
   new Intl.NumberFormat("sv-SE", {

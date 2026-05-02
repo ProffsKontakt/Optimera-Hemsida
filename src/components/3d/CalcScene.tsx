@@ -4,8 +4,9 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { Grid, OrbitControls, Html } from "@react-three/drei";
 import { useMemo, useRef } from "react";
 import * as THREE from "three";
-import type { CalcInput } from "@/lib/calc";
-import { PANELS, INVERTERS } from "@/lib/catalog";
+import { computeCalc, type CalcInput, type CalcResult } from "@/lib/calc";
+import { PANELS } from "@/lib/catalog";
+import { BatteryByBrand } from "./BatteryModels";
 
 // ----- Hus-mått (metaforisk skala). Allt 3D-arbete utgår från dessa.
 const HOUSE = {
@@ -22,6 +23,7 @@ const slopeAngle = Math.atan2(HOUSE.ridgeH, slopeRun); // taklutning
 
 export function CalcScene({ input }: { input: CalcInput }) {
   const en = input.enabled;
+  const result = useMemo<CalcResult>(() => computeCalc(input), [input]);
   return (
     <Canvas
       camera={{ position: [5.5, 3.4, 6.5], fov: 36 }}
@@ -65,8 +67,17 @@ export function CalcScene({ input }: { input: CalcInput }) {
           }
         />
       )}
-      {(en.sol || en.batteri) && <Inverter brandId={input.inverterId} />}
-      {en.batteri && <Battery />}
+      {/* Växelriktare visas bara som separat enhet om den är extern – inbyggda
+          växelriktare (t.ex. SAJ HS3, Emaldo Power Store) ritas in i batteriet. */}
+      {(en.sol || en.batteri) && result.inverter.kind === "external" && (
+        <Inverter assignment={result.inverter} />
+      )}
+      {en.batteri && input.batteryId && (
+        <BatteryModel
+          brandId={input.batteryId}
+          capacityKWh={result.batteryKWh}
+        />
+      )}
       {en.värmepump && <HeatPumpUnit />}
       {en.laddbox && <ChargerUnit />}
       {en.vindkraft && <TurbineUnit />}
@@ -119,12 +130,13 @@ function House() {
         <meshStandardMaterial color="#F4F1EA" roughness={0.85} />
       </mesh>
 
-      {/* Två takfall (sadel). Lutas runt x-axeln så de möts vid nocken. */}
+      {/* Två takfall (sadel). Möts vid nocken (höga y) och faller mot
+          takfoten (låga y vid z = ±d/2). */}
       {[1, -1].map((sign) => (
         <mesh
           key={sign}
           position={[0, slopeY, (sign * d) / 4]}
-          rotation={[sign * -slopeAngle, 0, 0]}
+          rotation={[sign * slopeAngle, 0, 0]}
           castShadow
         >
           <boxGeometry args={[w + 0.1, 0.05, slopeLength + 0.05]} />
@@ -132,17 +144,13 @@ function House() {
         </mesh>
       ))}
 
-      {/* Dörr på framsidan (z = +d/2) */}
+      {/* Dörr + två fönster på samma långsida (+z) */}
       <mesh position={[0, HOUSE.wallY - 0.15, d / 2 + 0.005]}>
         <planeGeometry args={[0.45, 0.7]} />
         <meshStandardMaterial color="#1A1A17" />
       </mesh>
-
-      {/* Fönster med varmt sken */}
-      <Window position={[-1.05, HOUSE.wallY, d / 2 + 0.005]} />
-      <Window position={[1.05, HOUSE.wallY, d / 2 + 0.005]} />
-      <Window position={[-1.05, HOUSE.wallY, -d / 2 - 0.005]} flip />
-      <Window position={[1.05, HOUSE.wallY, -d / 2 - 0.005]} flip />
+      <Window position={[-1.05, HOUSE.wallY + 0.05, d / 2 + 0.005]} />
+      <Window position={[1.05, HOUSE.wallY + 0.05, d / 2 + 0.005]} />
     </group>
   );
 }
@@ -236,8 +244,11 @@ function PanelArray({ count, glow }: { count: number; glow: number }) {
 const GABLE_X = HOUSE.width / 2 + 0.3;
 const GABLE_GROUND_Y = HOUSE.wallY - HOUSE.wallH / 2;
 
-function Inverter({ brandId }: { brandId: string }) {
-  const inv = INVERTERS.find((i) => i.id === brandId) ?? INVERTERS[0];
+function Inverter({
+  assignment,
+}: {
+  assignment: Extract<CalcResult["inverter"], { kind: "external" }>;
+}) {
   const ref = useRef<THREE.MeshStandardMaterial>(null);
   useFrame(({ clock }) => {
     if (ref.current) {
@@ -246,7 +257,7 @@ function Inverter({ brandId }: { brandId: string }) {
     }
   });
   return (
-    <group position={[GABLE_X, GABLE_GROUND_Y + 0.55, -0.7]}>
+    <group position={[GABLE_X, GABLE_GROUND_Y + 0.55, -0.95]}>
       <mesh castShadow>
         <boxGeometry args={[0.18, 0.5, 0.4]} />
         <meshStandardMaterial color="#1A1A17" />
@@ -262,41 +273,23 @@ function Inverter({ brandId }: { brandId: string }) {
       </mesh>
       <Html position={[0.4, -0.25, 0]}>
         <div className="font-mono text-[9.5px] uppercase tracking-[0.18em] text-ink/65 bg-bone/85 backdrop-blur px-2 py-0.5 rounded-full border border-ink/10 whitespace-nowrap">
-          {inv.brand.split(" ")[0]} · {inv.efficiency}%
+          {assignment.brand} · {assignment.kw} kW
         </div>
       </Html>
     </group>
   );
 }
 
-function Battery() {
-  const ref = useRef<THREE.MeshStandardMaterial>(null);
-  useFrame(({ clock }) => {
-    if (ref.current) {
-      ref.current.emissiveIntensity =
-        0.4 + Math.sin(clock.elapsedTime * 1.4) * 0.3;
-    }
-  });
+function BatteryModel({
+  brandId,
+  capacityKWh,
+}: {
+  brandId: string;
+  capacityKWh: number;
+}) {
   return (
-    <group position={[GABLE_X, GABLE_GROUND_Y + 0.45, -0.05]}>
-      <mesh castShadow>
-        <boxGeometry args={[0.22, 0.85, 0.45]} />
-        <meshStandardMaterial color="#F4F1EA" />
-      </mesh>
-      <mesh position={[0.115, 0.0, 0]} rotation={[0, Math.PI / 2, 0]}>
-        <boxGeometry args={[0.18, 0.7, 0.015]} />
-        <meshStandardMaterial
-          ref={ref as never}
-          color="#E9B949"
-          emissive="#E9B949"
-          emissiveIntensity={0.5}
-        />
-      </mesh>
-      <Html position={[0.4, -0.45, 0]}>
-        <div className="font-mono text-[9.5px] uppercase tracking-[0.18em] text-ink/65 bg-bone/85 backdrop-blur px-2 py-0.5 rounded-full border border-ink/10 whitespace-nowrap">
-          Batteri
-        </div>
-      </Html>
+    <group position={[GABLE_X + 0.1, GABLE_GROUND_Y, -0.15]}>
+      <BatteryByBrand brandId={brandId} capacityKWh={capacityKWh} />
     </group>
   );
 }
