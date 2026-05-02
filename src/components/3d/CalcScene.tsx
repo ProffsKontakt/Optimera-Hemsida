@@ -117,17 +117,30 @@ function House() {
         <meshStandardMaterial color="#F4F1EA" roughness={0.85} />
       </mesh>
 
-      {/* Sadeltakets gavel-trianglar (front + back) */}
-      <mesh position={[0, wallTopY, d / 2 + 0.001]}>
-        <shapeGeometry args={[gableShape(w, ridge)]} />
-        <meshStandardMaterial color="#F4F1EA" roughness={0.85} />
+      {/* Sadeltakets gavel-trianglar – på kortsidorna (gavlarna), inte på
+          långsidorna där dörren sitter. Triangeln har basen = husets djup
+          och peak = nockhöjden. Roteras 90° runt y så normalen pekar utåt. */}
+      <mesh
+        position={[w / 2 + 0.002, wallTopY, 0]}
+        rotation={[0, Math.PI / 2, 0]}
+      >
+        <shapeGeometry args={[gableShape(d, ridge)]} />
+        <meshStandardMaterial
+          color="#F4F1EA"
+          roughness={0.85}
+          side={THREE.DoubleSide}
+        />
       </mesh>
       <mesh
-        position={[0, wallTopY, -d / 2 - 0.001]}
-        rotation={[0, Math.PI, 0]}
+        position={[-w / 2 - 0.002, wallTopY, 0]}
+        rotation={[0, -Math.PI / 2, 0]}
       >
-        <shapeGeometry args={[gableShape(w, ridge)]} />
-        <meshStandardMaterial color="#F4F1EA" roughness={0.85} />
+        <shapeGeometry args={[gableShape(d, ridge)]} />
+        <meshStandardMaterial
+          color="#F4F1EA"
+          roughness={0.85}
+          side={THREE.DoubleSide}
+        />
       </mesh>
 
       {/* Två takfall (sadel). Möts vid nocken (höga y) och faller mot
@@ -155,12 +168,15 @@ function House() {
   );
 }
 
-function gableShape(width: number, ridgeHeight: number) {
+function gableShape(base: number, ridgeHeight: number) {
+  // base = husets djup (=z-dimensionen vid gavelväggen). Triangeln ligger
+  // i lokal XY-plan med basen från (-base/2, 0) till (+base/2, 0) och peak
+  // i (0, ridgeHeight). Position och y-rotation appliceras av meshen.
   const s = new THREE.Shape();
-  s.moveTo(-width / 2, 0);
-  s.lineTo(width / 2, 0);
+  s.moveTo(-base / 2, 0);
+  s.lineTo(base / 2, 0);
   s.lineTo(0, ridgeHeight);
-  s.lineTo(-width / 2, 0);
+  s.lineTo(-base / 2, 0);
   return s;
 }
 
