@@ -16,10 +16,13 @@
 
 import { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
-import { Html } from "@react-three/drei";
+import { Gltf, Html, useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 
 const ANCHOR: [number, number, number] = [0, 0, 0];
+
+// Riktig GLB-modell av Easyway UNIV7600 — byggs av scripts/build-easyway-univ7600.py
+useGLTF.preload("/models/batteries/easyway-univ7600.glb");
 
 // Pulsande LED – återanvänds i alla modeller.
 function StatusLED({
@@ -100,36 +103,21 @@ export function PylontechH3({ capacityKWh }: { capacityKWh: number }) {
 }
 
 // === Easyway UNIV7600 HP ====================================================
-// Vit högt skåp med kraftigt avrundade hörn, integrerad HP-grill nederst.
+// Riktig GLB-modell (procedurellt byggd i Blender via bpy, se
+// scripts/build-easyway-univ7600.py). En GLB = en stack på ~7,6 kWh och
+// 0,98 m hög. För större kapacitet sätter vi flera bredvid varandra.
 export function EasywayUNIV7600({ capacityKWh }: { capacityKWh: number }) {
-  // Två-tre kabinetter beroende på kapacitet
   const cabinets = capacityKWh > 38 ? 3 : capacityKWh > 23 ? 2 : 1;
+  const spacing = 0.65; // 0,58 m bred + lite luft mellan skåpen
   return (
     <group position={ANCHOR}>
       {Array.from({ length: cabinets }).map((_, i) => (
-        <group key={i} position={[(i - (cabinets - 1) / 2) * 0.35, 0, 0]}>
-          {/* Skåp */}
-          <mesh castShadow position={[0, 0.55, 0]}>
-            <boxGeometry args={[0.32, 1.05, 0.42]} />
-            <meshStandardMaterial color="#F4F1EA" roughness={0.7} />
-          </mesh>
-          {/* HP-grill nederst */}
-          <mesh position={[0, 0.18, 0.215]}>
-            <planeGeometry args={[0.26, 0.18]} />
-            <meshStandardMaterial color="#1A1A17" />
-          </mesh>
-          {/* Display-panel överst */}
-          <mesh position={[0, 0.92, 0.215]}>
-            <planeGeometry args={[0.18, 0.1]} />
-            <meshStandardMaterial
-              color="#0a3a4e"
-              emissive="#0a3a4e"
-              emissiveIntensity={0.4}
-            />
-          </mesh>
-        </group>
+        <Gltf
+          key={i}
+          src="/models/batteries/easyway-univ7600.glb"
+          position={[(i - (cabinets - 1) / 2) * spacing, 0, 0]}
+        />
       ))}
-      <StatusLED position={[0, 0.78, 0.22]} />
       <Label text={`Easyway · ${capacityKWh.toFixed(2).replace(".", ",")} kWh`} y={-0.05} />
     </group>
   );
