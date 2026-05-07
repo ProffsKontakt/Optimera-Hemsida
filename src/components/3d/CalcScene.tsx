@@ -32,7 +32,7 @@ export function CalcScene({ input }: { input: CalcInput }) {
       gl={{ antialias: true, alpha: true }}
       className="!absolute inset-0"
     >
-      <color attach="background" args={["#EFE9DC"]} />
+      <color attach="background" args={["#EDEFF5"]} />
       <ambientLight intensity={0.55} />
       <directionalLight
         position={[6, 8, 4]}
@@ -210,21 +210,54 @@ function Window({
 // ============= SOLPANELER på takfallet =============
 
 function PanelArray({ count, glow }: { count: number; glow: number }) {
-  // Panelerna placeras på det södra takfallet (z = +d/4). Roterar med samma
-  // tecken som takfallet (+slopeAngle) så att de ligger plant mot taket.
+  // Upp till 24 paneler placeras på södra takfallet (+z). Över 24 fortsätter
+  // vi på norra takfallet (-z) så att vi täcker båda sidorna.
   const cols = 6;
-  const rows = Math.min(4, Math.ceil(count / cols));
-  const slopeLength = Math.hypot(slopeRun, HOUSE.ridgeH);
+  const rowsPerSlope = 4; // 6×4 = 24 paneler per takfall
+  const southCount = Math.min(count, cols * rowsPerSlope);
+  const northCount = Math.max(0, count - southCount);
+  return (
+    <>
+      <SlopePanels
+        count={southCount}
+        cols={cols}
+        rows={rowsPerSlope}
+        glow={glow}
+        sign={1}
+      />
+      {northCount > 0 && (
+        <SlopePanels
+          count={northCount}
+          cols={cols}
+          rows={rowsPerSlope}
+          glow={glow}
+          sign={-1}
+        />
+      )}
+    </>
+  );
+}
+
+function SlopePanels({
+  count,
+  cols,
+  rows,
+  glow,
+  sign,
+}: {
+  count: number;
+  cols: number;
+  rows: number;
+  glow: number;
+  sign: 1 | -1;
+}) {
   const panelW = (HOUSE.width - 0.2) / cols;
-  // Solpanel-aspektförhållande ~1.72:1 (1953:1134 för JA Solar 500W).
-  // Vi installerar i porträtt-orientering så bredden styr.
   const panelD = panelW * (1134 / 1953);
   const offsetY = wallTopY + HOUSE.ridgeH / 2;
-
   return (
     <group
-      position={[0, offsetY, HOUSE.depth / 4]}
-      rotation={[slopeAngle, 0, 0]}
+      position={[0, offsetY, (sign * HOUSE.depth) / 4]}
+      rotation={[sign * slopeAngle, 0, 0]}
     >
       {Array.from({ length: rows }).map((_, r) =>
         Array.from({ length: cols }).map((__, c) => {

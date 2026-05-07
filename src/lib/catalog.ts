@@ -123,17 +123,16 @@ export const BATTERIES: Battery[] = [
     brand: "Pylontech Force H3",
     cycles: 6000,
     pricePerKWhKr: 6200,
-    capacities: [10.24, 15.36, 20.48, 25.6, 30.72, 35.84, 40.96],
+    capacities: [10.24, 15.36, 20.48, 25.6, 30.72],
     chemistry: "LFP",
     inverterFor: (kWh) => {
       if (kWh <= 20.48) return SOLIS[10];
-      if (kWh <= 30.72) return SOLIS[15];
-      return SOLIS[20];
+      return SOLIS[15];
     },
   },
   {
     id: "easyway-univ7600",
-    brand: "Easyway UNIV7600 HP",
+    brand: "Easyway",
     cycles: 6500,
     pricePerKWhKr: 5800,
     capacities: [15.36, 23.04, 30.72, 38.4, 46.08, 53.76, 61.44],
@@ -291,8 +290,9 @@ export const SUN_HOURS_KWH_PER_KWP = 1050; // Mellansverige normalår
 export const HOUSE_HEAT_DEMAND_KWH_PER_M2 = 110; // 70-tal villa
 export const EV_KM_PER_KWH = 6;
 
-// Maxgränser för en normalvilla (söderläge, sadeltak ~ 60 m² per fall)
-export const MAX_PANELS_PER_HOUSE = 24;
+// Maxgränser för en normalvilla. Över 24 fyller vi båda takfallen.
+export const MAX_PANELS_PER_HOUSE = 50;
+export const MAX_PANELS_PER_SLOPE = 24;
 export const PANEL_AREA_M2 = 1.95; // ungefärlig panelyta
 
 // Stödtjänster (FCR-D / aFRR) – grov estimering

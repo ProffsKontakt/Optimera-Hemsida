@@ -34,17 +34,18 @@ export function ServiceVignette({ kind }: { kind: ServiceSlug }) {
 }
 
 function backgroundFor(kind: ServiceSlug) {
+  // Subtila kalla varianter av bone (#EDEFF5) – matchar Optimera-paletten.
   switch (kind) {
     case "solpaneler":
-      return "#EFE3C7";
+      return "#E7E9F1";
     case "batterier":
-      return "#E1E6DA";
+      return "#E1E5EE";
     case "vaermepumpar":
-      return "#E3DED1";
+      return "#EAEDF4";
     case "laddboxar":
-      return "#E9E3D3";
+      return "#E5E8F1";
     case "vindsnurror":
-      return "#DCE0D5";
+      return "#DEE3ED";
   }
 }
 

@@ -29,16 +29,14 @@ type Piece = {
   key: PieceKey;
   label: string;
   hint: string;
-  fromPriceKr: number;
 };
 
-// Ungefärliga ingångspriser per delsystem efter grönt avdrag (rundat).
 const PIECES: Piece[] = [
-  { key: "sol", label: "Solpaneler", hint: "Producerar el från taket", fromPriceKr: 65000 },
-  { key: "batteri", label: "Batteri", hint: "Lagrar solen till kvällen", fromPriceKr: 70000 },
-  { key: "värmepump", label: "Värmepump", hint: "Halverar elräkningen för uppvärmning", fromPriceKr: 95000 },
-  { key: "laddbox", label: "Laddbox", hint: "Hemmaladdning av elbilen", fromPriceKr: 18000 },
-  { key: "vindkraft", label: "Vindkraft", hint: "Komplement när solen vilar", fromPriceKr: 295000 },
+  { key: "sol", label: "Solpaneler", hint: "Producerar el från taket" },
+  { key: "batteri", label: "Batteri", hint: "Lagrar solen till kvällen" },
+  { key: "värmepump", label: "Värmepump", hint: "Halverar elräkningen för uppvärmning" },
+  { key: "laddbox", label: "Laddbox", hint: "Hemmaladdning av elbilen" },
+  { key: "vindkraft", label: "Vindkraft", hint: "Komplement när solen vilar" },
 ];
 
 const initial: CalcInput = {
@@ -51,15 +49,72 @@ const initial: CalcInput = {
   },
   panelId: PANELS[0].id,
   panelCount: 14,
+  hasExistingSolar: false,
+  existingSolarKWp: 8,
+  existingSolarYearlyKWh: 6800,
+  inverterMode: "auto",
+  manualInverterKw: 10,
   batteryId: BATTERIES[0].id,
   batteryCapacityKWh: BATTERIES[0].capacities[0],
   heatPumpId: HEAT_PUMPS[0].id,
   chargerId: CHARGERS[0].id,
   turbineId: null,
   emsId: EMS_OPTIONS[0].id,
+  numOwners: 2,
   houseAreaM2: 145,
   evKmPerYear: 18000,
   baseConsumptionKWh: 4500,
+};
+
+// Ensam-lös version som beräknar minimum-pris per delsystem.
+function fromPriceFor(key: PieceKey): number {
+  const stub: CalcInput = { ...initial };
+  switch (key) {
+    case "sol":
+      stub.enabled = { ...stub.enabled, sol: true };
+      stub.panelCount = 4;
+      break;
+    case "batteri":
+      stub.enabled = { ...stub.enabled, batteri: true };
+      // Hitta cheapest batteri
+      const cheapest = BATTERIES.reduce((min, b) =>
+        b.capacities[0] * b.pricePerKWhKr <
+        min.capacities[0] * min.pricePerKWhKr
+          ? b
+          : min,
+      BATTERIES[0]);
+      stub.batteryId = cheapest.id;
+      stub.batteryCapacityKWh = cheapest.capacities[0];
+      break;
+    case "värmepump":
+      stub.enabled = { ...stub.enabled, värmepump: true };
+      const cheapestHeat = HEAT_PUMPS.reduce((min, h) =>
+        h.priceKr < min.priceKr ? h : min, HEAT_PUMPS[0]);
+      stub.heatPumpId = cheapestHeat.id;
+      break;
+    case "laddbox":
+      stub.enabled = { ...stub.enabled, laddbox: true };
+      const cheapestCharger = CHARGERS.reduce((min, c) =>
+        c.priceKr < min.priceKr ? c : min, CHARGERS[0]);
+      stub.chargerId = cheapestCharger.id;
+      break;
+    case "vindkraft":
+      stub.enabled = { ...stub.enabled, vindkraft: true };
+      const cheapestTurb = TURBINES.reduce((min, t) =>
+        t.priceKr < min.priceKr ? t : min, TURBINES[0]);
+      stub.turbineId = cheapestTurb.id;
+      break;
+  }
+  const r = computeCalc(stub);
+  return r.netCostKr;
+}
+
+const FROM_PRICES: Record<PieceKey, number> = {
+  sol: fromPriceFor("sol"),
+  batteri: fromPriceFor("batteri"),
+  värmepump: fromPriceFor("värmepump"),
+  laddbox: fromPriceFor("laddbox"),
+  vindkraft: fromPriceFor("vindkraft"),
 };
 
 export function CalcStudio() {
@@ -94,9 +149,28 @@ export function CalcStudio() {
     ems: input.emsId ?? "",
   }).toString();
 
+  // Dynamiskt aktuellt pris per delsystem (visas i tile-headern).
+  function piecePriceLive(k: PieceKey): number {
+    switch (k) {
+      case "sol":
+        return Math.max(0, result.solarPriceKr - result.solarDeductionKr);
+      case "batteri":
+        return Math.max(
+          0,
+          result.batteryPriceKr - result.batteryDeductionKr,
+        );
+      case "värmepump":
+        return result.heatpumpPriceKr;
+      case "laddbox":
+        return Math.max(0, result.chargerPriceKr - result.chargerDeductionKr);
+      case "vindkraft":
+        return result.turbinePriceKr;
+    }
+  }
+
   return (
     <div className="grid grid-cols-1 xl:grid-cols-12 gap-8">
-      {/* VÄNSTER: stor 3D-scen + resultat-tiles. Sticky på desktop. */}
+      {/* VÄNSTER: 3D-scen + resultat */}
       <div className="xl:col-span-7 xl:sticky xl:top-24 self-start space-y-6">
         <div className="rounded-[28px] border border-ink/10 overflow-hidden bg-cream blueprint-bg">
           <div className="aspect-[4/3] relative">
@@ -127,17 +201,9 @@ export function CalcStudio() {
         )}
       </div>
 
-      {/* HÖGER: Tesla-stilade konfigurationsrader. */}
+      {/* HÖGER: konfigurationsrader */}
       <aside className="xl:col-span-5 space-y-3">
-        <div className="px-1 mb-1">
-          <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink/55">
-            Konfigurera systemet
-          </div>
-          <p className="mt-2 text-[14px] text-ink/65 leading-relaxed">
-            Klicka in det ni är nyfikna på. Modellen och siffrorna uppdateras
-            direkt. Ni kan fritt kombinera.
-          </p>
-        </div>
+        <HouseHeader input={input} update={update} />
 
         {PIECES.map((p) => (
           <PieceTile
@@ -149,11 +215,13 @@ export function CalcStudio() {
             onToggle={() => toggleEnabled(p.key)}
             update={update}
             setInput={setInput}
+            livePrice={piecePriceLive(p.key)}
+            fromPrice={FROM_PRICES[p.key]}
           />
         ))}
 
         {anyEnabled && (
-          <EmsTile input={input} update={update} result={result} />
+          <EmsTile input={input} update={update} />
         )}
 
         {anyEnabled && (
@@ -163,7 +231,7 @@ export function CalcStudio() {
           >
             <span>
               <span className="block font-mono text-[10.5px] uppercase tracking-[0.2em] text-bone/55">
-                Total efter grönt avdrag
+                Investering efter avdrag
               </span>
               <span className="block font-display text-2xl tracking-display-tight">
                 {formatKr(result.netCostKr)}
@@ -179,7 +247,68 @@ export function CalcStudio() {
   );
 }
 
-// =================== TESLA-STILAD KONFIGURATIONSRAD ===================
+// =================== HUS-INFO HEADER ===================
+
+function HouseHeader({
+  input,
+  update,
+}: {
+  input: CalcInput;
+  update: <K extends keyof CalcInput>(k: K, v: CalcInput[K]) => void;
+}) {
+  return (
+    <div className="rounded-2xl border border-ink/12 bg-bone p-5 space-y-4">
+      <div>
+        <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink/55">
+          Ditt hushåll
+        </div>
+        <p className="mt-2 text-[13.5px] text-ink/65 leading-relaxed">
+          Justera årsförbrukningen och hur många ägare ni är, så blir
+          avdrag och payback rätt.
+        </p>
+      </div>
+
+      <Slider
+        label="Årsförbrukning el"
+        min={1500}
+        max={20000}
+        step={100}
+        value={input.baseConsumptionKWh}
+        onChange={(v) => update("baseConsumptionKWh", v)}
+        suffix="kWh/år"
+      />
+
+      <div>
+        <span className="block text-[13px] text-ink/65 mb-2">
+          Antal fastighetsägare (avdragstak)
+        </span>
+        <div className="flex gap-1.5">
+          {([1, 2] as const).map((n) => {
+            const active = input.numOwners === n;
+            return (
+              <button
+                key={n}
+                type="button"
+                onClick={() => update("numOwners", n)}
+                className={[
+                  "flex-1 rounded-xl px-3 py-2.5 text-[13px] border transition",
+                  active
+                    ? "bg-ink text-bone border-ink"
+                    : "bg-bone text-ink/75 border-ink/15 hover:border-ink/40",
+                ].join(" ")}
+              >
+                {n} {n === 1 ? "ägare" : "ägare"} ·{" "}
+                <span className="opacity-65">{n * 50_000} kr/år</span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// =================== KONFIGURATIONSRAD PER DELSYSTEM ===================
 
 function PieceTile({
   piece,
@@ -189,6 +318,8 @@ function PieceTile({
   onToggle,
   update,
   setInput,
+  livePrice,
+  fromPrice,
 }: {
   piece: Piece;
   input: CalcInput;
@@ -197,10 +328,9 @@ function PieceTile({
   onToggle: () => void;
   update: <K extends keyof CalcInput>(k: K, v: CalcInput[K]) => void;
   setInput: React.Dispatch<React.SetStateAction<CalcInput>>;
+  livePrice: number;
+  fromPrice: number;
 }) {
-  // Aktuellt pris för just denna del när den är aktiv (annars "från").
-  const livePrice = piecePriceKr(piece.key, input, result);
-
   return (
     <div
       className={[
@@ -241,7 +371,7 @@ function PieceTile({
             {isOn ? "Just nu" : "Från"}
           </span>
           <span className="block font-display text-lg tracking-display-tight">
-            {formatKr(isOn ? livePrice : piece.fromPriceKr)}
+            {formatKr(isOn ? livePrice : fromPrice)}
           </span>
         </span>
 
@@ -260,7 +390,12 @@ function PieceTile({
             <SolControls input={input} update={update} result={result} />
           )}
           {piece.key === "batteri" && (
-            <BatteryControls input={input} update={update} result={result} setInput={setInput} />
+            <BatteryControls
+              input={input}
+              update={update}
+              result={result}
+              setInput={setInput}
+            />
           )}
           {piece.key === "värmepump" && (
             <HeatControls input={input} update={update} />
@@ -290,33 +425,158 @@ function SolControls({
 }) {
   return (
     <>
-      <Select
-        label="Märke & modell"
-        value={input.panelId}
-        onChange={(v) => update("panelId", v)}
-        options={PANELS.map((p) => ({
-          value: p.id,
-          label: `${p.brand} · ${p.watt} W`,
-        }))}
+      <PillGroup
+        label="Sol-läge"
+        options={[
+          { value: "ny", label: "Ny anläggning" },
+          { value: "befintlig", label: "Har redan solpaneler" },
+        ]}
+        value={input.hasExistingSolar ? "befintlig" : "ny"}
+        onChange={(v) => update("hasExistingSolar", v === "befintlig")}
       />
-      <Slider
-        label="Antal paneler"
-        min={4}
-        max={MAX_PANELS_PER_HOUSE}
-        step={1}
-        value={Math.min(input.panelCount, MAX_PANELS_PER_HOUSE)}
-        onChange={(v) => update("panelCount", v)}
-        suffix={`= ${formatNumber(
-          ((PANELS.find((p) => p.id === input.panelId)?.watt ?? 0) *
-            input.panelCount) /
-            1000,
-          1,
-        )} kWp`}
-      />
+
+      {!input.hasExistingSolar ? (
+        <>
+          <Select
+            label="Märke & modell"
+            value={input.panelId}
+            onChange={(v) => update("panelId", v)}
+            options={PANELS.map((p) => ({
+              value: p.id,
+              label: `${p.brand} · ${p.watt} W (${p.heightMm}×${p.widthMm} mm)`,
+            }))}
+          />
+          <Slider
+            label="Antal paneler"
+            min={4}
+            max={MAX_PANELS_PER_HOUSE}
+            step={1}
+            value={Math.min(input.panelCount, MAX_PANELS_PER_HOUSE)}
+            onChange={(v) => update("panelCount", v)}
+            suffix={`= ${formatNumber(
+              ((PANELS.find((p) => p.id === input.panelId)?.watt ?? 0) *
+                input.panelCount) /
+                1000,
+              1,
+            )} kWp`}
+          />
+          <p className="text-[12px] text-ink/50">
+            Max {MAX_PANELS_PER_HOUSE} paneler. Över 24 fyller vi även det
+            norra takfallet.
+          </p>
+        </>
+      ) : (
+        <ExistingSolarControls input={input} update={update} />
+      )}
+
       {result.inverter.kind === "external" && !input.enabled.batteri && (
-        <InverterInfoBox assignment={result.inverter} />
+        <InverterControls input={input} update={update} result={result} />
       )}
     </>
+  );
+}
+
+function ExistingSolarControls({
+  input,
+  update,
+}: {
+  input: CalcInput;
+  update: <K extends keyof CalcInput>(k: K, v: CalcInput[K]) => void;
+}) {
+  // Två sliders, formel-länkade: kWp × 850 = årlig produktion (kWh).
+  return (
+    <>
+      <Slider
+        label="Installerad effekt"
+        min={1}
+        max={30}
+        step={0.5}
+        value={input.existingSolarKWp}
+        onChange={(v) => {
+          // Synkronisera båda värdena
+          setBoth(update, v, v * 850);
+        }}
+        suffix="kWp"
+      />
+      <Slider
+        label="Årlig produktion"
+        min={850}
+        max={25500}
+        step={50}
+        value={input.existingSolarYearlyKWh}
+        onChange={(v) => {
+          setBoth(update, v / 850, v);
+        }}
+        suffix="kWh/år"
+      />
+      <p className="text-[12px] text-ink/50 leading-relaxed">
+        Vi räknar med 850 kWh per kWp och år (mellansvenskt normalår).
+        Sliders är länkade.
+      </p>
+    </>
+  );
+}
+
+function setBoth(
+  update: <K extends keyof CalcInput>(k: K, v: CalcInput[K]) => void,
+  kwp: number,
+  yearly: number,
+) {
+  update("existingSolarKWp", Math.round(kwp * 10) / 10);
+  update("existingSolarYearlyKWh", Math.round(yearly));
+}
+
+function InverterControls({
+  input,
+  update,
+  result,
+}: {
+  input: CalcInput;
+  update: <K extends keyof CalcInput>(k: K, v: CalcInput[K]) => void;
+  result: CalcResult;
+}) {
+  const inv = result.inverter;
+  const isBuiltIn = inv.kind === "builtIn";
+  return (
+    <div className="rounded-2xl border border-ink/10 bg-bone px-4 py-3 space-y-3">
+      <div className="flex items-center justify-between gap-3">
+        <div>
+          <div className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-ink/55">
+            Växelriktare
+          </div>
+          <div className="mt-1 font-display text-base tracking-display-tight">
+            {inv.kind === "builtIn"
+              ? inv.label
+              : `${inv.brand} ${inv.kw} kW`}
+          </div>
+        </div>
+        {!isBuiltIn && (
+          <PillGroup
+            label=""
+            options={[
+              { value: "auto", label: "Auto" },
+              { value: "manual", label: "Manuell" },
+            ]}
+            value={input.inverterMode}
+            onChange={(v) => update("inverterMode", v as "auto" | "manual")}
+          />
+        )}
+      </div>
+      {!isBuiltIn && input.inverterMode === "manual" && (
+        <PillGroup
+          label="Solis S6-storlek"
+          options={[
+            { value: "10", label: "10 kW" },
+            { value: "15", label: "15 kW" },
+            { value: "20", label: "20 kW" },
+          ]}
+          value={String(input.manualInverterKw)}
+          onChange={(v) =>
+            update("manualInverterKw", Number(v) as 10 | 15 | 20)
+          }
+        />
+      )}
+    </div>
   );
 }
 
@@ -354,7 +614,7 @@ function BatteryControls({
         value={input.batteryCapacityKWh}
         onChange={(v) => update("batteryCapacityKWh", v)}
       />
-      <InverterInfoBox assignment={result.inverter} />
+      <InverterControls input={input} update={update} result={result} />
     </>
   );
 }
@@ -454,16 +714,14 @@ function WindControls({
   );
 }
 
-// =================== EMS-tile (alltid sist, valfri) ===================
+// =================== EMS-tile ===================
 
 function EmsTile({
   input,
   update,
-  result,
 }: {
   input: CalcInput;
   update: <K extends keyof CalcInput>(k: K, v: CalcInput[K]) => void;
-  result: CalcResult;
 }) {
   const isOn = !!input.emsId;
   const ems = isOn ? EMS_OPTIONS.find((e) => e.id === input.emsId) : null;
@@ -478,9 +736,7 @@ function EmsTile({
     >
       <button
         type="button"
-        onClick={() =>
-          update("emsId", isOn ? null : EMS_OPTIONS[0].id)
-        }
+        onClick={() => update("emsId", isOn ? null : EMS_OPTIONS[0].id)}
         className="flex w-full items-center gap-4 px-5 py-4 text-left"
       >
         <span
@@ -561,12 +817,11 @@ function ResultPanel({
   return (
     <div className="grid grid-cols-2 gap-3">
       <Tile
-        label="Total investering"
+        label="Investering innan avdrag"
         value={formatKr(result.totalCostKr)}
-        sub={`varav ${formatKr(result.installCostKr)} installation`}
       />
       <Tile
-        label="Efter grönt avdrag"
+        label="Investering efter avdrag"
         value={formatKr(result.netCostKr)}
         sub={`grönt avdrag ${formatKr(result.greenDeductionKr)}`}
       />
@@ -587,7 +842,11 @@ function ResultPanel({
             ? `${formatNumber(result.paybackYears, 1)} år`
             : "—"
         }
-        sub={`20-årsvinst ${formatKr(result.yearly20YearKr)}`}
+        sub={
+          result.yearly20YearKr > 0
+            ? `20-årsvinst ${formatKr(result.yearly20YearKr)}`
+            : "Avkastningen kommer främst från värmebesparing"
+        }
       />
       {hasSol && (
         <Tile
@@ -603,41 +862,6 @@ function ResultPanel({
       />
     </div>
   );
-}
-
-// =================== HJÄLPARE ===================
-
-// Räknar ut ungefärligt pris för enskilt delsystem (utan installation).
-// Används för "Just nu"-kolumnen i Tesla-tilen.
-function piecePriceKr(
-  key: PieceKey,
-  input: CalcInput,
-  result: CalcResult,
-): number {
-  switch (key) {
-    case "sol": {
-      const panel = PANELS.find((p) => p.id === input.panelId);
-      const pkr = panel ? panel.pricePerPanelKr * input.panelCount : 0;
-      return Math.round(pkr * 1.18 + 25000);
-    }
-    case "batteri": {
-      const inv =
-        result.inverter.kind === "external" ? result.inverter.priceKr : 0;
-      return Math.round((result.batteryPriceKr + inv) * 1.18 + 12000);
-    }
-    case "värmepump": {
-      const heat = HEAT_PUMPS.find((h) => h.id === input.heatPumpId);
-      return Math.round((heat?.priceKr ?? 0) * 1.18 + 35000);
-    }
-    case "laddbox": {
-      const c = CHARGERS.find((x) => x.id === input.chargerId);
-      return Math.round((c?.priceKr ?? 0) * 1.18 + 9000);
-    }
-    case "vindkraft": {
-      const t = TURBINES.find((x) => x.id === input.turbineId);
-      return Math.round((t?.priceKr ?? 0) * 1.18 + 85000);
-    }
-  }
 }
 
 // =================== UI-PRIMITIVER ===================
@@ -693,7 +917,8 @@ function Slider({
       <div className="flex items-baseline justify-between mb-2">
         <span className="text-[13px] text-ink/65">{label}</span>
         <span className="font-mono text-[12px] text-ink/75">
-          {value} {suffix ? <span className="text-ink/45">{suffix}</span> : null}
+          {value}{" "}
+          {suffix ? <span className="text-ink/45">{suffix}</span> : null}
         </span>
       </div>
       <input
@@ -762,7 +987,9 @@ function PillGroup({
 }) {
   return (
     <div>
-      <span className="block text-[13px] text-ink/65 mb-2">{label}</span>
+      {label ? (
+        <span className="block text-[13px] text-ink/65 mb-2">{label}</span>
+      ) : null}
       <div className="flex flex-wrap gap-1.5">
         {options.map((o) => {
           const active = o.value === value;
@@ -782,26 +1009,6 @@ function PillGroup({
             </button>
           );
         })}
-      </div>
-    </div>
-  );
-}
-
-function InverterInfoBox({
-  assignment,
-}: {
-  assignment: CalcResult["inverter"];
-}) {
-  const isBuiltIn = assignment.kind === "builtIn";
-  return (
-    <div className="rounded-2xl border border-ink/10 bg-bone px-4 py-3">
-      <div className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-ink/55">
-        Växelriktare · auto
-      </div>
-      <div className="mt-1 font-display text-base tracking-display-tight">
-        {isBuiltIn
-          ? assignment.label
-          : `${assignment.brand} ${assignment.kw} kW`}
       </div>
     </div>
   );
@@ -832,7 +1039,9 @@ function Tile({
         {value}
       </div>
       {sub && (
-        <div className="mt-1 text-[11.5px] text-ink/55 leading-snug">{sub}</div>
+        <div className="mt-1 text-[11.5px] text-ink/55 leading-snug">
+          {sub}
+        </div>
       )}
     </div>
   );
