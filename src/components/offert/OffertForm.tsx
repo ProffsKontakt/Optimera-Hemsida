@@ -193,7 +193,7 @@ export function OffertForm({ defaults }: { defaults: Defaults }) {
                 "Fika från lokala bagerier",
               ].map((b) => (
                 <li key={b} className="flex items-start gap-3">
-                  <span className="mt-1 grid h-4 w-4 place-items-center rounded-full bg-amber text-ink">
+                  <span className="mt-1 grid h-4 w-4 place-items-center rounded-full bg-sun text-ink">
                     <Check size={10} />
                   </span>
                   <span>{b}</span>

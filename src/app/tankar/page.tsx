@@ -33,7 +33,7 @@ export default function TankarPage() {
           <h1 className="mt-5 font-display text-[56px] md:text-[88px] tracking-display-tight leading-[0.95]">
             Vi delar med oss
             <br />
-            <span className="italic text-moss">av tankarna.</span>
+            <span className="italic font-serif text-indigo">av tankarna.</span>
           </h1>
           <p className="mt-6 max-w-2xl text-ink/70 text-lg leading-relaxed">
             Långsam, ärlig journalistik om energi, hus och hur vi tänker när vi

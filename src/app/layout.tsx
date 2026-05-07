@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
+import { Fraunces, Poppins, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
 
-const inter = Inter({
+const poppins = Poppins({
   subsets: ["latin"],
-  variable: "--font-inter",
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-poppins",
   display: "swap",
 });
 
@@ -15,6 +16,7 @@ const fraunces = Fraunces({
   variable: "--font-fraunces",
   display: "swap",
   axes: ["opsz", "SOFT"],
+  style: ["normal", "italic"],
 });
 
 const jetbrains = JetBrains_Mono({
@@ -51,7 +53,7 @@ export default function RootLayout({
   return (
     <html
       lang="sv"
-      className={`${inter.variable} ${fraunces.variable} ${jetbrains.variable}`}
+      className={`${poppins.variable} ${fraunces.variable} ${jetbrains.variable}`}
     >
       <body className="min-h-screen bg-bone text-ink antialiased">
         <Navbar />

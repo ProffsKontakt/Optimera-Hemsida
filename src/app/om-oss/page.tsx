@@ -41,7 +41,7 @@ export default function AboutPage() {
           <h1 className="mt-5 font-display text-[56px] md:text-[96px] tracking-display-tight leading-[0.95]">
             En elfirma som
             <br />
-            <span className="italic text-moss">tar av sig skorna.</span>
+            <span className="italic font-serif text-indigo">tar av sig skorna.</span>
           </h1>
           <p className="mt-8 max-w-2xl text-ink/70 text-xl leading-relaxed">
             Vi grundades 2026 på en idé så enkel att den nästan är pinsam: att
@@ -58,7 +58,7 @@ export default function AboutPage() {
           <>
             Vad vi gör
             <br />
-            <span className="italic">annorlunda.</span>
+            <span className="italic font-serif">annorlunda.</span>
           </>
         }
         intro="Vi har sett branschen från insidan, och valt att bygga ett bolag på det vi själva saknat hos andra. Fyra principer som styr varje hembesök, offert och installation."
@@ -173,7 +173,7 @@ export default function AboutPage() {
               <div className="pt-6">
                 <Link
                   href="/offert"
-                  className="inline-flex items-center gap-2 rounded-full bg-amber px-6 py-3 text-ink hover:bg-amber-deep transition"
+                  className="inline-flex items-center gap-2 rounded-full bg-sun px-6 py-3 text-ink hover:bg-sun-deep transition"
                 >
                   Boka hembesök
                 </Link>

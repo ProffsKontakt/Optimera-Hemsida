@@ -19,7 +19,7 @@ export default function HomePage() {
           <>
             Fem installations&shy;tjänster.
             <br />
-            <span className="italic text-moss">Ett team som tar ansvaret.</span>
+            <span className="italic font-serif text-indigo">Ett team som tar ansvaret.</span>
           </>
         }
         intro="Vi specialiserar oss på att inte specialisera oss på en sak. När sol, batteri, värme och laddning pratar med varandra – då blir helheten större än delarna."
@@ -33,7 +33,7 @@ export default function HomePage() {
           <>
             Vad vi gör
             <br />
-            <span className="italic">annorlunda.</span>
+            <span className="italic font-serif">annorlunda.</span>
           </>
         }
       >

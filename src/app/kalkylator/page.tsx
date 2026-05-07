@@ -15,7 +15,7 @@ export default function CalculatorPage() {
           <h1 className="mt-5 font-display text-[56px] md:text-[88px] tracking-display-tight leading-[0.95]">
             Räkna på din
             <br />
-            <span className="italic text-moss">helhet</span> – i 3D.
+            <span className="italic font-serif text-indigo">helhet</span> – i 3D.
           </h1>
           <p className="mt-6 max-w-2xl text-ink/70 text-lg leading-relaxed">
             Byt panelmärke, växelriktare, batteristorlek, värmepump och laddbox.

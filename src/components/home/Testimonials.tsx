@@ -35,7 +35,7 @@ export function Testimonials() {
           transition={{ duration: 0.7, delay: i * 0.08 }}
           className="rounded-3xl border border-ink/10 bg-cream/70 p-8 flex flex-col"
         >
-          <div className="font-display text-5xl text-amber leading-none">"</div>
+          <div className="font-display text-5xl text-indigo leading-none">"</div>
           <blockquote className="mt-2 font-display text-[20px] tracking-display-tight leading-snug">
             {q.quote}
           </blockquote>

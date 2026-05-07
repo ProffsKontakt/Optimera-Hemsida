@@ -10,7 +10,13 @@ export function Hero() {
     <section className="relative overflow-hidden">
       <div className="container-edge pt-12 md:pt-20 pb-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-7 relative">
+            {/* Vertikal brand-stripe (blå topp, gul botten) som ekar
+                logotypens lodräta staplar. Decorativ. */}
+            <span
+              aria-hidden
+              className="hidden md:block brand-stripe absolute -left-4 top-2 h-24"
+            />
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
@@ -30,7 +36,7 @@ export function Hero() {
               <br />
               energi&shy;omställningen
               <br />
-              <span className="italic text-moss">under ett tak.</span>
+              <span className="italic font-serif text-indigo">under ett tak.</span>
             </motion.h1>
 
             <motion.p

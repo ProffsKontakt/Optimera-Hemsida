@@ -23,7 +23,7 @@ export default function OffertPage({
           <h1 className="mt-5 font-display text-[56px] md:text-[88px] tracking-display-tight leading-[0.95]">
             Berätta vad du
             <br />
-            <span className="italic text-moss">drömmer om.</span>
+            <span className="italic font-serif text-indigo">drömmer om.</span>
           </h1>
           <p className="mt-6 max-w-2xl text-ink/70 text-lg leading-relaxed">
             Välj en tid som passar er nedan, så ringer vi dagen innan och

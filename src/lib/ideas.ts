@@ -13,7 +13,7 @@ export type Idea = {
 };
 
 export const CATEGORIES: { key: IdeaCategory; label: string; tone: string }[] = [
-  { key: "salj", label: "Sälj", tone: "bg-amber/15 text-amber-deep border-amber/30" },
+  { key: "salj", label: "Sälj", tone: "bg-amber/15 text-sun-deep-deep border-amber/30" },
   { key: "crm", label: "CRM", tone: "bg-moss/10 text-moss border-moss/30" },
   { key: "drift", label: "Drift", tone: "bg-copper/10 text-copper border-copper/30" },
   { key: "marknad", label: "Marknad", tone: "bg-ink/8 text-ink border-ink/15" },

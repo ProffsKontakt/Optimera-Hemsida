@@ -9,6 +9,8 @@
   --graphite: #1a1a17;
   --amber: #e9b949;
   --moss: #3f5236;
+  --indigo: #3648c3;
+  --sun: #ffdd6c;
 }
 
 @layer base {
@@ -18,21 +20,34 @@
   body {
     background-color: var(--bone);
     color: var(--ink);
-    font-family: var(--font-inter), Inter, system-ui, sans-serif;
-    font-feature-settings: "ss01", "cv11";
+    /* Poppins är primär brand-font (matchar logotypen). */
+    font-family: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
   }
   ::selection {
-    background: var(--amber);
+    background: var(--sun);
     color: var(--ink);
   }
   h1,
   h2,
   h3,
   .display {
-    font-family: var(--font-fraunces), "Fraunces", Georgia, serif;
-    letter-spacing: -0.035em;
+    /* Rubriker använder Poppins precis som logon. Letterspacing tightat
+       för att Poppins ska se "display"-klassig ut i stora storlekar. */
+    font-family: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+    letter-spacing: -0.025em;
+    font-weight: 600;
+  }
+  /* Italic-accent: när vi sätter <span className="italic font-serif">…</span>
+     hoppar texten över till Fraunces italic. Det är så vi får den litterära
+     värmen kvar mot Poppins som "rak" font. */
+  .font-serif {
     font-feature-settings: "ss01";
+  }
+  em,
+  i {
+    font-family: var(--font-fraunces), Georgia, serif;
+    font-style: italic;
   }
 }
 
@@ -43,20 +58,41 @@
   .eyebrow {
     @apply font-mono text-[11px] uppercase tracking-[0.18em] text-ink/60;
   }
+  /* Primär CTA i Optimera-blå (logotyp-färgen). */
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-ink px-6 py-3.5 text-sm font-medium text-bone transition-all hover:bg-graphite hover:scale-[1.02] active:scale-[0.99];
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-indigo px-6 py-3.5 text-sm font-medium text-bone transition-all hover:bg-indigo-deep hover:scale-[1.02] active:scale-[0.99];
   }
+  /* Sekundär CTA i Optimera-gul. */
+  .btn-sun {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-sun px-6 py-3.5 text-sm font-medium text-ink transition-all hover:bg-sun-deep hover:scale-[1.02] active:scale-[0.99];
+  }
+  /* Outline-CTA. Färglös. */
   .btn-ghost {
     @apply inline-flex items-center justify-center gap-2 rounded-full border border-ink/15 bg-transparent px-6 py-3.5 text-sm font-medium text-ink transition-all hover:border-ink/40 hover:bg-ink/5;
   }
+  /* Mörk CTA – för admin och dark surfaces. */
+  .btn-ink {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-ink px-6 py-3.5 text-sm font-medium text-bone transition-all hover:bg-graphite hover:scale-[1.02] active:scale-[0.99];
+  }
+  /* Bakåtkompatibilitet: btn-amber pekar nu på sun. */
   .btn-amber {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-amber px-6 py-3.5 text-sm font-medium text-ink transition-all hover:bg-amber-deep hover:scale-[1.02];
+    @apply btn-sun;
   }
   .card {
     @apply rounded-3xl border border-ink/10 bg-cream/60 backdrop-blur-sm;
   }
   .hairline {
     @apply h-px w-full bg-gradient-to-r from-transparent via-ink/15 to-transparent;
+  }
+  /* Brand-stripe: vertikalt gradient-streck (blå topp, gul botten) som
+     speglar logo-detaljen. Användas som dekorativt accent runt om på sidan. */
+  .brand-stripe {
+    @apply block w-[3px] rounded-full;
+    background-image: linear-gradient(180deg, #3648c3 0%, #ffdd6c 100%);
+  }
+  .brand-stripe-h {
+    @apply block h-[3px] rounded-full;
+    background-image: linear-gradient(90deg, #3648c3 0%, #ffdd6c 100%);
   }
   .blueprint-bg {
     background-image: linear-gradient(

@@ -141,7 +141,7 @@ export default function ServicePage({
           <div className="flex gap-3">
             <Link
               href={`/offert?tjanst=${s.slug}`}
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-amber px-7 py-4 text-base font-medium text-ink hover:bg-amber-deep transition"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-sun px-7 py-4 text-base font-medium text-ink hover:bg-sun-deep transition"
             >
               Begär offert <ArrowRight size={16} />
             </Link>

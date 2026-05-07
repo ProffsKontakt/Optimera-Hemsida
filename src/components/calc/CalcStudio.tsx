@@ -169,7 +169,7 @@ export function CalcStudio() {
                 {formatKr(result.netCostKr)}
               </span>
             </span>
-            <span className="inline-flex items-center gap-2 rounded-full bg-amber px-4 py-2 text-ink text-sm">
+            <span className="inline-flex items-center gap-2 rounded-full bg-sun px-4 py-2 text-ink text-sm">
               Begär offert <ArrowRight size={14} />
             </span>
           </Link>
@@ -822,7 +822,7 @@ function Tile({
     <div
       className={[
         "rounded-2xl border p-5",
-        accent ? "bg-amber/15 border-amber/40" : "bg-bone border-ink/10",
+        accent ? "bg-sun/20 border-sun/50" : "bg-bone border-ink/10",
       ].join(" ")}
     >
       <div className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-ink/55">

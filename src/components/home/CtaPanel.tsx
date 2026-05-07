@@ -13,7 +13,7 @@ export function CtaPanel() {
           <h2 className="mt-5 font-display text-5xl md:text-7xl tracking-display-tight leading-[1.02]">
             Boka ett hembesök.
             <br />
-            <span className="italic text-amber">Vi tar med bullarna.</span>
+            <span className="italic font-serif text-sun-deep">Vi tar med bullarna.</span>
           </h2>
           <p className="mt-6 text-bone/70 max-w-xl text-[15.5px] leading-relaxed">
             Berätta lite om ditt hus, så hör vi av oss inom 24 timmar med ett
@@ -25,7 +25,7 @@ export function CtaPanel() {
         <div className="md:col-span-4 flex flex-col gap-3">
           <Link
             href="/offert"
-            className="inline-flex items-center justify-center gap-2 rounded-full bg-amber px-7 py-4 text-base font-medium text-ink transition-all hover:bg-amber-deep hover:scale-[1.02]"
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-sun px-7 py-4 text-base font-medium text-ink transition-all hover:bg-sun-deep hover:scale-[1.02]"
           >
             Begär hembesök <ArrowRight size={16} />
           </Link>
