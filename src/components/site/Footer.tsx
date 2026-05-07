@@ -51,7 +51,7 @@ export function Footer() {
             <li className="text-bone/50 pt-3 text-[13px]">
               Hammarby Sjöstad, Stockholm
               <br />
-              Org.nr <span className="opacity-50">[fylls i]</span>
+              Org.nr 559447-9585 | Optimera Energi Sverige AB
             </li>
           </ul>
           <div className="mt-6 flex gap-2">

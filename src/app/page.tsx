@@ -31,9 +31,9 @@ export default function HomePage() {
         eyebrow="Vår hållning"
         title={
           <>
-            Kvalitet kommer från
+            Vad vi gör
             <br />
-            <span className="italic">småskaliga beslut.</span>
+            <span className="italic">annorlunda.</span>
           </>
         }
       >

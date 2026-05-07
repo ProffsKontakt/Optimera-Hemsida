@@ -4,28 +4,34 @@ import { motion } from "framer-motion";
 
 const items = [
   {
-    eyebrow: "01 · Hela ansvaret",
-    title: "Ett gäng – från ritning till driftsättning",
+    eyebrow: "01 · Genuinitet",
+    title: "Vi säger nej när vi måste.",
     body:
-      "Vi anlitar inte underentreprenörer för det vi inte förstår. Sol, batteri, värmepump, laddbox och vind: vi kan dem alla, och vi installerar dem alla. När något krånglar tre år senare ringer du oss – inte fyra olika leverantörer.",
+      "Vi finns inte för att sälja paket. Bra rådgivning är inte alltid bekväm rådgivning. När vi tycker att du borde vänta, dimensionera mindre, eller satsa på värmepump istället för fler paneler, då säger vi det. Det är därför vi finns.",
   },
   {
-    eyebrow: "02 · Förstklassig ingenjörskonst",
-    title: "Vi optimerar för 25 år, inte för budgeten i nästa kvartal",
+    eyebrow: "02 · Förståelse först",
+    title: "Vi förstår er situation innan vi pratar lösning.",
     body:
-      "Glas-glas-paneler. LFP-batterier. Modulerande växelriktare. Marina kontaktdon. Det syns inte på offerten, men du märker det när det första snöovädret kommer – och det andra, och det tjugofjärde.",
+      "Innan vi pratar lösning vill vi förstå er situation. Vi räknar på er förbrukning, kartlägger ert hus, och ser om lösningen passar er. Först då lägger vi ett konkret förslag, med en klar förklaring av varför andra alternativ inte når lika långt.",
   },
   {
-    eyebrow: "03 · Familjär service",
-    title: "Vi kommer hem till dig – med kanelbullar",
+    eyebrow: "03 · Hand-plockat sortiment",
+    title: "Det vi säljer har vi själva valt.",
     body:
-      "Vi tror att energiomställningen är ett samtal vid köksbordet, inte ett 47-sidigt PDF-dokument. Vi tar oss tid. Vi tar av oss skorna. Och vi har alltid med oss en burk bullar – för att det är så vi är uppfostrade.",
+      "Vi kan installera vilket märke som helst. Men vi har valt det vi säljer efter hundratals tester. Inte det dyraste. Inte det billigaste. Det som ger mest värde för pengarna utan att tumma på 25-årsperspektivet.",
+  },
+  {
+    eyebrow: "04 · Erfarenhet från branschens bästa",
+    title: "Vi vet vad som gör skillnad.",
+    body:
+      "En kompetent skara elektriker, projektörer, ekonomer och säljare. Vi har rötter i Sveriges mest välrenommerade bolag inom solenergi, batterilager och el, och tar med oss exakt de insikter som avgör skillnaden mellan en bra och en utmärkt installation. Resultatet är ett enkelt löfte: våra kunder ska vara branschens nöjdaste.",
   },
 ];
 
 export function Manifesto() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-x-10 gap-y-14">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
       {items.map((it, i) => (
         <motion.div
           key={it.eyebrow}
@@ -35,10 +41,10 @@ export function Manifesto() {
           transition={{ duration: 0.7, delay: i * 0.08 }}
         >
           <div className="eyebrow">{it.eyebrow}</div>
-          <h3 className="font-display text-2xl md:text-[28px] tracking-display-tight mt-4 leading-snug">
+          <h3 className="font-display text-2xl md:text-[26px] tracking-display-tight mt-4 leading-snug">
             {it.title}
           </h3>
-          <p className="mt-4 text-ink/65 text-[15px] leading-relaxed">
+          <p className="mt-4 text-ink/65 text-[14.5px] leading-relaxed">
             {it.body}
           </p>
         </motion.div>
