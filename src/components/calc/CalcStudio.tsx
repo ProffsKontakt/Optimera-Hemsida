@@ -10,6 +10,7 @@ import {
   CHARGERS,
   TURBINES,
   EMS_OPTIONS,
+  ROOF_TYPES,
   MAX_PANELS_PER_HOUSE,
 } from "@/lib/catalog";
 import {
@@ -47,6 +48,7 @@ const initial: CalcInput = {
     laddbox: false,
     vindkraft: false,
   },
+  roofType: "sadeltak",
   panelId: PANELS[0].id,
   panelCount: 14,
   hasExistingSolar: false,
@@ -65,6 +67,65 @@ const initial: CalcInput = {
   evKmPerYear: 18000,
   baseConsumptionKWh: 4500,
 };
+
+// Tre rekommenderade förkonfigurationer som "Sätt ihop rekommenderat system".
+const PRESETS: { id: string; label: string; hint: string; config: Partial<CalcInput> & {
+  enabled: Partial<CalcInput["enabled"]>;
+} }[] = [
+  {
+    id: "starter",
+    label: "Komma igång",
+    hint: "10 paneler · 10 kWh batteri · Energy IQ",
+    config: {
+      enabled: { sol: true, batteri: true, värmepump: false, laddbox: false, vindkraft: false },
+      panelCount: 10,
+      batteryId: "saj-hs3",
+      batteryCapacityKWh: 10,
+      emsId: "energy-iq",
+      hasExistingSolar: false,
+    },
+  },
+  {
+    id: "standard",
+    label: "Standardvilla",
+    hint: "20 paneler · 15 kWh batteri · värmepump · Energy IQ",
+    config: {
+      enabled: { sol: true, batteri: true, värmepump: true, laddbox: false, vindkraft: false },
+      panelCount: 20,
+      batteryId: "pylontech-h3",
+      batteryCapacityKWh: 15.36,
+      heatPumpId: "nibe-s2125-12",
+      emsId: "energy-iq",
+      hasExistingSolar: false,
+    },
+  },
+  {
+    id: "max",
+    label: "Maximerat hem",
+    hint: "30 paneler · 30 kWh batteri · värmepump · laddbox · Enequi",
+    config: {
+      enabled: { sol: true, batteri: true, värmepump: true, laddbox: true, vindkraft: false },
+      panelCount: 30,
+      batteryId: "pylontech-h3",
+      batteryCapacityKWh: 30.72,
+      heatPumpId: "nibe-s1255-12",
+      chargerId: "easee",
+      emsId: "enequi",
+      hasExistingSolar: false,
+    },
+  },
+];
+
+function applyPreset(
+  current: CalcInput,
+  preset: (typeof PRESETS)[number],
+): CalcInput {
+  return {
+    ...current,
+    ...preset.config,
+    enabled: { ...current.enabled, ...preset.config.enabled },
+  } as CalcInput;
+}
 
 // Ensam-lös version som beräknar minimum-pris per delsystem.
 function fromPriceFor(key: PieceKey): number {
@@ -203,22 +264,56 @@ export function CalcStudio() {
 
       {/* HÖGER: konfigurationsrader */}
       <aside className="xl:col-span-5 space-y-3">
-        <HouseHeader input={input} update={update} />
+        <HouseHeader input={input} setInput={setInput} update={update} />
 
-        {PIECES.map((p) => (
-          <PieceTile
-            key={p.key}
-            piece={p}
-            input={input}
-            result={result}
-            isOn={input.enabled[p.key]}
-            onToggle={() => toggleEnabled(p.key)}
-            update={update}
-            setInput={setInput}
-            livePrice={piecePriceLive(p.key)}
-            fromPrice={FROM_PRICES[p.key]}
-          />
-        ))}
+        {PIECES.map((p) => {
+          const tile = (
+            <PieceTile
+              key={p.key}
+              piece={p}
+              input={input}
+              result={result}
+              isOn={input.enabled[p.key]}
+              onToggle={() => toggleEnabled(p.key)}
+              update={update}
+              setInput={setInput}
+              livePrice={piecePriceLive(p.key)}
+              fromPrice={FROM_PRICES[p.key]}
+            />
+          );
+          if (p.key !== "sol") return tile;
+          // Solpanel-raden får en sidoknapp "Finns redan" – när den klickas
+          // växlar vi på Solpaneler och sätter den i befintlig-läge direkt.
+          return (
+            <div key="sol-row" className="flex gap-2">
+              <div className="flex-1 min-w-0">{tile}</div>
+              <button
+                type="button"
+                onClick={() => {
+                  setInput((s) => ({
+                    ...s,
+                    enabled: { ...s.enabled, sol: true },
+                    hasExistingSolar: true,
+                  }));
+                }}
+                className={[
+                  "shrink-0 self-stretch rounded-2xl px-4 py-2 text-[12px] font-medium border transition flex flex-col items-center justify-center gap-1 min-w-[100px] text-center leading-tight",
+                  input.hasExistingSolar && input.enabled.sol
+                    ? "bg-indigo text-bone border-indigo"
+                    : "bg-bone text-ink/75 border-ink/15 hover:border-ink/40",
+                ].join(" ")}
+                aria-label="Jag har redan solpaneler"
+              >
+                <span className="font-mono text-[9.5px] uppercase tracking-[0.16em] opacity-65">
+                  Snabbväg
+                </span>
+                <span className="text-[13px] font-semibold leading-tight">
+                  Finns redan
+                </span>
+              </button>
+            </div>
+          );
+        })}
 
         {anyEnabled && (
           <EmsTile input={input} update={update} />
@@ -251,9 +346,11 @@ export function CalcStudio() {
 
 function HouseHeader({
   input,
+  setInput,
   update,
 }: {
   input: CalcInput;
+  setInput: React.Dispatch<React.SetStateAction<CalcInput>>;
   update: <K extends keyof CalcInput>(k: K, v: CalcInput[K]) => void;
 }) {
   return (
@@ -297,11 +394,56 @@ function HouseHeader({
                     : "bg-bone text-ink/75 border-ink/15 hover:border-ink/40",
                 ].join(" ")}
               >
-                {n} {n === 1 ? "ägare" : "ägare"} ·{" "}
+                {n} ägare ·{" "}
                 <span className="opacity-65">{n * 50_000} kr/år</span>
               </button>
             );
           })}
+        </div>
+      </div>
+
+      <div>
+        <span className="block text-[13px] text-ink/65 mb-2">Taktyp</span>
+        <div className="grid grid-cols-2 gap-1.5">
+          {ROOF_TYPES.map((r) => {
+            const active = input.roofType === r.key;
+            return (
+              <button
+                key={r.key}
+                type="button"
+                onClick={() => update("roofType", r.key)}
+                className={[
+                  "rounded-xl px-3 py-2 text-[13px] border transition",
+                  active
+                    ? "bg-ink text-bone border-ink"
+                    : "bg-bone text-ink/75 border-ink/15 hover:border-ink/40",
+                ].join(" ")}
+              >
+                {r.label}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      <div className="border-t border-ink/8 pt-4">
+        <div className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-ink/55 mb-2">
+          Sätt ihop rekommenderat system
+        </div>
+        <div className="grid grid-cols-1 gap-1.5">
+          {PRESETS.map((p) => (
+            <button
+              key={p.id}
+              type="button"
+              onClick={() => setInput((cur) => applyPreset(cur, p))}
+              className="text-left rounded-xl border border-ink/15 bg-bone hover:border-ink/40 hover:bg-cream/30 transition px-4 py-3"
+            >
+              <div className="font-display text-[15px] tracking-display-tight">
+                {p.label}
+              </div>
+              <div className="text-[12px] text-ink/55">{p.hint}</div>
+            </button>
+          ))}
         </div>
       </div>
     </div>

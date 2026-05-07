@@ -338,8 +338,14 @@ function BatteryModel({
   brandId: string;
   capacityKWh: number;
 }) {
+  // Vi placerar batteriet vid gavelns nedre kant och roterar -90° runt y så
+  // att fronten av modellen pekar UTÅT från fasaden (mot betraktaren) istället
+  // för att stå vänd mot väggen.
   return (
-    <group position={[GABLE_X + 0.1, GABLE_GROUND_Y, -0.15]}>
+    <group
+      position={[GABLE_X + 0.05, GABLE_GROUND_Y, -0.15]}
+      rotation={[0, -Math.PI / 2, 0]}
+    >
       <BatteryByBrand brandId={brandId} capacityKWh={capacityKWh} />
     </group>
   );

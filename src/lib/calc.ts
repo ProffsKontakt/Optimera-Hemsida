@@ -11,6 +11,7 @@ import {
   HOUSE_HEAT_DEMAND_KWH_PER_M2,
   EV_KM_PER_KWH,
   type InverterAssignment,
+  type RoofType,
 } from "./catalog";
 
 export type CalcInput = {
@@ -21,11 +22,11 @@ export type CalcInput = {
     laddbox: boolean;
     vindkraft: boolean;
   };
+  // Tak
+  roofType: RoofType;
   // Sol-input
   panelId: string;
   panelCount: number;
-  // "Har redan solpaneler" – om true räknar vi befintlig anläggning istället
-  // för att designa en ny.
   hasExistingSolar: boolean;
   existingSolarKWp: number;
   existingSolarYearlyKWh: number;
@@ -72,7 +73,9 @@ export type CalcResult = {
   solarDeductionKr: number;
   batteryDeductionKr: number;
   chargerDeductionKr: number;
-  greenDeductionKr: number; // Summa
+  heatpumpDeductionKr: number;
+  turbineDeductionKr: number;
+  greenDeductionKr: number; // Summa (grön teknik + ROT)
   netCostKr: number; // Investering efter avdrag
   // Intäkter / besparingar
   yearlySavingKr: number;
@@ -107,15 +110,40 @@ export function solarPriceKr(count: number, perPanelKr: number): number {
 }
 
 /**
- * Stödtjänster (FCR-D / aFRR) ger en konservativ intäkt på 75 kr / kW
- * växelriktare / månad. Kräver att batteri finns.
+ * Stödtjänster (FCR-D / aFRR) ger en konservativ intäkt baserad på både
+ * växelriktarens kW och batteriets kWh. Kräver att en EMS som klarar
+ * Svenska Kraftnät-styrningen är vald (Enequi Core eller Energy IQ).
+ *
+ * Anchor-punkter från Optimeras spec:
+ *   10 kW + 23 kWh   → 14 383 kr/år
+ *   15 kW + 30,72    → 16 983 kr/år
+ *   15 kW + 53,76    → 21 783 kr/år
+ *
+ * För andra kombinationer hittar vi närmaste anchor i (kW, kWh)-rummet
+ * med vägd distans (kW väger 1.5× mer än kWh).
  */
 export function supportServiceRevenueKr(
   inverterKw: number,
-  hasBattery: boolean,
+  batteryKWh: number,
+  hasSupportEms: boolean,
 ): number {
-  if (!hasBattery || inverterKw <= 0) return 0;
-  return inverterKw * 75 * 12;
+  if (!hasSupportEms || inverterKw <= 0 || batteryKWh <= 0) return 0;
+  const anchors = [
+    { invKw: 10, battKWh: 23, revenue: 14383 },
+    { invKw: 15, battKWh: 30.72, revenue: 16983 },
+    { invKw: 15, battKWh: 53.76, revenue: 21783 },
+    { invKw: 20, battKWh: 60, revenue: 25_000 },
+  ];
+  let best = anchors[0];
+  let bestDist = Infinity;
+  for (const a of anchors) {
+    const d = Math.hypot((a.invKw - inverterKw) * 1.5, a.battKWh - batteryKWh);
+    if (d < bestDist) {
+      bestDist = d;
+      best = a;
+    }
+  }
+  return best.revenue;
 }
 
 // =============================== VÄXELRIKTARE ===============================
@@ -245,17 +273,35 @@ export function computeCalc(input: CalcInput): CalcResult {
     ? (heatedHouseKWh - yearlyHeatKWh) * SPOT_AVG_KR_KWH
     : 0;
 
-  // EMS lyfter sol-besparingen (inte värmepumps-besparingen direkt).
+  // Batteri-arbitrage (gäller även utan sol): batteriet köper när priset är
+  // lågt och säljer/använder när det är högt. Konservativt 600 kr/kWh/år.
+  // Skala även med årsförbrukningen – ju mer du använder, desto mer arbitrage
+  // går att hämta.
+  const batteryArbitrageKr = batteryBrand
+    ? Math.round(
+        batteryKWh *
+          600 *
+          clamp(input.baseConsumptionKWh / 4500, 0.6, 1.6),
+      )
+    : 0;
+
+  // EMS lyfter sol-besparingen och batteri-arbitraget.
   const emsBoost = ems ? 1 + ems.spotOptimization : 1;
   const yearlySavingKr = Math.max(
     0,
-    Math.round(solarSavingKr * emsBoost + heatpumpSavingKr),
+    Math.round(
+      (solarSavingKr + batteryArbitrageKr) * emsBoost + heatpumpSavingKr,
+    ),
   );
 
-  // -------- Stödtjänster (75 kr/kW växelriktare/mån) --------
+  // -------- Stödtjänster --------
+  // Bara våra egna EMS-plattformar (Enequi Core / Energy IQ) ger access till
+  // FCR-D / aFRR. Övriga EMS:er = 0 kr.
+  const hasSupportEms = !!ems?.enablesSupportServices;
   const yearlySupportRevenueKr = supportServiceRevenueKr(
     inverter.kw,
-    !!batteryBrand,
+    batteryKWh,
+    hasSupportEms,
   );
 
   // -------- Hårdvarukostnader --------
@@ -298,11 +344,18 @@ export function computeCalc(input: CalcInput): CalcResult {
     turbinePriceKr +
     emsPriceKr;
 
-  // -------- Grönt avdrag --------
-  // Per ägare 50 000 kr / år. Solar 14,55%, batteri/laddbox 48,5%.
+  // -------- Avdrag (grön teknik + ROT) --------
+  // Cap per fastighetsägare = 50 000 kr/år. Procenter:
+  //   Sol            14,55 %  (grön teknik)
+  //   Batteri        48,5 %   (grön teknik) – kräver att huset har sol
+  //                            (befintlig eller ny)
+  //   Laddbox        48,5 %   (grön teknik)
+  //   Värmepump      30 %     (ROT)
+  //   Vindkraft      30 %
   const totalAllowance = (input.numOwners ?? 1) * 50_000;
   let remaining = totalAllowance;
 
+  const houseHasSolar = solActive; // Ny eller befintlig sol
   const solarBaseForDeduction = solarTotalKr + inverterPriceKr;
   const solarDeductionKr = Math.min(
     Math.round(solarBaseForDeduction * 0.1455),
@@ -310,10 +363,12 @@ export function computeCalc(input: CalcInput): CalcResult {
   );
   remaining -= solarDeductionKr;
 
-  const batteryDeductionKr = Math.min(
-    Math.round((batteryPriceKr + batteryRigKr) * 0.485),
-    Math.max(0, remaining),
-  );
+  const batteryDeductionKr = houseHasSolar
+    ? Math.min(
+        Math.round((batteryPriceKr + batteryRigKr) * 0.485),
+        Math.max(0, remaining),
+      )
+    : 0;
   remaining -= batteryDeductionKr;
 
   const chargerDeductionKr = Math.min(
@@ -322,8 +377,24 @@ export function computeCalc(input: CalcInput): CalcResult {
   );
   remaining -= chargerDeductionKr;
 
+  const heatpumpDeductionKr = Math.min(
+    Math.round((heatpumpPriceKr + heatpumpInstallKr) * 0.3),
+    Math.max(0, remaining),
+  );
+  remaining -= heatpumpDeductionKr;
+
+  const turbineDeductionKr = Math.min(
+    Math.round(turbinePriceKr * 0.3),
+    Math.max(0, remaining),
+  );
+  remaining -= turbineDeductionKr;
+
   const greenDeductionKr =
-    solarDeductionKr + batteryDeductionKr + chargerDeductionKr;
+    solarDeductionKr +
+    batteryDeductionKr +
+    chargerDeductionKr +
+    heatpumpDeductionKr +
+    turbineDeductionKr;
   const netCostKr = totalCostKr - greenDeductionKr;
 
   // -------- Återbetalningstid --------
@@ -357,6 +428,8 @@ export function computeCalc(input: CalcInput): CalcResult {
     solarDeductionKr,
     batteryDeductionKr,
     chargerDeductionKr,
+    heatpumpDeductionKr,
+    turbineDeductionKr,
     greenDeductionKr,
     netCostKr,
     yearlySavingKr,

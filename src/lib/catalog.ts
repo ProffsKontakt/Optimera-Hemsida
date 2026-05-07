@@ -79,7 +79,21 @@ export type EMS = {
   spotOptimization: number; // 0..1, hur mycket den klarar att höja besparingen
   priceKr: number;
   monthlyKr: number;
+  /**
+   * Stödtjänster (FCR-D / aFRR) kräver att EMS:en kan styra batteriet
+   * mot Svenska Kraftnät. Bara våra egna plattformar (Enequi Core och
+   * Energy IQ) gör det idag.
+   */
+  enablesSupportServices: boolean;
 };
+
+export type RoofType = "sadeltak" | "mansardtak" | "valmat" | "pulpettak";
+export const ROOF_TYPES: { key: RoofType; label: string }[] = [
+  { key: "sadeltak", label: "Sadeltak" },
+  { key: "mansardtak", label: "Mansardtak" },
+  { key: "valmat", label: "Valmat tak" },
+  { key: "pulpettak", label: "Pulpettak" },
+];
 
 export const PANELS: Panel[] = [
   // JA Solar är vår valda leverantör – två varianter för olika takytor.
@@ -232,14 +246,26 @@ export const TURBINES: WindTurbine[] = [
 
 export const EMS_OPTIONS: EMS[] = [
   {
+    id: "energy-iq",
+    brand: "Energy IQ",
+    blurb:
+      "Optimera Energis egna EMS. Samma motor som Evolta IQ men utan garantibesparing. Kör batteriet mot stödtjänster (FCR-D / aFRR) och spotpris.",
+    features: ["FCR-D / aFRR", "Spotpris-styrning", "Stödtjänster"],
+    spotOptimization: 0.20,
+    priceKr: 2500,
+    monthlyKr: 0,
+    enablesSupportServices: true,
+  },
+  {
     id: "enequi",
     brand: "Enequi Core",
     blurb:
-      "Svensk-utvecklad EMS-hubb med fokus på spotpris-optimering och stödtjänster mot Svenska Kraftnät.",
-    features: ["FCR-D / aFRR", "Spotpris-styrning", "Mätare i realtid"],
+      "Svensk-utvecklad EMS-hubb med fokus på spotpris-optimering och stödtjänster mot Svenska Kraftnät. Stark garantibesparing.",
+    features: ["FCR-D / aFRR", "Spotpris-styrning", "Garanti"],
     spotOptimization: 0.18,
     priceKr: 14900,
     monthlyKr: 99,
+    enablesSupportServices: true,
   },
   {
     id: "tibber",
@@ -250,16 +276,18 @@ export const EMS_OPTIONS: EMS[] = [
     spotOptimization: 0.10,
     priceKr: 1490,
     monthlyKr: 0,
+    enablesSupportServices: false,
   },
   {
     id: "evolta",
     brand: "Evolta IQ",
     blurb:
-      "Fullt modulär plattform som styr sol, batteri, värmepump och elbil utifrån prognoser och beteende.",
-    features: ["AI-prognos", "Stödtjänster", "Full hårdvarustöd"],
+      "Fullt modulär plattform som styr sol, batteri, värmepump och elbil utifrån prognoser och beteende. Garantibesparing ingår.",
+    features: ["AI-prognos", "Garanti", "Full hårdvarustöd"],
     spotOptimization: 0.20,
     priceKr: 24900,
     monthlyKr: 149,
+    enablesSupportServices: false,
   },
   {
     id: "markedroid",
@@ -270,6 +298,7 @@ export const EMS_OPTIONS: EMS[] = [
     spotOptimization: 0.22,
     priceKr: 9900,
     monthlyKr: 199,
+    enablesSupportServices: false,
   },
   {
     id: "homeassistant",
@@ -280,6 +309,7 @@ export const EMS_OPTIONS: EMS[] = [
     spotOptimization: 0.12,
     priceKr: 8900,
     monthlyKr: 0,
+    enablesSupportServices: false,
   },
 ];
 
