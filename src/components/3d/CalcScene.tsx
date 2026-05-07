@@ -210,19 +210,21 @@ function Window({
 // ============= SOLPANELER på takfallet =============
 
 function PanelArray({ count, glow }: { count: number; glow: number }) {
-  // Vi placerar panelerna i ett rutmönster på det södra takfallet (z = +d/4).
-  // Panelens lokala koordinatsystem är samma som takfallets (efter rotation).
+  // Panelerna placeras på det södra takfallet (z = +d/4). Roterar med samma
+  // tecken som takfallet (+slopeAngle) så att de ligger plant mot taket.
   const cols = 6;
   const rows = Math.min(4, Math.ceil(count / cols));
   const slopeLength = Math.hypot(slopeRun, HOUSE.ridgeH);
   const panelW = (HOUSE.width - 0.2) / cols;
-  const panelD = (slopeLength - 0.2) / 4; // platsen tar plats för max 4 rader
+  // Solpanel-aspektförhållande ~1.72:1 (1953:1134 för JA Solar 500W).
+  // Vi installerar i porträtt-orientering så bredden styr.
+  const panelD = panelW * (1134 / 1953);
   const offsetY = wallTopY + HOUSE.ridgeH / 2;
 
   return (
     <group
       position={[0, offsetY, HOUSE.depth / 4]}
-      rotation={[-slopeAngle, 0, 0]}
+      rotation={[slopeAngle, 0, 0]}
     >
       {Array.from({ length: rows }).map((_, r) =>
         Array.from({ length: cols }).map((__, c) => {

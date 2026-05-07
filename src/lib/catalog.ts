@@ -6,7 +6,10 @@ export type Panel = {
   brand: string;
   watt: number; // Wp per panel
   efficiency: number; // %
-  pricePerPanelKr: number;
+  pricePerPanelKr: number; // pris mot kund inkl moms efter grönt avdrag
+  heightMm: number;
+  widthMm: number;
+  thicknessMm: number;
 };
 
 export type Inverter = {
@@ -79,12 +82,29 @@ export type EMS = {
 };
 
 export const PANELS: Panel[] = [
-  { id: "longi-glass", brand: "Longi Hi-MO 6 Explorer (glas-glas)", watt: 440, efficiency: 22.6, pricePerPanelKr: 2900 },
-  { id: "rec-alpha", brand: "REC Alpha Pure-RX", watt: 470, efficiency: 22.7, pricePerPanelKr: 3400 },
-  { id: "qcells-ml", brand: "Q.Cells Q.Tron Black", watt: 425, efficiency: 22.5, pricePerPanelKr: 2700 },
-  { id: "sunpower-m", brand: "Maxeon 7", watt: 460, efficiency: 23.2, pricePerPanelKr: 4200 },
-  { id: "jinko-tiger", brand: "Jinko Tiger Neo N-type", watt: 445, efficiency: 22.5, pricePerPanelKr: 2600 },
-  { id: "trinasolar", brand: "Trina Vertex S+", watt: 440, efficiency: 22.4, pricePerPanelKr: 2550 },
+  // JA Solar är vår valda leverantör – två varianter för olika takytor.
+  // Effektivitet beräknad som watt / yta (1953×1134 → 22.6%, 1762×1134 → 22.8%).
+  // Pris är kundpris inkl moms efter grönt avdrag.
+  {
+    id: "ja-solar-500",
+    brand: "JA Solar 500 W",
+    watt: 500,
+    efficiency: 22.6,
+    pricePerPanelKr: 2500,
+    heightMm: 1953,
+    widthMm: 1134,
+    thicknessMm: 30,
+  },
+  {
+    id: "ja-solar-455",
+    brand: "JA Solar 455 W",
+    watt: 455,
+    efficiency: 22.8,
+    pricePerPanelKr: 2500,
+    heightMm: 1762,
+    widthMm: 1134,
+    thicknessMm: 30,
+  },
 ];
 
 export const INVERTERS: Inverter[] = [

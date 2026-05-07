@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react";
 import { SERVICES, getService, type ServiceSlug } from "@/lib/services";
 import { ServiceVignette } from "@/components/3d/ServiceVignette";
 import { Section } from "@/components/site/Section";
+import { Disclosure } from "@/components/site/Disclosure";
 
 export function generateStaticParams() {
   return SERVICES.map((s) => ({ slug: s.slug }));
@@ -110,20 +111,9 @@ export default function ServicePage({
       <Section eyebrow="Vanliga frågor" title={<>Klara svar, helt transparent.</>}>
         <div className="divide-y divide-ink/10 border-y border-ink/10">
           {s.faq.map((f, i) => (
-            <details
-              key={i}
-              className="group py-6"
-            >
-              <summary className="cursor-pointer list-none flex items-start gap-6 justify-between">
-                <span className="font-display text-2xl tracking-display-tight max-w-2xl">
-                  {f.q}
-                </span>
-                <span className="font-mono text-[11px] tracking-[0.18em] text-ink/45 group-open:rotate-45 transition-transform">
-                  +
-                </span>
-              </summary>
-              <p className="mt-4 max-w-2xl text-ink/70 leading-relaxed">{f.a}</p>
-            </details>
+            <Disclosure key={i} question={f.q}>
+              {f.a}
+            </Disclosure>
           ))}
         </div>
       </Section>

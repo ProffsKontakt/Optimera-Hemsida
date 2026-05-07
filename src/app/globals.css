@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --bone: #f4f1ea;
-  --cream: #efe9dc;
+  --bone: #edeff5;
+  --cream: #dde2ec;
   --ink: #0e0e0c;
   --graphite: #1a1a17;
   --amber: #e9b949;
