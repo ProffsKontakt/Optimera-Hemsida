@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 
@@ -39,16 +40,19 @@ export function Navbar() {
           href="/"
           className="flex items-center gap-3 group"
           onClick={() => setOpen(false)}
+          aria-label="Optimera Energi – startsidan"
         >
-          <Logo />
-          <div className="leading-tight">
-            <div className="font-display text-[19px] tracking-display-tight">
-              Kloka Tankar El
-            </div>
-            <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink/55">
-              hela energiomställningen
-            </div>
-          </div>
+          <Image
+            src="/logo.svg"
+            alt="Optimera Energi"
+            width={166}
+            height={57}
+            className="h-9 w-auto"
+            priority
+          />
+          <span className="hidden md:inline-block font-mono text-[10px] uppercase tracking-[0.2em] text-ink/55 border-l border-ink/15 pl-3 ml-1">
+            byggd på kloka tankar
+          </span>
         </Link>
 
         <nav className="hidden lg:flex items-center gap-1">
@@ -101,27 +105,5 @@ export function Navbar() {
         </div>
       )}
     </header>
-  );
-}
-
-function Logo() {
-  return (
-    <svg
-      width="38"
-      height="38"
-      viewBox="0 0 40 40"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="transition-transform group-hover:rotate-[8deg]"
-    >
-      <circle cx="20" cy="20" r="19.25" stroke="currentColor" strokeWidth="1.2" />
-      <path
-        d="M22 9 L13 22 H20 L18 31 L27 18 H20 Z"
-        fill="#E9B949"
-        stroke="currentColor"
-        strokeWidth="1.2"
-        strokeLinejoin="round"
-      />
-    </svg>
   );
 }

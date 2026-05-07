@@ -25,18 +25,19 @@ const jetbrains = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "https://klokatankar.com",
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://optimeraenergi.se",
   ),
   title: {
-    default: "Kloka Tankar El – Hela energiomställningen under ett tak",
-    template: "%s · Kloka Tankar El",
+    default:
+      "Optimera Energi – Hela energiomställningen, byggd på kloka tankar",
+    template: "%s · Optimera Energi",
   },
   description:
-    "Solpaneler, batterier, värmepumpar, laddboxar och vindkraft – installerade av samma gäng som dyker upp med bullar och respekt för ditt hem.",
+    "Solpaneler, batterier, värmepumpar, laddboxar och vindkraft – byggda på kloka tankar och installerade av samma gäng som dyker upp med bullar och respekt för ditt hem.",
   openGraph: {
-    title: "Kloka Tankar El",
+    title: "Optimera Energi",
     description:
-      "Hela energiomställningen under ett tak. Familjär service, kompromisslös ingenjörskonst.",
+      "Hela energiomställningen under ett tak. Kloka tankar bakom varje installation.",
     type: "website",
     locale: "sv_SE",
   },

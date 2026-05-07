@@ -49,7 +49,7 @@ export default function StudioPage() {
             Higgsfield-verkstaden.
           </h1>
           <p className="mt-6 max-w-xl text-ink/70 text-lg leading-relaxed">
-            Här genererar vi videos som passar Kloka Tankar Els visuella språk.
+            Här genererar vi videos som passar Optimeras visuella språk.
             Promptar kan användas direkt eller modifieras. Kräver att{" "}
             <code className="font-mono text-ink/80">HIGGSFIELD_API_KEY</code>{" "}
             är satt i miljön.

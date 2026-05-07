@@ -1,4 +1,4 @@
-# Kloka Tankar El
+# Optimera
 
 Den första kundcentrerade men framåtdrivande elfirman som installerar
 **solpaneler, batterier, värmepumpar, laddboxar och vindsnurror** under en
@@ -99,7 +99,7 @@ Plan:
 
 1. Boka in en fotograferingsdag — teamet, hembesök, fika, taket, säkringsskåp
 2. Generera komplementmaterial via Higgsfield (`/studio`-presets är redan
-   tonsatta för Kloka Tankar Els visuella språk)
+   tonsatta för Optimeras visuella språk)
 3. Lägg in på en CDN och uppdatera `HousecallStrip` + `VideoStage` med riktiga
    `<Image>` / `<video>` källor
 
@@ -244,6 +244,27 @@ npm run dev
 
 > Tips: använd `useGLTF.preload("/models/batteries/pylontech-h3.glb")`
 > i moduletop för snabbare första render.
+
+## Admin-sektionen (`/admin`)
+
+Internt verktyg för teamet, skyddat med ett delat lösenord.
+
+```bash
+# .env.local
+ADMIN_PASSWORD=valj-ett-langt-losenord
+IDEAS_WEBHOOK_URL=https://kt-central.../webhooks/ideas   # valfritt
+IDEAS_WEBHOOK_TOKEN=                                      # valfritt
+```
+
+- `/admin/login` – password-gate (cookie-baserad, `oe_admin`)
+- `/admin` – översikt över interna verktyg
+- `/admin/ideer` – Idé-hörnan, en samlingsplats för förslag om sälj,
+  CRM-utbyggnad, drift och marknad. Idéerna persisteras i din browser
+  (localStorage). Om `IDEAS_WEBHOOK_URL` är satt POST:as varje ny idé
+  också till KT Central / Slack / Notion så hela teamet kan se dem
+  centralt
+- `/studio` – Higgsfield-verkstaden (öppen även utan login men inte
+  länkad publikt)
 
 ## Vidare arbete
 

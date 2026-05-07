@@ -36,7 +36,7 @@ export function VideoStage() {
               <Play size={28} className="ml-1" />
             </span>
             <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-bone/85">
-              Filmen om Kloka Tankar · 2:14
+              Filmen om Optimera · 2:14
             </span>
           </span>
         </motion.button>

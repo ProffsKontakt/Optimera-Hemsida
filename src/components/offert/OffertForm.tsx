@@ -54,7 +54,7 @@ export function OffertForm({ defaults }: { defaults: Defaults }) {
       setDone(true);
     } catch (err) {
       setError(
-        "Något krånglade. Mejla oss på hej@klokatankar.com så löser vi det.",
+        "Något krånglade. Mejla oss på hej@optimeraenergi.se så löser vi det.",
       );
     } finally {
       setSubmitting(false);

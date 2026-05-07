@@ -41,7 +41,7 @@ export default function HomePage() {
       </Section>
 
       <Section
-        eyebrow="Familjen Kloka på vägen"
+        eyebrow="Familjen Optimera på vägen"
         title={<>Vi dyker upp. Med bullar.</>}
         intro="Hembesök, montage, driftsättning. Det här är hur vi faktiskt ser ut när vi jobbar."
       >
@@ -55,7 +55,7 @@ export default function HomePage() {
       <Section
         eyebrow="Filmen om oss"
         title={<>Två minuter om varför vi finns.</>}
-        intro="En kort film om hur Kloka Tankar El bygger den första familjära men kompromisslösa elfirman i Sverige."
+        intro="En kort film om hur Optimera bygger den första familjära men kompromisslösa elfirman i Sverige."
       >
         <VideoStage />
       </Section>

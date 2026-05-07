@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 const items = [
   {
     eyebrow: "01 · Hela ansvaret",
-    title: "Ett team – från ritning till driftsättning",
+    title: "Ett gäng – från ritning till driftsättning",
     body:
       "Vi anlitar inte underentreprenörer för det vi inte förstår. Sol, batteri, värmepump, laddbox och vind: vi kan dem alla, och vi installerar dem alla. När något krånglar tre år senare ringer du oss – inte fyra olika leverantörer.",
   },

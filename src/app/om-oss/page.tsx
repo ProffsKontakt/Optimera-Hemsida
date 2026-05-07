@@ -5,7 +5,7 @@ import { HousecallStrip } from "@/components/home/HousecallStrip";
 export const metadata = {
   title: "Om oss",
   description:
-    "Familjär service, kompromisslös ingenjörskonst. Möt teamet bakom Kloka Tankar El.",
+    "Familjär service, kompromisslös ingenjörskonst. Möt teamet bakom Optimera.",
 };
 
 const team = [
@@ -37,7 +37,7 @@ export default function AboutPage() {
     <>
       <section className="container-edge pt-12 md:pt-20 pb-10">
         <div className="max-w-4xl">
-          <div className="eyebrow">Om Kloka Tankar El</div>
+          <div className="eyebrow">Om Optimera</div>
           <h1 className="mt-5 font-display text-[56px] md:text-[96px] tracking-display-tight leading-[0.95]">
             En elfirma som
             <br />
@@ -114,7 +114,7 @@ export default function AboutPage() {
 
       <Section
         eyebrow="Bakom kulisserna"
-        title={<>En vanlig vecka i Kloka.</>}
+        title={<>En vanlig vecka hos oss.</>}
         intro="Vi dokumenterar riktigt arbete från riktiga hem. Här är teamet i full gång."
       >
         <HousecallStrip />
@@ -163,7 +163,7 @@ export default function AboutPage() {
             <div className="font-mono text-[13px] text-bone/75 leading-relaxed space-y-1">
               <div>Heliosgatan 26</div>
               <div>120 30 Stockholm</div>
-              <div className="pt-3">hej@klokatankar.com</div>
+              <div className="pt-3">hej@optimeraenergi.se</div>
               <div>+46 (0)8 123 45 67</div>
               <div className="pt-6">
                 <Link

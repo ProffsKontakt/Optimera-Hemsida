@@ -16,21 +16,21 @@ export const SELLERS: Seller[] = [
   {
     id: "dexter",
     name: "Dexter Sundberg",
-    email: "dexter@klokatankar.com",
+    email: "dexter@optimeraenergi.se",
     region: ["Stockholm", "Uppsala", "Södertälje"],
     specialties: ["solpaneler", "batterier", "laddboxar"],
   },
   {
     id: "ronja",
     name: "Ronja Eklund",
-    email: "ronja@klokatankar.com",
+    email: "ronja@optimeraenergi.se",
     region: ["Stockholm", "Hammarby Sjöstad", "Nacka", "Lidingö"],
     specialties: ["vaermepumpar", "batterier", "ems"],
   },
   {
     id: "albin",
     name: "Albin Norén",
-    email: "albin@klokatankar.com",
+    email: "albin@optimeraenergi.se",
     region: ["Stockholm", "Bromma", "Sundbyberg", "Solna"],
     specialties: ["solpaneler", "vindsnurror"],
   },
@@ -38,8 +38,8 @@ export const SELLERS: Seller[] = [
 
 const FALLBACK: Seller = {
   id: "central",
-  name: "Kloka Tankar Central",
-  email: "hej@klokatankar.com",
+  name: "Optimera Central",
+  email: "hej@optimeraenergi.se",
   region: [],
   specialties: [],
 };

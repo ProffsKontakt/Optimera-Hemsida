@@ -58,7 +58,7 @@ export function StudioClient({ presets }: { presets: Preset[] }) {
           model,
           duration,
           aspectRatio: aspect,
-          reference: "klokatankar-studio",
+          reference: "optimera-studio",
         }),
       });
       const data = await res.json();

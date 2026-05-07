@@ -49,7 +49,7 @@ export async function POST(req: Request) {
   });
 
   const customerInbox =
-    process.env.QUOTE_RECIPIENT_EMAIL ?? "hej@klokatankar.com";
+    process.env.QUOTE_RECIPIENT_EMAIL ?? "hej@optimeraenergi.se";
 
   // Logg för utvecklingsmiljön
   // eslint-disable-next-line no-console
@@ -72,7 +72,7 @@ export async function POST(req: Request) {
             : {}),
         },
         body: JSON.stringify({
-          source: "klokatankar.com",
+          source: "optimeraenergi.se",
           receivedAt: new Date().toISOString(),
           assignedSeller: seller,
           lead,
@@ -97,7 +97,7 @@ export async function POST(req: Request) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          from: "Kloka Tankar El <hej@klokatankar.com>",
+          from: "Optimera <hej@optimeraenergi.se>",
           to: recipients,
           reply_to: lead.epost,
           subject: `Nytt lead – ${lead.namn} (${lead.slot.weekday} ${lead.slot.dateLabel} kl ${lead.slot.time})`,
@@ -118,7 +118,7 @@ export async function POST(req: Request) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          from: "Kloka Tankar El <hej@klokatankar.com>",
+          from: "Optimera <hej@optimeraenergi.se>",
           to: [lead.epost],
           subject: "Tack – vi ses snart",
           text: formatCustomer(lead, seller),
@@ -162,6 +162,6 @@ function formatCustomer(d: Lead, seller: { name: string }) {
     "Vi tar med kanelbullar och inmätningsutrustning. Säg till om du är allergisk så fixar vi något annat.",
     "",
     "Hälsningar,",
-    "Kloka Tankar El",
+    "Optimera",
   ].join("\n");
 }

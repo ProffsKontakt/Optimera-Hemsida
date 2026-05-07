@@ -17,7 +17,7 @@ export function Hero() {
               transition={{ duration: 0.7 }}
               className="eyebrow"
             >
-              Kloka Tankar El · Etabl. 2026 · Stockholm
+              Optimera Energi · Byggd på kloka tankar · Stockholm 2026
             </motion.div>
 
             <motion.h1
@@ -40,8 +40,8 @@ export function Hero() {
               className="mt-8 max-w-xl text-ink/70 text-lg leading-relaxed"
             >
               Solpaneler, batterier, värmepumpar, laddboxar och vindkraft –
-              installerade av samma gäng som dyker upp med kanelbullar och
-              respekt för ditt hem. Förstklassig ingenjörskonst, familjär ton.
+              byggda på kloka tankar och installerade av samma gäng som dyker
+              upp med kanelbullar och respekt för ditt hem.
             </motion.p>
 
             <motion.div

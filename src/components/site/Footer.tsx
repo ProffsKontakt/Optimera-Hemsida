@@ -11,9 +11,10 @@ export function Footer() {
             ström – den är en hållning.
           </div>
           <p className="mt-6 text-bone/65 max-w-md text-[15px] leading-relaxed">
-            Vi installerar solpaneler, batterier, värmepumpar, laddboxar och
-            vindkraft. Men vi gör det familjärt – med fika, raka besked och
-            ingenjörskonst utan kompromiss.
+            Optimera Energi installerar solpaneler, batterier, värmepumpar,
+            laddboxar och vindkraft. Vi gör det med kloka tankar bakom varje
+            beslut – och med fika, raka besked och ingenjörskonst utan
+            kompromiss.
           </p>
         </div>
 
@@ -45,12 +46,12 @@ export function Footer() {
         <div className="md:col-span-3">
           <Heading>Kontakt</Heading>
           <ul className="space-y-2 text-bone/70 text-[14.5px]">
-            <li>hej@klokatankar.com</li>
+            <li>hej@optimeraenergi.se</li>
             <li>+46 (0)8 123 45 67</li>
             <li className="text-bone/50 pt-3 text-[13px]">
               Hammarby Sjöstad, Stockholm
               <br />
-              Org.nr 559500-0000
+              Org.nr <span className="opacity-50">[fylls i]</span>
             </li>
           </ul>
           <div className="mt-6 flex gap-2">
@@ -65,7 +66,7 @@ export function Footer() {
         <div className="container-edge py-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-[12.5px] text-bone/50">
           <div className="flex items-center gap-3">
             <span className="font-mono">© {new Date().getFullYear()}</span>
-            <span>Kloka Tankar El AB</span>
+            <span>Optimera Energi AB</span>
           </div>
           <div className="flex gap-5">
             <Link href="/integritet" className="hover:text-bone">
