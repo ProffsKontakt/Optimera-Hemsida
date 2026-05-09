@@ -1184,9 +1184,11 @@ function CapacitySlider({
         >
           −
         </button>
-        <div className="flex-1 rounded-xl border border-ink/15 bg-bone flex items-baseline justify-center gap-1.5 text-ink/85">
-          <span className="text-[22px] leading-none">{totalKWh}</span>
-          <span className="text-[13px] text-ink/55">kWh</span>
+        <div className="flex-1 rounded-xl border border-ink/15 bg-bone flex items-center justify-center text-ink/85">
+          <span className="text-[22px] leading-none">
+            {totalKWh}
+            <span className="ml-1.5 text-[13px] text-ink/55">kWh</span>
+          </span>
         </div>
         <button
           type="button"

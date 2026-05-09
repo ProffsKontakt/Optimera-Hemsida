@@ -16,6 +16,8 @@ import {
   CHARGER_INSTALL_KR,
   SUPPORT_KR_PER_KW_PER_MONTH,
   EMALDO_GRID_REWARDS_KR_PER_MONTH,
+  EL_PRICE_PER_KWH_KR,
+  SAVING_CAP_FRACTION,
   type Battery,
   type Elzon,
   type InverterAssignment,
@@ -378,12 +380,17 @@ export function computeCalc(input: CalcInput): CalcResult {
 
   // EMS lyfter sol-besparingen och batteri-arbitraget.
   const emsBoost = ems ? 1 + ems.spotOptimization : 1;
-  const yearlySavingKr = Math.max(
-    0,
-    Math.round(
-      (solarSavingKr + batteryArbitrageKr) * emsBoost + heatpumpSavingKr,
-    ),
+  const rawSavingKr = Math.round(
+    (solarSavingKr + batteryArbitrageKr) * emsBoost + heatpumpSavingKr,
   );
+
+  // Tak på besparingen: en realistisk gräns på 60 % av kundens totala
+  // elkostnad (årsförbrukning × snittpris). Stödtjänster + Emaldo grid
+  // rewards adderas utanför taket.
+  const savingCapKr = Math.round(
+    input.baseConsumptionKWh * EL_PRICE_PER_KWH_KR * SAVING_CAP_FRACTION,
+  );
+  const yearlySavingKr = Math.max(0, Math.min(rawSavingKr, savingCapKr));
 
   // -------- Stödtjänster --------
   // Bara våra egna EMS-plattformar (Enequi Core / Energy IQ) ger access till

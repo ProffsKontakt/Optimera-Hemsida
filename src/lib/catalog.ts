@@ -341,6 +341,15 @@ export const MAX_PANELS_PER_HOUSE = 50;
 export const MAX_PANELS_PER_SLOPE = 24;
 export const PANEL_AREA_M2 = 1.95; // ungefärlig panelyta
 
+// =============================== BESPARINGS-TAK ============================
+// Genomsnittligt totalpris på el för en villa (spotpris + nät + skatt + moms),
+// ungefärligt SE3-snitt 2025. Används som anker för att beräkna en realistisk
+// övre gräns på sol/batteri-besparingen.
+//   savingCap = baseConsumptionKWh × EL_PRICE_PER_KWH_KR × SAVING_CAP_FRACTION
+// Stödtjänster och Emaldo grid rewards adderas UTANFÖR taket.
+export const EL_PRICE_PER_KWH_KR = 2.1;
+export const SAVING_CAP_FRACTION = 0.6;
+
 // =============================== STÖDTJÄNSTER ==============================
 // FCR-D / aFRR via Enequi Core eller Energy IQ.
 // Viktor 2026-05-09: 65 kr per kW växelriktare per månad.
