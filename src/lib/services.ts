@@ -2,8 +2,7 @@ export type ServiceSlug =
   | "solpaneler"
   | "batterier"
   | "vaermepumpar"
-  | "laddboxar"
-  | "vindsnurror";
+  | "laddboxar";
 
 export type Service = {
   slug: ServiceSlug;
@@ -256,67 +255,6 @@ export const SERVICES: Service[] = [
       {
         q: "Kan jag dela laddbox med grannen?",
         a: "Ja, vi installerar OCPP-baserade boxar med användare och fakturaunderlag per förare.",
-      },
-    ],
-  },
-  {
-    slug: "vindsnurror",
-    name: "Vindkraft",
-    short: "Vind",
-    badge: "Producerar",
-    oneLiner:
-      "Småskalig vindkraft som kompletterar solen när himlen är grå.",
-    lede:
-      "Vi bygger små vindkraftverk för fastigheter och gårdar – konstruerade för att tåla nordliga vintrar utan att störa grannarna. Ofta ett perfekt komplement till solpaneler.",
-    highlights: [
-      "Vertikal axel – tystare än horisontella verk",
-      "Producerar mest under vinterhalvåret",
-      "Modulärt: 1, 3, 5 eller 10 kW",
-    ],
-    bullets: [
-      "Vindmätning innan installation",
-      "Bygglovshantering ingår",
-      "12 m mast som standard, 18 m som tillval",
-      "Synkning med befintlig sol- eller batterianläggning",
-    ],
-    workflow: [
-      {
-        step: "01",
-        title: "Vindmätning",
-        body:
-          "Vi sätter upp en mätmast i 8 veckor – för utan mätdata är det gissningar.",
-      },
-      {
-        step: "02",
-        title: "Bygglov",
-        body:
-          "Vi sköter dialogen med kommunen, naturvårdsverket och eventuella grannar.",
-      },
-      {
-        step: "03",
-        title: "Fundament & resning",
-        body:
-          "Betongfundament, kran, montage och driftsättning – vi tar helheten.",
-      },
-      {
-        step: "04",
-        title: "Övervakning",
-        body:
-          "Vibrationsövervakning och fjärrtillsyn dygnet runt – du behöver aldrig klättra upp.",
-      },
-    ],
-    faq: [
-      {
-        q: "Är det lönsamt?",
-        a: "På rätt plats (medelvind > 5 m/s vid 10 m höjd) – absolut. På fel plats – nej. Vi ljuger inte om det.",
-      },
-      {
-        q: "Stör det grannarna?",
-        a: "Vertikal-axel-modeller går under 40 dB(A) vid tomtgräns, vilket är under svensk grannlagsregel.",
-      },
-      {
-        q: "Kan jag koppla det till min sol- och batterianläggning?",
-        a: "Ja, vi bygger DC-kopplad hybrid där vind, sol och batteri delar växelriktare.",
       },
     ],
   },

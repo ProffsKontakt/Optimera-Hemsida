@@ -11,10 +11,9 @@ export function Footer() {
             ström – den är en hållning.
           </div>
           <p className="mt-6 text-bone/65 max-w-md text-[15px] leading-relaxed">
-            Optimera Energi installerar solpaneler, batterier, värmepumpar,
-            laddboxar och vindkraft. Vi gör det med kloka tankar bakom varje
-            beslut – och med fika, raka besked och ingenjörskonst utan
-            kompromiss.
+            Optimera Energi installerar solpaneler, batterier, värmepumpar
+            och laddboxar. Vi gör det med kloka tankar bakom varje beslut –
+            och med fika, raka besked och ingenjörskonst utan kompromiss.
           </p>
         </div>
 
@@ -26,7 +25,6 @@ export function Footer() {
               ["/tjanster/batterier", "Batterier"],
               ["/tjanster/vaermepumpar", "Värmepumpar"],
               ["/tjanster/laddboxar", "Laddboxar"],
-              ["/tjanster/vindsnurror", "Vindkraft"],
             ]}
           />
         </div>
@@ -36,9 +34,9 @@ export function Footer() {
           <FooterLinks
             links={[
               ["/om-oss", "Om oss"],
+              ["/kontakt", "Kontakt"],
               ["/kalkylator", "Kalkylator"],
               ["/offert", "Begär offert"],
-              ["/tankar", "Tankar (blogg)"],
             ]}
           />
         </div>
@@ -46,12 +44,25 @@ export function Footer() {
         <div className="md:col-span-3">
           <Heading>Kontakt</Heading>
           <ul className="space-y-2 text-bone/70 text-[14.5px]">
-            <li>hej@optimeraenergi.se</li>
-            <li>+46 (0)8 123 45 67</li>
+            <li>
+              <a href="mailto:hej@optimeraenergi.se" className="hover:text-bone transition">
+                hej@optimeraenergi.se
+              </a>
+            </li>
+            <li>
+              <a href="tel:+46763053732" className="hover:text-bone transition">
+                076 305 37 32
+              </a>
+            </li>
             <li className="text-bone/50 pt-3 text-[13px]">
-              Hammarby Sjöstad, Stockholm
+              Vallgatan 9
               <br />
-              Org.nr 559447-9585 | Optimera Energi Sverige AB
+              170 67 Solna
+              <br />
+              <span className="block pt-2">
+                Optimera Energi Sverige AB
+              </span>
+              <span className="block">Org.nr 559447-9585</span>
             </li>
           </ul>
           <div className="mt-6 flex gap-2">
@@ -66,7 +77,7 @@ export function Footer() {
         <div className="container-edge py-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-[12.5px] text-bone/50">
           <div className="flex items-center gap-3">
             <span className="font-mono">© {new Date().getFullYear()}</span>
-            <span>Optimera Energi AB</span>
+            <span>Optimera Energi Sverige AB</span>
           </div>
           <div className="flex gap-5">
             <Link href="/integritet" className="hover:text-bone">

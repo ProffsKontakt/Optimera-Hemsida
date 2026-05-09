@@ -8,7 +8,6 @@ import {
   HEAT_PUMPS,
   HEAT_PUMP_BRANDS,
   CHARGERS,
-  TURBINES,
   EMS_OPTIONS,
   ROOF_TYPES,
   MAX_PANELS_PER_HOUSE,
@@ -37,7 +36,6 @@ const PIECES: Piece[] = [
   { key: "batteri", label: "Batteri", hint: "Lagrar solen till kvällen" },
   { key: "värmepump", label: "Värmepump", hint: "Halverar elräkningen för uppvärmning" },
   { key: "laddbox", label: "Laddbox", hint: "Hemmaladdning av elbilen" },
-  { key: "vindkraft", label: "Vindkraft", hint: "Komplement när solen vilar" },
 ];
 
 const initial: CalcInput = {
@@ -46,7 +44,6 @@ const initial: CalcInput = {
     batteri: false,
     värmepump: false,
     laddbox: false,
-    vindkraft: false,
   },
   roofType: "sadeltak",
   panelId: PANELS[0].id,
@@ -60,7 +57,6 @@ const initial: CalcInput = {
   batteryCapacityKWh: BATTERIES[0].capacities[0],
   heatPumpId: HEAT_PUMPS[0].id,
   chargerId: CHARGERS[0].id,
-  turbineId: null,
   emsId: EMS_OPTIONS[0].id,
   numOwners: 2,
   houseAreaM2: 145,
@@ -77,7 +73,7 @@ const PRESETS: { id: string; label: string; hint: string; config: Partial<CalcIn
     label: "Komma igång",
     hint: "10 paneler · 10 kWh batteri · Energy IQ",
     config: {
-      enabled: { sol: true, batteri: true, värmepump: false, laddbox: false, vindkraft: false },
+      enabled: { sol: true, batteri: true, värmepump: false, laddbox: false },
       panelCount: 10,
       batteryId: "saj-hs3",
       batteryCapacityKWh: 10,
@@ -90,7 +86,7 @@ const PRESETS: { id: string; label: string; hint: string; config: Partial<CalcIn
     label: "Standardvilla",
     hint: "20 paneler · 15 kWh batteri · värmepump · Energy IQ",
     config: {
-      enabled: { sol: true, batteri: true, värmepump: true, laddbox: false, vindkraft: false },
+      enabled: { sol: true, batteri: true, värmepump: true, laddbox: false },
       panelCount: 20,
       batteryId: "pylontech-h3",
       batteryCapacityKWh: 15.36,
@@ -104,7 +100,7 @@ const PRESETS: { id: string; label: string; hint: string; config: Partial<CalcIn
     label: "Maximerat hem",
     hint: "30 paneler · 30 kWh batteri · värmepump · laddbox · Enequi",
     config: {
-      enabled: { sol: true, batteri: true, värmepump: true, laddbox: true, vindkraft: false },
+      enabled: { sol: true, batteri: true, värmepump: true, laddbox: true },
       panelCount: 30,
       batteryId: "pylontech-h3",
       batteryCapacityKWh: 30.72,
@@ -159,12 +155,6 @@ function fromPriceFor(key: PieceKey): number {
         c.priceKr < min.priceKr ? c : min, CHARGERS[0]);
       stub.chargerId = cheapestCharger.id;
       break;
-    case "vindkraft":
-      stub.enabled = { ...stub.enabled, vindkraft: true };
-      const cheapestTurb = TURBINES.reduce((min, t) =>
-        t.priceKr < min.priceKr ? t : min, TURBINES[0]);
-      stub.turbineId = cheapestTurb.id;
-      break;
   }
   const r = computeCalc(stub);
   return r.netCostKr;
@@ -175,7 +165,6 @@ const FROM_PRICES: Record<PieceKey, number> = {
   batteri: fromPriceFor("batteri"),
   värmepump: fromPriceFor("värmepump"),
   laddbox: fromPriceFor("laddbox"),
-  vindkraft: fromPriceFor("vindkraft"),
 };
 
 export function CalcStudio() {
@@ -206,7 +195,6 @@ export function CalcStudio() {
     batkwh: input.enabled.batteri ? String(input.batteryCapacityKWh) : "",
     pump: input.enabled.värmepump && input.heatPumpId ? input.heatPumpId : "",
     chrg: input.enabled.laddbox && input.chargerId ? input.chargerId : "",
-    wind: input.enabled.vindkraft && input.turbineId ? input.turbineId : "",
     ems: input.emsId ?? "",
   }).toString();
 
@@ -224,8 +212,6 @@ export function CalcStudio() {
         return result.heatpumpPriceKr;
       case "laddbox":
         return Math.max(0, result.chargerPriceKr - result.chargerDeductionKr);
-      case "vindkraft":
-        return result.turbinePriceKr;
     }
   }
 
@@ -545,9 +531,6 @@ function PieceTile({
           {piece.key === "laddbox" && (
             <ChargerControls input={input} update={update} />
           )}
-          {piece.key === "vindkraft" && (
-            <WindControls input={input} update={update} />
-          )}
         </div>
       )}
     </div>
@@ -833,26 +816,6 @@ function ChargerControls({
         suffix="km/år"
       />
     </>
-  );
-}
-
-function WindControls({
-  input,
-  update,
-}: {
-  input: CalcInput;
-  update: <K extends keyof CalcInput>(k: K, v: CalcInput[K]) => void;
-}) {
-  return (
-    <Select
-      label="Märke"
-      value={input.turbineId ?? TURBINES[0].id}
-      onChange={(v) => update("turbineId", v)}
-      options={TURBINES.map((t) => ({
-        value: t.id,
-        label: `${t.brand} · ${t.ratedKW} kW`,
-      }))}
-    />
   );
 }
 

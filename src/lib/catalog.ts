@@ -63,14 +63,6 @@ export type Charger = {
   priceKr: number;
 };
 
-export type WindTurbine = {
-  id: string;
-  brand: string;
-  ratedKW: number;
-  cutInMs: number;
-  priceKr: number;
-};
-
 export type EMS = {
   id: string;
   brand: string;
@@ -236,12 +228,6 @@ export const CHARGERS: Charger[] = [
   { id: "wallbox", brand: "Wallbox Pulsar Max", maxKW: 22, priceKr: 9900 },
   { id: "garo", brand: "Garo Entity Pro", maxKW: 22, priceKr: 13500 },
   { id: "chargeamps", brand: "Charge Amps Halo", maxKW: 22, priceKr: 12500 },
-];
-
-export const TURBINES: WindTurbine[] = [
-  { id: "ssg-3", brand: "Sirocco Vertical 3kW", ratedKW: 3, cutInMs: 2.5, priceKr: 235000 },
-  { id: "ssg-5", brand: "Sirocco Vertical 5kW", ratedKW: 5, cutInMs: 2.8, priceKr: 360000 },
-  { id: "windquiet-2", brand: "WindQuiet 2.4kW", ratedKW: 2.4, cutInMs: 2.2, priceKr: 210000 },
 ];
 
 export const EMS_OPTIONS: EMS[] = [

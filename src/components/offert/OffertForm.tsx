@@ -40,7 +40,6 @@ export function OffertForm({ defaults }: { defaults: Defaults }) {
         batterikWh: defaults.batkwh,
         värmepump: defaults.pump,
         laddbox: defaults.chrg,
-        vindkraft: defaults.wind,
         ems: defaults.ems,
       },
     };

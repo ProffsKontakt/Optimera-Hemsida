@@ -10,9 +10,9 @@ const links = [
   { href: "/tjanster/batterier", label: "Batteri" },
   { href: "/tjanster/vaermepumpar", label: "Värme" },
   { href: "/tjanster/laddboxar", label: "Laddning" },
-  { href: "/tjanster/vindsnurror", label: "Vind" },
   { href: "/kalkylator", label: "Kalkylator" },
   { href: "/om-oss", label: "Om oss" },
+  { href: "/kontakt", label: "Kontakt" },
 ];
 
 export function Navbar() {

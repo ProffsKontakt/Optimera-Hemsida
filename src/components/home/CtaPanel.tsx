@@ -1,23 +1,25 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { BrandPanel } from "@/components/site/BrandPanel";
 
 export function CtaPanel() {
   return (
-    <div className="relative overflow-hidden rounded-[32px] bg-ink text-bone p-10 md:p-20">
-      <div className="absolute inset-0 opacity-[0.06] bg-blueprint bg-blueprint-md pointer-events-none" />
-      <div className="relative grid grid-cols-1 md:grid-cols-12 gap-10 items-end">
+    <BrandPanel>
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 items-end">
         <div className="md:col-span-8">
-          <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-bone/50">
+          <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink/55">
             Nästa steg
           </div>
-          <h2 className="mt-5 font-display text-5xl md:text-7xl tracking-display-tight leading-[1.02]">
+          <h2 className="mt-4 font-display text-4xl md:text-6xl tracking-display-tight leading-[1.02]">
             Boka ett hembesök.
             <br />
-            <span className="italic font-serif text-sun-deep">Vi tar med bullarna.</span>
+            <span className="italic font-serif text-indigo">
+              Vi tar med bullarna.
+            </span>
           </h2>
-          <p className="mt-6 text-bone/70 max-w-xl text-[15.5px] leading-relaxed">
+          <p className="mt-5 text-ink/70 max-w-xl text-[15.5px] leading-relaxed">
             Berätta lite om ditt hus, så hör vi av oss inom 24 timmar med ett
-            förslag på datum. Helt utan kostnad eller förpliktelse – och ja, vi
+            förslag på datum. Helt utan kostnad eller förpliktelse, och ja, vi
             tar med bullar (om du inte är allergisk; säg bara till så fixar vi
             något annat).
           </p>
@@ -25,18 +27,18 @@ export function CtaPanel() {
         <div className="md:col-span-4 flex flex-col gap-3">
           <Link
             href="/offert"
-            className="inline-flex items-center justify-center gap-2 rounded-full bg-sun px-7 py-4 text-base font-medium text-ink transition-all hover:bg-sun-deep hover:scale-[1.02]"
+            className="btn-primary justify-center text-base"
           >
             Begär hembesök <ArrowRight size={16} />
           </Link>
           <Link
             href="/kalkylator"
-            className="inline-flex items-center justify-center gap-2 rounded-full border border-bone/20 px-7 py-4 text-base font-medium text-bone hover:border-bone/50 hover:bg-bone/5 transition-all"
+            className="btn-ghost justify-center text-base"
           >
             Räkna själv först
           </Link>
         </div>
       </div>
-    </div>
+    </BrandPanel>
   );
 }

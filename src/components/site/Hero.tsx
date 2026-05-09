@@ -45,9 +45,9 @@ export function Hero() {
               transition={{ duration: 0.7, delay: 0.25 }}
               className="mt-8 max-w-xl text-ink/70 text-lg leading-relaxed"
             >
-              Solpaneler, batterier, värmepumpar, laddboxar och vindkraft –
-              byggda på kloka tankar och installerade av samma gäng som dyker
-              upp med kanelbullar och respekt för ditt hem.
+              Solpaneler, batterier, värmepumpar och laddboxar – byggda på
+              kloka tankar och installerade av samma gäng som dyker upp med
+              kanelbullar och respekt för ditt hem.
             </motion.p>
 
             <motion.div

@@ -3,7 +3,6 @@ import {
   BATTERIES,
   HEAT_PUMPS,
   CHARGERS,
-  TURBINES,
   EMS_OPTIONS,
   SPOT_AVG_KR_KWH,
   FEED_IN_KR_KWH,
@@ -20,7 +19,6 @@ export type CalcInput = {
     batteri: boolean;
     värmepump: boolean;
     laddbox: boolean;
-    vindkraft: boolean;
   };
   // Tak
   roofType: RoofType;
@@ -40,8 +38,6 @@ export type CalcInput = {
   heatPumpId: string | null;
   // Laddbox
   chargerId: string | null;
-  // Vindkraft
-  turbineId: string | null;
   // EMS
   emsId: string | null;
   // Hus + ägarstruktur
@@ -66,7 +62,6 @@ export type CalcResult = {
   inverterPriceKr: number;
   heatpumpPriceKr: number;
   chargerPriceKr: number;
-  turbinePriceKr: number;
   emsPriceKr: number;
   totalCostKr: number; // Investering innan avdrag
   // Avdrag (per delsystem + total)
@@ -74,7 +69,6 @@ export type CalcResult = {
   batteryDeductionKr: number;
   chargerDeductionKr: number;
   heatpumpDeductionKr: number;
-  turbineDeductionKr: number;
   greenDeductionKr: number; // Summa (grön teknik + ROT)
   netCostKr: number; // Investering efter avdrag
   // Intäkter / besparingar
@@ -205,10 +199,6 @@ export function computeCalc(input: CalcInput): CalcResult {
     en.laddbox && input.chargerId
       ? CHARGERS.find((c) => c.id === input.chargerId)
       : null;
-  const turbine =
-    en.vindkraft && input.turbineId
-      ? TURBINES.find((t) => t.id === input.turbineId)
-      : null;
   const ems =
     input.emsId ? EMS_OPTIONS.find((e) => e.id === input.emsId) : null;
 
@@ -247,8 +237,7 @@ export function computeCalc(input: CalcInput): CalcResult {
   const yearlyConsumptionKWh =
     input.baseConsumptionKWh + yearlyHeatKWh + yearlyEvKWh;
 
-  const yearlyProductionKWh =
-    yearlyProductionFromSol + (turbine ? turbine.ratedKW * 1800 : 0);
+  const yearlyProductionKWh = yearlyProductionFromSol;
 
   // -------- Självförbrukningsgrad --------
   const selfConsumptionShare = batteryBrand
@@ -322,7 +311,6 @@ export function computeCalc(input: CalcInput): CalcResult {
   const heatpumpPriceKr = heat ? heat.priceKr : 0;
   const heatpumpInstallKr = heat ? 35_000 : 0;
   const chargerPriceKr = charger ? charger.priceKr + 9_000 : 0;
-  const turbinePriceKr = turbine ? turbine.priceKr + 85_000 : 0;
   const emsPriceKr = ems ? ems.priceKr : 0;
 
   // Solpriset från solarPriceKr() innehåller redan baspris (rigg/resor) +
@@ -341,7 +329,6 @@ export function computeCalc(input: CalcInput): CalcResult {
     heatpumpPriceKr +
     heatpumpInstallKr +
     chargerPriceKr +
-    turbinePriceKr +
     emsPriceKr;
 
   // -------- Avdrag (grön teknik + ROT) --------
@@ -351,7 +338,6 @@ export function computeCalc(input: CalcInput): CalcResult {
   //                            (befintlig eller ny)
   //   Laddbox        48,5 %   (grön teknik)
   //   Värmepump      30 %     (ROT)
-  //   Vindkraft      30 %
   const totalAllowance = (input.numOwners ?? 1) * 50_000;
   let remaining = totalAllowance;
 
@@ -383,18 +369,11 @@ export function computeCalc(input: CalcInput): CalcResult {
   );
   remaining -= heatpumpDeductionKr;
 
-  const turbineDeductionKr = Math.min(
-    Math.round(turbinePriceKr * 0.3),
-    Math.max(0, remaining),
-  );
-  remaining -= turbineDeductionKr;
-
   const greenDeductionKr =
     solarDeductionKr +
     batteryDeductionKr +
     chargerDeductionKr +
-    heatpumpDeductionKr +
-    turbineDeductionKr;
+    heatpumpDeductionKr;
   const netCostKr = totalCostKr - greenDeductionKr;
 
   // -------- Återbetalningstid --------
@@ -422,14 +401,12 @@ export function computeCalc(input: CalcInput): CalcResult {
     inverterPriceKr,
     heatpumpPriceKr: heatpumpPriceKr + heatpumpInstallKr,
     chargerPriceKr,
-    turbinePriceKr,
     emsPriceKr,
     totalCostKr,
     solarDeductionKr,
     batteryDeductionKr,
     chargerDeductionKr,
     heatpumpDeductionKr,
-    turbineDeductionKr,
     greenDeductionKr,
     netCostKr,
     yearlySavingKr,

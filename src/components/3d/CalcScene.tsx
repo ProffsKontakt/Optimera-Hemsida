@@ -80,7 +80,6 @@ export function CalcScene({ input }: { input: CalcInput }) {
       )}
       {en.värmepump && <HeatPumpUnit />}
       {en.laddbox && <ChargerUnit />}
-      {en.vindkraft && <TurbineUnit />}
 
       <FlowLines input={input} />
 
@@ -409,48 +408,6 @@ function ChargerUnit() {
   );
 }
 
-// ============= VINDKRAFTVERK – propellrar runt centerhubb =============
-function TurbineUnit() {
-  const blades = useRef<THREE.Group>(null);
-  useFrame((_, d) => {
-    if (blades.current) blades.current.rotation.z += d * 1.6;
-  });
-  const towerH = 1.8;
-  const towerY = GABLE_GROUND_Y + towerH / 2;
-  const hubY = GABLE_GROUND_Y + towerH;
-  const bladeLength = 0.7;
-  return (
-    <group position={[-GABLE_X - 0.2, 0, -1.4]}>
-      {/* Mast */}
-      <mesh position={[0, towerY, 0]}>
-        <cylinderGeometry args={[0.04, 0.06, towerH, 16]} />
-        <meshStandardMaterial color="#F4F1EA" />
-      </mesh>
-      {/* Generatorhus, sitter framför masten */}
-      <mesh position={[0, hubY, 0.08]}>
-        <boxGeometry args={[0.14, 0.14, 0.22]} />
-        <meshStandardMaterial color="#1A1A17" />
-      </mesh>
-      {/* Hubb */}
-      <mesh position={[0, hubY, 0.2]}>
-        <sphereGeometry args={[0.07, 16, 16]} />
-        <meshStandardMaterial color="#1A1A17" />
-      </mesh>
-      {/* Tre blad – centrerade vid hubben och pekar utåt */}
-      <group ref={blades} position={[0, hubY, 0.21]}>
-        {[0, 1, 2].map((i) => (
-          <group key={i} rotation={[0, 0, (i / 3) * Math.PI * 2]}>
-            <mesh position={[0, bladeLength / 2, 0]}>
-              <boxGeometry args={[0.06, bladeLength, 0.02]} />
-              <meshStandardMaterial color="#F4F1EA" />
-            </mesh>
-          </group>
-        ))}
-      </group>
-    </group>
-  );
-}
-
 // ============= ENERGIFLÖDEN =============
 
 function FlowLines({ input }: { input: CalcInput }) {
@@ -467,7 +424,6 @@ function FlowLines({ input }: { input: CalcInput }) {
       GABLE_GROUND_Y + 0.45,
       HOUSE.depth / 2 + 0.07,
     );
-    const turbinePos = new THREE.Vector3(-GABLE_X - 0.2, GABLE_GROUND_Y + 1.8, -1.4);
 
     const roofCenter = new THREE.Vector3(
       0,
@@ -487,17 +443,8 @@ function FlowLines({ input }: { input: CalcInput }) {
     if (en.laddbox) {
       list.push({ from: inverterPos, to: chargerPos, color: "#B86F3C" });
     }
-    if (en.vindkraft) {
-      list.push({ from: turbinePos, to: inverterPos, color: "#3F5236" });
-    }
     return list;
-  }, [
-    en.sol,
-    en.batteri,
-    en.värmepump,
-    en.laddbox,
-    en.vindkraft,
-  ]);
+  }, [en.sol, en.batteri, en.värmepump, en.laddbox]);
 
   return (
     <>

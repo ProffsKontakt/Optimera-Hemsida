@@ -32,7 +32,7 @@ export const SELLERS: Seller[] = [
     name: "Albin Norén",
     email: "albin@optimeraenergi.se",
     region: ["Stockholm", "Bromma", "Sundbyberg", "Solna"],
-    specialties: ["solpaneler", "vindsnurror"],
+    specialties: ["solpaneler", "laddboxar"],
   },
 ];
 

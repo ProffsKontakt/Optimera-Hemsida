@@ -47,10 +47,6 @@ export function HeroLab() {
       <Float speed={0.9} rotationIntensity={0.25} floatIntensity={0.4}>
         <HeatPump position={[1.6, 0.6, -0.6]} />
       </Float>
-      <Float speed={1.6} rotationIntensity={0.3} floatIntensity={0.5}>
-        <WindTurbine position={[-1.2, 1.1, -1.4]} />
-      </Float>
-
       <FlowParticles />
     </Canvas>
   );
@@ -146,35 +142,6 @@ function HeatPump({ position }: { position: [number, number, number] }) {
           <cylinderGeometry args={[0.05, 0.05, 0.06, 24]} />
           <meshStandardMaterial color="#E9B949" />
         </mesh>
-      </group>
-    </group>
-  );
-}
-
-function WindTurbine({ position }: { position: [number, number, number] }) {
-  const blades = useRef<THREE.Group>(null);
-  useFrame((_, delta) => {
-    if (blades.current) blades.current.rotation.z += delta * 1.6;
-  });
-  return (
-    <group position={position}>
-      <mesh position={[0, -0.4, 0]}>
-        <cylinderGeometry args={[0.04, 0.06, 1.2, 16]} />
-        <meshStandardMaterial color="#F4F1EA" roughness={0.6} />
-      </mesh>
-      <mesh position={[0, 0.2, 0.05]}>
-        <sphereGeometry args={[0.07, 16, 16]} />
-        <meshStandardMaterial color="#1A1A17" />
-      </mesh>
-      <group ref={blades} position={[0, 0.2, 0.08]}>
-        {[0, 1, 2].map((i) => (
-          <group key={i} rotation={[0, 0, (i / 3) * Math.PI * 2]}>
-            <mesh position={[0, 0.275, 0]}>
-              <boxGeometry args={[0.04, 0.55, 0.02]} />
-              <meshStandardMaterial color="#F4F1EA" />
-            </mesh>
-          </group>
-        ))}
       </group>
     </group>
   );

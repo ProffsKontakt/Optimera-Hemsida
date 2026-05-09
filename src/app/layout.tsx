@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     template: "%s · Optimera Energi",
   },
   description:
-    "Solpaneler, batterier, värmepumpar, laddboxar och vindkraft – byggda på kloka tankar och installerade av samma gäng som dyker upp med bullar och respekt för ditt hem.",
+    "Solpaneler, batterier, värmepumpar och laddboxar – byggda på kloka tankar och installerade av samma gäng som dyker upp med bullar och respekt för ditt hem.",
   openGraph: {
     title: "Optimera Energi",
     description:

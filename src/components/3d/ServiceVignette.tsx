@@ -27,7 +27,6 @@ export function ServiceVignette({ kind }: { kind: ServiceSlug }) {
         {kind === "batterier" && <BatteryStack />}
         {kind === "vaermepumpar" && <HeatPumpUnit />}
         {kind === "laddboxar" && <ChargerUnit />}
-        {kind === "vindsnurror" && <Turbine />}
       </Float>
     </Canvas>
   );
@@ -44,8 +43,6 @@ function backgroundFor(kind: ServiceSlug) {
       return "#EAEDF4";
     case "laddboxar":
       return "#E5E8F1";
-    case "vindsnurror":
-      return "#DEE3ED";
   }
 }
 
@@ -157,31 +154,3 @@ function ChargerUnit() {
   );
 }
 
-function Turbine() {
-  const blades = useRef<THREE.Group>(null);
-  useFrame((_, d) => {
-    if (blades.current) blades.current.rotation.z += d * 2;
-  });
-  return (
-    <group>
-      <mesh position={[0, -0.4, 0]}>
-        <cylinderGeometry args={[0.05, 0.08, 1.6, 16]} />
-        <meshStandardMaterial color="#F4F1EA" />
-      </mesh>
-      <mesh position={[0, 0.4, 0.06]}>
-        <sphereGeometry args={[0.1, 16, 16]} />
-        <meshStandardMaterial color="#1A1A17" />
-      </mesh>
-      <group ref={blades} position={[0, 0.4, 0.1]}>
-        {[0, 1, 2].map((i) => (
-          <group key={i} rotation={[0, 0, (i / 3) * Math.PI * 2]}>
-            <mesh position={[0, 0.425, 0]}>
-              <boxGeometry args={[0.05, 0.85, 0.025]} />
-              <meshStandardMaterial color="#F4F1EA" />
-            </mesh>
-          </group>
-        ))}
-      </group>
-    </group>
-  );
-}
