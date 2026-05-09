@@ -5,7 +5,7 @@ import { Grid, OrbitControls, Html } from "@react-three/drei";
 import { useMemo, useRef } from "react";
 import * as THREE from "three";
 import { computeCalc, type CalcInput, type CalcResult } from "@/lib/calc";
-import { PANELS } from "@/lib/catalog";
+import { PANELS, type RoofType } from "@/lib/catalog";
 import { BatteryByBrand } from "./BatteryModels";
 
 // ----- Hus-mått (metaforisk skala). Allt 3D-arbete utgår från dessa.
@@ -17,9 +17,124 @@ const HOUSE = {
   wallY: 0, // mittpunkt på väggen (centrum y)
 };
 const wallTopY = HOUSE.wallY + HOUSE.wallH / 2; // y där taket börjar
-const ridgeY = wallTopY + HOUSE.ridgeH; // y för nocken
+const ridgeY = wallTopY + HOUSE.ridgeH; // y för nocken (sadeltak/mansard/valmat)
 const slopeRun = HOUSE.depth / 2;
-const slopeAngle = Math.atan2(HOUSE.ridgeH, slopeRun); // taklutning
+const slopeAngle = Math.atan2(HOUSE.ridgeH, slopeRun); // sadel-taklutning
+
+// =============== SOLPANEL-SURFACES per taktyp ===============
+// En SolarSurface beskriver ett rektangulärt område där paneler kan placeras.
+// Panelens grid byggs i lokal XY-plan med (0,0) i centrum, sedan flyttas
+// gruppen via position och roteras via rotation.
+type SolarSurface = {
+  position: [number, number, number];
+  rotation: [number, number, number];
+  /** Bredd (lokal X) och djup (lokal Z) i meter. */
+  widthM: number;
+  depthM: number;
+  /** Hur många paneler får plats max på denna yta. */
+  capacity: number;
+};
+
+function getSolarSurfaces(roofType: RoofType): SolarSurface[] {
+  const w = HOUSE.width;
+  const d = HOUSE.depth;
+  const ridge = HOUSE.ridgeH;
+
+  switch (roofType) {
+    case "sadeltak": {
+      // Två symmetriska takfall, södra (+z) prioriteras.
+      const slopeY = wallTopY + ridge / 2;
+      const slopeLen = Math.hypot(slopeRun, ridge);
+      return [
+        {
+          position: [0, slopeY, d / 4],
+          rotation: [slopeAngle, 0, 0],
+          widthM: w - 0.2,
+          depthM: slopeLen - 0.15,
+          capacity: 24,
+        },
+        {
+          position: [0, slopeY, -d / 4],
+          rotation: [-slopeAngle, 0, 0],
+          widthM: w - 0.2,
+          depthM: slopeLen - 0.15,
+          capacity: 24,
+        },
+      ];
+    }
+
+    case "pulpettak": {
+      // Ett enda takfall över hela djupet. Lågpunkt vid +z, högpunkt vid -z.
+      const angle = Math.atan2(ridge, d);
+      const slopeLen = Math.hypot(d, ridge);
+      const cy = wallTopY + ridge / 2;
+      return [
+        {
+          position: [0, cy, 0],
+          rotation: [angle, 0, 0],
+          widthM: w - 0.2,
+          depthM: slopeLen - 0.15,
+          capacity: 36,
+        },
+      ];
+    }
+
+    case "mansardtak": {
+      // Mansardtak: lägre brant del + övre flackare del. Paneler placeras
+      // alltid på den övre flackare delen (södra + norra).
+      const inset = slopeRun * 0.36; // hur långt in brytpunkten ligger
+      const breakY = ridge * 0.5;
+      const upperRun = slopeRun - inset;
+      const upperRise = ridge - breakY;
+      const upperAngle = Math.atan2(upperRise, upperRun);
+      const upperLen = Math.hypot(upperRun, upperRise);
+      const cyUpper = wallTopY + breakY + upperRise / 2;
+      const czUpper = (slopeRun - inset) / 2; // mittpunkt i z
+      return [
+        {
+          position: [0, cyUpper, czUpper],
+          rotation: [upperAngle, 0, 0],
+          widthM: w - 0.2,
+          depthM: upperLen - 0.1,
+          capacity: 18,
+        },
+        {
+          position: [0, cyUpper, -czUpper],
+          rotation: [-upperAngle, 0, 0],
+          widthM: w - 0.2,
+          depthM: upperLen - 0.1,
+          capacity: 18,
+        },
+      ];
+    }
+
+    case "valmat": {
+      // Hipped roof: 4 takfall, södra långsida (+z) är en trapez. Vi placerar
+      // paneler i en mindre rektangel som ryms inom trapezet.
+      const ridgeLen = w * 0.5; // nockens längd (kortare än w)
+      const slopeY = wallTopY + ridge / 2;
+      const slopeLen = Math.hypot(slopeRun, ridge);
+      // Säker rektangel inom trapezet: använd nock-bredden som max-bredd
+      // för att vara säkra på att inte gå utanför hip-kanterna.
+      return [
+        {
+          position: [0, slopeY, d / 4],
+          rotation: [slopeAngle, 0, 0],
+          widthM: ridgeLen,
+          depthM: slopeLen - 0.2,
+          capacity: 18,
+        },
+        {
+          position: [0, slopeY, -d / 4],
+          rotation: [-slopeAngle, 0, 0],
+          widthM: ridgeLen,
+          depthM: slopeLen - 0.2,
+          capacity: 18,
+        },
+      ];
+    }
+  }
+}
 
 export function CalcScene({ input }: { input: CalcInput }) {
   const en = input.enabled;
@@ -57,11 +172,12 @@ export function CalcScene({ input }: { input: CalcInput }) {
         infiniteGrid
       />
 
-      <House />
+      <House roofType={input.roofType} />
 
       {en.sol && (
         <PanelArray
           count={input.panelCount}
+          roofType={input.roofType}
           glow={
             PANELS.find((p) => p.id === input.panelId)?.efficiency ?? 22
           }
@@ -96,65 +212,29 @@ export function CalcScene({ input }: { input: CalcInput }) {
   );
 }
 
-// ============= HUS (sadeltak) =============
+// ============= HUS =============
 
-function House() {
+const WALL_COLOR = "#F4F1EA";
+const ROOF_COLOR = "#3F5236";
+
+function House({ roofType }: { roofType: RoofType }) {
   const w = HOUSE.width;
   const d = HOUSE.depth;
   const h = HOUSE.wallH;
-  const ridge = HOUSE.ridgeH;
-
-  // Sadeltakets två fall som sneda lådor
-  const slopeLength = Math.hypot(slopeRun, ridge);
-  const slopeY = wallTopY + ridge / 2;
 
   return (
     <group>
-      {/* Vägg-volym */}
+      {/* Vägg-volym (alltid samma) */}
       <mesh position={[0, HOUSE.wallY, 0]} castShadow receiveShadow>
         <boxGeometry args={[w, h, d]} />
-        <meshStandardMaterial color="#F4F1EA" roughness={0.85} />
+        <meshStandardMaterial color={WALL_COLOR} roughness={0.85} />
       </mesh>
 
-      {/* Sadeltakets gavel-trianglar – på kortsidorna (gavlarna), inte på
-          långsidorna där dörren sitter. Triangeln har basen = husets djup
-          och peak = nockhöjden. Roteras 90° runt y så normalen pekar utåt. */}
-      <mesh
-        position={[w / 2 + 0.002, wallTopY, 0]}
-        rotation={[0, Math.PI / 2, 0]}
-      >
-        <shapeGeometry args={[gableShape(d, ridge)]} />
-        <meshStandardMaterial
-          color="#F4F1EA"
-          roughness={0.85}
-          side={THREE.DoubleSide}
-        />
-      </mesh>
-      <mesh
-        position={[-w / 2 - 0.002, wallTopY, 0]}
-        rotation={[0, -Math.PI / 2, 0]}
-      >
-        <shapeGeometry args={[gableShape(d, ridge)]} />
-        <meshStandardMaterial
-          color="#F4F1EA"
-          roughness={0.85}
-          side={THREE.DoubleSide}
-        />
-      </mesh>
-
-      {/* Två takfall (sadel). Möts vid nocken (höga y) och faller mot
-          takfoten (låga y vid z = ±d/2). */}
-      {[1, -1].map((sign) => (
-        <mesh
-          key={sign}
-          position={[0, slopeY, (sign * d) / 4]}
-          rotation={[sign * slopeAngle, 0, 0]}
-          castShadow
-        >
-          <boxGeometry args={[w + 0.1, 0.05, slopeLength + 0.05]} />
-          <meshStandardMaterial color="#3F5236" roughness={0.7} />
-        </mesh>
-      ))}
+      {/* Tak + gavel-fyllning per taktyp */}
+      {roofType === "sadeltak" && <SaddleRoof />}
+      {roofType === "mansardtak" && <MansardRoof />}
+      {roofType === "valmat" && <HipRoof />}
+      {roofType === "pulpettak" && <ShedRoof />}
 
       {/* Dörr + två fönster på samma långsida (+z) */}
       <mesh position={[0, HOUSE.wallY - 0.15, d / 2 + 0.005]}>
@@ -167,6 +247,235 @@ function House() {
   );
 }
 
+// ---- Sadeltak (klassisk gavel + nock) ----
+function SaddleRoof() {
+  const w = HOUSE.width;
+  const d = HOUSE.depth;
+  const ridge = HOUSE.ridgeH;
+  const slopeLen = Math.hypot(slopeRun, ridge);
+  const slopeY = wallTopY + ridge / 2;
+  return (
+    <>
+      <mesh
+        position={[w / 2 + 0.002, wallTopY, 0]}
+        rotation={[0, Math.PI / 2, 0]}
+      >
+        <shapeGeometry args={[gableShape(d, ridge)]} />
+        <meshStandardMaterial
+          color={WALL_COLOR}
+          roughness={0.85}
+          side={THREE.DoubleSide}
+        />
+      </mesh>
+      <mesh
+        position={[-w / 2 - 0.002, wallTopY, 0]}
+        rotation={[0, -Math.PI / 2, 0]}
+      >
+        <shapeGeometry args={[gableShape(d, ridge)]} />
+        <meshStandardMaterial
+          color={WALL_COLOR}
+          roughness={0.85}
+          side={THREE.DoubleSide}
+        />
+      </mesh>
+      {[1, -1].map((sign) => (
+        <mesh
+          key={sign}
+          position={[0, slopeY, (sign * d) / 4]}
+          rotation={[sign * slopeAngle, 0, 0]}
+          castShadow
+        >
+          <boxGeometry args={[w + 0.1, 0.05, slopeLen + 0.05]} />
+          <meshStandardMaterial color={ROOF_COLOR} roughness={0.7} />
+        </mesh>
+      ))}
+    </>
+  );
+}
+
+// ---- Mansardtak (brant lägre + flack övre del) ----
+function MansardRoof() {
+  const w = HOUSE.width;
+  const d = HOUSE.depth;
+  const ridge = HOUSE.ridgeH;
+  const inset = slopeRun * 0.36;
+  const breakY = ridge * 0.5;
+
+  const lowerRun = inset;
+  const lowerRise = breakY;
+  const lowerAngle = Math.atan2(lowerRise, lowerRun);
+  const lowerLen = Math.hypot(lowerRun, lowerRise);
+  const lowerCy = wallTopY + breakY / 2;
+  const lowerCz = (slopeRun + (slopeRun - inset)) / 2; // mittpunkt z
+
+  const upperRun = slopeRun - inset;
+  const upperRise = ridge - breakY;
+  const upperAngle = Math.atan2(upperRise, upperRun);
+  const upperLen = Math.hypot(upperRun, upperRise);
+  const upperCy = wallTopY + breakY + upperRise / 2;
+  const upperCz = (slopeRun - inset) / 2;
+
+  return (
+    <>
+      {/* Gavel-fyllning (5-hörnig) på östra och västra kortsidan */}
+      <mesh
+        position={[w / 2 + 0.002, wallTopY, 0]}
+        rotation={[0, Math.PI / 2, 0]}
+      >
+        <shapeGeometry args={[mansardGableShape(d, ridge, inset, breakY)]} />
+        <meshStandardMaterial
+          color={WALL_COLOR}
+          roughness={0.85}
+          side={THREE.DoubleSide}
+        />
+      </mesh>
+      <mesh
+        position={[-w / 2 - 0.002, wallTopY, 0]}
+        rotation={[0, -Math.PI / 2, 0]}
+      >
+        <shapeGeometry args={[mansardGableShape(d, ridge, inset, breakY)]} />
+        <meshStandardMaterial
+          color={WALL_COLOR}
+          roughness={0.85}
+          side={THREE.DoubleSide}
+        />
+      </mesh>
+      {/* Lägre branta takfall (södra + norra) */}
+      {[1, -1].map((sign) => (
+        <mesh
+          key={`lo${sign}`}
+          position={[0, lowerCy, sign * lowerCz]}
+          rotation={[sign * lowerAngle, 0, 0]}
+          castShadow
+        >
+          <boxGeometry args={[w + 0.1, 0.05, lowerLen + 0.05]} />
+          <meshStandardMaterial color={ROOF_COLOR} roughness={0.7} />
+        </mesh>
+      ))}
+      {/* Övre flackare takfall (södra + norra) */}
+      {[1, -1].map((sign) => (
+        <mesh
+          key={`up${sign}`}
+          position={[0, upperCy, sign * upperCz]}
+          rotation={[sign * upperAngle, 0, 0]}
+          castShadow
+        >
+          <boxGeometry args={[w + 0.1, 0.05, upperLen + 0.05]} />
+          <meshStandardMaterial color={ROOF_COLOR} roughness={0.7} />
+        </mesh>
+      ))}
+    </>
+  );
+}
+
+// ---- Valmat tak (4 takfall, kort nock på toppen) ----
+function HipRoof() {
+  const w = HOUSE.width;
+  const d = HOUSE.depth;
+  const ridge = HOUSE.ridgeH;
+  const ridgeLen = w * 0.5;
+
+  // Definiera de fyra takfallens hörn i världskoordinater och bygg
+  // BufferGeometry per face. Alla faces är plana = giltiga ytor.
+  const eaveSE: [number, number, number] = [w / 2, wallTopY, d / 2];
+  const eaveSW: [number, number, number] = [-w / 2, wallTopY, d / 2];
+  const eaveNE: [number, number, number] = [w / 2, wallTopY, -d / 2];
+  const eaveNW: [number, number, number] = [-w / 2, wallTopY, -d / 2];
+  const ridgeE: [number, number, number] = [ridgeLen / 2, wallTopY + ridge, 0];
+  const ridgeW: [number, number, number] = [-ridgeLen / 2, wallTopY + ridge, 0];
+
+  return (
+    <>
+      {/* Södra trapez (z = +d/2 → nock) */}
+      <FlatFace verts={[eaveSW, eaveSE, ridgeE, ridgeW]} color={ROOF_COLOR} />
+      {/* Norra trapez (z = -d/2 → nock) */}
+      <FlatFace verts={[eaveNE, eaveNW, ridgeW, ridgeE]} color={ROOF_COLOR} />
+      {/* Östra triangel (x = +w/2 → östra nockände) */}
+      <FlatFace verts={[eaveSE, eaveNE, ridgeE]} color={ROOF_COLOR} />
+      {/* Västra triangel (x = -w/2 → västra nockände) */}
+      <FlatFace verts={[eaveNW, eaveSW, ridgeW]} color={ROOF_COLOR} />
+    </>
+  );
+}
+
+// ---- Pulpettak (en enda lutning) ----
+function ShedRoof() {
+  const w = HOUSE.width;
+  const d = HOUSE.depth;
+  const ridge = HOUSE.ridgeH;
+  const angle = Math.atan2(ridge, d);
+  const slopeLen = Math.hypot(d, ridge);
+  return (
+    <>
+      {/* Trapezoidala gavlar (kortsidorna). Lågpunkt vid +z, högpunkt vid -z. */}
+      <mesh
+        position={[w / 2 + 0.002, wallTopY, 0]}
+        rotation={[0, Math.PI / 2, 0]}
+      >
+        <shapeGeometry args={[shedGableShape(d, ridge, false)]} />
+        <meshStandardMaterial
+          color={WALL_COLOR}
+          roughness={0.85}
+          side={THREE.DoubleSide}
+        />
+      </mesh>
+      <mesh
+        position={[-w / 2 - 0.002, wallTopY, 0]}
+        rotation={[0, -Math.PI / 2, 0]}
+      >
+        <shapeGeometry args={[shedGableShape(d, ridge, true)]} />
+        <meshStandardMaterial
+          color={WALL_COLOR}
+          roughness={0.85}
+          side={THREE.DoubleSide}
+        />
+      </mesh>
+      {/* Ett enda takfall över hela djupet */}
+      <mesh
+        position={[0, wallTopY + ridge / 2, 0]}
+        rotation={[angle, 0, 0]}
+        castShadow
+      >
+        <boxGeometry args={[w + 0.1, 0.05, slopeLen + 0.05]} />
+        <meshStandardMaterial color={ROOF_COLOR} roughness={0.7} />
+      </mesh>
+    </>
+  );
+}
+
+// ---- Hjälpkomponent: en plan polygon-yta från world-vertices ----
+function FlatFace({
+  verts,
+  color,
+}: {
+  verts: [number, number, number][];
+  color: string;
+}) {
+  const geometry = useMemo(() => {
+    const g = new THREE.BufferGeometry();
+    // Triangulera fan från första hörnet (works för konvexa polygoner).
+    const tris: number[] = [];
+    for (let i = 1; i < verts.length - 1; i++) {
+      tris.push(...verts[0], ...verts[i], ...verts[i + 1]);
+    }
+    g.setAttribute(
+      "position",
+      new THREE.BufferAttribute(new Float32Array(tris), 3),
+    );
+    g.computeVertexNormals();
+    return g;
+  }, [verts]);
+  return (
+    <mesh geometry={geometry} castShadow>
+      <meshStandardMaterial
+        color={color}
+        roughness={0.7}
+        side={THREE.DoubleSide}
+      />
+    </mesh>
+  );
+}
+
 function gableShape(base: number, ridgeHeight: number) {
   // base = husets djup (=z-dimensionen vid gavelväggen). Triangeln ligger
   // i lokal XY-plan med basen från (-base/2, 0) till (+base/2, 0) och peak
@@ -176,6 +485,47 @@ function gableShape(base: number, ridgeHeight: number) {
   s.lineTo(base / 2, 0);
   s.lineTo(0, ridgeHeight);
   s.lineTo(-base / 2, 0);
+  return s;
+}
+
+/**
+ * Mansardtak-gavel: 5-hörnig polygon. Bas i botten, två branta sidor upp till
+ * brytpunkterna, sedan flackare lutning upp till nocken.
+ */
+function mansardGableShape(
+  base: number,
+  ridgeHeight: number,
+  inset: number,
+  breakHeight: number,
+) {
+  const s = new THREE.Shape();
+  s.moveTo(-base / 2, 0);
+  s.lineTo(base / 2, 0);
+  s.lineTo(base / 2 - inset, breakHeight);
+  s.lineTo(0, ridgeHeight);
+  s.lineTo(-base / 2 + inset, breakHeight);
+  s.lineTo(-base / 2, 0);
+  return s;
+}
+
+/**
+ * Pulpettak-gavel: rätvinklig triangel där ena sidan är låg (höjd 0) och
+ * andra sidan är hög (höjd ridgeHeight). `flip` speglar shape-x så båda
+ * gavlar pekar utåt korrekt efter rotation.
+ */
+function shedGableShape(base: number, ridgeHeight: number, flip: boolean) {
+  const s = new THREE.Shape();
+  if (flip) {
+    s.moveTo(-base / 2, 0);
+    s.lineTo(base / 2, 0);
+    s.lineTo(-base / 2, ridgeHeight);
+    s.lineTo(-base / 2, 0);
+  } else {
+    s.moveTo(-base / 2, 0);
+    s.lineTo(base / 2, 0);
+    s.lineTo(base / 2, ridgeHeight);
+    s.lineTo(-base / 2, 0);
+  }
   return s;
 }
 
@@ -208,62 +558,62 @@ function Window({
 
 // ============= SOLPANELER på takfallet =============
 
-function PanelArray({ count, glow }: { count: number; glow: number }) {
-  // Upp till 24 paneler placeras på södra takfallet (+z). Över 24 fortsätter
-  // vi på norra takfallet (-z) så att vi täcker båda sidorna.
-  const cols = 6;
-  const rowsPerSlope = 4; // 6×4 = 24 paneler per takfall
-  const southCount = Math.min(count, cols * rowsPerSlope);
-  const northCount = Math.max(0, count - southCount);
+function PanelArray({
+  count,
+  roofType,
+  glow,
+}: {
+  count: number;
+  roofType: RoofType;
+  glow: number;
+}) {
+  const surfaces = useMemo(() => getSolarSurfaces(roofType), [roofType]);
+  // Distribuera paneler i prio-ordning över ytorna. Södra prio över norra.
+  let remaining = count;
   return (
     <>
-      <SlopePanels
-        count={southCount}
-        cols={cols}
-        rows={rowsPerSlope}
-        glow={glow}
-        sign={1}
-      />
-      {northCount > 0 && (
-        <SlopePanels
-          count={northCount}
-          cols={cols}
-          rows={rowsPerSlope}
-          glow={glow}
-          sign={-1}
-        />
-      )}
+      {surfaces.map((surface, i) => {
+        const c = Math.min(remaining, surface.capacity);
+        if (c <= 0) return null;
+        remaining -= c;
+        return (
+          <SurfacePanels
+            key={i}
+            surface={surface}
+            count={c}
+            glow={glow}
+          />
+        );
+      })}
     </>
   );
 }
 
-function SlopePanels({
+function SurfacePanels({
+  surface,
   count,
-  cols,
-  rows,
   glow,
-  sign,
 }: {
+  surface: SolarSurface;
   count: number;
-  cols: number;
-  rows: number;
   glow: number;
-  sign: 1 | -1;
 }) {
-  const panelW = (HOUSE.width - 0.2) / cols;
-  const panelD = panelW * (1134 / 1953);
-  const offsetY = wallTopY + HOUSE.ridgeH / 2;
+  // Bestäm grid (cols × rows) som ger högst paneltäckning på ytan utan att
+  // gå utanför kanterna. Standardpanel är ~1953×1134 mm = ratio 0,58.
+  const aspect = 1134 / 1953;
+  const cols = surface.widthM > surface.depthM ? 6 : 4;
+  // Beräkna panelbredd och se om grid-djup passar; annars öka rows.
+  const panelW = surface.widthM / cols;
+  const panelD = panelW * aspect;
+  const rowsFit = Math.max(1, Math.floor(surface.depthM / panelD));
   return (
-    <group
-      position={[0, offsetY, (sign * HOUSE.depth) / 4]}
-      rotation={[sign * slopeAngle, 0, 0]}
-    >
-      {Array.from({ length: rows }).map((_, r) =>
+    <group position={surface.position} rotation={surface.rotation}>
+      {Array.from({ length: rowsFit }).map((_, r) =>
         Array.from({ length: cols }).map((__, c) => {
           const idx = r * cols + c;
           if (idx >= count) return null;
           const x = (c - (cols - 1) / 2) * panelW;
-          const z = (r - (rows - 1) / 2) * panelD;
+          const z = (r - (rowsFit - 1) / 2) * panelD;
           return (
             <group key={`${r}-${c}`} position={[x, 0.035, z]}>
               <mesh castShadow>
