@@ -58,7 +58,7 @@ export type InverterAssignment =
 export const MOMS_FACTOR = 1.25;
 export const BATTERY_PROJECT_MARGIN_KR = 30_000;        // fast vinst per batteriprojekt
 export const PER_EXTRA_MODULE_MARGIN_KR = 1_000;        // marginal för modul 3+
-export const BATTERY_INSTALLATION_FIXED_KR = 0;         // TODO Viktor: fyll i fast install-kostnad per projekt
+export const BATTERY_INSTALLATION_FIXED_KR = 15_000;    // fast install-kostnad per projekt (extern, ex moms)
 export const CHARGER_INSTALL_KR = 5_000;                // laddbox-installation (var 9 000)
 
 // --- Solis S6-priser, ex moms hardware-cost
