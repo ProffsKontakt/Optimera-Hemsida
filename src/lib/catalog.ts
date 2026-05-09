@@ -211,7 +211,7 @@ export const BATTERIES: Battery[] = [
     id: "emaldo-store",
     brand: "Emaldo Power Store",
     cycles: 6500,
-    capacities: [5.12, 10.24, 15.36, 20.48, 25.6, 30.72],
+    capacities: [5.12, 10.24, 15.36],
     chemistry: "LFP",
     // Wall unit utan första powerboxen: 38 850 − 12 468 = 26 382
     // Sen läggs n × 12 468 ovanpå (n = antal powerboxar inkl första).
@@ -275,7 +275,7 @@ export const EMS_OPTIONS: EMS[] = [
     blurb:
       "Optimera Energis egna EMS. Samma motor som de stora plattformarna men utan garantibesparing. Kör batteriet mot stödtjänster (FCR-D / aFRR) och spotpris.",
     features: ["FCR-D / aFRR", "Spotpris-styrning", "Stödtjänster"],
-    spotOptimization: 0.20,
+    spotOptimization: 0.16,
     priceKr: 2500,
     monthlyKr: 0,
     enablesSupportServices: true,
@@ -286,7 +286,7 @@ export const EMS_OPTIONS: EMS[] = [
     blurb:
       "Svensk-utvecklad EMS-hubb med fokus på spotpris-optimering och stödtjänster mot Svenska Kraftnät. Stark garantibesparing.",
     features: ["FCR-D / aFRR", "Spotpris-styrning", "Garanti"],
-    spotOptimization: 0.18,
+    spotOptimization: 0.22,
     priceKr: 9_595,
     monthlyKr: 99,
     enablesSupportServices: true,

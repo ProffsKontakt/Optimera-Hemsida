@@ -1157,32 +1157,58 @@ function CapacitySlider({
   value: number;
   onChange: (v: number) => void;
 }) {
-  const idx = Math.max(
-    0,
-    capacities.findIndex((c) => Math.abs(c - value) < 0.05),
-  );
-  const safeIdx = idx === -1 ? 0 : idx;
+  const idx = capacities.findIndex((c) => Math.abs(c - value) < 0.05);
+  const safeIdx = idx < 0 ? 0 : idx;
+  const canDecrease = safeIdx > 0;
+  const canIncrease = safeIdx < capacities.length - 1;
+  const dec = () => canDecrease && onChange(capacities[safeIdx - 1]);
+  const inc = () => canIncrease && onChange(capacities[safeIdx + 1]);
+  const moduleCount = safeIdx + 1;
   return (
     <div className="block">
       <div className="flex items-baseline justify-between mb-2">
-        <span className="text-[13px] text-ink/65">Kapacitet</span>
+        <span className="text-[13px] text-ink/65">Antal moduler</span>
         <span className="font-mono text-[12px] text-ink/75">
           {capacities[safeIdx].toString().replace(".", ",")}{" "}
           <span className="text-ink/45">kWh</span>
         </span>
       </div>
-      <input
-        type="range"
-        min={0}
-        max={capacities.length - 1}
-        step={1}
-        value={safeIdx}
-        onChange={(e) => onChange(capacities[Number(e.target.value)])}
-        className="w-full accent-ink"
-      />
+      <div className="flex items-stretch gap-2">
+        <button
+          type="button"
+          onClick={dec}
+          disabled={!canDecrease}
+          aria-label="Ta bort en modul"
+          className={[
+            "w-12 rounded-xl border text-[18px] leading-none flex items-center justify-center transition",
+            canDecrease
+              ? "bg-bone text-ink/80 border-ink/15 hover:border-ink/40 active:bg-ink/5"
+              : "bg-bone/60 text-ink/25 border-ink/8 cursor-not-allowed",
+          ].join(" ")}
+        >
+          −
+        </button>
+        <div className="flex-1 rounded-xl border border-ink/15 bg-bone flex items-center justify-center font-mono text-[13px] text-ink/80">
+          {moduleCount} modul{moduleCount === 1 ? "" : "er"}
+        </div>
+        <button
+          type="button"
+          onClick={inc}
+          disabled={!canIncrease}
+          aria-label="Lägg till en modul"
+          className={[
+            "w-12 rounded-xl border text-[18px] leading-none flex items-center justify-center transition",
+            canIncrease
+              ? "bg-bone text-ink/80 border-ink/15 hover:border-ink/40 active:bg-ink/5"
+              : "bg-bone/60 text-ink/25 border-ink/8 cursor-not-allowed",
+          ].join(" ")}
+        >
+          +
+        </button>
+      </div>
       <div className="mt-2 flex justify-between text-[10.5px] font-mono text-ink/45">
-        <span>{capacities[0]} kWh</span>
-        <span>{capacities[capacities.length - 1]} kWh</span>
+        <span>min {capacities[0].toString().replace(".", ",")} kWh</span>
+        <span>max {capacities[capacities.length - 1].toString().replace(".", ",")} kWh</span>
       </div>
     </div>
   );

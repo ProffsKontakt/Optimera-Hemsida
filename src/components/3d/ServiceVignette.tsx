@@ -5,11 +5,21 @@ import { Float } from "@react-three/drei";
 import { useRef } from "react";
 import * as THREE from "three";
 import type { ServiceSlug } from "@/lib/services";
+import { Easyway } from "@/components/3d/BatteryModels";
 
 export function ServiceVignette({ kind }: { kind: ServiceSlug }) {
+  // Solpaneler får högre kameravinkel + snävare zoom så panelens framsida syns,
+  // istället för bara kanten. Batterier får också en lyft kamera så Easyway-
+  // stacken syns från ett naturligt perspektiv.
+  const camera =
+    kind === "solpaneler"
+      ? { position: [2.2, 2.6, 2.8] as [number, number, number], fov: 38 }
+      : kind === "batterier"
+      ? { position: [2.4, 1.6, 2.6] as [number, number, number], fov: 36 }
+      : { position: [2.4, 1.6, 3] as [number, number, number], fov: 38 };
   return (
     <Canvas
-      camera={{ position: [2.4, 1.6, 3], fov: 38 }}
+      camera={camera}
       dpr={[1, 2]}
       className="!absolute inset-0"
       gl={{ antialias: true, alpha: true }}
@@ -22,9 +32,17 @@ export function ServiceVignette({ kind }: { kind: ServiceSlug }) {
         args={[20, 40, "#3F5236", "#9aa590"]}
         position={[0, -0.85, 0]}
       />
-      <Float speed={1.2} rotationIntensity={0.4} floatIntensity={0.6}>
+      <Float
+        speed={1.2}
+        rotationIntensity={kind === "solpaneler" ? 0.15 : 0.4}
+        floatIntensity={0.6}
+      >
         {kind === "solpaneler" && <PanelArray />}
-        {kind === "batterier" && <BatteryStack />}
+        {kind === "batterier" && (
+          <group position={[0, -0.55, 0]}>
+            <Easyway capacityKWh={30.72} />
+          </group>
+        )}
         {kind === "vaermepumpar" && <HeatPumpUnit />}
         {kind === "laddboxar" && <ChargerUnit />}
       </Float>
@@ -47,60 +65,55 @@ function backgroundFor(kind: ServiceSlug) {
 }
 
 function PanelArray() {
+  // Tre paneler i en rad, tiltade ~30° framåt mot kameran så glasytan syns
+  // i stället för att bara visa kanterna. Lite Y-rotation ger djup.
+  // Cellrutnät ovanpå glaset gör det tydligt att det är solceller.
+  const tiltX = Math.PI / 6; // 30° framåt-tilt
+  const yawY = -0.35;
   return (
-    <group rotation={[-0.3, 0.4, 0]}>
-      {[-0.9, 0, 0.9].map((x, i) => (
-        <mesh key={i} position={[x, 0, 0]} castShadow>
-          <boxGeometry args={[0.85, 0.04, 1]} />
-          <meshStandardMaterial color="#0E0E0C" />
-          <mesh position={[0, 0.025, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-            <planeGeometry args={[0.78, 0.93]} />
+    <group rotation={[tiltX, yawY, 0]} position={[0, 0.1, 0]}>
+      {[-0.92, 0, 0.92].map((x, i) => (
+        <group key={i} position={[x, 0, 0]}>
+          {/* Aluminiumram (svart) */}
+          <mesh castShadow>
+            <boxGeometry args={[0.85, 0.05, 1.4]} />
+            <meshStandardMaterial color="#0E0E0C" metalness={0.4} roughness={0.5} />
+          </mesh>
+          {/* Glasyta med solceller */}
+          <mesh position={[0, 0.026, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+            <planeGeometry args={[0.78, 1.32]} />
             <meshStandardMaterial
-              color="#0a3a4e"
-              emissive="#0a3a4e"
-              emissiveIntensity={0.25}
+              color="#0a2a44"
+              emissive="#0a2a44"
+              emissiveIntensity={0.18}
               metalness={0.85}
-              roughness={0.15}
+              roughness={0.18}
             />
           </mesh>
-        </mesh>
+          {/* Cellrutnät — fina ljusa linjer som visar att det är celler */}
+          {[-0.5, -0.25, 0, 0.25, 0.5].map((z) => (
+            <mesh
+              key={`h${z}`}
+              position={[0, 0.027, z]}
+              rotation={[-Math.PI / 2, 0, 0]}
+            >
+              <planeGeometry args={[0.78, 0.005]} />
+              <meshStandardMaterial color="#1f3a55" />
+            </mesh>
+          ))}
+          {[-0.26, 0, 0.26].map((xc) => (
+            <mesh
+              key={`v${xc}`}
+              position={[xc, 0.027, 0]}
+              rotation={[-Math.PI / 2, 0, 0]}
+            >
+              <planeGeometry args={[0.005, 1.32]} />
+              <meshStandardMaterial color="#1f3a55" />
+            </mesh>
+          ))}
+        </group>
       ))}
     </group>
-  );
-}
-
-function BatteryStack() {
-  return (
-    <group>
-      {[0, 0.45, 0.9].map((y, i) => (
-        <mesh key={i} position={[0, y - 0.4, 0]} castShadow>
-          <boxGeometry args={[0.9, 0.32, 0.45]} />
-          <meshStandardMaterial color="#F4F1EA" roughness={0.6} />
-        </mesh>
-      ))}
-      <PulseStrip />
-    </group>
-  );
-}
-
-function PulseStrip() {
-  const ref = useRef<THREE.Mesh>(null);
-  useFrame(({ clock }) => {
-    if (ref.current) {
-      const m = ref.current.material as THREE.MeshStandardMaterial;
-      m.emissiveIntensity =
-        0.4 + Math.sin(clock.elapsedTime * 1.6) * 0.3;
-    }
-  });
-  return (
-    <mesh ref={ref} position={[0.46, 0.05, 0]}>
-      <boxGeometry args={[0.02, 1.1, 0.2]} />
-      <meshStandardMaterial
-        color="#E9B949"
-        emissive="#E9B949"
-        emissiveIntensity={0.5}
-      />
-    </mesh>
   );
 }
 
