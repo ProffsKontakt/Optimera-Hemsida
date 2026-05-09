@@ -937,10 +937,20 @@ function ResultPanel({
       />
       <Tile
         label="Årlig besparing"
-        value={formatKr(result.yearlySavingKr)}
+        value={formatKr(result.yearlyNetKr)}
         sub={
-          result.yearlySupportRevenueKr > 0
-            ? `+ stödtjänster ${formatKr(result.yearlySupportRevenueKr)}/år`
+          result.yearlySupportRevenueKr > 0 || result.yearlyEmsCostKr > 0
+            ? [
+                `besparing ${formatKr(result.yearlySavingKr)}`,
+                result.yearlySupportRevenueKr > 0
+                  ? `+ stödtjänster ${formatKr(result.yearlySupportRevenueKr)}`
+                  : null,
+                result.yearlyEmsCostKr > 0
+                  ? `− EMS-avgift ${formatKr(result.yearlyEmsCostKr)}`
+                  : null,
+              ]
+                .filter(Boolean)
+                .join(" · ")
             : undefined
         }
         accent

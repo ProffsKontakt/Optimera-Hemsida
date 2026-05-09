@@ -89,11 +89,12 @@ export type CalcResult = {
   greenDeductionKr: number; // Summa (grön teknik + ROT)
   netCostKr: number; // Investering efter avdrag
   // Intäkter / besparingar
-  yearlySavingKr: number;
+  yearlySavingKr: number;            // sol + arbitrage + värme (utan stödtjänster/EMS)
   yearlySupportRevenueKr: number;
   yearlyEmsCostKr: number;
-  paybackYears: number;
-  yearly20YearKr: number;
+  yearlyNetKr: number;               // yearlySavingKr + yearlySupportRevenueKr − yearlyEmsCostKr
+  paybackYears: number;              // netCostKr / yearlyNetKr
+  yearly20YearKr: number;            // yearlyNetKr × 20 − netCostKr
   co2KgPerYear: number;
 };
 
@@ -467,10 +468,10 @@ export function computeCalc(input: CalcInput): CalcResult {
 
   // -------- Återbetalningstid --------
   const yearlyEmsCostKr = ems ? ems.monthlyKr * 12 : 0;
-  const totalYearly =
+  const yearlyNetKr =
     yearlySavingKr + yearlySupportRevenueKr - yearlyEmsCostKr;
-  const paybackYears = totalYearly > 0 ? netCostKr / totalYearly : 0;
-  const yearly20YearKr = totalYearly * 20 - netCostKr;
+  const paybackYears = yearlyNetKr > 0 ? netCostKr / yearlyNetKr : 0;
+  const yearly20YearKr = yearlyNetKr * 20 - netCostKr;
 
   // -------- CO₂ undvikt --------
   const co2KgPerYear =
@@ -503,6 +504,7 @@ export function computeCalc(input: CalcInput): CalcResult {
     yearlySavingKr,
     yearlySupportRevenueKr,
     yearlyEmsCostKr,
+    yearlyNetKr,
     paybackYears,
     yearly20YearKr,
     co2KgPerYear,
