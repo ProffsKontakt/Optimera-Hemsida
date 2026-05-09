@@ -11,6 +11,10 @@ import {
   EMS_OPTIONS,
   ROOF_TYPES,
   MAX_PANELS_PER_HOUSE,
+  ELZONER,
+  EMALDO_TERMS_URL,
+  EMALDO_GRID_REWARDS_KR_PER_MONTH,
+  type Elzon,
 } from "@/lib/catalog";
 import {
   computeCalc,
@@ -46,6 +50,7 @@ const initial: CalcInput = {
     värmepump: false,
     laddbox: false,
   },
+  elzon: 3,
   roofType: "sadeltak",
   panelId: PANELS[0].id,
   panelCount: 14,
@@ -391,6 +396,36 @@ function HouseHeader({
               </button>
             );
           })}
+        </div>
+      </div>
+
+      <div>
+        <span className="block text-[13px] text-ink/65 mb-2">
+          Elområde (styr spotpris och Emaldo grid rewards)
+        </span>
+        <div className="grid grid-cols-4 gap-1.5">
+          {ELZONER.map((z) => {
+            const active = input.elzon === z.key;
+            return (
+              <button
+                key={z.key}
+                type="button"
+                onClick={() => update("elzon", z.key)}
+                className={[
+                  "rounded-xl px-2 py-2 text-[13px] border transition",
+                  active
+                    ? "bg-ink text-bone border-ink"
+                    : "bg-bone text-ink/75 border-ink/15 hover:border-ink/40",
+                ].join(" ")}
+                title={z.region}
+              >
+                {z.label}
+              </button>
+            );
+          })}
+        </div>
+        <div className="mt-1.5 font-mono text-[10.5px] uppercase tracking-[0.16em] text-ink/45">
+          {ELZONER.find((z) => z.key === input.elzon)?.region}
         </div>
       </div>
 
@@ -745,7 +780,61 @@ function BatteryControls({
         onChange={(v) => update("batteryCapacityKWh", v)}
       />
       <InverterControls input={input} update={update} result={result} />
+      {input.batteryId === "emaldo-store" && (
+        <EmaldoGridRewardsInfo zone={input.elzon} />
+      )}
     </>
+  );
+}
+
+function EmaldoGridRewardsInfo({ zone }: { zone: Elzon }) {
+  const monthly = EMALDO_GRID_REWARDS_KR_PER_MONTH[zone];
+  const supported = monthly != null;
+  return (
+    <div
+      className={[
+        "rounded-xl border p-3.5 text-[12.5px] leading-relaxed",
+        supported
+          ? "border-indigo/30 bg-indigo/5 text-ink/80"
+          : "border-amber-500/30 bg-amber-50 text-ink/80",
+      ].join(" ")}
+    >
+      <div className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-ink/55 mb-1">
+        Emaldo Grid Rewards
+      </div>
+      {supported ? (
+        <>
+          <div>
+            I SE{zone} betalar Emaldo en garanterad ersättning på{" "}
+            <strong>{monthly!.toLocaleString("sv-SE")} kr/månad</strong> för
+            att Power Store får delta i nät-tjänsterna ({(monthly! * 12).toLocaleString("sv-SE")} kr/år).
+          </div>
+          <a
+            href={EMALDO_TERMS_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-2 inline-flex items-center gap-1 text-indigo hover:underline font-mono text-[10.5px] uppercase tracking-[0.16em]"
+          >
+            Villkor & krav <span aria-hidden>↗</span>
+          </a>
+        </>
+      ) : (
+        <>
+          <div>
+            Optimera erbjuder inte Emaldo-installation i SE{zone}. Välj
+            Easyway eller SAJ HS3 istället, eller byt elområde till SE3 / SE4.
+          </div>
+          <a
+            href={EMALDO_TERMS_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-2 inline-flex items-center gap-1 text-indigo hover:underline font-mono text-[10.5px] uppercase tracking-[0.16em]"
+          >
+            Villkor från Emaldo <span aria-hidden>↗</span>
+          </a>
+        </>
+      )}
+    </div>
   );
 }
 
@@ -939,11 +1028,16 @@ function ResultPanel({
         label="Årlig besparing"
         value={formatKr(result.yearlyNetKr)}
         sub={
-          result.yearlySupportRevenueKr > 0 || result.yearlyEmsCostKr > 0
+          result.yearlySupportRevenueKr > 0 ||
+          result.yearlyEmaldoRewardsKr > 0 ||
+          result.yearlyEmsCostKr > 0
             ? [
                 `besparing ${formatKr(result.yearlySavingKr)}`,
                 result.yearlySupportRevenueKr > 0
                   ? `+ stödtjänster ${formatKr(result.yearlySupportRevenueKr)}`
+                  : null,
+                result.yearlyEmaldoRewardsKr > 0
+                  ? `+ Emaldo Grid Rewards ${formatKr(result.yearlyEmaldoRewardsKr)}`
                   : null,
                 result.yearlyEmsCostKr > 0
                   ? `− EMS-avgift ${formatKr(result.yearlyEmsCostKr)}`

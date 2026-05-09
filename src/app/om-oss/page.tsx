@@ -268,10 +268,10 @@ export default function AboutPage() {
       >
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
           {[
-            "Pylontech-stack inomhus, Bromma",
+            "Easyway 23 kWh inomhus, Bromma",
             "Easyway-installation, Vaxholm",
             "SAJ HS3 + 14 paneler, Lidingö",
-            "Enershare 25,6 kWh, Saltsjöbaden",
+            "Emaldo Power Store 25,6 kWh, Saltsjöbaden",
           ].map((caption, i) => (
             <figure
               key={i}

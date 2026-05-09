@@ -4,8 +4,8 @@ import {
   HEAT_PUMPS,
   CHARGERS,
   EMS_OPTIONS,
-  SPOT_AVG_KR_KWH,
-  FEED_IN_KR_KWH,
+  SPOT_AVG_BY_ZONE,
+  FEED_IN_BY_ZONE,
   SUN_HOURS_KWH_PER_KWP,
   HOUSE_HEAT_DEMAND_KWH_PER_M2,
   EV_KM_PER_KWH,
@@ -14,7 +14,10 @@ import {
   PER_EXTRA_MODULE_MARGIN_KR,
   BATTERY_INSTALLATION_FIXED_KR,
   CHARGER_INSTALL_KR,
+  SUPPORT_KR_PER_KW_PER_MONTH,
+  EMALDO_GRID_REWARDS_KR_PER_MONTH,
   type Battery,
+  type Elzon,
   type InverterAssignment,
   type RoofType,
 } from "./catalog";
@@ -26,6 +29,8 @@ export type CalcInput = {
     värmepump: boolean;
     laddbox: boolean;
   };
+  // Elområde – styr spotpris, säljpris och Emaldo grid rewards
+  elzon: Elzon;
   // Tak
   roofType: RoofType;
   // Sol-input
@@ -89,10 +94,12 @@ export type CalcResult = {
   greenDeductionKr: number; // Summa (grön teknik + ROT)
   netCostKr: number; // Investering efter avdrag
   // Intäkter / besparingar
-  yearlySavingKr: number;            // sol + arbitrage + värme (utan stödtjänster/EMS)
-  yearlySupportRevenueKr: number;
+  yearlySavingKr: number;            // sol + arbitrage + värme (utan stödtjänster/EMS/grid)
+  yearlySupportRevenueKr: number;    // FCR-D / aFRR via Enequi/Energy IQ
+  yearlyEmaldoRewardsKr: number;     // Emaldo grid rewards (zon 3 eller 4 + Emaldo-batteri)
+  emaldoZoneSupported: boolean;      // false om Emaldo valt + zon 1 eller 2
   yearlyEmsCostKr: number;
-  yearlyNetKr: number;               // yearlySavingKr + yearlySupportRevenueKr − yearlyEmsCostKr
+  yearlyNetKr: number;               // yearlySavingKr + support + emaldo − EMS
   paybackYears: number;              // netCostKr / yearlyNetKr
   yearly20YearKr: number;            // yearlyNetKr × 20 − netCostKr
   co2KgPerYear: number;
@@ -122,40 +129,37 @@ export function solarPriceKr(count: number, perPanelKr: number): number {
 }
 
 /**
- * Stödtjänster (FCR-D / aFRR) ger en konservativ intäkt baserad på både
- * växelriktarens kW och batteriets kWh. Kräver att en EMS som klarar
- * Svenska Kraftnät-styrningen är vald (Enequi Core eller Energy IQ).
- *
- * Anchor-punkter från Optimeras spec:
- *   10 kW + 23 kWh   → 14 383 kr/år
- *   15 kW + 30,72    → 16 983 kr/år
- *   15 kW + 53,76    → 21 783 kr/år
- *
- * För andra kombinationer hittar vi närmaste anchor i (kW, kWh)-rummet
- * med vägd distans (kW väger 1.5× mer än kWh).
+ * Stödtjänster (FCR-D / aFRR) – linjär modell (Viktor 2026-05-09):
+ *   65 kr per kW växelriktare per månad.
+ * Kräver att en EMS som klarar Svenska Kraftnät-styrningen är vald
+ * (Enequi Core eller Energy IQ).
  */
 export function supportServiceRevenueKr(
   inverterKw: number,
-  batteryKWh: number,
   hasSupportEms: boolean,
 ): number {
-  if (!hasSupportEms || inverterKw <= 0 || batteryKWh <= 0) return 0;
-  const anchors = [
-    { invKw: 10, battKWh: 23, revenue: 14383 },
-    { invKw: 15, battKWh: 30.72, revenue: 16983 },
-    { invKw: 15, battKWh: 53.76, revenue: 21783 },
-    { invKw: 20, battKWh: 60, revenue: 25_000 },
-  ];
-  let best = anchors[0];
-  let bestDist = Infinity;
-  for (const a of anchors) {
-    const d = Math.hypot((a.invKw - inverterKw) * 1.5, a.battKWh - batteryKWh);
-    if (d < bestDist) {
-      bestDist = d;
-      best = a;
-    }
+  if (!hasSupportEms || inverterKw <= 0) return 0;
+  return Math.round(inverterKw * SUPPORT_KR_PER_KW_PER_MONTH * 12);
+}
+
+/**
+ * Emaldo grid rewards – garanterad månadsersättning från Emaldo om
+ * Emaldo Power Store är installerat och kunden bor i SE3 eller SE4.
+ * I SE1 / SE2 erbjuder Optimera inte Emaldo-installation.
+ */
+export function emaldoGridRewardsKr(
+  batteryId: string | null,
+  zone: Elzon,
+): { yearlyKr: number; supported: boolean } {
+  if (batteryId !== "emaldo-store") {
+    return { yearlyKr: 0, supported: true };
   }
-  return best.revenue;
+  const monthly = EMALDO_GRID_REWARDS_KR_PER_MONTH[zone];
+  if (monthly == null) {
+    // Zon 1 eller 2 – inte stött
+    return { yearlyKr: 0, supported: false };
+  }
+  return { yearlyKr: monthly * 12, supported: true };
 }
 
 // =============================== VÄXELRIKTARE ===============================
@@ -222,13 +226,28 @@ export function batteryCustomerPriceKr(
   const inverterExMomsKr =
     inverter.kind === "external" ? inverter.priceKr : 0;
 
+  // Hardware: tabell-överrid om finns (SAJ HS3), annars base + n × per-modul.
+  const hardwareFromTable = battery.capacityHardwareTable?.[kWh];
+  const hardwareCost = hardwareFromTable ?? (
+    battery.baseHardwareKr + moduleCount * battery.perModuleHardwareKr
+  );
+
+  // Per-batteri overrides på marginalerna.
+  const projectMargin = battery.projectMarginKr ?? BATTERY_PROJECT_MARGIN_KR;
+  const perExtraMargin =
+    battery.perExtraModuleMarginKr ?? PER_EXTRA_MODULE_MARGIN_KR;
+  const extraStartIdx = battery.extraMarginStartIdx ?? 3;
+  const extraModuleCount = Math.max(0, moduleCount - extraStartIdx + 1);
+  const extraModuleMargin = extraModuleCount * perExtraMargin;
+
+  // För visning: när hardware kommer från en tabell delar vi inte upp i
+  // BMS+bas / moduler – vi visar allt under "Hårdvara".
   const exMoms = {
-    bmsAndBase: battery.baseHardwareKr,
-    modules: moduleCount * battery.perModuleHardwareKr,
+    bmsAndBase: hardwareFromTable != null ? hardwareCost : battery.baseHardwareKr,
+    modules: hardwareFromTable != null ? 0 : moduleCount * battery.perModuleHardwareKr,
     inverter: inverterExMomsKr,
-    projectMargin: BATTERY_PROJECT_MARGIN_KR,
-    extraModuleMargin:
-      Math.max(0, moduleCount - 2) * PER_EXTRA_MODULE_MARGIN_KR,
+    projectMargin,
+    extraModuleMargin,
     installation: BATTERY_INSTALLATION_FIXED_KR,
   };
 
@@ -329,25 +348,30 @@ export function computeCalc(input: CalcInput): CalcResult {
   const exportedKWh = Math.max(0, yearlyProductionKWh - selfUsedKWh);
 
   // -------- Besparing per år --------
+  // Spotpris och feed-in skalas mot vald elzon (SE1–SE4).
+  const spotPrice = SPOT_AVG_BY_ZONE[input.elzon];
+  const feedInPrice = FEED_IN_BY_ZONE[input.elzon];
+
   // Sol-besparing: vad du sparar genom att inte köpa el du själv producerar +
   // det du säljer på spotpris.
   const solarSavingKr =
-    selfUsedKWh * SPOT_AVG_KR_KWH + exportedKWh * FEED_IN_KR_KWH;
+    selfUsedKWh * spotPrice + exportedKWh * feedInPrice;
 
   // Värmepumps-besparing: skillnaden mellan direktverkande el (1:1) och
   // pumpens elförbrukning (1/SCOP).
   const heatpumpSavingKr = heat
-    ? (heatedHouseKWh - yearlyHeatKWh) * SPOT_AVG_KR_KWH
+    ? (heatedHouseKWh - yearlyHeatKWh) * spotPrice
     : 0;
 
   // Batteri-arbitrage (gäller även utan sol): batteriet köper när priset är
-  // lågt och säljer/använder när det är högt. Konservativt 600 kr/kWh/år.
-  // Skala även med årsförbrukningen – ju mer du använder, desto mer arbitrage
-  // går att hämta.
+  // lågt och säljer/använder när det är högt. Konservativt 600 kr/kWh/år vid
+  // SE3-spotpris. Skalar mot zonens spotpris (mer arbitrage i SE4) och mot
+  // årsförbrukningen.
+  const arbitrageBaseKrPerKWh = 600 * (spotPrice / SPOT_AVG_BY_ZONE[3]);
   const batteryArbitrageKr = batteryBrand
     ? Math.round(
         batteryKWh *
-          600 *
+          arbitrageBaseKrPerKWh *
           clamp(input.baseConsumptionKWh / 4500, 0.6, 1.6),
       )
     : 0;
@@ -367,9 +391,17 @@ export function computeCalc(input: CalcInput): CalcResult {
   const hasSupportEms = !!ems?.enablesSupportServices;
   const yearlySupportRevenueKr = supportServiceRevenueKr(
     inverter.kw,
-    batteryKWh,
     hasSupportEms,
   );
+
+  // -------- Emaldo grid rewards --------
+  // Garanterad månadsersättning från Emaldo om Emaldo Power Store + zon 3/4.
+  const emaldoRewards = emaldoGridRewardsKr(
+    batteryBrand?.id ?? null,
+    input.elzon,
+  );
+  const yearlyEmaldoRewardsKr = emaldoRewards.yearlyKr;
+  const emaldoZoneSupported = emaldoRewards.supported;
 
   // -------- Hårdvarukostnader --------
   // Sol: solarPriceKr är legacy "ink moms efter avdrag" – gränsar mot
@@ -469,7 +501,10 @@ export function computeCalc(input: CalcInput): CalcResult {
   // -------- Återbetalningstid --------
   const yearlyEmsCostKr = ems ? ems.monthlyKr * 12 : 0;
   const yearlyNetKr =
-    yearlySavingKr + yearlySupportRevenueKr - yearlyEmsCostKr;
+    yearlySavingKr +
+    yearlySupportRevenueKr +
+    yearlyEmaldoRewardsKr -
+    yearlyEmsCostKr;
   const paybackYears = yearlyNetKr > 0 ? netCostKr / yearlyNetKr : 0;
   const yearly20YearKr = yearlyNetKr * 20 - netCostKr;
 
@@ -503,6 +538,8 @@ export function computeCalc(input: CalcInput): CalcResult {
     netCostKr,
     yearlySavingKr,
     yearlySupportRevenueKr,
+    yearlyEmaldoRewardsKr,
+    emaldoZoneSupported,
     yearlyEmsCostKr,
     yearlyNetKr,
     paybackYears,

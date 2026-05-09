@@ -123,13 +123,13 @@ function Marquee() {
     "Bosch",
     "Mitsubishi",
     "Daikin",
-    "SolarEdge",
-    "Huawei",
+    "Easyway",
+    "Emaldo",
     "Easee",
     "Zaptec",
-    "BYD",
-    "Pylontech",
-    "SMA",
+    "Charge Amps",
+    "Solis",
+    "SAJ",
     "Thermia",
   ];
   return (

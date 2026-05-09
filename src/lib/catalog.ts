@@ -30,18 +30,33 @@ export type Battery = {
    * Kostnadsmodell – sex separata line items per batteri.
    * Alla siffror är EX MOMS (vår inköpskostnad / fasta marginaler).
    * Customer-priset beräknas i calc.ts som:
-   *   ex_moms = baseHardwareKr
-   *           + n × perModuleHardwareKr
-   *           + (växelriktarpris ex moms)
-   *           + BATTERY_PROJECT_MARGIN_KR              (= 30 000)
-   *           + max(0, n − 2) × PER_EXTRA_MODULE_MARGIN_KR  (= 1 000)
+   *   ex_moms = hardwareCost(kWh)
+   *           + (växelriktarpris ex moms, om extern)
+   *           + projectMarginKr                        (default 30 000)
+   *           + max(0, n − extraMarginStartIdx + 1) × perExtraModuleMarginKr
    *           + BATTERY_INSTALLATION_FIXED_KR
    *   ink_moms_före_avdrag = ex_moms × MOMS_FACTOR (= 1,25)
    *   slut_pris_kund = ink_moms − grön teknik 48,5 % (capad mot ägartak)
+   *
+   * hardwareCost(kWh):
+   *  - om capacityHardwareTable finns: tabellens värde för kWh
+   *  - annars: baseHardwareKr + n × perModuleHardwareKr
+   *    där n = round(kWh / kWhPerModule)
    */
-  baseHardwareKr: number;       // ex moms BMS + bas
-  perModuleHardwareKr: number;  // ex moms per modul
+  baseHardwareKr: number;       // ex moms BMS + bas (eller wall unit)
+  perModuleHardwareKr: number;  // ex moms per tilläggsmodul
   kWhPerModule: number;
+  /**
+   * Valfri tabell som överrider hardware-kostnaden helt för specifika
+   * kapaciteter (t.ex. SAJ HS3 som säljs som 10/15/20 kWh-SKUer).
+   */
+  capacityHardwareTable?: Record<number, number>;
+  /** Per-batteri override på projektmarginalen (default BATTERY_PROJECT_MARGIN_KR). */
+  projectMarginKr?: number;
+  /** Per-batteri override på extra-modul-marginalen (default PER_EXTRA_MODULE_MARGIN_KR). */
+  perExtraModuleMarginKr?: number;
+  /** Från vilket modul-index extra-marginalen börjar räknas (default 3, dvs modul 3+). */
+  extraMarginStartIdx?: number;
   /**
    * Vilken växelriktare som monteras till en given kapacitet.
    */
@@ -155,61 +170,57 @@ export const BATTERIES: Battery[] = [
     baseHardwareKr: 7_218,        // BMS + bas
     perModuleHardwareKr: 10_335,
     kWhPerModule: 7.68,
+    // Default-marginaler: 30 000 + 1 000 från modul 3
     inverterFor: (kWh) => (kWh <= 23.04 ? SOLIS[10] : SOLIS[15]),
   },
-  // -------- Övriga märken: PLACEHOLDER-värden tills Viktor levererar --------
-  // Beräknade som första-ordnings-uppskattningar från gamla pricePerKWhKr.
-  // Bör revideras med riktig leverantörsdata innan publicering.
-  {
-    id: "pylontech-h3",
-    brand: "Pylontech Force H3",
-    cycles: 6000,
-    capacities: [10.24, 15.36, 20.48, 25.6, 30.72],
-    chemistry: "LFP",
-    baseHardwareKr: 8_000,        // TODO: bekräfta
-    perModuleHardwareKr: 21_000,  // TODO: bekräfta
-    kWhPerModule: 5.12,
-    inverterFor: (kWh) => (kWh <= 20.48 ? SOLIS[10] : SOLIS[15]),
-  },
+
+  // -------- SAJ HS3 (Viktor 2026-05-09) --------
+  // Säljs som 10/15/20 kWh-SKUer med inbyggd växelriktare. Hardware-priset
+  // är fast per SKU (capacityHardwareTable). 20 000 kr projekt-marginal,
+  // ingen per-modul-extra eftersom storlek är fast.
   {
     id: "saj-hs3",
     brand: "SAJ HS3",
     cycles: 6000,
-    capacities: [10, 15, 20, 25, 30, 35, 40],
+    capacities: [10, 15, 20],
     chemistry: "LFP",
-    baseHardwareKr: 6_000,        // TODO
-    perModuleHardwareKr: 17_500,  // TODO
-    kWhPerModule: 5,
-    // Inbyggd växelriktare i SAJ HS3 (12 kW). Räknas alltid in.
+    baseHardwareKr: 0,            // ej använd – hardware via tabell
+    perModuleHardwareKr: 0,       // ej använd – hardware via tabell
+    kWhPerModule: 5,              // för UI-visning av "modul-antal"
+    capacityHardwareTable: {
+      10: 44_748,
+      15: 59_099,
+      20: 73_111,
+    },
+    projectMarginKr: 20_000,
+    perExtraModuleMarginKr: 0,    // fast SKU-pris, ingen per-modul-margin
     inverterFor: () => ({
       kind: "builtIn",
       kw: 12,
       label: "Inbyggd 12 kW växelriktare",
     }),
   },
-  {
-    id: "enershare-core",
-    brand: "Enershare Energy Core",
-    cycles: 7000,
-    capacities: [
-      9.6, 12.8, 16, 19.2, 22.4, 25.6, 28.8, 32, 35.2, 38.4, 41.6, 44.8, 48,
-      51.2,
-    ],
-    chemistry: "LFP",
-    baseHardwareKr: 7_500,        // TODO
-    perModuleHardwareKr: 14_000,  // TODO
-    kWhPerModule: 3.2,
-    inverterFor: (kWh) => (kWh <= 16 ? SOLIS[10] : SOLIS[15]),
-  },
+
+  // -------- Emaldo Power Store (Viktor 2026-05-09) --------
+  // Wall unit (5,12 kWh + inbyggd växelriktare) = 38 850 kr ex moms.
+  // Varje extra Powerbox (5,12 kWh) = 12 468 kr.
+  // 1 500 kr marginal per modul (alla moduler, inkl modul 1).
+  // 20 000 kr projekt-marginal som baslager.
+  // Grid rewards (zon 3 & 4) hanteras separat i calc.ts.
   {
     id: "emaldo-store",
     brand: "Emaldo Power Store",
     cycles: 6500,
-    capacities: [15.36, 30.72, 46.08],
+    capacities: [5.12, 10.24, 15.36, 20.48, 25.6, 30.72],
     chemistry: "LFP",
-    baseHardwareKr: 25_000,       // TODO – Emaldo är wall unit, högre baspris
-    perModuleHardwareKr: 60_000,  // TODO
-    kWhPerModule: 15.36,
+    // Wall unit utan första powerboxen: 38 850 − 12 468 = 26 382
+    // Sen läggs n × 12 468 ovanpå (n = antal powerboxar inkl första).
+    baseHardwareKr: 26_382,
+    perModuleHardwareKr: 12_468,
+    kWhPerModule: 5.12,
+    projectMarginKr: 20_000,
+    perExtraModuleMarginKr: 1_500,
+    extraMarginStartIdx: 1,       // 1 500 från modul 1, inte modul 3
     inverterFor: () => ({
       kind: "builtIn",
       kw: 10.8,
@@ -293,9 +304,34 @@ export const EMS_OPTIONS: EMS[] = [
   },
 ];
 
-// Energimarknad – kan uppdateras dynamiskt mot Nord Pool API
-export const SPOT_AVG_KR_KWH = 1.45; // helår, snitt
-export const FEED_IN_KR_KWH = 0.85; // försäljning
+// =============================== ELZONER ===================================
+// Sverige har 4 elområden (SE1–SE4). Spotpris-snittet skiljer sig markant
+// mellan norr och söder. Värdena är helår-snitt för 2024–2025 (ink elskatt
+// + nät, ungefärligt – uppdatera mot Nord Pool månadsvis).
+export type Elzon = 1 | 2 | 3 | 4;
+export const ELZONER: { key: Elzon; label: string; region: string }[] = [
+  { key: 1, label: "SE1", region: "Norra Norrland (Luleå)" },
+  { key: 2, label: "SE2", region: "Norra Sverige (Sundsvall)" },
+  { key: 3, label: "SE3", region: "Mellan-/södra Sverige (Stockholm)" },
+  { key: 4, label: "SE4", region: "Skåne / södra Götaland (Malmö)" },
+];
+export const SPOT_AVG_BY_ZONE: Record<Elzon, number> = {
+  1: 0.55,
+  2: 0.65,
+  3: 1.45,
+  4: 1.85,
+};
+export const FEED_IN_BY_ZONE: Record<Elzon, number> = {
+  1: 0.35,
+  2: 0.40,
+  3: 0.85,
+  4: 1.05,
+};
+
+// Bakåtkompatibla aliases (default = SE3 / Stockholm)
+export const SPOT_AVG_KR_KWH = SPOT_AVG_BY_ZONE[3];
+export const FEED_IN_KR_KWH = FEED_IN_BY_ZONE[3];
+
 export const SUN_HOURS_KWH_PER_KWP = 1050; // Mellansverige normalår
 export const HOUSE_HEAT_DEMAND_KWH_PER_M2 = 110; // 70-tal villa
 export const EV_KM_PER_KWH = 6;
@@ -305,8 +341,24 @@ export const MAX_PANELS_PER_HOUSE = 50;
 export const MAX_PANELS_PER_SLOPE = 24;
 export const PANEL_AREA_M2 = 1.95; // ungefärlig panelyta
 
-// Stödtjänster (FCR-D / aFRR) – grov estimering
-export const SUPPORT_REVENUE_PER_KWH_INSTALLED = 4500; // kr/år/kWh batteri
+// =============================== STÖDTJÄNSTER ==============================
+// FCR-D / aFRR via Enequi Core eller Energy IQ.
+// Viktor 2026-05-09: 65 kr per kW växelriktare per månad.
+export const SUPPORT_KR_PER_KW_PER_MONTH = 65;
+
+// =============================== EMALDO GRID REWARDS =======================
+// Emaldo Power Store kan delta i grid services i SE3 / SE4 och får då en
+// garanterad månadsersättning från Emaldo. Villkor:
+// https://emaldo.com/pages/grid-rewards-calculator
+// Vi arbetar inte i SE1 / SE2 (för få kunder + Emaldo täcker ej).
+export const EMALDO_GRID_REWARDS_KR_PER_MONTH: Record<Elzon, number | null> = {
+  1: null,
+  2: null,
+  3: 1_110,
+  4: 1_370,
+};
+export const EMALDO_TERMS_URL =
+  "https://emaldo.com/pages/grid-rewards-calculator";
 
 // Praktisk hjälpare för UI: gruppera värmepumpar per varumärke
 export const HEAT_PUMP_BRANDS = Array.from(
