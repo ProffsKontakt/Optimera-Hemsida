@@ -1,22 +1,31 @@
 "use client";
 
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Float } from "@react-three/drei";
+import { Float, OrbitControls } from "@react-three/drei";
 import { useRef } from "react";
 import * as THREE from "three";
 import type { ServiceSlug } from "@/lib/services";
 import { Easyway } from "@/components/3d/BatteryModels";
 
 export function ServiceVignette({ kind }: { kind: ServiceSlug }) {
-  // Solpaneler får högre kameravinkel + snävare zoom så panelens framsida syns,
-  // istället för bara kanten. Batterier får också en lyft kamera så Easyway-
-  // stacken syns från ett naturligt perspektiv.
+  // Solpaneler får högre kameravinkel så panelens framsida syns istället för
+  // bara kanten. Batterier zoomas ut lite så hela Easyway-stacken syns
+  // bekvämt utan att kännas inträngd. Värmepump kvar i Float-läge.
   const camera =
     kind === "solpaneler"
-      ? { position: [2.2, 2.6, 2.8] as [number, number, number], fov: 38 }
+      ? { position: [2.4, 2.4, 2.8] as [number, number, number], fov: 40 }
       : kind === "batterier"
-      ? { position: [2.4, 1.6, 2.6] as [number, number, number], fov: 36 }
+      ? { position: [3.0, 1.9, 3.2] as [number, number, number], fov: 40 }
+      : kind === "laddboxar"
+      ? { position: [2.4, 1.6, 2.6] as [number, number, number], fov: 40 }
       : { position: [2.4, 1.6, 3] as [number, number, number], fov: 38 };
+
+  // Sol/batteri/laddbox är nu manuellt orbitbara (samma känsla som i
+  // kalkylatorn) — användaren kan svepa runt komponenten på telefon eller
+  // dator. Värmepump kvar i Float-presentation tills v2.
+  const interactive =
+    kind === "solpaneler" || kind === "batterier" || kind === "laddboxar";
+
   return (
     <Canvas
       camera={camera}
@@ -32,20 +41,30 @@ export function ServiceVignette({ kind }: { kind: ServiceSlug }) {
         args={[20, 40, "#3F5236", "#9aa590"]}
         position={[0, -0.85, 0]}
       />
-      <Float
-        speed={1.2}
-        rotationIntensity={kind === "solpaneler" ? 0.15 : 0.4}
-        floatIntensity={0.6}
-      >
-        {kind === "solpaneler" && <PanelArray />}
-        {kind === "batterier" && (
-          <group position={[0, -0.55, 0]}>
-            <Easyway capacityKWh={30.72} />
-          </group>
-        )}
-        {kind === "vaermepumpar" && <HeatPumpUnit />}
-        {kind === "laddboxar" && <ChargerUnit />}
-      </Float>
+      {interactive ? (
+        <>
+          {kind === "solpaneler" && <PanelArray />}
+          {kind === "batterier" && (
+            <group position={[0, -0.55, 0]}>
+              <Easyway capacityKWh={30.72} />
+            </group>
+          )}
+          {kind === "laddboxar" && <ChargerUnit />}
+          <OrbitControls
+            enablePan={false}
+            enableZoom={false}
+            enableRotate
+            minPolarAngle={Math.PI / 4}
+            maxPolarAngle={Math.PI / 2.05}
+            autoRotate
+            autoRotateSpeed={0.6}
+          />
+        </>
+      ) : (
+        <Float speed={1.2} rotationIntensity={0.4} floatIntensity={0.6}>
+          {kind === "vaermepumpar" && <HeatPumpUnit />}
+        </Float>
+      )}
     </Canvas>
   );
 }
