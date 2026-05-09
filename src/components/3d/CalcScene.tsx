@@ -21,6 +21,11 @@ const ridgeY = wallTopY + HOUSE.ridgeH; // y för nocken (sadeltak/mansard/valma
 const slopeRun = HOUSE.depth / 2;
 const slopeAngle = Math.atan2(HOUSE.ridgeH, slopeRun); // sadel-taklutning
 
+// Valmat-takets nocklängd (kortare än husets bredd, men längre än ren pyramid).
+// 0,7 × bredden ger realistiskt hip-utseende: trapezerna dominerar, hip-end-
+// trianglarna är små. Påverkar både roof-meshen och solpanelernas widthM.
+const HIP_RIDGE_LEN = HOUSE.width * 0.7;
+
 // =============== SOLPANEL-SURFACES per taktyp ===============
 // En SolarSurface beskriver ett rektangulärt område där paneler kan placeras.
 // Panelens grid byggs i lokal XY-plan med (0,0) i centrum, sedan flyttas
@@ -33,6 +38,13 @@ type SolarSurface = {
   depthM: number;
   /** Hur många paneler får plats max på denna yta. */
   capacity: number;
+  /**
+   * True om lokal +Z går mot toppen av taket (norra slope-konvention med
+   * rotation [-α, 0, 0]). Default false: lokal +Z går mot eave (södra
+   * slope, rotation [+α, 0, 0]). Styr panelplaceringen så att rad 0 alltid
+   * landar i toppen av taket — paneler byggs uppifrån-ner.
+   */
+  topAtPositiveZ?: boolean;
 };
 
 function getSolarSurfaces(roofType: RoofType): SolarSurface[] {
@@ -59,6 +71,7 @@ function getSolarSurfaces(roofType: RoofType): SolarSurface[] {
           widthM: w - 0.2,
           depthM: slopeLen - 0.15,
           capacity: 24,
+          topAtPositiveZ: true,
         },
       ];
     }
@@ -104,32 +117,33 @@ function getSolarSurfaces(roofType: RoofType): SolarSurface[] {
           widthM: w - 0.2,
           depthM: upperLen - 0.1,
           capacity: 18,
+          topAtPositiveZ: true,
         },
       ];
     }
 
     case "valmat": {
       // Hipped roof: 4 takfall, södra långsida (+z) är en trapez. Vi placerar
-      // paneler i en mindre rektangel som ryms inom trapezet.
-      const ridgeLen = w * 0.5; // nockens längd (kortare än w)
+      // paneler i en rektangel som ryms inom trapezet (begränsad av nockens
+      // längd så panelerna inte sticker ut över hip-kanterna).
+      const ridgeLen = HIP_RIDGE_LEN;
       const slopeY = wallTopY + ridge / 2;
       const slopeLen = Math.hypot(slopeRun, ridge);
-      // Säker rektangel inom trapezet: använd nock-bredden som max-bredd
-      // för att vara säkra på att inte gå utanför hip-kanterna.
       return [
         {
           position: [0, slopeY, d / 4],
           rotation: [slopeAngle, 0, 0],
           widthM: ridgeLen,
           depthM: slopeLen - 0.2,
-          capacity: 18,
+          capacity: 24,
         },
         {
           position: [0, slopeY, -d / 4],
           rotation: [-slopeAngle, 0, 0],
           widthM: ridgeLen,
           depthM: slopeLen - 0.2,
-          capacity: 18,
+          capacity: 24,
+          topAtPositiveZ: true,
         },
       ];
     }
@@ -373,7 +387,7 @@ function HipRoof() {
   const w = HOUSE.width;
   const d = HOUSE.depth;
   const ridge = HOUSE.ridgeH;
-  const ridgeLen = w * 0.5;
+  const ridgeLen = HIP_RIDGE_LEN;
 
   // Definiera de fyra takfallens hörn i världskoordinater och bygg
   // BufferGeometry per face. Alla faces är plana = giltiga ytor.
@@ -606,6 +620,9 @@ function SurfacePanels({
   const panelW = surface.widthM / cols;
   const panelD = panelW * aspect;
   const rowsFit = Math.max(1, Math.floor(surface.depthM / panelD));
+  // För surfaces där lokal +Z går mot toppen (norra slope-konvention) flippar
+  // vi z-tecknet så att rad 0 alltid landar i toppen av taket.
+  const dirZ = surface.topAtPositiveZ ? -1 : 1;
   return (
     <group position={surface.position} rotation={surface.rotation}>
       {Array.from({ length: rowsFit }).map((_, r) =>
@@ -613,7 +630,7 @@ function SurfacePanels({
           const idx = r * cols + c;
           if (idx >= count) return null;
           const x = (c - (cols - 1) / 2) * panelW;
-          const z = (r - (rowsFit - 1) / 2) * panelD;
+          const z = dirZ * (r - (rowsFit - 1) / 2) * panelD;
           return (
             <group key={`${r}-${c}`} position={[x, 0.035, z]}>
               <mesh castShadow>
