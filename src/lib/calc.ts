@@ -428,7 +428,6 @@ export function computeCalc(input: CalcInput): CalcResult {
   const totalAllowance = (input.numOwners ?? 1) * 50_000;
   let remaining = totalAllowance;
 
-  const houseHasSolar = solActive; // Ny eller befintlig sol
   const solarBaseForDeduction = solarTotalKr + inverterPriceKr;
   const solarDeductionKr = Math.min(
     Math.round(solarBaseForDeduction * 0.1455),
@@ -437,13 +436,14 @@ export function computeCalc(input: CalcInput): CalcResult {
   remaining -= solarDeductionKr;
 
   // Batteri-avdraget gäller på hela batteripaketet (BMS+bas + moduler +
-  // växelriktare + marginal + install) ink moms. Kräver att huset har sol.
-  const batteryDeductionKr = houseHasSolar
-    ? Math.min(
-        Math.round(batteryPriceKr * 0.485),
-        Math.max(0, remaining),
-      )
-    : 0;
+  // växelriktare + marginal + install) ink moms. Skatteverket kräver att
+  // batteriet kopplas till en anläggning för egenproducerad förnybar el —
+  // vilket Optimera alltid säkerställer (ny eller befintlig sol). Vi
+  // applicerar därför avdraget oavsett om sol-toggle är på i kalkylatorn.
+  const batteryDeductionKr = Math.min(
+    Math.round(batteryPriceKr * 0.485),
+    Math.max(0, remaining),
+  );
   remaining -= batteryDeductionKr;
 
   const chargerDeductionKr = Math.min(
