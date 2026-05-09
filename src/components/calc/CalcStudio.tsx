@@ -31,10 +31,11 @@ type Piece = {
   hint: string;
 };
 
+// Värmepump är temporärt dold ur UI tills prismodellen är spikad. Fältet
+// finns kvar i CalcInput för typkompatibilitet med presets/calc.
 const PIECES: Piece[] = [
   { key: "sol", label: "Solpaneler", hint: "Producerar el från taket" },
   { key: "batteri", label: "Batteri", hint: "Lagrar solen till kvällen" },
-  { key: "värmepump", label: "Värmepump", hint: "Halverar elräkningen för uppvärmning" },
   { key: "laddbox", label: "Laddbox", hint: "Hemmaladdning av elbilen" },
 ];
 
@@ -64,19 +65,20 @@ const initial: CalcInput = {
   baseConsumptionKWh: 4500,
 };
 
-// Tre rekommenderade förkonfigurationer som "Sätt ihop rekommenderat system".
+// Tre rekommenderade förkonfigurationer (Sol + Batteri-spår). Värmepump och
+// SAJ HS3 är borttagna ur presets per Optimera-fokus 2026-05.
 const PRESETS: { id: string; label: string; hint: string; config: Partial<CalcInput> & {
   enabled: Partial<CalcInput["enabled"]>;
 } }[] = [
   {
     id: "starter",
     label: "Komma igång",
-    hint: "10 paneler · 10 kWh batteri · Energy IQ",
+    hint: "10 paneler · Easyway 15 kWh · Energy IQ",
     config: {
       enabled: { sol: true, batteri: true, värmepump: false, laddbox: false },
       panelCount: 10,
-      batteryId: "saj-hs3",
-      batteryCapacityKWh: 10,
+      batteryId: "easyway-univ7600",
+      batteryCapacityKWh: 15.36,
       emsId: "energy-iq",
       hasExistingSolar: false,
     },
@@ -84,13 +86,13 @@ const PRESETS: { id: string; label: string; hint: string; config: Partial<CalcIn
   {
     id: "standard",
     label: "Standardvilla",
-    hint: "20 paneler · 15 kWh batteri · värmepump · Energy IQ",
+    hint: "20 paneler · Easyway 23 kWh · laddbox · Energy IQ",
     config: {
-      enabled: { sol: true, batteri: true, värmepump: true, laddbox: false },
+      enabled: { sol: true, batteri: true, värmepump: false, laddbox: true },
       panelCount: 20,
-      batteryId: "pylontech-h3",
-      batteryCapacityKWh: 15.36,
-      heatPumpId: "nibe-s2125-12",
+      batteryId: "easyway-univ7600",
+      batteryCapacityKWh: 23.04,
+      chargerId: "easee",
       emsId: "energy-iq",
       hasExistingSolar: false,
     },
@@ -98,13 +100,12 @@ const PRESETS: { id: string; label: string; hint: string; config: Partial<CalcIn
   {
     id: "max",
     label: "Maximerat hem",
-    hint: "30 paneler · 30 kWh batteri · värmepump · laddbox · Enequi",
+    hint: "30 paneler · Easyway 30 kWh · laddbox · Enequi Core",
     config: {
-      enabled: { sol: true, batteri: true, värmepump: true, laddbox: true },
+      enabled: { sol: true, batteri: true, värmepump: false, laddbox: true },
       panelCount: 30,
-      batteryId: "pylontech-h3",
+      batteryId: "easyway-univ7600",
       batteryCapacityKWh: 30.72,
-      heatPumpId: "nibe-s1255-12",
       chargerId: "easee",
       emsId: "enequi",
       hasExistingSolar: false,
@@ -133,13 +134,18 @@ function fromPriceFor(key: PieceKey): number {
       break;
     case "batteri":
       stub.enabled = { ...stub.enabled, batteri: true };
-      // Hitta cheapest batteri
-      const cheapest = BATTERIES.reduce((min, b) =>
-        b.capacities[0] * b.pricePerKWhKr <
-        min.capacities[0] * min.pricePerKWhKr
-          ? b
-          : min,
-      BATTERIES[0]);
+      // Hitta billigaste batteri-konfiguration: minsta kapacitet + minsta
+      // hardware/modul (proxi för billigast).
+      const cheapest = BATTERIES.reduce((min, b) => {
+        const score =
+          b.baseHardwareKr +
+          Math.round(b.capacities[0] / b.kWhPerModule) * b.perModuleHardwareKr;
+        const minScore =
+          min.baseHardwareKr +
+          Math.round(min.capacities[0] / min.kWhPerModule) *
+            min.perModuleHardwareKr;
+        return score < minScore ? b : min;
+      }, BATTERIES[0]);
       stub.batteryId = cheapest.id;
       stub.batteryCapacityKWh = cheapest.capacities[0];
       break;
@@ -693,11 +699,10 @@ function InverterControls({
           options={[
             { value: "10", label: "10 kW" },
             { value: "15", label: "15 kW" },
-            { value: "20", label: "20 kW" },
           ]}
           value={String(input.manualInverterKw)}
           onChange={(v) =>
-            update("manualInverterKw", Number(v) as 10 | 15 | 20)
+            update("manualInverterKw", Number(v) as 10 | 15)
           }
         />
       )}

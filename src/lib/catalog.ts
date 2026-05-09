@@ -24,13 +24,26 @@ export type Battery = {
   id: string;
   brand: string;
   cycles: number;
-  pricePerKWhKr: number; // riktpris per kWh installerad kapacitet
   capacities: number[]; // tillgängliga storlekar i kWh
   chemistry: "LFP" | "NMC";
   /**
+   * Kostnadsmodell – sex separata line items per batteri.
+   * Alla siffror är EX MOMS (vår inköpskostnad / fasta marginaler).
+   * Customer-priset beräknas i calc.ts som:
+   *   ex_moms = baseHardwareKr
+   *           + n × perModuleHardwareKr
+   *           + (växelriktarpris ex moms)
+   *           + BATTERY_PROJECT_MARGIN_KR              (= 30 000)
+   *           + max(0, n − 2) × PER_EXTRA_MODULE_MARGIN_KR  (= 1 000)
+   *           + BATTERY_INSTALLATION_FIXED_KR
+   *   ink_moms_före_avdrag = ex_moms × MOMS_FACTOR (= 1,25)
+   *   slut_pris_kund = ink_moms − grön teknik 48,5 % (capad mot ägartak)
+   */
+  baseHardwareKr: number;       // ex moms BMS + bas
+  perModuleHardwareKr: number;  // ex moms per modul
+  kWhPerModule: number;
+  /**
    * Vilken växelriktare som monteras till en given kapacitet.
-   * Returnerar antingen `{ external: <Inverter>, priceKr }` eller
-   * `{ builtIn: { kw, label } }` för batterier som har egen växelriktare.
    */
   inverterFor: (kWh: number) => InverterAssignment;
 };
@@ -39,11 +52,19 @@ export type InverterAssignment =
   | { kind: "external"; brand: string; kw: number; priceKr: number }
   | { kind: "builtIn"; kw: number; label: string };
 
-// --- Solis S6-priser (riktpris för kalkylen)
+// =============================== KONSTANTER ===============================
+// Alla kostnadskonstanter är EX MOMS. Calc.ts gångar med MOMS_FACTOR till
+// kundpris ink moms före avdrag.
+export const MOMS_FACTOR = 1.25;
+export const BATTERY_PROJECT_MARGIN_KR = 30_000;        // fast vinst per batteriprojekt
+export const PER_EXTRA_MODULE_MARGIN_KR = 1_000;        // marginal för modul 3+
+export const BATTERY_INSTALLATION_FIXED_KR = 0;         // TODO Viktor: fyll i fast install-kostnad per projekt
+export const CHARGER_INSTALL_KR = 5_000;                // laddbox-installation (var 9 000)
+
+// --- Solis S6-priser, ex moms hardware-cost
 const SOLIS = {
-  10: { kind: "external" as const, brand: "Solis S6", kw: 10, priceKr: 24500 },
-  15: { kind: "external" as const, brand: "Solis S6", kw: 15, priceKr: 31500 },
-  20: { kind: "external" as const, brand: "Solis S6", kw: 20, priceKr: 39000 },
+  10: { kind: "external" as const, brand: "Solis S6", kw: 10, priceKr: 10_294 },
+  15: { kind: "external" as const, brand: "Solis S6", kw: 15, priceKr: 15_990 },
 };
 
 export type HeatPump = {
@@ -124,38 +145,42 @@ export const INVERTERS: Inverter[] = [
 ];
 
 export const BATTERIES: Battery[] = [
-  {
-    id: "pylontech-h3",
-    brand: "Pylontech Force H3",
-    cycles: 6000,
-    pricePerKWhKr: 6200,
-    capacities: [10.24, 15.36, 20.48, 25.6, 30.72],
-    chemistry: "LFP",
-    inverterFor: (kWh) => {
-      if (kWh <= 20.48) return SOLIS[10];
-      return SOLIS[15];
-    },
-  },
+  // -------- Easyway (RIKTIGA värden enligt Viktor 2026-05-09) --------
   {
     id: "easyway-univ7600",
     brand: "Easyway",
     cycles: 6500,
-    pricePerKWhKr: 5800,
     capacities: [15.36, 23.04, 30.72, 38.4, 46.08, 53.76, 61.44],
     chemistry: "LFP",
-    inverterFor: (kWh) => {
-      if (kWh <= 23.04) return SOLIS[10];
-      if (kWh <= 46.08) return SOLIS[15];
-      return SOLIS[20];
-    },
+    baseHardwareKr: 7_218,        // BMS + bas
+    perModuleHardwareKr: 10_335,
+    kWhPerModule: 7.68,
+    inverterFor: (kWh) => (kWh <= 23.04 ? SOLIS[10] : SOLIS[15]),
+  },
+  // -------- Övriga märken: PLACEHOLDER-värden tills Viktor levererar --------
+  // Beräknade som första-ordnings-uppskattningar från gamla pricePerKWhKr.
+  // Bör revideras med riktig leverantörsdata innan publicering.
+  {
+    id: "pylontech-h3",
+    brand: "Pylontech Force H3",
+    cycles: 6000,
+    capacities: [10.24, 15.36, 20.48, 25.6, 30.72],
+    chemistry: "LFP",
+    baseHardwareKr: 8_000,        // TODO: bekräfta
+    perModuleHardwareKr: 21_000,  // TODO: bekräfta
+    kWhPerModule: 5.12,
+    inverterFor: (kWh) => (kWh <= 20.48 ? SOLIS[10] : SOLIS[15]),
   },
   {
     id: "saj-hs3",
     brand: "SAJ HS3",
     cycles: 6000,
-    pricePerKWhKr: 5400,
     capacities: [10, 15, 20, 25, 30, 35, 40],
     chemistry: "LFP",
+    baseHardwareKr: 6_000,        // TODO
+    perModuleHardwareKr: 17_500,  // TODO
+    kWhPerModule: 5,
+    // Inbyggd växelriktare i SAJ HS3 (12 kW). Räknas alltid in.
     inverterFor: () => ({
       kind: "builtIn",
       kw: 12,
@@ -166,25 +191,25 @@ export const BATTERIES: Battery[] = [
     id: "enershare-core",
     brand: "Enershare Energy Core",
     cycles: 7000,
-    pricePerKWhKr: 6500,
     capacities: [
       9.6, 12.8, 16, 19.2, 22.4, 25.6, 28.8, 32, 35.2, 38.4, 41.6, 44.8, 48,
       51.2,
     ],
     chemistry: "LFP",
-    inverterFor: (kWh) => {
-      if (kWh <= 16) return SOLIS[10];
-      if (kWh <= 38.4) return SOLIS[15];
-      return SOLIS[20];
-    },
+    baseHardwareKr: 7_500,        // TODO
+    perModuleHardwareKr: 14_000,  // TODO
+    kWhPerModule: 3.2,
+    inverterFor: (kWh) => (kWh <= 16 ? SOLIS[10] : SOLIS[15]),
   },
   {
     id: "emaldo-store",
     brand: "Emaldo Power Store",
     cycles: 6500,
-    pricePerKWhKr: 6800,
     capacities: [15.36, 30.72, 46.08],
     chemistry: "LFP",
+    baseHardwareKr: 25_000,       // TODO – Emaldo är wall unit, högre baspris
+    perModuleHardwareKr: 60_000,  // TODO
+    kWhPerModule: 15.36,
     inverterFor: () => ({
       kind: "builtIn",
       kw: 10.8,
@@ -222,20 +247,22 @@ export const HEAT_PUMPS: HeatPump[] = [
   { id: "ctc-ecoheat", brand: "CTC", model: "EcoHeat 412 (bergvärme)", type: "bergvärme", scop: 5.0, outputKW: 12, priceKr: 205000 },
 ];
 
+// Vi säljer bara Easee, Zaptec och Charge Amps. Wallbox och Garo borttagna.
 export const CHARGERS: Charger[] = [
   { id: "easee", brand: "Easee Up", maxKW: 22, priceKr: 11500 },
   { id: "zaptec", brand: "Zaptec Go 2", maxKW: 22, priceKr: 12900 },
-  { id: "wallbox", brand: "Wallbox Pulsar Max", maxKW: 22, priceKr: 9900 },
-  { id: "garo", brand: "Garo Entity Pro", maxKW: 22, priceKr: 13500 },
   { id: "chargeamps", brand: "Charge Amps Halo", maxKW: 22, priceKr: 12500 },
 ];
 
+// Vi erbjuder tre EMS-plattformar: Energy IQ (egen), Enequi Core (extern,
+// garanterad), Tibber Bridge (entry-level). Evolta IQ / Markedroid /
+// HomeAssistant är borttagna ur produktportföljen.
 export const EMS_OPTIONS: EMS[] = [
   {
     id: "energy-iq",
     brand: "Energy IQ",
     blurb:
-      "Optimera Energis egna EMS. Samma motor som Evolta IQ men utan garantibesparing. Kör batteriet mot stödtjänster (FCR-D / aFRR) och spotpris.",
+      "Optimera Energis egna EMS. Samma motor som de stora plattformarna men utan garantibesparing. Kör batteriet mot stödtjänster (FCR-D / aFRR) och spotpris.",
     features: ["FCR-D / aFRR", "Spotpris-styrning", "Stödtjänster"],
     spotOptimization: 0.20,
     priceKr: 2500,
@@ -249,7 +276,7 @@ export const EMS_OPTIONS: EMS[] = [
       "Svensk-utvecklad EMS-hubb med fokus på spotpris-optimering och stödtjänster mot Svenska Kraftnät. Stark garantibesparing.",
     features: ["FCR-D / aFRR", "Spotpris-styrning", "Garanti"],
     spotOptimization: 0.18,
-    priceKr: 14900,
+    priceKr: 9_595,
     monthlyKr: 99,
     enablesSupportServices: true,
   },
@@ -257,43 +284,10 @@ export const EMS_OPTIONS: EMS[] = [
     id: "tibber",
     brand: "Tibber Bridge",
     blurb:
-      "Pluggar in i mätarens HAN-port – du får realtidsdata och styr värmepump, laddbox och batteri via Tibber-appen.",
+      "Pluggar in i mätarens HAN-port – du får realtidsdata och styr batteri och laddbox via Tibber-appen.",
     features: ["HAN-port", "Tibber-app", "Smart Charging"],
     spotOptimization: 0.10,
-    priceKr: 1490,
-    monthlyKr: 0,
-    enablesSupportServices: false,
-  },
-  {
-    id: "evolta",
-    brand: "Evolta IQ",
-    blurb:
-      "Fullt modulär plattform som styr sol, batteri, värmepump och elbil utifrån prognoser och beteende. Garantibesparing ingår.",
-    features: ["AI-prognos", "Garanti", "Full hårdvarustöd"],
-    spotOptimization: 0.20,
-    priceKr: 24900,
-    monthlyKr: 149,
-    enablesSupportServices: false,
-  },
-  {
-    id: "markedroid",
-    brand: "Markedroid",
-    blurb:
-      "Marknadsoptimerare som kör batteriet mot Nord Pool och balansmarknaden – perfekt för dig som vill maxa intäkten.",
-    features: ["Spotpris", "Reglermarknad", "Auto-trading"],
-    spotOptimization: 0.22,
-    priceKr: 9900,
-    monthlyKr: 199,
-    enablesSupportServices: false,
-  },
-  {
-    id: "homeassistant",
-    brand: "HomeAssistant",
-    blurb:
-      "Open source. Vi sätter upp och underhåller din egen lokala installation – alla data stannar i ditt hus.",
-    features: ["Open Source", "Lokal kontroll", "1000+ integrationer"],
-    spotOptimization: 0.12,
-    priceKr: 8900,
+    priceKr: 1_490,
     monthlyKr: 0,
     enablesSupportServices: false,
   },

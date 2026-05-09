@@ -9,6 +9,12 @@ import {
   SUN_HOURS_KWH_PER_KWP,
   HOUSE_HEAT_DEMAND_KWH_PER_M2,
   EV_KM_PER_KWH,
+  MOMS_FACTOR,
+  BATTERY_PROJECT_MARGIN_KR,
+  PER_EXTRA_MODULE_MARGIN_KR,
+  BATTERY_INSTALLATION_FIXED_KR,
+  CHARGER_INSTALL_KR,
+  type Battery,
   type InverterAssignment,
   type RoofType,
 } from "./catalog";
@@ -28,9 +34,9 @@ export type CalcInput = {
   hasExistingSolar: boolean;
   existingSolarKWp: number;
   existingSolarYearlyKWh: number;
-  // Växelriktare
+  // Växelriktare (manuellt val: 10 eller 15 kW Solis S6)
   inverterMode: "auto" | "manual";
-  manualInverterKw: 10 | 15 | 20;
+  manualInverterKw: 10 | 15;
   // Batteri
   batteryId: string | null;
   batteryCapacityKWh: number;
@@ -50,7 +56,18 @@ export type CalcInput = {
 export type CalcResult = {
   systemKWp: number;
   batteryKWh: number;
-  batteryPriceKr: number;
+  batteryModuleCount: number;
+  batteryPriceKr: number; // ink moms före avdrag, hela batteripaketet inkl Solis
+  // 6 line items för batteriets prisbild (alla ink moms före avdrag, redan
+  // gångrade med MOMS_FACTOR från ex moms källvärden i katalogen).
+  batteryBreakdown: {
+    bmsAndBaseKr: number;
+    moduleCostKr: number;
+    inverterKr: number;
+    projectMarginKr: number;
+    extraModuleMarginKr: number;
+    installationKr: number;
+  };
   inverter: InverterAssignment;
   yearlyProductionKWh: number;
   yearlyConsumptionKWh: number;
@@ -141,11 +158,10 @@ export function supportServiceRevenueKr(
 }
 
 // =============================== VÄXELRIKTARE ===============================
-
-const SOLIS_PRICES: Record<10 | 15 | 20, number> = {
-  10: 24_500,
-  15: 31_500,
-  20: 39_000,
+// Solis S6-priser ex moms (matchar SOLIS-mappen i catalog.ts).
+const SOLIS_PRICES_EX_MOMS: Record<10 | 15, number> = {
+  10: 10_294,
+  15: 15_990,
 };
 
 export function pickInverter(
@@ -153,25 +169,89 @@ export function pickInverter(
   batteryBrandId: string | null,
   batteryKWh: number,
   mode: "auto" | "manual",
-  manualKw: 10 | 15 | 20,
+  manualKw: 10 | 15,
 ): InverterAssignment {
   if (mode === "manual") {
     return {
       kind: "external",
       brand: "Solis S6",
       kw: manualKw,
-      priceKr: SOLIS_PRICES[manualKw],
+      priceKr: SOLIS_PRICES_EX_MOMS[manualKw],
     };
   }
   if (batteryBrandId) {
     const b = BATTERIES.find((b) => b.id === batteryBrandId);
     if (b) return b.inverterFor(batteryKWh);
   }
+  // Ren sol-anläggning utan batteri – välj Solis efter kWp.
   if (systemKWp <= 10)
-    return { kind: "external", brand: "Solis S6", kw: 10, priceKr: SOLIS_PRICES[10] };
-  if (systemKWp <= 15)
-    return { kind: "external", brand: "Solis S6", kw: 15, priceKr: SOLIS_PRICES[15] };
-  return { kind: "external", brand: "Solis S6", kw: 20, priceKr: SOLIS_PRICES[20] };
+    return { kind: "external", brand: "Solis S6", kw: 10, priceKr: SOLIS_PRICES_EX_MOMS[10] };
+  return { kind: "external", brand: "Solis S6", kw: 15, priceKr: SOLIS_PRICES_EX_MOMS[15] };
+}
+
+// =============================== BATTERIPRIS ===============================
+/**
+ * Beräknar batteripaketets sex line items, returnerar ink moms före avdrag.
+ *
+ * Modellen (alla källvärden ex moms i katalogen):
+ *   ex_moms = baseHardwareKr
+ *           + n × perModuleHardwareKr
+ *           + (växelriktarpris ex moms)
+ *           + 30 000                                 (projektmarginal)
+ *           + max(0, n − 2) × 1 000                   (extra modul-marginal)
+ *           + BATTERY_INSTALLATION_FIXED_KR           (extern install-kostnad)
+ *   ink_moms_före_avdrag = ex_moms × 1,25
+ *
+ * Den 30 000 kr-marginalen är vår vinst EFTER att installationen är
+ * betald, alltså independent från install-kostnaden.
+ */
+export function batteryCustomerPriceKr(
+  battery: Battery,
+  kWh: number,
+  inverter: InverterAssignment,
+): {
+  moduleCount: number;
+  breakdown: CalcResult["batteryBreakdown"];
+  totalIncMomsKr: number;
+} {
+  const moduleCount = Math.max(
+    0,
+    Math.round(kWh / battery.kWhPerModule),
+  );
+  const inverterExMomsKr =
+    inverter.kind === "external" ? inverter.priceKr : 0;
+
+  const exMoms = {
+    bmsAndBase: battery.baseHardwareKr,
+    modules: moduleCount * battery.perModuleHardwareKr,
+    inverter: inverterExMomsKr,
+    projectMargin: BATTERY_PROJECT_MARGIN_KR,
+    extraModuleMargin:
+      Math.max(0, moduleCount - 2) * PER_EXTRA_MODULE_MARGIN_KR,
+    installation: BATTERY_INSTALLATION_FIXED_KR,
+  };
+
+  const totalExMoms =
+    exMoms.bmsAndBase +
+    exMoms.modules +
+    exMoms.inverter +
+    exMoms.projectMargin +
+    exMoms.extraModuleMargin +
+    exMoms.installation;
+  const totalIncMomsKr = Math.round(totalExMoms * MOMS_FACTOR);
+
+  return {
+    moduleCount,
+    breakdown: {
+      bmsAndBaseKr: Math.round(exMoms.bmsAndBase * MOMS_FACTOR),
+      moduleCostKr: Math.round(exMoms.modules * MOMS_FACTOR),
+      inverterKr: Math.round(exMoms.inverter * MOMS_FACTOR),
+      projectMarginKr: Math.round(exMoms.projectMargin * MOMS_FACTOR),
+      extraModuleMarginKr: Math.round(exMoms.extraModuleMargin * MOMS_FACTOR),
+      installationKr: Math.round(exMoms.installation * MOMS_FACTOR),
+    },
+    totalIncMomsKr,
+  };
 }
 
 const INVERTER_EFFICIENCY = 97.5;
@@ -187,9 +267,6 @@ export function computeCalc(input: CalcInput): CalcResult {
       : null;
   const batteryKWh = batteryBrand
     ? closest(input.batteryCapacityKWh, batteryBrand.capacities)
-    : 0;
-  const batteryPriceKr = batteryBrand
-    ? Math.round(batteryKWh * batteryBrand.pricePerKWhKr)
     : 0;
   const heat =
     en.värmepump && input.heatPumpId
@@ -294,38 +371,48 @@ export function computeCalc(input: CalcInput): CalcResult {
   );
 
   // -------- Hårdvarukostnader --------
+  // Sol: solarPriceKr är legacy "ink moms efter avdrag" – gränsar mot
+  //      14,55 %-avdraget i avdragsblocket nedan (inkonsekvens kvar tills
+  //      Viktor levererar ex moms-data för panel + baspris).
   const newSolarPriceKr = useExistingSolar
     ? 0
     : solActive
     ? solarPriceKr(newPanelCount, panel.pricePerPanelKr)
     : 0;
+  const solarTotalKr = newSolarPriceKr;
 
-  // Befintlig solpanel-anläggning kostar 0 nu. Växelriktarpriset gäller bara
-  // om vi sätter ny anläggning (eller om kunden bara köper batteri och behöver
-  // en växelriktare för det).
+  // Batteri-paketet enligt Viktors 6-line-item-modell. Returneras ink moms
+  // före avdrag (redan gångrad med MOMS_FACTOR från ex moms-källvärden).
+  const batteryPackage = batteryBrand
+    ? batteryCustomerPriceKr(batteryBrand, batteryKWh, inverter)
+    : null;
+  const batteryPriceKr = batteryPackage?.totalIncMomsKr ?? 0;
+  const batteryModuleCount = batteryPackage?.moduleCount ?? 0;
+  const batteryBreakdown = batteryPackage?.breakdown ?? {
+    bmsAndBaseKr: 0,
+    moduleCostKr: 0,
+    inverterKr: 0,
+    projectMarginKr: 0,
+    extraModuleMarginKr: 0,
+    installationKr: 0,
+  };
+
+  // Växelriktar-priset är inbakat i batteripaketet ovan. Om endast sol är
+  // valt (utan batteri) lägger vi växelriktaren här som separat post.
   const inverterPriceKr =
-    inverter.kind === "external" && (newPanelCount > 0 || en.batteri)
-      ? inverter.priceKr
+    inverter.kind === "external" && newPanelCount > 0 && !en.batteri
+      ? Math.round(inverter.priceKr * MOMS_FACTOR)
       : 0;
 
   const heatpumpPriceKr = heat ? heat.priceKr : 0;
   const heatpumpInstallKr = heat ? 35_000 : 0;
-  const chargerPriceKr = charger ? charger.priceKr + 9_000 : 0;
+  const chargerPriceKr = charger ? charger.priceKr + CHARGER_INSTALL_KR : 0;
   const emsPriceKr = ems ? ems.priceKr : 0;
-
-  // Solpriset från solarPriceKr() innehåller redan baspris (rigg/resor) +
-  // panelpris. Inget extra installationspålägg.
-  const solarTotalKr = newSolarPriceKr;
-
-  // För batteri lägger vi en mindre rigg-kostnad. För laddbox/vind är den
-  // redan inbakad ovan.
-  const batteryRigKr = batteryBrand ? 12_000 : 0;
 
   const totalCostKr =
     solarTotalKr +
     inverterPriceKr +
     batteryPriceKr +
-    batteryRigKr +
     heatpumpPriceKr +
     heatpumpInstallKr +
     chargerPriceKr +
@@ -349,9 +436,11 @@ export function computeCalc(input: CalcInput): CalcResult {
   );
   remaining -= solarDeductionKr;
 
+  // Batteri-avdraget gäller på hela batteripaketet (BMS+bas + moduler +
+  // växelriktare + marginal + install) ink moms. Kräver att huset har sol.
   const batteryDeductionKr = houseHasSolar
     ? Math.min(
-        Math.round((batteryPriceKr + batteryRigKr) * 0.485),
+        Math.round(batteryPriceKr * 0.485),
         Math.max(0, remaining),
       )
     : 0;
@@ -390,7 +479,9 @@ export function computeCalc(input: CalcInput): CalcResult {
   return {
     systemKWp,
     batteryKWh,
+    batteryModuleCount,
     batteryPriceKr,
+    batteryBreakdown,
     inverter,
     yearlyProductionKWh,
     yearlyConsumptionKWh,
