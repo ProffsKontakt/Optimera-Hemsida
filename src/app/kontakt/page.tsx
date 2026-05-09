@@ -2,11 +2,24 @@ import Link from "next/link";
 import { ArrowRight, Mail, Phone, MapPin } from "lucide-react";
 import { Section } from "@/components/site/Section";
 import { BrandPanel } from "@/components/site/BrandPanel";
+import {
+  JsonLd,
+  localBusinessSchema,
+  breadcrumbSchema,
+} from "@/components/seo/JsonLd";
 
 export const metadata = {
-  title: "Kontakt",
+  title: "Kontakt – Vallgatan 9, Solna",
   description:
-    "Hör av dig till Optimera Energi. Telefon, e-post och vårt kontor i Solna.",
+    "Ring 076 305 37 32, mejla hej@optimeraenergi.se eller kom förbi vårt kontor på Vallgatan 9 i Solna. Vi svarar inom 24 timmar.",
+  alternates: { canonical: "/kontakt" },
+  openGraph: {
+    title: "Kontakt – Optimera Energi",
+    description:
+      "Telefon, e-post och kontoradress till Optimera Energi Sverige AB i Solna.",
+    url: "/kontakt",
+    type: "website",
+  },
 };
 
 const TEAM = [
@@ -33,6 +46,13 @@ const TEAM = [
 export default function KontaktPage() {
   return (
     <>
+      <JsonLd data={localBusinessSchema} />
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Hem", href: "/" },
+          { name: "Kontakt", href: "/kontakt" },
+        ])}
+      />
       <section className="container-edge pt-12 md:pt-20 pb-10">
         <div className="max-w-3xl">
           <div className="eyebrow">Kontakt</div>

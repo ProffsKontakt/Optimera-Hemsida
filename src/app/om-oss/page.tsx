@@ -4,9 +4,17 @@ import { Section } from "@/components/site/Section";
 import { BrandPanel } from "@/components/site/BrandPanel";
 
 export const metadata = {
-  title: "Om oss",
+  title: "Om oss – Vision, team och bolagsresan",
   description:
-    "Optimera Energi: vision, team och vägen mot den kompletta energileverantören.",
+    "Optimera Energi Sverige AB grundades på enkel ärlighet. Möt teamet bakom installationerna och läs om vägen mot den kompletta energileverantören.",
+  alternates: { canonical: "/om-oss" },
+  openGraph: {
+    title: "Om oss – Optimera Energi",
+    description:
+      "Vision, team och vägen mot den kompletta energileverantören.",
+    url: "/om-oss",
+    type: "website",
+  },
 };
 
 const TEAM = [

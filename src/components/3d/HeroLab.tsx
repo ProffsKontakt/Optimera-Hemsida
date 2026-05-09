@@ -13,7 +13,7 @@ export function HeroLab() {
       gl={{ antialias: true, alpha: true }}
       className="!absolute inset-0"
     >
-      <color attach="background" args={["#EDEFF5"]} />
+      <color attach="background" args={["#EFE9DC"]} />
       <ambientLight intensity={0.55} />
       <directionalLight
         position={[5, 6, 3]}

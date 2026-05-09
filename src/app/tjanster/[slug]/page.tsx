@@ -5,6 +5,12 @@ import { SERVICES, getService, type ServiceSlug } from "@/lib/services";
 import { ServiceVignette } from "@/components/3d/ServiceVignette";
 import { Section } from "@/components/site/Section";
 import { Disclosure } from "@/components/site/Disclosure";
+import {
+  JsonLd,
+  faqPageSchema,
+  serviceSchema,
+  breadcrumbSchema,
+} from "@/components/seo/JsonLd";
 
 export function generateStaticParams() {
   return SERVICES.map((s) => ({ slug: s.slug }));
@@ -13,7 +19,23 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: { params: { slug: string } }) {
   const s = getService(params.slug as ServiceSlug);
   if (!s) return {};
-  return { title: s.name, description: s.oneLiner };
+  const path = `/tjanster/${s.slug}`;
+  return {
+    title: `${s.name} i Stockholm`,
+    description: s.lede,
+    alternates: { canonical: path },
+    openGraph: {
+      title: `${s.name} – Optimera Energi`,
+      description: s.oneLiner,
+      url: path,
+      type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${s.name} – Optimera Energi`,
+      description: s.oneLiner,
+    },
+  };
 }
 
 export default function ServicePage({
@@ -26,6 +48,22 @@ export default function ServicePage({
 
   return (
     <>
+      <JsonLd
+        data={serviceSchema({
+          name: s.name,
+          description: s.lede,
+          url: `/tjanster/${s.slug}`,
+          serviceType: s.name,
+        })}
+      />
+      <JsonLd data={faqPageSchema(s.faq)} />
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Hem", href: "/" },
+          { name: "Tjänster", href: "/" },
+          { name: s.name, href: `/tjanster/${s.slug}` },
+        ])}
+      />
       <section className="container-edge pt-12 md:pt-20 pb-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
           <div className="lg:col-span-7">

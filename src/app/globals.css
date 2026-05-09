@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --bone: #edeff5;
-  --cream: #dde2ec;
+  --bone: #f4f1ea;
+  --cream: #efe9dc;
   --ink: #0e0e0c;
   --graphite: #1a1a17;
   --amber: #e9b949;
@@ -32,11 +32,12 @@
   h2,
   h3,
   .display {
-    /* Rubriker använder Poppins precis som logon. Letterspacing tightat
-       för att Poppins ska se "display"-klassig ut i stora storlekar. */
+    /* Rubriker använder Poppins som logon, med tung weight (700) och
+       tight letterspacing för geometrisk auktoritet (Northvolt/Polestar-
+       territorium). */
     font-family: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
-    letter-spacing: -0.025em;
-    font-weight: 600;
+    letter-spacing: -0.035em;
+    font-weight: 700;
   }
   /* Italic-accent: när vi sätter <span className="italic font-serif">…</span>
      hoppar texten över till Fraunces italic. Det är så vi får den litterära

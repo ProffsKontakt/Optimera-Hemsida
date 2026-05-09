@@ -32,7 +32,7 @@ export function CalcScene({ input }: { input: CalcInput }) {
       gl={{ antialias: true, alpha: true }}
       className="!absolute inset-0"
     >
-      <color attach="background" args={["#EDEFF5"]} />
+      <color attach="background" args={["#EFE9DC"]} />
       <ambientLight intensity={0.55} />
       <directionalLight
         position={[6, 8, 4]}

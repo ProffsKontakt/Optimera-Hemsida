@@ -1,8 +1,9 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Fraunces, Poppins, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
+import { JsonLd, organizationSchema } from "@/components/seo/JsonLd";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -25,24 +26,88 @@ const jetbrains = JetBrains_Mono({
   display: "swap",
 });
 
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://optimeraenergi.se";
+
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "https://optimeraenergi.se",
-  ),
+  metadataBase: new URL(SITE_URL),
   title: {
     default:
-      "Optimera Energi – Hela energiomställningen, byggd på kloka tankar",
+      "Optimera Energi – Solceller, batteri, värmepump och laddbox i Stockholm",
     template: "%s · Optimera Energi",
   },
   description:
-    "Solpaneler, batterier, värmepumpar och laddboxar – byggda på kloka tankar och installerade av samma gäng som dyker upp med bullar och respekt för ditt hem.",
+    "Optimera Energi installerar solpaneler, batterier, värmepumpar och laddboxar i Stockholm. Hand-plockat sortiment, transparent prissättning, från offert till driftsättning under ett tak.",
+  applicationName: "Optimera Energi",
+  authors: [{ name: "Optimera Energi Sverige AB", url: SITE_URL }],
+  creator: "Optimera Energi Sverige AB",
+  publisher: "Optimera Energi Sverige AB",
+  keywords: [
+    "solceller Stockholm",
+    "solpaneler",
+    "batterilager",
+    "värmepump",
+    "laddbox",
+    "JA Solar",
+    "Pylontech",
+    "SAJ HS3",
+    "Easyway",
+    "Enershare",
+    "Emaldo",
+    "grön teknik avdrag",
+    "stödtjänster",
+    "Optimera Energi",
+  ],
+  alternates: {
+    canonical: "/",
+  },
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   openGraph: {
-    title: "Optimera Energi",
-    description:
-      "Hela energiomställningen under ett tak. Kloka tankar bakom varje installation.",
     type: "website",
     locale: "sv_SE",
+    url: "/",
+    siteName: "Optimera Energi",
+    title:
+      "Optimera Energi – Hela energiomställningen, byggd på kloka tankar",
+    description:
+      "Solpaneler, batterier, värmepumpar och laddboxar i Stockholm. Hand-plockat sortiment, transparent prissättning, eget montageteam.",
   },
+  twitter: {
+    card: "summary_large_image",
+    title:
+      "Optimera Energi – Hela energiomställningen, byggd på kloka tankar",
+    description:
+      "Solpaneler, batterier, värmepumpar och laddboxar i Stockholm.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/favicon.svg",
+    apple: "/icon.svg",
+  },
+  category: "energy",
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#F4F1EA" },
+    { media: "(prefers-color-scheme: dark)", color: "#0E0E0C" },
+  ],
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({
@@ -56,6 +121,7 @@ export default function RootLayout({
       className={`${poppins.variable} ${fraunces.variable} ${jetbrains.variable}`}
     >
       <body className="min-h-screen bg-bone text-ink antialiased">
+        <JsonLd data={organizationSchema} />
         <Navbar />
         <main className="pt-20">{children}</main>
         <Footer />

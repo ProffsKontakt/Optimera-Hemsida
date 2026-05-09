@@ -5,10 +5,10 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Bone/cream är basbakgrunden. Skiftade mot kall/blå-undertonen så
-        // sidan nu gränsar mot indigo istället för det varma cream.
-        bone: "#EDEFF5",
-        cream: "#DDE2EC",
+        // Bone/cream är basbakgrunden. Varm cream (Aesop/Byredo-aktig)
+        // matchar logokortet och ger premium svensk tech-hantverk-känslan.
+        bone: "#F4F1EA",
+        cream: "#EFE9DC",
         ink: "#0E0E0C",
         graphite: "#1A1A17",
         smoke: "#2A2A26",

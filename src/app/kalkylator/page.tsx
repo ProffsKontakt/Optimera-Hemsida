@@ -1,9 +1,17 @@
 import { CalcStudio } from "@/components/calc/CalcStudio";
 
 export const metadata = {
-  title: "Kalkylator – räkna på er helhet",
+  title: "Kalkylator – räkna på er energilösning i 3D",
   description:
-    "Designa hela energilösningen i en levande 1:1-modell av huset. Byt växelriktare, batteri, värmepump och paneler – siffrorna räknas om i realtid.",
+    "Designa solpaneler, batteri, värmepump och laddbox i en levande 1:1-modell av huset. Sätt antal paneler, batterimärke och kapacitet, och se investering, grönt avdrag, årlig besparing och återbetalningstid räknas om i realtid.",
+  alternates: { canonical: "/kalkylator" },
+  openGraph: {
+    title: "Kalkylator – Optimera Energi",
+    description:
+      "Designa er energilösning i 3D. Få investering, grönt avdrag och återbetalningstid på sekunden.",
+    url: "/kalkylator",
+    type: "website",
+  },
 };
 
 export default function CalculatorPage() {

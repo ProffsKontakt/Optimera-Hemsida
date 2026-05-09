@@ -1,9 +1,17 @@
 import { OffertForm } from "@/components/offert/OffertForm";
 
 export const metadata = {
-  title: "Begär offert",
+  title: "Begär offert – boka kostnadsfritt hembesök",
   description:
-    "Boka ett kostnadsfritt hembesök direkt i kalendern – välj dag och tid, så ringer vi dagen innan och bekräftar. Och ja, vi tar med bullar.",
+    "Boka ett kostnadsfritt hembesök direkt i kalendern. Välj dag och tid, så ringer vi dagen innan och bekräftar. Vi tar med bullar och inmätningsutrustning.",
+  alternates: { canonical: "/offert" },
+  openGraph: {
+    title: "Begär offert – Optimera Energi",
+    description:
+      "Boka ett kostnadsfritt hembesök i Stockholm. Vi ringer dagen innan och bekräftar.",
+    url: "/offert",
+    type: "website",
+  },
 };
 
 export default function OffertPage({

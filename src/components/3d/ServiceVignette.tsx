@@ -33,16 +33,16 @@ export function ServiceVignette({ kind }: { kind: ServiceSlug }) {
 }
 
 function backgroundFor(kind: ServiceSlug) {
-  // Subtila kalla varianter av bone (#EDEFF5) – matchar Optimera-paletten.
+  // Subtila varma cream-varianter (Aesop/Byredo). Matchar logo-kortet.
   switch (kind) {
     case "solpaneler":
-      return "#E7E9F1";
+      return "#EFE3C7";
     case "batterier":
-      return "#E1E5EE";
+      return "#EAE3D2";
     case "vaermepumpar":
-      return "#EAEDF4";
+      return "#E3DED1";
     case "laddboxar":
-      return "#E5E8F1";
+      return "#E9E3D3";
   }
 }
 
