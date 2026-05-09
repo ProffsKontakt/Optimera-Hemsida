@@ -33,14 +33,33 @@ type Piece = {
   key: PieceKey;
   label: string;
   hint: string;
+  description: string;
 };
 
 // Värmepump är temporärt dold ur UI tills prismodellen är spikad. Fältet
 // finns kvar i CalcInput för typkompatibilitet med presets/calc.
 const PIECES: Piece[] = [
-  { key: "sol", label: "Solpaneler", hint: "Producerar el från taket" },
-  { key: "batteri", label: "Batteri", hint: "Lagrar solen till kvällen" },
-  { key: "laddbox", label: "Laddbox", hint: "Hemmaladdning av elbilen" },
+  {
+    key: "sol",
+    label: "Solpaneler",
+    hint: "Producerar el från taket",
+    description:
+      "Solpanelerna gör el dagtid när solen lyser. Vi använder JA Solar 500W eller 455W beroende på din takyta och skuggning. Du betalar bara för det vi faktiskt får upp på taket – inga universalsystem, inga genvägar.",
+  },
+  {
+    key: "batteri",
+    label: "Batteri",
+    hint: "Lagrar solen till kvällen",
+    description:
+      "Batteriet sparar dagens solel till kvällen och tjänar pengar medan du sover via stödtjänster mot Svenska Kraftnät (FCR-D / aFRR). Modulärt – börja med 15 kWh och utöka senare när bilflottan eller familjen växer.",
+  },
+  {
+    key: "laddbox",
+    label: "Laddbox",
+    hint: "Hemmaladdning av elbilen",
+    description:
+      "Snabb hemmaladdning av elbilen, upp till 22 kW (3-fas). Easee, Zaptec eller Charge Amps. Vår EMS styr laddningen mot timmar med lågt elpris så bilen alltid kostar minst möjligt att tanka.",
+  },
 ];
 
 const initial: CalcInput = {
@@ -282,7 +301,7 @@ export function CalcStudio() {
           // Solpanel-raden får en sidoknapp "Finns redan" – när den klickas
           // växlar vi på Solpaneler och sätter den i befintlig-läge direkt.
           return (
-            <div key="sol-row" className="flex gap-2">
+            <div key="sol-row" className="flex flex-col sm:flex-row gap-2">
               <div className="flex-1 min-w-0">{tile}</div>
               <button
                 type="button"
@@ -294,7 +313,7 @@ export function CalcStudio() {
                   }));
                 }}
                 className={[
-                  "shrink-0 self-stretch rounded-2xl px-4 py-2 text-[12px] font-medium border transition flex flex-col items-center justify-center gap-1 min-w-[100px] text-center leading-tight",
+                  "shrink-0 sm:self-stretch rounded-2xl px-4 py-3 sm:py-2 text-[12px] font-medium border transition flex sm:flex-col flex-row items-center justify-center gap-2 sm:gap-1 sm:min-w-[100px] text-center leading-tight",
                   input.hasExistingSolar && input.enabled.sol
                     ? "bg-indigo text-bone border-indigo"
                     : "bg-bone text-ink/75 border-ink/15 hover:border-ink/40",
@@ -302,10 +321,12 @@ export function CalcStudio() {
                 aria-label="Jag har redan solpaneler"
               >
                 <span className="font-mono text-[9.5px] uppercase tracking-[0.16em] opacity-65">
-                  Snabbväg
+                  <span className="sm:hidden">Snabbväg ·</span>
+                  <span className="hidden sm:inline">Snabbväg</span>
                 </span>
                 <span className="text-[13px] font-semibold leading-tight">
-                  Finns redan
+                  <span className="sm:hidden">Jag har redan solpaneler</span>
+                  <span className="hidden sm:inline">Finns redan</span>
                 </span>
               </button>
             </div>
@@ -512,49 +533,57 @@ function PieceTile({
       <button
         type="button"
         onClick={onToggle}
-        className="flex w-full items-center gap-4 px-5 py-4 text-left"
+        className="block w-full px-4 sm:px-5 py-4 text-left"
       >
-        <span
-          className={[
-            "shrink-0 grid h-6 w-6 place-items-center rounded-full border-2 transition",
-            isOn
-              ? "bg-ink border-ink text-bone"
-              : "border-ink/25 bg-bone text-transparent",
-          ].join(" ")}
-          aria-hidden
-        >
-          <Check size={13} strokeWidth={3} />
-        </span>
-
-        <span className="flex-1 min-w-0">
-          <span className="block font-display text-xl tracking-display-tight leading-tight">
+        {/* Övre rad: check + label + chevron. Pris visas separat under på mobil
+            (alltid synlig, inte avklippt) men på sm+ flyttas det in på samma
+            rad genom flex-layout via en wrapper. */}
+        <div className="flex items-center gap-3">
+          <span
+            className={[
+              "shrink-0 grid h-7 w-7 place-items-center rounded-full border-2 transition",
+              isOn
+                ? "bg-ink border-ink text-bone"
+                : "border-ink/25 bg-bone text-transparent",
+            ].join(" ")}
+            aria-hidden
+          >
+            <Check size={14} strokeWidth={3} />
+          </span>
+          <span className="flex-1 min-w-0 font-display text-[22px] sm:text-xl tracking-display-tight leading-tight">
             {piece.label}
           </span>
-          <span className="block text-[12.5px] text-ink/55 mt-0.5 truncate">
+          <ChevronDown
+            size={20}
+            className={[
+              "shrink-0 text-ink/40 transition-transform",
+              isOn ? "rotate-180 text-ink/70" : "",
+            ].join(" ")}
+          />
+        </div>
+
+        {/* Hint + pris-rad. Indragna för att linje upp under label. På mobil
+            wrapas hint på flera rader (ingen truncate) så hela texten syns. */}
+        <div className="mt-2 pl-10 flex items-baseline justify-between gap-3">
+          <span className="text-[13.5px] text-ink/65 leading-relaxed">
             {piece.hint}
           </span>
-        </span>
-
-        <span className="text-right shrink-0">
-          <span className="block font-mono text-[10px] uppercase tracking-[0.18em] text-ink/45">
-            {isOn ? "Just nu" : "Från"}
+          <span className="text-right shrink-0 whitespace-nowrap">
+            <span className="font-mono text-[9.5px] uppercase tracking-[0.18em] text-ink/45 mr-1.5">
+              {isOn ? "Just nu" : "Från"}
+            </span>
+            <span className="font-display text-[17px] sm:text-lg tracking-display-tight">
+              {formatKr(isOn ? livePrice : fromPrice)}
+            </span>
           </span>
-          <span className="block font-display text-lg tracking-display-tight">
-            {formatKr(isOn ? livePrice : fromPrice)}
-          </span>
-        </span>
-
-        <ChevronDown
-          size={18}
-          className={[
-            "shrink-0 text-ink/40 transition-transform",
-            isOn ? "rotate-180 text-ink/70" : "",
-          ].join(" ")}
-        />
+        </div>
       </button>
 
       {isOn && (
-        <div className="border-t border-ink/10 bg-cream/40 px-5 py-5 space-y-5">
+        <div className="border-t border-ink/10 bg-cream/40 px-4 sm:px-5 py-5 space-y-5">
+          <p className="text-[14px] text-ink/70 leading-relaxed">
+            {piece.description}
+          </p>
           {piece.key === "sol" && (
             <SolControls input={input} update={update} result={result} />
           )}
@@ -1267,14 +1296,14 @@ function Tile({
   return (
     <div
       className={[
-        "rounded-2xl border p-5",
+        "rounded-2xl border p-4 sm:p-5",
         accent ? "bg-sun/20 border-sun/50" : "bg-bone border-ink/10",
       ].join(" ")}
     >
-      <div className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-ink/55">
+      <div className="font-mono text-[10px] sm:text-[10.5px] uppercase tracking-[0.16em] sm:tracking-[0.18em] text-ink/55 leading-snug">
         {label}
       </div>
-      <div className="mt-2 font-display text-2xl tracking-display-tight leading-tight">
+      <div className="mt-2 font-display text-[22px] sm:text-2xl tracking-display-tight leading-tight break-words">
         {value}
       </div>
       {sub && (
