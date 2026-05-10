@@ -2,16 +2,21 @@ import Link from "next/link";
 import { Mail, Phone, ArrowRight } from "lucide-react";
 import { Section } from "@/components/site/Section";
 import { BrandPanel } from "@/components/site/BrandPanel";
+import {
+  JsonLd,
+  localBusinessSchema,
+  breadcrumbSchema,
+} from "@/components/seo/JsonLd";
 
 export const metadata = {
-  title: "Om oss – Vision, team och bolagsresan",
+  title: "Om oss · Optimera Energi – elfirman som tar hand om dig",
   description:
-    "Optimera Energi Sverige AB grundades på enkel ärlighet. Möt teamet bakom installationerna och läs om vägen mot den kompletta energileverantören.",
+    "Möt teamet bakom Optimera Energi Sverige AB. Tre människor i Solna som installerar solpaneler, batterier, värmepumpar och laddboxar – och som finns kvar dagen efter kontraktet är skrivet.",
   alternates: { canonical: "/om-oss" },
   openGraph: {
     title: "Om oss – Optimera Energi",
     description:
-      "Vision, team och vägen mot den kompletta energileverantören.",
+      "Tre människor i Solna som installerar sol, batteri, värme och laddboxar – och som finns kvar dagen efter kontraktet är skrivet.",
     url: "/om-oss",
     type: "website",
   },
@@ -32,7 +37,7 @@ const TEAM = [
     role: "Grundare och Operativ Chef",
     email: "julian@optimeraenergi.se",
     phone: "0769470058",
-    color: "from-[#FFDD6C] to-[#B86F3C]",
+    color: "from-[#B86F3C] to-[#2A2A26]",
     bio:
       "Operativ ryggrad. Plockar upp telefonen, dimensionerar systemet, mejlar din offert och dyker upp vid första installationen.",
   },
@@ -80,25 +85,91 @@ const TIMELINE = [
   },
 ];
 
+const SITE = "https://optimeraenergi.se";
+
+const aboutPageSchema = {
+  ...localBusinessSchema,
+  founder: TEAM.filter((m) => m.role.includes("Grundare")).map((m) => ({
+    "@type": "Person",
+    name: m.name,
+    jobTitle: m.role,
+    email: m.email,
+    telephone: `+46${m.phone.replace(/^0/, "")}`,
+  })),
+  employee: TEAM.map((m) => ({
+    "@type": "Person",
+    name: m.name,
+    jobTitle: m.role,
+    email: m.email,
+    telephone: `+46${m.phone.replace(/^0/, "")}`,
+  })),
+  foundingDate: "2026",
+  foundingLocation: {
+    "@type": "Place",
+    name: "Solna, Sverige",
+  },
+  numberOfEmployees: TEAM.length,
+};
+
 export default function AboutPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="container-edge pt-12 md:pt-20 pb-10">
-        <div className="max-w-4xl">
-          <div className="eyebrow">Om Optimera Energi</div>
-          <h1 className="mt-5 font-display text-[44px] md:text-[88px] tracking-display-tight leading-[0.95]">
-            En elfirma som
-            <br />
-            <span className="italic font-serif text-indigo">
-              tar hand om dig.
-            </span>
-          </h1>
-          <p className="mt-6 max-w-2xl text-ink/70 text-lg leading-relaxed">
-            Optimera Energi Sverige AB grundades på en enkel idé: branschen
-            behöver en installatör som faktiskt finns kvar dagen efter
-            kontraktet är skrivet.
-          </p>
+      <JsonLd data={aboutPageSchema} />
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Hem", href: "/" },
+          { name: "Om oss", href: "/om-oss" },
+        ])}
+      />
+
+      {/* Hero – text + snapshot-kort */}
+      <section className="container-edge pt-12 md:pt-20 pb-16 md:pb-24">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-end">
+          <div className="lg:col-span-7">
+            <div className="eyebrow">Om Optimera Energi</div>
+            <h1 className="mt-5 font-display text-[44px] md:text-[80px] lg:text-[88px] tracking-display-tight leading-[0.95]">
+              En elfirma som
+              <br />
+              <span className="italic font-serif text-indigo">
+                tar hand om dig.
+              </span>
+            </h1>
+            <p className="mt-6 max-w-xl text-ink/70 text-lg leading-relaxed">
+              Optimera Energi Sverige AB grundades på en enkel idé: branschen
+              behöver en installatör som faktiskt finns kvar dagen efter
+              kontraktet är skrivet.
+            </p>
+          </div>
+
+          <aside className="lg:col-span-5">
+            <div className="rounded-3xl border border-ink/10 bg-bone p-7 md:p-8">
+              <div className="font-mono text-[10.5px] uppercase tracking-[0.2em] text-ink/55 mb-5">
+                Bolagsfakta
+              </div>
+              <dl className="space-y-3.5 text-[14px]">
+                <FactRow k="Juridiskt namn" v="Optimera Energi Sverige AB" />
+                <FactRow k="Org.nummer" v="559447-9585" />
+                <FactRow k="Säte" v="Vallgatan 9, Solna" />
+                <FactRow k="Grundat" v="2026" />
+                <FactRow k="Medarbetare" v="3 (växer till 8 under 2026)" />
+                <FactRow k="Auktorisation" v="F-skatt · BAS-U · SEK" />
+              </dl>
+              <div className="mt-6 pt-5 border-t border-ink/10 flex flex-wrap gap-2 text-[11px] font-mono uppercase tracking-[0.16em] text-ink/65">
+                <Tag>Solpaneler</Tag>
+                <Tag>Batterilager</Tag>
+                <Tag>Värmepumpar</Tag>
+                <Tag>Laddboxar</Tag>
+              </div>
+            </div>
+          </aside>
+        </div>
+
+        {/* Stats-rad */}
+        <div className="mt-12 md:mt-16 grid grid-cols-2 md:grid-cols-4 gap-px bg-ink/10 rounded-2xl overflow-hidden border border-ink/10">
+          <Stat n="0" label="Dolda påslag på offerten" />
+          <Stat n="25 år" label="Garanti på installationen" />
+          <Stat n="100 %" label="Egna installatörer, inga UE" />
+          <Stat n="9/10" label="Mål: kunder rekommenderar oss" />
         </div>
       </section>
 
@@ -114,6 +185,7 @@ export default function AboutPage() {
             </span>
           </>
         }
+        className="!py-16 md:!py-20"
       >
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
           <div className="lg:col-span-7 space-y-5 text-ink/75 text-[16px] md:text-[17px] leading-relaxed">
@@ -176,7 +248,7 @@ export default function AboutPage() {
         </div>
       </Section>
 
-      {/* Värderingar (kvar som tidigare) */}
+      {/* Värderingar */}
       <Section
         eyebrow="Vad vi tror på"
         title={
@@ -187,8 +259,9 @@ export default function AboutPage() {
           </>
         }
         intro="Fyra principer som styr varje hembesök, offert och installation."
+        className="!py-16 md:!py-20"
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
           <Belief
             n="01"
             title="Genuinitet, vi säger nej när vi måste"
@@ -216,6 +289,8 @@ export default function AboutPage() {
       <Section
         eyebrow="Teamet"
         title={<>Tre människor som svarar i telefonen.</>}
+        intro="Du får aldrig en växel eller en chatt-bot. Du pratar med en av oss, varje gång."
+        className="!py-16 md:!py-20"
       >
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {TEAM.map((m) => (
@@ -265,6 +340,7 @@ export default function AboutPage() {
         eyebrow="En vanlig vecka"
         title={<>Färdiga batteriinstallationer hos våra kunder.</>}
         intro="Vi dokumenterar varje arbete vi släpper ifrån oss. När vi är klara ska elskåpet vara snyggare än när vi kom."
+        className="!py-16 md:!py-20"
       >
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
           {[
@@ -291,21 +367,18 @@ export default function AboutPage() {
         </p>
       </Section>
 
-      {/* Tidslinje – Vår väg mot den kompletta energileverantören */}
+      {/* Tidslinje */}
       <Section
         eyebrow="Bolagsresan"
         title={<>Vår väg mot den kompletta energileverantören.</>}
         intro="Hur vi byggs år för år. Allt i tjänst av att förtjäna ditt förtroende."
+        className="!py-16 md:!py-20"
       >
         <ol className="relative border-l-2 border-ink/10 ml-3 md:ml-6 space-y-10">
           {TIMELINE.map((step, i) => (
             <li key={i} className="pl-6 md:pl-10 relative">
               <span
-                className="absolute -left-[9px] top-1.5 h-4 w-4 rounded-full ring-4 ring-bone"
-                style={{
-                  background:
-                    "linear-gradient(180deg, #3648C3 0%, #FFDD6C 100%)",
-                }}
+                className="absolute -left-[9px] top-1.5 h-4 w-4 rounded-full ring-4 ring-bone bg-indigo"
                 aria-hidden
               />
               <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink/55">
@@ -323,7 +396,7 @@ export default function AboutPage() {
       </Section>
 
       {/* CTA-panel: Kom förbi */}
-      <Section>
+      <Section className="!py-16 md:!py-20">
         <BrandPanel>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-end">
             <div>
@@ -350,6 +423,36 @@ export default function AboutPage() {
         </BrandPanel>
       </Section>
     </>
+  );
+}
+
+function FactRow({ k, v }: { k: string; v: string }) {
+  return (
+    <div className="flex items-baseline justify-between gap-4 border-b border-ink/8 pb-3 last:border-b-0 last:pb-0">
+      <dt className="text-ink/55 shrink-0">{k}</dt>
+      <dd className="text-ink/85 text-right">{v}</dd>
+    </div>
+  );
+}
+
+function Tag({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="inline-flex items-center rounded-full border border-ink/15 bg-cream/60 px-2.5 py-1">
+      {children}
+    </span>
+  );
+}
+
+function Stat({ n, label }: { n: string; label: string }) {
+  return (
+    <div className="bg-bone p-5 md:p-7">
+      <div className="font-display text-3xl md:text-4xl tracking-display-tight leading-none">
+        {n}
+      </div>
+      <div className="mt-2 text-[12.5px] text-ink/60 leading-snug">
+        {label}
+      </div>
+    </div>
   );
 }
 
