@@ -89,8 +89,8 @@ export function Hero() {
                     Hus #048 · Bromma
                   </div>
                 </div>
-                <div className="rounded-2xl bg-ink/90 text-bone backdrop-blur px-4 py-3 border border-bone/10">
-                  <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-bone/55">
+                <div className="rounded-2xl bg-bone/95 text-ink backdrop-blur px-4 py-3 border border-ink/10">
+                  <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink/55">
                     Årsvärmefaktor
                   </div>
                   <div className="font-display text-lg leading-tight">

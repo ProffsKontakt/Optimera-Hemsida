@@ -157,19 +157,19 @@ export default function ServicePage({
       </Section>
 
       <Section>
-        <div className="rounded-[28px] bg-ink text-bone p-10 md:p-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div className="rounded-[28px] bg-bone border border-ink/10 p-10 md:p-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div>
-            <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-bone/55">
+            <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink/55">
               Redo att gå vidare?
             </div>
-            <h3 className="mt-3 font-display text-3xl md:text-5xl tracking-display-tight max-w-2xl leading-tight">
+            <h3 className="mt-3 font-display text-3xl md:text-5xl tracking-display-tight max-w-2xl leading-tight text-ink">
               Boka ett hembesök för {s.name.toLowerCase()}.
             </h3>
           </div>
           <div className="flex gap-3">
             <Link
               href={`/offert?tjanst=${s.slug}`}
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-sun px-7 py-4 text-base font-medium text-ink hover:bg-sun-deep transition"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-indigo px-7 py-4 text-base font-medium text-bone hover:bg-indigo/90 transition"
             >
               Begär offert <ArrowRight size={16} />
             </Link>

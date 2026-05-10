@@ -340,17 +340,17 @@ export function CalcStudio() {
         {anyEnabled && (
           <Link
             href={`/offert?${queryString}`}
-            className="mt-2 inline-flex w-full items-center justify-between gap-2 rounded-2xl bg-ink px-6 py-5 font-medium text-bone hover:bg-graphite transition"
+            className="mt-2 inline-flex w-full items-center justify-between gap-2 rounded-2xl bg-indigo px-6 py-5 font-medium text-bone hover:bg-indigo/90 transition"
           >
             <span>
-              <span className="block font-mono text-[10.5px] uppercase tracking-[0.2em] text-bone/55">
+              <span className="block font-mono text-[10.5px] uppercase tracking-[0.2em] text-bone/65">
                 Investering efter avdrag
               </span>
               <span className="block font-display text-2xl tracking-display-tight">
                 {formatKr(result.netCostKr)}
               </span>
             </span>
-            <span className="inline-flex items-center gap-2 rounded-full bg-sun px-4 py-2 text-ink text-sm">
+            <span className="inline-flex items-center gap-2 rounded-full bg-bone px-4 py-2 text-indigo text-sm font-medium">
               Begär offert <ArrowRight size={14} />
             </span>
           </Link>
