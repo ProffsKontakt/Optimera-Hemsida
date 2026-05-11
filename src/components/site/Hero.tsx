@@ -1,9 +1,20 @@
 "use client";
 
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { HeroLab } from "@/components/3d/HeroLab";
+
+// Three.js + R3F är ~200 KB minified och påverkar LCP/TBT på mobil rejält.
+// Hero-canvasen är dekorativ – inte LCP-element – så vi dynamic-importerar
+// med ssr:false och en cream-placeholder så det inte blir layout shift.
+const HeroLab = dynamic(
+  () => import("@/components/3d/HeroLab").then((m) => m.HeroLab),
+  {
+    ssr: false,
+    loading: () => <div className="absolute inset-0 bg-cream" aria-hidden />,
+  },
+);
 
 export function Hero() {
   return (

@@ -42,26 +42,20 @@ export function Navbar() {
           onClick={() => setOpen(false)}
           aria-label="Optimera Energi – startsidan"
         >
-          {/* Två logotyp-varianter: ljus surfaces visar svart text, mörka
-              surfaces (prefers-color-scheme: dark) visar vit text. Gradient-
-              bommen är samma i båda. */}
+          {/* Sajten är alltid på cream/bone — vi använder ALLTID den ljusa
+              logon (svart text). public/logo-dark.svg finns för framtida
+              dark mode-implementation, men ska INTE plockas in automatiskt
+              via prefers-color-scheme eftersom användarens OS-preferens
+              inte påverkar våra sidors faktiska bakgrund. */}
           <Image
             src="/logo.svg"
             alt="Optimera Energi"
             width={332}
             height={114}
-            className="h-9 w-auto dark:hidden"
+            className="h-9 w-auto"
             priority
           />
-          <Image
-            src="/logo-dark.svg"
-            alt="Optimera Energi"
-            width={332}
-            height={114}
-            className="h-9 w-auto hidden dark:block"
-            priority
-          />
-          <span className="hidden md:inline-block font-mono text-[10px] uppercase tracking-[0.2em] text-ink/55 dark:text-bone/55 border-l border-ink/15 dark:border-bone/15 pl-3 ml-1">
+          <span className="hidden md:inline-block font-mono text-[10px] uppercase tracking-[0.2em] text-ink/55 border-l border-ink/15 pl-3 ml-1">
             byggd på kloka tankar
           </span>
         </Link>

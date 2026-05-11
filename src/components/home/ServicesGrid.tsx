@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { SERVICES } from "@/lib/services";
 import { ArrowUpRight } from "lucide-react";
-import { ServiceVignette } from "@/components/3d/ServiceVignette";
+import { ServiceVignetteLazy as ServiceVignette } from "@/components/3d/ServiceVignetteLazy";
 
 export function ServicesGrid() {
   return (

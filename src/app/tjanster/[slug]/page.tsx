@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { SERVICES, getService, type ServiceSlug } from "@/lib/services";
-import { ServiceVignette } from "@/components/3d/ServiceVignette";
+import { ServiceVignetteLazy as ServiceVignette } from "@/components/3d/ServiceVignetteLazy";
 import { Section } from "@/components/site/Section";
 import { Disclosure } from "@/components/site/Disclosure";
 import {

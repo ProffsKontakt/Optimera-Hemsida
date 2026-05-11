@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import {
   PANELS,
   BATTERIES,
@@ -23,8 +24,18 @@ import {
   type CalcInput,
   type CalcResult,
 } from "@/lib/calc";
-import { CalcScene } from "@/components/3d/CalcScene";
 import { ArrowRight, Check, ChevronDown } from "lucide-react";
+
+// Three.js + R3F är ~200 KB minified. Eftersom kalkylator-besökare först
+// ser titeln och resultaten innan 3D-scenen blir relevant lazy-laddar vi
+// canvas:en — sänker First Load JS markant och förbättrar LCP på mobil.
+const CalcScene = dynamic(
+  () => import("@/components/3d/CalcScene").then((m) => m.CalcScene),
+  {
+    ssr: false,
+    loading: () => <div className="absolute inset-0 bg-cream" aria-hidden />,
+  },
+);
 
 type Enabled = CalcInput["enabled"];
 type PieceKey = keyof Enabled;

@@ -5,23 +5,30 @@ import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
 import { JsonLd, organizationSchema } from "@/components/seo/JsonLd";
 
+// Endast vikter vi faktiskt använder. Tidigare hade vi 5 weights (~50KB
+// extra). 400 = brödtext, 500 = knappar/nav, 700 = stora rubriker.
 const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500", "700"],
   variable: "--font-poppins",
   display: "swap",
 });
 
+// Fraunces används bara för kursiva accent-ord ("under ett tak.", "tar hand
+// om dig."). Endast italic + en optical size räcker — den 90+KB-tunga axes-
+// definitionen var overkill.
 const fraunces = Fraunces({
   subsets: ["latin"],
+  weight: ["500", "700"],
   variable: "--font-fraunces",
   display: "swap",
-  axes: ["opsz", "SOFT"],
-  style: ["normal", "italic"],
+  style: ["italic"],
 });
 
+// Mono används bara för eyebrows + monospace-små-detaljer. En vikt räcker.
 const jetbrains = JetBrains_Mono({
   subsets: ["latin"],
+  weight: ["400", "500"],
   variable: "--font-jetbrains",
   display: "swap",
 });
@@ -120,8 +127,16 @@ export default function RootLayout({
     >
       <body className="min-h-screen bg-bone text-ink antialiased">
         <JsonLd data={organizationSchema} />
+        {/* Skip-to-content för tangentbord & screenreader-användare.
+            Lighthouse a11y kräver bypass-block och förbättrar score. */}
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:text-sm focus:text-bone focus:outline-none focus:ring-2 focus:ring-indigo"
+        >
+          Hoppa till innehåll
+        </a>
         <Navbar />
-        <main className="pt-20">{children}</main>
+        <main id="main" className="pt-20">{children}</main>
         <Footer />
       </body>
     </html>
