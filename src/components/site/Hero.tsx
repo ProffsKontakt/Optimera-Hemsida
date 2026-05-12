@@ -4,6 +4,7 @@ import Link from "next/link";
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { CanvasErrorBoundary } from "@/components/3d/CanvasErrorBoundary";
 
 // Three.js + R3F är ~200 KB minified och påverkar LCP/TBT på mobil rejält.
 // Hero-canvasen är dekorativ – inte LCP-element – så vi dynamic-importerar
@@ -90,7 +91,9 @@ export function Hero() {
 
           <div className="lg:col-span-5 relative">
             <div className="aspect-[4/5] w-full rounded-[28px] border border-ink/10 overflow-hidden bg-cream relative">
-              <HeroLab />
+              <CanvasErrorBoundary>
+                <HeroLab />
+              </CanvasErrorBoundary>
               <div className="absolute inset-x-0 bottom-0 p-5 flex items-end justify-between">
                 <div className="rounded-2xl bg-bone/85 backdrop-blur px-4 py-3 border border-ink/10">
                   <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink/55">

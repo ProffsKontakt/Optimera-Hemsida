@@ -2,6 +2,7 @@
 
 import dynamic from "next/dynamic";
 import type { ServiceSlug } from "@/lib/services";
+import { CanvasErrorBoundary } from "./CanvasErrorBoundary";
 
 /**
  * Lazy-laddad ServiceVignette. Three.js + R3F är tung (~200 KB) och vi
@@ -21,5 +22,9 @@ const ServiceVignetteInner = dynamic(
 );
 
 export function ServiceVignetteLazy({ kind }: { kind: ServiceSlug }) {
-  return <ServiceVignetteInner kind={kind} />;
+  return (
+    <CanvasErrorBoundary>
+      <ServiceVignetteInner kind={kind} />
+    </CanvasErrorBoundary>
+  );
 }

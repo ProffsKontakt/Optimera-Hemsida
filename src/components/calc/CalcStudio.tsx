@@ -25,6 +25,7 @@ import {
   type CalcResult,
 } from "@/lib/calc";
 import { ArrowRight, Check, ChevronDown } from "lucide-react";
+import { CanvasErrorBoundary } from "@/components/3d/CanvasErrorBoundary";
 
 // Three.js + R3F är ~200 KB minified. Eftersom kalkylator-besökare först
 // ser titeln och resultaten innan 3D-scenen blir relevant lazy-laddar vi
@@ -262,7 +263,9 @@ export function CalcStudio() {
       <div className="xl:col-span-7 xl:sticky xl:top-24 self-start space-y-6">
         <div className="rounded-[28px] border border-ink/10 overflow-hidden bg-cream blueprint-bg">
           <div className="aspect-[4/3] relative">
-            <CalcScene input={input} />
+            <CanvasErrorBoundary>
+              <CalcScene input={input} />
+            </CanvasErrorBoundary>
             <div className="absolute top-4 left-4 rounded-full bg-bone/85 backdrop-blur px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-ink/65 border border-ink/10">
               Live · 1:1-modell av huset
             </div>
