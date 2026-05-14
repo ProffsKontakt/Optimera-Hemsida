@@ -1,3 +1,4 @@
+import Script from "next/script";
 import { LegalLayout, H2, H3, P, UL } from "@/components/site/LegalLayout";
 
 export const metadata = {
@@ -5,6 +6,8 @@ export const metadata = {
   description:
     "Hur Optimera Energi Sverige AB använder cookies på optimeraenergi.se.",
 };
+
+const COOKIEBOT_CBID = process.env.NEXT_PUBLIC_COOKIEBOT_CBID;
 
 export default function CookiesPage() {
   return (
@@ -28,38 +31,67 @@ export default function CookiesPage() {
       </P>
 
       <H2>Vilka cookies vi använder</H2>
+      {COOKIEBOT_CBID ? (
+        <>
+          <P>
+            Listan nedan uppdateras automatiskt av Cookiebot och visar
+            alltid de cookies som faktiskt sätts på optimeraenergi.se.
+          </P>
+          <div id="CookieDeclaration-wrapper" className="mt-4">
+            <Script
+              id="CookieDeclaration"
+              src={`https://consent.cookiebot.com/${COOKIEBOT_CBID}/cd.js`}
+              strategy="afterInteractive"
+            />
+          </div>
+        </>
+      ) : (
+        <>
+          <H3>Strikt nödvändiga cookies</H3>
+          <P>
+            Behövs för att webbplatsen ska fungera och kan inte stängas av.
+          </P>
+          <UL>
+            <li>
+              <strong>oe_admin</strong> – håller administratörer inloggade i
+              den interna sektionen. Sätts bara om du loggar in på{" "}
+              <code className="font-mono text-[13px]">/admin/login</code>.
+            </li>
+          </UL>
 
-      <H3>Strikt nödvändiga cookies</H3>
-      <P>
-        Behövs för att webbplatsen ska fungera och kan inte stängas av.
-      </P>
-      <UL>
-        <li>
-          <strong>oe_admin</strong> – håller administratörer inloggade i
-          den interna sektionen. Sätts bara om du loggar in på{" "}
-          <code className="font-mono text-[13px]">/admin/login</code>.
-        </li>
-      </UL>
+          <H3>Funktionella cookies / lokal lagring</H3>
+          <UL>
+            <li>
+              <strong>localStorage</strong> – kalkylatorns konfiguration
+              sparas i din webbläsare så att du inte tappar dina val om du
+              laddar om sidan.
+            </li>
+          </UL>
 
-      <H3>Funktionella cookies / lokal lagring</H3>
-      <UL>
-        <li>
-          <strong>localStorage</strong> – kalkylatorns konfiguration
-          sparas i din webbläsare så att du inte tappar dina val om du
-          laddar om sidan.
-        </li>
-      </UL>
-
-      <H3>Analys</H3>
-      <P>
-        Vi använder för närvarande inga tredjepartsanalyser eller
-        marknadsföringscookies. Om vi gör det i framtiden kommer vi att
-        be om ditt samtycke först.
-      </P>
+          <H3>Analys</H3>
+          <P>
+            Vi använder för närvarande inga tredjepartsanalyser eller
+            marknadsföringscookies. Om vi gör det i framtiden kommer vi att
+            be om ditt samtycke först.
+          </P>
+        </>
+      )}
 
       <H2>Hur du styr cookies</H2>
+      {COOKIEBOT_CBID && (
+        <P>
+          Du kan när som helst ändra eller återkalla ditt samtycke via{" "}
+          <a
+            className="text-indigo underline"
+            href="javascript:Cookiebot.renew()"
+          >
+            cookie-inställningarna
+          </a>
+          .
+        </P>
+      )}
       <P>
-        Du kan när som helst rensa eller blockera cookies via inställningarna
+        Du kan även rensa eller blockera cookies via inställningarna
         i din webbläsare. Tänk på att vissa funktioner (t.ex. den interna
         admin-sektionen) inte fungerar utan strikt nödvändiga cookies.
       </P>

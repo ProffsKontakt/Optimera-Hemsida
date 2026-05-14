@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Fraunces, Poppins, JetBrains_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
@@ -35,6 +36,12 @@ const jetbrains = JetBrains_Mono({
 
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://optimeraenergi.se";
+
+// Cookiebot Domain Group ID (CBID). Sätts som miljövariabel i Vercel –
+// tills den finns laddas ingen Cookiebot-banner alls (inga trasiga script
+// i dev). data-blockingmode="auto" gör att Cookiebot själv blockerar
+// tredjepartscookies tills besökaren samtyckt.
+const COOKIEBOT_CBID = process.env.NEXT_PUBLIC_COOKIEBOT_CBID;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -125,6 +132,20 @@ export default function RootLayout({
       lang="sv"
       className={`${poppins.variable} ${fraunces.variable} ${jetbrains.variable}`}
     >
+      <head>
+        {/* Cookiebot måste laddas före all annan JS för att auto-blocking
+            ska hinna fånga tredjepartscookies. beforeInteractive hoisar
+            scriptet till <head> av Next.js. */}
+        {COOKIEBOT_CBID && (
+          <Script
+            id="Cookiebot"
+            src="https://consent.cookiebot.com/uc.js"
+            data-cbid={COOKIEBOT_CBID}
+            data-blockingmode="auto"
+            strategy="beforeInteractive"
+          />
+        )}
+      </head>
       <body className="min-h-screen bg-bone text-ink antialiased">
         <JsonLd data={organizationSchema} />
         {/* Skip-to-content för tangentbord & screenreader-användare.
