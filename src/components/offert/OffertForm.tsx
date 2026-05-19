@@ -1,11 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, Check, Home, Phone } from "lucide-react";
 import { SERVICES } from "@/lib/services";
 import { CalendarPicker, type SlotSelection } from "./CalendarPicker";
 
 type Defaults = Record<string, string | null>;
+type ContactMethod = "hembesok" | "telefon";
 
 const housingTypes = ["Villa", "Radhus", "Fritidshus", "Lantbruk", "Brf / styrelse"];
 
@@ -13,6 +14,7 @@ export function OffertForm({ defaults }: { defaults: Defaults }) {
   const [services, setServices] = useState<string[]>(
     defaults.tjanst ? [defaults.tjanst] : ["solpaneler"],
   );
+  const [contactMethod, setContactMethod] = useState<ContactMethod>("hembesok");
   const [slot, setSlot] = useState<SlotSelection | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
@@ -20,7 +22,7 @@ export function OffertForm({ defaults }: { defaults: Defaults }) {
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (!slot) {
+    if (contactMethod === "hembesok" && !slot) {
       setError("Välj en dag och tid för hembesöket innan du skickar.");
       return;
     }
@@ -31,7 +33,8 @@ export function OffertForm({ defaults }: { defaults: Defaults }) {
     const body = {
       ...payload,
       services,
-      slot,
+      contactMethod,
+      slot: contactMethod === "hembesok" ? slot : null,
       config: {
         panel: defaults.panel,
         antalPaneler: defaults.n,
@@ -70,9 +73,9 @@ export function OffertForm({ defaults }: { defaults: Defaults }) {
           Tack – vi hörs.
         </h2>
         <p className="mt-4 text-ink/70 leading-relaxed">
-          Vi har bokat in {slot?.weekday} {slot?.dateLabel} kl {slot?.time}.
-          Du får en bekräftelse på e-post inom kort, och vi ringer dagen innan
-          för att säga vilken kollega som kommer förbi.
+          {contactMethod === "hembesok" && slot
+            ? `Vi har bokat in ${slot.weekday} ${slot.dateLabel} kl ${slot.time}. Du får en bekräftelse på e-post inom kort, och vi ringer dagen innan för att säga vilken kollega som kommer förbi.`
+            : "Vi ringer upp dig under nästa vardag och stämmer av vad du behöver. Du får en bekräftelse på e-post inom kort."}
         </p>
       </div>
     );
@@ -126,18 +129,45 @@ export function OffertForm({ defaults }: { defaults: Defaults }) {
         </Card>
 
         <Card>
-          <FieldHead n="03" title="När vill ni installera?" />
-          <p className="mt-3 text-[14px] text-ink/65 leading-relaxed">
-            Välj dag och tid – kalendern visar lediga slottar för hembesök
-            de kommande tre veckorna. Vi ringer dagen innan och bekräftar.
-          </p>
-          <div className="mt-4">
-            <CalendarPicker value={slot} onChange={setSlot} />
+          <FieldHead n="03" title="Hur vill ni bli kontaktade?" />
+          <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-3">
+            <ContactMethodCard
+              icon={<Home size={18} />}
+              eyebrow="Hembesök"
+              title="Vi kommer förbi"
+              body="Drönarbesiktning, 3D-modell av huset, raka besked på plats. Tar 45–60 min."
+              active={contactMethod === "hembesok"}
+              onClick={() => setContactMethod("hembesok")}
+            />
+            <ContactMethodCard
+              icon={<Phone size={18} />}
+              eyebrow="Telefonkontakt"
+              title="Vi ringer upp"
+              body="Vi ringer er nästa vardag och stämmer av vad ni funderar på, utan att boka tid direkt."
+              active={contactMethod === "telefon"}
+              onClick={() => setContactMethod("telefon")}
+            />
           </div>
         </Card>
 
+        {contactMethod === "hembesok" && (
+          <Card>
+            <FieldHead n="04" title="När vill ni installera?" />
+            <p className="mt-3 text-[14px] text-ink/65 leading-relaxed">
+              Välj dag och tid – kalendern visar lediga slottar för hembesök
+              de kommande tre veckorna. Vi ringer dagen innan och bekräftar.
+            </p>
+            <div className="mt-4">
+              <CalendarPicker value={slot} onChange={setSlot} />
+            </div>
+          </Card>
+        )}
+
         <Card>
-          <FieldHead n="04" title="Kontakt" />
+          <FieldHead
+            n={contactMethod === "hembesok" ? "05" : "04"}
+            title="Kontakt"
+          />
           <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
             <Input name="namn" label="Namn" required />
             <Input name="telefon" label="Telefon" required />
@@ -253,6 +283,66 @@ function FieldHead({ n, title }: { n: string; title: string }) {
       </span>
       <h3 className="font-display text-2xl tracking-display-tight">{title}</h3>
     </div>
+  );
+}
+
+function ContactMethodCard({
+  icon,
+  eyebrow,
+  title,
+  body,
+  active,
+  onClick,
+}: {
+  icon: React.ReactNode;
+  eyebrow: string;
+  title: string;
+  body: string;
+  active: boolean;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-pressed={active}
+      className={[
+        "rounded-2xl border p-5 text-left transition",
+        active
+          ? "bg-ink text-bone border-ink"
+          : "bg-cream/50 border-ink/15 hover:border-ink/40",
+      ].join(" ")}
+    >
+      <div className="flex items-center gap-2">
+        <span
+          className={[
+            "grid h-7 w-7 place-items-center rounded-full",
+            active ? "bg-bone/20 text-bone" : "bg-ink/8 text-ink/70",
+          ].join(" ")}
+        >
+          {icon}
+        </span>
+        <span
+          className={[
+            "font-mono text-[10px] uppercase tracking-[0.16em]",
+            active ? "text-bone/65" : "text-ink/55",
+          ].join(" ")}
+        >
+          {eyebrow}
+        </span>
+      </div>
+      <div className="mt-3 font-display text-xl tracking-display-tight leading-tight">
+        {title}
+      </div>
+      <p
+        className={[
+          "mt-2 text-[13.5px] leading-relaxed",
+          active ? "text-bone/75" : "text-ink/65",
+        ].join(" ")}
+      >
+        {body}
+      </p>
+    </button>
   );
 }
 

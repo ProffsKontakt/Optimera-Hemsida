@@ -47,7 +47,7 @@ const FALLBACK: Seller = {
 export function assignSeller(input: {
   services: string[];
   address?: string;
-  slot: { date: string; time: string };
+  slot?: { date: string; time: string } | null;
 }): Seller {
   const lowerAddress = (input.address ?? "").toLowerCase();
   const scored = SELLERS.map((s) => {

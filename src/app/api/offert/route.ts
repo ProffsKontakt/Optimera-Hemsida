@@ -9,17 +9,23 @@ const SlotSchema = z.object({
   weekday: z.string(),
 });
 
-const Schema = z.object({
-  namn: z.string().min(2),
-  telefon: z.string().min(4),
-  epost: z.string().email(),
-  adress: z.string().optional(),
-  meddelande: z.string().optional(),
-  boende: z.string().optional(),
-  slot: SlotSchema,
-  services: z.array(z.string()).default([]),
-  config: z.record(z.any()).optional(),
-});
+const Schema = z
+  .object({
+    namn: z.string().min(2),
+    telefon: z.string().min(4),
+    epost: z.string().email(),
+    adress: z.string().optional(),
+    meddelande: z.string().optional(),
+    boende: z.string().optional(),
+    contactMethod: z.enum(["hembesok", "telefon"]).default("hembesok"),
+    slot: SlotSchema.nullable().optional(),
+    services: z.array(z.string()).default([]),
+    config: z.record(z.any()).optional(),
+  })
+  .refine(
+    (d) => d.contactMethod !== "hembesok" || !!d.slot,
+    { message: "slot krävs för hembesök", path: ["slot"] },
+  );
 
 type Lead = z.infer<typeof Schema>;
 
@@ -100,7 +106,10 @@ export async function POST(req: Request) {
           from: "Optimera <hej@optimeraenergi.se>",
           to: recipients,
           reply_to: lead.epost,
-          subject: `Nytt lead – ${lead.namn} (${lead.slot.weekday} ${lead.slot.dateLabel} kl ${lead.slot.time})`,
+          subject:
+            lead.contactMethod === "hembesok" && lead.slot
+              ? `Nytt lead – ${lead.namn} (${lead.slot.weekday} ${lead.slot.dateLabel} kl ${lead.slot.time})`
+              : `Nytt lead – ${lead.namn} (telefonkontakt)`,
           text: formatPlain(lead, seller),
         }),
       });
@@ -133,6 +142,10 @@ export async function POST(req: Request) {
 }
 
 function formatPlain(d: Lead, seller: { name: string; email?: string }) {
+  const contactLine =
+    d.contactMethod === "hembesok" && d.slot
+      ? `Bokat besök: ${d.slot.weekday} ${d.slot.dateLabel} kl ${d.slot.time}`
+      : "Önskar telefonkontakt – ring upp under nästa vardag.";
   return [
     `Namn:      ${d.namn}`,
     `Telefon:   ${d.telefon}`,
@@ -140,7 +153,7 @@ function formatPlain(d: Lead, seller: { name: string; email?: string }) {
     `Adress:    ${d.adress ?? "-"}`,
     `Boende:    ${d.boende ?? "-"}`,
     "",
-    `Bokat besök: ${d.slot.weekday} ${d.slot.dateLabel} kl ${d.slot.time}`,
+    contactLine,
     `Tilldelad säljare: ${seller.name}${seller.email ? ` <${seller.email}>` : ""}`,
     `Tjänster: ${d.services.join(", ") || "-"}`,
     "",
@@ -153,11 +166,14 @@ function formatPlain(d: Lead, seller: { name: string; email?: string }) {
 }
 
 function formatCustomer(d: Lead, seller: { name: string }) {
+  const middleLine =
+    d.contactMethod === "hembesok" && d.slot
+      ? `Tack för din förfrågan! Vi har bokat in besöket ${d.slot.weekday} ${d.slot.dateLabel} kl ${d.slot.time}.\n${seller.name} kommer förbi och ringer dagen innan för att stämma av.`
+      : `Tack för din förfrågan! ${seller.name} ringer upp dig under nästa vardag så stämmer vi av vad du funderar på.`;
   return [
     `Hej ${d.namn.split(" ")[0]},`,
     "",
-    `Tack för din förfrågan! Vi har bokat in besöket ${d.slot.weekday} ${d.slot.dateLabel} kl ${d.slot.time}.`,
-    `${seller.name} kommer förbi och ringer dagen innan för att stämma av.`,
+    middleLine,
     "",
     "Vi tar med kanelbullar och inmätningsutrustning. Säg till om du är allergisk så fixar vi något annat.",
     "",
