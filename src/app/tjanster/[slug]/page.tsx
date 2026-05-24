@@ -5,6 +5,7 @@ import { SERVICES, getService, type ServiceSlug } from "@/lib/services";
 import { ServiceVignetteLazy as ServiceVignette } from "@/components/3d/ServiceVignetteLazy";
 import { Section } from "@/components/site/Section";
 import { Disclosure } from "@/components/site/Disclosure";
+import { CITIES } from "@/lib/cities";
 import {
   JsonLd,
   faqPageSchema,
@@ -157,6 +158,29 @@ export default function ServicePage({
           ))}
         </div>
       </Section>
+
+      {/* Per-ort-länkning: city-landingssidor finns för solpaneler. Visa
+          dom bara på solpaneler-tjänsten tills batteri/värme/laddbox
+          får egna city-pages. Bidragnig till intern PageRank-flöde. */}
+      {s.slug === "solpaneler" && (
+        <Section
+          eyebrow="Per ort"
+          title={<>Solpaneler där du bor.</>}
+          intro="Vi installerar solpaneler i hela Stockholms-området. Läs mer om förutsättningar i din kommun."
+        >
+          <div className="flex flex-wrap gap-3">
+            {CITIES.map((c) => (
+              <Link
+                key={c.slug}
+                href={`/solceller/${c.slug}`}
+                className="rounded-full border border-ink/15 bg-bone px-5 py-2.5 text-[14px] hover:border-ink/40 transition"
+              >
+                Solpaneler {c.preposition} {c.name}
+              </Link>
+            ))}
+          </div>
+        </Section>
+      )}
 
       <Section>
         <div className="rounded-[28px] bg-bone border border-ink/10 p-10 md:p-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">

@@ -38,10 +38,10 @@ export function Hero() {
                 efter hydration. Innehåller brand + service + city för
                 Google ranking på "optimera energi" + lokala intent-termer. */}
             <h1 className="mt-6 font-display text-[58px] md:text-[92px] leading-[0.95] tracking-display-tight">
-              Sol, batteri och värme.
+              Optimera Energi,
               <br />
               <span className="italic font-serif text-indigo">
-                Hela vägen, i Stockholm.
+                sol och batteri i Stockholm.
               </span>
             </h1>
 

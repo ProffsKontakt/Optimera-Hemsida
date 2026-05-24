@@ -7,10 +7,42 @@ import { Process } from "@/components/home/Process";
 import { Testimonials } from "@/components/home/Testimonials";
 import { VideoStage } from "@/components/home/VideoStage";
 import { CtaPanel } from "@/components/home/CtaPanel";
+import { JsonLd, faqPageSchema } from "@/components/seo/JsonLd";
+
+// Sex köpar-språk-frågor som matchar Google Suggest och AI-search-frågor
+// för "Optimera Energi" + lokala intent-termer. Hjälper både rich snippets
+// och AI-citations från ChatGPT, Gemini, Perplexity.
+const HOME_FAQ = [
+  {
+    q: "Vad gör Optimera Energi?",
+    a: "Optimera Energi Sverige AB är en svensk elinstallatör i Solna som installerar solpaneler, batterier, värmepumpar och laddboxar för villor och bostadsrättsföreningar i Stockholms län. Vi har eget montageteam, inga underentreprenörer.",
+  },
+  {
+    q: "Var ligger Optimera Energi?",
+    a: "Kontoret och lagret ligger på Vallgatan 9, 170 67 Solna. Vi installerar i Solna, Stockholm, Sundbyberg, Täby, Lidingö, Sollentuna, Nacka och Danderyd.",
+  },
+  {
+    q: "Vad kostar solpaneler hos Optimera Energi?",
+    a: "Baspriset är 10 000 till 22 500 kr beroende på antal paneler, plus 2 500 kr per JA Solar-panel. En typisk villa med 14 paneler landar runt 50 000 kr efter grönt avdrag (14,55 procent). Räkna på din lösning i 3D-kalkylatorn på optimeraenergi.se/kalkylator.",
+  },
+  {
+    q: "Hur stort är det gröna avdraget 2026?",
+    a: "Solpaneler ger 14,55 procent, batterier och laddboxar 48,5 procent, värmepump 30 procent via ROT. Avdragstaket är 50 000 kr per fastighetsägare och år. Vi drar av summan direkt på fakturan.",
+  },
+  {
+    q: "Hur lång är återbetalningstiden för en solanläggning?",
+    a: "En ren solanläggning i Stockholm har återbetalningstid på 8 till 11 år. Med batteri och stödtjänster via Energy IQ eller Enequi Core kommer tiden ner mot 3 till 5 år för hus med högre förbrukning.",
+  },
+  {
+    q: "Vad gäller efter husförsäljning?",
+    a: "Garantin på vår installation gäller även när du sålt huset, den följer fastigheten. Vi har eget montageteam så om något krånglar tre år senare är det samma personer som svarar.",
+  },
+];
 
 export default function HomePage() {
   return (
     <>
+      <JsonLd data={faqPageSchema(HOME_FAQ)} />
       <Hero />
 
       <Section

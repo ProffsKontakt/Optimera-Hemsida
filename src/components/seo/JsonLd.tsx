@@ -24,12 +24,24 @@ export const organizationSchema = {
   "@id": `${BASE}#organization`,
   name: "Optimera Energi Sverige AB",
   legalName: "Optimera Energi Sverige AB",
-  alternateName: "Optimera Energi",
+  alternateName: ["Optimera Energi", "Optimera"],
   url: BASE,
   logo: `${BASE}/logo.svg`,
   email: "hej@optimeraenergi.se",
   telephone: "+46763053732",
   vatID: "SE559375220601",
+  taxID: "5593752206",
+  foundingDate: "2026",
+  foundingLocation: { "@type": "Place", name: "Solna, Sverige" },
+  numberOfEmployees: 3,
+  founder: [
+    { "@type": "Person", name: "Viktor Tiberg", jobTitle: "Grundare och VD" },
+    {
+      "@type": "Person",
+      name: "Julian Nordgren",
+      jobTitle: "Grundare och Operativ Chef",
+    },
+  ],
   address: {
     "@type": "PostalAddress",
     streetAddress: "Vallgatan 9",
@@ -56,6 +68,9 @@ export const localBusinessSchema = {
   email: "hej@optimeraenergi.se",
   telephone: "+46763053732",
   priceRange: "$$$",
+  // Knyt LocalBusiness till Organization-noden så Google ser dem som
+  // samma entity, inte två separata bolag.
+  parentOrganization: { "@id": `${BASE}#organization` },
   address: {
     "@type": "PostalAddress",
     streetAddress: "Vallgatan 9",
@@ -81,6 +96,14 @@ export const localBusinessSchema = {
   ],
   areaServed: [
     { "@type": "AdministrativeArea", name: "Stockholms län" },
+    { "@type": "City", name: "Solna" },
+    { "@type": "City", name: "Stockholm" },
+    { "@type": "City", name: "Sundbyberg" },
+    { "@type": "City", name: "Täby" },
+    { "@type": "City", name: "Lidingö" },
+    { "@type": "City", name: "Sollentuna" },
+    { "@type": "City", name: "Nacka" },
+    { "@type": "City", name: "Danderyd" },
     { "@type": "Country", name: "SE" },
   ],
   serviceType: [
@@ -182,8 +205,18 @@ export function serviceSchema(input: {
     name: input.name,
     description: input.description,
     serviceType: input.serviceType,
-    provider: { "@id": `${BASE}#organization` },
-    areaServed: { "@type": "AdministrativeArea", name: "Stockholms län" },
+    provider: { "@id": `${BASE}#localbusiness` },
+    areaServed: [
+      { "@type": "AdministrativeArea", name: "Stockholms län" },
+      { "@type": "City", name: "Solna" },
+      { "@type": "City", name: "Stockholm" },
+      { "@type": "City", name: "Sundbyberg" },
+      { "@type": "City", name: "Täby" },
+      { "@type": "City", name: "Lidingö" },
+      { "@type": "City", name: "Sollentuna" },
+      { "@type": "City", name: "Nacka" },
+      { "@type": "City", name: "Danderyd" },
+    ],
     url: input.url.startsWith("http") ? input.url : `${BASE}${input.url}`,
   };
 }
