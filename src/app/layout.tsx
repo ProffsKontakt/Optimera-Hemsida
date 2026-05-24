@@ -110,6 +110,16 @@ export const metadata: Metadata = {
     shortcut: "/favicon.svg",
     apple: "/icon.svg",
   },
+  // Verifieringskoder för sökmotorernas webmaster-portaler. Sätts som
+  // miljövariabler så de inte ligger i versionshanteringen.
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    other: {
+      ...(process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION
+        ? { "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION }
+        : {}),
+    },
+  },
   category: "energy",
 };
 
