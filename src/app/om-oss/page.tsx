@@ -5,6 +5,7 @@ import { BrandPanel } from "@/components/site/BrandPanel";
 import {
   JsonLd,
   localBusinessSchema,
+  aboutPageSchema,
   breadcrumbSchema,
 } from "@/components/seo/JsonLd";
 
@@ -85,9 +86,9 @@ const TIMELINE = [
   },
 ];
 
-const SITE = "https://optimeraenergi.se";
-
-const aboutPageSchema = {
+// LocalBusiness berikat med founder + employee + foundingDate-data
+// specifikt för /om-oss. Spreadar bas-schemat och lägger Person-arrays.
+const teamLocalBusinessSchema = {
   ...localBusinessSchema,
   founder: TEAM.filter((m) => m.role.includes("Grundare")).map((m) => ({
     "@type": "Person",
@@ -115,6 +116,7 @@ export default function AboutPage() {
   return (
     <>
       <JsonLd data={aboutPageSchema} />
+      <JsonLd data={teamLocalBusinessSchema} />
       <JsonLd
         data={breadcrumbSchema([
           { name: "Hem", href: "/" },

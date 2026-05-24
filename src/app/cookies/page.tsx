@@ -5,6 +5,7 @@ export const metadata = {
   title: "Cookies",
   description:
     "Hur Optimera Energi Sverige AB använder cookies på optimeraenergi.se.",
+  alternates: { canonical: "/cookies" },
 };
 
 const COOKIEBOT_CBID = process.env.NEXT_PUBLIC_COOKIEBOT_CBID;

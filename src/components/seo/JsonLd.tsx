@@ -116,6 +116,40 @@ export function breadcrumbSchema(
   };
 }
 
+/** WebSite + potentiella SearchAction. Läggs på startsidan. */
+export const webSiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${BASE}#website`,
+  url: BASE,
+  name: "Optimera Energi",
+  inLanguage: "sv-SE",
+  publisher: { "@id": `${BASE}#organization` },
+};
+
+/** AboutPage-wrapper för /om-oss. */
+export const aboutPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "@id": `${BASE}/om-oss#aboutpage`,
+  url: `${BASE}/om-oss`,
+  name: "Om Optimera Energi",
+  isPartOf: { "@id": `${BASE}#website` },
+  about: { "@id": `${BASE}#organization` },
+  mainEntity: { "@id": `${BASE}#localbusiness` },
+};
+
+/** ContactPage för /kontakt. */
+export const contactPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "@id": `${BASE}/kontakt#contactpage`,
+  url: `${BASE}/kontakt`,
+  name: "Kontakta Optimera Energi",
+  isPartOf: { "@id": `${BASE}#website` },
+  mainEntity: { "@id": `${BASE}#localbusiness` },
+};
+
 /** Schema för en enskild tjänst. */
 export function serviceSchema(input: {
   name: string;

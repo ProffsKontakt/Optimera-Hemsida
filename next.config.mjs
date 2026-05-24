@@ -11,6 +11,29 @@ const nextConfig = {
   experimental: {
     optimizePackageImports: ["lucide-react", "@react-three/drei"],
   },
+  // Säkerhetshuvuden globalt. Google rankar säkra sidor bättre och vissa
+  // browsers / scanners (Mozilla Observatory, Lighthouse) ger fail om de
+  // saknas. HSTS-värdet följer preload-listans rekommendation (2 år).
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          {
+            key: "Strict-Transport-Security",
+            value: "max-age=63072000; includeSubDomains; preload",
+          },
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "X-Frame-Options", value: "SAMEORIGIN" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          {
+            key: "Permissions-Policy",
+            value: "camera=(), microphone=(), geolocation=(self)",
+          },
+        ],
+      },
+    ];
+  },
 };
 
 export default nextConfig;

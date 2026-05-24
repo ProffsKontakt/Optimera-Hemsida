@@ -4,6 +4,7 @@ export const metadata = {
   title: "Tankar – bloggen",
   description:
     "Tankar om energi, ingenjörskonst och småskaliga beslut som bygger framtiden.",
+  alternates: { canonical: "/tankar" },
 };
 
 const drafts = [

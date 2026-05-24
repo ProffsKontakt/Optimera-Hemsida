@@ -5,6 +5,7 @@ import { BrandPanel } from "@/components/site/BrandPanel";
 import {
   JsonLd,
   localBusinessSchema,
+  contactPageSchema,
   breadcrumbSchema,
 } from "@/components/seo/JsonLd";
 
@@ -46,6 +47,7 @@ const TEAM = [
 export default function KontaktPage() {
   return (
     <>
+      <JsonLd data={contactPageSchema} />
       <JsonLd data={localBusinessSchema} />
       <JsonLd
         data={breadcrumbSchema([

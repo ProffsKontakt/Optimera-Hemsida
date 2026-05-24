@@ -60,7 +60,6 @@ export default function ServicePage({
       <JsonLd
         data={breadcrumbSchema([
           { name: "Hem", href: "/" },
-          { name: "Tjänster", href: "/" },
           { name: s.name, href: `/tjanster/${s.slug}` },
         ])}
       />

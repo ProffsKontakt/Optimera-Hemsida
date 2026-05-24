@@ -4,6 +4,7 @@ export const metadata = {
   title: "Villkor",
   description:
     "Allmänna villkor för Optimera Energi Sverige AB:s tjänster och webbplats.",
+  alternates: { canonical: "/villkor" },
 };
 
 export default function VillkorPage() {

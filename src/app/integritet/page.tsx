@@ -4,6 +4,7 @@ export const metadata = {
   title: "Integritetspolicy",
   description:
     "Så hanterar Optimera Energi Sverige AB dina personuppgifter enligt GDPR.",
+  alternates: { canonical: "/integritet" },
 };
 
 export default function IntegritetPage() {

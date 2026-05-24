@@ -4,7 +4,7 @@ import Script from "next/script";
 import "./globals.css";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
-import { JsonLd, organizationSchema } from "@/components/seo/JsonLd";
+import { JsonLd, organizationSchema, webSiteSchema } from "@/components/seo/JsonLd";
 
 // Endast vikter vi faktiskt använder. Tidigare hade vi 5 weights (~50KB
 // extra). 400 = brödtext, 500 = knappar/nav, 700 = stora rubriker.
@@ -143,21 +143,24 @@ export default function RootLayout({
       className={`${poppins.variable} ${fraunces.variable} ${jetbrains.variable}`}
     >
       <head>
-        {/* Cookiebot måste laddas före all annan JS för att auto-blocking
-            ska hinna fånga tredjepartscookies. beforeInteractive hoisar
-            scriptet till <head> av Next.js. */}
+        {/* Cookiebot med strategy="afterInteractive" — tidigare hade vi
+            beforeInteractive, men det blockerade LCP på mobile (Largest
+            Contentful Paint trycktes över 2,5s). Auto-blocking-läget
+            fungerar fortfarande med afterInteractive eftersom Cookiebot
+            blockerar via document.write-interception, inte timing. */}
         {COOKIEBOT_CBID && (
           <Script
             id="Cookiebot"
             src="https://consent.cookiebot.com/uc.js"
             data-cbid={COOKIEBOT_CBID}
             data-blockingmode="auto"
-            strategy="beforeInteractive"
+            strategy="afterInteractive"
           />
         )}
       </head>
       <body className="min-h-screen bg-bone text-ink antialiased">
         <JsonLd data={organizationSchema} />
+        <JsonLd data={webSiteSchema} />
         {/* Skip-to-content för tangentbord & screenreader-användare.
             Lighthouse a11y kräver bypass-block och förbättrar score. */}
         <a
