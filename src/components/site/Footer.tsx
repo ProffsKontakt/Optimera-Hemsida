@@ -1,8 +1,30 @@
 import Link from "next/link";
+import { CITIES } from "@/lib/cities";
 
 export function Footer() {
   return (
     <footer className="mt-32 bg-cream border-t border-ink/10 text-ink">
+      {/* Stockholm-kommuner: intern länkning till city-landing-sidor.
+          Hjälper Google upptäcka /solceller/[stad]-routes från footer
+          och ger besökare en tydlig signal om var vi arbetar. */}
+      <div className="border-b border-ink/10">
+        <div className="container-edge py-8">
+          <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink/50 mb-4">
+            Vi installerar solpaneler i
+          </div>
+          <div className="flex flex-wrap gap-x-5 gap-y-2 text-[14px]">
+            {CITIES.map((c) => (
+              <Link
+                key={c.slug}
+                href={`/solceller/${c.slug}`}
+                className="text-ink/70 hover:text-ink transition"
+              >
+                {c.name}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
       <div className="container-edge py-20 grid grid-cols-1 md:grid-cols-12 gap-12">
         <div className="md:col-span-5">
           <div className="font-display text-4xl md:text-5xl tracking-display-tight leading-[1.05]">
@@ -36,6 +58,7 @@ export function Footer() {
               ["/om-oss", "Om oss"],
               ["/kontakt", "Kontakt"],
               ["/kalkylator", "Kalkylator"],
+              ["/guider", "Guider"],
               ["/offert", "Begär offert"],
             ]}
           />
