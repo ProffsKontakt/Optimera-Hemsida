@@ -7,6 +7,7 @@ import { Process } from "@/components/home/Process";
 import { Testimonials } from "@/components/home/Testimonials";
 import { VideoStage } from "@/components/home/VideoStage";
 import { CtaPanel } from "@/components/home/CtaPanel";
+import { Disclosure } from "@/components/site/Disclosure";
 import { JsonLd, faqPageSchema, videoObjectSchema } from "@/components/seo/JsonLd";
 
 // Sex köpar-språk-frågor som matchar Google Suggest och AI-search-frågor
@@ -108,6 +109,23 @@ export default function HomePage() {
         title={<>Recensioner från riktiga kök.</>}
       >
         <Testimonials />
+      </Section>
+
+      {/* Visible FAQ: speglar FAQPage-schemat ovan. Krav för Google FAQ
+          rich results, ger AI-citation-text, fångar PAA-intents
+          ("vad gör optimera energi", "var ligger optimera energi", etc). */}
+      <Section
+        eyebrow="Vanliga frågor"
+        title={<>Det vi får oftast.</>}
+        intro="Korta svar med pris, plats och process. Står svaret på din fråga inte med här, ring oss på 076 305 37 32 eller mejla hej@optimeraenergi.se."
+      >
+        <div className="divide-y divide-ink/10 border-y border-ink/10">
+          {HOME_FAQ.map((q) => (
+            <Disclosure key={q.q} question={q.q}>
+              <p className="text-ink/75 leading-relaxed text-[15px]">{q.a}</p>
+            </Disclosure>
+          ))}
+        </div>
       </Section>
 
       <Section>

@@ -29,7 +29,10 @@ export function generateMetadata({ params }: { params: { slug: string } }) {
       title: `${s.name} – Optimera Energi`,
       description: s.oneLiner,
       url: path,
-      type: "article",
+      // type "website" eftersom det är en tjänste-landing, inte ett
+      // tidskänsligt blogginlägg. "article" skickade förvirrande signaler
+      // till sociala crawlers.
+      type: "website",
     },
     twitter: {
       card: "summary_large_image",
@@ -96,6 +99,59 @@ export default function ServicePage({
           </div>
         </div>
       </section>
+
+      {/* Pris-anchor för Solpaneler-service-sidan. Speglar FAQ-data men
+          renderas som synlig prosa, vilket fångar prisintent direkt i SERP
+          och konkurrerar med Svea Solar / Hemsols pris-snippets. */}
+      {s.slug === "solpaneler" && (
+        <Section
+          eyebrow="Vad kostar det?"
+          title={<>Pris för solpaneler i Stockholm.</>}
+        >
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div className="rounded-3xl border border-ink/10 bg-cream/40 p-7">
+              <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink/55">
+                Baspris
+              </div>
+              <div className="mt-3 font-display text-2xl tracking-display-tight">
+                10 000, 22 500 kr
+              </div>
+              <p className="mt-3 text-[14.5px] text-ink/70 leading-relaxed">
+                Täcker resor, ställning, montage, kabel och driftsättning.
+                Trappstegspris efter antal paneler.
+              </p>
+            </div>
+            <div className="rounded-3xl border border-ink/10 bg-cream/40 p-7">
+              <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink/55">
+                Per panel
+              </div>
+              <div className="mt-3 font-display text-2xl tracking-display-tight">
+                2 500 kr
+              </div>
+              <p className="mt-3 text-[14.5px] text-ink/70 leading-relaxed">
+                JA Solar 500 W eller 455 W, samma pris per panel oavsett
+                modell. Helsvart all-black ingår.
+              </p>
+            </div>
+            <div className="rounded-3xl border border-ink/10 bg-cream/40 p-7">
+              <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink/55">
+                Typisk villa, 14 paneler
+              </div>
+              <div className="mt-3 font-display text-2xl tracking-display-tight">
+                ca 50 000 kr
+              </div>
+              <p className="mt-3 text-[14.5px] text-ink/70 leading-relaxed">
+                Efter grönt avdrag på 14,55 procent. Räkna på din specifika
+                installation i kalkylatorn innan hembesöket.
+              </p>
+            </div>
+          </div>
+          <p className="mt-6 text-[13.5px] text-ink/55 max-w-2xl leading-relaxed">
+            Allt material och installation ingår. Priset på offerten är
+            priset på fakturan. Ingen dolda påslag, ingen restidsdebitering.
+          </p>
+        </Section>
+      )}
 
       <Section eyebrow="Vad du får" title={<>Inte bara specifikationer – så det faktiskt beter sig.</>}>
         <ul className="grid grid-cols-1 md:grid-cols-3 gap-5">
