@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { GUIDES } from "@/lib/guides";
+import { GUIDES, publishedGuides } from "@/lib/guides";
 import { Section } from "@/components/site/Section";
+import { JsonLd, collectionPageSchema } from "@/components/seo/JsonLd";
 
 export const metadata = {
   title: "Guider om sol, batteri, värme och laddning",
@@ -27,6 +28,18 @@ export default function GuidesHubPage() {
 
   return (
     <>
+      <JsonLd
+        data={collectionPageSchema({
+          url: "/guider",
+          name: "Guider om sol, batteri, värme och laddning",
+          description:
+            "Långa svar på korta frågor om återbetalningstid, grönt avdrag, batteripris och värmepump, skrivna av elektrikerna som faktiskt installerar.",
+          items: publishedGuides().map((g) => ({
+            url: `/guider/${g.slug}`,
+            name: g.title,
+          })),
+        })}
+      />
       <section className="container-edge pt-12 md:pt-20 pb-12">
         <div className="max-w-3xl">
           <div className="eyebrow">Guider · Tankar från taket</div>

@@ -50,10 +50,17 @@ function articleSchema(guide: ReturnType<typeof findGuide>) {
     description: guide.excerpt,
     datePublished: guide.updatedAt,
     dateModified: guide.updatedAt,
+    // image är required för Article rich results. Pekar på vår auto-
+    // genererade OG-bild tills per-guide hero-bilder finns.
+    image: `${BASE}/opengraph-image`,
+    // Person-author istället för Organization. Google + Perplexity weighter
+    // Person-författare högre för E-E-A-T i YMYL-närliggande content.
     author: {
-      "@type": "Organization",
-      name: "Optimera Energi Sverige AB",
-      url: BASE,
+      "@type": "Person",
+      name: "Viktor Tiberg",
+      jobTitle: "Grundare och VD",
+      url: `${BASE}/om-oss`,
+      worksFor: { "@id": `${BASE}#organization` },
     },
     publisher: { "@id": `${BASE}#organization` },
     mainEntityOfPage: {

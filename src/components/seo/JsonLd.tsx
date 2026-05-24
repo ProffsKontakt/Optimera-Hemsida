@@ -67,7 +67,10 @@ export const localBusinessSchema = {
   url: BASE,
   email: "hej@optimeraenergi.se",
   telephone: "+46763053732",
-  priceRange: "$$$",
+  // Prisspann i SEK eftersom $$$-notationen är US-marknadens och visas
+  // bokstavligt i Googles rich results. SEK-spannet täcker en vanlig
+  // installation från liten sol till komplett sol+batteri+laddbox.
+  priceRange: "50 000 - 250 000 SEK",
   // Knyt LocalBusiness till Organization-noden så Google ser dem som
   // samma entity, inte två separata bolag.
   parentOrganization: { "@id": `${BASE}#organization` },
@@ -190,6 +193,98 @@ export const contactPageSchema = {
   name: "Kontakta Optimera Energi",
   isPartOf: { "@id": `${BASE}#website` },
   mainEntity: { "@id": `${BASE}#localbusiness` },
+};
+
+/** VideoObject för homepage-filmen och framtida video-content. */
+export function videoObjectSchema(input: {
+  name: string;
+  description: string;
+  thumbnailUrl: string;
+  uploadDate: string;
+  durationISO: string;
+  contentUrl: string;
+  embedUrl?: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    name: input.name,
+    description: input.description,
+    thumbnailUrl: input.thumbnailUrl.startsWith("http")
+      ? input.thumbnailUrl
+      : `${BASE}${input.thumbnailUrl}`,
+    uploadDate: input.uploadDate,
+    duration: input.durationISO,
+    contentUrl: input.contentUrl.startsWith("http")
+      ? input.contentUrl
+      : `${BASE}${input.contentUrl}`,
+    embedUrl: input.embedUrl ?? BASE,
+    inLanguage: "sv-SE",
+    publisher: { "@id": `${BASE}#organization` },
+    author: { "@id": `${BASE}#organization` },
+    isFamilyFriendly: true,
+  };
+}
+
+/** CollectionPage med ItemList för /guider och liknande hub-sidor. */
+export function collectionPageSchema(input: {
+  url: string;
+  name: string;
+  description: string;
+  items: { url: string; name: string }[];
+}) {
+  const absoluteUrl = input.url.startsWith("http")
+    ? input.url
+    : `${BASE}${input.url}`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": `${absoluteUrl}#collectionpage`,
+    url: absoluteUrl,
+    name: input.name,
+    description: input.description,
+    inLanguage: "sv-SE",
+    isPartOf: { "@id": `${BASE}#website` },
+    publisher: { "@id": `${BASE}#organization` },
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: input.items.map((it, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        url: it.url.startsWith("http") ? it.url : `${BASE}${it.url}`,
+        name: it.name,
+      })),
+    },
+  };
+}
+
+/** WebPage med ReserveAction för /offert (booking-endpoint). */
+export const reservePageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": `${BASE}/offert#webpage`,
+  url: `${BASE}/offert`,
+  name: "Begär offert, boka kostnadsfritt hembesök",
+  description:
+    "Boka ett kostnadsfritt hembesök direkt i kalendern. Välj dag och tid, så ringer vi dagen innan och bekräftar.",
+  inLanguage: "sv-SE",
+  isPartOf: { "@id": `${BASE}#website` },
+  about: { "@id": `${BASE}#localbusiness` },
+  potentialAction: {
+    "@type": "ReserveAction",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate: `${BASE}/offert`,
+      actionPlatform: [
+        "https://schema.org/DesktopWebPlatform",
+        "https://schema.org/MobileWebPlatform",
+      ],
+    },
+    result: {
+      "@type": "Reservation",
+      name: "Kostnadsfritt hembesök av Optimera Energi",
+    },
+  },
 };
 
 /** Schema för en enskild tjänst. */

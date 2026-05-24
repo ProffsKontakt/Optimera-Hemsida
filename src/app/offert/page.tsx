@@ -1,4 +1,5 @@
 import { OffertForm } from "@/components/offert/OffertForm";
+import { JsonLd, reservePageSchema } from "@/components/seo/JsonLd";
 
 export const metadata = {
   title: "Begär offert – boka kostnadsfritt hembesök",
@@ -25,6 +26,7 @@ export default function OffertPage({
   };
   return (
     <>
+      <JsonLd data={reservePageSchema} />
       <section className="container-edge pt-12 md:pt-20 pb-10">
         <div className="max-w-3xl">
           <div className="eyebrow">Offert · hembesök · gratis</div>
