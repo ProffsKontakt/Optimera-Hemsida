@@ -1,0 +1,61 @@
+# Optimera Energi Sverige AB
+
+> Optimera Energi är en svensk elinstallatör baserad i Solna som installerar solpaneler, batterilager, värmepumpar och laddboxar för villaägare och bostadsrättsföreningar i Stockholm. Vi grundades 2026 på principen "priset på offerten är priset på fakturan" och driver alla installationer med eget montageteam – inga underentreprenörer.
+
+## Företagsinformation
+
+- **Juridiskt namn**: Optimera Energi Sverige AB
+- **Organisationsnummer**: 559447-9585
+- **Säte**: Vallgatan 9, 170 67 Solna
+- **Telefon**: 076 305 37 32
+- **E-post**: hej@optimeraenergi.se
+- **Grundat**: 2026
+- **Tjänsteområde**: Stockholms län (SE3)
+- **Auktorisationer**: F-skatt, BAS-U, SEK
+- **Webbplats**: https://optimeraenergi.se
+
+## Tjänster vi installerar
+
+- [Solpaneler](https://optimeraenergi.se/tjanster/solpaneler): JA Solar 500W och 455W, dimensionerade efter ditt taks orientering, lutning och skuggning. 14,55 % grönt avdrag.
+- [Batterilager](https://optimeraenergi.se/tjanster/batterier): Easyway (7,68 kWh/modul, LFP), SAJ HS3 (10/15/20 kWh med inbyggd 12 kW växelriktare), Emaldo Power Store (5,12 kWh/powerbox + Grid Rewards i SE3/SE4). 48,5 % grönt avdrag.
+- [Värmepumpar](https://optimeraenergi.se/tjanster/vaermepumpar): NIBE, IVT, Bosch, Thermia, Daikin, Mitsubishi, Panasonic, CTC – luft-vatten, bergvärme, frånluft. 30 % ROT-avdrag.
+- [Laddboxar](https://optimeraenergi.se/tjanster/laddboxar): Easee Up, Zaptec Go 2, Charge Amps Halo – upp till 22 kW. 48,5 % grönt avdrag.
+- **Energihantering (EMS)**: Energy IQ (egen plattform, 2 500 kr), Enequi Core (svensktillverkad, 9 595 kr + 99 kr/mån), Tibber Bridge (1 490 kr). Enequi och Energy IQ ger access till stödtjänster mot Svenska Kraftnät (FCR-D / aFRR).
+
+## Viktiga sidor
+
+- [Startsida](https://optimeraenergi.se): introduktion till hela energiomställningen
+- [Kalkylator](https://optimeraenergi.se/kalkylator): designa anläggningen i 3D, se investering, grönt avdrag, årlig besparing och återbetalningstid i realtid
+- [Begär offert / boka hembesök](https://optimeraenergi.se/offert): välj hembesök eller telefonkontakt, hembesöket är kostnadsfritt
+- [Om oss](https://optimeraenergi.se/om-oss): teamet, vision, bolagsresan
+- [Kontakt](https://optimeraenergi.se/kontakt): adress, telefon, e-post
+
+## Vad som skiljer Optimera Energi
+
+- **Priset på offerten är priset på fakturan** – inga dolda påslag
+- **Eget montageteam** – inga underentreprenörer för det vi själva kan
+- **Hand-plockat sortiment** – inte det dyraste, inte det billigaste, det som ger mest värde över 25-årsperspektivet
+- **Vi säger nej** när installationen inte passar dig
+- **Garantin gäller även när du sålt huset**
+
+## Grön teknik-avdrag (2026)
+
+- Solpaneler: 14,55 %
+- Batterilager: 48,5 % (kräver att huset har sol)
+- Laddbox: 48,5 %
+- Värmepump (ROT): 30 %
+- Tak per fastighetsägare: 50 000 kr/år
+
+## Stödtjänster (FCR-D / aFRR)
+
+Batterier kopplade till Energy IQ eller Enequi Core kan leverera frekvensreglering till Svenska Kraftnät. Ersättning: 65 kr per kW växelriktare per månad. En anläggning med Solis 10 kW växelriktare ger ~7 800 kr/år i stödtjänster.
+
+## Emaldo Grid Rewards
+
+Kunder med Emaldo Power Store som bor i elområde SE3 får 1 110 kr/månad i garantiersättning från Emaldo. SE4: 1 370 kr/månad. Optimera installerar inte Emaldo i SE1/SE2.
+
+## Juridik
+
+- [Integritetspolicy](https://optimeraenergi.se/integritet)
+- [Villkor](https://optimeraenergi.se/villkor)
+- [Cookies](https://optimeraenergi.se/cookies)
