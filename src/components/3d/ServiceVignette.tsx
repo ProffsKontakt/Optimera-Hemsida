@@ -96,7 +96,7 @@ function PanelArray() {
               roughness={0.18}
             />
           </mesh>
-          {/* Cellrutnät — fina ljusa linjer som visar att det är celler */}
+          {/* Cellrutnät – fina ljusa linjer som visar att det är celler */}
           {[-0.5, -0.25, 0, 0.25, 0.5].map((z) => (
             <mesh
               key={`h${z}`}

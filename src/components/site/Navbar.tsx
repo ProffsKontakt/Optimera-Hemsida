@@ -42,7 +42,7 @@ export function Navbar() {
           onClick={() => setOpen(false)}
           aria-label="Optimera Energi – startsidan"
         >
-          {/* Sajten är alltid på cream/bone — vi använder ALLTID den ljusa
+          {/* Sajten är alltid på cream/bone – vi använder ALLTID den ljusa
               logon (svart text). public/logo-dark.svg finns för framtida
               dark mode-implementation, men ska INTE plockas in automatiskt
               via prefers-color-scheme eftersom användarens OS-preferens

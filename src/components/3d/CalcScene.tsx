@@ -42,7 +42,7 @@ type SolarSurface = {
    * True om lokal +Z går mot toppen av taket (norra slope-konvention med
    * rotation [-α, 0, 0]). Default false: lokal +Z går mot eave (södra
    * slope, rotation [+α, 0, 0]). Styr panelplaceringen så att rad 0 alltid
-   * landar i toppen av taket — paneler byggs uppifrån-ner.
+   * landar i toppen av taket – paneler byggs uppifrån-ner.
    */
   topAtPositiveZ?: boolean;
 };

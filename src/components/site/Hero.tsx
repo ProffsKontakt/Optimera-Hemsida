@@ -38,15 +38,15 @@ export function Hero() {
                 efter hydration. Innehåller brand + service + city för
                 Google ranking på "optimera energi" + lokala intent-termer. */}
             <h1 className="mt-6 font-display text-[58px] md:text-[92px] leading-[0.95] tracking-display-tight">
-              Optimera Energi
+              Sol, batteri och värme.
               <br />
               <span className="italic font-serif text-indigo">
-                — sol, batteri och värme i Stockholm.
+                Hela vägen, i Stockholm.
               </span>
             </h1>
 
             <p className="mt-8 max-w-xl text-ink/70 text-lg leading-relaxed">
-              Solpaneler, batterier, värmepumpar och laddboxar – byggda på
+              Solpaneler, batterier, värmepumpar och laddboxar, byggda på
               kloka tankar och installerade av samma gäng från Solna som
               dyker upp med kanelbullar och respekt för ditt hem.
             </p>

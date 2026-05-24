@@ -477,7 +477,7 @@ export function computeCalc(input: CalcInput): CalcResult {
 
   // Batteri-avdraget gäller på hela batteripaketet (BMS+bas + moduler +
   // växelriktare + marginal + install) ink moms. Skatteverket kräver att
-  // batteriet kopplas till en anläggning för egenproducerad förnybar el —
+  // batteriet kopplas till en anläggning för egenproducerad förnybar el –
   // vilket Optimera alltid säkerställer (ny eller befintlig sol). Vi
   // applicerar därför avdraget oavsett om sol-toggle är på i kalkylatorn.
   const batteryDeductionKr = Math.min(

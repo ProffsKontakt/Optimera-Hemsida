@@ -16,7 +16,7 @@ const poppins = Poppins({
 });
 
 // Fraunces används bara för kursiva accent-ord ("under ett tak.", "tar hand
-// om dig."). Endast italic + en optical size räcker — den 90+KB-tunga axes-
+// om dig."). Endast italic + en optical size räcker – den 90+KB-tunga axes-
 // definitionen var overkill.
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -143,7 +143,7 @@ export default function RootLayout({
       className={`${poppins.variable} ${fraunces.variable} ${jetbrains.variable}`}
     >
       <head>
-        {/* Cookiebot med strategy="afterInteractive" — tidigare hade vi
+        {/* Cookiebot med strategy="afterInteractive" – tidigare hade vi
             beforeInteractive, men det blockerade LCP på mobile (Largest
             Contentful Paint trycktes över 2,5s). Auto-blocking-läget
             fungerar fortfarande med afterInteractive eftersom Cookiebot

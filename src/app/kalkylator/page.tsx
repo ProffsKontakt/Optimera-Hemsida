@@ -33,7 +33,7 @@ const FAQ = [
   },
   {
     q: "Hur lång är återbetalningstiden för ett batteri?",
-    a: "Återbetalningstiden beror på elzon, batteristorlek, EMS-val och årsförbrukning. För en typisk villa i Stockholm (SE3) med 23 kWh Easyway-batteri, Solis 10 kW och Energy IQ ligger nettoinvesteringen efter grönt avdrag runt 60 000 kr och årlig besparing inklusive stödtjänster runt 38 000 kr — vilket ger ungefär 1,6 års återbetalningstid.",
+    a: "Återbetalningstiden beror på elzon, batteristorlek, EMS-val och årsförbrukning. För en typisk villa i Stockholm (SE3) med 23 kWh Easyway-batteri, Solis 10 kW och Energy IQ ligger nettoinvesteringen efter grönt avdrag runt 60 000 kr och årlig besparing inklusive stödtjänster runt 38 000 kr – vilket ger ungefär 1,6 års återbetalningstid.",
   },
   {
     q: "Vad kostar ett hembesök?",

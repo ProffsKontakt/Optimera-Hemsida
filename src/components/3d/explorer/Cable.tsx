@@ -43,7 +43,7 @@ const PORT_TYPE_DESCRIPTION: Record<PortType, string> = {
   "dc-main":
     "Huvudkabel från batteriet till växelriktaren. Bär all batterieffekt och behöver fet area.",
   comms:
-    "Datakabel (CAN/RS-485) som låter växelriktaren prata med batteriet — laddnivå, larm, börvärden.",
+    "Datakabel (CAN/RS-485) som låter växelriktaren prata med batteriet – laddnivå, larm, börvärden.",
   "ac-power":
     "Växelström från växelriktaren ut till elcentralen. Det är här huset slutligen tar emot energin.",
   ground:

@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { SERVICES } from "@/lib/services";
 
 // Per-route hardcoded ISO-datum. Tidigare användes new Date() vid build vilket
-// gjorde att alla URLer fick samma timestamp varje deploy — det signalerar
+// gjorde att alla URLer fick samma timestamp varje deploy – det signalerar
 // "everything updated" till crawlers och devalverar lastmod-värdet.
 // Bumpa endast när innehållet faktiskt ändras.
 const LAST_MOD = {

@@ -30,7 +30,7 @@ import { SceneFallback } from "@/components/3d/SceneFallback";
 
 // Three.js + R3F är ~200 KB minified. Eftersom kalkylator-besökare först
 // ser titeln och resultaten innan 3D-scenen blir relevant lazy-laddar vi
-// canvas:en — sänker First Load JS markant och förbättrar LCP på mobil.
+// canvas:en – sänker First Load JS markant och förbättrar LCP på mobil.
 const CalcScene = dynamic(
   () => import("@/components/3d/CalcScene").then((m) => m.CalcScene),
   {
@@ -1098,7 +1098,7 @@ function ResultPanel({
         value={
           result.paybackYears > 0
             ? `${formatNumber(result.paybackYears, 1)} år`
-            : "—"
+            : "–"
         }
         sub={
           result.yearly20YearKr > 0
