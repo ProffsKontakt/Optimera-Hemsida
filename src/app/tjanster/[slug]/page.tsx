@@ -68,7 +68,10 @@ export default function ServicePage({
           <div className="lg:col-span-7">
             <div className="eyebrow">Tjänst · {s.badge}</div>
             <h1 className="mt-5 font-display text-[56px] md:text-[88px] tracking-display-tight leading-[0.95]">
-              {s.name}
+              {s.name}{" "}
+              <span className="italic font-serif text-indigo">
+                i Stockholm.
+              </span>
             </h1>
             <p className="mt-6 text-2xl md:text-3xl font-display tracking-display-tight text-ink/80 leading-snug max-w-2xl">
               {s.oneLiner}

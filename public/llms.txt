@@ -5,7 +5,7 @@
 ## Företagsinformation
 
 - **Juridiskt namn**: Optimera Energi Sverige AB
-- **Organisationsnummer**: 559447-9585
+- **Organisationsnummer**: 559375-2206
 - **Säte**: Vallgatan 9, 170 67 Solna
 - **Telefon**: 076 305 37 32
 - **E-post**: hej@optimeraenergi.se
@@ -13,6 +13,9 @@
 - **Tjänsteområde**: Stockholms län (SE3)
 - **Auktorisationer**: F-skatt, BAS-U, SEK
 - **Webbplats**: https://optimeraenergi.se
+- **LinkedIn**: https://www.linkedin.com/company/optimera-energi-sverige-ab/
+- **Facebook**: https://www.facebook.com/people/Optimera-Energi-Sverige/61589319586638/
+- **Allabolag**: https://www.allabolag.se/foretag/solpanelsgruppen-i-sverige-ab/oskarstr%C3%B6m/byggm%C3%A4stare/2KIDITQI5YDDT
 
 ## Tjänster vi installerar
 

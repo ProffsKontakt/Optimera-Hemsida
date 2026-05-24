@@ -9,17 +9,20 @@ export function VideoStage() {
   return (
     <div className="relative aspect-[16/9] rounded-[28px] overflow-hidden border border-ink/10 bg-ink">
       {/* Higgsfield-genererad eller infångad film. När HIGGSFIELD_API_KEY
-          är konfigurerad kommer /api/higgsfield/generate ge oss en URL. */}
+          är konfigurerad kommer /api/higgsfield/generate ge oss en URL.
+          preload="none" + sätt src först vid play-klick: ingen onödig MB
+          laddas innan användaren faktiskt vill se filmen. Poster räcker
+          för "video är här"-signal innan dess. */}
       <video
         className="absolute inset-0 h-full w-full object-cover"
-        autoPlay
         muted
         loop
         playsInline
+        preload="none"
         poster="/poster.svg"
-      >
-        <source src="/hero.mp4" type="video/mp4" />
-      </video>
+        src={playing ? "/hero.mp4" : undefined}
+        autoPlay={playing}
+      />
       <div className="absolute inset-0 bg-gradient-to-t from-ink/60 via-ink/10 to-transparent pointer-events-none" />
       {!playing && (
         <motion.button

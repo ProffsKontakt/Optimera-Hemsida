@@ -15,7 +15,7 @@ export default function IntegritetPage() {
       updatedAt="2026-05-09"
     >
       <P>
-        Optimera Energi Sverige AB (org.nr 559447-9585), Vallgatan 9, 170 67
+        Optimera Energi Sverige AB (org.nr 559375-2206), Vallgatan 9, 170 67
         Solna, är personuppgiftsansvarig för behandling av dina
         personuppgifter när du kontaktar oss, begär offert eller besöker
         optimeraenergi.se. Den här integritetspolicyn beskriver vilka

@@ -62,13 +62,39 @@ export function Footer() {
               <span className="block pt-2">
                 Optimera Energi Sverige AB
               </span>
-              <span className="block">Org.nr 559447-9585</span>
+              <span className="block">Org.nr 559375-2206</span>
             </li>
           </ul>
           <div className="mt-6 flex gap-2">
             <Badge>F-skatt</Badge>
             <Badge>BAS-U</Badge>
             <Badge>SEK</Badge>
+          </div>
+          <div className="mt-5 flex flex-wrap gap-x-4 gap-y-2 text-[13px]">
+            <a
+              href="https://www.linkedin.com/company/optimera-energi-sverige-ab/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-ink/70 hover:text-ink transition"
+            >
+              LinkedIn
+            </a>
+            <a
+              href="https://www.facebook.com/people/Optimera-Energi-Sverige/61589319586638/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-ink/70 hover:text-ink transition"
+            >
+              Facebook
+            </a>
+            <a
+              href="https://www.allabolag.se/foretag/solpanelsgruppen-i-sverige-ab/oskarstr%C3%B6m/byggm%C3%A4stare/2KIDITQI5YDDT"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-ink/70 hover:text-ink transition"
+            >
+              Allabolag
+            </a>
           </div>
         </div>
       </div>

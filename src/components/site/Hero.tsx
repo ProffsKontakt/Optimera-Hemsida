@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { CanvasErrorBoundary } from "@/components/3d/CanvasErrorBoundary";
 import { SceneFallback } from "@/components/3d/SceneFallback";
@@ -30,45 +29,29 @@ export function Hero() {
               aria-hidden
               className="hidden md:block brand-stripe absolute -left-4 top-2 h-24"
             />
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}
-              className="eyebrow"
-            >
+            <div className="eyebrow">
               Optimera Energi · Byggd på kloka tankar · Stockholm 2026
-            </motion.div>
+            </div>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 32 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, delay: 0.05 }}
-              className="mt-6 font-display text-[58px] md:text-[92px] leading-[0.95] tracking-display-tight"
-            >
-              Hela
+            {/* H1 är LCP-elementet. Renderas SYNKRONT utan framer-motion-
+                gating så LCP fires direkt vid första paint istället för
+                efter hydration. Innehåller brand + service + city för
+                Google ranking på "optimera energi" + lokala intent-termer. */}
+            <h1 className="mt-6 font-display text-[58px] md:text-[92px] leading-[0.95] tracking-display-tight">
+              Optimera Energi
               <br />
-              energi&shy;omställningen
-              <br />
-              <span className="italic font-serif text-indigo">under ett tak.</span>
-            </motion.h1>
+              <span className="italic font-serif text-indigo">
+                — sol, batteri och värme i Stockholm.
+              </span>
+            </h1>
 
-            <motion.p
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.25 }}
-              className="mt-8 max-w-xl text-ink/70 text-lg leading-relaxed"
-            >
+            <p className="mt-8 max-w-xl text-ink/70 text-lg leading-relaxed">
               Solpaneler, batterier, värmepumpar och laddboxar – byggda på
-              kloka tankar och installerade av samma gäng som dyker upp med
-              kanelbullar och respekt för ditt hem.
-            </motion.p>
+              kloka tankar och installerade av samma gäng från Solna som
+              dyker upp med kanelbullar och respekt för ditt hem.
+            </p>
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.7, delay: 0.45 }}
-              className="mt-10 flex flex-wrap items-center gap-4"
-            >
+            <div className="mt-10 flex flex-wrap items-center gap-4">
               <Link href="/kalkylator" className="btn-primary">
                 Räkna på din besparing
                 <ArrowRight size={16} />
@@ -76,18 +59,13 @@ export function Hero() {
               <Link href="/offert" className="btn-ghost">
                 Begär hembesök
               </Link>
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 0.7 }}
-              className="mt-14 grid grid-cols-3 max-w-md"
-            >
+            <div className="mt-14 grid grid-cols-3 max-w-md">
               <Stat n="5" label="installationstjänster" />
               <Stat n="100%" label="eget montageteam" />
               <Stat n="14d" label="från offert till tak" />
-            </motion.div>
+            </div>
           </div>
 
           <div className="lg:col-span-5 relative">
@@ -149,8 +127,8 @@ function Marquee() {
   ];
   return (
     <div className="relative border-y border-ink/10 bg-cream/60 ticker-mask">
-      <div className="flex gap-12 overflow-hidden py-5 animate-[shimmer_22s_linear_infinite]">
-        {[...items, ...items, ...items].map((it, i) => (
+      <div className="flex gap-12 overflow-hidden py-5 animate-[shimmer_22s_linear_infinite] motion-reduce:animate-none">
+        {[...items, ...items].map((it, i) => (
           <span
             key={i}
             className="font-mono text-[12.5px] uppercase tracking-[0.22em] text-ink/55 whitespace-nowrap"

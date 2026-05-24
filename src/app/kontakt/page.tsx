@@ -154,7 +154,7 @@ export default function KontaktPage() {
               <p className="mt-4 text-ink/70 max-w-xl text-[15px] leading-relaxed">
                 Kom förbi kontoret om du hellre pratar öga mot öga. Säg till
                 i förväg så ser vi till att rätt person finns på plats. Org.nr
-                559447-9585.
+                559375-2206.
               </p>
             </div>
             <div className="md:col-span-4">

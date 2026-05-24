@@ -150,7 +150,7 @@ export default function AboutPage() {
               </div>
               <dl className="space-y-3.5 text-[14px]">
                 <FactRow k="Juridiskt namn" v="Optimera Energi Sverige AB" />
-                <FactRow k="Org.nummer" v="559447-9585" />
+                <FactRow k="Org.nummer" v="559375-2206" />
                 <FactRow k="Säte" v="Vallgatan 9, Solna" />
                 <FactRow k="Grundat" v="2026" />
                 <FactRow k="Medarbetare" v="3 (växer till 8 under 2026)" />

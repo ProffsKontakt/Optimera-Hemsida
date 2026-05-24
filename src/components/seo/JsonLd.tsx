@@ -29,7 +29,7 @@ export const organizationSchema = {
   logo: `${BASE}/logo.svg`,
   email: "hej@optimeraenergi.se",
   telephone: "+46763053732",
-  vatID: "SE559447958501",
+  vatID: "SE559375220601",
   address: {
     "@type": "PostalAddress",
     streetAddress: "Vallgatan 9",
@@ -38,7 +38,11 @@ export const organizationSchema = {
     addressRegion: "Stockholms län",
     addressCountry: "SE",
   },
-  sameAs: [],
+  sameAs: [
+    "https://www.linkedin.com/company/optimera-energi-sverige-ab/",
+    "https://www.facebook.com/people/Optimera-Energi-Sverige/61589319586638/",
+    "https://www.allabolag.se/foretag/solpanelsgruppen-i-sverige-ab/oskarstr%C3%B6m/byggm%C3%A4stare/2KIDITQI5YDDT",
+  ],
 };
 
 /** LocalBusiness för /kontakt och /om-oss (mer rich-snippet-vänlig). */
@@ -60,6 +64,21 @@ export const localBusinessSchema = {
     addressRegion: "Stockholms län",
     addressCountry: "SE",
   },
+  geo: {
+    "@type": "GeoCoordinates",
+    // Vallgatan 9, 170 67 Solna. Justera om kontoret byter adress.
+    latitude: 59.3637,
+    longitude: 17.9986,
+  },
+  hasMap: "https://www.google.com/maps/search/?api=1&query=Vallgatan+9%2C+170+67+Solna",
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "08:00",
+      closes: "17:00",
+    },
+  ],
   areaServed: [
     { "@type": "AdministrativeArea", name: "Stockholms län" },
     { "@type": "Country", name: "SE" },

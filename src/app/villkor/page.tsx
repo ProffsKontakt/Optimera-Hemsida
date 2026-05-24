@@ -16,7 +16,7 @@ export default function VillkorPage() {
     >
       <P>
         Dessa allmänna villkor gäller mellan dig som kund och Optimera Energi
-        Sverige AB (org.nr 559447-9585), nedan kallat "Optimera". Genom att
+        Sverige AB (org.nr 559375-2206), nedan kallat "Optimera". Genom att
         beställa en tjänst, ingå avtal eller besöka optimeraenergi.se
         accepterar du villkoren nedan.
       </P>
@@ -24,7 +24,7 @@ export default function VillkorPage() {
       <H2>1. Bolagsuppgifter</H2>
       <P>
         Optimera Energi Sverige AB, Vallgatan 9, 170 67 Solna. Org.nr
-        559447-9585. F-skatt registrerad. Mejla{" "}
+        559375-2206. F-skatt registrerad. Mejla{" "}
         <a className="text-indigo underline" href="mailto:hej@optimeraenergi.se">
           hej@optimeraenergi.se
         </a>{" "}
