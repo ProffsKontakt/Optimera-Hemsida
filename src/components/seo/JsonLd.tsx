@@ -39,6 +39,7 @@ export const organizationSchema = {
   legalName: "Optimera Energi Sverige AB",
   alternateName: [
     "Optimera Energi",
+    "Optimera Energi Sverige AB",
     "Optimera",
     "Solpanelsgruppen i Sverige AB",
   ],
