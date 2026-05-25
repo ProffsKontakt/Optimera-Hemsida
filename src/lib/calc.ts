@@ -339,9 +339,17 @@ export function computeCalc(input: CalcInput): CalcResult {
   const yearlyProductionKWh = yearlyProductionFromSol;
 
   // -------- Självförbrukningsgrad --------
-  const selfConsumptionShare = batteryBrand
+  // Bas: batteri-storleken styr (45 % utan batteri, 92 % vid ~30 kWh).
+  // EMS:er med selfConsumptionBoost (t.ex. KEEP AI) lägger procentenheter
+  // ovanpå genom smart lastflyttning. Klampas alltid mot 0,92-taket.
+  const baseSelfConsumption = batteryBrand
     ? clamp(0.45 + (batteryKWh / 30) * 0.4, 0.45, 0.92)
     : 0.32;
+  const selfConsumptionShare = clamp(
+    baseSelfConsumption + (ems?.selfConsumptionBoost ?? 0),
+    0.45,
+    0.92,
+  );
 
   const selfUsedKWh = Math.min(
     yearlyProductionKWh * selfConsumptionShare,

@@ -105,6 +105,14 @@ export type EMS = {
   blurb: string;
   features: string[];
   spotOptimization: number; // 0..1, hur mycket den klarar att höja besparingen
+  /**
+   * Extra procentenheter att lägga till själv-förbrukningsgraden via
+   * smart lastflyttning (laddbox skjuts till dagtid, värmepump ackumulerar
+   * när produktionen toppar). Default 0. KEEP AI:s ML-modell ger t.ex.
+   * +0,13 vilket flyttar self-consumption från ~75 % till ~88 % på en
+   * 23 kWh-anläggning. Klampas alltid mot taket 0,92 i calc.ts.
+   */
+  selfConsumptionBoost?: number;
   priceKr: number;
   monthlyKr: number;
   /**
@@ -265,8 +273,9 @@ export const CHARGERS: Charger[] = [
   { id: "chargeamps", brand: "Charge Amps Halo", maxKW: 22, priceKr: 12500 },
 ];
 
-// Vi erbjuder tre EMS-plattformar: Energy IQ (egen), Enequi Core (extern,
-// garanterad), Tibber Bridge (entry-level). Evolta IQ / Markedroid /
+// Vi erbjuder tre EMS-plattformar: Energy IQ (egen, basic), Enequi Core
+// (extern, garanterad, stödtjänster), KEEP AI (premium spot- och last-
+// optimering via maskininlärning). Tibber Bridge / Evolta IQ / Markedroid /
 // HomeAssistant är borttagna ur produktportföljen.
 export const EMS_OPTIONS: EMS[] = [
   {
@@ -288,18 +297,24 @@ export const EMS_OPTIONS: EMS[] = [
     features: ["FCR-D / aFRR", "Spotpris-styrning", "Garanti"],
     spotOptimization: 0.22,
     priceKr: 9_595,
-    monthlyKr: 99,
+    monthlyKr: 69,
     enablesSupportServices: true,
   },
   {
-    id: "tibber",
-    brand: "Tibber Bridge",
+    id: "keep-ai",
+    brand: "KEEP AI",
     blurb:
-      "Pluggar in i mätarens HAN-port – du får realtidsdata och styr batteri och laddbox via Tibber-appen.",
-    features: ["HAN-port", "Tibber-app", "Smart Charging"],
-    spotOptimization: 0.10,
-    priceKr: 1_490,
-    monthlyKr: 0,
+      "AI-driven styrenhet som lär sig ditt hushålls profil och optimerar laddfönster mot Nord Pool. Bäst i klassen på spot- och lastoptimering, men kör inte stödtjänster.",
+    features: ["AI-spotoptimering", "Lastoptimering", "Premium-app"],
+    spotOptimization: 0.25,
+    // ML-driven lastflyttning lyfter själv-förbrukningen markant: laddbox
+    // schemaläggs till mitt på dagen, värmepump ackumulerar när PV-toppen
+    // är där. +13 procentenheter ovanpå batteri-baseraden. Detta kompenserar
+    // för bortfallet av stödtjänster (7 800 kr/år vid Solis 10 kW) på de
+    // husprofiler där laddbox + värmepump finns.
+    selfConsumptionBoost: 0.13,
+    priceKr: 3_000,
+    monthlyKr: 69,
     enablesSupportServices: false,
   },
 ];

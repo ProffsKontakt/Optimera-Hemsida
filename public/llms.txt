@@ -23,7 +23,7 @@
 - [Batterilager](https://optimeraenergi.se/tjanster/batterier): Easyway (7,68 kWh/modul, LFP), SAJ HS3 (10/15/20 kWh med inbyggd 12 kW växelriktare), Emaldo Power Store (5,12 kWh/powerbox + Grid Rewards i SE3/SE4). 48,5 % grönt avdrag.
 - [Värmepumpar](https://optimeraenergi.se/tjanster/vaermepumpar): NIBE, IVT, Bosch, Thermia, Daikin, Mitsubishi, Panasonic, CTC – luft-vatten, bergvärme, frånluft. 30 % ROT-avdrag.
 - [Laddboxar](https://optimeraenergi.se/tjanster/laddboxar): Easee Up, Zaptec Go 2, Charge Amps Halo – upp till 22 kW. 48,5 % grönt avdrag.
-- **Energihantering (EMS)**: Energy IQ (egen plattform, 2 500 kr), Enequi Core (svensktillverkad, 9 595 kr + 99 kr/mån), Tibber Bridge (1 490 kr). Enequi och Energy IQ ger access till stödtjänster mot Svenska Kraftnät (FCR-D / aFRR).
+- **Energihantering (EMS)**: Energy IQ (egen plattform, 2 500 kr, 16 % spot-boost), Enequi Core (svensktillverkad, 9 595 kr + 69 kr/mån, 22 % boost), KEEP AI (AI-driven, 3 000 kr + 69 kr/mån, 25 % boost). Energy IQ och Enequi ger access till stödtjänster mot Svenska Kraftnät (FCR-D / aFRR); KEEP AI kompenserar med högsta spot- och lastoptimering.
 
 ## Viktiga sidor
 
