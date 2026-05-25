@@ -8,7 +8,12 @@ import { Testimonials } from "@/components/home/Testimonials";
 import { VideoStage } from "@/components/home/VideoStage";
 import { CtaPanel } from "@/components/home/CtaPanel";
 import { Disclosure } from "@/components/site/Disclosure";
-import { JsonLd, faqPageSchema, videoObjectSchema } from "@/components/seo/JsonLd";
+import {
+  JsonLd,
+  faqPageSchema,
+  videoObjectSchema,
+  localBusinessSchema,
+} from "@/components/seo/JsonLd";
 
 // Sex köpar-språk-frågor som matchar Google Suggest och AI-search-frågor
 // för "Optimera Energi" + lokala intent-termer. Hjälper både rich snippets
@@ -44,6 +49,7 @@ export default function HomePage() {
   return (
     <>
       <JsonLd data={faqPageSchema(HOME_FAQ)} />
+      <JsonLd data={localBusinessSchema} />
       <JsonLd
         data={videoObjectSchema({
           name: "Optimera Energi, filmen om varför vi finns",

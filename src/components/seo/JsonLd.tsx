@@ -74,6 +74,8 @@ export const localBusinessSchema = {
   // Knyt LocalBusiness till Organization-noden så Google ser dem som
   // samma entity, inte två separata bolag.
   parentOrganization: { "@id": `${BASE}#organization` },
+  currenciesAccepted: "SEK",
+  paymentAccepted: "Faktura, Kort, Swish",
   address: {
     "@type": "PostalAddress",
     streetAddress: "Vallgatan 9",
