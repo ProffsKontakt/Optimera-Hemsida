@@ -126,8 +126,11 @@ function Marquee() {
     "Thermia",
   ];
   return (
-    <div className="relative border-y border-ink/10 bg-cream/60 ticker-mask">
-      <div className="flex gap-12 overflow-hidden py-5 animate-[shimmer_22s_linear_infinite] motion-reduce:animate-none">
+    <div className="relative border-y border-ink/10 bg-cream/60 ticker-mask overflow-hidden">
+      {/* Sömlös marquee: items dupliceras 2x. Yttre containern är
+          overflow-hidden, inre är w-max + translateX-animation som flyttar
+          hela strängen vänster en halv längd, sen wrappar (linear infinite). */}
+      <div className="flex w-max items-center gap-12 py-5 animate-marquee motion-reduce:animate-none">
         {[...items, ...items].map((it, i) => (
           <span
             key={i}

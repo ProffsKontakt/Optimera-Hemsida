@@ -63,6 +63,7 @@ const config: Config = {
       animation: {
         "fade-up": "fadeUp 0.8s ease-out forwards",
         "shimmer": "shimmer 3s linear infinite",
+        "marquee": "marquee 40s linear infinite",
         "float": "float 6s ease-in-out infinite",
       },
       keyframes: {
@@ -73,6 +74,14 @@ const config: Config = {
         shimmer: {
           "0%": { backgroundPosition: "-1000px 0" },
           "100%": { backgroundPosition: "1000px 0" },
+        },
+        // marquee: translateX från 0 till -50%. Vi duplicerar varumärkes-
+        // listan 2x i komponenten så när första halvan precis har scrollats
+        // ut hamnar andra halvan exakt där första började, vilket ger ett
+        // sömlöst loop utan synlig snap.
+        marquee: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
         },
         float: {
           "0%, 100%": { transform: "translateY(0px)" },
