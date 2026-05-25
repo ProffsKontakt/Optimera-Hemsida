@@ -20,8 +20,11 @@ export function generateMetadata({ params }: { params: { stad: string } }) {
   const city = findCity(params.stad);
   if (!city) return {};
   return {
-    title: `Solpaneler ${city.preposition} ${city.name}, installerat av Optimera Energi`,
-    description: `Vi installerar solpaneler ${city.preposition} ${city.name} med eget montageteam från Solna. Drönarbesiktning, 1:1-modell i 3D, transparent prissättning. Boka kostnadsfritt hembesök.`,
+    // Title-mönster optimerat för SERP-CTR enligt FLOW-ramverket: stad +
+    // service-modifier ("installation och pris") + brand. Pris-tokenen
+    // matchar den vanligaste PAA-frågan, vilket lyfter klickfrekvens.
+    title: `Solpaneler ${city.preposition} ${city.name}, installation och pris`,
+    description: `Vi installerar solpaneler ${city.preposition} ${city.name} med eget montageteam från Solna. Drönarbesiktning, 1:1-modell i 3D, fast pris. Boka kostnadsfritt hembesök.`,
     alternates: { canonical: `/solceller/${city.slug}` },
     openGraph: {
       title: `Solpaneler ${city.preposition} ${city.name} · Optimera Energi`,

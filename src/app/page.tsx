@@ -57,6 +57,47 @@ export default function HomePage() {
       />
       <Hero />
 
+      {/* Trust-strip direkt under hero: visible NAP + grönt avdrag-claim
+          + F-skatt + 25 års garanti. Lyfter Trust-dimensionen för
+          första-gångs-villaägare innan dom scrollat ner. */}
+      <section className="container-edge -mt-4 mb-12">
+        <div className="rounded-2xl border border-ink/10 bg-cream/60 px-5 py-4 md:px-8 md:py-5 grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6 text-[13.5px] text-ink/80">
+          <div>
+            <div className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-ink/55">
+              Var
+            </div>
+            <div className="mt-1 font-medium">Vallgatan 9, Solna</div>
+          </div>
+          <div>
+            <div className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-ink/55">
+              Ring
+            </div>
+            <a
+              href="tel:+46763053732"
+              className="mt-1 font-medium hover:text-indigo transition block"
+            >
+              076 305 37 32
+            </a>
+          </div>
+          <div>
+            <div className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-ink/55">
+              Avdrag
+            </div>
+            <div className="mt-1 font-medium">
+              Grönt avdrag dras direkt på fakturan
+            </div>
+          </div>
+          <div>
+            <div className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-ink/55">
+              Trygghet
+            </div>
+            <div className="mt-1 font-medium">
+              F-skatt, BAS-U, 25 års garanti
+            </div>
+          </div>
+        </div>
+      </section>
+
       <Section
         eyebrow="Allt under ett tak – bokstavligt"
         title={
