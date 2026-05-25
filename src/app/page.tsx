@@ -72,7 +72,7 @@ export default function HomePage() {
             <div className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-ink/55">
               Var
             </div>
-            <div className="mt-1 font-medium">Vallgatan 9, Solna</div>
+            <div className="mt-1 font-medium">Vallgatan 9, 170 67 Solna</div>
           </div>
           <div>
             <div className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-ink/55">

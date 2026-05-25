@@ -85,10 +85,18 @@ export default function GuidesHubPage() {
                 <p className="mt-3 text-ink/70 text-[14.5px] leading-relaxed">
                   {g.excerpt}
                 </p>
-                <div className="mt-6 pt-5 border-t border-ink/10 flex items-center gap-2 text-[13px] text-ink/70">
+                <div className="mt-6 pt-5 border-t border-ink/10 flex items-center justify-between gap-3 text-[13px] text-ink/70">
                   {isPublished ? (
                     <>
-                      Läs guiden <ArrowRight size={14} />
+                      <span className="inline-flex items-center gap-2">
+                        Läs guiden <ArrowRight size={14} />
+                      </span>
+                      {/* Synligt uppdaterat-datum: freshness-signal för
+                          Google + AI-search för tidskänsliga ämnen
+                          (avdrag, priser, regler). */}
+                      <span className="text-ink/45 font-mono text-[10.5px] uppercase tracking-[0.16em]">
+                        Uppdaterad {g.updatedAt}
+                      </span>
                     </>
                   ) : (
                     <span className="text-ink/45">Publiceras inom kort</span>

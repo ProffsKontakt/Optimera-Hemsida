@@ -53,6 +53,7 @@ export function Navbar() {
             width={332}
             height={114}
             className="h-9 w-auto"
+            fetchPriority="high"
           />
           <span className="hidden md:inline-block font-mono text-[10px] uppercase tracking-[0.2em] text-ink/55 border-l border-ink/15 pl-3 ml-1">
             byggd på kloka tankar

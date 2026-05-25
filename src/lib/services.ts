@@ -250,7 +250,7 @@ export const SERVICES: Service[] = [
       },
       {
         q: "Får jag ROT-avdrag?",
-        a: "Inte på laddbox direkt, men det gröna avdraget täcker 50% av arbets- och materialkostnaden upp till 50 000 kr.",
+        a: "Inte på laddbox direkt, men det gröna avdraget täcker 48,5 % av arbets- och materialkostnaden upp till 50 000 kr.",
       },
       {
         q: "Kan jag dela laddbox med grannen?",

@@ -207,7 +207,16 @@ export default function CityPage({ params }: { params: { stad: string } }) {
               </h3>
               <p className="mt-4 max-w-md text-ink/70 leading-relaxed">
                 Kostnadsfritt och utan förpliktelser. Vi ringer dagen innan
-                och stämmer av tiden.
+                och stämmer av tiden. Vårt lager ligger på Vallgatan 9 i Solna.
+              </p>
+              <p className="mt-3 text-[15px] text-ink/80">
+                Ring direkt:{" "}
+                <a
+                  href="tel:+46763053732"
+                  className="font-medium text-ink hover:text-indigo transition"
+                >
+                  076 305 37 32
+                </a>
               </p>
             </div>
             <div>

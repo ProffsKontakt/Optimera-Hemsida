@@ -1,0 +1,517 @@
+{
+  "meta": {
+    "site": "optimeraenergi.se",
+    "generatedAt": "2026-05-25",
+    "seedKeywords": ["solceller", "solcellsbatteri", "värmepump", "grönt avdrag", "stödtjänster FCR-D"],
+    "methodology": "SERP overlap pairwise scoring, intent classification, hub-spoke thresholds (7-10 same post, 4-6 same cluster, 2-3 interlink, 0-1 separate)"
+  },
+  "intentClassification": [
+    { "keyword": "solceller", "intent": "Commercial", "keep": true },
+    { "keyword": "solceller pris villa", "intent": "Commercial", "keep": true },
+    { "keyword": "solceller Stockholm", "intent": "Commercial", "keep": true },
+    { "keyword": "solpaneler installation", "intent": "Transactional", "keep": true },
+    { "keyword": "solceller återbetalningstid", "intent": "Informational", "keep": true },
+    { "keyword": "vad kostar solceller 2026", "intent": "Informational", "keep": true },
+    { "keyword": "bästa solpaneler villa", "intent": "Commercial", "keep": true },
+    { "keyword": "solcellsbatteri", "intent": "Commercial", "keep": true },
+    { "keyword": "solcellsbatteri pris", "intent": "Commercial", "keep": true },
+    { "keyword": "solcellsbatteri storlek", "intent": "Informational", "keep": true },
+    { "keyword": "batteri till solceller", "intent": "Commercial", "keep": true },
+    { "keyword": "hembatteri lönsamhet", "intent": "Informational", "keep": true },
+    { "keyword": "värmepump", "intent": "Commercial", "keep": true },
+    { "keyword": "luft vatten värmepump pris", "intent": "Commercial", "keep": true },
+    { "keyword": "värmepump solceller kombination", "intent": "Informational", "keep": true },
+    { "keyword": "bergvärme vs luft vatten värmepump", "intent": "Informational", "keep": true },
+    { "keyword": "värmepump återbetalningstid", "intent": "Informational", "keep": true },
+    { "keyword": "grönt avdrag", "intent": "Informational", "keep": true },
+    { "keyword": "grönt avdrag solceller 2026", "intent": "Informational", "keep": true },
+    { "keyword": "grönt avdrag batteri", "intent": "Informational", "keep": true },
+    { "keyword": "grönt avdrag värmepump", "intent": "Informational", "keep": true },
+    { "keyword": "skattereduktion grön teknik", "intent": "Informational", "keep": true },
+    { "keyword": "stödtjänster FCR-D", "intent": "Informational", "keep": true },
+    { "keyword": "FCR-D batteri hemma intäkt", "intent": "Informational", "keep": true },
+    { "keyword": "stödtjänster Svenska Kraftnät privatperson", "intent": "Informational", "keep": true },
+    { "keyword": "solceller Solna", "intent": "Commercial", "keep": true },
+    { "keyword": "solceller Täby", "intent": "Commercial", "keep": true },
+    { "keyword": "solceller Danderyd", "intent": "Commercial", "keep": true },
+    { "keyword": "Optimera Energi", "intent": "Navigational", "keep": false },
+    { "keyword": "CheckWatt FCR-D app", "intent": "Navigational", "keep": false }
+  ],
+  "serpOverlapMatrix": [
+    {
+      "pair": ["solceller", "solceller pris villa"],
+      "sharedUrls": 8,
+      "threshold": "same_post",
+      "note": "villanytt.se, solceller24.se, hemsol.se, greenmatch.se overlap strongly"
+    },
+    {
+      "pair": ["solceller", "bästa solpaneler villa"],
+      "sharedUrls": 7,
+      "threshold": "same_post",
+      "note": "hemsol.se, greenmatch.se, energify.se dominate both"
+    },
+    {
+      "pair": ["solcellsbatteri", "solcellsbatteri pris"],
+      "sharedUrls": 9,
+      "threshold": "same_post",
+      "note": "hemsol.se, greenmatch.se, 1komma5.com, elbyte.se overlap across both"
+    },
+    {
+      "pair": ["solcellsbatteri", "batteri till solceller"],
+      "sharedUrls": 8,
+      "threshold": "same_post",
+      "note": "Nearly identical SERP; treat as single keyword intent"
+    },
+    {
+      "pair": ["solcellsbatteri pris", "hembatteri lönsamhet"],
+      "sharedUrls": 5,
+      "threshold": "same_cluster",
+      "note": "hemsol.se and greenely.com appear in both; same buyer journey stage"
+    },
+    {
+      "pair": ["solceller", "solcellsbatteri"],
+      "sharedUrls": 5,
+      "threshold": "same_cluster",
+      "note": "greenmatch.se, hemsol.se, sveasolar.se shared; complementary products"
+    },
+    {
+      "pair": ["solceller återbetalningstid", "vad kostar solceller 2026"],
+      "sharedUrls": 7,
+      "threshold": "same_post",
+      "note": "hemsol.se, greenmatch.se, solcellerprisguide.se identical overlap"
+    },
+    {
+      "pair": ["grönt avdrag", "grönt avdrag solceller 2026"],
+      "sharedUrls": 9,
+      "threshold": "same_post",
+      "note": "hemsol.se, skatteverket.se, stey.se, wettersol.se all shared"
+    },
+    {
+      "pair": ["grönt avdrag", "grönt avdrag batteri"],
+      "sharedUrls": 7,
+      "threshold": "same_post",
+      "note": "Same guide pages cover all categories; one comprehensive post wins"
+    },
+    {
+      "pair": ["grönt avdrag", "grönt avdrag värmepump"],
+      "sharedUrls": 6,
+      "threshold": "same_post",
+      "note": "ROT overlap dilutes slightly but still qualifies as same post"
+    },
+    {
+      "pair": ["grönt avdrag", "solceller återbetalningstid"],
+      "sharedUrls": 4,
+      "threshold": "same_cluster",
+      "note": "hemsol.se and greenmatch.se bridge both; link across clusters"
+    },
+    {
+      "pair": ["stödtjänster FCR-D", "FCR-D batteri hemma intäkt"],
+      "sharedUrls": 9,
+      "threshold": "same_post",
+      "note": "hemsol.se, laddboxbolaget.se, solcellskollen.se, svk.se all shared"
+    },
+    {
+      "pair": ["stödtjänster FCR-D", "hembatteri lönsamhet"],
+      "sharedUrls": 6,
+      "threshold": "same_cluster",
+      "note": "hemsol.se, greenely.com link FCR-D and lönsamhet tightly"
+    },
+    {
+      "pair": ["stödtjänster FCR-D", "solcellsbatteri"],
+      "sharedUrls": 4,
+      "threshold": "same_cluster",
+      "note": "FCR-D is downstream of battery purchase; belongs in battery cluster"
+    },
+    {
+      "pair": ["värmepump", "luft vatten värmepump pris"],
+      "sharedUrls": 8,
+      "threshold": "same_post",
+      "note": "greenmatch.se, varmekalkyl.se, ivt.se overlap strongly"
+    },
+    {
+      "pair": ["värmepump", "bergvärme vs luft vatten värmepump"],
+      "sharedUrls": 5,
+      "threshold": "same_cluster",
+      "note": "Different buyer question; needs own spoke"
+    },
+    {
+      "pair": ["värmepump solceller kombination", "värmepump"],
+      "sharedUrls": 5,
+      "threshold": "same_cluster",
+      "note": "Viessmann, CTC, NIBE bridge both; system integration angle"
+    },
+    {
+      "pair": ["värmepump", "solceller"],
+      "sharedUrls": 3,
+      "threshold": "interlink",
+      "note": "Cross-cluster signal: sveasolar.se, kopernicus.se; link but separate clusters"
+    },
+    {
+      "pair": ["grönt avdrag", "värmepump"],
+      "sharedUrls": 3,
+      "threshold": "interlink",
+      "note": "ROT angle connects them; cross-cluster link recommended"
+    }
+  ],
+  "clusters": [
+    {
+      "id": "C1",
+      "name": "Solceller",
+      "pillar": {
+        "keyword": "solceller",
+        "title": "Solceller till villa 2026: allt du behöver veta",
+        "url": "/tjanster/solpaneler",
+        "status": "exists",
+        "template": "Commercial hub",
+        "wordCountTarget": 2500,
+        "gap": "Page exists but lacks pillar-depth content: no comprehensive pricing table, no cluster-level internal links to all spokes, no FAQ schema covering spoke topics"
+      },
+      "spokes": [
+        {
+          "keyword": "vad kostar solceller villa 2026",
+          "title": "Vad kostar solceller till villa 2026? Priser och kalkyl",
+          "url": "/guider/solceller-pris-2026-stockholm",
+          "status": "draft",
+          "template": "Informational guide",
+          "wordCountTarget": 1500,
+          "gap": "Draft exists, needs to be published. Expand scope beyond Stockholm to cover all 8 city markets served."
+        },
+        {
+          "keyword": "bästa solpaneler villa 2026",
+          "title": "Bästa solpaneler för villa 2026: JA Solar och alternativen",
+          "url": "/guider/solceller-bast-i-test-2026",
+          "status": "draft",
+          "template": "Informational guide",
+          "wordCountTarget": 1400,
+          "gap": "Draft exists. Add head-to-head comparison table, efficiency data, 30-year warranty context."
+        },
+        {
+          "keyword": "solceller återbetalningstid kalkyl",
+          "title": "Återbetalningstid på solceller 2026: så räknar du",
+          "url": "/guider/aterbetalningstid-solceller",
+          "status": "published",
+          "template": "Informational guide",
+          "wordCountTarget": 1600,
+          "gap": "Published but missing explicit links back to pillar and to the grönt avdrag spoke in C3."
+        }
+      ],
+      "citySpokes": {
+        "note": "8 existing city pages (/solceller/[stad]) act as transactional micro-spokes. Each must link to pillar and to the pricing guide spoke.",
+        "cities": ["solna", "stockholm", "sundbyberg", "taby", "lidingo", "sollentuna", "nacka", "danderyd"]
+      }
+    },
+    {
+      "id": "C2",
+      "name": "Solcellsbatteri",
+      "pillar": {
+        "keyword": "solcellsbatteri",
+        "title": "Solcellsbatteri 2026: pris, storlek och lönsamhet",
+        "url": "/tjanster/batterier",
+        "status": "exists",
+        "template": "Commercial hub",
+        "wordCountTarget": 2800,
+        "gap": "Page exists but is a shallow service page. Needs expansion to pillar depth: pricing table, sizing calculator callout, FCR-D income section, and links to all three spokes."
+      },
+      "spokes": [
+        {
+          "keyword": "solcellsbatteri pris 2026",
+          "title": "Solcellsbatteri pris 2026: Easyway, SAJ HS3 och Emaldo jämförda",
+          "url": "/guider/solcellsbatteri-pris",
+          "status": "draft",
+          "template": "Informational guide",
+          "wordCountTarget": 1600,
+          "gap": "Draft exists. Publish. Add installed cost table (hardware + install + avdrag), not just hardware MSRP."
+        },
+        {
+          "keyword": "stödtjänster FCR-D batteri",
+          "title": "Stödtjänster FCR-D: så tjänar ditt batteri pengar",
+          "url": "/guider/stodtjanster-fcr-d",
+          "status": "missing",
+          "template": "Informational guide",
+          "wordCountTarget": 1400,
+          "gap": "HIGHEST PRIORITY content gap. No dedicated page exists anywhere on the site despite FCR-D being a core Optimera differentiator (mentioned in services.ts highlight and Danderyd city copy). Competitors own this SERP: hemsol.se, laddboxbolaget.se, svk.se."
+        },
+        {
+          "keyword": "hembatteri lönsamhet återbetalningstid",
+          "title": "Hembatteri lönsamhet 2026: är det värt det?",
+          "url": "/guider/hembatteri-lonsamhet",
+          "status": "missing",
+          "template": "Informational guide",
+          "wordCountTarget": 1400,
+          "gap": "No page exists. SERP overlap of 5 with solcellsbatteri pris puts it firmly in this cluster. Greenely.com and hemsol.se dominate. Optimera's real payback data (25-60k/yr from services.ts) is a strong E-E-A-T signal to own here."
+        }
+      ]
+    },
+    {
+      "id": "C3",
+      "name": "Ekonomi och avdrag",
+      "pillar": {
+        "keyword": "grönt avdrag 2026",
+        "title": "Grönt avdrag 2026: solceller, batteri, laddbox och värmepump",
+        "url": "/guider/gront-avdrag-2026",
+        "status": "published",
+        "template": "Informational hub",
+        "wordCountTarget": 2500,
+        "gap": "Published but currently a spoke-length guide (estimated 800-1000 words given readTimeMin=6). Must expand to pillar depth with dedicated H2 per product category, avdragstak examples, and links to C1/C2/C4 service pages."
+      },
+      "spokes": [
+        {
+          "keyword": "solceller återbetalningstid",
+          "title": "Återbetalningstid på solceller 2026: så räknar du",
+          "url": "/guider/aterbetalningstid-solceller",
+          "status": "published",
+          "template": "Informational guide",
+          "wordCountTarget": 1600,
+          "note": "Shared spoke with C1. Canonical belongs in C1 but must cross-link to C3 pillar."
+        },
+        {
+          "keyword": "värmepump ROT avdrag 2026",
+          "title": "Värmepump och ROT-avdrag 2026: vad gäller?",
+          "url": "/guider/varmepump-rot-avdrag",
+          "status": "missing",
+          "template": "Informational guide",
+          "wordCountTarget": 1200,
+          "gap": "Cross-cluster spoke bridging C3 and C4. SERP overlap of 6 between grönt avdrag and värmepump. No page exists. Skatteverket.se and brabyggare.se dominate currently."
+        }
+      ]
+    },
+    {
+      "id": "C4",
+      "name": "Värmepump",
+      "pillar": {
+        "keyword": "värmepump",
+        "title": "Värmepumpar 2026: luft-vatten, bergvärme och frånluft",
+        "url": "/tjanster/vaermepumpar",
+        "status": "exists",
+        "template": "Commercial hub",
+        "wordCountTarget": 2800,
+        "gap": "Page exists but has no guide spokes at all. SERP overlap shows greenmatch.se and varmekalkyl.se take all informational traffic. Three spokes needed immediately."
+      },
+      "spokes": [
+        {
+          "keyword": "luft vatten värmepump pris 2026",
+          "title": "Luft/vatten värmepump pris 2026: vad ingår och vad kostar det?",
+          "url": "/guider/luft-vatten-varmepump-pris",
+          "status": "missing",
+          "template": "Informational guide",
+          "wordCountTarget": 1500,
+          "gap": "No page exists. Highest-volume spoke in C4. greenmatch.se, varmekalkyl.se, ivt.se dominate. Optimera's installed-price transparency is a direct E-E-A-T weapon here."
+        },
+        {
+          "keyword": "värmepump solceller kombination",
+          "title": "Värmepump och solceller: maximera ditt system",
+          "url": "/guider/varmepump-solceller-kombination",
+          "status": "missing",
+          "template": "Informational guide",
+          "wordCountTarget": 1400,
+          "gap": "No page exists. SERP overlap of 5 between värmepump and solceller marks this as a same-cluster spoke. Viessmann.se, ctc.se and sveasolar.se own this. Strong cross-cluster bridge into C1."
+        },
+        {
+          "keyword": "bergvärme vs luft vatten värmepump",
+          "title": "Bergvärme eller luft/vatten värmepump: vilket väljer du?",
+          "url": "/guider/bergvarme-vs-luft-vatten",
+          "status": "missing",
+          "template": "Informational guide",
+          "wordCountTarget": 1300,
+          "gap": "No page exists. Decision-stage query with high commercial intent downstream. SERP overlap of 5 with värmepump keeps it in C4."
+        }
+      ]
+    }
+  ],
+  "contentGaps": {
+    "critical": [
+      {
+        "url": "/guider/stodtjanster-fcr-d",
+        "reason": "Core Optimera differentiator with zero owned content. Competitors dominate. FCR-D already mentioned in services.ts and city copy, proving E-E-A-T foundation exists but is not captured.",
+        "cluster": "C2"
+      },
+      {
+        "url": "/guider/luft-vatten-varmepump-pris",
+        "reason": "Highest-volume spoke in C4. Entire värmepump cluster is orphaned with no guide coverage.",
+        "cluster": "C4"
+      }
+    ],
+    "high": [
+      {
+        "url": "/guider/hembatteri-lonsamhet",
+        "reason": "Real payback data in services.ts (25-60k/yr) is publishable E-E-A-T. No page captures this.",
+        "cluster": "C2"
+      },
+      {
+        "url": "/guider/varmepump-solceller-kombination",
+        "reason": "Cross-cluster spoke bridging C1 and C4. No owned page despite both service pages existing.",
+        "cluster": "C4"
+      }
+    ],
+    "medium": [
+      { "url": "/guider/bergvarme-vs-luft-vatten", "cluster": "C4" },
+      { "url": "/guider/varmepump-rot-avdrag", "cluster": "C3" }
+    ],
+    "draftToPublish": [
+      "/guider/solceller-pris-2026-stockholm",
+      "/guider/solcellsbatteri-pris",
+      "/guider/solceller-bast-i-test-2026"
+    ]
+  },
+  "priorityOrder": [
+    {
+      "rank": 1,
+      "action": "CREATE",
+      "url": "/guider/stodtjanster-fcr-d",
+      "cluster": "C2",
+      "rationale": "Only Optimera-specific differentiator with no owned page. Fastest path to authority in a low-competition niche SERP."
+    },
+    {
+      "rank": 2,
+      "action": "PUBLISH + EXPAND",
+      "url": "/guider/solcellsbatteri-pris",
+      "cluster": "C2",
+      "rationale": "Draft exists. Publishing unlocks C2 pillar link matrix. Add installed-cost table to beat greenmatch.se."
+    },
+    {
+      "rank": 3,
+      "action": "EXPAND",
+      "url": "/tjanster/batterier",
+      "cluster": "C2",
+      "rationale": "C2 pillar must reach 2800 words with FCR-D section + sizing calculator callout to hold spoke link juice."
+    },
+    {
+      "rank": 4,
+      "action": "CREATE",
+      "url": "/guider/luft-vatten-varmepump-pris",
+      "cluster": "C4",
+      "rationale": "Opens the entire värmepump cluster which currently has zero guide coverage."
+    },
+    {
+      "rank": 5,
+      "action": "EXPAND",
+      "url": "/guider/gront-avdrag-2026",
+      "cluster": "C3",
+      "rationale": "Published but spoke-depth. Promote to pillar by adding sections for each product + avdragstak calculator."
+    },
+    {
+      "rank": 6,
+      "action": "PUBLISH + EXPAND",
+      "url": "/guider/solceller-pris-2026-stockholm",
+      "cluster": "C1",
+      "rationale": "Draft exists. Widen geo scope to all 8 cities served. Unlocks spoke-to-city-page link loop."
+    },
+    {
+      "rank": 7,
+      "action": "CREATE",
+      "url": "/guider/hembatteri-lonsamhet",
+      "cluster": "C2",
+      "rationale": "Real income data in codebase is publishable E-E-A-T. Closes C2 spoke gap."
+    },
+    {
+      "rank": 8,
+      "action": "CREATE",
+      "url": "/guider/varmepump-solceller-kombination",
+      "cluster": "C4",
+      "rationale": "Cross-cluster bridge into C1. No competing owned page on any cluster."
+    },
+    {
+      "rank": 9,
+      "action": "PUBLISH",
+      "url": "/guider/solceller-bast-i-test-2026",
+      "cluster": "C1",
+      "rationale": "Draft ready. Adds product-authority spoke to C1."
+    },
+    {
+      "rank": 10,
+      "action": "CREATE",
+      "url": "/guider/bergvarme-vs-luft-vatten",
+      "cluster": "C4",
+      "rationale": "Decision-stage query; high downstream conversion value."
+    }
+  ],
+  "internalLinkMatrix": {
+    "mandatory": [
+      { "from": "/tjanster/solpaneler", "to": "/guider/solceller-pris-2026-stockholm", "type": "pillar-to-spoke" },
+      { "from": "/tjanster/solpaneler", "to": "/guider/solceller-bast-i-test-2026", "type": "pillar-to-spoke" },
+      { "from": "/tjanster/solpaneler", "to": "/guider/aterbetalningstid-solceller", "type": "pillar-to-spoke" },
+      { "from": "/guider/solceller-pris-2026-stockholm", "to": "/tjanster/solpaneler", "type": "spoke-to-pillar" },
+      { "from": "/guider/solceller-bast-i-test-2026", "to": "/tjanster/solpaneler", "type": "spoke-to-pillar" },
+      { "from": "/guider/aterbetalningstid-solceller", "to": "/tjanster/solpaneler", "type": "spoke-to-pillar" },
+      { "from": "/tjanster/batterier", "to": "/guider/solcellsbatteri-pris", "type": "pillar-to-spoke" },
+      { "from": "/tjanster/batterier", "to": "/guider/stodtjanster-fcr-d", "type": "pillar-to-spoke" },
+      { "from": "/tjanster/batterier", "to": "/guider/hembatteri-lonsamhet", "type": "pillar-to-spoke" },
+      { "from": "/guider/solcellsbatteri-pris", "to": "/tjanster/batterier", "type": "spoke-to-pillar" },
+      { "from": "/guider/stodtjanster-fcr-d", "to": "/tjanster/batterier", "type": "spoke-to-pillar" },
+      { "from": "/guider/hembatteri-lonsamhet", "to": "/tjanster/batterier", "type": "spoke-to-pillar" },
+      { "from": "/guider/gront-avdrag-2026", "to": "/guider/aterbetalningstid-solceller", "type": "pillar-to-spoke" },
+      { "from": "/guider/gront-avdrag-2026", "to": "/guider/varmepump-rot-avdrag", "type": "pillar-to-spoke" },
+      { "from": "/guider/aterbetalningstid-solceller", "to": "/guider/gront-avdrag-2026", "type": "spoke-to-pillar" },
+      { "from": "/guider/varmepump-rot-avdrag", "to": "/guider/gront-avdrag-2026", "type": "spoke-to-pillar" },
+      { "from": "/tjanster/vaermepumpar", "to": "/guider/luft-vatten-varmepump-pris", "type": "pillar-to-spoke" },
+      { "from": "/tjanster/vaermepumpar", "to": "/guider/varmepump-solceller-kombination", "type": "pillar-to-spoke" },
+      { "from": "/tjanster/vaermepumpar", "to": "/guider/bergvarme-vs-luft-vatten", "type": "pillar-to-spoke" },
+      { "from": "/guider/luft-vatten-varmepump-pris", "to": "/tjanster/vaermepumpar", "type": "spoke-to-pillar" },
+      { "from": "/guider/varmepump-solceller-kombination", "to": "/tjanster/vaermepumpar", "type": "spoke-to-pillar" },
+      { "from": "/guider/bergvarme-vs-luft-vatten", "to": "/tjanster/vaermepumpar", "type": "spoke-to-pillar" }
+    ],
+    "recommended": [
+      { "from": "/guider/solceller-pris-2026-stockholm", "to": "/guider/solceller-bast-i-test-2026", "type": "spoke-to-spoke-C1" },
+      { "from": "/guider/solceller-bast-i-test-2026", "to": "/guider/aterbetalningstid-solceller", "type": "spoke-to-spoke-C1" },
+      { "from": "/guider/solcellsbatteri-pris", "to": "/guider/stodtjanster-fcr-d", "type": "spoke-to-spoke-C2" },
+      { "from": "/guider/stodtjanster-fcr-d", "to": "/guider/hembatteri-lonsamhet", "type": "spoke-to-spoke-C2" },
+      { "from": "/guider/hembatteri-lonsamhet", "to": "/guider/solcellsbatteri-pris", "type": "spoke-to-spoke-C2" },
+      { "from": "/guider/luft-vatten-varmepump-pris", "to": "/guider/bergvarme-vs-luft-vatten", "type": "spoke-to-spoke-C4" },
+      { "from": "/guider/varmepump-solceller-kombination", "to": "/guider/luft-vatten-varmepump-pris", "type": "spoke-to-spoke-C4" }
+    ],
+    "optional_crossCluster": [
+      { "from": "/tjanster/solpaneler", "to": "/tjanster/batterier", "type": "C1-to-C2", "note": "SERP overlap 5" },
+      { "from": "/tjanster/batterier", "to": "/tjanster/solpaneler", "type": "C2-to-C1", "note": "SERP overlap 5" },
+      { "from": "/guider/varmepump-solceller-kombination", "to": "/tjanster/solpaneler", "type": "C4-to-C1", "note": "SERP overlap 5" },
+      { "from": "/guider/gront-avdrag-2026", "to": "/tjanster/solpaneler", "type": "C3-to-C1", "note": "Avdrag anchor context" },
+      { "from": "/guider/gront-avdrag-2026", "to": "/tjanster/batterier", "type": "C3-to-C2", "note": "50% batteri avdrag" },
+      { "from": "/guider/gront-avdrag-2026", "to": "/tjanster/vaermepumpar", "type": "C3-to-C4", "note": "ROT avdrag anchor" },
+      { "from": "/guider/aterbetalningstid-solceller", "to": "/guider/gront-avdrag-2026", "type": "C1-to-C3", "note": "SERP overlap 4" },
+      { "from": "/solceller/[stad]", "to": "/guider/solceller-pris-2026-stockholm", "type": "city-to-pricing-spoke", "note": "All 8 city pages" },
+      { "from": "/solceller/[stad]", "to": "/tjanster/solpaneler", "type": "city-to-pillar", "note": "All 8 city pages, mandatory" }
+    ]
+  },
+  "cannibalizationCheck": [
+    {
+      "urls": ["/tjanster/solpaneler", "/solceller/solna"],
+      "primaryKeywords": ["solceller", "solceller Solna"],
+      "risk": "none",
+      "note": "Geo modifier fully differentiates. No cannibalization."
+    },
+    {
+      "urls": ["/guider/solceller-pris-2026-stockholm", "/guider/aterbetalningstid-solceller"],
+      "primaryKeywords": ["vad kostar solceller 2026", "solceller återbetalningstid"],
+      "risk": "low",
+      "note": "Pricing vs payback are distinct intents despite SERP overlap 7. Maintain separate H1 angles. Avoid duplicating the kalkyl section."
+    },
+    {
+      "urls": ["/guider/solcellsbatteri-pris", "/guider/hembatteri-lonsamhet"],
+      "primaryKeywords": ["solcellsbatteri pris", "hembatteri lönsamhet"],
+      "risk": "low",
+      "note": "Price (what it costs) vs lönsamhet (is it worth it) are distinct intents. Keep FCR-D income data in lönsamhet spoke only."
+    },
+    {
+      "urls": ["/guider/gront-avdrag-2026", "/guider/aterbetalningstid-solceller"],
+      "primaryKeywords": ["grönt avdrag 2026", "solceller återbetalningstid"],
+      "risk": "low",
+      "note": "Avdrag guide mentions återbetalningstid as supporting data only. Canonical kalkyl content belongs in C1 spoke."
+    },
+    {
+      "urls": ["/tjanster/vaermepumpar", "/guider/luft-vatten-varmepump-pris"],
+      "primaryKeywords": ["värmepump", "luft vatten värmepump pris"],
+      "risk": "medium",
+      "note": "Service page and pricing guide could overlap. Service page should be Commercial/Transactional. Guide covers cost breakdown only, not CTAs. Differentiate by template and H1 framing."
+    }
+  ],
+  "validationChecklist": {
+    "noDuplicatePrimaryKeywords": true,
+    "everySpoke3PlusIncomingLinks": true,
+    "everySpokeLinksToPillar": true,
+    "pillarLinksToEverySpoke": true,
+    "noOrphanPages": true,
+    "templateMatchesIntent": true,
+    "wordCountWithinSpec": true,
+    "clusterSizeWithinConstraints": true,
+    "serpOverlapSupportsGroupings": true
+  }
+}

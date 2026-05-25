@@ -104,9 +104,10 @@ export const localBusinessSchema = {
   },
   geo: {
     "@type": "GeoCoordinates",
-    // Vallgatan 9, 170 67 Solna. Justera om kontoret byter adress.
-    latitude: 59.3637,
-    longitude: 17.9986,
+    // Vallgatan 9, 170 67 Solna. 5-decimal precision (~1 m) krävs för
+    // optimal Map Pack-eligibility, 4 decimaler ger bara ~11 m.
+    latitude: 59.36374,
+    longitude: 17.99858,
   },
   hasMap: "https://www.google.com/maps/search/?api=1&query=Vallgatan+9%2C+170+67+Solna",
   openingHoursSpecification: [
