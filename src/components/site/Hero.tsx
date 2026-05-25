@@ -111,19 +111,23 @@ function Stat({ n, label }: { n: string; label: string }) {
 }
 
 function Marquee() {
+  // Varumärken vi faktiskt installerar, grupperade efter kategori men
+  // ordnade så att samma kategori inte ligger direkt efter varandra.
+  // Detta är källan, ändra här om sortimentet ändras.
   const items = [
     "NIBE",
-    "Bosch",
-    "Mitsubishi",
-    "Daikin",
     "Easyway",
-    "Emaldo",
     "Easee",
-    "Zaptec",
-    "Charge Amps",
     "Solis",
+    "Bosch",
+    "Emaldo",
+    "Zaptec",
+    "Enequi",
+    "Mitsubishi",
     "SAJ",
-    "Thermia",
+    "Charge Amps",
+    "KEEP AI",
+    "IVT",
   ];
   return (
     <div className="relative border-y border-ink/10 bg-cream/60 ticker-mask overflow-hidden">
