@@ -17,14 +17,31 @@ export function JsonLd({ data }: { data: Record<string, unknown> }) {
 const BASE =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://optimeraenergi.se";
 
-/** Sitewide Organization-schema (läggs i root-layouten). */
+/**
+ * Sitewide Organization-schema (läggs i root-layouten).
+ *
+ * Namnnotis: Bolagsverket-registrerat namn på org.nr 559375-2206 är just nu
+ * "Solpanelsgruppen i Sverige AB". Namnändring till "Optimera Energi Sverige
+ * AB" är inskickad men inte processad. Allabolag-URLen i sameAs pekar
+ * därför på det gamla slug:et "solpanelsgruppen-i-sverige-ab" – det är
+ * samma entity och korrekt under övergångsperioden. När namnändringen
+ * processats kommer Allabolag uppdatera slug:et automatiskt.
+ *
+ * alternateName-listan inkluderar både gamla legal namnet och kortform
+ * så Googles entity resolution förstår att alla varianter pekar på
+ * samma bolag.
+ */
 export const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   "@id": `${BASE}#organization`,
   name: "Optimera Energi Sverige AB",
   legalName: "Optimera Energi Sverige AB",
-  alternateName: ["Optimera Energi", "Optimera"],
+  alternateName: [
+    "Optimera Energi",
+    "Optimera",
+    "Solpanelsgruppen i Sverige AB",
+  ],
   url: BASE,
   logo: `${BASE}/logo.svg`,
   email: "hej@optimeraenergi.se",
