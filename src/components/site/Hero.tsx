@@ -62,7 +62,7 @@ export function Hero() {
             </div>
 
             <div className="mt-14 grid grid-cols-3 max-w-md">
-              <Stat n="5" label="installationstjänster" />
+              <Stat n="4" label="installationstjänster" />
               <Stat n="100%" label="eget montageteam" />
               <Stat n="14d" label="från offert till tak" />
             </div>

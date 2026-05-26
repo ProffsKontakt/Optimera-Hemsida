@@ -67,7 +67,7 @@ export default function HomePage() {
         eyebrow="Allt under ett tak – bokstavligt"
         title={
           <>
-            Fem installations&shy;tjänster.
+            Fyra installations&shy;tjänster.
             <br />
             <span className="italic font-serif text-indigo">Ett team som tar ansvaret.</span>
           </>
