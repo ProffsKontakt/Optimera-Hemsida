@@ -7,6 +7,7 @@ import {
   breadcrumbSchema,
   organizationSchema,
 } from "@/components/seo/JsonLd";
+import { getAllPressReleases } from "@/lib/press";
 
 export const metadata = {
   title: "Press · Optimera Energi",
@@ -22,10 +23,6 @@ export const metadata = {
   },
 };
 
-// När pressmeddelanden finns publiceras dom här. Lista är tom tills första
-// release är på plats, då kompletteras med datum, titel, ingress och länk.
-const RELEASES: { date: string; title: string; lede: string; href?: string }[] = [];
-
 const QUICK_FACTS = [
   { k: "Juridiskt namn", v: "Optimera Energi Sverige AB" },
   { k: "Organisationsnummer", v: "559375-2206" },
@@ -37,6 +34,7 @@ const QUICK_FACTS = [
 ];
 
 export default function PressPage() {
+  const releases = getAllPressReleases();
   return (
     <>
       <JsonLd data={organizationSchema} />
@@ -69,7 +67,7 @@ export default function PressPage() {
         title={<>Aktuellt från Optimera.</>}
         className="!py-16 md:!py-20"
       >
-        {RELEASES.length === 0 ? (
+        {releases.length === 0 ? (
           <div className="rounded-3xl border border-ink/10 bg-cream/40 p-8 md:p-12">
             <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink/55">
               Inget publicerat än
@@ -82,26 +80,26 @@ export default function PressPage() {
           </div>
         ) : (
           <ol className="space-y-5">
-            {RELEASES.map((r, i) => (
+            {releases.map((r) => (
               <li
-                key={i}
+                key={r.slug}
                 className="rounded-3xl border border-ink/10 bg-bone p-7 md:p-8"
               >
                 <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink/55">
                   {r.date}
                 </div>
                 <h3 className="mt-3 font-display text-2xl md:text-3xl tracking-display-tight leading-snug">
-                  {r.title}
+                  <Link href={`/press/${r.slug}`} className="hover:text-indigo transition">
+                    {r.title}
+                  </Link>
                 </h3>
                 <p className="mt-3 text-ink/70 leading-relaxed">{r.lede}</p>
-                {r.href && (
-                  <Link
-                    href={r.href}
-                    className="mt-4 inline-flex items-center gap-2 text-indigo hover:underline font-mono text-[12px] uppercase tracking-[0.18em]"
-                  >
-                    Läs hela <ArrowRight size={14} />
-                  </Link>
-                )}
+                <Link
+                  href={`/press/${r.slug}`}
+                  className="mt-4 inline-flex items-center gap-2 text-indigo hover:underline font-mono text-[12px] uppercase tracking-[0.18em]"
+                >
+                  Läs hela <ArrowRight size={14} />
+                </Link>
               </li>
             ))}
           </ol>

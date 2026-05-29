@@ -4,6 +4,7 @@ import Script from "next/script";
 import "./globals.css";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
+import { AdminHotkey } from "@/components/site/AdminHotkey";
 import { JsonLd, organizationSchema, webSiteSchema } from "@/components/seo/JsonLd";
 
 // Endast vikter vi faktiskt använder. Tidigare hade vi 5 weights (~50KB
@@ -169,6 +170,7 @@ export default function RootLayout({
         >
           Hoppa till innehåll
         </a>
+        <AdminHotkey />
         <Navbar />
         <main id="main" className="pt-20">{children}</main>
         <Footer />
