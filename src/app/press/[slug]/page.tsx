@@ -32,6 +32,14 @@ export function generateMetadata({ params }: { params: { slug: string } }) {
   };
 }
 
+function telHref(phone: string): string {
+  // tel:-länkar mår bäst av rena siffror med + framför landskoden.
+  const digits = phone.replace(/\D/g, "");
+  if (digits.startsWith("46")) return `tel:+${digits}`;
+  if (digits.startsWith("0")) return `tel:+46${digits.slice(1)}`;
+  return `tel:+${digits}`;
+}
+
 function newsArticleSchema(r: ReturnType<typeof getPressRelease>) {
   if (!r) return null;
   return {
@@ -47,6 +55,7 @@ function newsArticleSchema(r: ReturnType<typeof getPressRelease>) {
       name: r.author.name,
       jobTitle: r.author.title,
       email: r.author.email,
+      telephone: r.author.phone,
       worksFor: { "@id": `${BASE}#organization` },
     },
     publisher: { "@id": `${BASE}#organization` },
@@ -139,10 +148,10 @@ export default function PressDetailPage({
               </a>
               <div>
                 <a
-                  href="tel:+46763053732"
+                  href={telHref(r.author.phone)}
                   className="inline-flex items-center gap-2 text-ink hover:text-indigo transition"
                 >
-                  <Phone size={14} /> 076 305 37 32
+                  <Phone size={14} /> {r.author.phone}
                 </a>
               </div>
             </div>

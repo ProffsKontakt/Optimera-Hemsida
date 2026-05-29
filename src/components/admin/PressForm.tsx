@@ -20,6 +20,33 @@ function slugify(s: string): string {
     .slice(0, 82);
 }
 
+// Team-presets som snabb-väljare för mediakontakt. Du kan ändå skriva
+// över alla fält fritt om någon annan ska stå som kontakt på en specifik
+// release.
+const TEAM_PRESETS = [
+  {
+    id: "viktor",
+    name: "Viktor Tiberg",
+    title: "Grundare och VD",
+    email: "viktor@optimeraenergi.se",
+    phone: "076 305 37 32",
+  },
+  {
+    id: "julian",
+    name: "Julian Nordgren",
+    title: "Grundare och Operativ Chef",
+    email: "julian@optimeraenergi.se",
+    phone: "076 947 00 58",
+  },
+  {
+    id: "moltas",
+    name: "Moltas Roslund",
+    title: "Sales Operations",
+    email: "moltas@optimeraenergi.se",
+    phone: "070 534 01 54",
+  },
+] as const;
+
 export function PressForm({
   mode,
   initial,
@@ -36,9 +63,10 @@ export function PressForm({
   );
   const [lede, setLede] = useState(initial?.lede ?? "");
   const [body, setBody] = useState(initial?.body ?? "");
-  const [authorName, setAuthorName] = useState(initial?.author.name ?? "Viktor Tiberg");
-  const [authorTitle, setAuthorTitle] = useState(initial?.author.title ?? "Grundare och VD");
-  const [authorEmail, setAuthorEmail] = useState(initial?.author.email ?? "viktor@optimeraenergi.se");
+  const [authorName, setAuthorName] = useState(initial?.author.name ?? TEAM_PRESETS[0].name);
+  const [authorTitle, setAuthorTitle] = useState(initial?.author.title ?? TEAM_PRESETS[0].title);
+  const [authorEmail, setAuthorEmail] = useState(initial?.author.email ?? TEAM_PRESETS[0].email);
+  const [authorPhone, setAuthorPhone] = useState(initial?.author.phone ?? TEAM_PRESETS[0].phone);
   const [quoteText, setQuoteText] = useState(initial?.quote?.text ?? "");
   const [quoteAttr, setQuoteAttr] = useState(initial?.quote?.attribution ?? "");
   const [submitting, setSubmitting] = useState(false);
@@ -66,6 +94,7 @@ export function PressForm({
         name: authorName,
         title: authorTitle,
         email: authorEmail,
+        phone: authorPhone,
       },
       ...(quoteText && quoteAttr
         ? { quote: { text: quoteText, attribution: quoteAttr } }
@@ -178,6 +207,36 @@ export function PressForm({
         <legend className="px-2 font-mono text-[10.5px] uppercase tracking-[0.18em] text-ink/55">
           Mediakontakt
         </legend>
+
+        <div>
+          <div className="text-[13px] text-ink/65 mb-2">Snabbval</div>
+          <div className="flex flex-wrap gap-2">
+            {TEAM_PRESETS.map((p) => {
+              const active = authorEmail === p.email;
+              return (
+                <button
+                  key={p.id}
+                  type="button"
+                  onClick={() => {
+                    setAuthorName(p.name);
+                    setAuthorTitle(p.title);
+                    setAuthorEmail(p.email);
+                    setAuthorPhone(p.phone);
+                  }}
+                  className={[
+                    "rounded-full border px-4 py-2 text-[13px] transition",
+                    active
+                      ? "bg-ink text-bone border-ink"
+                      : "bg-bone text-ink/75 border-ink/15 hover:border-ink/40",
+                  ].join(" ")}
+                >
+                  {p.name.split(" ")[0]}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
         <Field label="Namn">
           <input
             required
@@ -200,6 +259,16 @@ export function PressForm({
             type="email"
             value={authorEmail}
             onChange={(e) => setAuthorEmail(e.target.value)}
+            className="w-full rounded-2xl border border-ink/15 bg-bone px-4 py-3 text-[15px] outline-none focus:border-ink/50 transition"
+          />
+        </Field>
+        <Field label="Telefon" hint="Visas på artikelsidan och i tel:-länken.">
+          <input
+            required
+            type="tel"
+            value={authorPhone}
+            onChange={(e) => setAuthorPhone(e.target.value)}
+            placeholder="076 305 37 32"
             className="w-full rounded-2xl border border-ink/15 bg-bone px-4 py-3 text-[15px] outline-none focus:border-ink/50 transition"
           />
         </Field>

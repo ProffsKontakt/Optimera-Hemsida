@@ -24,6 +24,8 @@ export type PressRelease = {
     name: string;
     title: string;
     email: string;
+    /** Telefon visas på artikelsidan och i tel:-länken. */
+    phone: string;
   };
   /** Optional citat-block för pull-quote i artikeln. */
   quote?: {
