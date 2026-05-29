@@ -34,6 +34,13 @@ const PressSchema = z.object({
       attribution: z.string().min(2),
     })
     .optional(),
+  featured: z.boolean().optional(),
+  featuredUntil: z
+    .string()
+    .refine((s) => !s || Number.isFinite(Date.parse(s)), {
+      message: "featuredUntil måste vara giltig ISO-datetime",
+    })
+    .optional(),
 });
 
 function pathFor(slug: string) {

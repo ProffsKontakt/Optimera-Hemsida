@@ -33,6 +33,12 @@ export type PressRelease = {
     text: string;
     attribution: string;
   };
+  /** Visa som banderoll på startsidan + alla sidor (sticky topbar). */
+  featured?: boolean;
+  /** ISO 8601 datetime då banderollen automatiskt slutar visas.
+   *  null/undefined = ingen auto-utgång, banderollen syns tills admin
+   *  avmarkerar featured. */
+  featuredUntil?: string;
 };
 
 const PRESS_DIR = path.join(process.cwd(), "data", "press");
@@ -65,4 +71,24 @@ export function getPressRelease(slug: string): PressRelease | null {
   } catch {
     return null;
   }
+}
+
+/**
+ * Returnerar den release som ska visas som banderoll på startsidan.
+ *
+ * Regler:
+ *   featured === true OCH (ingen featuredUntil ELLER featuredUntil > now)
+ *
+ * Vid flera kvalificerade releases vinner den med senast `date`.
+ * Returnerar null om ingen ska visas.
+ */
+export function getFeaturedPressRelease(): PressRelease | null {
+  const now = Date.now();
+  const candidates = getAllPressReleases().filter((r) => {
+    if (!r.featured) return false;
+    if (!r.featuredUntil) return true;
+    const until = Date.parse(r.featuredUntil);
+    return Number.isFinite(until) && until > now;
+  });
+  return candidates[0] ?? null;
 }
