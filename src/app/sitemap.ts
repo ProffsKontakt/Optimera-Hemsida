@@ -18,6 +18,7 @@ const LAST_MOD = {
   legal: "2026-05-09",
   cities: "2026-05-24",
   guiderHub: "2026-05-24",
+  press: "2026-05-24",
 } as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -32,6 +33,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/kontakt`, lastModified: LAST_MOD.kontakt },
     { url: `${base}/tankar`, lastModified: LAST_MOD.tankar },
     { url: `${base}/guider`, lastModified: LAST_MOD.guiderHub },
+    { url: `${base}/press`, lastModified: LAST_MOD.press },
     ...SERVICES.map((s) => ({
       url: `${base}/tjanster/${s.slug}`,
       lastModified: LAST_MOD.tjanster,

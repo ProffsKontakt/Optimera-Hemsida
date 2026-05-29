@@ -59,6 +59,7 @@ export function Footer() {
               ["/kontakt", "Kontakt"],
               ["/kalkylator", "Kalkylator"],
               ["/guider", "Guider"],
+              ["/press", "Press"],
               ["/offert", "Begär offert"],
             ]}
           />
