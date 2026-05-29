@@ -1,28 +1,27 @@
 import { NextResponse } from "next/server";
-import { adminCookieOptions } from "@/lib/admin-auth";
+import { adminCookieOptions, pendingCookieOptions } from "@/lib/admin-auth";
 
-export async function POST(req: Request) {
-  if (!process.env.ADMIN_PASSWORD) {
-    return NextResponse.json(
-      { error: "ADMIN_PASSWORD är inte satt i miljön." },
-      { status: 503 },
-    );
-  }
-  const { password } = (await req.json().catch(() => ({}))) as {
-    password?: string;
-  };
-  if (password !== process.env.ADMIN_PASSWORD) {
-    return NextResponse.json({ error: "Fel lösenord." }, { status: 401 });
-  }
-  const opts = adminCookieOptions();
-  const res = NextResponse.json({ ok: true });
-  res.cookies.set(opts.name, password, opts);
-  return res;
+/**
+ * Legacy-routen för admin-login. Hela inloggningen sker nu via
+ * /api/admin/auth/request + /api/admin/auth/verify (OTP-flöde).
+ * Denna route behåller bara DELETE för utloggning.
+ */
+
+export async function POST() {
+  return NextResponse.json(
+    {
+      error:
+        "Password-login är borttagen. Använd OTP-flödet (engångskod till info@optimeraenergi.se).",
+    },
+    { status: 410 },
+  );
 }
 
 export async function DELETE() {
-  const opts = adminCookieOptions();
+  const auth = adminCookieOptions();
+  const pending = pendingCookieOptions();
   const res = NextResponse.json({ ok: true });
-  res.cookies.set(opts.name, "", { ...opts, maxAge: 0 });
+  res.cookies.set(auth.name, "", { ...auth, maxAge: 0 });
+  res.cookies.set(pending.name, "", { ...pending, maxAge: 0 });
   return res;
 }

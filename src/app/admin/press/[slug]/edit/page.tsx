@@ -16,7 +16,7 @@ export default function AdminPressEditPage({
 }: {
   params: { slug: string };
 }) {
-  if (!process.env.ADMIN_PASSWORD || !isAdminAuthed()) {
+  if (!isAdminAuthed()) {
     redirect("/admin/login");
   }
   const release = getPressRelease(params.slug);
