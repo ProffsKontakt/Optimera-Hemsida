@@ -9,7 +9,7 @@ export const metadata = {
 };
 
 export default function IdeaCornerPage() {
-  if (!isAdminAuthed()) {
+  if (!process.env.ADMIN_PASSWORD || !isAdminAuthed()) {
     redirect("/admin/login");
   }
   return (

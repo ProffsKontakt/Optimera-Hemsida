@@ -11,7 +11,7 @@ export const metadata = {
 };
 
 export default function AdminPressNewPage() {
-  if (!isAdminAuthed()) {
+  if (!process.env.ADMIN_PASSWORD || !isAdminAuthed()) {
     redirect("/admin/login");
   }
   return (

@@ -16,7 +16,7 @@ export default function AdminPressListPage({
 }: {
   searchParams?: { ok?: string; deleted?: string };
 }) {
-  if (!isAdminAuthed()) {
+  if (!process.env.ADMIN_PASSWORD || !isAdminAuthed()) {
     redirect("/admin/login");
   }
   const releases = getAllPressReleases();

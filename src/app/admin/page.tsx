@@ -5,7 +5,7 @@ import { AdminTopbar } from "@/components/admin/AdminTopbar";
 import { LightbulbIcon, Briefcase, Newspaper, ArrowRight } from "lucide-react";
 
 export default function AdminHome() {
-  if (!isAdminAuthed()) {
+  if (!process.env.ADMIN_PASSWORD || !isAdminAuthed()) {
     redirect("/admin/login");
   }
   return (
