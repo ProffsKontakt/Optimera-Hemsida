@@ -26,7 +26,7 @@ const PressSchema = z.object({
     name: z.string().min(2),
     title: z.string().min(2),
     email: z.string().email(),
-    phone: z.string().min(7).max(30),
+    phone: z.string().min(7).max(30).optional(),
   }),
   quote: z
     .object({

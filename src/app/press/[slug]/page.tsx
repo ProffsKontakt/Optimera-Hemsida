@@ -32,12 +32,14 @@ export function generateMetadata({ params }: { params: { slug: string } }) {
   };
 }
 
-function telHref(phone: string): string {
+const DEFAULT_PRESS_PHONE = "076 305 37 32";
+
+function telHref(phone: string | undefined): string {
   // tel:-länkar mår bäst av rena siffror med + framför landskoden.
-  const digits = phone.replace(/\D/g, "");
-  if (digits.startsWith("46")) return `tel:+${digits}`;
-  if (digits.startsWith("0")) return `tel:+46${digits.slice(1)}`;
-  return `tel:+${digits}`;
+  const value = (phone ?? DEFAULT_PRESS_PHONE).replace(/\D/g, "");
+  if (value.startsWith("46")) return `tel:+${value}`;
+  if (value.startsWith("0")) return `tel:+46${value.slice(1)}`;
+  return `tel:+${value}`;
 }
 
 function newsArticleSchema(r: ReturnType<typeof getPressRelease>) {
@@ -55,7 +57,7 @@ function newsArticleSchema(r: ReturnType<typeof getPressRelease>) {
       name: r.author.name,
       jobTitle: r.author.title,
       email: r.author.email,
-      telephone: r.author.phone,
+      telephone: r.author.phone ?? DEFAULT_PRESS_PHONE,
       worksFor: { "@id": `${BASE}#organization` },
     },
     publisher: { "@id": `${BASE}#organization` },
@@ -151,7 +153,7 @@ export default function PressDetailPage({
                   href={telHref(r.author.phone)}
                   className="inline-flex items-center gap-2 text-ink hover:text-indigo transition"
                 >
-                  <Phone size={14} /> {r.author.phone}
+                  <Phone size={14} /> {r.author.phone ?? DEFAULT_PRESS_PHONE}
                 </a>
               </div>
             </div>
