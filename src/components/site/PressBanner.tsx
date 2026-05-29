@@ -15,6 +15,7 @@ export function PressBanner({
 }) {
   const [mounted, setMounted] = useState(false);
   const [dismissed, setDismissed] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -25,6 +26,18 @@ export function PressBanner({
       // localStorage kan kasta i Safari private mode, ignorera
     }
   }, [slug]);
+
+  // Banderollen glider upp och försvinner så fort man börjar skrolla.
+  // Samma tröskel (8px) som Navbar använder för sin shrink-effekt så
+  // att de två rörelserna känns synkade.
+  useEffect(() => {
+    function onScroll() {
+      setScrolled(window.scrollY > 8);
+    }
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   function onDismiss(e: React.MouseEvent) {
     e.preventDefault();
@@ -37,30 +50,20 @@ export function PressBanner({
     setDismissed(true);
   }
 
-  // SSR och första klient-render: rendera ut banner-skalet så layouten är
-  // korrekt. När useEffect kört kollar vi dismissal-state. Detta undviker
-  // hydration mismatch.
-  if (!mounted) {
-    return <BannerShell slug={slug} title={title} onDismiss={onDismiss} />;
-  }
-  if (dismissed) return null;
-  return <BannerShell slug={slug} title={title} onDismiss={onDismiss} />;
-}
+  if (mounted && dismissed) return null;
 
-function BannerShell({
-  slug,
-  title,
-  onDismiss,
-}: {
-  slug: string;
-  title: string;
-  onDismiss: (e: React.MouseEvent) => void;
-}) {
+  // Före hydration vill vi inte trigga animation; behandla som ej
+  // skrollad så SSR-markup matchar.
+  const hidden = mounted && scrolled;
+
   return (
     <div
       role="status"
       aria-label="Nytt pressmeddelande"
-      className="relative z-[60] bg-indigo text-bone"
+      aria-hidden={hidden || undefined}
+      className={`fixed inset-x-0 top-20 z-40 bg-indigo text-bone shadow-sm transition-transform duration-300 ${
+        hidden ? "-translate-y-full pointer-events-none" : "translate-y-0"
+      }`}
     >
       <Link
         href={`/press/${slug}`}

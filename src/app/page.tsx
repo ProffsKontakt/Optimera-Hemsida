@@ -1,4 +1,6 @@
 import { Hero } from "@/components/site/Hero";
+import { PressBanner } from "@/components/site/PressBanner";
+import { getFeaturedPressRelease } from "@/lib/press";
 import { Section } from "@/components/site/Section";
 import { ServicesGrid } from "@/components/home/ServicesGrid";
 import { Manifesto } from "@/components/home/Manifesto";
@@ -46,8 +48,14 @@ const HOME_FAQ = [
 ];
 
 export default function HomePage() {
+  // Banderoll bara på landningssidan. Läses server-side, dismissal
+  // sker client-side via localStorage i komponenten.
+  const featured = getFeaturedPressRelease();
   return (
     <>
+      {featured && (
+        <PressBanner slug={featured.slug} title={featured.title} />
+      )}
       <JsonLd data={faqPageSchema(HOME_FAQ)} />
       <JsonLd data={localBusinessSchema} />
       <JsonLd

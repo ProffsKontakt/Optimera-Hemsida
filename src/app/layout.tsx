@@ -5,8 +5,6 @@ import "./globals.css";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
 import { AdminHotkey } from "@/components/site/AdminHotkey";
-import { PressBanner } from "@/components/site/PressBanner";
-import { getFeaturedPressRelease } from "@/lib/press";
 import { JsonLd, organizationSchema, webSiteSchema } from "@/components/seo/JsonLd";
 
 // Endast vikter vi faktiskt använder. Tidigare hade vi 5 weights (~50KB
@@ -140,10 +138,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // Banner-läsning server-side. Komponenten själv är client (för
-  // localStorage-dismissal). Banner-skalet renderas på server för
-  // korrekt initial layout, sen hanterar useEffect dismissal-läget.
-  const featured = getFeaturedPressRelease();
   return (
     <html
       lang="sv"
@@ -177,9 +171,6 @@ export default function RootLayout({
           Hoppa till innehåll
         </a>
         <AdminHotkey />
-        {featured && (
-          <PressBanner slug={featured.slug} title={featured.title} />
-        )}
         <Navbar />
         <main id="main" className="pt-20">{children}</main>
         <Footer />
