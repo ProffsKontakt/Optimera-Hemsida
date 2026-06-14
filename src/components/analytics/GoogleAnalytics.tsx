@@ -64,6 +64,19 @@ export function GoogleAnalytics() {
           window.addEventListener('CookiebotOnDecline', oeSyncConsent);
           window.addEventListener('CookiebotOnLoad', oeSyncConsent);
           oeSyncConsent();
+
+          // Central spårning av kontaktklick (tel: / mailto:) via delegation,
+          // så vi slipper röra varje länk. Ger phone_click / email_click i GA4,
+          // användbara som mikro-konverteringar för Google Ads.
+          document.addEventListener('click', function(e){
+            var t = e.target;
+            var a = t && t.closest ? t.closest('a[href^="tel:"], a[href^="mailto:"]') : null;
+            if (!a) return;
+            var href = a.getAttribute('href') || '';
+            gtag('event', href.indexOf('tel:') === 0 ? 'phone_click' : 'email_click', {
+              link_url: href
+            });
+          }, true);
         `}
       </Script>
     </>

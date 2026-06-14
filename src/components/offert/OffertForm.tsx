@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ArrowRight, Check, Home, Phone } from "lucide-react";
 import { SERVICES } from "@/lib/services";
+import { trackEvent } from "@/lib/analytics";
 import { CalendarPicker, type SlotSelection } from "./CalendarPicker";
 
 type Defaults = Record<string, string | null>;
@@ -53,6 +54,13 @@ export function OffertForm({ defaults }: { defaults: Defaults }) {
         body: JSON.stringify(body),
       });
       if (!res.ok) throw new Error(await res.text());
+      // GA4-konvertering: offert skickad. Markeras som "generate_lead" och
+      // kan importeras som konvertering i Google Ads.
+      trackEvent("generate_lead", {
+        method: contactMethod,
+        services: services.join(","),
+        currency: "SEK",
+      });
       setDone(true);
     } catch (err) {
       setError(
