@@ -6,6 +6,10 @@ import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
 import { AdminHotkey } from "@/components/site/AdminHotkey";
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
+import {
+  GoogleTagManager,
+  GoogleTagManagerNoScript,
+} from "@/components/analytics/GoogleTagManager";
 import { JsonLd, organizationSchema, webSiteSchema } from "@/components/seo/JsonLd";
 
 // Endast vikter vi faktiskt använder. Tidigare hade vi 5 weights (~50KB
@@ -161,8 +165,12 @@ export default function RootLayout({
         )}
         {/* GA4 (G-5DY857B8TL) med Consent Mode v2 – nekat tills samtycke. */}
         <GoogleAnalytics />
+        {/* Google Tag Manager (GTM-5HD9BPW6) – för Ads-/remarketing-taggar. */}
+        <GoogleTagManager />
       </head>
       <body className="min-h-screen bg-bone text-ink antialiased">
+        {/* GTM noscript måste ligga direkt efter <body>. */}
+        <GoogleTagManagerNoScript />
         <JsonLd data={organizationSchema} />
         <JsonLd data={webSiteSchema} />
         {/* Skip-to-content för tangentbord & screenreader-användare.

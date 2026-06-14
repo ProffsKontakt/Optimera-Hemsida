@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { ArrowRight, Check, Home, Phone } from "lucide-react";
 import { SERVICES } from "@/lib/services";
-import { trackEvent } from "@/lib/analytics";
 import { CalendarPicker, type SlotSelection } from "./CalendarPicker";
 
 type Defaults = Record<string, string | null>;
@@ -12,13 +12,13 @@ type ContactMethod = "hembesok" | "telefon";
 const housingTypes = ["Villa", "Radhus", "Fritidshus", "Lantbruk", "Brf / styrelse"];
 
 export function OffertForm({ defaults }: { defaults: Defaults }) {
+  const router = useRouter();
   const [services, setServices] = useState<string[]>(
     defaults.tjanst ? [defaults.tjanst] : ["solpaneler"],
   );
   const [contactMethod, setContactMethod] = useState<ContactMethod>("hembesok");
   const [slot, setSlot] = useState<SlotSelection | null>(null);
   const [submitting, setSubmitting] = useState(false);
-  const [done, setDone] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -54,39 +54,29 @@ export function OffertForm({ defaults }: { defaults: Defaults }) {
         body: JSON.stringify(body),
       });
       if (!res.ok) throw new Error(await res.text());
-      // GA4-konvertering: offert skickad. Markeras som "generate_lead" och
-      // kan importeras som konvertering i Google Ads.
-      trackEvent("generate_lead", {
-        method: contactMethod,
-        services: services.join(","),
-        currency: "SEK",
-      });
-      setDone(true);
+      // Spara bekräftelsedetaljer för tack-sidan, navigera sedan till en
+      // DEDIKERAD URL (/offert/klar). Den distinkta URL:en ger ett eget
+      // page_view i GA4 som kan användas som Key event / konvertering, och
+      // generate_lead-eventet skickas där.
+      try {
+        sessionStorage.setItem(
+          "oe_offert_confirmation",
+          JSON.stringify({
+            method: contactMethod,
+            services: services.join(","),
+            slot: contactMethod === "hembesok" ? slot : null,
+          }),
+        );
+      } catch {
+        // sessionStorage kan kasta i privat läge, ignorera
+      }
+      router.push("/offert/klar");
     } catch (err) {
       setError(
         "Något krånglade. Mejla oss på hej@optimeraenergi.se så löser vi det.",
       );
-    } finally {
       setSubmitting(false);
     }
-  }
-
-  if (done) {
-    return (
-      <div className="rounded-[28px] border border-ink/10 bg-cream/70 p-12 max-w-2xl">
-        <div className="grid h-12 w-12 place-items-center rounded-full bg-moss text-bone">
-          <Check size={20} />
-        </div>
-        <h2 className="mt-6 font-display text-4xl tracking-display-tight">
-          Tack – vi hörs.
-        </h2>
-        <p className="mt-4 text-ink/70 leading-relaxed">
-          {contactMethod === "hembesok" && slot
-            ? `Vi har bokat in ${slot.weekday} ${slot.dateLabel} kl ${slot.time}. Du får en bekräftelse på e-post inom kort, och vi ringer dagen innan för att säga vilken kollega som kommer förbi.`
-            : "Vi ringer upp dig under nästa vardag och stämmer av vad du behöver. Du får en bekräftelse på e-post inom kort."}
-        </p>
-      </div>
-    );
   }
 
   return (
