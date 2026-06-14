@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { ArrowRight, Check, Home, Phone } from "lucide-react";
 import { SERVICES } from "@/lib/services";
+import { collectAttribution } from "@/lib/attribution";
 import { CalendarPicker, type SlotSelection } from "./CalendarPicker";
 
 type Defaults = Record<string, string | null>;
@@ -46,6 +47,9 @@ export function OffertForm({ defaults }: { defaults: Defaults }) {
         laddbox: defaults.chrg,
         ems: defaults.ems,
       },
+      // Annons-attribution (gclid/UTM/GA4 client_id) följer med in i CRM:et
+      // så att Sentinel HQ kan rapportera tillbaka köp till Google Ads/GA4.
+      attribution: collectAttribution(),
     };
     try {
       const res = await fetch("/api/offert", {
@@ -65,6 +69,10 @@ export function OffertForm({ defaults }: { defaults: Defaults }) {
             method: contactMethod,
             services: services.join(","),
             slot: contactMethod === "hembesok" ? slot : null,
+            // För Enhanced Conversions på tacksidan (hashas där, skickas
+            // bara vid marknadsföringssamtycke).
+            email: typeof payload.epost === "string" ? payload.epost : "",
+            phone: typeof payload.telefon === "string" ? payload.telefon : "",
           }),
         );
       } catch {

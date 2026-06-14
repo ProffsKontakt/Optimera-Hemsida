@@ -3,13 +3,33 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Check, ArrowRight } from "lucide-react";
-import { trackEvent } from "@/lib/analytics";
+import { trackEvent, setEnhancedConversionData } from "@/lib/analytics";
 
 type SavedConfirmation = {
   method?: string;
   services?: string;
   slot?: { weekday: string; dateLabel: string; time: string } | null;
+  email?: string;
+  phone?: string;
 };
+
+// Uppskattat lead-värde per tjänst (SEK) för värdebaserad budgivning i Ads.
+// Detta är ett proxy-värde tills CRM:et rapporterar verkligt affärsvärde via
+// offline-konverteringar (qualify_lead / close_convert_lead / purchase).
+const LEAD_VALUE: Record<string, number> = {
+  solpaneler: 800,
+  batterier: 600,
+  vaermepumpar: 500,
+  laddboxar: 200,
+};
+
+function estimateValue(services: string): number {
+  const v = services
+    .split(",")
+    .filter(Boolean)
+    .reduce((sum, s) => sum + (LEAD_VALUE[s] ?? 300), 0);
+  return v || 300;
+}
 
 /**
  * Tack-sidans innehåll. Läser bekräftelsedetaljerna som offertformuläret
@@ -37,11 +57,18 @@ export function OffertConfirmation() {
     // navigeringen hit). Annars skulle en refresh eller direktnavigering till
     // /offert/klar trigga falska konverteringar i GA4/Ads.
     if (submitted) {
-      trackEvent("generate_lead", {
-        method: submitted.method ?? "unknown",
-        services: submitted.services ?? "",
-        currency: "SEK",
-      });
+      const fire = () =>
+        trackEvent("generate_lead", {
+          method: submitted!.method ?? "unknown",
+          services: submitted!.services ?? "",
+          value: estimateValue(submitted!.services ?? ""),
+          currency: "SEK",
+        });
+      // Sätt Enhanced Conversions user_data (hashad e-post/telefon) FÖRE
+      // eventet så det matchar konverteringen. Consent-gated internt.
+      setEnhancedConversionData(submitted.email, submitted.phone)
+        .then(fire)
+        .catch(fire);
     }
   }, []);
 

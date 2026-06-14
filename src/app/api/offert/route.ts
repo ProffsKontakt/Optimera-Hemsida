@@ -21,6 +21,25 @@ const Schema = z
     slot: SlotSchema.nullable().optional(),
     services: z.array(z.string()).default([]),
     config: z.record(z.any()).optional(),
+    // Annons-attribution för closed-loop. Vidarebefordras till CRM-webhooken
+    // så Sentinel HQ kan rapportera affärer tillbaka till Google Ads/GA4.
+    attribution: z
+      .object({
+        gclid: z.string().optional(),
+        gbraid: z.string().optional(),
+        wbraid: z.string().optional(),
+        utmSource: z.string().optional(),
+        utmMedium: z.string().optional(),
+        utmCampaign: z.string().optional(),
+        utmTerm: z.string().optional(),
+        utmContent: z.string().optional(),
+        gaClientId: z.string().optional(),
+        landingPage: z.string().optional(),
+        referrer: z.string().optional(),
+        firstSeen: z.string().optional(),
+      })
+      .partial()
+      .optional(),
   })
   .refine(
     (d) => d.contactMethod !== "hembesok" || !!d.slot,
@@ -160,9 +179,33 @@ function formatPlain(d: Lead, seller: { name: string; email?: string }) {
     "Konfiguration från kalkylatorn:",
     JSON.stringify(d.config ?? {}, null, 2),
     "",
+    "Attribution (för closed-loop / offline conversions):",
+    formatAttribution(d.attribution),
+    "",
     "Meddelande från kunden:",
     d.meddelande ?? "-",
   ].join("\n");
+}
+
+function formatAttribution(a: Lead["attribution"]): string {
+  if (!a || Object.keys(a).length === 0) return "  (ingen – troligen organisk/direkt)";
+  const line = (label: string, v?: string) => (v ? `  ${label}: ${v}` : null);
+  return [
+    line("gclid", a.gclid),
+    line("gbraid", a.gbraid),
+    line("wbraid", a.wbraid),
+    line("GA4 client_id", a.gaClientId),
+    line("utm_source", a.utmSource),
+    line("utm_medium", a.utmMedium),
+    line("utm_campaign", a.utmCampaign),
+    line("utm_term", a.utmTerm),
+    line("utm_content", a.utmContent),
+    line("landningssida", a.landingPage),
+    line("referrer", a.referrer),
+    line("första besök", a.firstSeen),
+  ]
+    .filter(Boolean)
+    .join("\n") || "  (ingen – troligen organisk/direkt)";
 }
 
 function formatCustomer(d: Lead, seller: { name: string }) {

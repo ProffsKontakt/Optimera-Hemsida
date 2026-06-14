@@ -6,6 +6,7 @@ import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
 import { AdminHotkey } from "@/components/site/AdminHotkey";
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
+import { AttributionCapture } from "@/components/analytics/AttributionCapture";
 import {
   GoogleTagManager,
   GoogleTagManagerNoScript,
@@ -182,6 +183,7 @@ export default function RootLayout({
           Hoppa till innehåll
         </a>
         <AdminHotkey />
+        <AttributionCapture />
         <Navbar />
         <main id="main" className="pt-20">{children}</main>
         <Footer />
