@@ -244,12 +244,11 @@ export const BATTERY_CITIES: BatteryCity[] = CONTENT.map((c) => {
     throw new Error(`battery-cities: okänd stad-slug "${c.slug}"`);
   }
   return {
-    slug: base.slug,
+    ...c,
     name: base.name,
     preposition: base.preposition,
     region: base.region,
     neighbors: base.neighbors,
-    ...c,
   };
 });
 
