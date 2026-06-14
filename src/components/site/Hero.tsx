@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 import { ArrowRight } from "lucide-react";
 import { CanvasErrorBoundary } from "@/components/3d/CanvasErrorBoundary";
 import { SceneFallback } from "@/components/3d/SceneFallback";
+import { Defer } from "@/components/3d/Defer";
 
 // Three.js + R3F är ~200 KB minified och påverkar LCP/TBT på mobil rejält.
 // Hero-canvasen är dekorativ – inte LCP-element – så vi dynamic-importerar
@@ -70,9 +71,19 @@ export function Hero() {
 
           <div className="lg:col-span-5 relative">
             <div className="aspect-[4/5] w-full rounded-[28px] border border-ink/10 overflow-hidden bg-cream relative">
-              <CanvasErrorBoundary fallback={<SceneFallback kind="hero" />}>
-                <HeroLab />
-              </CanvasErrorBoundary>
+              {/* Hero-canvasen ligger ovanför vecket men är dekorativ (inte
+                  LCP). Vi monterar den först när tråden är ledig
+                  (requestIdleCallback) så three.js-init inte blockerar
+                  hydration och Total Blocking Time. Samma cream-placeholder
+                  visas tills dess, alltså ingen synlig skillnad. */}
+              <Defer
+                idle
+                fallback={<div className="absolute inset-0 bg-cream" aria-hidden />}
+              >
+                <CanvasErrorBoundary fallback={<SceneFallback kind="hero" />}>
+                  <HeroLab />
+                </CanvasErrorBoundary>
+              </Defer>
               <div className="absolute inset-x-0 bottom-0 p-5 flex items-end justify-between">
                 <div className="rounded-2xl bg-bone/85 backdrop-blur px-4 py-3 border border-ink/10">
                   <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink/55">

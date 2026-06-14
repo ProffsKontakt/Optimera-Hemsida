@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import type { ServiceSlug } from "@/lib/services";
 import { CanvasErrorBoundary } from "./CanvasErrorBoundary";
 import { SceneFallback } from "./SceneFallback";
+import { Defer } from "./Defer";
 
 /**
  * Lazy-laddad ServiceVignette. Three.js + R3F är tung (~200 KB) och vi
@@ -24,9 +25,16 @@ const ServiceVignetteInner = dynamic(
 
 export function ServiceVignetteLazy({ kind }: { kind: ServiceSlug }) {
   // ServiceSlug och SceneFallbackKind delar samma 4 strängar för tjänsterna.
+  // Vinjetterna ligger under vecket, så vi monterar three.js-scenen först när
+  // kortet är på väg in i bild. Det håller startsidans laddfönster fritt från
+  // fyra parallella WebGL-init och kapar Total Blocking Time rejält.
   return (
-    <CanvasErrorBoundary fallback={<SceneFallback kind={kind} />}>
-      <ServiceVignetteInner kind={kind} />
-    </CanvasErrorBoundary>
+    <Defer
+      fallback={<div className="absolute inset-0 bg-cream/70" aria-hidden />}
+    >
+      <CanvasErrorBoundary fallback={<SceneFallback kind={kind} />}>
+        <ServiceVignetteInner kind={kind} />
+      </CanvasErrorBoundary>
+    </Defer>
   );
 }
