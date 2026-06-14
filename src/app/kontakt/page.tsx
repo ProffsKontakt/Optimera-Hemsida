@@ -34,7 +34,7 @@ const TEAM = [
     name: "Julian Nordgren",
     role: "Grundare och Operativ Chef",
     email: "julian@optimeraenergi.se",
-    phone: "0769470058",
+    phone: "0763015202",
   },
   {
     name: "Moltas Roslund",
@@ -206,7 +206,7 @@ function ContactCard({
 }
 
 function formatPhone(p: string): string {
-  // 0769470058 → 076 947 00 58
+  // 0763015202 → 076 301 52 02
   if (p.length === 10) {
     return `${p.slice(0, 3)} ${p.slice(3, 6)} ${p.slice(6, 8)} ${p.slice(8)}`;
   }

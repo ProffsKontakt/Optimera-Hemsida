@@ -37,7 +37,7 @@ const TEAM = [
     name: "Julian Nordgren",
     role: "Grundare och Operativ Chef",
     email: "julian@optimeraenergi.se",
-    phone: "0769470058",
+    phone: "0763015202",
     color: "from-[#B86F3C] to-[#2A2A26]",
     bio:
       "Operativ ryggrad. Plockar upp telefonen, dimensionerar systemet, mejlar din offert och dyker upp vid första installationen.",
