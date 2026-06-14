@@ -21,20 +21,28 @@ export function OffertConfirmation() {
   const [saved, setSaved] = useState<SavedConfirmation | null>(null);
 
   useEffect(() => {
-    let data: SavedConfirmation = {};
+    let submitted: SavedConfirmation | null = null;
     try {
       const raw = sessionStorage.getItem("oe_offert_confirmation");
-      if (raw) data = JSON.parse(raw) as SavedConfirmation;
-      sessionStorage.removeItem("oe_offert_confirmation");
+      if (raw) {
+        submitted = JSON.parse(raw) as SavedConfirmation;
+        sessionStorage.removeItem("oe_offert_confirmation");
+      }
     } catch {
       // ignorera
     }
-    setSaved(data);
-    trackEvent("generate_lead", {
-      method: data.method ?? "unknown",
-      services: data.services ?? "",
-      currency: "SEK",
-    });
+    setSaved(submitted ?? {});
+    // Skicka generate_lead ENDAST vid en faktisk inskickning (det fanns
+    // bekräftelsedata i sessionStorage, satt av formuläret precis innan
+    // navigeringen hit). Annars skulle en refresh eller direktnavigering till
+    // /offert/klar trigga falska konverteringar i GA4/Ads.
+    if (submitted) {
+      trackEvent("generate_lead", {
+        method: submitted.method ?? "unknown",
+        services: submitted.services ?? "",
+        currency: "SEK",
+      });
+    }
   }, []);
 
   const slot = saved?.slot;
