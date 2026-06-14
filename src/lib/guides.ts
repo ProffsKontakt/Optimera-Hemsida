@@ -46,12 +46,12 @@ export const GUIDES: Guide[] = [
   },
   {
     slug: "solceller-pris-2026-stockholm",
-    status: "draft",
-    title: "Vad kostar solpaneler i Stockholm 2026?",
+    status: "published",
+    title: "Vad kostar solceller i Stockholm 2026?",
     excerpt:
       "Riktiga priser från en installatör som inte vill sälja dig en lösning du inte behöver. Kr/kWp-tabell, exempel på 5/10/15 kW-installationer.",
     category: "Solceller",
-    updatedAt: "2026-05-24",
+    updatedAt: "2026-06-14",
     readTimeMin: 7,
   },
   {

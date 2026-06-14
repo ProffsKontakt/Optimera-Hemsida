@@ -179,6 +179,86 @@ const CONTENT: Record<string, GuideContent> = {
       },
     ],
   },
+
+  "solceller-pris-2026-stockholm": {
+    tldr: [
+      "Solceller i Stockholm 2026 kostar cirka 6 300–8 000 kr per kWp netto efter grönt avdrag, beroende på anläggningens storlek.",
+      "En typisk villa med 14 paneler (7 kWp) landar runt 50 000 kr efter det gröna avdraget på 14,55 %.",
+      "Priset styrs mest av takets förutsättningar (lutning, skuggning, infästning) och om du lägger till batteri, inte av panelmärket.",
+    ],
+    sections: [
+      {
+        h2: "Vad solceller kostar i Stockholm 2026",
+        body: [
+          "Vi prissätter solceller efter en enkel modell: ett baspris för ställning, infästning och elarbete (10 000–22 500 kr beroende på jobbets storlek) plus 2 500 kr per JA Solar-panel. Ovanpå det drar vi av grönt avdrag på 14,55 % direkt på fakturan, så du ser nettopriset på offerten.",
+          "I Stockholm (elområde SE3) landar de flesta villaanläggningar mellan 35 000 och 95 000 kr netto. Spannet låter brett, men det handlar nästan helt om hur många paneler taket rymmer och hur krångligt det är att montera dem, inte om vilket märke du väljer.",
+        ],
+      },
+      {
+        h2: "Pris per kWp: exempel på 5, 10 och 15 kW i Stockholm",
+        body: [
+          "En JA Solar-panel på 500 W motsvarar 0,5 kWp, så 10 paneler = 5 kWp. Ju större anläggning, desto lägre pris per kWp eftersom baspris och resvägar slås ut på fler paneler. Riktpriser för Stockholm 2026, netto efter grönt avdrag:",
+        ],
+        bullets: [
+          "5 kWp (10 paneler): cirka 40 000 kr netto, runt 8 000 kr/kWp. Passar radhus och mindre villatak.",
+          "10 kWp (20 paneler): cirka 68 000 kr netto, runt 6 800 kr/kWp. Den vanligaste storleken i Stockholms villaområden.",
+          "15 kWp (30 paneler): cirka 95 000 kr netto, runt 6 300 kr/kWp. Stora sadeltak i Täby, Danderyd och Nacka.",
+          "Lägg till batteri och priset per nyttjad kilowattimme sjunker ytterligare, eftersom du då slipper sälja överskott billigt till nätet.",
+        ],
+      },
+      {
+        h2: "Vad som påverkar priset på ditt tak",
+        body: [
+          "Två likadana villor i Bromma kan få olika pris, och det är takets förutsättningar som avgör. Det här rör nålen mest:",
+        ],
+        bullets: [
+          "Taklutning och orientering: söderläge med 30–45 graders lutning ger mest el per panel. Platta tak kräver ställning som vinklar panelerna, vilket kostar lite mer.",
+          "Skuggning: skuggar en skorsten eller ett träd delar av taket använder vi effektoptimerare eller mikroväxelriktare så att en skuggad panel inte drar ner hela strängen. Det är en post på offerten.",
+          "Infästning: tegel, betongpannor och plåt kräver olika montagebleck. Äldre tak i Stockholms innerstad kan behöva extra arbete.",
+          "Växelriktare och batteri: storleken på växelriktaren och om du vill ha batterilager påverkar totalpriset mer än valet av panel.",
+        ],
+      },
+      {
+        h2: "Grönt avdrag drar ner priset med 14,55 %",
+        body: [
+          "Grönt teknik-avdrag för solceller är 14,55 % av hela installationskostnaden, material och arbete. Du behöver inte ansöka, vi som installatör drar av summan direkt på fakturan och rapporterar till Skatteverket.",
+          "Avdragstaket är 50 000 kr per fastighetsägare och år. Lägger du till batteri (48,5 % avdrag) i samma projekt kan ett par komma upp i betydligt högre total avdragssumma samma år. Vi visar avdraget separat på offerten så du ser exakt vad du betalar netto.",
+        ],
+      },
+      {
+        h2: "Lönar sig solceller i Stockholm?",
+        body: [
+          "Ja. I SE3 ligger spotpriset runt 1,45 kr/kWh i snitt och ett välplacerat tak i Stockholm producerar cirka 1 050 kWh per kWp och år. En ren solanläggning betalar sig på 8–11 år och har sedan minst 15 år kvar av sin 25-åriga effektgaranti, det är där den riktiga vinsten ligger.",
+          "Med batterilager och stödtjänster (FCR-D / aFRR) kommer återbetalningstiden ner mot 3–5 år för hus med högre förbrukning, eftersom du då använder mer av din egen el och batteriet dessutom tjänar pengar åt dig när det står stilla.",
+        ],
+      },
+      {
+        h2: "Så får du ett exakt pris för ditt hus",
+        body: [
+          "Räkna på din egen anläggning i vår kalkylator innan du bokar hembesök, den använder samma prismodell och samma siffror som vi använder vid offert. Byt antal paneler, lägg till batteri och se priset och återbetalningstiden ändras i realtid.",
+          "Vid hembesöket gör vi en drönarbesiktning av taket och justerar siffrorna efter de faktiska förutsättningarna. Inget pris är slutgiltigt förrän vi har sett taket, vi säljer hellre rätt anläggning än störst.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Vad kostar solceller till en villa i Stockholm?",
+        a: "En typisk Stockholmsvilla med 14 paneler (7 kWp) landar runt 50 000 kr netto efter grönt avdrag på 14,55 %. Mindre anläggningar på 5 kWp ligger runt 40 000 kr och större på 15 kWp runt 95 000 kr. Priset beror främst på antal paneler och takets förutsättningar.",
+      },
+      {
+        q: "Hur många solpaneler får plats på ett villatak i Stockholm?",
+        a: "De flesta villatak i Stockholms villaområden rymmer 16–30 paneler, alltså 8–15 kWp. Stora sadeltak i Täby, Danderyd och Nacka tar ofta fler. Vi gör en drönarbesiktning innan offert för att veta exakt hur många paneler som ryms utan att gissa.",
+      },
+      {
+        q: "Är solceller värt det i Stockholm?",
+        a: "Ja. Trots att Stockholm ligger i mellersta Sverige producerar ett välplacerat tak cirka 1 050 kWh per kWp och år, och med SE3-spotpris runt 1,45 kr/kWh betalar sig en ren solanläggning på 8–11 år. Med batteri och stödtjänster kommer tiden ner mot 3–5 år.",
+      },
+      {
+        q: "Behöver jag bygglov för solceller i Stockholm, och kostar det extra?",
+        a: "Inom detaljplan krävs oftast inget bygglov om panelerna följer takfallet. För kulturskyddade fastigheter eller fasadmontage kan ansökan behövas. Vi tar dialogen med Stadsbyggnadskontoret åt dig och kan ofta avgöra inom en arbetsdag, det tillkommer ingen dold kostnad för det.",
+      },
+    ],
+  },
 };
 
 export function getGuideContent(slug: string): GuideContent | null {
