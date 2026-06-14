@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import crypto from "node:crypto";
 import { z } from "zod";
 import { assignSeller } from "@/lib/sellers";
 
@@ -87,21 +88,34 @@ export async function POST(req: Request) {
   // 1) Skicka till KT Central (CRM-webhook). Stödjer alla webhook-format
   //    – vi POST:ar JSON och låter KT Central plocka isär.
   if (process.env.KT_CENTRAL_WEBHOOK_URL) {
+    const payload = JSON.stringify({
+      source: "optimeraenergi.se",
+      receivedAt: new Date().toISOString(),
+      assignedSeller: seller,
+      lead,
+    });
+    // HMAC-signera så Sentinel HQ kan verifiera att leadet kommer från oss
+    // (skydd mot förfalskade leads). Samma schema som /api/conversions.
+    const headers: Record<string, string> = {
+      "Content-Type": "application/json",
+      ...(process.env.KT_CENTRAL_WEBHOOK_TOKEN
+        ? { Authorization: `Bearer ${process.env.KT_CENTRAL_WEBHOOK_TOKEN}` }
+        : {}),
+    };
+    if (process.env.KT_CENTRAL_WEBHOOK_SECRET) {
+      const ts = Date.now().toString();
+      const sig = crypto
+        .createHmac("sha256", process.env.KT_CENTRAL_WEBHOOK_SECRET)
+        .update(`${ts}.${payload}`)
+        .digest("hex");
+      headers["X-OE-Timestamp"] = ts;
+      headers["X-OE-Signature"] = `sha256=${sig}`;
+    }
     try {
       await fetch(process.env.KT_CENTRAL_WEBHOOK_URL, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          ...(process.env.KT_CENTRAL_WEBHOOK_TOKEN
-            ? { Authorization: `Bearer ${process.env.KT_CENTRAL_WEBHOOK_TOKEN}` }
-            : {}),
-        },
-        body: JSON.stringify({
-          source: "optimeraenergi.se",
-          receivedAt: new Date().toISOString(),
-          assignedSeller: seller,
-          lead,
-        }),
+        headers,
+        body: payload,
       });
     } catch (err) {
       // eslint-disable-next-line no-console
