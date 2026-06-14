@@ -5,6 +5,7 @@ import "./globals.css";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
 import { AdminHotkey } from "@/components/site/AdminHotkey";
+import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 import { JsonLd, organizationSchema, webSiteSchema } from "@/components/seo/JsonLd";
 
 // Endast vikter vi faktiskt använder. Tidigare hade vi 5 weights (~50KB
@@ -158,6 +159,8 @@ export default function RootLayout({
             strategy="afterInteractive"
           />
         )}
+        {/* GA4 (G-5DY857B8TL) med Consent Mode v2 – nekat tills samtycke. */}
+        <GoogleAnalytics />
       </head>
       <body className="min-h-screen bg-bone text-ink antialiased">
         <JsonLd data={organizationSchema} />
