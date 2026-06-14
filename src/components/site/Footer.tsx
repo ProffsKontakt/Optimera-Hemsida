@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { CITIES } from "@/lib/cities";
+import { BATTERY_CITIES } from "@/lib/battery-cities";
 
 export function Footer() {
   return (
@@ -17,6 +18,20 @@ export function Footer() {
               <Link
                 key={c.slug}
                 href={`/solceller/${c.slug}`}
+                className="text-ink/70 hover:text-ink transition"
+              >
+                {c.name}
+              </Link>
+            ))}
+          </div>
+          <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink/50 mt-7 mb-4">
+            Vi installerar batterilager i
+          </div>
+          <div className="flex flex-wrap gap-x-5 gap-y-2 text-[14px]">
+            {BATTERY_CITIES.map((c) => (
+              <Link
+                key={c.slug}
+                href={`/batteri/${c.slug}`}
                 className="text-ink/70 hover:text-ink transition"
               >
                 {c.name}

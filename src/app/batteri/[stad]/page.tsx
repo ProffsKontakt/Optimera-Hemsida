@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowRight, MapPin, Sun } from "lucide-react";
-import { CITIES, findCity } from "@/lib/cities";
+import { ArrowRight, MapPin, BatteryCharging } from "lucide-react";
+import { BATTERY_CITIES, findBatteryCity } from "@/lib/battery-cities";
 import { Section } from "@/components/site/Section";
 import { BrandPanel } from "@/components/site/BrandPanel";
 import {
@@ -13,71 +13,74 @@ import {
 } from "@/components/seo/JsonLd";
 
 export function generateStaticParams() {
-  return CITIES.map((c) => ({ stad: c.slug }));
+  return BATTERY_CITIES.map((c) => ({ stad: c.slug }));
 }
 
 export function generateMetadata({ params }: { params: { stad: string } }) {
-  const city = findCity(params.stad);
+  const city = findBatteryCity(params.stad);
   if (!city) return {};
   return {
-    // Title leder med "Solceller" (högre sökvolym än "solpaneler" och matchar
-    // /solceller-slugen) + stad + service-modifier ("installation och pris").
-    // Pris-tokenen matchar den vanligaste PAA-frågan och lyfter CTR.
-    title: `Solceller ${city.preposition} ${city.name}, installation och pris`,
-    description: `Vi installerar solpaneler ${city.preposition} ${city.name} med eget montageteam från Solna. Drönarbesiktning, 1:1-modell i 3D, fast pris. Boka kostnadsfritt hembesök.`,
-    alternates: { canonical: `/solceller/${city.slug}` },
+    // Title leder med "Batteri" + stad (det sökord vi vill ranka på), följt
+    // av "batterilager" och pris-token för CTR och synonymtäckning.
+    title: `Batteri ${city.preposition} ${city.name}, batterilager och pris`,
+    description: `Vi installerar batterilager och hemmabatteri ${city.preposition} ${city.name} med eget montageteam från Solna. Stödtjänster (FCR-D), effektkapning och 48,5 % grönt avdrag. Boka kostnadsfritt hembesök.`,
+    alternates: { canonical: `/batteri/${city.slug}` },
     openGraph: {
-      title: `Solpaneler ${city.preposition} ${city.name} · Optimera Energi`,
+      title: `Batteri ${city.preposition} ${city.name} · Optimera Energi`,
       description: city.oneLiner,
-      url: `/solceller/${city.slug}`,
+      url: `/batteri/${city.slug}`,
       type: "website",
     },
   };
 }
 
-function cityFaq(city: ReturnType<typeof findCity>) {
+function batteryFaq(city: ReturnType<typeof findBatteryCity>) {
   if (!city) return [];
   return [
     {
-      q: `Vad kostar solpaneler ${city.preposition} ${city.name}?`,
-      a: `Prisbilden ${city.preposition} ${city.name} följer samma modell som resten av Stockholm: 10 000–22 500 kr i baspris beroende på antal paneler, plus 2 500 kr per JA Solar-panel. En typisk villa med 14 paneler landar runt 50 000 kr efter grönt avdrag (14,55 %). Räkna på din specifika installation i vår kalkylator innan hembesöket.`,
+      q: `Vad kostar ett batterilager ${city.preposition} ${city.name}?`,
+      a: `Priset styrs av kapacitet. Ett hemmabatteri på 10 kWh landar ofta runt 70 000–110 000 kr installerat, en större bank på 20–30 kWh på 130 000–200 000 kr, allt före grönt avdrag. Avdraget för batteri är 48,5 % av arbets- och materialkostnaden och dras direkt på fakturan. Vi räknar på din specifika förbrukning innan vi rekommenderar storlek.`,
     },
     {
-      q: `Behöver jag bygglov för solpaneler ${city.preposition} ${city.name}?`,
-      a: `Inom detaljplan i ${city.name} krävs oftast inget bygglov så länge panelerna följer takfallet och inte ändrar byggnadens utseende väsentligt. För kulturhistoriskt skyddade fastigheter eller fasadinstallation gäller andra regler. Vi tar dialogen med kommunen åt dig innan vi går vidare med projektering.`,
+      q: `Lönar sig ett batteri ${city.preposition} ${city.name}?`,
+      a: `Ja, för de flesta villor med elvärme eller solceller. Batteriet kapar dina dyraste effekttimmar, höjer självförbrukningen av solel och kan aktiveras för stödtjänster (FCR-D / aFRR) där Svenska kraftnät betalar för att batteriet stabiliserar nätet. I ${city.name} ser vi återbetalningstider på 3–6 år beroende på storlek och förbrukning.`,
     },
     {
-      q: `Hur lång är återbetalningstiden ${city.preposition} ${city.name}?`,
-      a: `Med elområde SE3 (Stockholm) och nuvarande spotpris-snitt landar återbetalningstiden för en ren solanläggning på 8–11 år. Med batterilager och stödtjänster (FCR-D / aFRR via Energy IQ eller Enequi Core) kan tiden komma ner mot 3–5 år för hus med högre förbrukning.`,
+      q: `Behöver jag solceller för att ha batteri ${city.preposition} ${city.name}?`,
+      a: `Nej. Ett batteri lönar sig även utan solpaneler genom prisarbitrage, du laddar när elen är billig och använder den när den är dyr, plus intäkt från stödtjänster. Har du redan solceller adderar batteriet självförbrukning ovanpå det. Vi installerar både till befintliga solanläggningar och som fristående lager.`,
     },
     {
-      q: `Vilka områden ${city.preposition} ${city.name} installerar Optimera Energi i?`,
-      a: `Vi installerar i hela ${city.name} kommun. Vårt montageteam utgår från lagret på Vallgatan 9 i Solna, så vi har korta resvägar och kan dyka upp på samma dag om något krånglar efter driftsättning.`,
+      q: `Vilka batterimärken installerar Optimera Energi?`,
+      a: `Vi arbetar med ett hand-plockat sortiment: Easyway (46–61 kWh), SAJ HS3, Emaldo och Pixii. Vi väljer LFP-celler (järnfosfat) som standard för brandsäkerhet och livslängd, och dimensionerar märke och storlek efter ditt hus, inte efter vad vi råkar ha på lager.`,
     },
   ];
 }
 
-export default function CityPage({ params }: { params: { stad: string } }) {
-  const city = findCity(params.stad);
+export default function BatteryCityPage({
+  params,
+}: {
+  params: { stad: string };
+}) {
+  const city = findBatteryCity(params.stad);
   if (!city) notFound();
 
-  const faq = cityFaq(city);
+  const faq = batteryFaq(city);
 
   return (
     <>
       <JsonLd
         data={breadcrumbSchema([
           { name: "Hem", href: "/" },
-          { name: "Solpaneler", href: "/tjanster/solpaneler" },
-          { name: city.name, href: `/solceller/${city.slug}` },
+          { name: "Batterier", href: "/tjanster/batterier" },
+          { name: city.name, href: `/batteri/${city.slug}` },
         ])}
       />
       <JsonLd
         data={serviceSchema({
-          name: `Solpaneler ${city.preposition} ${city.name}`,
-          description: `Installation av solpaneler för villa och radhus ${city.preposition} ${city.name}, ${city.region}.`,
-          url: `/solceller/${city.slug}`,
-          serviceType: "Solpaneler",
+          name: `Batterilager ${city.preposition} ${city.name}`,
+          description: `Installation av batterilager och hemmabatteri för villa och radhus ${city.preposition} ${city.name}, ${city.region}.`,
+          url: `/batteri/${city.slug}`,
+          serviceType: "Batterilager",
         })}
       />
       <JsonLd data={faqPageSchema(faq)} />
@@ -90,10 +93,10 @@ export default function CityPage({ params }: { params: { stad: string } }) {
             <MapPin size={12} /> {city.region}
           </div>
           <h1 className="mt-5 font-display text-[44px] sm:text-[56px] md:text-[80px] tracking-display-tight leading-[0.95]">
-            Solceller {city.preposition} {city.name},
+            Batteri {city.preposition} {city.name},
             <br />
             <span className="italic font-serif text-indigo">
-              utan genvägar.
+              som tjänar pengar.
             </span>
           </h1>
           <p className="mt-6 max-w-2xl text-ink/70 text-lg leading-relaxed">
@@ -126,7 +129,7 @@ export default function CityPage({ params }: { params: { stad: string } }) {
       {/* Lokal kontext */}
       <Section
         eyebrow={`Lokalt ${city.preposition} ${city.name}`}
-        title={<>Vad du behöver veta innan installation.</>}
+        title={<>Vad som gör batteriet lönsamt här.</>}
         className="!py-16 md:!py-20"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
@@ -136,7 +139,7 @@ export default function CityPage({ params }: { params: { stad: string } }) {
               className="rounded-3xl border border-ink/10 bg-cream/40 p-7 md:p-8"
             >
               <div className="grid h-9 w-9 place-items-center rounded-full bg-indigo/10 text-indigo">
-                <Sun size={16} />
+                <BatteryCharging size={16} />
               </div>
               <h3 className="mt-4 font-display text-2xl tracking-display-tight leading-snug">
                 {c.title}
@@ -180,17 +183,23 @@ export default function CityPage({ params }: { params: { stad: string } }) {
       >
         <div className="flex flex-wrap gap-3">
           {city.neighbors
-            .map((slug) => CITIES.find((c) => c.slug === slug))
+            .map((slug) => BATTERY_CITIES.find((c) => c.slug === slug))
             .filter(Boolean)
             .map((n) => (
               <Link
                 key={n!.slug}
-                href={`/solceller/${n!.slug}`}
+                href={`/batteri/${n!.slug}`}
                 className="rounded-full border border-ink/15 bg-bone px-5 py-2.5 text-[14px] hover:border-ink/40 transition"
               >
-                Solpaneler {n!.preposition} {n!.name}
+                Batteri {n!.preposition} {n!.name}
               </Link>
             ))}
+          <Link
+            href={`/solceller/${city.slug}`}
+            className="rounded-full border border-ink/15 bg-bone px-5 py-2.5 text-[14px] hover:border-ink/40 transition"
+          >
+            Solceller {city.preposition} {city.name}
+          </Link>
         </div>
       </Section>
 
@@ -203,11 +212,12 @@ export default function CityPage({ params }: { params: { stad: string } }) {
                 Boka hembesök
               </div>
               <h3 className="mt-3 font-display text-3xl md:text-5xl tracking-display-tight leading-tight">
-                Vi tar med drönaren och bullarna {city.preposition} {city.name}.
+                Vi mäter din förbrukning {city.preposition} {city.name}.
               </h3>
               <p className="mt-4 max-w-md text-ink/70 leading-relaxed">
-                Kostnadsfritt och utan förpliktelser. Vi ringer dagen innan
-                och stämmer av tiden. Vårt lager ligger på Vallgatan 9 i Solna.
+                Kostnadsfritt och utan förpliktelser. Vi gör en lastanalys av
+                ditt hus och dimensionerar batteriet efter hur du faktiskt
+                använder elen. Vårt lager ligger på Vallgatan 9 i Solna.
               </p>
               <p className="mt-3 text-[15px] text-ink/80">
                 Ring direkt:{" "}

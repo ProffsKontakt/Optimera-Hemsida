@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { SERVICES } from "@/lib/services";
 import { CITIES } from "@/lib/cities";
+import { BATTERY_CITIES } from "@/lib/battery-cities";
 import { publishedGuides } from "@/lib/guides";
 
 // Per-route hardcoded ISO-datum. Tidigare användes new Date() vid build vilket
@@ -41,6 +42,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // City-landingssidor för Stockholm-områdets kommuner.
     ...CITIES.map((c) => ({
       url: `${base}/solceller/${c.slug}`,
+      lastModified: LAST_MOD.cities,
+    })),
+    // Batteri-landningssidor per kommun (/batteri/[stad]).
+    ...BATTERY_CITIES.map((c) => ({
+      url: `${base}/batteri/${c.slug}`,
       lastModified: LAST_MOD.cities,
     })),
     // Publicerade guide-artiklar. Drafts (status="draft") exkluderas
