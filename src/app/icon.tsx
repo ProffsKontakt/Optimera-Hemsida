@@ -1,15 +1,16 @@
 import { ImageResponse } from "next/og";
 
 /**
- * Renderar samma märkes-favicon (lodrät "1"-stapel i indigo→gul-gradient på
- * rundad bakgrund) som PNG via Next:s ImageResponse, så browsers som hämtar
- * /icon (eller fallback /favicon.ico) får en riktig rasterbild oavsett om de
- * stödjer SVG-favicon. Tidigare 404:ade /favicon.ico, vilket gav vissa
- * webbläsare utrymme att visa cachad ikon från tidigare DNS-konfiguration
- * (Loopia-parkering).
+ * Märkes-favicon (lodrät "1"-stapel i indigo→gul-gradient på rundad bakgrund)
+ * renderad som PNG via Next:s ImageResponse.
+ *
+ * Storlek 192×192 följer Googles officiella rekommendation för SERP-favicons:
+ * "multiple of 48px square; for example: 48×48, 96×96, 144×144, 192×192".
+ * Tidigare 64×64 var off-spec och kunde göra att Google avvisade vår favicon
+ * och behöll den gamla Loopia-parkeringsikonen i sökresultaten.
  */
 
-export const size = { width: 64, height: 64 };
+export const size = { width: 192, height: 192 };
 export const contentType = "image/png";
 export const runtime = "edge";
 
@@ -30,10 +31,10 @@ export default function Icon() {
       >
         <div
           style={{
-            width: 12,
-            height: 50,
+            width: 36,
+            height: 150,
             background: "#F4F1EA",
-            borderRadius: 1,
+            borderRadius: 2,
           }}
         />
       </div>

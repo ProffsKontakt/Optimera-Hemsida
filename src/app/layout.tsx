@@ -112,11 +112,9 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  icons: {
-    icon: "/icon.svg",
-    shortcut: "/favicon.svg",
-    apple: "/icon.svg",
-  },
+  // icons-blocket är borttaget – Next genererar automatiskt korrekta
+  // <link rel="icon"> från src/app/icon.svg, icon.tsx (192×192 PNG) och
+  // apple-icon.tsx (180×180). 192×192 följer Googles SERP-favicon-krav.
   // Verifieringskoder för sökmotorernas webmaster-portaler. Sätts som
   // miljövariabler så de inte ligger i versionshanteringen.
   verification: {
