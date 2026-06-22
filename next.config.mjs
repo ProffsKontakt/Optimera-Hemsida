@@ -11,6 +11,15 @@ const nextConfig = {
   experimental: {
     optimizePackageImports: ["lucide-react", "@react-three/drei"],
   },
+  // Browsers begär /favicon.ico oavsett vad HTML:s <link rel="icon"> säger.
+  // Utan en fil där 404:ar requesten och en del browsers visar då vad de råkar
+  // ha i favicon-cachen (i vårt fall ibland Loopia-parkeringens ikon från innan
+  // domänen flippades till Vercel). Vi rewriter därför /favicon.ico till /icon
+  // (PNG genererad av src/app/icon.tsx) så det alltid finns en korrekt
+  // märkesfavicon på den routen.
+  async rewrites() {
+    return [{ source: "/favicon.ico", destination: "/icon" }];
+  },
   // Säkerhetshuvuden globalt. Google rankar säkra sidor bättre och vissa
   // browsers / scanners (Mozilla Observatory, Lighthouse) ger fail om de
   // saknas. HSTS-värdet följer preload-listans rekommendation (2 år).
