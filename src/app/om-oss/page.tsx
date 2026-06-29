@@ -2,6 +2,8 @@ import Link from "next/link";
 import { Mail, Phone, ArrowRight } from "lucide-react";
 import { Section } from "@/components/site/Section";
 import { BrandPanel } from "@/components/site/BrandPanel";
+import { TEAM } from "@/lib/team";
+import { getMedia } from "@/lib/media";
 import {
   JsonLd,
   localBusinessSchema,
@@ -22,36 +24,6 @@ export const metadata = {
     type: "website",
   },
 };
-
-const TEAM = [
-  {
-    name: "Viktor Tiberg",
-    role: "Grundare och VD",
-    email: "viktor@optimeraenergi.se",
-    phone: "0763053732",
-    color: "from-[#3648C3] to-[#0E0E0C]",
-    bio:
-      "Driver bolaget framåt och håller siffrorna ärliga. Tror att det bästa kvittot på en bra installation är när kunden ringer för att tipsa grannen.",
-  },
-  {
-    name: "Julian Nordgren",
-    role: "Grundare och Operativ Chef",
-    email: "julian@optimeraenergi.se",
-    phone: "0763015202",
-    color: "from-[#B86F3C] to-[#2A2A26]",
-    bio:
-      "Operativ ryggrad. Plockar upp telefonen, dimensionerar systemet, mejlar din offert och dyker upp vid första installationen.",
-  },
-  {
-    name: "Moltas Roslund",
-    role: "Sales Operations",
-    email: "moltas@optimeraenergi.se",
-    phone: "0705340154",
-    color: "from-[#0a3a4e] to-[#1A1A17]",
-    bio:
-      "Bygger säljprocessen så ingen kund glöms bort. Är personen som ringer dig dagen innan installationen och säger exakt vilka som dyker upp.",
-  },
-];
 
 const TIMELINE = [
   {
@@ -295,13 +267,25 @@ export default function AboutPage() {
         className="!py-16 md:!py-20"
       >
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {TEAM.map((m) => (
+          {TEAM.map((m) => {
+            const photo = getMedia(`team:${m.id}`);
+            return (
             <article
               key={m.email}
               className="rounded-3xl border border-ink/10 overflow-hidden bg-bone flex flex-col"
             >
               <div className={`aspect-[4/5] bg-gradient-to-br ${m.color} relative`}>
-                <div className="absolute inset-0 mix-blend-overlay opacity-25 bg-grain bg-grain-sm" />
+                {photo ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={photo.url}
+                    alt={photo.alt || m.name}
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
+                ) : (
+                  <div className="absolute inset-0 mix-blend-overlay opacity-25 bg-grain bg-grain-sm" />
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
                 <div className="absolute bottom-0 inset-x-0 p-5 text-bone">
                   <div className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-bone/75">
                     {m.role}
@@ -333,7 +317,8 @@ export default function AboutPage() {
                 </div>
               </div>
             </article>
-          ))}
+            );
+          })}
         </div>
       </Section>
 

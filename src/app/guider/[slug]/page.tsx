@@ -10,6 +10,7 @@ import {
   breadcrumbSchema,
 } from "@/components/seo/JsonLd";
 import { getGuideContent } from "@/lib/guide-content";
+import { getMedia } from "@/lib/media";
 
 export function generateStaticParams() {
   return GUIDES.map((g) => ({ slug: g.slug }));
@@ -76,6 +77,7 @@ export default function GuidePage({ params }: { params: { slug: string } }) {
   const guide = findGuide(params.slug);
   if (!guide) notFound();
   const content = getGuideContent(guide.slug);
+  const heroImage = getMedia(`guide:${guide.slug}`);
 
   if (guide.status === "draft") {
     return (
@@ -137,6 +139,19 @@ export default function GuidePage({ params }: { params: { slug: string } }) {
           </p>
         </div>
       </section>
+
+      {heroImage && (
+        <div className="container-edge pb-4 md:pb-8">
+          <div className="max-w-3xl overflow-hidden rounded-3xl border border-ink/10 aspect-[16/9] bg-cream">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={heroImage.url}
+              alt={heroImage.alt || guide.title}
+              className="h-full w-full object-cover"
+            />
+          </div>
+        </div>
+      )}
 
       <article className="container-edge pb-16 md:pb-24">
         <div className="max-w-3xl space-y-10">

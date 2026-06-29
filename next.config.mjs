@@ -6,6 +6,8 @@ const nextConfig = {
       { protocol: "https", hostname: "images.unsplash.com" },
       { protocol: "https", hostname: "cdn.higgsfield.ai" },
       { protocol: "https", hostname: "*.higgsfield.ai" },
+      // Vercel Blob – admin-uppladdade bilder via media-CMS:en.
+      { protocol: "https", hostname: "*.public.blob.vercel-storage.com" },
     ],
   },
   experimental: {

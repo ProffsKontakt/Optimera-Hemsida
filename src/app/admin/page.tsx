@@ -2,7 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { isAdminAuthed } from "@/lib/admin-auth";
 import { AdminTopbar } from "@/components/admin/AdminTopbar";
-import { LightbulbIcon, Briefcase, Newspaper, ArrowRight } from "lucide-react";
+import { LightbulbIcon, Briefcase, Newspaper, ArrowRight, ImageIcon } from "lucide-react";
 
 export default function AdminHome() {
   if (!process.env.ADMIN_PASSWORD || !isAdminAuthed()) {
@@ -32,6 +32,12 @@ export default function AdminHome() {
             icon={<Newspaper size={20} />}
             label="Press"
             body="Skriv, redigera och publicera pressmeddelanden. Varje publicering commitar till repo:t och deployar inom 1-2 minuter."
+          />
+          <Card
+            href="/admin/media"
+            icon={<ImageIcon size={20} />}
+            label="Media / bilder"
+            body="Välj vilken bild som ligger var (team-foton, guide-hero). Laddas upp till Vercel Blob och committas, live efter deploy."
           />
           <Card
             href="/admin/ideer"
