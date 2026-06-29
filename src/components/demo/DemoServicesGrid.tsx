@@ -8,10 +8,13 @@ import { ServiceVignetteLazy as ServiceVignette } from "@/components/3d/ServiceV
  * är borttagna så korten läses snabbare (3D-vignett + namn + one-liner räcker).
  * Live-ServicesGrid är orörd.
  */
+// Värmepump exkluderas på demo-landningen (visar tre tjänster).
+const DEMO_SERVICES = SERVICES.filter((s) => s.slug !== "vaermepumpar");
+
 export function DemoServicesGrid() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {SERVICES.map((s, i) => (
+      {DEMO_SERVICES.map((s, i) => (
         <Link
           key={s.slug}
           href={`/tjanster/${s.slug}`}

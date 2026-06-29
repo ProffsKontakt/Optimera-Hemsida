@@ -6,9 +6,9 @@ import { DemoServicesGrid } from "@/components/demo/DemoServicesGrid";
 import { DemoBrandRow } from "@/components/demo/DemoBrandRow";
 import { DemoSection } from "@/components/demo/DemoSection";
 import { Disclosure } from "@/components/site/Disclosure";
-import { Manifesto } from "@/components/home/Manifesto";
+import { DemoManifesto } from "@/components/demo/DemoManifesto";
 import { HousecallStrip } from "@/components/home/HousecallStrip";
-import { Process } from "@/components/home/Process";
+import { DemoProcess } from "@/components/demo/DemoProcess";
 import { Testimonials } from "@/components/home/Testimonials";
 import { VideoStage } from "@/components/home/VideoStage";
 import { CtaPanel } from "@/components/home/CtaPanel";
@@ -25,7 +25,7 @@ export const dynamic = "force-dynamic";
 const DEMO_FAQ = [
   {
     q: "Vad gör Optimera Energi?",
-    a: "Vi installerar solpaneler, batterier, värmepumpar och laddboxar för villor och bostadsrättsföreningar i Stockholm – med eget montageteam, inga underentreprenörer.",
+    a: "Vi installerar solpaneler, batterier och laddboxar för villor och bostadsrättsföreningar i Stockholm – med eget montageteam, inga underentreprenörer.",
   },
   {
     q: "Vad kostar solceller hos er?",
@@ -62,11 +62,11 @@ export default function DemoLandingPage() {
         eyebrow="Allt under ett tak"
         title={
           <>
-            Fyra tjänster.{" "}
+            Tre tjänster.{" "}
             <span className="italic font-serif text-indigo">Ett team.</span>
           </>
         }
-        intro="När sol, batteri, värme och laddning pratar med varandra blir helheten större än delarna."
+        intro="När sol, batteri och laddning pratar med varandra blir helheten större än delarna."
       >
         <DemoServicesGrid />
       </DemoSection>
@@ -76,7 +76,7 @@ export default function DemoLandingPage() {
 
       {/* Social proof tidigt – tystare sektion (ingen eyebrow, mindre padding) */}
       <DemoSection
-        title={<>Recensioner från riktiga kök.</>}
+        title={<>Recensioner från riktiga kunder.</>}
         className="!py-16 md:!py-24"
       >
         <Testimonials />
@@ -84,9 +84,9 @@ export default function DemoLandingPage() {
 
       {/* Konsoliderat "Så jobbar vi" – ETT huvud istället för tre sektioner */}
       <DemoSection eyebrow="Så jobbar vi" title={<>Sex steg, inga genvägar.</>}>
-        <Process />
+        <DemoProcess />
         <div className="mt-24">
-          <Manifesto />
+          <DemoManifesto />
         </div>
         <div className="mt-24">
           <HousecallStrip />

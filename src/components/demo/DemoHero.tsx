@@ -27,7 +27,7 @@ const HeroLab = dynamic(
 export function DemoHero() {
   return (
     <section className="relative overflow-hidden">
-      <div className="container-edge pt-12 md:pt-20 pb-16 md:pb-24">
+      <div className="container-edge pt-6 md:pt-10 pb-16 md:pb-24">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
           <div className="lg:col-span-7 relative">
             <span
@@ -46,14 +46,14 @@ export function DemoHero() {
               </span>
             </h1>
 
-            <p className="mt-7 max-w-lg text-ink/70 text-[17px] leading-relaxed">
-              Solpaneler, batterier, värmepumpar och laddboxar, byggda på
-              kloka tankar och installerade av samma gäng från Solna som
-              dyker upp med kanelbullar och respekt för ditt hem.
+            <p className="mt-6 max-w-lg text-ink/70 text-[17px] leading-relaxed">
+              Solpaneler, batterier och laddboxar, byggda på kloka tankar och
+              installerade av samma gäng från Solna som dyker upp med
+              kanelbullar och respekt för ditt hem.
             </p>
 
             {/* EN primär handling. Sekundär blir lugn textlänk. */}
-            <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3">
+            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
               <Link href="/kalkylator" className="btn-primary">
                 Räkna på din besparing
                 <ArrowRight size={16} />
@@ -66,8 +66,8 @@ export function DemoHero() {
               </Link>
             </div>
 
-            <div className="mt-16 grid grid-cols-3 max-w-md gap-2">
-              <Stat n="4" label="installationstjänster" />
+            <div className="mt-12 grid grid-cols-3 max-w-md gap-2">
+              <Stat n="3" label="installationstjänster" />
               <Stat n="100%" label="eget montageteam" />
               <Stat n="14d" label="från offert till tak" />
             </div>
@@ -86,7 +86,7 @@ export function DemoHero() {
               <div className="absolute inset-x-0 bottom-0 p-5 flex items-end justify-between">
                 <div className="rounded-2xl bg-bone/85 backdrop-blur px-4 py-3 border border-ink/10">
                   <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink/55">
-                    Live · 1:1-modell av huset
+                    Live · 3D-förhandsvy
                   </div>
                   <div className="font-display text-lg leading-tight">
                     Hus #048 · Bromma
