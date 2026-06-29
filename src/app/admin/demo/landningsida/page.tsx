@@ -4,7 +4,7 @@ import { DemoBanner } from "@/components/admin/DemoBanner";
 import { DemoHero } from "@/components/demo/DemoHero";
 import { DemoServicesGrid } from "@/components/demo/DemoServicesGrid";
 import { DemoBrandRow } from "@/components/demo/DemoBrandRow";
-import { Section } from "@/components/site/Section";
+import { DemoSection } from "@/components/demo/DemoSection";
 import { Disclosure } from "@/components/site/Disclosure";
 import { Manifesto } from "@/components/home/Manifesto";
 import { HousecallStrip } from "@/components/home/HousecallStrip";
@@ -58,7 +58,7 @@ export default function DemoLandingPage() {
       <DemoHero />
 
       {/* Primär sektion: tjänster (full vikt), rensade kort */}
-      <Section
+      <DemoSection
         eyebrow="Allt under ett tak"
         title={
           <>
@@ -69,21 +69,21 @@ export default function DemoLandingPage() {
         intro="När sol, batteri, värme och laddning pratar med varandra blir helheten större än delarna."
       >
         <DemoServicesGrid />
-      </Section>
+      </DemoSection>
 
       {/* Lugn statisk varumärkesrad (ersätter hero-marqueen) */}
       <DemoBrandRow />
 
       {/* Social proof tidigt – tystare sektion (ingen eyebrow, mindre padding) */}
-      <Section
+      <DemoSection
         title={<>Recensioner från riktiga kök.</>}
         className="!py-16 md:!py-24"
       >
         <Testimonials />
-      </Section>
+      </DemoSection>
 
       {/* Konsoliderat "Så jobbar vi" – ETT huvud istället för tre sektioner */}
-      <Section eyebrow="Så jobbar vi" title={<>Sex steg, inga genvägar.</>}>
+      <DemoSection eyebrow="Så jobbar vi" title={<>Sex steg, inga genvägar.</>}>
         <Process />
         <div className="mt-24">
           <Manifesto />
@@ -91,18 +91,18 @@ export default function DemoLandingPage() {
         <div className="mt-24">
           <HousecallStrip />
         </div>
-      </Section>
+      </DemoSection>
 
       {/* Film – fokuserat moment (full vikt) */}
-      <Section
+      <DemoSection
         eyebrow="Filmen om oss"
         title={<>Två minuter om varför vi finns.</>}
       >
         <VideoStage />
-      </Section>
+      </DemoSection>
 
       {/* FAQ – kortad till 4, tystare */}
-      <Section title={<>Vanliga frågor.</>} className="!py-16 md:!py-24">
+      <DemoSection title={<>Vanliga frågor.</>} className="!py-16 md:!py-24">
         <div className="divide-y divide-ink/10 border-y border-ink/10">
           {DEMO_FAQ.map((q) => (
             <Disclosure key={q.q} question={q.q}>
@@ -110,11 +110,11 @@ export default function DemoLandingPage() {
             </Disclosure>
           ))}
         </div>
-      </Section>
+      </DemoSection>
 
-      <Section>
+      <DemoSection>
         <CtaPanel />
-      </Section>
+      </DemoSection>
     </>
   );
 }

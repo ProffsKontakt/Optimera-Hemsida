@@ -10,7 +10,7 @@ import { ServiceVignetteLazy as ServiceVignette } from "@/components/3d/ServiceV
  */
 export function DemoServicesGrid() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {SERVICES.map((s, i) => (
         <Link
           key={s.slug}
@@ -32,7 +32,7 @@ export function DemoServicesGrid() {
           </div>
           <div className="p-7">
             <div className="flex items-baseline justify-between">
-              <h3 className="font-display text-2xl tracking-display-tight">
+              <h3 className="font-display text-xl tracking-display-tight">
                 {s.name}
               </h3>
               <span className="font-mono text-[11px] text-ink/50">0{i + 1}</span>

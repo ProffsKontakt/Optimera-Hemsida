@@ -38,7 +38,7 @@ export function DemoHero() {
               Optimera Energi · Byggd på kloka tankar · Stockholm 2026
             </div>
 
-            <h1 className="mt-6 font-display text-[58px] md:text-[92px] leading-[0.95] tracking-display-tight">
+            <h1 className="mt-6 font-display text-[42px] md:text-[64px] leading-[1.02] tracking-display-tight">
               Optimera Energi,
               <br />
               <span className="italic font-serif text-indigo">
@@ -46,7 +46,7 @@ export function DemoHero() {
               </span>
             </h1>
 
-            <p className="mt-8 max-w-xl text-ink/70 text-lg leading-relaxed">
+            <p className="mt-7 max-w-lg text-ink/70 text-[17px] leading-relaxed">
               Solpaneler, batterier, värmepumpar och laddboxar, byggda på
               kloka tankar och installerade av samma gäng från Solna som
               dyker upp med kanelbullar och respekt för ditt hem.
@@ -66,7 +66,7 @@ export function DemoHero() {
               </Link>
             </div>
 
-            <div className="mt-14 grid grid-cols-3 max-w-md">
+            <div className="mt-16 grid grid-cols-3 max-w-md gap-2">
               <Stat n="4" label="installationstjänster" />
               <Stat n="100%" label="eget montageteam" />
               <Stat n="14d" label="från offert till tak" />
@@ -110,7 +110,7 @@ export function DemoHero() {
 function Stat({ n, label }: { n: string; label: string }) {
   return (
     <div className="border-l border-ink/15 pl-4 first:border-l-0 first:pl-0">
-      <div className="font-display text-3xl tracking-display-tight">{n}</div>
+      <div className="font-display text-2xl tracking-display-tight">{n}</div>
       <div className="text-[12px] text-ink/55 mt-1 leading-tight">{label}</div>
     </div>
   );
