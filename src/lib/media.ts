@@ -37,6 +37,13 @@ const MANIFEST_PATH = path.join(process.cwd(), "data", "media-manifest.json");
 /** Alla slots som går att fylla med bild, byggt från team + guider. */
 export function listMediaSlots(): MediaSlot[] {
   return [
+    {
+      id: "demo:hero-landningsida",
+      group: "Demo",
+      label: "Landningssida – hero-bild",
+      aspect: "4 / 5",
+      hint: "Ersätter 3D-scenen i hero på demo-landningssidan. Stående bild.",
+    },
     ...TEAM.map((m) => ({
       id: `team:${m.id}`,
       group: "Team (om-oss)",

@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import { isAdminAuthed } from "@/lib/admin-auth";
+import { getMedia } from "@/lib/media";
 import { DemoBanner } from "@/components/admin/DemoBanner";
 import { DemoHero } from "@/components/demo/DemoHero";
 import { DemoServicesGrid } from "@/components/demo/DemoServicesGrid";
@@ -52,10 +53,11 @@ export default function DemoLandingPage() {
   if (!process.env.ADMIN_PASSWORD || !isAdminAuthed()) {
     redirect("/admin/login");
   }
+  const hero = getMedia("demo:hero-landningsida");
   return (
     <>
       <DemoBanner label="Landningsida – demo" />
-      <DemoHero />
+      <DemoHero heroImageUrl={hero?.url} heroImageAlt={hero?.alt} />
 
       {/* Primär sektion: tjänster (full vikt), rensade kort */}
       <DemoSection

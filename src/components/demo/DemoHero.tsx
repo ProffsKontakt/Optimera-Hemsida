@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import dynamic from "next/dynamic";
 import { ArrowRight } from "lucide-react";
 import { CanvasErrorBoundary } from "@/components/3d/CanvasErrorBoundary";
@@ -24,7 +25,13 @@ const HeroLab = dynamic(
   },
 );
 
-export function DemoHero() {
+export function DemoHero({
+  heroImageUrl,
+  heroImageAlt,
+}: {
+  heroImageUrl?: string;
+  heroImageAlt?: string;
+} = {}) {
   return (
     <section className="relative overflow-hidden">
       <div className="container-edge pt-6 md:pt-10 pb-16 md:pb-24">
@@ -75,30 +82,38 @@ export function DemoHero() {
 
           <div className="lg:col-span-5 relative">
             <div className="aspect-[4/5] w-full rounded-[28px] border border-ink/10 overflow-hidden bg-cream relative">
-              <Defer
-                idle
-                fallback={<div className="absolute inset-0 bg-cream" aria-hidden />}
-              >
-                <CanvasErrorBoundary fallback={<SceneFallback kind="hero" />}>
-                  <HeroLab />
-                </CanvasErrorBoundary>
-              </Defer>
-              <div className="absolute inset-x-0 bottom-0 p-5 flex items-end justify-between">
-                <div className="rounded-2xl bg-bone/85 backdrop-blur px-4 py-3 border border-ink/10">
-                  <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink/55">
-                    Live · 3D-förhandsvy
+              {heroImageUrl ? (
+                // Admin-vald hero-bild (via /admin/media, slot demo:hero-landningsida)
+                <Image
+                  src={heroImageUrl}
+                  alt={heroImageAlt || "Optimera Energi installation"}
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  className="object-cover"
+                />
+              ) : (
+                <>
+                  <Defer
+                    idle
+                    fallback={<div className="absolute inset-0 bg-cream" aria-hidden />}
+                  >
+                    <CanvasErrorBoundary fallback={<SceneFallback kind="hero" />}>
+                      <HeroLab />
+                    </CanvasErrorBoundary>
+                  </Defer>
+                  <div className="absolute inset-x-0 bottom-0 p-5 flex items-end justify-between">
+                    <div className="rounded-2xl bg-bone/85 backdrop-blur px-4 py-3 border border-ink/10">
+                      <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink/55">
+                        Live · 3D-förhandsvy
+                      </div>
+                      <div className="font-display text-lg leading-tight">
+                        Hus #048 · Bromma
+                      </div>
+                    </div>
                   </div>
-                  <div className="font-display text-lg leading-tight">
-                    Hus #048 · Bromma
-                  </div>
-                </div>
-                <div className="rounded-2xl bg-bone/95 text-ink backdrop-blur px-4 py-3 border border-ink/10">
-                  <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink/55">
-                    Årsvärmefaktor
-                  </div>
-                  <div className="font-display text-lg leading-tight">4,92</div>
-                </div>
-              </div>
+                </>
+              )}
             </div>
           </div>
         </div>

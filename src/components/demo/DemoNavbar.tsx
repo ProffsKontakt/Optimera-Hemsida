@@ -129,7 +129,7 @@ function QuoteButton({
     <Link
       href="/offert"
       onClick={onClick}
-      className={`group rounded-full p-[1.5px] bg-gradient-to-b from-indigo to-sun transition-transform duration-300 hover:scale-[1.02] ${className}`}
+      className={`group rounded-full p-[3px] bg-gradient-to-b from-indigo to-sun transition-transform duration-300 hover:scale-[1.02] ${className}`}
     >
       <span
         className={`inline-flex items-center justify-center rounded-full bg-bone text-indigo group-hover:bg-indigo group-hover:text-bone transition-colors duration-300 px-5 py-2 text-[13.5px] font-medium ${innerClassName}`}
