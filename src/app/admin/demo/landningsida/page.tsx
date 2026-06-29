@@ -1,10 +1,11 @@
 import { redirect } from "next/navigation";
 import { isAdminAuthed } from "@/lib/admin-auth";
 import { DemoBanner } from "@/components/admin/DemoBanner";
-import { Hero } from "@/components/site/Hero";
+import { DemoHero } from "@/components/demo/DemoHero";
+import { DemoServicesGrid } from "@/components/demo/DemoServicesGrid";
+import { DemoBrandRow } from "@/components/demo/DemoBrandRow";
 import { Section } from "@/components/site/Section";
 import { Disclosure } from "@/components/site/Disclosure";
-import { ServicesGrid } from "@/components/home/ServicesGrid";
 import { Manifesto } from "@/components/home/Manifesto";
 import { HousecallStrip } from "@/components/home/HousecallStrip";
 import { Process } from "@/components/home/Process";
@@ -54,9 +55,9 @@ export default function DemoLandingPage() {
   return (
     <>
       <DemoBanner label="Landningsida – demo" />
-      <Hero />
+      <DemoHero />
 
-      {/* Primär sektion: tjänster (full vikt) */}
+      {/* Primär sektion: tjänster (full vikt), rensade kort */}
       <Section
         eyebrow="Allt under ett tak"
         title={
@@ -67,8 +68,11 @@ export default function DemoLandingPage() {
         }
         intro="När sol, batteri, värme och laddning pratar med varandra blir helheten större än delarna."
       >
-        <ServicesGrid />
+        <DemoServicesGrid />
       </Section>
+
+      {/* Lugn statisk varumärkesrad (ersätter hero-marqueen) */}
+      <DemoBrandRow />
 
       {/* Social proof tidigt – tystare sektion (ingen eyebrow, mindre padding) */}
       <Section
