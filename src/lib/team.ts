@@ -29,7 +29,7 @@ export const TEAM: TeamMember[] = [
     name: "Julian Nordgren",
     role: "Grundare och Operativ Chef",
     email: "julian@optimeraenergi.se",
-    phone: "0763015202",
+    phone: "",
     color: "from-[#B86F3C] to-[#2A2A26]",
     bio: "Operativ ryggrad. Plockar upp telefonen, dimensionerar systemet, mejlar din offert och dyker upp vid första installationen.",
   },

@@ -36,7 +36,7 @@ const TEAM_PRESETS = [
     name: "Julian Nordgren",
     title: "Grundare och Operativ Chef",
     email: "julian@optimeraenergi.se",
-    phone: "076 301 52 02",
+    phone: "",
   },
   {
     id: "moltas",

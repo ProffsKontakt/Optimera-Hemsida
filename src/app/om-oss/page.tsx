@@ -307,13 +307,15 @@ export default function AboutPage() {
                     <Mail size={13} className="shrink-0" />
                     {m.email}
                   </a>
-                  <a
-                    href={`tel:+46${m.phone.replace(/^0/, "")}`}
-                    className="flex items-center gap-2 text-ink/70 hover:text-indigo transition"
-                  >
-                    <Phone size={13} className="shrink-0" />
-                    {formatPhone(m.phone)}
-                  </a>
+                  {m.phone && (
+                    <a
+                      href={`tel:+46${m.phone.replace(/^0/, "")}`}
+                      className="flex items-center gap-2 text-ink/70 hover:text-indigo transition"
+                    >
+                      <Phone size={13} className="shrink-0" />
+                      {formatPhone(m.phone)}
+                    </a>
+                  )}
                 </div>
               </div>
             </article>

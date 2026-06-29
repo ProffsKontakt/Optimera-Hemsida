@@ -34,7 +34,7 @@ const TEAM = [
     name: "Julian Nordgren",
     role: "Grundare och Operativ Chef",
     email: "julian@optimeraenergi.se",
-    phone: "0763015202",
+    phone: "",
   },
   {
     name: "Moltas Roslund",
@@ -126,15 +126,17 @@ export default function KontaktPage() {
                   </span>
                   <span className="break-all">{p.email}</span>
                 </a>
-                <a
-                  href={`tel:+46${p.phone.replace(/^0/, "")}`}
-                  className="flex items-center gap-3 text-ink hover:text-indigo transition group"
-                >
-                  <span className="grid h-8 w-8 place-items-center rounded-full bg-cream/60 text-ink/65 group-hover:bg-indigo group-hover:text-bone transition">
-                    <Phone size={14} />
-                  </span>
-                  <span>{formatPhone(p.phone)}</span>
-                </a>
+                {p.phone && (
+                  <a
+                    href={`tel:+46${p.phone.replace(/^0/, "")}`}
+                    className="flex items-center gap-3 text-ink hover:text-indigo transition group"
+                  >
+                    <span className="grid h-8 w-8 place-items-center rounded-full bg-cream/60 text-ink/65 group-hover:bg-indigo group-hover:text-bone transition">
+                      <Phone size={14} />
+                    </span>
+                    <span>{formatPhone(p.phone)}</span>
+                  </a>
+                )}
               </div>
             </article>
           ))}
@@ -206,7 +208,7 @@ function ContactCard({
 }
 
 function formatPhone(p: string): string {
-  // 0763015202 → 076 301 52 02
+  // 0701234567 → 070 123 45 67
   if (p.length === 10) {
     return `${p.slice(0, 3)} ${p.slice(3, 6)} ${p.slice(6, 8)} ${p.slice(8)}`;
   }
