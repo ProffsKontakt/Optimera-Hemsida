@@ -11,6 +11,9 @@ export const metadata = {
   robots: { index: false, follow: false },
 };
 
+// Auth-gate måste köras per request (cookie-koll), aldrig prerenderas.
+export const dynamic = "force-dynamic";
+
 export default function AdminMediaPage() {
   if (!process.env.ADMIN_PASSWORD || !isAdminAuthed()) {
     redirect("/admin/login");

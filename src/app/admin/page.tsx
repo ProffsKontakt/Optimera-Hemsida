@@ -2,7 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { isAdminAuthed } from "@/lib/admin-auth";
 import { AdminTopbar } from "@/components/admin/AdminTopbar";
-import { LightbulbIcon, Briefcase, Newspaper, ArrowRight, ImageIcon } from "lucide-react";
+import { LightbulbIcon, Briefcase, Newspaper, ArrowRight, ImageIcon, FlaskConical } from "lucide-react";
 
 export default function AdminHome() {
   if (!process.env.ADMIN_PASSWORD || !isAdminAuthed()) {
@@ -44,6 +44,12 @@ export default function AdminHome() {
             icon={<LightbulbIcon size={20} />}
             label="Idé-hörnan"
             body="Plocka in idéer för försäljning, CRM, drift, marknad. Kategorisera, status­märk och skicka vidare till KT Central."
+          />
+          <Card
+            href="/admin/demo"
+            icon={<FlaskConical size={20} />}
+            label="Demo / sandlåda"
+            body="Testa och visa varianter av sidor internt (t.ex. en avskalad landningssida) utan att röra den publika sajten."
           />
           <Card
             href="/studio"
