@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Fraunces, Poppins, JetBrains_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
-import { Navbar } from "@/components/site/Navbar";
+import { SiteNav } from "@/components/site/SiteNav";
 import { Footer } from "@/components/site/Footer";
 import { AdminHotkey } from "@/components/site/AdminHotkey";
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
@@ -182,7 +182,7 @@ export default function RootLayout({
         </a>
         <AdminHotkey />
         <AttributionCapture />
-        <Navbar />
+        <SiteNav />
         <main id="main" className="pt-20">{children}</main>
         <Footer />
       </body>
