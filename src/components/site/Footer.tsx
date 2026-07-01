@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { CITIES } from "@/lib/cities";
 import { BATTERY_CITIES } from "@/lib/battery-cities";
+import { VISIBLE_SERVICES } from "@/lib/services";
 
 export function Footer() {
   return (
@@ -48,8 +49,8 @@ export function Footer() {
             ström – den är en hållning.
           </div>
           <p className="mt-6 text-ink/65 max-w-md text-[15px] leading-relaxed">
-            Optimera Energi installerar solpaneler, batterier, värmepumpar
-            och laddboxar. Vi gör det med kloka tankar bakom varje beslut –
+            Optimera Energi installerar solpaneler, batterier och laddboxar.
+            Vi gör det med kloka tankar bakom varje beslut –
             och med fika, raka besked och ingenjörskonst utan kompromiss.
           </p>
         </div>
@@ -57,12 +58,9 @@ export function Footer() {
         <div className="md:col-span-2">
           <Heading>Tjänster</Heading>
           <FooterLinks
-            links={[
-              ["/tjanster/solpaneler", "Solpaneler"],
-              ["/tjanster/batterier", "Batterier"],
-              ["/tjanster/vaermepumpar", "Värmepumpar"],
-              ["/tjanster/laddboxar", "Laddboxar"],
-            ]}
+            links={VISIBLE_SERVICES.map(
+              (s) => [`/tjanster/${s.slug}`, s.name] as [string, string],
+            )}
           />
         </div>
 

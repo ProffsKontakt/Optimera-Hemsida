@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { SERVICES } from "@/lib/services";
+import { VISIBLE_SERVICES } from "@/lib/services";
 import { ArrowUpRight } from "lucide-react";
 import { ServiceVignetteLazy as ServiceVignette } from "@/components/3d/ServiceVignetteLazy";
 
@@ -8,8 +8,8 @@ import { ServiceVignetteLazy as ServiceVignette } from "@/components/3d/ServiceV
  * är borttagna så korten läses snabbare (3D-vignett + namn + one-liner räcker).
  * Live-ServicesGrid är orörd.
  */
-// Värmepump exkluderas på demo-landningen (visar tre tjänster).
-const DEMO_SERVICES = SERVICES.filter((s) => s.slug !== "vaermepumpar");
+// Endast synliga tjänster (värmepump är dold via hidden-flaggan i services.ts).
+const DEMO_SERVICES = VISIBLE_SERVICES;
 
 export function DemoServicesGrid() {
   return (

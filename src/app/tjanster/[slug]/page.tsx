@@ -24,6 +24,9 @@ export function generateMetadata({ params }: { params: { slug: string } }) {
   return {
     title: `${s.name} i Stockholm`,
     description: s.lede,
+    // Dolda tjänster (t.ex. värmepump just nu): sidan finns kvar och funkar,
+    // men indexeras inte förrän tjänsten aktiveras igen.
+    ...(s.hidden ? { robots: { index: false, follow: false } } : {}),
     alternates: { canonical: path },
     openGraph: {
       title: `${s.name} – Optimera Energi`,

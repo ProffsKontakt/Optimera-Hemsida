@@ -15,6 +15,9 @@ export type Service = {
   faq: { q: string; a: string }[];
   bullets: string[];
   badge: string;
+  /** Dölj tjänsten i nav/grid/footer/sitemap men behåll all kod. Sätt
+   *  false eller ta bort för att aktivera tjänsten igen. */
+  hidden?: boolean;
 };
 
 export const SERVICES: Service[] = [
@@ -142,6 +145,9 @@ export const SERVICES: Service[] = [
     name: "Värmepumpar",
     short: "Värme",
     badge: "Värmer",
+    // Dold just nu (visas ej i nav/grid/footer/sitemap). Koden behålls –
+    // ta bort denna rad för att lansera värmepumpar igen.
+    hidden: true,
     oneLiner:
       "Tre kilowatt värme för varje kilowatt el – fysik, inte marknadsföring.",
     lede:
@@ -262,3 +268,6 @@ export const SERVICES: Service[] = [
 
 export const getService = (slug: ServiceSlug) =>
   SERVICES.find((s) => s.slug === slug);
+
+/** Tjänster som ska visas publikt (nav, grid, footer, sitemap). */
+export const VISIBLE_SERVICES = SERVICES.filter((s) => !s.hidden);

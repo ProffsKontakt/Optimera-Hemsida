@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { SERVICES } from "@/lib/services";
+import { VISIBLE_SERVICES } from "@/lib/services";
 import { CITIES } from "@/lib/cities";
 import { BATTERY_CITIES } from "@/lib/battery-cities";
 import { publishedGuides } from "@/lib/guides";
@@ -35,7 +35,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/tankar`, lastModified: LAST_MOD.tankar },
     { url: `${base}/guider`, lastModified: LAST_MOD.guiderHub },
     { url: `${base}/press`, lastModified: LAST_MOD.press },
-    ...SERVICES.map((s) => ({
+    ...VISIBLE_SERVICES.map((s) => ({
       url: `${base}/tjanster/${s.slug}`,
       lastModified: LAST_MOD.tjanster,
     })),

@@ -4,12 +4,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
+import { VISIBLE_SERVICES } from "@/lib/services";
 
+// Tjänste-länkarna byggs från VISIBLE_SERVICES så dolda tjänster (t.ex.
+// värmepump just nu) automatiskt försvinner ur navigeringen.
 const links = [
-  { href: "/tjanster/solpaneler", label: "Sol" },
-  { href: "/tjanster/batterier", label: "Batteri" },
-  { href: "/tjanster/vaermepumpar", label: "Värme" },
-  { href: "/tjanster/laddboxar", label: "Laddning" },
+  ...VISIBLE_SERVICES.map((s) => ({ href: `/tjanster/${s.slug}`, label: s.short })),
   { href: "/kalkylator", label: "Kalkylator" },
   { href: "/om-oss", label: "Om oss" },
   { href: "/kontakt", label: "Kontakt" },
@@ -42,11 +42,6 @@ export function Navbar() {
           onClick={() => setOpen(false)}
           aria-label="Optimera Energi – startsidan"
         >
-          {/* Sajten är alltid på cream/bone – vi använder ALLTID den ljusa
-              logon (svart text). public/logo-dark.svg finns för framtida
-              dark mode-implementation, men ska INTE plockas in automatiskt
-              via prefers-color-scheme eftersom användarens OS-preferens
-              inte påverkar våra sidors faktiska bakgrund. */}
           <Image
             src="/logo.svg"
             alt="Optimera Energi"
@@ -73,9 +68,7 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <Link href="/offert" className="hidden md:inline-flex btn-primary">
-            Begär offert
-          </Link>
+          <QuoteButton className="hidden md:inline-flex" />
           <button
             aria-label="Meny"
             className="lg:hidden inline-flex h-11 w-11 items-center justify-center rounded-full border border-ink/15 bg-cream"
@@ -99,16 +92,43 @@ export function Navbar() {
                 {l.label}
               </Link>
             ))}
-            <Link
-              href="/offert"
+            <QuoteButton
+              className="mt-4 w-full"
+              innerClassName="w-full justify-center"
               onClick={() => setOpen(false)}
-              className="mt-4 btn-primary justify-center"
-            >
-              Begär offert
-            </Link>
+            />
           </div>
         </div>
       )}
     </header>
+  );
+}
+
+/**
+ * "Begär offert" med gradient-outline (indigo -> sun, blå -> gul), vit insida
+ * + indigo text i vila; fyller helt indigo med bone-text vid hover (mjuk
+ * 300ms-övergång). Ögonfångande i vila, tydlig blå knapp vid interaktion.
+ */
+function QuoteButton({
+  className = "",
+  innerClassName = "",
+  onClick,
+}: {
+  className?: string;
+  innerClassName?: string;
+  onClick?: () => void;
+}) {
+  return (
+    <Link
+      href="/offert"
+      onClick={onClick}
+      className={`group rounded-full p-[3px] bg-gradient-to-b from-indigo to-sun transition-transform duration-300 hover:scale-[1.02] ${className}`}
+    >
+      <span
+        className={`inline-flex items-center justify-center rounded-full bg-bone text-indigo group-hover:bg-indigo group-hover:text-bone transition-colors duration-300 px-5 py-2 text-[13.5px] font-medium ${innerClassName}`}
+      >
+        Begär offert
+      </span>
+    </Link>
   );
 }
