@@ -103,6 +103,62 @@ export default function ServicePage({
         </div>
       </section>
 
+      {/* Batteri-sortiment + Easyway-utmärkelse. Bara på batteri-tjänsten.
+          Mellan-raden listar hela sortimentet vi säljer; segmentet under
+          lyfter fram Easyway med länk till förklaringssidan. */}
+      {s.slug === "batterier" && (
+        <>
+          <div className="container-edge">
+            <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 border-y border-ink/10 py-5">
+              <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink/50">
+                Batterier vi säljer
+              </span>
+              <span className="text-[14px] text-ink/70">
+                Easyway, Enershare, SAJ, Sigenergy, Emaldo, Sungrow, Growatt
+                och många fler.
+              </span>
+            </div>
+          </div>
+
+          <Section
+            eyebrow="Vår rekommendation"
+            title={
+              <>
+                Vi säljer alla batterier på marknaden,{" "}
+                <span className="italic font-serif text-indigo">
+                  men ett står ut i vår mening.
+                </span>
+              </>
+            }
+            intro="Vi är märkesoberoende och sätter det som passar ditt hus. Men får vi välja fritt landar vi ofta i samma slutsats."
+          >
+            <div className="flex flex-col justify-between gap-8 rounded-[28px] border border-ink/10 bg-cream/50 p-8 md:flex-row md:items-center md:p-12">
+              <div className="max-w-xl">
+                <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink/55">
+                  Utmärker sig
+                </div>
+                <div className="mt-3 font-display text-4xl md:text-5xl tracking-display-tight">
+                  Easyway
+                </div>
+                <p className="mt-4 text-[15.5px] leading-relaxed text-ink/70">
+                  Mest kWh för pengarna, med hårdvara byggd för att hålla.
+                  Styrningen sköts av växelriktaren eller en tredjepart, så
+                  varje del kan göra det den är bäst på.
+                </p>
+              </div>
+              <Link
+                href="/tjanster/batterier/easyway"
+                className="group shrink-0 self-start rounded-full bg-gradient-to-b from-indigo to-sun p-[3px] transition-transform duration-300 hover:scale-[1.02] md:self-auto"
+              >
+                <span className="inline-flex items-center gap-2 rounded-full bg-bone px-6 py-3 text-[14px] font-medium text-indigo transition-colors duration-300 group-hover:bg-indigo group-hover:text-bone">
+                  Förstå varför <ArrowRight size={16} />
+                </span>
+              </Link>
+            </div>
+          </Section>
+        </>
+      )}
+
       {/* Pris-anchor för Solpaneler-service-sidan. Speglar FAQ-data men
           renderas som synlig prosa, vilket fångar prisintent direkt i SERP
           och konkurrerar med Svea Solar / Hemsols pris-snippets. */}
