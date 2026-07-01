@@ -72,27 +72,28 @@ function capTier(cap: number): number {
   return 7;
 }
 
-// Descenderande stegar: högre index = snabbare återbetalning. Enkla (små)
-// installationer ligger högre upp i år; större sänker steg för steg.
+// Fast övre gräns, bara den nedre rör sig. Batteri-caset toppar alltid på 5 år,
+// sol+batteri alltid på 7,5 år. Högre index (större batteri/fler paneler) =
+// lägre nedre gräns = snabbare möjlig återbetalning.
 const EXISTING_BATTERY_YEARS = [
   "≈ 4–5 år",
-  "≈ 3,5–4,5 år",
-  "≈ 3–4 år",
-  "≈ 3–3,5 år",
-  "≈ 2,5–3,5 år",
-  "≈ 2,5–3 år",
-  "≈ 2–3 år",
-  "≈ 2–2,5 år",
+  "≈ 3,5–5 år",
+  "≈ 3–5 år",
+  "≈ 2,5–5 år",
+  "≈ 2,5–5 år",
+  "≈ 2–5 år",
+  "≈ 2–5 år",
+  "≈ 2–5 år",
 ];
 const SOL_BATTERY_YEARS = [
-  "≈ 7–8 år",
-  "≈ 6,5–7,5 år",
-  "≈ 6–7 år",
-  "≈ 5,5–6,5 år",
-  "≈ 5–6 år",
-  "≈ 4,5–6 år",
-  "≈ 4–6 år",
-  "≈ 4–5,5 år",
+  "≈ 6–7,5 år",
+  "≈ 5,5–7,5 år",
+  "≈ 5–7,5 år",
+  "≈ 4,5–7,5 år",
+  "≈ 4–7,5 år",
+  "≈ 3,5–7,5 år",
+  "≈ 3–7,5 år",
+  "≈ 3–7,5 år",
 ];
 
 function scenario(o: {
