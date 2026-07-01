@@ -20,6 +20,11 @@ const DEMOS = [
     label: "Landningsida (demo)",
     body: "Avskalad variant av startsidan – konsoliderad 'Så jobbar vi', social proof tidigare, lättare sektioner, kortad FAQ. Live är orörd.",
   },
+  {
+    href: "/admin/demo/kalkylator",
+    label: "Kalkylator (demo)",
+    body: "Avskalad kalkylator utan exakta kronor – klicka i vad du vill ha, få ärliga riktnings-spann och lotsas mot att begära offert. Live /kalkylator är orörd.",
+  },
 ];
 
 export default function AdminDemoPage() {
