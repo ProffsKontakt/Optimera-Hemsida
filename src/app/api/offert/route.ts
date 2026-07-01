@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import crypto from "node:crypto";
 import { z } from "zod";
 import { assignSeller } from "@/lib/sellers";
+import { insertWebsiteLead } from "@/lib/leads-crm";
 
 const SlotSchema = z.object({
   date: z.string(),
@@ -84,6 +85,18 @@ export async function POST(req: Request) {
     seller,
     lead,
   });
+
+  // 0) Primär destination: CRM-databasen (Supabase "closer-offert-kalkyl",
+  //    public.leads). Leadkälla "Hemsida" / "Hemsida (Platsbesök)". Skapar
+  //    automatiskt kontakt + deal via DB-triggers. No-op om env saknas.
+  const crm = await insertWebsiteLead(lead, seller);
+  if (crm.ok) {
+    // eslint-disable-next-line no-console
+    console.log("[offert] CRM-lead skapad", crm.id);
+  } else {
+    // eslint-disable-next-line no-console
+    console.error("[offert] CRM-insert misslyckades:", crm.error);
+  }
 
   // 1) Skicka till KT Central (CRM-webhook). Stödjer alla webhook-format
   //    – vi POST:ar JSON och låter KT Central plocka isär.
