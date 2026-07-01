@@ -2,7 +2,7 @@ import { redirect } from "next/navigation";
 import { isAdminAuthed } from "@/lib/admin-auth";
 import { DemoBanner } from "@/components/admin/DemoBanner";
 import { DemoSection } from "@/components/demo/DemoSection";
-import { DemoCalc } from "@/components/demo/DemoCalc";
+import { DemoCalcStudio } from "@/components/demo/DemoCalcStudio";
 
 export const metadata = {
   title: "Kalkylator (demo)",
@@ -34,9 +34,9 @@ export default function DemoKalkylatorPage() {
             </span>
           </>
         }
-        intro="Klicka i vad du funderar på. Vi visar vad det brukar innebära – och räknar fram exakta siffror åt dig när vi ses."
+        intro="Bygg din lösning i 3D. Vi visar vad det brukar innebära – och räknar fram exakta siffror åt dig när vi ses."
       >
-        <DemoCalc />
+        <DemoCalcStudio />
       </DemoSection>
     </>
   );
