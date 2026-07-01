@@ -63,22 +63,28 @@ function scenario(o: {
   existingSolar: boolean;
   addSolar: boolean;
   addBattery: boolean;
+  batteryKWh: number;
+  panelCount: number;
 }) {
-  const { existingSolar, addSolar, addBattery } = o;
+  const { existingSolar, addSolar, addBattery, batteryKWh, panelCount } = o;
   if (existingSolar && addBattery)
     return {
+      // Större batteri -> snabbare återbetalning.
+      range: batteryKWh >= 20 ? "≈ 2–3 år" : "≈ 2,5–3,5 år",
       tag: "Bästa affären vi ser",
-      range: "≈ 2–3 år",
       lead:
-        "Att komplettera befintliga solceller med batteri är ofta den snabbaste affären. Med rätt förutsättningar (t.ex. stödtjänster) kan hela investeringen vara återbetald på ett par år.",
+        "Att komplettera befintliga solceller med batteri är ofta den snabbaste affären – och ett större batteri kortar tiden ytterligare. Med rätt förutsättningar landar den på ett par år.",
     };
-  if (addSolar && addBattery)
+  if (addSolar && addBattery) {
+    // Börjar runt 6 år, kortare ju fler paneler och ju större batteri.
+    const score = (panelCount >= 20 ? 1 : 0) + (batteryKWh >= 23 ? 1 : 0);
     return {
+      range: score >= 2 ? "≈ 4–6 år" : score === 1 ? "≈ 5–6 år" : "≈ 6 år",
       tag: "Komplett lösning",
-      range: "≈ 3–5 år",
       lead:
-        "En komplett sol- och batterilösning betalar sig typiskt på 3–5 år. Upp mot 8 år i tuffare fall, beroende på tak, förbrukning och elområde.",
+        "En komplett sol- och batterilösning betalar sig typiskt på runt 6 år – och kortare ju fler paneler och ju större batteri du väljer.",
     };
+  }
   if (addSolar && !addBattery)
     return {
       tag: "Trygg grund",
@@ -148,6 +154,8 @@ export function DemoCalcStudio() {
     existingSolar: input.hasExistingSolar,
     addSolar: input.enabled.sol,
     addBattery: input.enabled.batteri,
+    batteryKWh: input.batteryCapacityKWh,
+    panelCount: input.panelCount,
   });
 
   return (
@@ -174,6 +182,11 @@ export function DemoCalcStudio() {
               <div className="mt-1 font-display text-[40px] md:text-[52px] leading-none tracking-display-tight text-indigo whitespace-nowrap">
                 {s.range}
               </div>
+              {input.enabled.batteri && (
+                <div className="mt-1.5 text-[12px] text-ink/45">
+                  Större batteri → kortare återbetalning
+                </div>
+              )}
             </div>
             <p className="mt-4 sm:mt-0 text-ink/75 text-[14.5px] leading-relaxed">
               {s.lead}
@@ -190,7 +203,9 @@ export function DemoCalcStudio() {
             {input.enabled.batteri && (
               <li className="flex items-start gap-2">
                 <Check size={15} className="mt-0.5 text-moss shrink-0" />
-                Batteriet tjänar pengar dygnet runt via stödtjänster (FCR-D).
+                Smarta funktioner, spotprisoptimering, stödtjänster, peak-shaving
+                och egen lagring – vi väljer det som är mest lönsamt där ni bor
+                och för er bostad.
               </li>
             )}
             <li className="flex items-start gap-2">
