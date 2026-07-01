@@ -14,6 +14,11 @@ export const metadata = {
   title: "Varför vi rekommenderar Easyway",
   description:
     "Easyway ger mest kWh för pengarna och lägger allt krut på hårdvaran, medan styrningen sköts av växelriktaren eller en tredjepart. Så tänker vi kring batterier.",
+  // PAUSAD: sidan finns kvar och kan förhandsgranskas direkt på URL:en,
+  // men indexeras inte och länkas inte från batteri-sidan förrän den
+  // aktiveras igen (ta bort robots-raden nedan + slå på segmentet i
+  // /tjanster/[slug]/page.tsx samt sitemap-raden).
+  robots: { index: false, follow: false },
   alternates: { canonical: PATH },
   openGraph: {
     title: "Varför vi rekommenderar Easyway – Optimera Energi",
