@@ -19,9 +19,9 @@ import { CanvasErrorBoundary } from "@/components/3d/CanvasErrorBoundary";
 import { SceneFallback } from "@/components/3d/SceneFallback";
 
 /**
- * DEMO: samma 3D-modell och samma sorts inmatning som riktiga kalkylatorn,
- * MEN utan exakta kronor. Resultatet är ärliga riktnings-spann som lotsar mot
- * ett samtal med en tekniker. Live /kalkylator är orörd.
+ * Kalkylatorns konfigurator: 3D-modell + samma inmatning som tidigare, men
+ * utan exakta kronor. Resultatet är ärliga riktnings-spann som lotsar mot ett
+ * samtal med en tekniker som räknar fram de exakta siffrorna.
  */
 const CalcScene = dynamic(
   () => import("@/components/3d/CalcScene").then((m) => m.CalcScene),
@@ -184,7 +184,7 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
   );
 }
 
-export function DemoCalcStudio() {
+export function CalcConfigurator() {
   const [input, setInput] = useState<CalcInput>(initial);
   const patch = (p: Partial<CalcInput>) => setInput((cur) => ({ ...cur, ...p }));
   const toggle = (k: keyof CalcInput["enabled"]) =>
