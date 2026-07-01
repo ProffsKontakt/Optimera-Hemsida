@@ -59,6 +59,42 @@ const BATTERY_LABEL: Record<string, string> = {
   "emaldo-store": "Emaldo",
 };
 
+// Batteristorlek -> steg (0 = minst, 7 = störst). Trösklarna ligger mellan
+// Easyways kapaciteter så VARJE klick på storleken flyttar återbetalningen.
+function capTier(cap: number): number {
+  if (cap < 13) return 0;
+  if (cap < 16) return 1;
+  if (cap < 24) return 2;
+  if (cap < 32) return 3;
+  if (cap < 40) return 4;
+  if (cap < 48) return 5;
+  if (cap < 56) return 6;
+  return 7;
+}
+
+// Descenderande stegar: högre index = snabbare återbetalning. Enkla (små)
+// installationer ligger högre upp i år; större sänker steg för steg.
+const EXISTING_BATTERY_YEARS = [
+  "≈ 4–5 år",
+  "≈ 3,5–4,5 år",
+  "≈ 3–4 år",
+  "≈ 3–3,5 år",
+  "≈ 2,5–3,5 år",
+  "≈ 2,5–3 år",
+  "≈ 2–3 år",
+  "≈ 2–2,5 år",
+];
+const SOL_BATTERY_YEARS = [
+  "≈ 7–8 år",
+  "≈ 6,5–7,5 år",
+  "≈ 6–7 år",
+  "≈ 5,5–6,5 år",
+  "≈ 5–6 år",
+  "≈ 4,5–6 år",
+  "≈ 4–6 år",
+  "≈ 4–5,5 år",
+];
+
 function scenario(o: {
   existingSolar: boolean;
   addSolar: boolean;
@@ -69,20 +105,24 @@ function scenario(o: {
   const { existingSolar, addSolar, addBattery, batteryKWh, panelCount } = o;
   if (existingSolar && addBattery)
     return {
-      // Större batteri -> snabbare återbetalning.
-      range: batteryKWh >= 20 ? "≈ 2–3 år" : "≈ 2,5–3,5 år",
+      // Beror bara på batteristorlek (solen finns redan).
+      range: EXISTING_BATTERY_YEARS[capTier(batteryKWh)],
       tag: "Bästa affären vi ser",
       lead:
         "Att komplettera befintliga solceller med batteri är ofta den snabbaste affären – och ett större batteri kortar tiden ytterligare. Med rätt förutsättningar landar den på ett par år.",
     };
   if (addSolar && addBattery) {
-    // Börjar runt 6 år, kortare ju fler paneler och ju större batteri.
-    const score = (panelCount >= 20 ? 1 : 0) + (batteryKWh >= 23 ? 1 : 0);
+    // Batteristorlek + antal paneler knuffar ner återbetalningen steg för steg.
+    const panelBump = Math.min(3, Math.max(0, Math.floor((panelCount - 10) / 10)));
+    const idx = Math.min(
+      SOL_BATTERY_YEARS.length - 1,
+      capTier(batteryKWh) + panelBump,
+    );
     return {
-      range: score >= 2 ? "≈ 4–6 år" : score === 1 ? "≈ 5–6 år" : "≈ 6 år",
+      range: SOL_BATTERY_YEARS[idx],
       tag: "Komplett lösning",
       lead:
-        "En komplett sol- och batterilösning betalar sig typiskt på runt 6 år – och kortare ju fler paneler och ju större batteri du väljer.",
+        "En komplett sol- och batterilösning tar längre tid i en enkel installation – men kortas rejält ju fler paneler och ju större batteri du väljer.",
     };
   }
   if (addSolar && !addBattery)
@@ -197,7 +237,7 @@ export function DemoCalcStudio() {
             {input.enabled.batteri && (
               <li className="flex items-start gap-2">
                 <Check size={15} className="mt-0.5 text-moss shrink-0" />
-                Med batteri använder du 70–90 % av din egen el i stället för ~30 %.
+                Med batteri använder du 60–80 % av din egen el i stället för ~30 %.
               </li>
             )}
             {input.enabled.batteri && (
