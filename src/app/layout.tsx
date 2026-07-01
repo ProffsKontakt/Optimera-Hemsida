@@ -12,6 +12,7 @@ import {
   GoogleTagManagerNoScript,
 } from "@/components/analytics/GoogleTagManager";
 import { JsonLd, organizationSchema, webSiteSchema } from "@/components/seo/JsonLd";
+import { Analytics } from "@vercel/analytics/next";
 
 // Endast vikter vi faktiskt använder. Tidigare hade vi 5 weights (~50KB
 // extra). 400 = brödtext, 500 = knappar/nav, 700 = stora rubriker.
@@ -185,6 +186,9 @@ export default function RootLayout({
         <Navbar />
         <main id="main" className="pt-20">{children}</main>
         <Footer />
+        {/* Vercel Analytics – cookieless besökar-/sidvisningsstatistik.
+            Kräver ingen samtyckesgating (sätter inga cookies). */}
+        <Analytics />
       </body>
     </html>
   );
