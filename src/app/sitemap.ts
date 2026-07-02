@@ -40,12 +40,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${base}/tjanster/${s.slug}`,
       lastModified: LAST_MOD.tjanster,
     })),
-    // Förklaringssida för Easyway-batterier. PAUSAD – tas med i sitemap
-    // igen när segmentet aktiveras på batteri-sidan.
-    // {
-    //   url: `${base}/tjanster/batterier/easyway`,
-    //   lastModified: LAST_MOD.easyway,
-    // },
+    // Förklaringssida för varför vi rekommenderar Easyway-batterier.
+    {
+      url: `${base}/tjanster/batterier/easyway`,
+      lastModified: LAST_MOD.easyway,
+    },
     // City-landingssidor för Stockholm-områdets kommuner.
     ...CITIES.map((c) => ({
       url: `${base}/solceller/${c.slug}`,

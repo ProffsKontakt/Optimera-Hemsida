@@ -13,13 +13,6 @@ import {
   breadcrumbSchema,
 } from "@/components/seo/JsonLd";
 
-// Easyway-segmentet på batteri-sidan + länken till förklaringssidan är
-// pausade tills innehållet är granskat. Sätt EASYWAY_LIVE = true för att
-// aktivera igen (slå då även på robots-index på /tjanster/batterier/easyway
-// samt sitemap-raden). Typad som boolean så TS inte markerar segmentet som
-// oåtkomlig kod och tappar s-narrowingen.
-const EASYWAY_LIVE: boolean = false;
-
 export function generateStaticParams() {
   return SERVICES.map((s) => ({ slug: s.slug }));
 }
@@ -112,9 +105,8 @@ export default function ServicePage({
 
       {/* Batteri-sortiment + Easyway-utmärkelse. Bara på batteri-tjänsten.
           Mellan-raden listar hela sortimentet vi säljer; segmentet under
-          lyfter fram Easyway med länk till förklaringssidan.
-          Pausat via EASYWAY_LIVE ovan tills innehållet är granskat. */}
-      {EASYWAY_LIVE && s.slug === "batterier" && (
+          lyfter fram Easyway med länk till förklaringssidan. */}
+      {s.slug === "batterier" && (
         <>
           <div className="container-edge">
             <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 border-y border-ink/10 py-5">
