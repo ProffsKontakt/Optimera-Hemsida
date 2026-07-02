@@ -67,14 +67,14 @@ const teamLocalBusinessSchema = {
     name: m.name,
     jobTitle: m.role,
     email: m.email,
-    telephone: `+46${m.phone.replace(/^0/, "")}`,
+    ...(m.phone ? { telephone: `+46${m.phone.replace(/^0/, "")}` } : {}),
   })),
   employee: TEAM.map((m) => ({
     "@type": "Person",
     name: m.name,
     jobTitle: m.role,
     email: m.email,
-    telephone: `+46${m.phone.replace(/^0/, "")}`,
+    ...(m.phone ? { telephone: `+46${m.phone.replace(/^0/, "")}` } : {}),
   })),
   foundingDate: "2026",
   foundingLocation: {
@@ -262,7 +262,7 @@ export default function AboutPage() {
       {/* Team */}
       <Section
         eyebrow="Teamet"
-        title={<>Tre människor som svarar i telefonen.</>}
+        title={<>Sju människor som svarar i telefonen.</>}
         intro="Du får aldrig en växel eller en chatt-bot. Du pratar med en av oss, varje gång."
         className="!py-16 md:!py-20"
       >

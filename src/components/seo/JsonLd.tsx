@@ -51,7 +51,7 @@ export const organizationSchema = {
   taxID: "5593752206",
   foundingDate: "2026",
   foundingLocation: { "@type": "Place", name: "Solna, Sverige" },
-  numberOfEmployees: 3,
+  numberOfEmployees: 7,
   founder: [
     { "@type": "Person", name: "Viktor Tiberg", jobTitle: "Grundare och VD" },
     {
