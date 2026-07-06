@@ -14,7 +14,20 @@ const SlotSchema = z.object({
 const Schema = z
   .object({
     namn: z.string().min(2),
-    telefon: z.string().min(4),
+    // Telefonnummer: 7–15 siffror, valfritt +, mellanslag/bindestreck/
+    // parenteser tillåtna. Speglar formulärets pattern så fritext (t.ex.
+    // ett efternamn) avvisas även om klient-valideringen kringgås.
+    telefon: z
+      .string()
+      .trim()
+      .regex(/^\+?[\d\s().-]{5,25}$/, "ogiltigt telefonnummer")
+      .refine(
+        (v) => {
+          const digits = v.replace(/\D/g, "").length;
+          return digits >= 7 && digits <= 15;
+        },
+        { message: "ogiltigt telefonnummer" },
+      ),
     epost: z.string().email(),
     adress: z.string().optional(),
     meddelande: z.string().optional(),

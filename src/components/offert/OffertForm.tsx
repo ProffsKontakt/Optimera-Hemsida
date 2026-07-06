@@ -176,7 +176,20 @@ export function OffertForm({ defaults }: { defaults: Defaults }) {
           />
           <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
             <Input name="namn" label="Namn" required />
-            <Input name="telefon" label="Telefon" required />
+            {/* pattern kräver 7–15 siffror (mellanslag/bindestreck/parenteser
+                och inledande + tillåts) så t.ex. ett efternamn inte kan
+                skickas som telefonnummer. Servern validerar samma regel.
+                Obs: ()-.  escapas eftersom webbläsare kompilerar pattern med
+                v-flaggan där de är specialtecken i teckenklasser. */}
+            <Input
+              name="telefon"
+              label="Telefon"
+              type="tel"
+              inputMode="tel"
+              pattern="\+?(?:[\s\(\)\.\-]*\d){7,15}[\s\(\)\.\-]*"
+              title="Ange ett giltigt telefonnummer, t.ex. 070-123 45 67"
+              required
+            />
             <Input name="epost" label="E-post" type="email" required />
             <Input name="adress" label="Adress" />
           </div>
@@ -357,11 +370,17 @@ function Input({
   name,
   type = "text",
   required,
+  inputMode,
+  pattern,
+  title,
 }: {
   label: string;
   name: string;
   type?: string;
   required?: boolean;
+  inputMode?: React.HTMLAttributes<HTMLInputElement>["inputMode"];
+  pattern?: string;
+  title?: string;
 }) {
   return (
     <label className="block">
@@ -370,7 +389,10 @@ function Input({
         type={type}
         name={name}
         required={required}
-        className="w-full rounded-2xl border border-ink/15 bg-cream/50 px-4 py-3 text-[15px] outline-none focus:border-ink/50 transition"
+        inputMode={inputMode}
+        pattern={pattern}
+        title={title}
+        className="w-full rounded-2xl border border-ink/15 bg-cream/50 px-4 py-3 text-[15px] outline-none focus:border-ink/50 transition invalid:[&:not(:placeholder-shown):not(:focus)]:border-copper/60"
       />
     </label>
   );
