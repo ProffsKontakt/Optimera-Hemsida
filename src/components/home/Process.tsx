@@ -15,8 +15,8 @@ const steps = [
   },
   {
     n: "03",
-    label: "1:1-modell av huset",
-    body: "Vi bygger en exakt 3D-modell av ditt hus och simulerar produktionen timme för timme över 25 år – så att du kan se din återbetalningstid innan du tackar ja.",
+    label: "Vi räknar på förutsättningarna",
+    body: "Vi går igenom takets förutsättningar, din förbrukning och dina mål – och räknar fram vad som faktiskt är mest optimalt för just ditt behov, innan du tackar ja.",
   },
   {
     n: "04",

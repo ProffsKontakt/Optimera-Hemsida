@@ -9,8 +9,8 @@ export const metadata = {
 
 const drafts = [
   {
-    title: "Varför vi bygger en 1:1-modell av huset innan vi sätter en skruv",
-    body: "En genomgång av processen – från drönarbesiktning till timsimulering över 25 år.",
+    title: "Så räknar vi på ditt tak innan vi sätter en skruv",
+    body: "En genomgång av processen – från drönarbesiktning till dimensionering och kalkyl på husets förutsättningar.",
     label: "Process",
   },
   {

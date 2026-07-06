@@ -141,7 +141,7 @@ export function OffertForm({ defaults }: { defaults: Defaults }) {
               icon={<Home size={18} />}
               eyebrow="Hembesök"
               title="Vi kommer förbi"
-              body="Drönarbesiktning, 3D-modell av huset, raka besked på plats. Tar 45–60 min."
+              body="Drönarbesiktning, genomgång av tak och elskåp, raka besked på plats. Tar 45–60 min."
               active={contactMethod === "hembesok"}
               onClick={() => setContactMethod("hembesok")}
             />
@@ -158,7 +158,7 @@ export function OffertForm({ defaults }: { defaults: Defaults }) {
 
         {contactMethod === "hembesok" && (
           <Card>
-            <FieldHead n="04" title="När vill ni installera?" />
+            <FieldHead n="04" title="När ska vi komma över?" />
             <p className="mt-3 text-[14px] text-ink/65 leading-relaxed">
               Välj dag och tid – kalendern visar lediga slottar för hembesök
               de kommande tre veckorna. Vi ringer dagen innan och bekräftar.
@@ -236,7 +236,7 @@ export function OffertForm({ defaults }: { defaults: Defaults }) {
               {[
                 "Hembesök på en tid ni själva väljer",
                 "Drönarbesiktning av tak",
-                "1:1 kopia av ert hus i 3D",
+                "Kalkyl på just era förutsättningar",
                 "Alltid samma pris som står på offerten",
                 "Fika från lokala bagerier",
               ].map((b) => (

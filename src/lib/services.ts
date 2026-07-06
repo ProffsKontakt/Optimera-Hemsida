@@ -49,9 +49,9 @@ export const SERVICES: Service[] = [
       },
       {
         step: "02",
-        title: "1:1-modell av huset",
+        title: "Vi räknar på förutsättningarna",
         body:
-          "Vi bygger en exakt 3D-modell av ditt tak och simulerar produktionen timme för timme över 25 år.",
+          "Vi går igenom takets orientering, lutning och skuggning och räknar fram det system som är mest optimalt för just ditt hus.",
       },
       {
         step: "03",

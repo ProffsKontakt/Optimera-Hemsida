@@ -24,7 +24,7 @@ export function generateMetadata({ params }: { params: { stad: string } }) {
     // /solceller-slugen) + stad + service-modifier ("installation och pris").
     // Pris-tokenen matchar den vanligaste PAA-frågan och lyfter CTR.
     title: `Solceller ${city.preposition} ${city.name}, installation och pris`,
-    description: `Vi installerar solpaneler ${city.preposition} ${city.name} med eget montageteam från Solna. Drönarbesiktning, 1:1-modell i 3D, fast pris. Boka kostnadsfritt hembesök.`,
+    description: `Vi installerar solpaneler ${city.preposition} ${city.name} med eget montageteam från Solna. Drönarbesiktning, noggrann kalkyl på husets förutsättningar, fast pris. Boka kostnadsfritt hembesök.`,
     alternates: { canonical: `/solceller/${city.slug}` },
     openGraph: {
       title: `Solpaneler ${city.preposition} ${city.name} · Optimera Energi`,

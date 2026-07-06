@@ -87,7 +87,7 @@ export function Hero() {
               <div className="absolute inset-x-0 bottom-0 p-5 flex items-end justify-between">
                 <div className="rounded-2xl bg-bone/85 backdrop-blur px-4 py-3 border border-ink/10">
                   <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink/55">
-                    Live · 1:1-modell av huset
+                    Live · 3D-förhandsvy
                   </div>
                   <div className="font-display text-lg leading-tight">
                     Hus #048 · Bromma
