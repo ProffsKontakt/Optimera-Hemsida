@@ -44,9 +44,9 @@ const PRINCIPLES = [
   },
   {
     n: "03",
-    title: "Rätt storlek, inte störst möjliga",
+    title: "Rätt storlek, dimensionerad ur din förbrukning",
     body:
-      "Vi dimensionerar batteri och sol efter hur du faktiskt använder el, inte efter en broschyr. För en normalvilla landar batteriet oftast på 10–20 kWh. Vi loggar din timförbrukning innan vi rekommenderar kapacitet, så att du inte betalar för kilowattimmar du aldrig använder.",
+      "Vi dimensionerar batteriet efter husets faktiska förbrukning, inte efter en broschyr. Tumregeln: årsförbrukningen i kWh delad med 200–275 kalla dygn – en villa med 15 000 kWh per år landar på cirka 55–75 kWh batterikapacitet. Kapaciteten ska räcka för ett helt dygns förbrukning när elen är som dyrast. Vi loggar din timförbrukning innan vi låser storleken.",
   },
   {
     n: "04",
@@ -172,8 +172,8 @@ export default function MetodikPage() {
                 förbrukning.
               </>,
               <>
-                <strong>Rätt storlek</strong> – normalvilla oftast 10–20 kWh
-                batteri.
+                <strong>Rätt storlek</strong> – årsförbrukning ÷ 200–275 kalla
+                dygn, verifierad mot loggad timförbrukning.
               </>,
               <>
                 <strong>Fast pris</strong> – inga dolda påslag, avdrag dras på

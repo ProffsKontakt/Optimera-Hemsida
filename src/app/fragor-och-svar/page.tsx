@@ -43,7 +43,7 @@ const CATEGORIES: { heading: string; eyebrow: string; items: { q: string; a: str
       },
       {
         q: "Hur stort solcellsbatteri behöver jag?",
-        a: "För en normalvilla landar vi oftast på 10–20 kWh. Rätt storlek beror på din dygnsförbrukning, om du har elvärme eller elbil och hur stor din solanläggning är. Vi mäter din timförbrukning innan vi rekommenderar kapacitet, så att du inte betalar för kilowattimmar du aldrig använder.",
+        a: "Dimensionera efter din förbrukning, inte efter en schablon. Tumregeln: husets årsförbrukning i kWh delad med 200–275 kalla dygn. En villa med 15 000 kWh per år landar då på cirka 55–75 kWh batterikapacitet – ett litet 10 kWh-batteri gör ingen verklig skillnad i ett hus som drar 70 kWh per dygn. Vi loggar din timförbrukning innan vi rekommenderar exakt storlek.",
       },
       {
         q: "Behöver jag solceller för att ha ett batteri?",

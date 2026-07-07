@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { ArrowRight, Check, Home, Phone } from "lucide-react";
 import { SERVICES } from "@/lib/services";
 import { collectAttribution } from "@/lib/attribution";
+import { trackEvent } from "@/lib/analytics";
 import { CalendarPicker, type SlotSelection } from "./CalendarPicker";
 
 type Defaults = Record<string, string | null>;
@@ -21,6 +22,16 @@ export function OffertForm({ defaults }: { defaults: Defaults }) {
   const [slot, setSlot] = useState<SlotSelection | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  // form_start: mikro-konvertering vid FÖRSTA interaktionen med formuläret
+  // (fokus på valfritt fält/knapp). Fyras exakt en gång per sidladdning –
+  // användbar som trigger i GTM och för Ads-optimering mot funnel-steg.
+  const formStarted = useRef(false);
+  function onFirstInteraction() {
+    if (formStarted.current) return;
+    formStarted.current = true;
+    trackEvent("form_start", { form: "offert" });
+  }
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -88,7 +99,11 @@ export function OffertForm({ defaults }: { defaults: Defaults }) {
   }
 
   return (
-    <form onSubmit={onSubmit} className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+    <form
+      onSubmit={onSubmit}
+      onFocusCapture={onFirstInteraction}
+      className="grid grid-cols-1 lg:grid-cols-12 gap-8"
+    >
       <div className="lg:col-span-7 space-y-6">
         <Card>
           <FieldHead n="01" title="Vad vill du installera?" />

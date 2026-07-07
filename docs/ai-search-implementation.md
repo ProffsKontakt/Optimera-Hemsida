@@ -148,6 +148,33 @@ En andra granskning av hela implementationen hittade och rättade:
 6. `ComparisonTable`: opaka bakgrunder på sticky-kolumnen (semitransparent
    bakgrund läckte underliggande celler vid horisontell scroll på mobil).
 
+### Rev 3 – geo-personalisering, dimensioneringsformel, Ads-events
+
+1. **Geo-personaliserad hero (ny funktion).** `/api/geo` (edge) läser Vercels
+   IP-geo-headers och matchar **server-side** mot kommun-vitlistan i
+   `CITIES`. Hero-rubriken på startsidan uppgraderas till t.ex. "sol och
+   batteri på Lidingö." ENDAST vid verifierad träff (Sverige + kommun vi
+   arbetar i). Utland/VPN/okänd ort/dev → fallback "i Stockholm." – det kan
+   aldrig stå en utländsk eller obetjänad ort.
+   **SEO-säkerhet:** personaliseringen sker efter hydration som progressiv
+   förbättring; server-HTML:en innehåller alltid den kanoniska
+   Stockholm-copyn, så crawlers/AI ser en stabil, konsekvent rubrik (ingen
+   cloaking, inga geo-varianter i index). Återanvänd via
+   `useVisitorCity()` i `src/lib/use-visitor-city.ts`.
+2. **Batteridimensionering – ny kanonisk metodik.** Schablonen
+   "normalvilla 10–20 kWh" är ersatt överallt med förbrukningsformeln:
+   **batteristorlek ≈ årsförbrukning i kWh ÷ 200–275 kalla dygn**
+   (ex: 15 000 kWh/år ÷ 275 ≈ 55 kWh; spann 55–75 kWh). Uppdaterat i
+   `/solcellsbatteri` (FAQ, takeaways, dimensioneringscallout, priskort),
+   `/fragor-och-svar`, `/metodik`, `llms.txt` och batteri-stadssidornas
+   rekommendationstexter (Solna, Sundbyberg). Källa: Optimera Energis egen
+   dimensioneringspraxis (Julian, 2026-07-07).
+3. **GTM-triggbara events.** `trackEvent()` pushar nu både
+   `dataLayer.push({event})` (krav för GTM Custom Event-triggers → Google
+   Ads-taggar) och `gtag('event')` (GA4). Nya eventet `form_start` +
+   `user_data_ready` för Enhanced Conversions. Fullständig GTM/Ads-
+   checklista i `docs/analytics-ads-setup.md`.
+
 ## 4. Hur systemen fungerar (för framtida underhåll)
 
 ### Metadata
@@ -225,6 +252,11 @@ Använd **bara verifierad företagsdata** (priser, avdrag, specifikationer). Kä
   finns, så kan `Review`/`AggregateRating` läggas till.
 - [ ] **OG-bild per sida**: nya sidor ärver den globala `opengraph-image`.
   Överväg sidspecifika OG-bilder för `/solcellsbatteri`.
+- [ ] **"Vanlig kapacitet"-rutorna på `/batteri/[stad]`** (t.ex. Stockholm
+  "10–30 kWh", Sundbyberg "8–15 kWh") beskriver vad som historiskt
+  installerats och är INTE uppdaterade mot den nya dimensioneringsformeln
+  (årsförbrukning ÷ 200–275). Granska per kommun: stämmer spannen fortfarande,
+  eller ska de höjas/formuleras om? (Jag har inte hittat på nya spann.)
 - [ ] **Draft-guiden `solcellsbatteri-pris`** (noindexad placeholder i
   `src/lib/guides.ts`) överlappar pelarsidans pris-sektion när den publiceras.
   Bestäm före publicering: antingen fördjupa guiden bortom pelarens spann

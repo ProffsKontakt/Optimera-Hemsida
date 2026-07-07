@@ -57,7 +57,7 @@ const FAQ = [
   },
   {
     q: "Hur stort solcellsbatteri behöver jag?",
-    a: "För en normalvilla landar vi oftast på 10–20 kWh. Rätt storlek beror på din dygnsförbrukning, om du har elvärme eller elbil och hur stor din solanläggning är. Vi mäter din timförbrukning innan vi rekommenderar kapacitet, så att du inte betalar för kilowattimmar du aldrig använder. I kalkylatorn kan du testa olika storlekar och se riktningen på återbetalningen.",
+    a: "Dimensionera efter din förbrukning, inte efter en schablon. Vår tumregel: ta husets årsförbrukning i kWh och dela med 200–275 – ungefär så många dygn per år som elen är dyr och batteriet gör full nytta. En villa med 15 000 kWh per år landar då på cirka 55–75 kWh batterikapacitet. Ett hus som förbrukar 70 kWh per dygn har liten nytta av ett litet 10 kWh-batteri – kapaciteten behöver täcka ett helt dygns förbrukning för att verkligen få ner elkostnaden. Vi loggar din timförbrukning innan vi rekommenderar exakt storlek, och i kalkylatorn kan du testa hur olika storlekar påverkar ekonomin.",
   },
   {
     q: "Hur stort är grönt avdrag för solcellsbatteri?",
@@ -219,8 +219,9 @@ export default function SolcellsbatteriPage() {
                 före 48,5 % grönt avdrag.
               </>,
               <>
-                <strong>Storlek:</strong> normalvilla landar oftast på 10–20 kWh
-                – vi mäter din förbrukning först.
+                <strong>Storlek:</strong> tumregeln är årsförbrukning ÷ 200–275
+                kalla dygn – 15 000 kWh/år ger ca 55–75 kWh. Vi mäter din
+                förbrukning först.
               </>,
               <>
                 <strong>Grönt avdrag:</strong> 48,5 % på batteri, tak 50 000 kr
@@ -279,17 +280,17 @@ export default function SolcellsbatteriPage() {
             {
               size: "10 kWh",
               price: "70 000–110 000 kr",
-              body: "Passar en normalvilla som vill kapa kvällstoppar och höja självförbrukningen av solelen.",
+              body: "Täcker ungefär ett dygn på 10 kWh förbrukning – kapar kvällstoppar i hus med låg elförbrukning.",
             },
             {
               size: "15–20 kWh",
               price: "110 000–160 000 kr",
-              body: "Vanligast för villa med elvärme eller elbil, där kvällsförbrukningen är hög.",
+              body: "Täcker ett dygn på 15–20 kWh – för måttlig förbrukning utan elvärme.",
             },
             {
               size: "20–30 kWh",
               price: "130 000–200 000 kr",
-              body: "För stora hus med hög förbrukning och för att maximera intäkt från stödtjänster.",
+              body: "För högre förbrukning och som grund för stödtjänstintäkt. Villor med elvärme landar ofta ännu större.",
             },
           ].map((c) => (
             <div
@@ -314,10 +315,11 @@ export default function SolcellsbatteriPage() {
               Spannen ovan är installerat pris <strong>före</strong> grönt
               avdrag och täcker batteri, växelriktare, montage, kabel och
               driftsättning. Det gröna avdraget på 48,5 % dras sedan direkt på
-              fakturan. Vi fabricerar aldrig en exakt besparing i förväg – det
-              beror på din förbrukning, ditt elområde och din solanläggning.
-              Priset på offerten är priset på fakturan, och exakta siffror
-              räknar en tekniker fram vid hembesöket.
+              fakturan. Villor med elvärme eller hög förbrukning landar ofta på
+              betydligt större bankar än så här – Easyway byggs ut modulärt
+              upp till 61 kWh – och de prissätts vid hembesöket. Vi fabricerar
+              aldrig en exakt besparing i förväg; priset på offerten är priset
+              på fakturan.
             </p>
           </MethodologyCallout>
         </div>
@@ -481,6 +483,21 @@ export default function SolcellsbatteriPage() {
               </p>
             </div>
           ))}
+        </div>
+        <div className="mt-8">
+          <MethodologyCallout title="Tumregeln vi dimensionerar efter">
+            <p>
+              Ta husets <strong>årsförbrukning i kWh och dela med 200–275</strong>{" "}
+              – ungefär så många dygn per år som elen är dyr och batteriet gör
+              full nytta. Exempel: en villa med 15 000 kWh per år ger
+              15 000 ÷ 275 ≈ <strong>55 kWh</strong> (spannet 55–75 kWh
+              beroende på var i intervallet man räknar). Kapaciteten ska räcka
+              för ett helt dygns förbrukning – ett 10 kWh-batteri gör ingen
+              verklig skillnad i ett hus som drar 70 kWh per dygn. Tumregeln
+              verifieras alltid mot din loggade timförbrukning innan vi lämnar
+              offert.
+            </p>
+          </MethodologyCallout>
         </div>
         <div className="mt-8">
           <Link href="/kalkylator" className="btn-primary">
