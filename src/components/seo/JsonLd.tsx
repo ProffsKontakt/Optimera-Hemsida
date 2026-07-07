@@ -308,6 +308,47 @@ export const reservePageSchema = {
   },
 };
 
+/**
+ * Article/TechArticle-schema för informationssidor (pelarsidor, guider,
+ * metodik). AI-search och Googles Article rich results använder headline,
+ * datePublished/dateModified och author/publisher för att förstå att sidan
+ * är redaktionellt innehåll och vem som står bakom det (E-E-A-T).
+ */
+export function articleSchema(input: {
+  headline: string;
+  description: string;
+  url: string;
+  datePublished: string;
+  dateModified: string;
+  /** "Article" (default) eller "TechArticle" för mer teknisk fördjupning. */
+  type?: "Article" | "TechArticle";
+  image?: string;
+}) {
+  const absoluteUrl = input.url.startsWith("http")
+    ? input.url
+    : `${BASE}${input.url}`;
+  return {
+    "@context": "https://schema.org",
+    "@type": input.type ?? "Article",
+    "@id": `${absoluteUrl}#article`,
+    headline: input.headline,
+    description: input.description,
+    url: absoluteUrl,
+    inLanguage: "sv-SE",
+    datePublished: input.datePublished,
+    dateModified: input.dateModified,
+    image: input.image
+      ? input.image.startsWith("http")
+        ? input.image
+        : `${BASE}${input.image}`
+      : `${BASE}/opengraph-image`,
+    isPartOf: { "@id": `${BASE}#website` },
+    mainEntityOfPage: absoluteUrl,
+    author: { "@id": `${BASE}#organization` },
+    publisher: { "@id": `${BASE}#organization` },
+  };
+}
+
 /** Schema för en enskild tjänst. */
 export function serviceSchema(input: {
   name: string;

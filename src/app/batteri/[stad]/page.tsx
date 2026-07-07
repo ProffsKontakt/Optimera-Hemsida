@@ -200,6 +200,13 @@ export default function BatteryCityPage({
           >
             Solceller {city.preposition} {city.name}
           </Link>
+          {/* Korslänk till den generella solcellsbatteri-pelarsidan. */}
+          <Link
+            href="/solcellsbatteri"
+            className="rounded-full border border-indigo/30 bg-indigo/[0.04] px-5 py-2.5 text-[14px] text-indigo hover:border-indigo/60 transition"
+          >
+            Guide: solcellsbatteri till villa
+          </Link>
         </div>
       </Section>
 

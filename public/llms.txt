@@ -28,8 +28,11 @@
 ## Viktiga sidor
 
 - [Startsida](https://optimeraenergi.se): introduktion till hela energiomställningen
-- [Kalkylator](https://optimeraenergi.se/kalkylator): designa anläggningen i 3D, se investering, grönt avdrag, årlig besparing och återbetalningstid i realtid
+- [Solcellsbatteri till villa](https://optimeraenergi.se/solcellsbatteri): pelarsida om solcellsbatteri – pris (ca 70 000–200 000 kr före avdrag), batteristorlek (normalvilla 10–20 kWh), 48,5 % grönt avdrag, återbetalning, batterimärken (Easyway, SAJ HS3, Emaldo) och när det passar
+- [Kalkylator](https://optimeraenergi.se/kalkylator): designa anläggningen i 3D, se investering, grönt avdrag, årlig besparing och återbetalningstid i realtid; exakta siffror räknas fram vid hembesök
 - [Begär offert / boka hembesök](https://optimeraenergi.se/offert): välj hembesök eller telefonkontakt, hembesöket är kostnadsfritt
+- [Frågor och svar](https://optimeraenergi.se/fragor-och-svar): samlade svar om solcellsbatteri, solceller, pris, grönt avdrag och stödtjänster
+- [Metodik](https://optimeraenergi.se/metodik): hur vi väljer produkter (hand-plockat sortiment), sätter pris (offert = faktura), dimensionerar efter förbrukning och när vi säger nej
 - [Om oss](https://optimeraenergi.se/om-oss): teamet, vision, bolagsresan
 - [Kontakt](https://optimeraenergi.se/kontakt): adress, telefon, e-post
 

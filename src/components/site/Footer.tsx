@@ -58,9 +58,13 @@ export function Footer() {
         <div className="md:col-span-2">
           <Heading>Tjänster</Heading>
           <FooterLinks
-            links={VISIBLE_SERVICES.map(
-              (s) => [`/tjanster/${s.slug}`, s.name] as [string, string],
-            )}
+            links={[
+              ...VISIBLE_SERVICES.map(
+                (s) => [`/tjanster/${s.slug}`, s.name] as [string, string],
+              ),
+              // Solcellsbatteri-pelarsidan – nära batteri-tjänsten semantiskt.
+              ["/solcellsbatteri", "Solcellsbatteri"],
+            ]}
           />
         </div>
 
@@ -69,8 +73,10 @@ export function Footer() {
           <FooterLinks
             links={[
               ["/om-oss", "Om oss"],
+              ["/metodik", "Metodik"],
               ["/kontakt", "Kontakt"],
               ["/kalkylator", "Kalkylator"],
+              ["/fragor-och-svar", "Frågor & svar"],
               ["/guider", "Guider"],
               ["/press", "Press"],
               ["/offert", "Begär offert"],
