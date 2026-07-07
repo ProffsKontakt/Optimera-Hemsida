@@ -11,6 +11,7 @@ import {
   faqPageSchema,
   serviceSchema,
   breadcrumbSchema,
+  localBusinessSchema,
 } from "@/components/seo/JsonLd";
 
 export function generateStaticParams() {
@@ -64,6 +65,9 @@ export default function ServicePage({
         })}
       />
       <JsonLd data={faqPageSchema(s.faq)} />
+      {/* Service.provider refererar @id #localbusiness – noden måste
+          emitteras på sidan för att referensen ska resolva. */}
+      <JsonLd data={localBusinessSchema} />
       <JsonLd
         data={breadcrumbSchema([
           { name: "Hem", href: "/" },

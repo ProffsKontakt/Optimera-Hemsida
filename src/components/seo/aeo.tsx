@@ -148,14 +148,18 @@ export function ComparisonTable({
       <div className="overflow-x-auto rounded-3xl border border-ink/10">
         <table className="w-full min-w-[600px] border-collapse text-left text-[14.5px]">
           {caption && <caption className="sr-only">{caption}</caption>}
+          {/* Bakgrunderna på sticky-cellerna måste vara OPAKA – en
+              semitransparent bakgrund läcker underliggande celler när
+              tabellen scrollas horisontellt på mobil. bg-inherit ärver
+              tr-radens (opaka) odd/even-färg. */}
           <thead>
-            <tr className="bg-cream/70">
+            <tr className="bg-cream">
               {columns.map((c, i) => (
                 <th
                   key={i}
                   scope="col"
                   className={`border-b border-ink/10 px-5 py-4 font-mono text-[11px] uppercase tracking-[0.14em] text-ink/60 ${
-                    i === 0 ? "sticky left-0 bg-cream/70" : ""
+                    i === 0 ? "sticky left-0 bg-cream" : ""
                   }`}
                 >
                   {c}
@@ -165,7 +169,7 @@ export function ComparisonTable({
           </thead>
           <tbody>
             {rows.map((r, ri) => (
-              <tr key={ri} className="odd:bg-bone even:bg-cream/30">
+              <tr key={ri} className="odd:bg-bone even:bg-cream">
                 <th
                   scope="row"
                   className="sticky left-0 border-b border-ink/8 bg-inherit px-5 py-4 font-display text-[15px] font-normal tracking-display-tight text-ink"

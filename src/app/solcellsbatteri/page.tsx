@@ -5,6 +5,7 @@ import {
   JsonLd,
   serviceSchema,
   articleSchema,
+  localBusinessSchema,
 } from "@/components/seo/JsonLd";
 import {
   AnswerBox,
@@ -101,6 +102,16 @@ const RELATED = [
     desc: "Bygg sol och batteri i 3D och se riktningen på investering och återbetalning.",
   },
   {
+    href: "/guider/gront-avdrag-2026",
+    label: "Grönt avdrag 2026 – hela guiden",
+    desc: "Avdragstak, regler och fällor för solceller, batteri, laddbox och värmepump.",
+  },
+  {
+    href: "/guider/aterbetalningstid-solceller",
+    label: "Återbetalningstid på solceller",
+    desc: "Varje variabel som påverkar kalkylen – med räkneexempel från Stockholm.",
+  },
+  {
     href: "/tjanster/solpaneler",
     label: "Solpaneler till villa",
     desc: "Solcellerna som laddar batteriet – design efter takets läge och skuggning.",
@@ -141,6 +152,10 @@ export default function SolcellsbatteriPage() {
           serviceType: "Batterilager",
         })}
       />
+      {/* LocalBusiness-noden måste finnas på sidan för att Service.provider
+          (@id #localbusiness) ska resolva i schemagrafen – annars hänger
+          referensen löst. Samma mönster som /batteri/[stad]. */}
+      <JsonLd data={localBusinessSchema} />
       {/* FAQPage-schema emitteras av <FaqBlock> längre ner.
           BreadcrumbList-schema emitteras av <Breadcrumbs> i heron. */}
 
@@ -505,6 +520,16 @@ export default function SolcellsbatteriPage() {
         className="!py-16 md:!py-20"
       >
         <FaqBlock items={FAQ} />
+        <p className="mt-6 text-[14px] text-ink/60">
+          Fler frågor?{" "}
+          <Link
+            href="/fragor-och-svar"
+            className="text-indigo hover:underline underline-offset-2"
+          >
+            Samlade frågor och svar om solceller, batteri och grönt avdrag
+          </Link>
+          .
+        </p>
       </Section>
 
       {/* Relaterat */}

@@ -1,6 +1,6 @@
 # AI-search / AEO / GEO – implementation
 
-_Senast uppdaterad: 2026-07-07_
+_Senast uppdaterad: 2026-07-07 (rev 2 efter adversarial granskning)_
 
 Det här dokumentet beskriver den tekniska och strukturella AI-search-uppgraderingen
 av optimeraenergi.se. Målet är ökad synlighet i answer engines – ChatGPT Search,
@@ -126,6 +126,28 @@ Alla server-renderade, riktig HTML, matchar designsystemet:
 
 ---
 
+### Rev 2 – rättningar efter adversarial granskning
+
+En andra granskning av hela implementationen hittade och rättade:
+
+1. **Schemagraf-bugg:** `/metodik` emitterade `aboutPageSchema`, vars `@id`/`url`
+   pekar på `/om-oss` – fel entitet på fel sida. Borttagen (Article +
+   BreadcrumbList räcker).
+2. **Hängande `@id`-referens:** `Service.provider` pekar på `#localbusiness`,
+   men LocalBusiness-noden emitterades inte på `/solcellsbatteri` eller
+   `/tjanster/[slug]`. Nu emitteras `localBusinessSchema` på båda (samma
+   mönster som `/batteri/[stad]`), så schemagrafen resolvar komplett.
+   **Regel:** varje `@id` som refereras på en sida måste ha sin nod på samma
+   sida (undantag: `#organization`/`#website` som ligger i root-layouten).
+3. **Missade interna länkar:** pelarsidan länkar nu till de befintliga
+   guiderna `/guider/gront-avdrag-2026` och `/guider/aterbetalningstid-solceller`,
+   och till `/fragor-och-svar` under FAQ-sektionen.
+4. **Startsidan** (sajtens starkaste sida) länkar nu till `/fragor-och-svar`
+   och `/solcellsbatteri` med beskrivande ankartext under sin FAQ.
+5. `/metodik`: telefonnumret är nu en `tel:`-länk (pekade tidigare på /kontakt).
+6. `ComparisonTable`: opaka bakgrunder på sticky-kolumnen (semitransparent
+   bakgrund läckte underliggande celler vid horisontell scroll på mobil).
+
 ## 4. Hur systemen fungerar (för framtida underhåll)
 
 ### Metadata
@@ -203,6 +225,11 @@ Använd **bara verifierad företagsdata** (priser, avdrag, specifikationer). Kä
   finns, så kan `Review`/`AggregateRating` läggas till.
 - [ ] **OG-bild per sida**: nya sidor ärver den globala `opengraph-image`.
   Överväg sidspecifika OG-bilder för `/solcellsbatteri`.
+- [ ] **Draft-guiden `solcellsbatteri-pris`** (noindexad placeholder i
+  `src/lib/guides.ts`) överlappar pelarsidans pris-sektion när den publiceras.
+  Bestäm före publicering: antingen fördjupa guiden bortom pelarens spann
+  (t.ex. per-märke-priser) och korslänka, eller ersätt den med den planerade
+  `/solcellsbatteri/pris`-spoken – ha inte två tunna sidor på samma intent.
 
 ---
 

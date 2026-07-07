@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Section } from "@/components/site/Section";
-import { JsonLd, articleSchema, aboutPageSchema } from "@/components/seo/JsonLd";
+import { JsonLd, articleSchema } from "@/components/seo/JsonLd";
 import {
   AnswerBox,
   KeyTakeaways,
@@ -114,7 +114,8 @@ export default function MetodikPage() {
           dateModified: UPDATED,
         })}
       />
-      <JsonLd data={aboutPageSchema} />
+      {/* Obs: aboutPageSchema hör hemma på /om-oss (dess @id/url pekar dit)
+          och ska inte emitteras här – Article + BreadcrumbList räcker. */}
 
       {/* Hero */}
       <section className="container-edge pt-10 md:pt-16 pb-4">
@@ -259,8 +260,18 @@ export default function MetodikPage() {
         />
         <p className="mt-6 text-center text-[13px] text-ink/50">
           Vill du prata direkt? Ring{" "}
-          <Link href="/kontakt" className="text-indigo hover:underline underline-offset-2">
+          <a
+            href="tel:+46763053732"
+            className="text-indigo hover:underline underline-offset-2"
+          >
             076 305 37 32
+          </a>{" "}
+          eller se{" "}
+          <Link
+            href="/kontakt"
+            className="text-indigo hover:underline underline-offset-2"
+          >
+            alla kontaktuppgifter
           </Link>
           .
         </p>
