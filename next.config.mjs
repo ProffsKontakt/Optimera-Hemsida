@@ -22,6 +22,28 @@ const nextConfig = {
   async rewrites() {
     return [{ source: "/favicon.ico", destination: "/icon" }];
   },
+  // Host-konsolidering: www -> apex med permanent 308.
+  //
+  // Bakgrund (GSC-diagnos 2026-07-08): Google indexerade sajten på
+  // www.optimeraenergi.se i maj (och valde www som canonical trots
+  // canonical-taggarna), varpå indexeringen kraschade när www började
+  // redirecta vid Vercel-flytten. Sedan dess ligger apex-URL:erna okrawlade
+  // i "Discovered - currently not indexed". All metadata, sitemap, schema
+  // och canonical pekar på apex (https://optimeraenergi.se) - denna regel
+  // garanterar på app-nivå att www aldrig kan servera innehåll igen,
+  // oavsett hur domänerna är konfigurerade i Vercel-dashboarden.
+  // (Är Vercels domän-redirect redan aktiv träffar regeln aldrig; den är
+  // ett skyddsnät, inte en dubblering.)
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.optimeraenergi.se" }],
+        destination: "https://optimeraenergi.se/:path*",
+        permanent: true,
+      },
+    ];
+  },
   // Säkerhetshuvuden globalt. Google rankar säkra sidor bättre och vissa
   // browsers / scanners (Mozilla Observatory, Lighthouse) ger fail om de
   // saknas. HSTS-värdet följer preload-listans rekommendation (2 år).
