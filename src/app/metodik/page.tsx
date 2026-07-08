@@ -12,7 +12,7 @@ import {
 } from "@/components/seo/aeo";
 
 const PATH = "/metodik";
-const UPDATED = "2026-07-07";
+const UPDATED = "2026-07-08";
 const PUBLISHED = "2026-07-07";
 
 export const metadata = {

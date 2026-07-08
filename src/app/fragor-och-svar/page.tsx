@@ -9,7 +9,7 @@ import {
 } from "@/components/seo/aeo";
 
 const PATH = "/fragor-och-svar";
-const UPDATED = "2026-07-07";
+const UPDATED = "2026-07-08";
 
 export const metadata = {
   title: "Frågor och svar om solceller, batteri och grönt avdrag",

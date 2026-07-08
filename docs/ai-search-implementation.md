@@ -232,15 +232,16 @@ Använd **bara verifierad företagsdata** (priser, avdrag, specifikationer). Kä
 
 ## 6. TODO – kräver manuell faktagranskning
 
-- [ ] **Grönt avdrag-procent (48,5 %)** för batteri används konsekvent på sajten.
-  Verifiera mot Skatteverkets aktuella nivå för "lagring av egenproducerad el"
-  (den lagstadgade skattereduktionen för grön teknik är 50 % 2023→). Om siffran
-  ska ändras – ändra på ett ställe i taget och håll den konsekvent
-  (`/solcellsbatteri`, `/fragor-och-svar`, `/kalkylator`, batteri-stadssidor,
-  `llms.txt`, `catalog.ts`).
-- [ ] **`/om-oss`**: "Medarbetare: 3 (växer till 8)" i bolagsfakta-rutan
-  motsäger rubriken "Sju människor" och `numberOfEmployees: 7` i schemat.
-  Rätta till en konsekvent siffra (påverkar entity-resolution i AI-sök).
+- [x] **Grönt avdrag-procent – VERIFIERAD 2026-07-08.** Skatteverkets nivåer
+  2026: 15 % solceller, 50 % batterilagring och laddbox, av arbets- och
+  materialkostnaden, tak 50 000 kr/person/år (solceller sänktes 20→15 % för
+  slutbetalning efter 30 juni 2025). Sajtens 14,55 %/48,5 % är de effektiva
+  satserna via 97 %-schablonen (när samma företag levererar material och
+  arbete) – korrekt och konsekvent. Ingen ändring behövs. Bevaka framtida
+  budgetändringar årligen.
+- [x] **`/om-oss` medarbetar-inkonsekvens – FIXAD 2026-07-08.**
+  Bolagsfakta-rutan läser nu `TEAM.length` dynamiskt (7), samma källa som
+  rubriken och schemat, så siffran kan inte drifta igen.
 - [ ] **Prisspann** på `/solcellsbatteri` (70 000–200 000 kr) är hämtade från
   batteri-stadssidorna. Bekräfta att spannen fortfarande stämmer mot aktuell
   prislista innan de marknadsförs brett.

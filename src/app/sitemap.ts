@@ -12,7 +12,7 @@ const LAST_MOD = {
   home: "2026-05-24",
   kalkylator: "2026-07-07",
   offert: "2026-05-19",
-  omOss: "2026-05-19",
+  omOss: "2026-07-08",
   kontakt: "2026-05-09",
   tankar: "2026-05-09",
   tjanster: "2026-05-19",
@@ -21,10 +21,11 @@ const LAST_MOD = {
   guiderHub: "2026-05-24",
   press: "2026-05-24",
   easyway: "2026-07-01",
-  // AI-search-pelarsidor (2026-07 upgrade).
-  solcellsbatteri: "2026-07-07",
-  metodik: "2026-07-07",
-  faq: "2026-07-07",
+  // AI-search-pelarsidor (2026-07 upgrade). Bumpade 07-08 när
+  // dimensioneringsmetodiken (årsförbrukning ÷ 200–275) skrevs in.
+  solcellsbatteri: "2026-07-08",
+  metodik: "2026-07-08",
+  faq: "2026-07-08",
 } as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
