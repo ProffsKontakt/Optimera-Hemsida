@@ -10,9 +10,9 @@ import { publishedGuides } from "@/lib/guides";
 // Bumpa endast när innehållet faktiskt ändras.
 const LAST_MOD = {
   home: "2026-05-24",
-  kalkylator: "2026-05-24",
+  kalkylator: "2026-07-07",
   offert: "2026-05-19",
-  omOss: "2026-05-19",
+  omOss: "2026-07-08",
   kontakt: "2026-05-09",
   tankar: "2026-05-09",
   tjanster: "2026-05-19",
@@ -21,6 +21,11 @@ const LAST_MOD = {
   guiderHub: "2026-05-24",
   press: "2026-05-24",
   easyway: "2026-07-01",
+  // AI-search-pelarsidor (2026-07 upgrade). Bumpade 07-08 när
+  // dimensioneringsmetodiken (årsförbrukning ÷ 200–275) skrevs in.
+  solcellsbatteri: "2026-07-08",
+  metodik: "2026-07-08",
+  faq: "2026-07-08",
 } as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -29,9 +34,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     { url: base, lastModified: LAST_MOD.home },
+    // Solcellsbatteri-pelarsidan – kommersiellt viktigaste AI-search-sidan.
+    { url: `${base}/solcellsbatteri`, lastModified: LAST_MOD.solcellsbatteri },
     { url: `${base}/kalkylator`, lastModified: LAST_MOD.kalkylator },
     { url: `${base}/offert`, lastModified: LAST_MOD.offert },
     { url: `${base}/om-oss`, lastModified: LAST_MOD.omOss },
+    { url: `${base}/metodik`, lastModified: LAST_MOD.metodik },
+    { url: `${base}/fragor-och-svar`, lastModified: LAST_MOD.faq },
     { url: `${base}/kontakt`, lastModified: LAST_MOD.kontakt },
     { url: `${base}/tankar`, lastModified: LAST_MOD.tankar },
     { url: `${base}/guider`, lastModified: LAST_MOD.guiderHub },

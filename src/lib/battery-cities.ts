@@ -46,9 +46,9 @@ const CONTENT: BatteryCityContent[] = [
           "Solna ligger gynnsamt för FCR-D och aFRR, de frekvensreglerande stödtjänster där Svenska kraftnät betalar för att ditt batteri stabiliserar elnätet. Vi aktiverar dem via Energy IQ eller Enequi Core och ser i praktiken 8 000–20 000 kr per år tillbaka beroende på batteriets storlek, utöver det du sparar på egen förbrukning.",
       },
       {
-        title: "Rätt storlek, inte störst",
+        title: "Rätt storlek, dimensionerad ur förbrukningen",
         body:
-          "Vi dimensionerar batteriet efter din faktiska timförbrukning, inte efter en broschyr. För en normalvilla i Solna landar vi oftast på 10–20 kWh (SAJ HS3 eller Easyway). Vi mäter ett dygnsmönster innan vi rekommenderar kapacitet, så att du inte betalar för kWh du aldrig använder.",
+          "Vi dimensionerar batteriet efter din faktiska förbrukning, inte efter en broschyr. Tumregeln: årsförbrukningen i kWh delad med 200–275 kalla dygn – en villa med 15 000 kWh per år landar på cirka 55–75 kWh (Easyway byggs ut modulärt, SAJ HS3 i kaskad). Vi mäter ditt dygnsmönster innan vi rekommenderar kapacitet, så att batteriet täcker ett helt dygns förbrukning utan att du betalar för kWh du aldrig använder.",
       },
     ],
   },
@@ -93,7 +93,7 @@ const CONTENT: BatteryCityContent[] = [
       {
         title: "Kompakta lager för små utrymmen",
         body:
-          "I Sundbyberg är platsen för batteriet ofta den begränsande faktorn, inte ekonomin. Väggmonterade enheter på 8–15 kWh räcker långt för ett radhus eller kedjehus och kan placeras i garage, tvättstuga eller förråd. Vi tar med oss allt material från lagret i Solna och drar kabeln dolt där det går.",
+          "I Sundbyberg är platsen för batteriet ofta den begränsande faktorn, inte ekonomin. Väggmonterade och modulära enheter får plats i garage, tvättstuga eller förråd, och storleken dimensionerar vi ur din årsförbrukning (tumregel: årsförbrukning delad med 200–275 kalla dygn) så att kapaciteten täcker ett dygns förbrukning. Vi tar med oss allt material från lagret i Solna och drar kabeln dolt där det går.",
       },
       {
         title: "Maximera självförbrukningen",

@@ -11,6 +11,7 @@ import {
   faqPageSchema,
   serviceSchema,
   breadcrumbSchema,
+  localBusinessSchema,
 } from "@/components/seo/JsonLd";
 
 export function generateStaticParams() {
@@ -64,6 +65,9 @@ export default function ServicePage({
         })}
       />
       <JsonLd data={faqPageSchema(s.faq)} />
+      {/* Service.provider refererar @id #localbusiness – noden måste
+          emitteras på sidan för att referensen ska resolva. */}
+      <JsonLd data={localBusinessSchema} />
       <JsonLd
         data={breadcrumbSchema([
           { name: "Hem", href: "/" },
@@ -109,7 +113,7 @@ export default function ServicePage({
       {s.slug === "batterier" && (
         <>
           <div className="container-edge">
-            <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 border-y border-ink/10 py-5">
+            <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 border-t border-ink/10 py-5">
               <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink/50">
                 Batterier vi säljer
               </span>
@@ -117,6 +121,20 @@ export default function ServicePage({
                 Easyway, Enershare, SAJ, Sigenergy, Emaldo, Sungrow, Growatt
                 och många fler.
               </span>
+            </div>
+            {/* Korslänk till solcellsbatteri-pelarsidan med beskrivande
+                ankartext (pris/storlek/grönt avdrag) – stärker intern länkning
+                mot den kommersiellt viktigaste AI-search-sidan. */}
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-1 border-y border-ink/10 py-5">
+              <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink/50">
+                Guide
+              </span>
+              <Link
+                href="/solcellsbatteri"
+                className="text-[14px] text-indigo hover:underline underline-offset-2"
+              >
+                Solcellsbatteri till villa – pris, storlek och grönt avdrag
+              </Link>
             </div>
           </div>
 

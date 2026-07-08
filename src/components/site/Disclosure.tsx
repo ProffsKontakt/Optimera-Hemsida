@@ -1,12 +1,20 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useId, useState } from "react";
+import { motion } from "framer-motion";
 
 /**
  * Animerad accordion-disclosure. Använder framer-motion för smooth
  * höjd-animation, både vid open och close. Drop-in ersättning för
  * <details><summary>...</summary>...</details>.
+ *
+ * VIKTIGT för AI-search/GEO: svarstexten renderas ALLTID i DOM:en, även när
+ * panelen är kollapsad (`initial={{ height: 0 }}` clippar bara höjden, barnen
+ * finns kvar i server-HTML:en). Tidigare låg svaret bakom `{open && …}` vilket
+ * gjorde att texten saknades helt i initial HTML – då kunde ChatGPT/Claude/
+ * Perplexity/Google AI bara läsa svaret via JSON-LD, aldrig som synlig passage.
+ * Nu är svaret citeringsbart direkt ur markupen. Ingen opacity-döljning
+ * används (undviker "hidden text"-heuristiker); höjden clippar innehållet.
  */
 export function Disclosure({
   question,
@@ -16,6 +24,7 @@ export function Disclosure({
   children: React.ReactNode;
 }) {
   const [open, setOpen] = useState(false);
+  const bodyId = useId();
   return (
     <div className="py-6">
       <button
@@ -23,6 +32,7 @@ export function Disclosure({
         onClick={() => setOpen((v) => !v)}
         className="w-full flex items-start gap-6 justify-between text-left"
         aria-expanded={open}
+        aria-controls={bodyId}
       >
         <span className="font-display text-2xl tracking-display-tight max-w-2xl leading-snug">
           {question}
@@ -37,25 +47,17 @@ export function Disclosure({
           <span className="font-mono text-[14px] leading-none">+</span>
         </span>
       </button>
-      <AnimatePresence initial={false}>
-        {open && (
-          <motion.div
-            key="body"
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{
-              height: { duration: 0.32, ease: [0.32, 0.72, 0, 1] },
-              opacity: { duration: 0.22, ease: "easeOut" },
-            }}
-            style={{ overflow: "hidden" }}
-          >
-            <div className="pt-4 pb-1 max-w-2xl text-ink/70 leading-relaxed">
-              {children}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <motion.div
+        id={bodyId}
+        initial={{ height: 0 }}
+        animate={{ height: open ? "auto" : 0 }}
+        transition={{ height: { duration: 0.32, ease: [0.32, 0.72, 0, 1] } }}
+        style={{ overflow: "hidden" }}
+      >
+        <div className="pt-4 pb-1 max-w-2xl text-ink/70 leading-relaxed">
+          {children}
+        </div>
+      </motion.div>
     </div>
   );
 }

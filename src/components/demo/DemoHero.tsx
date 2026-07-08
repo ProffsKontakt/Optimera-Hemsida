@@ -7,6 +7,7 @@ import { ArrowRight } from "lucide-react";
 import { CanvasErrorBoundary } from "@/components/3d/CanvasErrorBoundary";
 import { SceneFallback } from "@/components/3d/SceneFallback";
 import { Defer } from "@/components/3d/Defer";
+import { useVisitorCity } from "@/lib/use-visitor-city";
 
 /**
  * DEMO-variant av Hero. Skillnader mot live-hero (declutter):
@@ -32,6 +33,10 @@ export function DemoHero({
   heroImageUrl?: string;
   heroImageAlt?: string;
 } = {}) {
+  // Ortsanpassad rubrik – ENDAST vid verifierad träff på en svensk kommun vi
+  // installerar i (vitlista via /api/geo). Utland/VPN/okänd ort → fallback
+  // "i Stockholm." (samma text som i server-HTML:en, dvs det crawlers ser).
+  const visitorCity = useVisitorCity();
   return (
     <section className="relative overflow-hidden">
       <div className="container-edge pt-6 md:pt-10 pb-16 md:pb-24">
@@ -49,7 +54,9 @@ export function DemoHero({
               Optimera Energi,
               <br />
               <span className="italic font-serif text-indigo">
-                sol och batteri i Stockholm.
+                {visitorCity
+                  ? `sol och batteri ${visitorCity.preposition} ${visitorCity.name}.`
+                  : "sol och batteri i Stockholm."}
               </span>
             </h1>
 

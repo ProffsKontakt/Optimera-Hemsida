@@ -125,7 +125,9 @@ export default function AboutPage() {
                 <FactRow k="Org.nummer" v="559375-2206" />
                 <FactRow k="Säte" v="Vallgatan 9, Solna" />
                 <FactRow k="Grundat" v="2026" />
-                <FactRow k="Medarbetare" v="3 (växer till 8 under 2026)" />
+                {/* Dynamisk från TEAM så siffran aldrig driftar mot rubriken
+                    "Sju människor..." och numberOfEmployees i schemat. */}
+                <FactRow k="Medarbetare" v={String(TEAM.length)} />
                 <FactRow k="Auktorisation" v="F-skatt · BAS-U · SEK" />
               </dl>
               <div className="mt-6 pt-5 border-t border-ink/10 flex flex-wrap gap-2 text-[11px] font-mono uppercase tracking-[0.16em] text-ink/65">

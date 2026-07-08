@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { PressBanner } from "@/components/site/PressBanner";
 import { getFeaturedPressRelease } from "@/lib/press";
 import { Disclosure } from "@/components/site/Disclosure";
@@ -127,6 +128,25 @@ export default function HomePage() {
             </Disclosure>
           ))}
         </div>
+        {/* Beskrivande interna länkar från sajtens starkaste sida till
+            FAQ-hubben och solcellsbatteri-pelarsidan (AI-search/PageRank). */}
+        <p className="mt-6 text-[14px] text-ink/60 leading-relaxed">
+          Fler frågor? Läs våra{" "}
+          <Link
+            href="/fragor-och-svar"
+            className="text-indigo hover:underline underline-offset-2"
+          >
+            samlade frågor och svar
+          </Link>
+          . Funderar du på batteri? Läs guiden{" "}
+          <Link
+            href="/solcellsbatteri"
+            className="text-indigo hover:underline underline-offset-2"
+          >
+            solcellsbatteri till villa – pris, storlek och grönt avdrag
+          </Link>
+          .
+        </p>
       </DemoSection>
 
       <DemoSection>

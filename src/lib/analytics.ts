@@ -1,13 +1,22 @@
 /**
- * Tunn GA4-hjälpare. Skickar events till gtag om det finns laddat (och
- * besökaren samtyckt via Cookiebot/Consent Mode). Säker att anropa även
- * när analytics inte är aktivt, då blir det no-op.
+ * Event-hjälpare för GA4 + GTM. Säker att anropa när analytics inte är
+ * aktivt – då blir det no-op.
  *
- * Dessa events är grunden för konverteringsspårning i GA4 och, i nästa steg,
- * import som konverteringar i Google Ads:
- *   - generate_lead   offertformuläret skickat (den primära konverteringen)
- *   - phone_click     klick på tel:-länk
- *   - email_click     klick på mailto:-länk
+ * VIKTIGT – två kanaler, båda behövs:
+ *   1. `dataLayer.push({event: NAMN, ...})` – det ENDA formatet som GTM:s
+ *      Custom Event-triggers kan fyra på. Google Ads konverterings- och
+ *      remarketing-taggar i GTM-containern triggas härifrån.
+ *   2. `gtag('event', NAMN, ...)` – skickar samma event direkt till GA4
+ *      (G-5DY857B8TL). gtag-anrop pushar ett Arguments-objekt till dataLayer
+ *      som GTM-triggers INTE ser, därför räcker inte gtag ensamt.
+ *
+ * Event-taxonomi (se docs/analytics-ads-setup.md för GTM-mappningen):
+ *   - generate_lead   offertformuläret skickat (primär konvertering,
+ *                     med value/currency + services)
+ *   - form_start      första interaktionen med offertformuläret (mikro)
+ *   - phone_click     klick på tel:-länk (mikro)
+ *   - email_click     klick på mailto:-länk (mikro)
+ *   - user_data_ready hashad e-post/telefon för Enhanced Conversions
  */
 declare global {
   interface Window {
@@ -16,14 +25,24 @@ declare global {
   }
 }
 
+/** GTM-vänlig push ({event: ...}-objekt, inte gtag-arguments). */
+export function pushDataLayer(obj: Record<string, unknown>): void {
+  if (typeof window === "undefined") return;
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push(obj);
+}
+
 export function trackEvent(
   name: string,
   params: Record<string, unknown> = {},
 ): void {
-  if (typeof window === "undefined" || typeof window.gtag !== "function") {
-    return;
+  if (typeof window === "undefined") return;
+  // 1) GTM-triggbart event (Ads-taggar i containern).
+  pushDataLayer({ event: name, ...params });
+  // 2) Samma event direkt till GA4 via gtag.
+  if (typeof window.gtag === "function") {
+    window.gtag("event", name, params);
   }
-  window.gtag("event", name, params);
 }
 
 /** True om besökaren samtyckt till marknadsförings-cookies i Cookiebot. */
@@ -60,16 +79,23 @@ function normalizePhoneE164(phone: string): string {
 
 /**
  * Enhanced Conversions: hashar (SHA-256) e-post/telefon klientside och
- * skickar som user_data till Google-taggen INNAN konverteringseventet.
- * Förbättrar matchningsgraden i Google Ads rejält (särskilt under Consent
- * Mode). Skickas BARA om besökaren samtyckt till marknadsföringscookies –
+ * skickar som user_data INNAN konverteringseventet. Förbättrar
+ * matchningsgraden i Google Ads rejält (särskilt under Consent Mode).
+ * Skickas BARA om besökaren samtyckt till marknadsföringscookies –
  * rådatan lämnar aldrig webbläsaren, bara hashen.
+ *
+ * Två mottagare:
+ *   1. gtag('set','user_data',…) – för Google-taggen (gtag-vägen).
+ *   2. dataLayer.push({event:'user_data_ready', user_data:{…}}) – för
+ *      GTM: mappa en Data Layer-variabel `user_data` till Ads-taggens
+ *      "User-provided data"-fält (hashade nycklar sha256_email_address /
+ *      sha256_phone_number accepteras rakt av).
  */
 export async function setEnhancedConversionData(
   email?: string,
   phone?: string,
 ): Promise<void> {
-  if (typeof window === "undefined" || typeof window.gtag !== "function") return;
+  if (typeof window === "undefined") return;
   if (!marketingConsentGranted()) return;
   if (typeof crypto === "undefined" || !crypto.subtle) return;
   const userData: Record<string, string> = {};
@@ -79,7 +105,9 @@ export async function setEnhancedConversionData(
   } catch {
     return;
   }
-  if (Object.keys(userData).length > 0) {
+  if (Object.keys(userData).length === 0) return;
+  if (typeof window.gtag === "function") {
     window.gtag("set", "user_data", userData);
   }
+  pushDataLayer({ event: "user_data_ready", user_data: userData });
 }
