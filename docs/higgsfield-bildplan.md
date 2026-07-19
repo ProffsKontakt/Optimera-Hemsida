@@ -1,9 +1,33 @@
-# Higgsfield-bildplan för optimeraenergi.se
+# AI-bildplan för optimeraenergi.se (fal.ai + Higgsfield)
 
-> Status: bilder genereras via Higgsfield MCP (modell `soul_2`, fotorealistisk
-> editorial-stil). **Inga bilder läggs in på sajten utan Julians godkännande.**
-> Detta dokument är prompt-biblioteket + placeringsplanen så att genereringen
-> går att upprepa/skala när kontot fylls på.
+> Status 2026-07-19: **primärt spår är fal.ai via MCP** (beslut Julian).
+> Higgsfield-kontot är free-plan vars kö aldrig levererade; spåret är parkerat.
+> **Inga bilder läggs in på sajten utan Julians godkännande.**
+> Detta dokument är prompt-biblioteket + placeringsplanen.
+
+## Kopplingen: fal.ai MCP (projektnivå)
+
+- `.mcp.json` i repo-roten pekar på fals officiella hostade MCP-server
+  `https://mcp.fal.ai/mcp` med `Authorization: Bearer ${FAL_KEY}` —
+  nyckeln läses ur miljön och ligger aldrig i git.
+- Krav i Claude Code-miljön (engångskonfig i claude.ai → Code → miljön):
+  1. **Nätverkspolicy:** vitlista `mcp.fal.ai` samt `fal.media` och
+     `v3.fal.media` (CDN där färdiga bilder hämtas).
+  2. **Miljövariabel:** `FAL_KEY` = API-nyckeln från fal.ai-dashboarden.
+  3. Ny session efter ändringarna (MCP-servrar laddas vid sessionsstart).
+- MCP-servern är gratis; man betalar bara per modellkörning (samma pris som
+  direkta API-anrop). claude.ai-connector är inte möjlig ännu (fal saknar
+  OAuth), därav projekt-MCP.
+
+### Modellval per motiv (fal, cirkapriser juli 2026)
+
+| Motiv | Modell på fal | Pris/bild |
+|---|---|---|
+| Människoscener (hembesök, montör, överlämning) | **Seedream 4.5** | ~$0,04 |
+| Produkt/interiör utan människor (batteri i hall) | **FLUX.2 [pro]** | ~$0,03/MP |
+| Hjältebild med hög detalj/text vid behov | Nano Banana 2 / Pro | $0,08–0,13 |
+
+Hela omgång 1 (4 bilder, gärna 2 varianter/motiv = 8 gen) ≈ **$0,3** totalt.
 
 ## Varför
 
