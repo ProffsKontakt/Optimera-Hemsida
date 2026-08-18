@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import { GUIDES } from "./guides";
 import { TEAM } from "./team";
+import { FUNNEL_PRODUCTS } from "./funnels";
 
 /**
  * Media-CMS: admin väljer vilken bild som ligger i vilken "slot" (t.ex. ett
@@ -57,6 +58,15 @@ export function listMediaSlots(): MediaSlot[] {
       label: g.title,
       aspect: "16 / 9",
       hint: "Hero-bild överst i guiden. Helst riktigt installationsfoto.",
+    })),
+    // Produktfoton i offert-funnelns steg 1 (/offert-fb m.fl.). Visas som
+    // färggradient tills ett foto laddats upp.
+    ...FUNNEL_PRODUCTS.map((p) => ({
+      id: p.mediaSlot,
+      group: "Offert-funnel",
+      label: p.title,
+      aspect: "4 / 3",
+      hint: "Produktfoto i funnel-kortet. Helst egen installation, liggande.",
     })),
   ];
 }

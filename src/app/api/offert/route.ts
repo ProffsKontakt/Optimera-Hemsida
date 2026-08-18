@@ -35,6 +35,9 @@ const Schema = z
     contactMethod: z.enum(["hembesok", "telefon"]).default("hembesok"),
     slot: SlotSchema.nullable().optional(),
     services: z.array(z.string()).default([]),
+    // Vilken funnel-variant (t.ex. "offert-fb") leadet kom ifrån. Styr
+    // leadsource i CRM:et så kanalerna kan jämföras. Se src/lib/funnels.ts.
+    funnel: z.string().optional(),
     config: z.record(z.any()).optional(),
     // Annons-attribution för closed-loop. Vidarebefordras till CRM-webhooken
     // så Sentinel HQ kan rapportera affärer tillbaka till Google Ads/GA4.

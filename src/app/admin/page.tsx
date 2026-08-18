@@ -2,7 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { isAdminAuthed } from "@/lib/admin-auth";
 import { AdminTopbar } from "@/components/admin/AdminTopbar";
-import { LightbulbIcon, Briefcase, Newspaper, ArrowRight, ImageIcon, FlaskConical } from "lucide-react";
+import { LightbulbIcon, Briefcase, Newspaper, ArrowRight, ImageIcon, FlaskConical, BarChart3 } from "lucide-react";
 
 export default function AdminHome() {
   if (!process.env.ADMIN_PASSWORD || !isAdminAuthed()) {
@@ -27,6 +27,12 @@ export default function AdminHome() {
         </div>
 
         <div className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-5 max-w-3xl">
+          <Card
+            href="/admin/funnel"
+            icon={<BarChart3 size={20} />}
+            label="Funnel-statistik"
+            body="Leads per kanal-variant (/offert-fb, /offert-ig, /offert-hemsol …) direkt från Optimera Hub. Jämför kanalerna och se senaste webb-leads."
+          />
           <Card
             href="/admin/press"
             icon={<Newspaper size={20} />}

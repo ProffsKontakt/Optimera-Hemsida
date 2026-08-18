@@ -12,6 +12,7 @@
  * team-notiser skickas om needs_claim = true.
  */
 import { getService, type ServiceSlug } from "@/lib/services";
+import { getFunnel } from "@/lib/funnels";
 
 export type CrmSlot =
   | { date: string; time: string; dateLabel: string; weekday: string }
@@ -43,6 +44,8 @@ export type CrmLeadInput = {
   contactMethod: "hembesok" | "telefon";
   slot?: CrmSlot;
   services: string[];
+  /** Funnel-variantens slug (t.ex. "offert-fb"), se src/lib/funnels.ts. */
+  funnel?: string;
   config?: Record<string, unknown>;
   attribution?: CrmAttribution;
 };
@@ -56,6 +59,10 @@ type LeadRow = Record<string, unknown>;
 const SERVICE_INTEREST: Record<string, { col?: string; label: string }> = {
   solpaneler: { col: "interest_solar_panels", label: "Solpaneler" },
   batterier: { col: "interest_battery", label: "Batterier" },
+  "batteri-utbyggnad": {
+    col: "interest_battery_expansion",
+    label: "Utbyggnad av batteri",
+  },
   laddboxar: { col: "interest_ev_charger", label: "Laddbox" },
   vaermepumpar: { col: undefined, label: "Värmepump" },
 };
@@ -131,6 +138,12 @@ export function buildLeadRow(lead: CrmLeadInput, seller: SellerHint): LeadRow {
   const isPlatsbesok = lead.contactMethod === "hembesok";
   const { first, last } = splitName(lead.namn);
   const selected = new Set(lead.services);
+  // Kanal-variant (t.ex. Facebook-funneln) styr leadsource så kanalerna
+  // kan särskiljas i CRM:et. Utan funnel: befintlig Hemsida-konvention.
+  const funnelCfg = lead.funnel ? getFunnel(lead.funnel) : undefined;
+  const leadsource =
+    funnelCfg?.leadsource ??
+    (isPlatsbesok ? "Hemsida (Platsbesök)" : "Hemsida");
 
   const labels = lead.services.map(
     (s) =>
@@ -150,6 +163,7 @@ export function buildLeadRow(lead: CrmLeadInput, seller: SellerHint): LeadRow {
     `Inkommet via optimeraenergi.se (${
       isPlatsbesok ? "hembesök" : "telefonkontakt"
     }).`,
+    funnelCfg ? `Kanal: ${funnelCfg.channel} (funnel /${funnelCfg.slug}).` : null,
     isPlatsbesok && lead.slot
       ? `Önskad tid: ${lead.slot.weekday} ${lead.slot.dateLabel} kl ${lead.slot.time}.`
       : null,
@@ -177,8 +191,12 @@ export function buildLeadRow(lead: CrmLeadInput, seller: SellerHint): LeadRow {
     ...interest,
     intresserad_av: labels.join(", ") || null,
     message: lead.meddelande ?? null,
-    leadsource: isPlatsbesok ? "Hemsida (Platsbesök)" : "Hemsida",
-    form_name: isPlatsbesok ? "Boka hembesök (webb)" : "Begär offert (webb)",
+    leadsource,
+    form_name: funnelCfg
+      ? `Funnel ${funnelCfg.channel} (webb)`
+      : isPlatsbesok
+        ? "Boka hembesök (webb)"
+        : "Begär offert (webb)",
     status: "Open",
     is_platsbesok: isPlatsbesok,
     platsbesok_at: isPlatsbesok ? platsbesokAtISO(lead.slot) : null,
@@ -189,6 +207,8 @@ export function buildLeadRow(lead: CrmLeadInput, seller: SellerHint): LeadRow {
     close_metadata: {
       source: "optimeraenergi.se",
       form: isPlatsbesok ? "Boka hembesök (webb)" : "Begär offert (webb)",
+      funnel: funnelCfg?.slug ?? null,
+      funnel_channel: funnelCfg?.channel ?? null,
       housing_type: lead.boende ?? null,
       services: lead.services,
       suggested_seller: seller,
