@@ -31,7 +31,7 @@
     "name": "William Persson",
     "role": "Säljare",
     "email": "william@optimeraenergi.se",
-    "phone": "",
+    "phone": "+46 70 194 69 81",
     "color": "from-[#4A6B3A] to-[#1A1A17]",
     "bio": "Räknar hellre än överdriver. Går igenom din förbrukning och visar vad som faktiskt lönar sig innan du bestämmer dig."
   },
@@ -40,7 +40,7 @@
     "name": "Kalle Krus",
     "role": "Säljare",
     "email": "kalle@optimeraenergi.se",
-    "phone": "",
+    "phone": "+46 73 121 47 81",
     "color": "from-[#8A5A2B] to-[#2A2A26]",
     "bio": "Rak och lätt att nå. Svarar på frågorna du inte visste att du hade och håller kontakten hela vägen till driftsättning."
   },
@@ -49,7 +49,7 @@
     "name": "Albin Lygdman",
     "role": "Säljare",
     "email": "albin@optimeraenergi.se",
-    "phone": "",
+    "phone": "+46 70 194 69 76",
     "color": "from-[#3E5C7A] to-[#0E0E0C]",
     "bio": "Gillar när kalkylen talar för sig själv. Hjälper dig jämföra alternativ utan säljsnack, med siffrorna på bordet."
   },
@@ -58,7 +58,7 @@
     "name": "Tim Wennberg",
     "role": "Säljare",
     "email": "tim@opimeraenergi.se",
-    "phone": "",
+    "phone": "+46 70 194 69 78",
     "color": "from-[#6B4A7A] to-[#1A1A17]",
     "bio": "God stämning i luren, noggrann i botten. Tar den tid som krävs för att du ska bli nöjd med lösningen, inte bara med priset."
   },
@@ -67,7 +67,7 @@
     "name": "Josef Strand",
     "role": "Säljare",
     "email": "josef@optimeraenergi.se",
-    "phone": "",
+    "phone": "+46 70 194 69 72",
     "color": "from-[#3648C3] to-[#0E0E0C]",
     "bio": "Säger som det är, även när svaret är nej. Ser till att du vet vad som händer härnäst – och att det faktiskt blir gjort."
   },
@@ -76,7 +76,7 @@
     "name": "Jamy Makindu",
     "role": "Säljare",
     "email": "jamy@optimeraenergi.se",
-    "phone": "",
+    "phone": "+46 70 194 69 75",
     "color": "from-[#B86F3C] to-[#2A2A26]",
     "bio": "Aldrig bråttom. Går igenom allt i din takt och ser till att du förstår vad du säger ja till innan du gör det."
   }
