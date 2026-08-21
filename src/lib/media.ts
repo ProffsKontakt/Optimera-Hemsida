@@ -23,12 +23,16 @@ export type MediaSlot = {
   aspect: string;
   /** Hjälptext om vad bilden ska föreställa. */
   hint?: string;
+  /** Visa frostnings-reglage (0–100) för sloten i admin. */
+  frost?: boolean;
 };
 
 export type MediaEntry = {
   url: string;
   alt: string;
   updatedAt?: string;
+  /** Frostningsgrad 0–100 (blur + ljus wash) där sloten stödjer det. */
+  frost?: number;
 };
 
 export type MediaManifest = Record<string, MediaEntry>;
@@ -40,10 +44,11 @@ export function listMediaSlots(): MediaSlot[] {
   return [
     {
       id: "demo:hero-landningsida",
-      group: "Demo",
-      label: "Landningssida – hero-bild",
-      aspect: "4 / 5",
-      hint: "Ersätter 3D-scenen i hero på demo-landningssidan. Stående bild.",
+      group: "Startsida",
+      label: "Hero-bakgrund (första vyn)",
+      aspect: "16 / 10",
+      hint: "Bakgrundsbild för första vyn på startsidan. Frostas enligt reglaget nedan – texten ligger ovanpå.",
+      frost: true,
     },
     ...TEAM.map((m) => ({
       id: `team:${m.id}`,

@@ -62,6 +62,7 @@ export async function POST(req: Request) {
   }
   const slotId = String(form.get("slotId") ?? "");
   const alt = String(form.get("alt") ?? "").slice(0, 300);
+  const frost = parseFrost(form.get("frost"));
   const file = form.get("file");
 
   if (!isValidSlot(slotId)) {
@@ -90,7 +91,12 @@ export async function POST(req: Request) {
 
     const { data, sha } = await readManifest();
     const previousUrl = data[slotId]?.url;
-    data[slotId] = { url: blob.url, alt, updatedAt: new Date().toISOString() };
+    data[slotId] = {
+      url: blob.url,
+      alt,
+      updatedAt: new Date().toISOString(),
+      ...(frost !== undefined ? { frost } : {}),
+    };
     await writeManifest(data, sha, `media: sätt bild för ${slotId}`);
 
     // Rensa gammal blob så vi inte samlar skräp (best effort).
@@ -102,6 +108,55 @@ export async function POST(req: Request) {
   } catch (err) {
     return NextResponse.json(
       { error: "Uppladdning misslyckades", details: String(err) },
+      { status: 502 },
+    );
+  }
+}
+
+/** Klampa frostningsgraden till ett heltal 0–100, eller undefined. */
+function parseFrost(raw: unknown): number | undefined {
+  if (raw === null || raw === undefined || raw === "") return undefined;
+  const n = Math.round(Number(raw));
+  if (!Number.isFinite(n)) return undefined;
+  return Math.min(100, Math.max(0, n));
+}
+
+/**
+ * Uppdatera inställningar (frostning/alt) för en slot som redan har en
+ * bild – utan att ladda upp om bilden.
+ */
+export async function PATCH(req: Request) {
+  if (!isAdminAuthed()) {
+    return NextResponse.json({ error: "unauthorized" }, { status: 401 });
+  }
+  if (!isGitHubConfigured()) {
+    return NextResponse.json({ error: "GitHub env vars saknas" }, { status: 500 });
+  }
+  const body = (await req.json().catch(() => null)) as
+    | { slotId?: string; frost?: unknown; alt?: unknown }
+    | null;
+  const slotId = String(body?.slotId ?? "");
+  if (!isValidSlot(slotId)) {
+    return NextResponse.json({ error: "Okänd slot" }, { status: 400 });
+  }
+  try {
+    const { data, sha } = await readManifest();
+    const entry = data[slotId];
+    if (!entry) {
+      return NextResponse.json(
+        { error: "Ingen bild uppladdad för sloten ännu" },
+        { status: 404 },
+      );
+    }
+    const frost = parseFrost(body?.frost);
+    if (frost !== undefined) entry.frost = frost;
+    if (typeof body?.alt === "string") entry.alt = body.alt.slice(0, 300);
+    entry.updatedAt = new Date().toISOString();
+    await writeManifest(data, sha, `media: uppdatera inställningar för ${slotId}`);
+    return NextResponse.json({ ok: true, entry });
+  } catch (err) {
+    return NextResponse.json(
+      { error: "Uppdatering misslyckades", details: String(err) },
       { status: 502 },
     );
   }

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { PressBanner } from "@/components/site/PressBanner";
 import { getFeaturedPressRelease } from "@/lib/press";
+import { getMedia } from "@/lib/media";
 import { Disclosure } from "@/components/site/Disclosure";
 import { DemoHero } from "@/components/demo/DemoHero";
 import { DemoSection } from "@/components/demo/DemoSection";
@@ -53,6 +54,9 @@ export default function HomePage() {
   // Banderoll bara på landningssidan. Läses server-side, dismissal
   // sker client-side via localStorage i komponenten.
   const featured = getFeaturedPressRelease();
+  // Frostad hero-bakgrund: bild + frostningsgrad väljs i /admin/media
+  // (slot demo:hero-landningsida). Utan bild: ren bone-bakgrund.
+  const heroBg = getMedia("demo:hero-landningsida");
   return (
     <>
       {featured && (
@@ -72,7 +76,11 @@ export default function HomePage() {
         })}
       />
 
-      <DemoHero />
+      <DemoHero
+        heroImageUrl={heroBg?.url}
+        heroImageAlt={heroBg?.alt}
+        heroFrost={heroBg?.frost}
+      />
 
       {/* Tjänster (full vikt) – tre tjänster, rensade kort */}
       <DemoSection

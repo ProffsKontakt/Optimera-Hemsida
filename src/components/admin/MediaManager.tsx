@@ -9,8 +9,9 @@ type Slot = {
   label: string;
   aspect: string;
   hint?: string;
+  frost?: boolean;
 };
-type Entry = { url: string; alt: string; updatedAt?: string };
+type Entry = { url: string; alt: string; updatedAt?: string; frost?: number };
 
 export function MediaManager({
   slots,
@@ -68,6 +69,7 @@ function SlotCard({
   const [file, setFile] = useState<File | null>(null);
   const [localPreview, setLocalPreview] = useState<string | null>(null);
   const [alt, setAlt] = useState(entry?.alt ?? "");
+  const [frost, setFrost] = useState(entry?.frost ?? 50);
   const [busy, setBusy] = useState(false);
   const [msg, setMsg] = useState<string | null>(null);
   const [ok, setOk] = useState(false);
@@ -82,6 +84,32 @@ function SlotCard({
   }
 
   async function save() {
+    // Utan ny fil men med befintlig bild: uppdatera bara inställningarna
+    // (frostning/alt) via PATCH – ingen omuppladdning behövs.
+    if (!file && entry?.url) {
+      setBusy(true);
+      setMsg(null);
+      try {
+        const res = await fetch("/api/admin/media", {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ slotId: slot.id, alt, frost }),
+        });
+        const data = await res.json();
+        if (!res.ok) {
+          setMsg(data.error ?? "Något gick fel.");
+        } else {
+          setOk(true);
+          setMsg("Sparat – live på sajten efter deploy (1-2 min).");
+          onChange({ ...entry, alt, frost });
+        }
+      } catch {
+        setMsg("Nätverksfel.");
+      } finally {
+        setBusy(false);
+      }
+      return;
+    }
     if (!file) {
       setMsg("Välj en bild först.");
       return;
@@ -91,6 +119,7 @@ function SlotCard({
     const fd = new FormData();
     fd.append("slotId", slot.id);
     fd.append("alt", alt);
+    if (slot.frost) fd.append("frost", String(frost));
     fd.append("file", file);
     try {
       const res = await fetch("/api/admin/media", { method: "POST", body: fd });
@@ -100,7 +129,7 @@ function SlotCard({
       } else {
         setOk(true);
         setMsg("Sparat – live på sajten efter deploy (1-2 min).");
-        onChange({ url: data.url, alt: data.alt });
+        onChange({ url: data.url, alt: data.alt, frost });
         setFile(null);
       }
     } catch {
@@ -152,8 +181,23 @@ function SlotCard({
         style={{ aspectRatio: slot.aspect }}
       >
         {preview ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={preview} alt={alt || slot.label} className="absolute inset-0 h-full w-full object-cover" />
+          <>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={preview} alt={alt || slot.label} className="absolute inset-0 h-full w-full object-cover" />
+            {slot.frost && (
+              // Live-förhandsvisning av frostningen, samma mappning som
+              // hero-komponenten (blur 0–20px + bone-wash).
+              <span
+                aria-hidden
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  backdropFilter: `blur(${Math.round(frost * 2) / 10}px)`,
+                  WebkitBackdropFilter: `blur(${Math.round(frost * 2) / 10}px)`,
+                  backgroundColor: `rgba(244, 241, 234, ${0.12 + frost * 0.004})`,
+                }}
+              />
+            )}
+          </>
         ) : (
           <span className="absolute inset-0 grid place-items-center text-ink/40 text-[13px] gap-2">
             <Upload size={18} />
@@ -181,11 +225,35 @@ function SlotCard({
         />
       </label>
 
+      {slot.frost && (
+        <label className="mt-3 block">
+          <span className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.16em] text-ink/45">
+            Frostning
+            <span className="text-ink/60">{frost}%</span>
+          </span>
+          <input
+            type="range"
+            min={0}
+            max={100}
+            step={5}
+            value={frost}
+            onChange={(e) => {
+              setFrost(Number(e.target.value));
+              setOk(false);
+            }}
+            className="mt-1 w-full accent-indigo"
+          />
+          <span className="block text-[11.5px] text-ink/45 leading-snug">
+            0 = skarp bild, 100 = kraftigt frostad. Förhandsvisas ovan.
+          </span>
+        </label>
+      )}
+
       <div className="mt-3 flex items-center gap-2">
         <button
           type="button"
           onClick={save}
-          disabled={busy || !file}
+          disabled={busy || (!file && !entry?.url)}
           className="inline-flex items-center gap-2 rounded-full bg-ink text-bone px-4 py-2 text-[13px] disabled:opacity-40"
         >
           {busy ? <Loader2 size={14} className="animate-spin" /> : ok ? <Check size={14} /> : <Upload size={14} />}

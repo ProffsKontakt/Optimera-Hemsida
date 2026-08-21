@@ -57,7 +57,7 @@ export default function DemoLandingPage() {
   return (
     <>
       <DemoBanner label="Landningsida – demo" />
-      <DemoHero heroImageUrl={hero?.url} heroImageAlt={hero?.alt} />
+      <DemoHero heroImageUrl={hero?.url} heroImageAlt={hero?.alt} heroFrost={hero?.frost} />
 
       {/* Primär sektion: tjänster (full vikt), rensade kort */}
       <DemoSection
