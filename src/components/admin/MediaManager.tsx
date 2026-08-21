@@ -186,16 +186,20 @@ function SlotCard({
             <img src={preview} alt={alt || slot.label} className="absolute inset-0 h-full w-full object-cover" />
             {slot.frost && (
               // Live-förhandsvisning av frostningen, samma mappning som
-              // hero-komponenten (blur 0–20px + bone-wash).
-              <span
-                aria-hidden
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                  backdropFilter: `blur(${Math.round(frost * 2) / 10}px)`,
-                  WebkitBackdropFilter: `blur(${Math.round(frost * 2) / 10}px)`,
-                  backgroundColor: `rgba(244, 241, 234, ${0.12 + frost * 0.004})`,
-                }}
-              />
+              // hero-komponenten (blur 0–20px + bone-wash) inklusive
+              // läsbarhets-scrimsen bakom text-zonerna.
+              <span aria-hidden className="absolute inset-0 pointer-events-none">
+                <span
+                  className="absolute inset-0"
+                  style={{
+                    backdropFilter: `blur(${Math.round(frost * 2) / 10}px)`,
+                    WebkitBackdropFilter: `blur(${Math.round(frost * 2) / 10}px)`,
+                    backgroundColor: `rgba(244, 241, 234, ${0.12 + frost * 0.004})`,
+                  }}
+                />
+                <span className="absolute inset-x-0 top-0 h-[45%] bg-gradient-to-b from-bone/95 via-bone/60 to-transparent" />
+                <span className="absolute inset-x-0 bottom-0 h-[55%] bg-gradient-to-t from-bone via-bone/70 to-transparent" />
+              </span>
             )}
           </>
         ) : (

@@ -72,8 +72,14 @@ export function DemoHero({
               backgroundColor: `rgba(244, 241, 234, ${washAlpha})`,
             }}
           />
-          {/* Mjuk övergång till bone-bakgrunden i sektionen under. */}
-          <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-bone" />
+          {/* Läsbarhets-scrims – ALLTID på, oavsett frostgrad. Ljusa
+              bone-toningar bakom text-zonerna (rubrik uppe, brödtext + CTA
+              nere) så mörk text alltid är läsbar även på mörka foton,
+              medan bilden får synas fritt i mitten. Nedre scrimmen går
+              hela vägen till solid bone och sköter även övergången till
+              sektionen under. */}
+          <div className="absolute inset-x-0 top-0 h-[45%] bg-gradient-to-b from-bone/95 via-bone/60 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-[55%] bg-gradient-to-t from-bone via-bone/70 to-transparent" />
         </div>
       )}
 
