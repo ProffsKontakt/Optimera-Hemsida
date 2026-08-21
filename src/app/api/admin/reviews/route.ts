@@ -18,6 +18,7 @@ const ReviewSchema = z.object({
   author: z.string().min(1).max(80),
   place: z.string().max(80).default(""),
   text: z.string().min(1).max(1200),
+  rating: z.number().int().min(1).max(5).optional(),
   visible: z.boolean().default(true),
 });
 

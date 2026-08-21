@@ -7,6 +7,7 @@ export type TestimonialItem = {
   author: string;
   place: string;
   text: string;
+  rating?: number;
 };
 
 /**
@@ -26,7 +27,18 @@ export function Testimonials({ reviews }: { reviews: TestimonialItem[] }) {
           transition={{ duration: 0.7, delay: i * 0.08 }}
           className="rounded-3xl border border-ink/10 bg-cream/70 p-8 flex flex-col"
         >
-          <div className="font-display text-5xl text-indigo leading-none">"</div>
+          <div className="flex items-start justify-between gap-3">
+            <div className="font-display text-5xl text-indigo leading-none">"</div>
+            {q.rating ? (
+              <span
+                className="text-sun text-[15px] tracking-[0.1em] pt-1"
+                aria-label={`${q.rating} av 5 stjärnor`}
+              >
+                {"★".repeat(q.rating)}
+                <span className="text-ink/15">{"★".repeat(5 - q.rating)}</span>
+              </span>
+            ) : null}
+          </div>
           <blockquote className="mt-2 font-display text-[20px] tracking-display-tight leading-snug">
             {q.text}
           </blockquote>

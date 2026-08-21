@@ -18,6 +18,7 @@ type Review = {
   author: string;
   place: string;
   text: string;
+  rating?: number;
   visible: boolean;
 };
 
@@ -159,15 +160,34 @@ export function ReviewsManager({ initial }: { initial: Review[] }) {
                 label="Namn (som på Reco)"
                 value={r.author}
                 onChange={(v) => update(i, { author: v })}
-                placeholder="T.ex. Familjen Lindh"
+                placeholder="T.ex. Hans B"
               />
               <Field
-                label="Ort · tjänst"
+                label="Ort/datum · källa"
                 value={r.place}
                 onChange={(v) => update(i, { place: v })}
-                placeholder="T.ex. Vaxholm · Sol + batteri"
+                placeholder="T.ex. Reco · augusti 2026"
               />
             </div>
+            <label className="mt-3 block max-w-[180px]">
+              <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink/45">
+                Stjärnor (1–5, valfritt)
+              </span>
+              <input
+                type="number"
+                min={1}
+                max={5}
+                step={1}
+                value={r.rating ?? ""}
+                onChange={(e) => {
+                  const v = e.target.value;
+                  update(i, {
+                    rating: v === "" ? undefined : Math.min(5, Math.max(1, Number(v))),
+                  });
+                }}
+                className="mt-1 w-full rounded-xl border border-ink/15 bg-bone px-3 py-2 text-[14px] outline-none focus:border-indigo"
+              />
+            </label>
             <label className="mt-3 block">
               <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink/45">
                 Recensionstext

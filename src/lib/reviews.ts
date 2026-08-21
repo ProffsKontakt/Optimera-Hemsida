@@ -17,6 +17,8 @@ export type Review = {
   /** Ort + ev. tjänst, t.ex. "Vaxholm · Sol + batteri". */
   place: string;
   text: string;
+  /** Stjärnbetyg 1–5 från Reco (valfritt, visas som stjärnor på kortet). */
+  rating?: number;
   /** Visas på sajten? Låter er ha hela Reco-arkivet här men bara lyfta de bästa. */
   visible: boolean;
 };
@@ -67,13 +69,21 @@ export function getAllReviews(): Review[] {
       if (Array.isArray(raw)) {
         const valid = raw.filter(isValidReview);
         if (valid.length > 0) {
-          return valid.map((r) => ({
-            id: r.id,
-            author: r.author,
-            place: typeof r.place === "string" ? r.place : "",
-            text: r.text,
-            visible: r.visible !== false,
-          }));
+          return valid.map((r) => {
+            const rawRating = (r as { rating?: unknown }).rating;
+            const rating =
+              typeof rawRating === "number" && rawRating >= 1 && rawRating <= 5
+                ? Math.round(rawRating)
+                : undefined;
+            return {
+              id: r.id,
+              author: r.author,
+              place: typeof r.place === "string" ? r.place : "",
+              text: r.text,
+              ...(rating !== undefined ? { rating } : {}),
+              visible: r.visible !== false,
+            };
+          });
         }
       }
     }

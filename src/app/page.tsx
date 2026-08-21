@@ -91,6 +91,19 @@ export default function HomePage() {
         className="!py-16 md:!py-24"
       >
         <Testimonials reviews={getVisibleReviews()} />
+        {/* Länk till källan. Snittbetyget uppdateras manuellt vid behov
+            (kontrollera på reco.se/optimera-energi). */}
+        <p className="mt-8 text-[14px] text-ink/60">
+          <span className="text-sun">★</span> 4,7 av 5 i betyg –{" "}
+          <a
+            href="https://www.reco.se/optimera-energi"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-4 decoration-ink/30 hover:text-ink hover:decoration-ink/60 transition"
+          >
+            läs alla omdömen på Reco.se
+          </a>
+        </p>
       </DemoSection>
 
       {/* Systemet: sol + batteri + laddbox som EN helhet. Ersätter den
