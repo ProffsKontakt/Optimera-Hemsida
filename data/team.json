@@ -52,5 +52,32 @@
     "phone": "",
     "color": "from-[#3E5C7A] to-[#0E0E0C]",
     "bio": "Gillar när kalkylen talar för sig själv. Hjälper dig jämföra alternativ utan säljsnack, med siffrorna på bordet."
+  },
+  {
+    "id": "tim",
+    "name": "Tim Wennberg",
+    "role": "Säljare",
+    "email": "tim@opimeraenergi.se",
+    "phone": "",
+    "color": "from-[#6B4A7A] to-[#1A1A17]",
+    "bio": "God stämning i luren, noggrann i botten. Tar den tid som krävs för att du ska bli nöjd med lösningen, inte bara med priset."
+  },
+  {
+    "id": "josef",
+    "name": "Josef Strand",
+    "role": "Säljare",
+    "email": "josef@optimeraenergi.se",
+    "phone": "",
+    "color": "from-[#3648C3] to-[#0E0E0C]",
+    "bio": "Säger som det är, även när svaret är nej. Ser till att du vet vad som händer härnäst – och att det faktiskt blir gjort."
+  },
+  {
+    "id": "jamy",
+    "name": "Jamy Makindu",
+    "role": "Säljare",
+    "email": "jamy@optimeraenergi.se",
+    "phone": "",
+    "color": "from-[#B86F3C] to-[#2A2A26]",
+    "bio": "Aldrig bråttom. Går igenom allt i din takt och ser till att du förstår vad du säger ja till innan du gör det."
   }
 ]
