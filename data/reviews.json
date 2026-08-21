@@ -1,0 +1,23 @@
+[
+  {
+    "id": "lindh-vaxholm",
+    "author": "Familjen Lindh",
+    "place": "Vaxholm · Sol + batteri",
+    "text": "En jättetrevlig och kunnig kille kom faktiskt över med kanelbullar och stannade i två timmar för att få fram vilken lösning som var bäst för oss. Han pitchade inget utan var genuin och hjälpte oss. Han och hans kollega tog ett varv runt huset och ritade senare upp en lösning som faktiskt funkar för vårt skogshem. Två år senare är vi helt självgående på vår- och sommarhalvåret, med riktigt låga räkningar på höst- och vinterhalvåret. Kan varmt rekommendera Dexter och hans gäng.",
+    "visible": true
+  },
+  {
+    "id": "berglund-saltsjobaden",
+    "author": "Anna Berglund",
+    "place": "Saltsjöbaden · Bergvärme",
+    "text": "Det är första gången jag känt att en elfirma faktiskt bryr sig om hela huset. De ville se min radiatorkurva innan de pratade pump.",
+    "visible": false
+  },
+  {
+    "id": "hassan-erik-bromma",
+    "author": "Hassan & Erik",
+    "place": "Bromma · Sol + laddbox",
+    "text": "Petter borrade nya kabelvägar i en dag bara för att det skulle se snyggt ut. Det är en sån sak man inte vet att man vill ha förrän man får det.",
+    "visible": true
+  }
+]

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { isAdminAuthed } from "@/lib/admin-auth";
 import { AdminTopbar } from "@/components/admin/AdminTopbar";
-import { LightbulbIcon, Briefcase, Newspaper, ArrowRight, ImageIcon, FlaskConical, BarChart3, Users } from "lucide-react";
+import { LightbulbIcon, Briefcase, Newspaper, ArrowRight, ImageIcon, FlaskConical, BarChart3, Users, MessageSquareQuote } from "lucide-react";
 
 export default function AdminHome() {
   if (!process.env.ADMIN_PASSWORD || !isAdminAuthed()) {
@@ -38,6 +38,12 @@ export default function AdminHome() {
             icon={<Newspaper size={20} />}
             label="Press"
             body="Skriv, redigera och publicera pressmeddelanden. Varje publicering commitar till repo:t och deployar inom 1-2 minuter."
+          />
+          <Card
+            href="/admin/recensioner"
+            icon={<MessageSquareQuote size={20} />}
+            label="Recensioner"
+            body="Kuratera vilka Reco-recensioner som visas på startsidan: klistra in, växla Visas/Dold, ändra ordning."
           />
           <Card
             href="/admin/team"

@@ -5,8 +5,9 @@ import { getMedia } from "@/lib/media";
 import { Disclosure } from "@/components/site/Disclosure";
 import { DemoHero } from "@/components/demo/DemoHero";
 import { DemoSection } from "@/components/demo/DemoSection";
-import { DemoServicesGrid } from "@/components/demo/DemoServicesGrid";
 import { DemoBrandRow } from "@/components/demo/DemoBrandRow";
+import { EnergySystem } from "@/components/home/EnergySystem";
+import { getVisibleReviews } from "@/lib/reviews";
 import { DemoProcess } from "@/components/demo/DemoProcess";
 import { DemoManifesto } from "@/components/demo/DemoManifesto";
 import { HousecallStrip } from "@/components/home/HousecallStrip";
@@ -82,30 +83,33 @@ export default function HomePage() {
         heroFrost={heroBg?.frost}
       />
 
-      {/* Tjänster (full vikt) – tre tjänster, rensade kort */}
+      {/* Social proof DIREKT under hero. Kureras i /admin/recensioner,
+          källa: företagets Reco-profil. */}
       <DemoSection
-        eyebrow="Allt under ett tak"
+        eyebrow="Recensioner · via Reco"
+        title={<>Kunderna säger det bäst.</>}
+        className="!py-16 md:!py-24"
+      >
+        <Testimonials reviews={getVisibleReviews()} />
+      </DemoSection>
+
+      {/* Systemet: sol + batteri + laddbox som EN helhet. Ersätter den
+          gamla tjänste-griden; korten länkar till tjänstesidorna. */}
+      <DemoSection
+        eyebrow="Så går det ihop"
         title={
           <>
-            Tre tjänster.{" "}
-            <span className="italic font-serif text-indigo">Ett team.</span>
+            Sol, batteri och laddbox.{" "}
+            <span className="italic font-serif text-indigo">Ett system.</span>
           </>
         }
-        intro="När sol, batteri och laddning pratar med varandra blir helheten större än delarna."
+        intro="Var för sig sänker de räkningen. Tillsammans gör de villan energisnål – och i bästa fall går den plus över året."
       >
-        <DemoServicesGrid />
+        <EnergySystem />
       </DemoSection>
 
       {/* Lugn statisk varumärkesrad */}
       <DemoBrandRow />
-
-      {/* Social proof tidigt – tystare sektion */}
-      <DemoSection
-        title={<>Recensioner från riktiga kunder.</>}
-        className="!py-16 md:!py-24"
-      >
-        <Testimonials />
-      </DemoSection>
 
       {/* Konsoliderat "Så jobbar vi" – ETT huvud i stället för tre sektioner */}
       <DemoSection eyebrow="Så jobbar vi" title={<>Sex steg, inga genvägar.</>}>

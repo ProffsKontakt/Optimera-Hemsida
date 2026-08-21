@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import { isAdminAuthed } from "@/lib/admin-auth";
 import { getMedia } from "@/lib/media";
+import { getVisibleReviews } from "@/lib/reviews";
 import { DemoBanner } from "@/components/admin/DemoBanner";
 import { DemoHero } from "@/components/demo/DemoHero";
 import { DemoServicesGrid } from "@/components/demo/DemoServicesGrid";
@@ -81,7 +82,7 @@ export default function DemoLandingPage() {
         title={<>Recensioner från riktiga kunder.</>}
         className="!py-16 md:!py-24"
       >
-        <Testimonials />
+        <Testimonials reviews={getVisibleReviews()} />
       </DemoSection>
 
       {/* Konsoliderat "Så jobbar vi" – ETT huvud istället för tre sektioner */}
