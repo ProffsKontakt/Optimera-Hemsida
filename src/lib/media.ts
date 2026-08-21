@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { GUIDES } from "./guides";
-import { TEAM } from "./team";
+import { getTeam } from "./team";
 import { FUNNEL_PRODUCTS } from "./funnels";
 
 /**
@@ -46,11 +46,13 @@ export function listMediaSlots(): MediaSlot[] {
       id: "demo:hero-landningsida",
       group: "Startsida",
       label: "Hero-bakgrund (första vyn)",
-      aspect: "16 / 10",
-      hint: "Mobil: frostad fullskärmsbakgrund bakom hero-texten (frostgrad enligt reglaget). Desktop: bilden visas i hero-kortet i stället för 3D-huset.",
+      // Stående förhandsvisning – bilden används främst som mobilens
+      // fullskärmsbakgrund (porträttläge) och beskärs med object-cover.
+      aspect: "9 / 16",
+      hint: "STÅENDE bild. Mobil: frostad fullskärmsbakgrund bakom hero-texten (frostgrad enligt reglaget). Desktop: bilden visas i hero-kortet i stället för 3D-huset.",
       frost: true,
     },
-    ...TEAM.map((m) => ({
+    ...getTeam().map((m) => ({
       id: `team:${m.id}`,
       group: "Team (om-oss)",
       label: m.name,

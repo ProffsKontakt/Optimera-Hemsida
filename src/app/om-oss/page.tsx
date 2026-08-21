@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Mail, Phone, ArrowRight } from "lucide-react";
 import { Section } from "@/components/site/Section";
 import { BrandPanel } from "@/components/site/BrandPanel";
-import { TEAM } from "@/lib/team";
+import { getTeam } from "@/lib/team";
 import { getMedia } from "@/lib/media";
 import {
   JsonLd,
@@ -60,35 +60,48 @@ const TIMELINE = [
 
 // LocalBusiness berikat med founder + employee + foundingDate-data
 // specifikt för /om-oss. Spreadar bas-schemat och lägger Person-arrays.
-const teamLocalBusinessSchema = {
-  ...localBusinessSchema,
-  founder: TEAM.filter((m) => m.role.includes("Grundare")).map((m) => ({
-    "@type": "Person",
-    name: m.name,
-    jobTitle: m.role,
-    email: m.email,
-    ...(m.phone ? { telephone: `+46${m.phone.replace(/^0/, "")}` } : {}),
-  })),
-  employee: TEAM.map((m) => ({
-    "@type": "Person",
-    name: m.name,
-    jobTitle: m.role,
-    email: m.email,
-    ...(m.phone ? { telephone: `+46${m.phone.replace(/^0/, "")}` } : {}),
-  })),
-  foundingDate: "2026",
-  foundingLocation: {
-    "@type": "Place",
-    name: "Solna, Sverige",
-  },
-  numberOfEmployees: TEAM.length,
-};
+// Byggs från getTeam() så admin-redigeringar (/admin/team) slår igenom.
+function teamLocalBusinessSchema(team: ReturnType<typeof getTeam>) {
+  return {
+    ...localBusinessSchema,
+    founder: team
+      .filter((m) => m.role.includes("Grundare"))
+      .map((m) => ({
+        "@type": "Person",
+        name: m.name,
+        jobTitle: m.role,
+        email: m.email,
+        ...(m.phone ? { telephone: `+46${m.phone.replace(/^0/, "")}` } : {}),
+      })),
+    employee: team.map((m) => ({
+      "@type": "Person",
+      name: m.name,
+      jobTitle: m.role,
+      email: m.email,
+      ...(m.phone ? { telephone: `+46${m.phone.replace(/^0/, "")}` } : {}),
+    })),
+    foundingDate: "2026",
+    foundingLocation: {
+      "@type": "Place",
+      name: "Solna, Sverige",
+    },
+    numberOfEmployees: team.length,
+  };
+}
+
+// Rubriken räknas från teamlistan så den aldrig ljuger när teamet ändras.
+const COUNT_WORDS = [
+  "Noll", "En", "Två", "Tre", "Fyra", "Fem", "Sex", "Sju", "Åtta", "Nio",
+  "Tio", "Elva", "Tolv",
+];
 
 export default function AboutPage() {
+  const team = getTeam();
+  const countWord = COUNT_WORDS[team.length] ?? String(team.length);
   return (
     <>
       <JsonLd data={aboutPageSchema} />
-      <JsonLd data={teamLocalBusinessSchema} />
+      <JsonLd data={teamLocalBusinessSchema(team)} />
       <JsonLd
         data={breadcrumbSchema([
           { name: "Hem", href: "/" },
@@ -127,7 +140,7 @@ export default function AboutPage() {
                 <FactRow k="Grundat" v="2026" />
                 {/* Dynamisk från TEAM så siffran aldrig driftar mot rubriken
                     "Sju människor..." och numberOfEmployees i schemat. */}
-                <FactRow k="Medarbetare" v={String(TEAM.length)} />
+                <FactRow k="Medarbetare" v={String(team.length)} />
                 <FactRow k="Auktorisation" v="F-skatt · BAS-U · SEK" />
               </dl>
               <div className="mt-6 pt-5 border-t border-ink/10 flex flex-wrap gap-2 text-[11px] font-mono uppercase tracking-[0.16em] text-ink/65">
@@ -264,12 +277,12 @@ export default function AboutPage() {
       {/* Team */}
       <Section
         eyebrow="Teamet"
-        title={<>Sju människor som svarar i telefonen.</>}
+        title={<>{countWord} människor som svarar i telefonen.</>}
         intro="Du får aldrig en växel eller en chatt-bot. Du pratar med en av oss, varje gång."
         className="!py-16 md:!py-20"
       >
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {TEAM.map((m) => {
+          {team.map((m) => {
             const photo = getMedia(`team:${m.id}`);
             return (
             <article

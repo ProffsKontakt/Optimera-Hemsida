@@ -2,7 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { isAdminAuthed } from "@/lib/admin-auth";
 import { AdminTopbar } from "@/components/admin/AdminTopbar";
-import { LightbulbIcon, Briefcase, Newspaper, ArrowRight, ImageIcon, FlaskConical, BarChart3 } from "lucide-react";
+import { LightbulbIcon, Briefcase, Newspaper, ArrowRight, ImageIcon, FlaskConical, BarChart3, Users } from "lucide-react";
 
 export default function AdminHome() {
   if (!process.env.ADMIN_PASSWORD || !isAdminAuthed()) {
@@ -38,6 +38,12 @@ export default function AdminHome() {
             icon={<Newspaper size={20} />}
             label="Press"
             body="Skriv, redigera och publicera pressmeddelanden. Varje publicering commitar till repo:t och deployar inom 1-2 minuter."
+          />
+          <Card
+            href="/admin/team"
+            icon={<Users size={20} />}
+            label="Team"
+            body="Redigera vilka som visas på om-oss: namn, roller, kontaktuppgifter, bio och ordning. Foton laddas upp under Media."
           />
           <Card
             href="/admin/media"

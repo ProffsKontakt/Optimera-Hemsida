@@ -1,6 +1,16 @@
+import fs from "fs";
+import path from "path";
+
 /**
- * Teamet bakom Optimera Energi. Delas mellan om-oss-sidan och media-CMS:en
- * (admin) så att team-foto-slots och visningen pekar på samma personer.
+ * Teamet bakom Optimera Energi.
+ *
+ * Redigeras i /admin/team (namn, roll, mail, telefon, bio, ordning,
+ * lägga till/ta bort). Ändringar sparas i data/team.json via en GitHub-
+ * commit (samma mönster som press- och media-CMS:en) och är live efter
+ * auto-deployen (1–2 min). Foton laddas upp i /admin/media – slots
+ * (team:<id>) skapas automatiskt från listan här.
+ *
+ * DEFAULT_TEAM används bara om data/team.json saknas/är trasig.
  */
 export type TeamMember = {
   /** Stabil nyckel för media-slot (team:<id>). Ändra aldrig i efterhand. */
@@ -14,7 +24,18 @@ export type TeamMember = {
   bio: string;
 };
 
-export const TEAM: TeamMember[] = [
+/** Gradienter som auto-tilldelas nya medlemmar (cyklar på index). */
+export const TEAM_COLORS = [
+  "from-[#3648C3] to-[#0E0E0C]",
+  "from-[#B86F3C] to-[#2A2A26]",
+  "from-[#0a3a4e] to-[#1A1A17]",
+  "from-[#4A6B3A] to-[#1A1A17]",
+  "from-[#8A5A2B] to-[#2A2A26]",
+  "from-[#3E5C7A] to-[#0E0E0C]",
+  "from-[#6B4A7A] to-[#1A1A17]",
+];
+
+export const DEFAULT_TEAM: TeamMember[] = [
   {
     id: "viktor",
     name: "Viktor Tiberg",
@@ -69,13 +90,54 @@ export const TEAM: TeamMember[] = [
     color: "from-[#3E5C7A] to-[#0E0E0C]",
     bio: "Gillar när kalkylen talar för sig själv. Hjälper dig jämföra alternativ utan säljsnack, med siffrorna på bordet.",
   },
-  {
-    id: "linus",
-    name: "Linus von Bahr",
-    role: "Säljare",
-    email: "linus@optimeraenergi.se",
-    phone: "",
-    color: "from-[#6B4A7A] to-[#1A1A17]",
-    bio: "Lugn och metodisk. Ser till att du förstår varje rad i offerten innan du skriver på, inga överraskningar efteråt.",
-  },
 ];
+
+const TEAM_PATH = path.join(process.cwd(), "data", "team.json");
+
+function isValidMember(m: unknown): m is TeamMember {
+  if (!m || typeof m !== "object") return false;
+  const x = m as Record<string, unknown>;
+  return (
+    typeof x.id === "string" &&
+    x.id.length > 0 &&
+    typeof x.name === "string" &&
+    x.name.length > 0 &&
+    typeof x.role === "string"
+  );
+}
+
+/**
+ * Läs teamet från data/team.json (admin-redigerat), annars DEFAULT_TEAM.
+ * Saknade fält fylls med tomma strängar + auto-färg så gamla poster
+ * aldrig kraschar renderingen.
+ */
+export function getTeam(): TeamMember[] {
+  try {
+    if (fs.existsSync(TEAM_PATH)) {
+      const raw = JSON.parse(fs.readFileSync(TEAM_PATH, "utf-8"));
+      if (Array.isArray(raw)) {
+        const valid = raw.filter(isValidMember);
+        if (valid.length > 0) {
+          return valid.map((m, i) => ({
+            id: m.id,
+            name: m.name,
+            role: m.role ?? "",
+            email: typeof m.email === "string" ? m.email : "",
+            phone: typeof m.phone === "string" ? m.phone : "",
+            bio: typeof m.bio === "string" ? m.bio : "",
+            color:
+              typeof m.color === "string" && m.color
+                ? m.color
+                : TEAM_COLORS[i % TEAM_COLORS.length],
+          }));
+        }
+      }
+    }
+  } catch {
+    /* fall through till default */
+  }
+  return DEFAULT_TEAM;
+}
+
+/** @deprecated Använd getTeam() – behålls för bakåtkompatibilitet. */
+export const TEAM = DEFAULT_TEAM;
