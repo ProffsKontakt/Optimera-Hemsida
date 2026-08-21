@@ -84,18 +84,31 @@ export function DemoHero({
       )}
 
       <div className="container-edge relative">
-        <div className="flex min-h-[calc(100svh-8.5rem)] flex-col pt-5 pb-10 md:min-h-0 md:pt-10 md:pb-24 lg:grid lg:grid-cols-12 lg:gap-12 lg:items-end">
+        <div className="flex min-h-[calc(100svh-8.5rem)] flex-col pt-5 pb-10 md:min-h-0 md:pt-10 md:pb-24 lg:grid lg:grid-cols-12 lg:gap-12 lg:items-center">
           <div className="relative flex flex-1 flex-col lg:flex-none lg:col-span-7">
             <span
               aria-hidden
               className="hidden md:block brand-stripe absolute -left-4 top-2 h-24"
             />
+            {/* Reco-betyget som förtroende-pill (endast desktop) – fyller
+                vänsterytan med social proof i stället för luft. */}
+            <a
+              href="https://www.reco.se/optimera-energi"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden md:inline-flex w-fit items-center gap-2 rounded-full border border-ink/12 bg-cream/80 px-4 py-2 mb-7 text-[13px] text-ink/75 hover:border-ink/35 hover:text-ink transition"
+            >
+              <span className="text-sun tracking-[0.08em]">★★★★★</span>
+              <span className="font-medium">4,7 av 5</span>
+              <span className="text-ink/50">på Reco</span>
+            </a>
+
             {/* Mobil: bara stora rubriken högst upp. Eyebrow endast desktop. */}
             <div className="eyebrow hidden md:block">
               Optimera Energi · Byggd på kloka tankar · Stockholm 2026
             </div>
 
-            <h1 className="mt-0 md:mt-6 font-display text-[44px] md:text-[64px] leading-[1.02] tracking-display-tight">
+            <h1 className="mt-0 md:mt-6 font-display text-[44px] md:text-[64px] lg:text-[76px] leading-[1.02] tracking-display-tight">
               Optimera Energi,
               <br />
               <span className="italic font-serif text-indigo">
