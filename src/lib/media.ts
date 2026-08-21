@@ -47,7 +47,7 @@ export function listMediaSlots(): MediaSlot[] {
       group: "Startsida",
       label: "Hero-bakgrund (första vyn)",
       aspect: "16 / 10",
-      hint: "Bakgrundsbild för första vyn på startsidan. Frostas enligt reglaget nedan – texten ligger ovanpå.",
+      hint: "Mobil: frostad fullskärmsbakgrund bakom hero-texten (frostgrad enligt reglaget). Desktop: bilden visas i hero-kortet i stället för 3D-huset.",
       frost: true,
     },
     ...TEAM.map((m) => ({
