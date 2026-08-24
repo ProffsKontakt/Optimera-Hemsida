@@ -1,6 +1,5 @@
 import { notFound } from "next/navigation";
-import { FUNNELS, FUNNEL_PRODUCTS, getFunnel } from "@/lib/funnels";
-import { getMedia } from "@/lib/media";
+import { FUNNELS, getFunnel } from "@/lib/funnels";
 import { FunnelWizard } from "@/components/funnel/FunnelWizard";
 
 /**
@@ -34,15 +33,9 @@ export default function FunnelPage({ params }: { params: { funnel: string } }) {
   const funnel = getFunnel(params.funnel);
   if (!funnel) notFound();
 
-  // Produktfoton väljs i /admin/media (grupp "Offert-funnel"). Tills dess
-  // visas gradient-fallbacks. Läses server-side, skickas ner som props.
-  const productImages = Object.fromEntries(
-    FUNNEL_PRODUCTS.map((p) => [p.mediaSlot, getMedia(p.mediaSlot)]),
-  );
-
   return (
     <section className="container-edge pt-8 md:pt-14 pb-24">
-      <FunnelWizard funnel={funnel} productImages={productImages} />
+      <FunnelWizard funnel={funnel} />
     </section>
   );
 }

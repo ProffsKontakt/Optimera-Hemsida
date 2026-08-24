@@ -31,11 +31,16 @@ import { CalendarPicker, type SlotSelection } from "@/components/offert/Calendar
  * /offert/klar fyrar generate_lead precis som vanligt.
  */
 
-const PRODUCT_ICONS: Record<string, React.ReactNode> = {
-  solpaneler: <Sun size={15} />,
-  batterier: <BatteryCharging size={15} />,
-  "batteri-utbyggnad": <Layers size={15} />,
-  laddboxar: <PlugZap size={15} />,
+// Komponent-referenser så samma ikon kan renderas stor (kort-plattan)
+// och liten där det behövs.
+const PRODUCT_ICONS: Record<
+  string,
+  React.ComponentType<{ size?: number | string }>
+> = {
+  solpaneler: Sun,
+  batterier: BatteryCharging,
+  "batteri-utbyggnad": Layers,
+  laddboxar: PlugZap,
 };
 
 const HOUSING = ["Villa", "Radhus", "Fritidshus", "Lantbruk", "Brf / styrelse"];
@@ -43,14 +48,7 @@ const HOUSING = ["Villa", "Radhus", "Fritidshus", "Lantbruk", "Brf / styrelse"];
 type Path = "full" | "quick";
 type Step = "behov" | "vag" | "hem" | "kontakt";
 
-export function FunnelWizard({
-  funnel,
-  productImages,
-}: {
-  funnel: Funnel;
-  /** mediaSlot-id -> bild-url (admin-uppladdade produktfoton). */
-  productImages: Record<string, { url: string; alt: string } | null>;
-}) {
+export function FunnelWizard({ funnel }: { funnel: Funnel }) {
   const router = useRouter();
   const [step, setStep] = useState<Step>("behov");
   const [products, setProducts] = useState<string[]>([]);
@@ -204,7 +202,6 @@ export function FunnelWizard({
           <StepBehov
             funnel={funnel}
             products={products}
-            productImages={productImages}
             onToggle={(key) => {
               markStarted();
               setProducts((cur) =>
@@ -283,12 +280,10 @@ export function FunnelWizard({
 function StepBehov({
   funnel,
   products,
-  productImages,
   onToggle,
 }: {
   funnel: Funnel;
   products: string[];
-  productImages: Record<string, { url: string; alt: string } | null>;
   onToggle: (key: string) => void;
 }) {
   return (
@@ -313,7 +308,7 @@ function StepBehov({
       <div className="mt-4 grid grid-cols-2 gap-3">
         {FUNNEL_PRODUCTS.map((p) => {
           const on = products.includes(p.key);
-          const img = productImages[p.mediaSlot];
+          const Icon = PRODUCT_ICONS[p.key] ?? Sun;
           return (
             <button
               type="button"
@@ -326,19 +321,17 @@ function StepBehov({
                   : "border-ink/10 hover:border-ink/30"
               }`}
             >
-              <div className={`relative aspect-[4/3] bg-gradient-to-br ${p.fallback}`}>
-                {img ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={img.url}
-                    alt={img.alt || p.title}
-                    className="absolute inset-0 h-full w-full object-cover"
-                  />
-                ) : (
-                  <div className="absolute inset-0 grid place-items-center text-bone/60">
-                    {PRODUCT_ICONS[p.key]}
-                  </div>
-                )}
+              {/* Ikon-platta: stor ikon på brand-gradient i stället för foto. */}
+              <div
+                className={`relative grid aspect-[5/3] place-items-center bg-gradient-to-br ${p.fallback}`}
+              >
+                <span
+                  className={`grid h-16 w-16 place-items-center rounded-full bg-bone/15 text-bone transition-transform duration-300 ${
+                    on ? "scale-105" : "group-active:scale-90"
+                  }`}
+                >
+                  <Icon size={30} />
+                </span>
                 <span
                   className={`absolute right-2.5 top-2.5 grid h-7 w-7 place-items-center rounded-full border transition ${
                     on
@@ -350,8 +343,7 @@ function StepBehov({
                 </span>
               </div>
               <div className="bg-cream/60 p-3.5">
-                <div className="flex items-center gap-1.5 text-[13.5px] font-medium leading-tight">
-                  <span className="text-indigo">{PRODUCT_ICONS[p.key]}</span>
+                <div className="text-[13.5px] font-medium leading-snug">
                   {p.title}
                 </div>
                 <div className="mt-1 text-[12px] text-ink/55">{p.sub}</div>

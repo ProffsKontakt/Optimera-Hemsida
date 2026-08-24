@@ -16,40 +16,34 @@ export type FunnelProduct = {
   key: string;
   title: string;
   sub: string;
-  /** Media-slot (admin kan ladda upp produktfoto via /admin/media). */
-  mediaSlot: string;
-  /** Tailwind-gradient som fallback tills foto laddats upp. */
+  /** Tailwind-gradient bakom ikonen på kortet. */
   fallback: string;
 };
 
-/** Produktkorten i steg 1. Samma för alla varianter. */
+/** Produktkorten i steg 1 (stora ikon-plattor). Samma för alla varianter. */
 export const FUNNEL_PRODUCTS: FunnelProduct[] = [
   {
     key: "solpaneler",
     title: "Solpanelsinstallation",
     sub: "Sänk dina elkostnader",
-    mediaSlot: "funnel:solpaneler",
     fallback: "from-[#3648C3] to-[#0E0E0C]",
   },
   {
     key: "batterier",
     title: "Batteri och växelriktare",
     sub: "Lagra din egen solel",
-    mediaSlot: "funnel:batterier",
     fallback: "from-[#0a3a4e] to-[#1A1A17]",
   },
   {
     key: "batteri-utbyggnad",
     title: "Utbyggnad av batteri",
     sub: "Bygg ut det du redan har",
-    mediaSlot: "funnel:batteri-utbyggnad",
     fallback: "from-[#3f5236] to-[#1A1A17]",
   },
   {
     key: "laddboxar",
     title: "Laddbox",
     sub: "Ladda bilen hemma",
-    mediaSlot: "funnel:laddboxar",
     fallback: "from-[#B86F3C] to-[#2A2A26]",
   },
 ];
