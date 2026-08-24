@@ -76,29 +76,8 @@
       animation: none;
     }
   }
-  /* Långsam högerdrift för recensions-marqueen. Tracket innehåller tre
-     kopior av korten och flyttas exakt en kopias bredd -> sömlös loop.
-     Pausar vid hover/fokus; av vid reduced motion. */
-  .marquee-right {
-    animation: marquee-right 60s linear infinite;
-  }
-  .marquee-right:hover,
-  .marquee-right:focus-within {
-    animation-play-state: paused;
-  }
-  @keyframes marquee-right {
-    from {
-      transform: translateX(-33.3333%);
-    }
-    to {
-      transform: translateX(0);
-    }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .marquee-right {
-      animation: none;
-    }
-  }
+  /* (Recensions-karusellen autoskrollas numera via JS i Testimonials.tsx
+     så att den både rullar själv och går att greppa/svepa manuellt.) */
   .eyebrow {
     @apply font-mono text-[11px] uppercase tracking-[0.18em] text-ink/60;
   }
