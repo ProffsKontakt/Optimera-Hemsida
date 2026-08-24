@@ -1,8 +1,9 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowRight, BatteryCharging, Sun } from "lucide-react";
+import { ArrowRight, BatteryCharging, Phone, Sun } from "lucide-react";
 import { BatteryDay } from "@/components/tjanster/BatteryDay";
 import { SolarYear } from "@/components/tjanster/SolarYear";
+import { Term } from "@/components/site/Term";
 import { SERVICES, getService, type ServiceSlug } from "@/lib/services";
 import { ServiceVignetteLazy as ServiceVignette } from "@/components/3d/ServiceVignetteLazy";
 import { Section } from "@/components/site/Section";
@@ -49,7 +50,7 @@ export function generateMetadata({ params }: { params: { slug: string } }) {
 }
 
 /** Stat-chip i batteri-heron: stor siffra + kort etikett. */
-function HeroStat({ n, label }: { n: string; label: string }) {
+function HeroStat({ n, label }: { n: string; label: React.ReactNode }) {
   return (
     <div className="rounded-2xl border border-ink/10 bg-cream/60 px-3 py-3.5">
       <div className="font-display text-lg leading-none tracking-display-tight whitespace-nowrap">
@@ -128,7 +129,10 @@ export default function ServicePage({
               <>
                 <div className="mt-10 grid grid-cols-3 gap-2 max-w-md">
                   <HeroStat n="2–5 år" label="återbetalning med befintlig sol" />
-                  <HeroStat n="48,5 %" label="grönt avdrag, dras på fakturan" />
+                  <HeroStat
+                    n="48,5 %"
+                    label={<><Term id="gront-avdrag">grönt avdrag</Term>, dras på fakturan</>}
+                  />
                   <HeroStat n="6 000+" label="laddcykler i garanti" />
                 </div>
                 {/* Snabbknappar som hoppar ner till sidans segment. */}
@@ -158,7 +162,10 @@ export default function ServicePage({
               <>
                 <div className="mt-10 grid grid-cols-3 gap-2 max-w-md">
                   <HeroStat n="ca 50 tkr" label="typvilla, 14 paneler efter avdrag" />
-                  <HeroStat n="14,55 %" label="grönt avdrag, dras på fakturan" />
+                  <HeroStat
+                    n="14,55 %"
+                    label={<><Term id="gront-avdrag">grönt avdrag</Term>, dras på fakturan</>}
+                  />
                   <HeroStat n="30 år" label="produktgaranti på panelerna" />
                 </div>
                 <div className="mt-6 flex flex-wrap gap-2">
@@ -350,7 +357,7 @@ export default function ServicePage({
               </div>
               <div className="flex items-baseline justify-between gap-4 py-3">
                 <dt className="text-[14.5px] text-ink/70">
-                  Grönt avdrag, dras direkt på fakturan
+                  <Term id="gront-avdrag">Grönt avdrag</Term>, dras direkt på fakturan
                 </dt>
                 <dd className="font-display text-xl tracking-display-tight whitespace-nowrap">
                   48,5 %
@@ -366,10 +373,11 @@ export default function ServicePage({
               </div>
             </dl>
             <p className="mt-5 text-[13.5px] text-ink/55 leading-relaxed">
-              Stödtjänster kan ge extraintäkter ovanpå besparingen – nivåerna
-              varierar med marknaden, så vi räknar på aktuella siffror vid
-              hembesöket i stället för att lova i förväg. Exakt investering
-              beror på förbrukning, elområde och batteristorlek.{" "}
+              <Term id="stodtjanster">Stödtjänster</Term> kan ge extraintäkter ovanpå
+              besparingen – nivåerna varierar med marknaden, så vi räknar på
+              aktuella siffror vid hembesöket i stället för att lova i förväg.
+              Exakt investering beror på förbrukning,{" "}
+              <Term id="elomrade">elområde</Term> och batteristorlek.{" "}
               <Link href="/kalkylator" className="underline underline-offset-2 hover:text-ink">
                 Testa riktningen i kalkylatorn
               </Link>
@@ -430,8 +438,9 @@ export default function ServicePage({
                   ca 50 000 kr
                 </div>
                 <p className="mt-3 text-[14.5px] text-ink/70 leading-relaxed">
-                  Efter grönt avdrag på 14,55 procent. Räkna på din specifika
-                  installation i kalkylatorn innan hembesöket.
+                  Efter <Term id="gront-avdrag">grönt avdrag</Term> på 14,55 procent.
+                  Räkna på din specifika installation i kalkylatorn innan
+                  hembesöket.
                 </p>
               </div>
             </div>
@@ -596,15 +605,23 @@ export default function ServicePage({
         </div>
       </Section>
 
-      {/* Batteri & sol: diskret sticky offert-pill nere till höger på
-          mobil – alltid nära till hands utan att vara påträngande. */}
+      {/* Batteri & sol: diskret sticky-yta nere till höger på mobil –
+          ring-knapp (till /ring, numret visas medvetet först där) +
+          offert-pill som pekar mot wizarden. */}
       {(s.slug === "batterier" || s.slug === "solpaneler") && (
         <div
-          className="fixed bottom-4 right-4 z-40 md:hidden"
+          className="fixed bottom-4 right-4 z-40 flex items-center gap-2 md:hidden"
           style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
         >
           <Link
-            href={`/offert?tjanst=${s.slug}`}
+            href="/ring"
+            aria-label="Ring oss"
+            className="grid h-11 w-11 place-items-center rounded-full border border-ink/15 bg-bone/95 backdrop-blur text-ink shadow-lg shadow-ink/15"
+          >
+            <Phone size={16} />
+          </Link>
+          <Link
+            href="/offert-start"
             className="inline-flex items-center gap-1.5 rounded-full bg-indigo/95 backdrop-blur px-4 py-2.5 text-[13.5px] font-medium text-bone shadow-lg shadow-ink/20"
           >
             Begär offert <ArrowRight size={14} />

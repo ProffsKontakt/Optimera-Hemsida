@@ -169,7 +169,10 @@ export function Navbar() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.08 + links.length * 0.05, duration: 0.3 }}
               >
+                {/* Mobilmenyn -> wizarden (steg-flödet). Desktop-headern
+                    behåller /offert – jämförs i /admin/funnel + GA4. */}
                 <QuoteButton
+                  href="/offert-start"
                   className="mt-5 w-full"
                   innerClassName="w-full justify-center"
                   onClick={() => setOpen(false)}
@@ -192,14 +195,17 @@ function QuoteButton({
   className = "",
   innerClassName = "",
   onClick,
+  href = "/offert",
 }: {
   className?: string;
   innerClassName?: string;
   onClick?: () => void;
+  /** Mobilytor pekar mot wizarden (/offert-start) för A/B-jämförelse. */
+  href?: string;
 }) {
   return (
     <Link
-      href="/offert"
+      href={href}
       onClick={onClick}
       className={`group inline-flex rounded-full p-[3px] bg-gradient-to-r from-indigo via-sun to-indigo animate-gradient-drift transition-transform duration-300 hover:scale-[1.02] ${className}`}
     >

@@ -129,19 +129,42 @@ export function DemoHero({
                 kanelbullar och respekt för ditt hem.
               </p>
 
-              {/* EN primär handling. Sekundär blir lugn textlänk. */}
+              {/* EN primär handling. Sekundär blir lugn textlänk – mobil
+                  pekar mot wizarden, desktop mot klassiska formuläret. */}
               <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
                 <Link href="/kalkylator" className="btn-primary">
                   Räkna på din besparing
                   <ArrowRight size={16} />
                 </Link>
                 <Link
+                  href="/offert-start"
+                  className="md:hidden text-[15px] text-ink underline underline-offset-4 decoration-ink/40 hover:decoration-ink/60 transition [text-shadow:0_1px_2px_rgba(244,241,234,0.9)]"
+                >
+                  eller begär hembesök
+                </Link>
+                <Link
                   href="/offert"
-                  className="text-[15px] text-ink md:text-ink/75 hover:text-ink underline underline-offset-4 decoration-ink/40 md:decoration-ink/30 hover:decoration-ink/60 transition [text-shadow:0_1px_2px_rgba(244,241,234,0.9)] md:[text-shadow:none]"
+                  className="hidden md:inline text-[15px] text-ink/75 hover:text-ink underline underline-offset-4 decoration-ink/30 hover:decoration-ink/60 transition"
                 >
                   eller begär hembesök
                 </Link>
               </div>
+
+              {/* Social proof i mobilens första vy – Reco-betyget som en
+                  diskret stjärnrad (desktop har pillen ovanför rubriken). */}
+              <a
+                href="https://www.reco.se/optimera-energi"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-5 flex w-fit items-center gap-2 text-[13px] text-ink/80 md:hidden [text-shadow:0_1px_2px_rgba(244,241,234,0.9)]"
+              >
+                <span className="text-sun tracking-[0.08em] text-[14px] [text-shadow:none]">
+                  ★★★★★
+                </span>
+                <span>
+                  <span className="font-medium">4,7 av 5</span> på Reco
+                </span>
+              </a>
 
               {/* Stats-raden – endast desktop. */}
               <div className="mt-12 hidden md:grid grid-cols-3 max-w-md gap-2">
