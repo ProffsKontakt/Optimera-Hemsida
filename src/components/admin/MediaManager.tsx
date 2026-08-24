@@ -198,7 +198,7 @@ function SlotCard({
                   }}
                 />
                 <span className="absolute inset-x-0 top-0 h-[45%] bg-gradient-to-b from-bone/95 via-bone/60 to-transparent" />
-                <span className="absolute inset-x-0 bottom-0 h-[55%] bg-gradient-to-t from-bone via-bone/70 to-transparent" />
+                <span className="absolute inset-x-0 bottom-0 h-[60%] bg-gradient-to-t from-bone via-bone/85 to-transparent" />
               </span>
             )}
           </>

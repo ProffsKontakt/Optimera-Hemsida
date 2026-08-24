@@ -79,7 +79,7 @@ export function DemoHero({
               hela vägen till solid bone och sköter även övergången till
               sektionen under. */}
           <div className="absolute inset-x-0 top-0 h-[45%] bg-gradient-to-b from-bone/95 via-bone/60 to-transparent" />
-          <div className="absolute inset-x-0 bottom-0 h-[55%] bg-gradient-to-t from-bone via-bone/70 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-[60%] bg-gradient-to-t from-bone via-bone/85 to-transparent" />
         </div>
       )}
 
@@ -121,7 +121,9 @@ export function DemoHero({
             {/* Poster-layout på mobil: brödtext + CTA i nedre delen av första
                 vyn (mt-auto). Desktop: vanligt flöde. */}
             <div className="mt-auto pt-12 md:mt-0 md:pt-0">
-              <p className="md:mt-6 max-w-lg text-ink/75 text-[17px] leading-relaxed">
+              {/* Mobil: full svärta + mjuk bone-halo (ljus "skugga" åt rätt
+                  håll för mörk text på foto). Desktop: dämpad som förut. */}
+              <p className="md:mt-6 max-w-lg text-ink md:text-ink/75 text-[17px] leading-relaxed [text-shadow:0_1px_2px_rgba(244,241,234,0.9),0_0_14px_rgba(244,241,234,0.85)] md:[text-shadow:none]">
                 Solpaneler, batterier och laddboxar, byggda på kloka tankar och
                 installerade av samma gäng från Solna som dyker upp med
                 kanelbullar och respekt för ditt hem.
@@ -135,7 +137,7 @@ export function DemoHero({
                 </Link>
                 <Link
                   href="/offert"
-                  className="text-[15px] text-ink/75 hover:text-ink underline underline-offset-4 decoration-ink/30 hover:decoration-ink/60 transition"
+                  className="text-[15px] text-ink md:text-ink/75 hover:text-ink underline underline-offset-4 decoration-ink/40 md:decoration-ink/30 hover:decoration-ink/60 transition [text-shadow:0_1px_2px_rgba(244,241,234,0.9)] md:[text-shadow:none]"
                 >
                   eller begär hembesök
                 </Link>
