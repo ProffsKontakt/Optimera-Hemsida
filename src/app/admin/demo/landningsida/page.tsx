@@ -27,7 +27,7 @@ export const dynamic = "force-dynamic";
 const DEMO_FAQ = [
   {
     q: "Vad gör Optimera Energi?",
-    a: "Vi installerar solpaneler, batterier och laddboxar för villor och bostadsrättsföreningar i Stockholm – med eget montageteam, inga underentreprenörer.",
+    a: "Vi installerar solpaneler, batterier och laddboxar för villor och bostadsrättsföreningar i Stockholm – med noggrant utvalda, certifierade installatörer.",
   },
   {
     q: "Vad kostar solceller hos er?",

@@ -62,9 +62,9 @@ const PRINCIPLES = [
   },
   {
     n: "06",
-    title: "Eget team – och vi står kvar",
+    title: "Vi står kvar – långt efter installationen",
     body:
-      "Vi driver installationerna med eget montageteam, inga underentreprenörer för det vi själva kan. Garantin på vårt arbete gäller även när du sålt huset, och ringer du tre år senare är det samma personer som svarar.",
+      "Installationerna utförs av noggrant utvalda, certifierade installatörer som vi tar fullt ansvar för. Garantin på vårt arbete gäller även när du sålt huset, och ringer du tre år senare är det samma personer som svarar.",
   },
 ];
 
@@ -155,7 +155,7 @@ export default function MetodikPage() {
                 och lämnar ett fast pris där priset på offerten är priset på
                 fakturan.
               </strong>{" "}
-              Vi driver installationerna med eget montageteam, säger nej när en
+              Vi kvalitetssäkrar varje installation, säger nej när en
               lösning inte passar, och står kvar med garanti även efter att du
               sålt huset.
             </p>

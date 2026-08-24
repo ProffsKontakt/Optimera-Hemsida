@@ -48,7 +48,7 @@ export function Hero() {
 
             <p className="mt-8 max-w-xl text-ink/70 text-lg leading-relaxed">
               Solpaneler, batterier, värmepumpar och laddboxar, byggda på
-              kloka tankar och installerade av samma gäng från Solna som
+              kloka tankar och installerade av noggrant utvalda installatörer som
               dyker upp med kanelbullar och respekt för ditt hem.
             </p>
 
@@ -64,7 +64,7 @@ export function Hero() {
 
             <div className="mt-14 grid grid-cols-3 max-w-md">
               <Stat n="4" label="installationstjänster" />
-              <Stat n="100%" label="eget montageteam" />
+              <Stat n="4,7/5" label="i betyg på Reco" />
               <Stat n="14d" label="från offert till tak" />
             </div>
           </div>

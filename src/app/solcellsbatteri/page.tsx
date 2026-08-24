@@ -81,7 +81,7 @@ const FAQ = [
   },
   {
     q: "Är ett solcellsbatteri säkert i hemmet?",
-    a: "Ja. Vi installerar LFP-batterier (litium-järnfosfat) som standard – de brinner inte på samma sätt som NMC-kemi och är vårt val för svenska hem. Installationen följer gällande standard (SS-EN-IEC 62619) med rätt avstånd och brandklassning, och görs av vårt eget montageteam, inte en underentreprenör.",
+    a: "Ja. Vi installerar LFP-batterier (litium-järnfosfat) som standard – de brinner inte på samma sätt som NMC-kemi och är vårt val för svenska hem. Installationen följer gällande standard (SS-EN-IEC 62619) med rätt avstånd och brandklassning, och görs av noggrant utvalda, certifierade installatörer som vi tar fullt ansvar för.",
   },
 ];
 
@@ -89,7 +89,7 @@ const RELATED = [
   {
     href: "/tjanster/batterier",
     label: "Batterilager – tjänsten",
-    desc: "Så dimensionerar, installerar och driftsätter vi batterier med eget montageteam.",
+    desc: "Så dimensionerar, installerar och driftsätter vi batterier – från hembesök till driftsättning.",
   },
   {
     href: "/tjanster/batterier/easyway",
@@ -147,7 +147,7 @@ export default function SolcellsbatteriPage() {
         data={serviceSchema({
           name: "Solcellsbatteri till villa",
           description:
-            "Installation av solcellsbatteri, hemmabatteri och batterilager för villa och radhus i Stockholm, med eget montageteam.",
+            "Installation av solcellsbatteri, hemmabatteri och batterilager för villa och radhus i Stockholm.",
           url: PATH,
           serviceType: "Batterilager",
         })}

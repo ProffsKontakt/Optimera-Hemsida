@@ -25,8 +25,8 @@ const steps = [
   },
   {
     n: "05",
-    label: "Eget montageteam",
-    body: "Våra elektriker, våra montörer, våra verktyg. Inget vandrar mellan tre underentreprenörer.",
+    label: "Noggrant utvalda installatörer",
+    body: "Certifierade installatörer som vi handplockat och kvalitetssäkrat – samma höga krav på varje jobb, och vi tar fullt ansvar för garantin.",
   },
   {
     n: "06",

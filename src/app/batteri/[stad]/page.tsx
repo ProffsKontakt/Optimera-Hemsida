@@ -23,7 +23,7 @@ export function generateMetadata({ params }: { params: { stad: string } }) {
     // Title leder med "Batteri" + stad (det sökord vi vill ranka på), följt
     // av "batterilager" och pris-token för CTR och synonymtäckning.
     title: `Batteri ${city.preposition} ${city.name}, batterilager och pris`,
-    description: `Vi installerar batterilager och hemmabatteri ${city.preposition} ${city.name} med eget montageteam från Solna. Stödtjänster (FCR-D), effektkapning och 48,5 % grönt avdrag. Boka kostnadsfritt hembesök.`,
+    description: `Vi installerar batterilager och hemmabatteri ${city.preposition} ${city.name} från vårt kontor i Solna. Stödtjänster (FCR-D), effektkapning och 48,5 % grönt avdrag. Boka kostnadsfritt hembesök.`,
     alternates: { canonical: `/batteri/${city.slug}` },
     openGraph: {
       title: `Batteri ${city.preposition} ${city.name} · Optimera Energi`,

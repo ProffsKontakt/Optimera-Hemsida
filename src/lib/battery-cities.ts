@@ -32,7 +32,7 @@ const CONTENT: BatteryCityContent[] = [
     oneLiner:
       "Batterilager installerat i Solna av elektriker från Vallgatan 9.",
     intro:
-      "Solna är vår hemmakommun, och batteri är ofta det som gör en solanläggning här lönsam. Takytorna i Råsunda, Huvudsta och Hagalund är sällan jättestora, så istället för att jaga fler paneler lagrar vi den el du redan producerar och kapar dina dyraste timmar. Med batteriet aktiverat för stödtjänster (FCR-D) tjänar det dessutom pengar när det står stilla. Vi sitter 0 minuter bort och driftsätter, mäter och justerar batteriet själva, ingen underentreprenör.",
+      "Solna är vår hemmakommun, och batteri är ofta det som gör en solanläggning här lönsam. Takytorna i Råsunda, Huvudsta och Hagalund är sällan jättestora, så istället för att jaga fler paneler lagrar vi den el du redan producerar och kapar dina dyraste timmar. Med batteriet aktiverat för stödtjänster (FCR-D) tjänar det dessutom pengar när det står stilla. Vi sitter 0 minuter bort och följer upp driftsättning, mätning och justering av batteriet.",
     facts: [
       { k: "Nätägare", v: "Ellevio" },
       { k: "Elområde", v: "SE3" },
@@ -55,7 +55,7 @@ const CONTENT: BatteryCityContent[] = [
   {
     slug: "stockholm",
     oneLiner:
-      "Batterilager och hemmabatteri installerat i Stockholm av elektriker med eget montageteam.",
+      "Batterilager och hemmabatteri installerat i Stockholm av certifierade elektriker.",
     intro:
       "I Stockholm är det sällan takytan som avgör om en investering lönar sig, det är hur du använder elen. Ett batteri lagrar dagens solel till kvällens topp och kapar de dyra effekttimmarna när hela staden förbrukar samtidigt. I villaområden som Bromma, Hägersten, Älvsjö, Enskede och Farsta installerar vi batterier både till nya solanläggningar och som fristående lager för hus utan paneler. Vi gör en lastanalys av ditt hus innan vi rekommenderar kapacitet, och vi aktiverar batteriet för stödtjänster så att det genererar intäkt, inte bara sparar.",
     facts: [

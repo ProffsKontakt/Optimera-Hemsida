@@ -34,9 +34,9 @@ const TIMELINE = [
   },
   {
     year: "2026",
-    title: "Eget montageteam i Stockholm.",
+    title: "Kvalitetssäkrade installationer.",
     body:
-      "Inga underentreprenörer för det vi själva kan. När du ringer oss tre år efter installationen är det samma personer som svarar.",
+      "Varje jobb utförs av noggrant utvalda, certifierade installatörer som vi tar fullt ansvar för. Ringer du oss tre år efter installationen är det fortfarande vi som svarar.",
   },
   {
     year: "2027",
@@ -157,7 +157,7 @@ export default function AboutPage() {
         <div className="mt-12 md:mt-16 grid grid-cols-2 md:grid-cols-4 gap-px bg-ink/10 rounded-2xl overflow-hidden border border-ink/10">
           <Stat n="0" label="Dolda påslag på offerten" />
           <Stat n="25 år" label="Garanti på installationen" />
-          <Stat n="100 %" label="Egna installatörer, inga UE" />
+          <Stat n="4,7/5" label="Betyg på Reco" />
           <Stat n="9/10" label="Mål: kunder rekommenderar oss" />
         </div>
       </section>

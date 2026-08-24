@@ -55,7 +55,7 @@ const CATEGORIES: { heading: string; eyebrow: string; items: { q: string; a: str
       },
       {
         q: "Är ett batteri säkert i hemmet?",
-        a: "Ja. Vi installerar LFP-batterier (litium-järnfosfat) som standard – de brinner inte på samma sätt som NMC-kemi. Installationen följer gällande standard (SS-EN-IEC 62619) med rätt avstånd och brandklassning, och görs av vårt eget montageteam.",
+        a: "Ja. Vi installerar LFP-batterier (litium-järnfosfat) som standard – de brinner inte på samma sätt som NMC-kemi. Installationen följer gällande standard (SS-EN-IEC 62619) med rätt avstånd och brandklassning, och görs av noggrant utvalda, certifierade installatörer.",
       },
     ],
   },
@@ -126,8 +126,8 @@ const CATEGORIES: { heading: string; eyebrow: string; items: { q: string; a: str
         a: "Hembesöket är kostnadsfritt och utan förpliktelser. Vi gör en drönarbesiktning av taket, går igenom era förutsättningar och val, och lämnar en offert där priset på offerten alltid är priset på fakturan.",
       },
       {
-        q: "Använder ni underentreprenörer?",
-        a: "Nej, inte för det vi själva kan. Vi driver installationerna med eget montageteam. När du ringer oss tre år efter installationen är det samma personer som svarar.",
+        q: "Vem utför installationen?",
+        a: "Noggrant utvalda, certifierade installatörer, kvalitetssäkrade genom vår installatörsplattform Fuse. Vi tar fullt ansvar för installationen och garantin – ringer du tre år senare är det fortfarande oss du pratar med.",
       },
       {
         q: "Gäller garantin om jag säljer huset?",

@@ -57,7 +57,7 @@ export const SERVICES: Service[] = [
         step: "03",
         title: "Installation",
         body:
-          "Vårt egna team – inga underentreprenörer. Två-tre dagar för normalvilla, oftast färre.",
+          "Noggrant utvalda, certifierade installatörer. Två-tre dagar för normalvilla, oftast färre.",
       },
       {
         step: "04",

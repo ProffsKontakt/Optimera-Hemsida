@@ -24,7 +24,7 @@ import {
 const HOME_FAQ = [
   {
     q: "Vad gör Optimera Energi?",
-    a: "Optimera Energilösningar i Mälardalen AB är en svensk elinstallatör i Solna som installerar solpaneler, batterier och laddboxar för villor och bostadsrättsföreningar i Stockholms län. Vi har eget montageteam, inga underentreprenörer.",
+    a: "Optimera Energilösningar i Mälardalen AB är en svensk elinstallatör i Solna som installerar solpaneler, batterier och laddboxar för villor och bostadsrättsföreningar i Stockholms län. Installationerna görs av noggrant utvalda, certifierade installatörer som vi tar fullt ansvar för.",
   },
   {
     q: "Var ligger Optimera Energi?",
@@ -44,7 +44,7 @@ const HOME_FAQ = [
   },
   {
     q: "Vad gäller efter husförsäljning?",
-    a: "Garantin på vår installation gäller även när du sålt huset, den följer fastigheten. Vi har eget montageteam så om något krånglar tre år senare är det samma personer som svarar.",
+    a: "Garantin på vår installation gäller även när du sålt huset, den följer fastigheten. Om något krånglar tre år senare är det fortfarande oss du ringer – vi tar fullt ansvar för installationen.",
   },
 ];
 

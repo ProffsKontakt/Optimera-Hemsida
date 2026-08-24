@@ -94,7 +94,7 @@ export const metadata: Metadata = {
     title:
       "Optimera Energi – Hela energiomställningen, byggd på kloka tankar",
     description:
-      "Solpaneler, batterier, värmepumpar och laddboxar i Stockholm. Hand-plockat sortiment, transparent prissättning, eget montageteam.",
+      "Solpaneler, batterier, värmepumpar och laddboxar i Stockholm. Hand-plockat sortiment, transparent prissättning, noggrant utvalda installatörer.",
   },
   twitter: {
     card: "summary_large_image",

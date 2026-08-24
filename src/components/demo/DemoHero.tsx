@@ -125,7 +125,7 @@ export function DemoHero({
                   håll för mörk text på foto). Desktop: dämpad som förut. */}
               <p className="md:mt-6 max-w-lg text-ink md:text-ink/75 text-[17px] leading-relaxed [text-shadow:0_1px_2px_rgba(244,241,234,0.9),0_0_14px_rgba(244,241,234,0.85)] md:[text-shadow:none]">
                 Solpaneler, batterier och laddboxar, byggda på kloka tankar och
-                installerade av samma gäng från Solna som dyker upp med
+                installerade av noggrant utvalda installatörer – med
                 kanelbullar och respekt för ditt hem.
               </p>
 
@@ -146,7 +146,7 @@ export function DemoHero({
               {/* Stats-raden – endast desktop. */}
               <div className="mt-12 hidden md:grid grid-cols-3 max-w-md gap-2">
                 <Stat n="3" label="installationstjänster" />
-                <Stat n="100%" label="eget montageteam" />
+                <Stat n="4,7/5" label="i betyg på Reco" />
                 <Stat n="14d" label="från offert till tak" />
               </div>
             </div>

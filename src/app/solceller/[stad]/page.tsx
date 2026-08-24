@@ -24,7 +24,7 @@ export function generateMetadata({ params }: { params: { stad: string } }) {
     // /solceller-slugen) + stad + service-modifier ("installation och pris").
     // Pris-tokenen matchar den vanligaste PAA-frågan och lyfter CTR.
     title: `Solceller ${city.preposition} ${city.name}, installation och pris`,
-    description: `Vi installerar solpaneler ${city.preposition} ${city.name} med eget montageteam från Solna. Drönarbesiktning, noggrann kalkyl på husets förutsättningar, fast pris. Boka kostnadsfritt hembesök.`,
+    description: `Vi installerar solpaneler ${city.preposition} ${city.name} från vårt kontor i Solna. Drönarbesiktning, noggrann kalkyl på husets förutsättningar, fast pris. Boka kostnadsfritt hembesök.`,
     alternates: { canonical: `/solceller/${city.slug}` },
     openGraph: {
       title: `Solpaneler ${city.preposition} ${city.name} · Optimera Energi`,
@@ -52,7 +52,7 @@ function cityFaq(city: ReturnType<typeof findCity>) {
     },
     {
       q: `Vilka områden ${city.preposition} ${city.name} installerar Optimera Energi i?`,
-      a: `Vi installerar i hela ${city.name} kommun. Vårt montageteam utgår från lagret på Vallgatan 9 i Solna, så vi har korta resvägar och kan dyka upp på samma dag om något krånglar efter driftsättning.`,
+      a: `Vi installerar i hela ${city.name} kommun. Vi utgår från kontoret på Vallgatan 9 i Solna, så vi har korta resvägar och kan dyka upp snabbt om något krånglar efter driftsättning.`,
     },
   ];
 }

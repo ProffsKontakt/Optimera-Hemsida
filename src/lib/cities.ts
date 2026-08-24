@@ -39,7 +39,7 @@ export const CITIES: City[] = [
     oneLiner:
       "Solpaneler installerade i Solna av elektriker från Vallgatan 9.",
     intro:
-      "Solna är Optimera Energis hemmakommun. Vårt kontor ligger på Vallgatan 9, och våra montörer kör från lagret i Solna ut till villaägarna i Bergshamra, Råsunda, Huvudsta, Hagalund och Järva. Eftersom vi själva bor här vet vi vilka taklutningar, skuggningsmönster och nätbolagsrutiner som gäller. Vi behöver inte räkna restid eller ta omvägar via underentreprenörer – när du bokar hembesök är det samma person som kommer förbi som driftsätter anläggningen senare.",
+      "Solna är Optimera Energis hemmakommun. Vårt kontor ligger på Vallgatan 9, nära villaägarna i Bergshamra, Råsunda, Huvudsta, Hagalund och Järva. Eftersom vi själva bor här vet vi vilka taklutningar, skuggningsmönster och nätbolagsrutiner som gäller – och vi har korta vägar när något behöver följas upp.",
     facts: [
       { k: "Befolkning", v: "~85 000" },
       { k: "Nätägare", v: "Ellevio" },
@@ -66,7 +66,7 @@ export const CITIES: City[] = [
     preposition: "i",
     region: "Stockholms stad · SE3",
     oneLiner:
-      "Solpaneler installerade i Stockholm av elektriker med eget montageteam.",
+      "Solpaneler installerade i Stockholm av certifierade elektriker.",
     intro:
       "Stockholms innerstad är en sak, ytterstadens villaområden en helt annan. Vi installerar i Bromma, Spånga, Tensta, Hägersten, Älvsjö, Farsta, Skarpnäck och Enskede – där takfallen är breda och paneler får riktig solinstrålning. För kulturskyddade fastigheter i innerstaden tar vi diskussionen med Stadsbyggnadskontoret innan vi ens lämnar offert. Vi säger nej till installationer som inte fungerar, det är så vi bygger en hållbar affär över 25 år.",
     facts: [
@@ -171,7 +171,7 @@ export const CITIES: City[] = [
       {
         title: "Lokalt nät och förbindelser",
         body:
-          "Ellevio är nätägare för hela ön. Vi har gjort tillräckligt många installationer här för att veta vilka kabeldragningar som är värt extra arbete och vilka som inte är det. Vi tar med oss allt material från lagret i Solna – ingen omväg via underentreprenörer.",
+          "Ellevio är nätägare för hela ön. Vi har gjort tillräckligt många installationer här för att veta vilka kabeldragningar som är värt extra arbete och vilka som inte är det. Vi tar med oss allt material från lagret i Solna.",
       },
     ],
     neighbors: ["stockholm", "nacka", "danderyd"],

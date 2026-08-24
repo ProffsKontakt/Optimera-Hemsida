@@ -62,7 +62,7 @@ const RELATED = [
   {
     href: "/tjanster/batterier",
     label: "Batterilager – tjänsten",
-    desc: "Så dimensionerar och installerar vi batterier med eget team.",
+    desc: "Så dimensionerar och installerar vi batterier.",
   },
   {
     href: "/offert",
