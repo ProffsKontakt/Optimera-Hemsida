@@ -70,7 +70,7 @@ export function BatteryDay() {
               </div>
               {/* Kortet – som en lapp längs resan. */}
               <div
-                className={`mt-4 rounded-3xl border border-ink/10 bg-cream/60 p-5 shadow-sm ${p.tilt}`}
+                className={`mt-4 rounded-3xl border border-ink/10 bg-bone p-5 shadow-sm ${p.tilt}`}
               >
                 <h3 className="font-display text-xl tracking-display-tight">
                   {p.title}

@@ -264,15 +264,16 @@ export default function ServicePage({
         </>
       )}
 
-      {/* Batteriets dygn + ärligt räkneexempel. */}
+      {/* Batteriets dygn + ärligt räkneexempel. Cream-band så segmentet
+          skiljer sig tydligt från sektionerna före/efter (anti-PDF). */}
       {s.slug === "batterier" && (
-        <div id="dygnet" className="scroll-mt-14">
+        <div id="dygnet" className="scroll-mt-14 bg-cream/45 border-y border-ink/5">
         <Section
           eyebrow="Batteriets dygn"
           title={<>Så tjänar batteriet pengar – dygnet runt.</>}
         >
           <BatteryDay />
-          <div id="ekonomi" className="mt-8 scroll-mt-28 rounded-[28px] border border-ink/10 bg-cream/50 p-7 md:p-10">
+          <div id="ekonomi" className="mt-8 scroll-mt-28 rounded-[28px] border border-ink/10 bg-bone p-7 md:p-10">
             <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink/55">
               Typexempel · villa med 15 kWh batteri
             </div>
@@ -401,12 +402,14 @@ export default function ServicePage({
         </div>
       </Section>
 
+      {/* Cream-band även här – växlande bakgrund ger segmenten egna zoner. */}
+      <div className="bg-cream/45 border-y border-ink/5">
       <Section eyebrow="Vad du får" title={<>Inte bara specifikationer – så det faktiskt beter sig.</>}>
         <ul className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {s.highlights.map((h, i) => (
             <li
               key={i}
-              className="rounded-3xl border border-ink/10 bg-cream/70 p-7"
+              className="rounded-3xl border border-ink/10 bg-bone p-7"
             >
               <div className="font-mono text-[11px] tracking-[0.18em] text-ink/55">
                 FUNKTION 0{i + 1}
@@ -428,6 +431,7 @@ export default function ServicePage({
           ))}
         </div>
       </Section>
+      </div>
 
       <Section eyebrow="Vanliga frågor" title={<span id="fragor" className="scroll-mt-32">Klara svar, helt transparent.</span>}>
         <div className="divide-y divide-ink/10 border-y border-ink/10">
