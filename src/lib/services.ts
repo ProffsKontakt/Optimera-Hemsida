@@ -120,9 +120,9 @@ export const SERVICES: Service[] = [
       },
       {
         step: "04",
-        title: "Aktivering av stödtjänster",
+        title: "Aktivering av smartstyrning",
         body:
-          "Vi kopplar batteriet mot Svenska Kraftnät så det börjar tjäna pengar redan dag ett.",
+          "Vi kopplar upp styrningen mot din förbrukning – batteriet blir hjärnan i systemet och sänker din elkostnad timme för timme.",
       },
     ],
     faq: [

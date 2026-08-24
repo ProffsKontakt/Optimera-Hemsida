@@ -370,34 +370,8 @@ export default function ServicePage({
         </Section>
       )}
 
-      <Section eyebrow="Vad du får" title={<>Inte bara specifikationer – så det faktiskt beter sig.</>}>
-        <ul className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {s.highlights.map((h, i) => (
-            <li
-              key={i}
-              className="rounded-3xl border border-ink/10 bg-cream/70 p-7"
-            >
-              <div className="font-mono text-[11px] tracking-[0.18em] text-ink/55">
-                FUNKTION 0{i + 1}
-              </div>
-              <div className="mt-3 font-display text-xl tracking-display-tight">
-                {h}
-              </div>
-            </li>
-          ))}
-        </ul>
-        <div className="mt-10 flex flex-wrap gap-2">
-          {s.bullets.map((b) => (
-            <span
-              key={b}
-              className="rounded-full border border-ink/12 bg-bone px-3.5 py-1.5 text-[13px] text-ink/70"
-            >
-              {b}
-            </span>
-          ))}
-        </div>
-      </Section>
-
+      {/* "Så jobbar vi" före "Vad du får" – processen säljer tryggheten
+          innan specifikationerna. */}
       <Section
         eyebrow="Så jobbar vi"
         title={<span id="sa-jobbar-vi" className="scroll-mt-32">Fyra steg, ärligt prisad.</span>}
@@ -423,6 +397,34 @@ export default function ServicePage({
                 {w.body}
               </p>
             </div>
+          ))}
+        </div>
+      </Section>
+
+      <Section eyebrow="Vad du får" title={<>Inte bara specifikationer – så det faktiskt beter sig.</>}>
+        <ul className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          {s.highlights.map((h, i) => (
+            <li
+              key={i}
+              className="rounded-3xl border border-ink/10 bg-cream/70 p-7"
+            >
+              <div className="font-mono text-[11px] tracking-[0.18em] text-ink/55">
+                FUNKTION 0{i + 1}
+              </div>
+              <div className="mt-3 font-display text-xl tracking-display-tight">
+                {h}
+              </div>
+            </li>
+          ))}
+        </ul>
+        <div className="mt-10 flex flex-wrap gap-2">
+          {s.bullets.map((b) => (
+            <span
+              key={b}
+              className="rounded-full border border-ink/12 bg-bone px-3.5 py-1.5 text-[13px] text-ink/70"
+            >
+              {b}
+            </span>
           ))}
         </div>
       </Section>

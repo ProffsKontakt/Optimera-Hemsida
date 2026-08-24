@@ -1,5 +1,13 @@
 import Link from "next/link";
-import { ArrowRight, ArrowLeft } from "lucide-react";
+import {
+  ArrowRight,
+  ArrowLeft,
+  BatteryCharging,
+  Cpu,
+  Coins,
+  Unlock,
+  ShieldCheck,
+} from "lucide-react";
 import { Section } from "@/components/site/Section";
 import { Disclosure } from "@/components/site/Disclosure";
 import {
@@ -82,6 +90,18 @@ export default function EasywayPage() {
             får vi resonera fritt landar vi ofta i Easyway. Här är tanken bakom
             det.
           </p>
+          {/* Snabba argument som chips – ger heron liv direkt. */}
+          <div className="mt-7 flex flex-wrap gap-2">
+            <span className="rounded-full bg-sun px-3.5 py-1.5 text-[12.5px] font-medium text-ink">
+              Mest kWh per krona
+            </span>
+            <span className="rounded-full bg-indigo-soft px-3.5 py-1.5 text-[12.5px] font-medium text-indigo">
+              Hårdvara i fokus
+            </span>
+            <span className="rounded-full border border-ink/15 bg-cream/70 px-3.5 py-1.5 text-[12.5px] text-ink/75">
+              Fri styrning – ingen inlåsning
+            </span>
+          </div>
         </div>
       </section>
 
@@ -97,11 +117,21 @@ export default function EasywayPage() {
             smart de används.
           </p>
           <p>
-            Vår hållning är enkel: skaffa tillräckligt med kWh, och låt en bra
-            styrning lösa ekonomin. Ett stort, prisvärt lager som styrs mot
-            spotpris och stödtjänster tjänar oftast in sig snabbare än ett
-            mindre, dyrare system med en låst egen app.
+            Ett stort, prisvärt lager som styrs smart tjänar oftast in sig
+            snabbare än ett mindre, dyrare system med en låst egen app.
           </p>
+        </div>
+        {/* Grundtesen som pull-quote i den driftande gradient-ramen. */}
+        <div className="mt-10 max-w-2xl rounded-[30px] p-[3px] bg-gradient-to-r from-indigo via-sun to-indigo animate-gradient-drift">
+          <blockquote className="rounded-[27px] bg-bone px-7 py-8 md:px-10">
+            <p className="font-serif italic text-2xl md:text-3xl text-indigo leading-snug">
+              "Skaffa tillräckligt med kWh – och låt en bra styrning lösa
+              ekonomin."
+            </p>
+            <footer className="mt-3 font-mono text-[10.5px] uppercase tracking-[0.18em] text-ink/50">
+              Vår batterifilosofi
+            </footer>
+          </blockquote>
         </div>
       </Section>
 
@@ -111,11 +141,16 @@ export default function EasywayPage() {
         intro="Ett batterisystem är egentligen två saker. Easyway gör det ena riktigt bra och låter någon annan göra det andra."
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          <div className="rounded-3xl border border-ink/10 bg-cream/60 p-8">
-            <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink/55">
-              Hårdvaran
+          <div className="rounded-3xl border border-indigo/20 bg-indigo-soft/60 p-8">
+            <div className="flex items-center gap-3">
+              <span className="grid h-10 w-10 place-items-center rounded-full bg-indigo text-bone">
+                <BatteryCharging size={17} />
+              </span>
+              <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink/55">
+                Hårdvaran
+              </div>
             </div>
-            <h3 className="mt-3 font-display text-2xl tracking-display-tight">
+            <h3 className="mt-4 font-display text-2xl tracking-display-tight">
               Easyways fokus
             </h3>
             <p className="mt-3 text-[15px] leading-relaxed text-ink/70">
@@ -125,11 +160,16 @@ export default function EasywayPage() {
               hårdvaran bäst. Det är därför deras hårdvara håller.
             </p>
           </div>
-          <div className="rounded-3xl border border-ink/10 bg-cream/60 p-8">
-            <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink/55">
-              Styrningen
+          <div className="rounded-3xl border border-sun-deep/30 bg-sun-soft/60 p-8">
+            <div className="flex items-center gap-3">
+              <span className="grid h-10 w-10 place-items-center rounded-full bg-sun text-ink">
+                <Cpu size={17} />
+              </span>
+              <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink/55">
+                Styrningen
+              </div>
             </div>
-            <h3 className="mt-3 font-display text-2xl tracking-display-tight">
+            <h3 className="mt-4 font-display text-2xl tracking-display-tight">
               Växelriktare eller tredjepart
             </h3>
             <p className="mt-3 text-[15px] leading-relaxed text-ink/70">
@@ -158,21 +198,32 @@ export default function EasywayPage() {
             {
               t: "Mer kWh per krona",
               b: "Du betalar för lagringskapacitet, inte för en dyr programvara. Det ger fler kilowattimmar att jobba med och en snabbare återbetalning.",
+              icon: <Coins size={17} />,
+              accent: "bg-sun text-ink",
             },
             {
               t: "Fri att välja styrning",
               b: "Du är inte inlåst i en tillverkares app. Byter marknaden eller elavtalet skepnad kan styrningen bytas utan att batteriet byts.",
+              icon: <Unlock size={17} />,
+              accent: "bg-indigo text-bone",
             },
             {
               t: "Byggt för att hålla",
               b: "Hårdvara som fått fullt fokus åldras bättre. LFP-celler, ordentlig kylning och en robust konstruktion som ska leva i många cykler.",
+              icon: <ShieldCheck size={17} />,
+              accent: "bg-moss text-bone",
             },
           ].map((c) => (
             <li
               key={c.t}
               className="rounded-3xl border border-ink/10 bg-bone p-7"
             >
-              <div className="mt-1 font-display text-xl tracking-display-tight">
+              <span
+                className={`grid h-10 w-10 place-items-center rounded-full ${c.accent}`}
+              >
+                {c.icon}
+              </span>
+              <div className="mt-4 font-display text-xl tracking-display-tight">
                 {c.t}
               </div>
               <p className="mt-3 text-[14.5px] leading-relaxed text-ink/70">
