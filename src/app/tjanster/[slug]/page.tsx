@@ -218,8 +218,9 @@ export default function ServicePage({
                 </span>
               </h2>
               <p className="mt-2 text-bone/70 text-[14.5px] leading-relaxed max-w-xl">
-                Lagra din egen el, köp billigt och sälj dyrt, och låt
-                stödtjänsterna jobba – typisk återbetalning 2–5 år.
+                Lagra din egen el, köp billigt och sälj dyrt, och låt{" "}
+                <Term id="stodtjanster">stödtjänsterna</Term> jobba – typisk
+                återbetalning 2–5 år.
               </p>
             </div>
             <Link
