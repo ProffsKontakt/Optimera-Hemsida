@@ -1,7 +1,8 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowRight, BatteryCharging } from "lucide-react";
+import { ArrowRight, BatteryCharging, Sun } from "lucide-react";
 import { BatteryDay } from "@/components/tjanster/BatteryDay";
+import { SolarYear } from "@/components/tjanster/SolarYear";
 import { SERVICES, getService, type ServiceSlug } from "@/lib/services";
 import { ServiceVignetteLazy as ServiceVignette } from "@/components/3d/ServiceVignetteLazy";
 import { Section } from "@/components/site/Section";
@@ -150,11 +151,43 @@ export default function ServicePage({
                 </div>
               </>
             )}
+
+            {/* Solpaneler: ekonomin + snabbknappar i heron (samma mönster
+                som batteri). Siffrorna speglar pris-sektionen/FAQ:n. */}
+            {s.slug === "solpaneler" && (
+              <>
+                <div className="mt-10 grid grid-cols-3 gap-2 max-w-md">
+                  <HeroStat n="ca 50 tkr" label="typvilla, 14 paneler efter avdrag" />
+                  <HeroStat n="14,55 %" label="grönt avdrag, dras på fakturan" />
+                  <HeroStat n="30 år" label="produktgaranti på panelerna" />
+                </div>
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {[
+                    ["#pris", "Pris"],
+                    ["#solens-ar", "Solens år"],
+                    ["#sa-jobbar-vi", "Så jobbar vi"],
+                    ["#fragor", "Frågor"],
+                  ].map(([href, label]) => (
+                    <a
+                      key={href}
+                      href={href}
+                      className="rounded-full border border-ink/15 bg-bone/70 px-3.5 py-1.5 text-[12.5px] text-ink/70 hover:text-ink hover:border-ink/40 transition"
+                    >
+                      {label} ↓
+                    </a>
+                  ))}
+                </div>
+              </>
+            )}
           </div>
-          {/* 3D-vinjetten döljs på mobil för batteri – snabbare, renare
-              första vy (samma grepp som startsidans hero). */}
+          {/* 3D-vinjetten döljs på mobil för batteri & sol – snabbare,
+              renare första vy (samma grepp som startsidans hero). */}
           <div
-            className={`${s.slug === "batterier" ? "hidden lg:block " : ""}lg:col-span-5`}
+            className={`${
+              s.slug === "batterier" || s.slug === "solpaneler"
+                ? "hidden lg:block "
+                : ""
+            }lg:col-span-5`}
           >
             <div className="aspect-[4/5] rounded-[28px] border border-ink/10 overflow-hidden relative">
               <ServiceVignette kind={s.slug} />
@@ -187,6 +220,35 @@ export default function ServicePage({
               className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-sun px-6 py-3.5 text-sm font-medium text-ink hover:bg-sun/85 transition self-start md:self-auto"
             >
               Begär offert <ArrowRight size={15} />
+            </Link>
+          </div>
+        </div>
+      )}
+
+      {/* Solpaneler: tvärförsäljningen åt andra hållet – så batterifröet. */}
+      {s.slug === "solpaneler" && (
+        <div className="container-edge mt-2">
+          <div className="rounded-[28px] bg-ink text-bone p-7 md:p-10 flex flex-col md:flex-row md:items-center gap-5 md:gap-8">
+            <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-sun text-ink">
+              <BatteryCharging size={20} />
+            </span>
+            <div className="flex-1">
+              <h2 className="font-display text-2xl md:text-3xl tracking-display-tight leading-snug">
+                Solceller utan batteri är{" "}
+                <span className="italic font-serif text-sun">
+                  halva affären.
+                </span>
+              </h2>
+              <p className="mt-2 text-bone/70 text-[14.5px] leading-relaxed max-w-xl">
+                Lagra överskottet i stället för att sälja det billigt – och
+                använd det när elen är dyr. Vi räknar på båda i samma offert.
+              </p>
+            </div>
+            <Link
+              href="/tjanster/batterier"
+              className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-sun px-6 py-3.5 text-sm font-medium text-ink hover:bg-sun/85 transition self-start md:self-auto"
+            >
+              Läs om batterier <ArrowRight size={15} />
             </Link>
           </div>
         </div>
@@ -322,6 +384,7 @@ export default function ServicePage({
           renderas som synlig prosa, vilket fångar prisintent direkt i SERP
           och konkurrerar med Svea Solar / Hemsols pris-snippets. */}
       {s.slug === "solpaneler" && (
+        <div id="pris" className="scroll-mt-14">
         <Section
           eyebrow="Vad kostar det?"
           title={<>Pris för solpaneler i Stockholm.</>}
@@ -351,17 +414,26 @@ export default function ServicePage({
                 modell. Helsvart all-black ingår.
               </p>
             </div>
-            <div className="rounded-3xl border border-ink/10 bg-cream/40 p-7">
-              <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink/55">
-                Typisk villa, 14 paneler
+            {/* Typvilla-kortet i driftande gradient-ram – det svar de
+                flesta letar efter ska fånga ögat först. */}
+            <div className="rounded-[26px] p-[3px] bg-gradient-to-r from-indigo via-sun to-indigo animate-gradient-drift">
+              <div className="h-full rounded-[23px] bg-bone p-7">
+                <div className="flex items-center justify-between gap-2">
+                  <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink/55">
+                    Typisk villa, 14 paneler
+                  </div>
+                  <span className="rounded-full bg-sun px-2.5 py-0.5 font-mono text-[9.5px] uppercase tracking-[0.14em] text-ink">
+                    Vanligast
+                  </span>
+                </div>
+                <div className="mt-3 font-display text-2xl tracking-display-tight">
+                  ca 50 000 kr
+                </div>
+                <p className="mt-3 text-[14.5px] text-ink/70 leading-relaxed">
+                  Efter grönt avdrag på 14,55 procent. Räkna på din specifika
+                  installation i kalkylatorn innan hembesöket.
+                </p>
               </div>
-              <div className="mt-3 font-display text-2xl tracking-display-tight">
-                ca 50 000 kr
-              </div>
-              <p className="mt-3 text-[14.5px] text-ink/70 leading-relaxed">
-                Efter grönt avdrag på 14,55 procent. Räkna på din specifika
-                installation i kalkylatorn innan hembesöket.
-              </p>
             </div>
           </div>
           <p className="mt-6 text-[13.5px] text-ink/55 max-w-2xl leading-relaxed">
@@ -369,6 +441,43 @@ export default function ServicePage({
             priset på fakturan. Ingen dolda påslag, ingen restidsdebitering.
           </p>
         </Section>
+        </div>
+      )}
+
+      {/* Solens år + panelen vi väljer. Cream-band för segmentkänsla. */}
+      {s.slug === "solpaneler" && (
+        <div id="solens-ar" className="scroll-mt-14 bg-cream/45 border-y border-ink/5">
+          <Section
+            eyebrow="Solens år"
+            title={<>Så jobbar taket – året runt.</>}
+          >
+            <SolarYear />
+            {/* JA Solar-kortet: sol-motsvarigheten till Easyway-ärligheten. */}
+            <div className="mt-8 rounded-[28px] border border-ink/10 bg-bone p-7 md:p-10 flex flex-col md:flex-row md:items-center gap-6">
+              <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-sun text-ink">
+                <Sun size={20} />
+              </span>
+              <div className="flex-1">
+                <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink/50">
+                  Panelen vi väljer
+                </div>
+                <h3 className="mt-1 font-display text-2xl tracking-display-tight">
+                  JA Solar, glas-glas.
+                </h3>
+                <p className="mt-2 text-[14.5px] text-ink/70 leading-relaxed max-w-xl">
+                  30 års produktgaranti, minst 87 % effekt efter 30 år och
+                  helsvart utförande – samma pris per panel oavsett modell.
+                </p>
+              </div>
+              <Link
+                href="/kalkylator"
+                className="inline-flex shrink-0 items-center gap-2 rounded-full border border-ink/15 px-5 py-3 text-[14px] text-ink/75 hover:text-ink hover:border-ink/40 transition self-start md:self-auto"
+              >
+                Räkna med den i kalkylatorn <ArrowRight size={14} />
+              </Link>
+            </div>
+          </Section>
+        </div>
       )}
 
       {/* "Så jobbar vi" före "Vad du får" – processen säljer tryggheten
@@ -487,9 +596,9 @@ export default function ServicePage({
         </div>
       </Section>
 
-      {/* Batteri: diskret sticky offert-pill nere till höger på mobil –
-          alltid nära till hands utan att vara påträngande. */}
-      {s.slug === "batterier" && (
+      {/* Batteri & sol: diskret sticky offert-pill nere till höger på
+          mobil – alltid nära till hands utan att vara påträngande. */}
+      {(s.slug === "batterier" || s.slug === "solpaneler") && (
         <div
           className="fixed bottom-4 right-4 z-40 md:hidden"
           style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
