@@ -91,7 +91,7 @@ export const SERVICES: Service[] = [
       "Ett batteri är inte bara en låda – det är en strategi. Vi dimensionerar utifrån din förbrukning, ditt elavtal och hur du faktiskt lever, inte utifrån ett datablad.",
     highlights: [
       "LFP-kemi: säkrare, längre livslängd, ingen kobolt",
-      "Stödtjänster (FCR-D, aFRR) gör batteriet betalt på 4–6 år",
+      "Stödtjänster (FCR-D, aFRR) kan ge intäkter ovanpå besparingen",
       "Skalbart från 5 kWh till 50 kWh",
     ],
     bullets: [
@@ -132,7 +132,7 @@ export const SERVICES: Service[] = [
       },
       {
         q: "Hur mycket tjänar jag på stödtjänster?",
-        a: "Mellan 25 000 och 60 000 kr per år för en 15 kWh-anläggning, beroende på balansläget. Vi visar realistiska siffror i kalkylatorn.",
+        a: "Det beror helt på marknadsläget – ersättningsnivåerna har varierat kraftigt mellan åren, så vi lovar hellre för lite än för mycket. Vid hembesöket räknar vi på aktuella nivåer för din batteristorlek och visar vad som är rimligt att förvänta sig.",
       },
       {
         q: "Kan jag ladda från elnätet när det är billigt?",

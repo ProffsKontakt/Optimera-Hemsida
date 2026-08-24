@@ -146,7 +146,7 @@ export default function RootLayout({
   return (
     <html
       lang="sv"
-      className={`${poppins.variable} ${fraunces.variable} ${jetbrains.variable}`}
+      className={`${poppins.variable} ${fraunces.variable} ${jetbrains.variable} scroll-smooth`}
     >
       <head>
         {/* Cookiebot med strategy="afterInteractive" – tidigare hade vi

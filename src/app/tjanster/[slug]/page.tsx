@@ -124,11 +124,31 @@ export default function ServicePage({
             {/* Batteri: ekonomin direkt i heron. Siffrorna speglar sajtens
                 befintliga FAQ/kalkylator-copy – inga nya löften. */}
             {s.slug === "batterier" && (
-              <div className="mt-10 grid grid-cols-3 gap-2 max-w-md">
-                <HeroStat n="2–5 år" label="återbetalning med befintlig sol" />
-                <HeroStat n="48,5 %" label="grönt avdrag, dras på fakturan" />
-                <HeroStat n="25–60 tkr" label="per år i stödtjänster (15 kWh)" />
-              </div>
+              <>
+                <div className="mt-10 grid grid-cols-3 gap-2 max-w-md">
+                  <HeroStat n="2–5 år" label="återbetalning med befintlig sol" />
+                  <HeroStat n="48,5 %" label="grönt avdrag, dras på fakturan" />
+                  <HeroStat n="6 000+" label="laddcykler i garanti" />
+                </div>
+                {/* Snabbknappar som hoppar ner till sidans segment. */}
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {[
+                    ["#sortiment", "Easyway & sortiment"],
+                    ["#dygnet", "Batteriets dygn"],
+                    ["#ekonomi", "Ekonomi"],
+                    ["#sa-jobbar-vi", "Så jobbar vi"],
+                    ["#fragor", "Frågor"],
+                  ].map(([href, label]) => (
+                    <a
+                      key={href}
+                      href={href}
+                      className="rounded-full border border-ink/15 bg-bone/70 px-3.5 py-1.5 text-[12.5px] text-ink/70 hover:text-ink hover:border-ink/40 transition"
+                    >
+                      {label} ↓
+                    </a>
+                  ))}
+                </div>
+              </>
             )}
           </div>
           {/* 3D-vinjetten döljs på mobil för batteri – snabbare, renare
@@ -177,7 +197,7 @@ export default function ServicePage({
           lyfter fram Easyway med länk till förklaringssidan. */}
       {s.slug === "batterier" && (
         <>
-          <div className="container-edge">
+          <div id="sortiment" className="container-edge scroll-mt-24">
             <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 border-t border-ink/10 py-5">
               <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink/50">
                 Batterier vi säljer
@@ -215,28 +235,30 @@ export default function ServicePage({
             }
             intro="Vi är märkesoberoende och sätter det som passar ditt hus. Men får vi välja fritt landar vi ofta i samma slutsats."
           >
-            <div className="flex flex-col justify-between gap-8 rounded-[28px] border border-ink/10 bg-cream/50 p-8 md:flex-row md:items-center md:p-12">
-              <div className="max-w-xl">
-                <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink/55">
-                  Utmärker sig
+            {/* Driftande gradient-ram (samma som offert-knappen) så
+                rekommendationen POPPAR ur sidans lugna kortflöde. */}
+            <div className="rounded-[30px] p-[3px] bg-gradient-to-r from-indigo via-sun to-indigo animate-gradient-drift shadow-lg shadow-indigo/15">
+              <div className="flex flex-col justify-between gap-8 rounded-[27px] bg-bone p-8 md:flex-row md:items-center md:p-12">
+                <div className="max-w-xl">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-sun px-3 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-ink">
+                    ★ Vår rekommendation
+                  </span>
+                  <div className="mt-4 font-serif italic text-5xl md:text-6xl text-indigo leading-none">
+                    Easyway
+                  </div>
+                  <p className="mt-4 text-[15.5px] leading-relaxed text-ink/70">
+                    Mest kWh för pengarna, med hårdvara byggd för att hålla.
+                    Styrningen sköts av växelriktaren eller en tredjepart, så
+                    varje del kan göra det den är bäst på.
+                  </p>
                 </div>
-                <div className="mt-3 font-display text-4xl md:text-5xl tracking-display-tight">
-                  Easyway
-                </div>
-                <p className="mt-4 text-[15.5px] leading-relaxed text-ink/70">
-                  Mest kWh för pengarna, med hårdvara byggd för att hålla.
-                  Styrningen sköts av växelriktaren eller en tredjepart, så
-                  varje del kan göra det den är bäst på.
-                </p>
-              </div>
-              <Link
-                href="/tjanster/batterier/easyway"
-                className="group shrink-0 self-start rounded-full bg-gradient-to-b from-indigo to-sun p-[3px] transition-transform duration-300 hover:scale-[1.02] md:self-auto"
-              >
-                <span className="inline-flex items-center gap-2 rounded-full bg-bone px-6 py-3 text-[14px] font-medium text-indigo transition-colors duration-300 group-hover:bg-indigo group-hover:text-bone">
+                <Link
+                  href="/tjanster/batterier/easyway"
+                  className="inline-flex shrink-0 items-center gap-2 self-start rounded-full bg-indigo px-6 py-3.5 text-[14.5px] font-medium text-bone hover:bg-indigo/90 transition md:self-auto"
+                >
                   Förstå varför <ArrowRight size={16} />
-                </span>
-              </Link>
+                </Link>
+              </div>
             </div>
           </Section>
         </>
@@ -244,22 +266,23 @@ export default function ServicePage({
 
       {/* Batteriets dygn + ärligt räkneexempel. */}
       {s.slug === "batterier" && (
+        <div id="dygnet" className="scroll-mt-14">
         <Section
           eyebrow="Batteriets dygn"
           title={<>Så tjänar batteriet pengar – dygnet runt.</>}
         >
           <BatteryDay />
-          <div className="mt-8 rounded-[28px] border border-ink/10 bg-cream/50 p-7 md:p-10">
+          <div id="ekonomi" className="mt-8 scroll-mt-28 rounded-[28px] border border-ink/10 bg-cream/50 p-7 md:p-10">
             <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink/55">
               Typexempel · villa med 15 kWh batteri
             </div>
             <dl className="mt-5 divide-y divide-ink/10">
               <div className="flex items-baseline justify-between gap-4 py-3">
                 <dt className="text-[14.5px] text-ink/70">
-                  Stödtjänster (FCR-D m.fl.)
+                  Cykelgaranti på batteriet
                 </dt>
                 <dd className="font-display text-xl tracking-display-tight whitespace-nowrap">
-                  25–60 tkr/år
+                  6 000+ cykler
                 </dd>
               </div>
               <div className="flex items-baseline justify-between gap-4 py-3">
@@ -280,9 +303,10 @@ export default function ServicePage({
               </div>
             </dl>
             <p className="mt-5 text-[13.5px] text-ink/55 leading-relaxed">
-              Exakt investering och siffror för just ditt hus beror på
-              förbrukning, elområde och batteristorlek – det räknar en tekniker
-              fram vid det kostnadsfria hembesöket.{" "}
+              Stödtjänster kan ge extraintäkter ovanpå besparingen – nivåerna
+              varierar med marknaden, så vi räknar på aktuella siffror vid
+              hembesöket i stället för att lova i förväg. Exakt investering
+              beror på förbrukning, elområde och batteristorlek.{" "}
               <Link href="/kalkylator" className="underline underline-offset-2 hover:text-ink">
                 Testa riktningen i kalkylatorn
               </Link>
@@ -290,6 +314,7 @@ export default function ServicePage({
             </p>
           </div>
         </Section>
+        </div>
       )}
 
       {/* Pris-anchor för Solpaneler-service-sidan. Speglar FAQ-data men
@@ -375,7 +400,7 @@ export default function ServicePage({
 
       <Section
         eyebrow="Så jobbar vi"
-        title={<>Fyra steg, ärligt prisad.</>}
+        title={<span id="sa-jobbar-vi" className="scroll-mt-32">Fyra steg, ärligt prisad.</span>}
       >
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
           {s.workflow.map((w, i) => (
@@ -402,7 +427,7 @@ export default function ServicePage({
         </div>
       </Section>
 
-      <Section eyebrow="Vanliga frågor" title={<>Klara svar, helt transparent.</>}>
+      <Section eyebrow="Vanliga frågor" title={<span id="fragor" className="scroll-mt-32">Klara svar, helt transparent.</span>}>
         <div className="divide-y divide-ink/10 border-y border-ink/10">
           {s.faq.map((f, i) => (
             <Disclosure key={i} question={f.q}>
@@ -456,18 +481,18 @@ export default function ServicePage({
         </div>
       </Section>
 
-      {/* Batteri: sticky offert-knapp på mobil – aldrig mer än ett
-          tumtryck bort på den långa sidan. */}
+      {/* Batteri: diskret sticky offert-pill nere till höger på mobil –
+          alltid nära till hands utan att vara påträngande. */}
       {s.slug === "batterier" && (
         <div
-          className="fixed inset-x-4 bottom-4 z-40 md:hidden"
+          className="fixed bottom-4 right-4 z-40 md:hidden"
           style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
         >
           <Link
             href={`/offert?tjanst=${s.slug}`}
-            className="flex items-center justify-center gap-2 rounded-full bg-indigo px-6 py-4 text-base font-medium text-bone shadow-xl shadow-ink/25"
+            className="inline-flex items-center gap-1.5 rounded-full bg-indigo/95 backdrop-blur px-4 py-2.5 text-[13.5px] font-medium text-bone shadow-lg shadow-ink/20"
           >
-            Begär offert – kostnadsfritt <ArrowRight size={16} />
+            Begär offert <ArrowRight size={14} />
           </Link>
         </div>
       )}
