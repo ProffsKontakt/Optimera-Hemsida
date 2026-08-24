@@ -14,7 +14,7 @@ import {
 export const metadata = {
   title: "Om oss · Optimera Energi – elfirman som tar hand om dig",
   description:
-    "Möt teamet bakom Optimera Energi Sverige AB. Tre människor i Solna som installerar solpaneler, batterier, värmepumpar och laddboxar – och som finns kvar dagen efter kontraktet är skrivet.",
+    "Möt teamet bakom Optimera Energilösningar i Mälardalen AB. Tre människor i Solna som installerar solpaneler, batterier, värmepumpar och laddboxar – och som finns kvar dagen efter kontraktet är skrivet.",
   alternates: { canonical: "/om-oss" },
   openGraph: {
     title: "Om oss – Optimera Energi",
@@ -122,7 +122,7 @@ export default function AboutPage() {
               </span>
             </h1>
             <p className="mt-6 max-w-xl text-ink/70 text-lg leading-relaxed">
-              Optimera Energi Sverige AB grundades på en enkel idé: branschen
+              Optimera Energilösningar i Mälardalen AB grundades på en enkel idé: branschen
               behöver en installatör som faktiskt finns kvar dagen efter
               kontraktet är skrivet.
             </p>
@@ -134,7 +134,7 @@ export default function AboutPage() {
                 Bolagsfakta
               </div>
               <dl className="space-y-3.5 text-[14px]">
-                <FactRow k="Juridiskt namn" v="Optimera Energi Sverige AB" />
+                <FactRow k="Juridiskt namn" v="Optimera Energilösningar i Mälardalen AB" />
                 <FactRow k="Org.nummer" v="559375-2206" />
                 <FactRow k="Säte" v="Vallgatan 9, Solna" />
                 <FactRow k="Grundat" v="2026" />
