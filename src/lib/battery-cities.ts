@@ -6,7 +6,7 @@
  *
  * Skiljt från solceller-sidorna (/solceller/[stad]): där handlar copyn om
  * takförutsättningar och panelinstallation, här om lagringsekonomi,
- * stödtjänster (FCR-D / aFRR), effekttoppar och backup. Det gör sidorna
+ * stödtjänster (FCR-D / aFRR) och effekttoppar. Det gör sidorna
  * tematiskt unika, inte dubbletter.
  *
  * Strukturell data (namn, preposition, region, grannar) återanvänds från
@@ -132,7 +132,7 @@ const CONTENT: BatteryCityContent[] = [
     oneLiner:
       "Batterilager installerat på Lidingö av elektriker som klarar både villa och fritidshus.",
     intro:
-      "På Lidingö handlar batteri ofta lika mycket om trygghet som om ekonomi. Som ö i Stockholms inlopp har delar av Lidingö känsligare nät, och ett batteri med backup-funktion håller frysen, värmen och belysningen igång vid strömavbrott. I Skärsätra, Brevik och Bodal installerar vi batterier som både kapar elkostnaden till vardags och fungerar som reservkraft när det behövs. Vi dimensionerar efter husets förbrukning och om du vill ha backup eller inte.",
+      "På Lidingö handlar batteri om att få ut mer av varje kilowattimme. I Skärsätra, Brevik och Bodal installerar vi batterier som kapar elkostnaden till vardags – laddar billigt på natten, använder lagrat på kvällen och låter smartstyrningen sköta resten. Vi dimensionerar efter husets faktiska förbrukning och elavtal, inte efter ett datablad.",
     facts: [
       { k: "Nätägare", v: "Ellevio" },
       { k: "Elområde", v: "SE3" },
@@ -141,9 +141,9 @@ const CONTENT: BatteryCityContent[] = [
     ],
     localContext: [
       {
-        title: "Backup vid strömavbrott",
+        title: "Rätt storlek för ön",
         body:
-          "Alla batterier ger inte backup, det kräver en växelriktare med ö-driftsfunktion och rätt inkoppling vid elcentralen. Vi installerar batterier som automatiskt kopplar över till ö-drift inom millisekunder vid avbrott, så att hushållet märker minimalt. På Lidingö, där väder och nät ibland prövas, är det en funktion många efterfrågar.",
+          "Villorna på Lidingö har ofta hög vinterförbrukning. Vi dimensionerar batteriet efter din faktiska timförbrukning så att det gör nytta året runt – rätt storlek slår alltid störst möjliga.",
       },
       {
         title: "Fritidshus och villa",
@@ -196,9 +196,9 @@ const CONTENT: BatteryCityContent[] = [
           "Nacka avviker från flertalet Storstockholm-kommuner genom att Vattenfall Eldistribution är nätägare. Vi har full erfarenhet av Vattenfalls installatörsportal och deras effekttariff, vilket avgör hur batteriet ska programmeras för att kapa rätt toppar. Kunden märker ingen skillnad, vi sköter all kommunikation.",
       },
       {
-        title: "Skogsnära nät och backup",
+        title: "Smart styrning i SE3",
         body:
-          "Stora delar av Nacka är skogsnära med luftledningar, där strömavbrott är vanligare än i innerstaden. Ett batteri med ö-driftsfunktion ger backup för de viktigaste lasterna. Vi installerar LFP-batterier med automatisk överkoppling så att hushållet klarar avbrott utan reservaggregat.",
+          "Nacka ligger i elområde SE3 där prisskillnaderna över dygnet är stora. Batteriet laddar när elen är billig och används när den är dyr – smartstyrningen sköter det automatiskt, varje dag.",
       },
     ],
   },

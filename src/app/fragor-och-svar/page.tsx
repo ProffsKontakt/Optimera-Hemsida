@@ -72,8 +72,8 @@ const CATEGORIES: { heading: string; eyebrow: string; items: { q: string; a: str
         a: "I de flesta fall nej – paneler som följer takets lutning är bygglovsbefriade på en- och tvåbostadshus. Vi kollar din kommun innan vi börjar.",
       },
       {
-        q: "Vad händer vid strömavbrott?",
-        a: "Med en hybrid-växelriktare och batteri kan vi konfigurera nödström så att utvalda kretsar fortsätter fungera även när nätet är nere.",
+        q: "Kan jag ladda batteriet från elnätet när det är billigt?",
+        a: "Absolut. Styrningen köper el när priset dippar och använder den när priset är högt – automatiskt, varje dygn.",
       },
       {
         q: "Vad kostar solpaneler i Stockholm?",

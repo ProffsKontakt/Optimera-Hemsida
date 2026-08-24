@@ -76,8 +76,8 @@ export const SERVICES: Service[] = [
         a: "I de flesta fall nej – paneler som följer takets lutning är bygglovsbefriade på en- och tvåbostadshus. Vi kollar din kommun innan vi börjar.",
       },
       {
-        q: "Vad händer vid strömavbrott?",
-        a: "Med en hybrid-växelriktare och batteri kan vi konfigurera nödström så att utvalda kretsar fortsätter funka även när nätet är nere.",
+        q: "Hur lång tid tar installationen?",
+        a: "Två-tre dagar för en normalvilla, oftast färre. Exakt tidplan får du i offerten – och priset där är priset på fakturan.",
       },
     ],
   },
@@ -95,7 +95,7 @@ export const SERVICES: Service[] = [
       "Skalbart från 5 kWh till 50 kWh",
     ],
     bullets: [
-      "Reservkraftsbrytare ingår",
+      "Skalbart 5–50 kWh",
       "Cykelgaranti 6000+",
       "Smart styrning mot spotpris",
       "Fjärrövervakning från vår jourcentral",

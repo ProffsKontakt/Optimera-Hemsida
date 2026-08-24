@@ -430,7 +430,7 @@ export default function SolcellsbatteriPage() {
             "Du har eller planerar solceller och vill använda mer av elen själv.",
             "Villan har elvärme, värmepump eller elbil – hög kvällsförbrukning.",
             "Din nätägare har effekttariff, så att kapade toppar sänker avgiften.",
-            "Du vill ha intäkt från stödtjänster (FCR-D / aFRR) eller backup vid strömavbrott.",
+            "Du vill ha möjlig intäkt från stödtjänster (FCR-D / aFRR) ovanpå besparingen.",
           ]}
           cons={[
             "Mycket låg elförbrukning där besparingen blir för liten för investeringen.",
