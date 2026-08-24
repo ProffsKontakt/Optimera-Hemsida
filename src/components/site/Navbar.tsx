@@ -156,7 +156,9 @@ export function Navbar() {
                     >
                       {MENU_ICONS[l.href] ?? <Zap size={16} />}
                     </span>
-                    <span className="font-display text-2xl tracking-display-tight">
+                    {/* Samma typsnitt som hero-radens "sol och batteri i
+                        Stockholm" (Fraunces, kursiv serif). */}
+                    <span className="font-serif italic text-[26px] leading-none">
                       {l.label}
                     </span>
                   </Link>
