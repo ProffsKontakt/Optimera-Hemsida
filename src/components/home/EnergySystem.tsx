@@ -87,9 +87,9 @@ export function EnergySystem() {
         </span>
         <div className="flex-1">
           <h3 className="font-display text-2xl md:text-3xl tracking-display-tight leading-snug">
-            Tillsammans blir villan energisnål –{" "}
+            Med solceller och batteri blir villan inte bara energisnål –{" "}
             <span className="italic font-serif text-sun">
-              och kan i bästa fall gå plus.
+              den kan till och med gå plus.
             </span>
           </h3>
           <p className="mt-3 text-bone/70 text-[15px] leading-relaxed max-w-2xl">

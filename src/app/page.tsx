@@ -116,7 +116,7 @@ export default function HomePage() {
             <span className="italic font-serif text-indigo">Ett system.</span>
           </>
         }
-        intro="Var för sig sänker de räkningen. Tillsammans gör de villan energisnål – och i bästa fall går den plus över året."
+        intro="Var för sig sänker de räkningen. Tillsammans gör de villan inte bara energisnål – den kan till och med gå plus över året."
       >
         <EnergySystem />
       </DemoSection>
