@@ -31,16 +31,19 @@ import { CalendarPicker, type SlotSelection } from "@/components/offert/Calendar
  * /offert/klar fyrar generate_lead precis som vanligt.
  */
 
-// Komponent-referenser så samma ikon kan renderas stor (kort-plattan)
-// och liten där det behövs.
-const PRODUCT_ICONS: Record<
+// Ikon + solid accentfärg per produkt. Ljusa kort med färgstarka
+// ikon-brickor poppar bättre än mörka gradient-plattor.
+const PRODUCT_STYLE: Record<
   string,
-  React.ComponentType<{ size?: number | string }>
+  {
+    Icon: React.ComponentType<{ size?: number | string }>;
+    accent: string;
+  }
 > = {
-  solpaneler: Sun,
-  batterier: BatteryCharging,
-  "batteri-utbyggnad": Layers,
-  laddboxar: PlugZap,
+  solpaneler: { Icon: Sun, accent: "bg-sun text-ink" },
+  batterier: { Icon: BatteryCharging, accent: "bg-indigo text-bone" },
+  "batteri-utbyggnad": { Icon: Layers, accent: "bg-moss text-bone" },
+  laddboxar: { Icon: PlugZap, accent: "bg-copper text-bone" },
 };
 
 const HOUSING = ["Villa", "Radhus", "Fritidshus", "Lantbruk", "Brf / styrelse"];
@@ -307,46 +310,49 @@ function StepBehov({
 
       <div className="mt-4 grid grid-cols-2 gap-3">
         {FUNNEL_PRODUCTS.map((p) => {
+          const style = PRODUCT_STYLE[p.key] ?? PRODUCT_STYLE.solpaneler;
+          const Icon = style.Icon;
           const on = products.includes(p.key);
-          const Icon = PRODUCT_ICONS[p.key] ?? Sun;
           return (
             <button
               type="button"
               key={p.key}
               onClick={() => onToggle(p.key)}
               aria-pressed={on}
-              className={`group overflow-hidden rounded-3xl border text-left transition ${
+              // Grid-stretch ger jämnhöga kort per rad oavsett textlängd.
+              className={`flex flex-col gap-4 rounded-3xl border p-4 text-left transition active:scale-[0.98] ${
                 on
-                  ? "border-indigo ring-2 ring-indigo/30"
-                  : "border-ink/10 hover:border-ink/30"
+                  ? "border-indigo ring-2 ring-indigo/25 bg-indigo-soft/50"
+                  : "border-ink/10 bg-cream/50 hover:border-ink/30"
               }`}
             >
-              {/* Ikon-platta: stor ikon på brand-gradient i stället för foto. */}
-              <div
-                className={`relative grid aspect-[5/3] place-items-center bg-gradient-to-br ${p.fallback}`}
-              >
+              <div className="flex items-start justify-between gap-2">
+                {/* Solid färgbricka med stor ikon – kortets blickfång. */}
                 <span
-                  className={`grid h-16 w-16 place-items-center rounded-full bg-bone/15 text-bone transition-transform duration-300 ${
-                    on ? "scale-105" : "group-active:scale-90"
-                  }`}
+                  className={`grid h-14 w-14 place-items-center rounded-2xl shadow-sm transition-transform duration-300 ${
+                    style.accent
+                  } ${on ? "scale-105" : ""}`}
                 >
-                  <Icon size={30} />
+                  <Icon size={26} />
                 </span>
+                {/* Diskret vals-ring – fylls först när kortet väljs. */}
                 <span
-                  className={`absolute right-2.5 top-2.5 grid h-7 w-7 place-items-center rounded-full border transition ${
+                  className={`grid h-6 w-6 shrink-0 place-items-center rounded-full border transition ${
                     on
                       ? "bg-indigo border-indigo text-bone"
-                      : "bg-bone/70 border-ink/15 text-transparent backdrop-blur"
+                      : "border-ink/20 text-transparent"
                   }`}
                 >
-                  <Check size={14} />
+                  <Check size={13} />
                 </span>
               </div>
-              <div className="bg-cream/60 p-3.5">
-                <div className="text-[13.5px] font-medium leading-snug">
+              <div>
+                <div className="text-[14px] font-medium leading-snug">
                   {p.title}
                 </div>
-                <div className="mt-1 text-[12px] text-ink/55">{p.sub}</div>
+                <div className="mt-1 text-[12px] text-ink/55 leading-snug">
+                  {p.sub}
+                </div>
               </div>
             </button>
           );
