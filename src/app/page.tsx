@@ -10,14 +10,11 @@ import { EnergySystem } from "@/components/home/EnergySystem";
 import { getVisibleReviews } from "@/lib/reviews";
 import { DemoProcess } from "@/components/demo/DemoProcess";
 import { DemoManifesto } from "@/components/demo/DemoManifesto";
-import { HousecallStrip } from "@/components/home/HousecallStrip";
 import { Testimonials } from "@/components/home/Testimonials";
-import { VideoStage } from "@/components/home/VideoStage";
 import { CtaPanel } from "@/components/home/CtaPanel";
 import {
   JsonLd,
   faqPageSchema,
-  videoObjectSchema,
   localBusinessSchema,
 } from "@/components/seo/JsonLd";
 
@@ -65,17 +62,6 @@ export default function HomePage() {
       )}
       <JsonLd data={faqPageSchema(HOME_FAQ)} />
       <JsonLd data={localBusinessSchema} />
-      <JsonLd
-        data={videoObjectSchema({
-          name: "Optimera Energi, filmen om varför vi finns",
-          description:
-            "En kort film om hur Optimera bygger den första familjära men kompromisslösa elfirman i Sverige. Solpaneler, batterier och laddboxar i Stockholm.",
-          thumbnailUrl: "/poster.svg",
-          uploadDate: "2026-05-24",
-          durationISO: "PT2M14S",
-          contentUrl: "/hero.mp4",
-        })}
-      />
 
       <DemoHero
         heroImageUrl={heroBg?.url}
@@ -130,17 +116,6 @@ export default function HomePage() {
         <div className="mt-24">
           <DemoManifesto />
         </div>
-        <div className="mt-24">
-          <HousecallStrip />
-        </div>
-      </DemoSection>
-
-      {/* Film */}
-      <DemoSection
-        eyebrow="Filmen om oss"
-        title={<>Två minuter om varför vi finns.</>}
-      >
-        <VideoStage />
       </DemoSection>
 
       {/* Synlig FAQ speglar FAQPage-schemat ovan (Google rich results +
