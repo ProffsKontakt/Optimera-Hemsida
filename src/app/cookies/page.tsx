@@ -4,7 +4,7 @@ import { LegalLayout, H2, H3, P, UL } from "@/components/site/LegalLayout";
 export const metadata = {
   title: "Cookies",
   description:
-    "Hur Optimera Energi Sverige AB använder cookies på optimeraenergi.se.",
+    "Hur Optimera Energilösningar i Mälardalen AB använder cookies på optimeraenergi.se.",
   alternates: { canonical: "/cookies" },
 };
 
@@ -18,7 +18,7 @@ export default function CookiesPage() {
       updatedAt="2026-05-09"
     >
       <P>
-        Optimera Energi Sverige AB använder cookies och liknande tekniker
+        Optimera Energilösningar i Mälardalen AB använder cookies och liknande tekniker
         på optimeraenergi.se. Här beskriver vi vilka cookies vi använder,
         i vilket syfte och hur du kan styra dem.
       </P>

@@ -103,7 +103,7 @@ export function Footer() {
               170 67 Solna
               <br />
               <span className="block pt-2">
-                Optimera Energi Sverige AB
+                Optimera Energilösningar i Mälardalen AB
               </span>
               <span className="block">Org.nr 559375-2206</span>
             </li>
@@ -146,7 +146,7 @@ export function Footer() {
         <div className="container-edge py-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-[12.5px] text-ink/55">
           <div className="flex items-center gap-3">
             <span className="font-mono">© {new Date().getFullYear()}</span>
-            <span>Optimera Energi Sverige AB</span>
+            <span>Optimera Energilösningar i Mälardalen AB</span>
           </div>
           <div className="flex gap-5">
             <Link href="/integritet" className="hover:text-ink">

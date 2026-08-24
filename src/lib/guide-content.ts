@@ -155,7 +155,7 @@ const CONTENT: Record<string, GuideContent> = {
       {
         h2: "Vad du behöver veta innan du tecknar avtal",
         body: [
-          "Säkerställ att installatören har F-skatt och är registrerad för grönt avdrag hos Skatteverket. Optimera Energi Sverige AB (org.nr 559375-2206) är båda. Vi visar avdraget separat på offerten så du ser exakt vad du betalar netto.",
+          "Säkerställ att installatören har F-skatt och är registrerad för grönt avdrag hos Skatteverket. Optimera Energilösningar i Mälardalen AB (org.nr 559375-2206) är båda. Vi visar avdraget separat på offerten så du ser exakt vad du betalar netto.",
           "Vi rekommenderar att du loggar in på skatteverket.se efter installation och bekräftar att avdraget bokförts mot din person. Det är samma princip som ROT-avdrag – tar normalt 4-8 veckor från fakturadatum.",
         ],
       },

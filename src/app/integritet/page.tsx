@@ -3,7 +3,7 @@ import { LegalLayout, H2, H3, P, UL } from "@/components/site/LegalLayout";
 export const metadata = {
   title: "Integritetspolicy",
   description:
-    "Så hanterar Optimera Energi Sverige AB dina personuppgifter enligt GDPR.",
+    "Så hanterar Optimera Energilösningar i Mälardalen AB dina personuppgifter enligt GDPR.",
   alternates: { canonical: "/integritet" },
 };
 
@@ -15,7 +15,7 @@ export default function IntegritetPage() {
       updatedAt="2026-05-09"
     >
       <P>
-        Optimera Energi Sverige AB (org.nr 559375-2206), Vallgatan 9, 170 67
+        Optimera Energilösningar i Mälardalen AB (org.nr 559375-2206), Vallgatan 9, 170 67
         Solna, är personuppgiftsansvarig för behandling av dina
         personuppgifter när du kontaktar oss, begär offert eller besöker
         optimeraenergi.se. Den här integritetspolicyn beskriver vilka

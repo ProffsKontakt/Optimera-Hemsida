@@ -24,7 +24,7 @@ import {
 const HOME_FAQ = [
   {
     q: "Vad gör Optimera Energi?",
-    a: "Optimera Energi Sverige AB är en svensk elinstallatör i Solna som installerar solpaneler, batterier och laddboxar för villor och bostadsrättsföreningar i Stockholms län. Vi har eget montageteam, inga underentreprenörer.",
+    a: "Optimera Energilösningar i Mälardalen AB är en svensk elinstallatör i Solna som installerar solpaneler, batterier och laddboxar för villor och bostadsrättsföreningar i Stockholms län. Vi har eget montageteam, inga underentreprenörer.",
   },
   {
     q: "Var ligger Optimera Energi?",

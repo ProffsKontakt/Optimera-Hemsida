@@ -61,9 +61,9 @@ export const metadata: Metadata = {
   description:
     "Optimera Energi installerar solpaneler, batterier, värmepumpar och laddboxar i Stockholm. Hand-plockat sortiment, transparent prissättning, från offert till driftsättning under ett tak.",
   applicationName: "Optimera Energi",
-  authors: [{ name: "Optimera Energi Sverige AB", url: SITE_URL }],
-  creator: "Optimera Energi Sverige AB",
-  publisher: "Optimera Energi Sverige AB",
+  authors: [{ name: "Optimera Energilösningar i Mälardalen AB", url: SITE_URL }],
+  creator: "Optimera Energilösningar i Mälardalen AB",
+  publisher: "Optimera Energilösningar i Mälardalen AB",
   keywords: [
     "solceller Stockholm",
     "solpaneler",

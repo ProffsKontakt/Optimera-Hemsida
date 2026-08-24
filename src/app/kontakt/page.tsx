@@ -17,7 +17,7 @@ export const metadata = {
   openGraph: {
     title: "Kontakt – Optimera Energi",
     description:
-      "Telefon, e-post och kontoradress till Optimera Energi Sverige AB i Solna.",
+      "Telefon, e-post och kontoradress till Optimera Energilösningar i Mälardalen AB i Solna.",
     url: "/kontakt",
     type: "website",
   },
@@ -148,7 +148,7 @@ export default function KontaktPage() {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-end">
             <div className="md:col-span-8">
               <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink/55">
-                Optimera Energi Sverige AB
+                Optimera Energilösningar i Mälardalen AB
               </div>
               <h2 className="mt-4 font-display text-3xl md:text-5xl tracking-display-tight leading-tight">
                 Vallgatan 9, 170 67 Solna.

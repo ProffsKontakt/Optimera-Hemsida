@@ -3,7 +3,7 @@ import { LegalLayout, H2, H3, P, UL } from "@/components/site/LegalLayout";
 export const metadata = {
   title: "Villkor",
   description:
-    "Allmänna villkor för Optimera Energi Sverige AB:s tjänster och webbplats.",
+    "Allmänna villkor för Optimera Energilösningar i Mälardalen AB:s tjänster och webbplats.",
   alternates: { canonical: "/villkor" },
 };
 
@@ -23,7 +23,7 @@ export default function VillkorPage() {
 
       <H2>1. Bolagsuppgifter</H2>
       <P>
-        Optimera Energi Sverige AB, Vallgatan 9, 170 67 Solna. Org.nr
+        Optimera Energilösningar i Mälardalen AB, Vallgatan 9, 170 67 Solna. Org.nr
         559375-2206. F-skatt registrerad. Mejla{" "}
         <a className="text-indigo underline" href="mailto:hej@optimeraenergi.se">
           hej@optimeraenergi.se

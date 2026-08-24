@@ -20,23 +20,19 @@ const BASE =
 /**
  * Sitewide Organization-schema (läggs i root-layouten).
  *
- * Namnnotis: Bolagsverket-registrerat namn på org.nr 559375-2206 är just nu
- * "Solpanelsgruppen i Sverige AB". Namnändring till "Optimera Energi Sverige
- * AB" är inskickad men inte processad. Allabolag-URLen i sameAs pekar
- * därför på det gamla slug:et "solpanelsgruppen-i-sverige-ab" – det är
- * samma entity och korrekt under övergångsperioden. När namnändringen
- * processats kommer Allabolag uppdatera slug:et automatiskt.
- *
- * alternateName-listan inkluderar både gamla legal namnet och kortform
- * så Googles entity resolution förstår att alla varianter pekar på
- * samma bolag.
+ * Namnnotis: juridiskt namn på org.nr 559375-2206 är "Optimera
+ * Energilösningar i Mälardalen AB". Tidigare namn ("Optimera Energi
+ * Sverige AB" och ursprungliga "Solpanelsgruppen i Sverige AB") behålls i
+ * alternateName så Googles entity resolution förstår att alla varianter
+ * pekar på samma bolag. Allabolag-URLen i sameAs kan peka på ett äldre
+ * slug under övergångsperioden – det är samma entity.
  */
 export const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   "@id": `${BASE}#organization`,
-  name: "Optimera Energi Sverige AB",
-  legalName: "Optimera Energi Sverige AB",
+  name: "Optimera Energilösningar i Mälardalen AB",
+  legalName: "Optimera Energilösningar i Mälardalen AB",
   alternateName: [
     "Optimera Energi",
     "Optimera Energi Sverige AB",
@@ -80,7 +76,7 @@ export const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": ["LocalBusiness", "ElectricalContractor"],
   "@id": `${BASE}#localbusiness`,
-  name: "Optimera Energi Sverige AB",
+  name: "Optimera Energilösningar i Mälardalen AB",
   image: `${BASE}/opengraph-image`,
   url: BASE,
   email: "hej@optimeraenergi.se",

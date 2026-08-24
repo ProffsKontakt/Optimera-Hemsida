@@ -12,7 +12,7 @@ import { getAllPressReleases } from "@/lib/press";
 export const metadata = {
   title: "Press · Optimera Energi",
   description:
-    "Pressmaterial, logotyp och kontaktuppgifter för journalister och redaktioner. Optimera Energi Sverige AB, elinstallatör i Solna.",
+    "Pressmaterial, logotyp och kontaktuppgifter för journalister och redaktioner. Optimera Energilösningar i Mälardalen AB, elinstallatör i Solna.",
   alternates: { canonical: "/press" },
   openGraph: {
     title: "Press · Optimera Energi",
@@ -24,7 +24,7 @@ export const metadata = {
 };
 
 const QUICK_FACTS = [
-  { k: "Juridiskt namn", v: "Optimera Energi Sverige AB" },
+  { k: "Juridiskt namn", v: "Optimera Energilösningar i Mälardalen AB" },
   { k: "Organisationsnummer", v: "559375-2206" },
   { k: "Säte", v: "Vallgatan 9, 170 67 Solna" },
   { k: "Grundat", v: "2026" },
