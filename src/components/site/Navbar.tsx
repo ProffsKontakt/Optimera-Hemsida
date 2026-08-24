@@ -3,7 +3,17 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  Sun,
+  BatteryCharging,
+  PlugZap,
+  Flame,
+  Calculator,
+  Users,
+  Mail,
+  Zap,
+} from "lucide-react";
 import { VISIBLE_SERVICES } from "@/lib/services";
 
 // Tjänste-länkarna byggs från VISIBLE_SERVICES så dolda tjänster (t.ex.
@@ -13,6 +23,26 @@ const links = [
   { href: "/kalkylator", label: "Kalkylator" },
   { href: "/om-oss", label: "Om oss" },
   { href: "/kontakt", label: "Kontakt" },
+];
+
+/* Mobilmenyns ikoner + accentfärger per länk (gör menyn roligare att se
+   på). Ikon väljs på href, färgerna cyklar genom brand-paletten. */
+const MENU_ICONS: Record<string, React.ReactNode> = {
+  "/tjanster/solpaneler": <Sun size={16} />,
+  "/tjanster/batterier": <BatteryCharging size={16} />,
+  "/tjanster/laddboxar": <PlugZap size={16} />,
+  "/tjanster/vaermepumpar": <Flame size={16} />,
+  "/kalkylator": <Calculator size={16} />,
+  "/om-oss": <Users size={16} />,
+  "/kontakt": <Mail size={16} />,
+};
+const MENU_ACCENTS = [
+  "bg-sun text-ink",
+  "bg-indigo text-bone",
+  "bg-copper text-bone",
+  "bg-moss text-bone",
+  "bg-amber text-ink",
+  "bg-graphite text-bone",
 ];
 
 export function Navbar() {
@@ -69,37 +99,84 @@ export function Navbar() {
 
         <div className="flex items-center gap-3">
           <QuoteButton className="hidden md:inline-flex" />
+          {/* Hamburgare som morfar till kryss (tre linjer -> X). */}
           <button
             aria-label="Meny"
+            aria-expanded={open}
             className="lg:hidden inline-flex h-11 w-11 items-center justify-center rounded-full border border-ink/15 bg-cream"
             onClick={() => setOpen(!open)}
           >
-            {open ? <X size={18} /> : <Menu size={18} />}
+            <span className="relative block h-[14px] w-[18px]">
+              <span
+                className={`absolute left-0 top-0 h-[2px] w-full rounded-full bg-ink transition-all duration-300 ${
+                  open ? "top-1/2 -translate-y-1/2 rotate-45" : ""
+                }`}
+              />
+              <span
+                className={`absolute left-0 top-1/2 h-[2px] w-full -translate-y-1/2 rounded-full bg-ink transition-all duration-200 ${
+                  open ? "opacity-0 scale-x-0" : ""
+                }`}
+              />
+              <span
+                className={`absolute left-0 bottom-0 h-[2px] w-full rounded-full bg-ink transition-all duration-300 ${
+                  open ? "bottom-1/2 translate-y-1/2 -rotate-45" : ""
+                }`}
+              />
+            </span>
           </button>
         </div>
       </div>
 
-      {open && (
-        <div className="lg:hidden border-t border-ink/8 bg-bone">
-          <div className="container-edge py-4 flex flex-col">
-            {links.map((l) => (
-              <Link
-                key={l.href}
-                href={l.href}
-                onClick={() => setOpen(false)}
-                className="py-3 text-base border-b border-ink/8"
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.32, ease: [0.32, 0.72, 0, 1] }}
+            className="lg:hidden overflow-hidden border-t border-ink/8 bg-bone"
+          >
+            <div className="container-edge py-4 flex flex-col">
+              {links.map((l, i) => (
+                <motion.div
+                  key={l.href}
+                  initial={{ opacity: 0, x: -14 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.08 + i * 0.05, duration: 0.3 }}
+                >
+                  <Link
+                    href={l.href}
+                    onClick={() => setOpen(false)}
+                    className="group flex items-center gap-4 py-3.5 border-b border-ink/8"
+                  >
+                    <span
+                      className={`grid h-9 w-9 shrink-0 place-items-center rounded-full transition-transform duration-300 group-active:scale-90 ${
+                        MENU_ACCENTS[i % MENU_ACCENTS.length]
+                      }`}
+                    >
+                      {MENU_ICONS[l.href] ?? <Zap size={16} />}
+                    </span>
+                    <span className="font-display text-2xl tracking-display-tight">
+                      {l.label}
+                    </span>
+                  </Link>
+                </motion.div>
+              ))}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.08 + links.length * 0.05, duration: 0.3 }}
               >
-                {l.label}
-              </Link>
-            ))}
-            <QuoteButton
-              className="mt-4 w-full"
-              innerClassName="w-full justify-center"
-              onClick={() => setOpen(false)}
-            />
-          </div>
-        </div>
-      )}
+                <QuoteButton
+                  className="mt-5 w-full"
+                  innerClassName="w-full justify-center"
+                  onClick={() => setOpen(false)}
+                />
+              </motion.div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }
