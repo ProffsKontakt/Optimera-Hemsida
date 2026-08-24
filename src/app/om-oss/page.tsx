@@ -71,14 +71,14 @@ function teamLocalBusinessSchema(team: ReturnType<typeof getTeam>) {
         name: m.name,
         jobTitle: m.role,
         email: m.email,
-        ...(m.phone ? { telephone: `+46${m.phone.replace(/^0/, "")}` } : {}),
+        ...(m.phone ? { telephone: telHref(m.phone) } : {}),
       })),
     employee: team.map((m) => ({
       "@type": "Person",
       name: m.name,
       jobTitle: m.role,
       email: m.email,
-      ...(m.phone ? { telephone: `+46${m.phone.replace(/^0/, "")}` } : {}),
+      ...(m.phone ? { telephone: telHref(m.phone) } : {}),
     })),
     foundingDate: "2026",
     foundingLocation: {
@@ -281,7 +281,7 @@ export default function AboutPage() {
         intro="Du får aldrig en växel eller en chatt-bot. Du pratar med en av oss, varje gång."
         className="!py-16 md:!py-20"
       >
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-5">
           {team.map((m) => {
             const photo = getMedia(`team:${m.id}`);
             return (
@@ -301,36 +301,60 @@ export default function AboutPage() {
                   <div className="absolute inset-0 mix-blend-overlay opacity-25 bg-grain bg-grain-sm" />
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
-                <div className="absolute bottom-0 inset-x-0 p-5 text-bone">
-                  <div className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-bone/75">
+                <div className="absolute bottom-0 inset-x-0 p-3 md:p-5 text-bone">
+                  <div className="font-mono text-[9px] md:text-[10.5px] uppercase tracking-[0.14em] md:tracking-[0.18em] text-bone/75 truncate">
                     {m.role}
                   </div>
-                  <div className="font-display text-2xl tracking-display-tight mt-1">
+                  <div className="font-display text-base md:text-2xl tracking-display-tight mt-0.5 md:mt-1 leading-tight">
                     {m.name}
                   </div>
                 </div>
               </div>
-              <div className="p-6 md:p-7 flex flex-col gap-4 flex-1">
-                <p className="text-ink/70 text-[14.5px] leading-relaxed">
+              <div className="p-3.5 md:p-7 flex flex-col gap-3 md:gap-4 flex-1">
+                {/* Bion döljs på mobil (2-kolumnsläget) – annars blir det
+                    ett jäkla skrollande. */}
+                <p className="hidden md:block text-ink/70 text-[14.5px] leading-relaxed">
                   {m.bio}
                 </p>
-                <div className="mt-auto pt-4 border-t border-ink/10 space-y-2 text-[13.5px]">
-                  <a
-                    href={`mailto:${m.email}`}
-                    className="flex items-center gap-2 text-ink/70 hover:text-indigo transition break-all"
-                  >
-                    <Mail size={13} className="shrink-0" />
-                    {m.email}
-                  </a>
-                  {m.phone && (
+                <div className="mt-auto md:pt-4 md:border-t md:border-ink/10">
+                  {/* Mobil: kompakta ikon-knappar. */}
+                  <div className="flex gap-2 md:hidden">
                     <a
-                      href={`tel:+46${m.phone.replace(/^0/, "")}`}
-                      className="flex items-center gap-2 text-ink/70 hover:text-indigo transition"
+                      href={`mailto:${m.email}`}
+                      aria-label={`Mejla ${m.name}`}
+                      className="grid h-9 w-9 place-items-center rounded-full border border-ink/15 text-ink/70 active:bg-ink/5"
                     >
-                      <Phone size={13} className="shrink-0" />
-                      {formatPhone(m.phone)}
+                      <Mail size={14} />
                     </a>
-                  )}
+                    {m.phone && (
+                      <a
+                        href={`tel:${telHref(m.phone)}`}
+                        aria-label={`Ring ${m.name}`}
+                        className="grid h-9 w-9 place-items-center rounded-full border border-ink/15 text-ink/70 active:bg-ink/5"
+                      >
+                        <Phone size={14} />
+                      </a>
+                    )}
+                  </div>
+                  {/* Desktop: fulla kontaktrader. */}
+                  <div className="hidden md:block space-y-2 text-[13.5px]">
+                    <a
+                      href={`mailto:${m.email}`}
+                      className="flex items-center gap-2 text-ink/70 hover:text-indigo transition break-all"
+                    >
+                      <Mail size={13} className="shrink-0" />
+                      {m.email}
+                    </a>
+                    {m.phone && (
+                      <a
+                        href={`tel:${telHref(m.phone)}`}
+                        className="flex items-center gap-2 text-ink/70 hover:text-indigo transition"
+                      >
+                        <Phone size={13} className="shrink-0" />
+                        {formatPhone(m.phone)}
+                      </a>
+                    )}
+                  </div>
                 </div>
               </div>
             </article>
@@ -479,4 +503,10 @@ function formatPhone(p: string): string {
     return `${p.slice(0, 3)} ${p.slice(3, 6)} ${p.slice(6, 8)} ${p.slice(8)}`;
   }
   return p;
+}
+
+/** tel:-href som tål både "07x…" och redan internationellt "+46 …". */
+function telHref(p: string): string {
+  const digits = p.replace(/[^\d+]/g, "");
+  return digits.startsWith("+") ? digits : `+46${digits.replace(/^0/, "")}`;
 }
