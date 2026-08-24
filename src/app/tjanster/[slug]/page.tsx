@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, BatteryCharging } from "lucide-react";
+import { BatteryDay } from "@/components/tjanster/BatteryDay";
 import { SERVICES, getService, type ServiceSlug } from "@/lib/services";
 import { ServiceVignetteLazy as ServiceVignette } from "@/components/3d/ServiceVignetteLazy";
 import { Section } from "@/components/site/Section";
@@ -45,6 +46,27 @@ export function generateMetadata({ params }: { params: { slug: string } }) {
     },
   };
 }
+
+/** Stat-chip i batteri-heron: stor siffra + kort etikett. */
+function HeroStat({ n, label }: { n: string; label: string }) {
+  return (
+    <div className="rounded-2xl border border-ink/10 bg-cream/60 px-3 py-3.5">
+      <div className="font-display text-lg leading-none tracking-display-tight whitespace-nowrap">
+        {n}
+      </div>
+      <div className="mt-1.5 text-[11px] text-ink/55 leading-tight">{label}</div>
+    </div>
+  );
+}
+
+/* Accentfärger för workflow-stegens nummer-noder (samma palett som
+   startsidans "resa"). */
+const WORKFLOW_ACCENTS = [
+  "bg-indigo text-bone",
+  "bg-sun text-ink",
+  "bg-moss text-bone",
+  "bg-amber text-ink",
+];
 
 export default function ServicePage({
   params,
@@ -98,14 +120,57 @@ export default function ServicePage({
                 Räkna på besparingen
               </Link>
             </div>
+
+            {/* Batteri: ekonomin direkt i heron. Siffrorna speglar sajtens
+                befintliga FAQ/kalkylator-copy – inga nya löften. */}
+            {s.slug === "batterier" && (
+              <div className="mt-10 grid grid-cols-3 gap-2 max-w-md">
+                <HeroStat n="2–5 år" label="återbetalning med befintlig sol" />
+                <HeroStat n="48,5 %" label="grönt avdrag, dras på fakturan" />
+                <HeroStat n="25–60 tkr" label="per år i stödtjänster (15 kWh)" />
+              </div>
+            )}
           </div>
-          <div className="lg:col-span-5">
+          {/* 3D-vinjetten döljs på mobil för batteri – snabbare, renare
+              första vy (samma grepp som startsidans hero). */}
+          <div
+            className={`${s.slug === "batterier" ? "hidden lg:block " : ""}lg:col-span-5`}
+          >
             <div className="aspect-[4/5] rounded-[28px] border border-ink/10 overflow-hidden relative">
               <ServiceVignette kind={s.slug} />
             </div>
           </div>
         </div>
       </section>
+
+      {/* Batteri: fånga bästa kundgruppen direkt – de som redan har sol. */}
+      {s.slug === "batterier" && (
+        <div className="container-edge mt-2">
+          <div className="rounded-[28px] bg-ink text-bone p-7 md:p-10 flex flex-col md:flex-row md:items-center gap-5 md:gap-8">
+            <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-sun text-ink">
+              <BatteryCharging size={20} />
+            </span>
+            <div className="flex-1">
+              <h2 className="font-display text-2xl md:text-3xl tracking-display-tight leading-snug">
+                Har du redan solceller?{" "}
+                <span className="italic font-serif text-sun">
+                  Då är batteriet bästa affären.
+                </span>
+              </h2>
+              <p className="mt-2 text-bone/70 text-[14.5px] leading-relaxed max-w-xl">
+                Lagra din egen el, köp billigt och sälj dyrt, och låt
+                stödtjänsterna jobba – typisk återbetalning 2–5 år.
+              </p>
+            </div>
+            <Link
+              href={`/offert?tjanst=${s.slug}`}
+              className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-sun px-6 py-3.5 text-sm font-medium text-ink hover:bg-sun/85 transition self-start md:self-auto"
+            >
+              Begär offert <ArrowRight size={15} />
+            </Link>
+          </div>
+        </div>
+      )}
 
       {/* Batteri-sortiment + Easyway-utmärkelse. Bara på batteri-tjänsten.
           Mellan-raden listar hela sortimentet vi säljer; segmentet under
@@ -175,6 +240,56 @@ export default function ServicePage({
             </div>
           </Section>
         </>
+      )}
+
+      {/* Batteriets dygn + ärligt räkneexempel. */}
+      {s.slug === "batterier" && (
+        <Section
+          eyebrow="Batteriets dygn"
+          title={<>Så tjänar batteriet pengar – dygnet runt.</>}
+        >
+          <BatteryDay />
+          <div className="mt-8 rounded-[28px] border border-ink/10 bg-cream/50 p-7 md:p-10">
+            <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink/55">
+              Typexempel · villa med 15 kWh batteri
+            </div>
+            <dl className="mt-5 divide-y divide-ink/10">
+              <div className="flex items-baseline justify-between gap-4 py-3">
+                <dt className="text-[14.5px] text-ink/70">
+                  Stödtjänster (FCR-D m.fl.)
+                </dt>
+                <dd className="font-display text-xl tracking-display-tight whitespace-nowrap">
+                  25–60 tkr/år
+                </dd>
+              </div>
+              <div className="flex items-baseline justify-between gap-4 py-3">
+                <dt className="text-[14.5px] text-ink/70">
+                  Grönt avdrag, dras direkt på fakturan
+                </dt>
+                <dd className="font-display text-xl tracking-display-tight whitespace-nowrap">
+                  48,5 %
+                </dd>
+              </div>
+              <div className="flex items-baseline justify-between gap-4 py-3">
+                <dt className="text-[14.5px] text-ink/70">
+                  Typisk återbetalning med befintlig sol
+                </dt>
+                <dd className="font-display text-xl tracking-display-tight whitespace-nowrap">
+                  2–5 år
+                </dd>
+              </div>
+            </dl>
+            <p className="mt-5 text-[13.5px] text-ink/55 leading-relaxed">
+              Exakt investering och siffror för just ditt hus beror på
+              förbrukning, elområde och batteristorlek – det räknar en tekniker
+              fram vid det kostnadsfria hembesöket.{" "}
+              <Link href="/kalkylator" className="underline underline-offset-2 hover:text-ink">
+                Testa riktningen i kalkylatorn
+              </Link>
+              .
+            </p>
+          </div>
+        </Section>
       )}
 
       {/* Pris-anchor för Solpaneler-service-sidan. Speglar FAQ-data men
@@ -263,15 +378,20 @@ export default function ServicePage({
         title={<>Fyra steg, ärligt prisad.</>}
       >
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-          {s.workflow.map((w) => (
+          {s.workflow.map((w, i) => (
             <div
               key={w.step}
               className="rounded-3xl border border-ink/10 bg-bone p-7"
             >
-              <div className="font-mono text-[11px] tracking-[0.18em] text-ink/55">
-                STEG {w.step}
-              </div>
-              <h3 className="mt-3 font-display text-xl tracking-display-tight">
+              {/* Färgad nummer-nod (samma palett som startsidans resa). */}
+              <span
+                className={`grid h-10 w-10 place-items-center rounded-full font-mono text-[12.5px] font-medium ${
+                  WORKFLOW_ACCENTS[i % WORKFLOW_ACCENTS.length]
+                }`}
+              >
+                {w.step}
+              </span>
+              <h3 className="mt-4 font-display text-xl tracking-display-tight">
                 {w.title}
               </h3>
               <p className="mt-2 text-ink/65 text-[14.5px] leading-relaxed">
@@ -335,6 +455,22 @@ export default function ServicePage({
           </div>
         </div>
       </Section>
+
+      {/* Batteri: sticky offert-knapp på mobil – aldrig mer än ett
+          tumtryck bort på den långa sidan. */}
+      {s.slug === "batterier" && (
+        <div
+          className="fixed inset-x-4 bottom-4 z-40 md:hidden"
+          style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
+        >
+          <Link
+            href={`/offert?tjanst=${s.slug}`}
+            className="flex items-center justify-center gap-2 rounded-full bg-indigo px-6 py-4 text-base font-medium text-bone shadow-xl shadow-ink/25"
+          >
+            Begär offert – kostnadsfritt <ArrowRight size={16} />
+          </Link>
+        </div>
+      )}
     </>
   );
 }
