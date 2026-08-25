@@ -57,13 +57,26 @@ export function OffertConfirmation() {
     // navigeringen hit). Annars skulle en refresh eller direktnavigering till
     // /offert/klar trigga falska konverteringar i GA4/Ads.
     if (submitted) {
-      const fire = () =>
+      const fire = () => {
         trackEvent("generate_lead", {
           method: submitted!.method ?? "unknown",
           services: submitted!.services ?? "",
           value: estimateValue(submitted!.services ?? ""),
           currency: "SEK",
         });
+        // Meta Pixel Lead-konvertering (för Ads-optimering/retargeting).
+        // Consent-gated i pixeln själv – köas tills marknadsförings-
+        // samtycke finns, precis som PageView.
+        const fbq = (window as unknown as { fbq?: (...a: unknown[]) => void })
+          .fbq;
+        if (typeof fbq === "function") {
+          fbq("track", "Lead", {
+            content_category: submitted!.services ?? "",
+            value: estimateValue(submitted!.services ?? ""),
+            currency: "SEK",
+          });
+        }
+      };
       // Sätt Enhanced Conversions user_data (hashad e-post/telefon) FÖRE
       // eventet så det matchar konverteringen. Consent-gated internt.
       setEnhancedConversionData(submitted.email, submitted.phone)

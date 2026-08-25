@@ -11,6 +11,8 @@ import {
   GoogleTagManager,
   GoogleTagManagerNoScript,
 } from "@/components/analytics/GoogleTagManager";
+import { MetaPixel } from "@/components/analytics/MetaPixel";
+import { MetaPixelPageView } from "@/components/analytics/MetaPixelPageView";
 import { JsonLd, organizationSchema, webSiteSchema } from "@/components/seo/JsonLd";
 import { Analytics } from "@vercel/analytics/next";
 
@@ -167,6 +169,8 @@ export default function RootLayout({
         <GoogleAnalytics />
         {/* Google Tag Manager (GTM-5HD9BPW6) – för Ads-/remarketing-taggar. */}
         <GoogleTagManager />
+        {/* Meta Pixel (1378950624383966) – consent-gated via Cookiebot. */}
+        <MetaPixel />
       </head>
       <body className="min-h-screen bg-bone text-ink antialiased">
         {/* GTM noscript måste ligga direkt efter <body>. */}
@@ -183,6 +187,7 @@ export default function RootLayout({
         </a>
         <AdminHotkey />
         <AttributionCapture />
+        <MetaPixelPageView />
         <Navbar />
         <main id="main" className="pt-20">{children}</main>
         <Footer />
