@@ -79,5 +79,14 @@
     "phone": "+46 70 194 69 75",
     "color": "from-[#B86F3C] to-[#2A2A26]",
     "bio": "Aldrig bråttom. Går igenom allt i din takt och ser till att du förstår vad du säger ja till innan du gör det."
+  },
+  {
+    "id": "tommy",
+    "name": "Tommy Widh",
+    "role": "Säljare",
+    "email": "tommy@optimeraenergi.se",
+    "phone": "+46 73 121 42 89",
+    "color": "from-[#0a3a4e] to-[#1A1A17]",
+    "bio": "Vänlig och rutinerad. Ser till att du känner dig trygg med både lösningen och vägen dit – inga överraskningar på slutet."
   }
 ]
