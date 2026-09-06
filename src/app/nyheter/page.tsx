@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { NEWS, publishedNews, formatNewsDate } from "@/lib/news";
+import { getMedia } from "@/lib/media";
 import { Section } from "@/components/site/Section";
 import { JsonLd, collectionPageSchema } from "@/components/seo/JsonLd";
 
@@ -65,46 +66,69 @@ export default function NewsHubPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {sorted.map((n) => {
             const isPublished = n.status === "published";
+            // Admin-uppladdad bild (media-CMS, slot news:<slug>) vinner
+            // över den committade standardbilden.
+            const override = getMedia(`news:${n.slug}`);
+            const img = override
+              ? {
+                  src: override.url,
+                  alt: override.alt || n.image?.alt || n.title,
+                }
+              : n.image;
             const body = (
               <article
                 className={[
-                  "rounded-3xl border p-7 md:p-8 h-full flex flex-col",
+                  "rounded-3xl border overflow-hidden h-full flex flex-col",
                   isPublished
                     ? "border-ink/10 bg-bone hover:border-ink/30"
                     : "border-ink/8 bg-cream/40 cursor-not-allowed",
                 ].join(" ")}
               >
-                <div className="flex items-baseline justify-between gap-3">
-                  <span className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-ink/55">
-                    {n.category}
-                  </span>
-                  {/* Synligt publiceringsdatum: freshness-signal för Google
-                      + AI-search och ärlighetssignal för läsaren. */}
-                  <span className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-ink/40">
-                    {isPublished ? formatNewsDate(n.publishedAt) : "Snart"}
-                  </span>
-                </div>
-                <h2 className="mt-4 font-display text-2xl md:text-[26px] tracking-display-tight leading-tight">
-                  {n.title}
-                </h2>
-                <p className="mt-3 text-ink/70 text-[14.5px] leading-relaxed">
-                  {n.excerpt}
-                </p>
-                <div className="mt-6 pt-5 border-t border-ink/10 flex items-center justify-between gap-3 text-[13px] text-ink/70">
-                  {isPublished ? (
-                    <>
-                      <span className="inline-flex items-center gap-2">
-                        Läs artikeln <ArrowRight size={14} />
-                      </span>
-                      <span className="text-ink/45 font-mono text-[10.5px] uppercase tracking-[0.16em]">
-                        {n.readTimeMin} min läsning
-                      </span>
-                    </>
-                  ) : (
-                    <span className="text-ink/45">
-                      Granskas – publiceras inom kort
+                {/* Hero-bild ovanför rubriken – färg och liv på hubben. */}
+                {img && isPublished && (
+                  <div className="aspect-[16/9] bg-cream border-b border-ink/8">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={img.src}
+                      alt={img.alt}
+                      loading="lazy"
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                )}
+                <div className="p-7 md:p-8 flex-1 flex flex-col">
+                  <div className="flex items-baseline justify-between gap-3">
+                    <span className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-ink/55">
+                      {n.category}
                     </span>
-                  )}
+                    {/* Synligt publiceringsdatum: freshness-signal för
+                        Google + AI-search och ärlighetssignal för läsaren. */}
+                    <span className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-ink/40">
+                      {isPublished ? formatNewsDate(n.publishedAt) : "Snart"}
+                    </span>
+                  </div>
+                  <h2 className="mt-4 font-display text-2xl md:text-[26px] tracking-display-tight leading-tight">
+                    {n.title}
+                  </h2>
+                  <p className="mt-3 text-ink/70 text-[14.5px] leading-relaxed">
+                    {n.excerpt}
+                  </p>
+                  <div className="mt-6 pt-5 border-t border-ink/10 flex items-center justify-between gap-3 text-[13px] text-ink/70">
+                    {isPublished ? (
+                      <>
+                        <span className="inline-flex items-center gap-2">
+                          Läs artikeln <ArrowRight size={14} />
+                        </span>
+                        <span className="text-ink/45 font-mono text-[10.5px] uppercase tracking-[0.16em]">
+                          {n.readTimeMin} min läsning
+                        </span>
+                      </>
+                    ) : (
+                      <span className="text-ink/45">
+                        Granskas – publiceras inom kort
+                      </span>
+                    )}
+                  </div>
                 </div>
               </article>
             );

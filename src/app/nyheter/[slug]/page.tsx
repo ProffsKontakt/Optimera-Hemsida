@@ -9,6 +9,7 @@ import {
   formatNewsDate,
   type NewsArticle,
 } from "@/lib/news";
+import { getMedia } from "@/lib/media";
 import {
   JsonLd,
   faqPageSchema,
@@ -20,9 +21,28 @@ export function generateStaticParams() {
   return NEWS.map((n) => ({ slug: n.slug }));
 }
 
+const BASE = "https://optimeraenergi.se";
+
+/** Admin-uppladdad bild (media-CMS) vinner över den committade. */
+function resolveHeroImage(article: NewsArticle) {
+  const override = getMedia(`news:${article.slug}`);
+  if (override) {
+    return {
+      src: override.url,
+      alt: override.alt || article.image?.alt || article.title,
+    };
+  }
+  return article.image;
+}
+
+function absoluteUrl(src: string) {
+  return src.startsWith("http") ? src : `${BASE}${src}`;
+}
+
 export function generateMetadata({ params }: { params: { slug: string } }) {
   const article = findNewsArticle(params.slug);
   if (!article) return {};
+  const img = resolveHeroImage(article);
   const baseMeta = {
     title: article.title,
     description: article.excerpt,
@@ -34,6 +54,7 @@ export function generateMetadata({ params }: { params: { slug: string } }) {
       type: "article" as const,
       publishedTime: article.publishedAt,
       modifiedTime: article.updatedAt,
+      ...(img ? { images: [{ url: img.src, alt: img.alt }] } : {}),
     },
   };
   if (article.status === "draft") {
@@ -46,14 +67,12 @@ export function generateMetadata({ params }: { params: { slug: string } }) {
   return baseMeta;
 }
 
-const BASE = "https://optimeraenergi.se";
-
 /**
  * NewsArticle-schema med citation-lista. Person-författare (som guiderna)
  * för E-E-A-T, plus källorna som CreativeWork-citations – viktigt för
  * trovärdighet i Google News-ekosystemet och AI-search.
  */
-function newsArticleSchema(article: NewsArticle) {
+function newsArticleSchema(article: NewsArticle, imageUrl?: string) {
   return {
     "@context": "https://schema.org",
     "@type": "NewsArticle",
@@ -62,7 +81,7 @@ function newsArticleSchema(article: NewsArticle) {
     description: article.excerpt,
     datePublished: article.publishedAt,
     dateModified: article.updatedAt,
-    image: `${BASE}/opengraph-image`,
+    image: imageUrl ?? `${BASE}/opengraph-image`,
     author: {
       "@type": "Person",
       name: "Viktor Tiberg",
@@ -94,6 +113,7 @@ export default function NewsArticlePage({
   const article = findNewsArticle(params.slug);
   if (!article) notFound();
   const content = getNewsContent(article.slug);
+  const img = resolveHeroImage(article);
 
   if (article.status === "draft") {
     return (
@@ -131,13 +151,27 @@ export default function NewsArticlePage({
           { name: article.title, href: `/nyheter/${article.slug}` },
         ])}
       />
-      <JsonLd data={newsArticleSchema(article)} />
+      <JsonLd
+        data={newsArticleSchema(article, img ? absoluteUrl(img.src) : undefined)}
+      />
       {content?.faq && content.faq.length > 0 && (
         <JsonLd data={faqPageSchema(content.faq)} />
       )}
 
       <section className="container-edge pt-12 md:pt-20 pb-10">
         <div className="max-w-3xl">
+          {/* Hero-bilden ligger ovanför rubriken – färg och liv direkt. */}
+          {img && (
+            <div className="mb-8 overflow-hidden rounded-3xl border border-ink/10 aspect-[16/9] bg-cream">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={img.src}
+                alt={img.alt}
+                fetchPriority="high"
+                className="h-full w-full object-cover"
+              />
+            </div>
+          )}
           <div className="flex flex-wrap items-center gap-3 mb-5">
             <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink/55">
               {article.category}

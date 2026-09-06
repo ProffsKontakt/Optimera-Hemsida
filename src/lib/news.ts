@@ -41,6 +41,13 @@ export type NewsArticle = {
   /** Estimerad lästid i minuter. */
   readTimeMin: number;
   /**
+   * Hero-bild som visas ovanför rubriken på kortet och artikeln, samt som
+   * OG-/schema-bild. Ligger versionshanterad i public/news/ så att bilden
+   * granskas i samma PR som texten. Kan ersättas via media-CMS:en
+   * (slot "news:<slug>") utan kodändring.
+   */
+  image?: { src: string; alt: string };
+  /**
    * Källorna artikeln bygger på. Visas i artikelns källblock och läggs i
    * NewsArticle-schemats citation – trovärdighetssignal för läsare,
    * Google och AI-search.
@@ -60,6 +67,10 @@ export const NEWS: NewsArticle[] = [
     publishedAt: "2026-09-06",
     updatedAt: "2026-09-06",
     readTimeMin: 7,
+    image: {
+      src: "/news/valet-2026-solceller-elpriser-en-vecka-kvar.jpg",
+      alt: "Faluröd svensk villa med solpaneler på taket i gyllene septemberljus",
+    },
     sources: [
       {
         title: "Senaste nytt om valet 2026",
