@@ -77,6 +77,7 @@ export function Footer() {
               ["/kontakt", "Kontakt"],
               ["/kalkylator", "Kalkylator"],
               ["/fragor-och-svar", "Frågor & svar"],
+              ["/nyheter", "Nyheter"],
               ["/guider", "Guider"],
               ["/press", "Press"],
               ["/offert", "Begär offert"],

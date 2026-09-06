@@ -12,6 +12,7 @@ import {
   Calculator,
   Users,
   Mail,
+  Newspaper,
   Zap,
 } from "lucide-react";
 import { VISIBLE_SERVICES } from "@/lib/services";
@@ -19,6 +20,9 @@ import { VISIBLE_SERVICES } from "@/lib/services";
 // Tjänste-länkarna byggs från VISIBLE_SERVICES så dolda tjänster (t.ex.
 // värmepump just nu) automatiskt försvinner ur navigeringen.
 const links = [
+  // Nyheter först: kunskapsbasen ska vara sajtens mest lättnavigerade
+  // sektion – uppdateras var tredje dag under valbevakningen.
+  { href: "/nyheter", label: "Nyheter" },
   ...VISIBLE_SERVICES.map((s) => ({ href: `/tjanster/${s.slug}`, label: s.short })),
   { href: "/kalkylator", label: "Kalkylator" },
   { href: "/om-oss", label: "Om oss" },
@@ -28,6 +32,7 @@ const links = [
 /* Mobilmenyns ikoner + accentfärger per länk (gör menyn roligare att se
    på). Ikon väljs på href, färgerna cyklar genom brand-paletten. */
 const MENU_ICONS: Record<string, React.ReactNode> = {
+  "/nyheter": <Newspaper size={16} />,
   "/tjanster/solpaneler": <Sun size={16} />,
   "/tjanster/batterier": <BatteryCharging size={16} />,
   "/tjanster/laddboxar": <PlugZap size={16} />,
