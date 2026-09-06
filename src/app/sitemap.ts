@@ -3,6 +3,7 @@ import { VISIBLE_SERVICES } from "@/lib/services";
 import { CITIES } from "@/lib/cities";
 import { BATTERY_CITIES } from "@/lib/battery-cities";
 import { publishedGuides } from "@/lib/guides";
+import { publishedNews } from "@/lib/news";
 
 // Per-route hardcoded ISO-datum. Tidigare användes new Date() vid build vilket
 // gjorde att alla URLer fick samma timestamp varje deploy – det signalerar
@@ -26,6 +27,8 @@ const LAST_MOD = {
   solcellsbatteri: "2026-07-08",
   metodik: "2026-07-08",
   faq: "2026-07-08",
+  // Nyhetshubben (valbevakning + energinyheter) lanserad 2026-09-06.
+  nyheterHub: "2026-09-06",
 } as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -41,6 +44,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/om-oss`, lastModified: LAST_MOD.omOss },
     { url: `${base}/metodik`, lastModified: LAST_MOD.metodik },
     { url: `${base}/fragor-och-svar`, lastModified: LAST_MOD.faq },
+    // Nyhetshubben + publicerade nyhetsartiklar. Drafts exkluderas via
+    // publishedNews() – de har noindex i metadata också.
+    { url: `${base}/nyheter`, lastModified: LAST_MOD.nyheterHub },
+    ...publishedNews().map((n) => ({
+      url: `${base}/nyheter/${n.slug}`,
+      lastModified: n.updatedAt,
+    })),
     { url: `${base}/kontakt`, lastModified: LAST_MOD.kontakt },
     { url: `${base}/tankar`, lastModified: LAST_MOD.tankar },
     { url: `${base}/guider`, lastModified: LAST_MOD.guiderHub },

@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { GUIDES } from "./guides";
+import { NEWS } from "./news";
 import { getTeam } from "./team";
 
 /**
@@ -64,6 +65,13 @@ export function listMediaSlots(): MediaSlot[] {
       label: g.title,
       aspect: "16 / 9",
       hint: "Hero-bild överst i guiden. Helst riktigt installationsfoto.",
+    })),
+    ...NEWS.map((n) => ({
+      id: `news:${n.slug}`,
+      group: "Nyheter",
+      label: n.title,
+      aspect: "16 / 9",
+      hint: "Hero-bild ovanför rubriken på nyhetskortet och artikeln. Har en committad standardbild – ladda upp här för att ersätta den.",
     })),
     // (Offert-funnelns kort är numera ikon-plattor – inga foto-slots.)
   ];
