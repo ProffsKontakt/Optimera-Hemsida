@@ -79,15 +79,20 @@ export default function HomePage() {
         <Testimonials reviews={getVisibleReviews()} />
         {/* Länk till källan. Snittbetyget uppdateras manuellt vid behov
             (kontrollera på reco.se/optimera-energi). */}
-        <p className="mt-8 text-[14px] text-ink/60">
-          <span className="text-[#47c645]">★</span> 4,8 av 5 i betyg (9 omdömen) –{" "}
+        <p className="mt-8 flex flex-wrap items-center gap-x-2 gap-y-1 text-[14px] text-ink/60">
+          <span className="text-[#47c645]">★</span>
+          <span>4,8 av 5 i betyg (9 omdömen) på</span>
+          {/* Officiella Reco-loggan (hämtad från reco.se). */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/reco.svg" alt="Reco" className="h-[18px] w-auto" />
+          <span>–</span>
           <a
             href="https://www.reco.se/optimera-energi"
             target="_blank"
             rel="noopener noreferrer"
             className="underline underline-offset-4 decoration-ink/30 hover:text-ink hover:decoration-ink/60 transition"
           >
-            läs alla omdömen på Reco.se
+            läs alla omdömen
           </a>
         </p>
       </DemoSection>

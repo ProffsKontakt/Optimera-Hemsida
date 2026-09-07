@@ -100,7 +100,9 @@ export function DemoHero({
             >
               <span className="text-[#47c645] tracking-[0.08em]">★★★★★</span>
               <span className="font-medium">4,8 av 5</span>
-              <span className="text-ink/50">på Reco</span>
+              <span className="text-ink/50">på</span>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/reco.svg" alt="Reco" className="h-[15px] w-auto" />
             </a>
 
             {/* Mobil: bara stora rubriken högst upp. Eyebrow endast desktop. */}
@@ -161,8 +163,10 @@ export function DemoHero({
                 <span className="text-[#47c645] tracking-[0.08em] text-[14px] [text-shadow:none]">
                   ★★★★★
                 </span>
-                <span>
-                  <span className="font-medium">4,8 av 5</span> på Reco
+                <span className="flex items-center gap-1.5">
+                  <span><span className="font-medium">4,8 av 5</span> på</span>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/reco.svg" alt="Reco" className="h-[14px] w-auto [text-shadow:none]" />
                 </span>
               </a>
 

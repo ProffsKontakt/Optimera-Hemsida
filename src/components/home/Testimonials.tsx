@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export type TestimonialItem = {
   id: string;
@@ -23,9 +23,17 @@ export type TestimonialItem = {
  */
 const SPEED_PX_PER_S = 28;
 const RESUME_AFTER_MS = 2500;
+// Recensioner längre än så här klampas till ett standardformat med
+// "Läs mer" – annars blir korten meterlånga på mobil.
+const CLAMP_CHARS = 170;
 
 export function Testimonials({ reviews }: { reviews: TestimonialItem[] }) {
   const scrollerRef = useRef<HTMLDivElement>(null);
+  // Utfällda recensioner (per id – gäller alla tre marquee-kopiorna så
+  // set-bredderna hålls lika och wrappen förblir sömlös).
+  const [expanded, setExpanded] = useState<Record<string, boolean>>({});
+  const anyExpandedRef = useRef(false);
+  anyExpandedRef.current = Object.values(expanded).some(Boolean);
 
   useEffect(() => {
     const el = scrollerRef.current;
@@ -59,7 +67,9 @@ export function Testimonials({ reviews }: { reviews: TestimonialItem[] }) {
       if (setWidth > 0) {
         // Har användaren skrollat själv sedan förra framen? Synka om.
         if (Math.abs(el.scrollLeft - pos) > 1.5) pos = el.scrollLeft;
-        if (now > pausedUntil) {
+        // Står stilla så länge någon recension är utfälld – annars rullar
+        // texten i väg medan man läser.
+        if (now > pausedUntil && !anyExpandedRef.current) {
           pos -= (SPEED_PX_PER_S * dt) / 1000; // åt höger = minskande scrollLeft
         }
         // Sömlös wrap runt mitt-kopian, oavsett vem som skrollade.
@@ -147,9 +157,26 @@ export function Testimonials({ reviews }: { reviews: TestimonialItem[] }) {
                     </span>
                   ) : null}
                 </div>
-                <blockquote className="mt-2 font-display text-[20px] tracking-display-tight leading-snug">
+                <blockquote
+                  className={`mt-2 font-display text-[20px] tracking-display-tight leading-snug ${
+                    q.text.length > CLAMP_CHARS && !expanded[q.id]
+                      ? "line-clamp-5"
+                      : ""
+                  }`}
+                >
                   {q.text}
                 </blockquote>
+                {q.text.length > CLAMP_CHARS && (
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setExpanded((e) => ({ ...e, [q.id]: !e[q.id] }))
+                    }
+                    className="mt-2 self-start text-[13px] text-indigo underline underline-offset-4 decoration-indigo/40 hover:decoration-indigo transition"
+                  >
+                    {expanded[q.id] ? "Visa mindre" : "Läs mer"}
+                  </button>
+                )}
                 <figcaption className="mt-6 pt-4 border-t border-ink/10 flex items-center justify-between gap-3 text-[13px]">
                   <span className="font-medium">{q.author}</span>
                   <span className="text-ink/55 font-mono text-[11px] uppercase tracking-[0.16em] text-right">
