@@ -28,6 +28,44 @@ function getConfig(): GhConfig | null {
 
 const API = "https://api.github.com";
 
+/**
+ * Översätt GitHubs felstatusar till meddelanden som säger VAD man gör åt
+ * saken. Bakgrund (team-CMS:ens 502:or 2026-09-07): ghPutFile kastade rå
+ * statustext, routen svepte in den i ett generiskt "Kunde inte spara" och
+ * admin såg bara en 502 — utan att veta om token gått ut, repot bytt namn
+ * eller nätet strulat. Varje spar-väg (team, press, media) går genom den
+ * här filen, så tolkningen görs EN gång här.
+ */
+function explainGitHubError(op: string, status: number, bodyText: string): Error {
+  if (status === 401) {
+    return new Error(
+      `GitHub-token är ogiltig eller har GÅTT UT (401). Skapa en ny fine-grained PAT ` +
+      `med Contents: Read and write på repot och uppdatera GITHUB_TOKEN i Vercel ` +
+      `(Settings → Environment Variables) + redeploya. [${op}]`,
+    );
+  }
+  if (status === 403) {
+    return new Error(
+      `GitHub-token saknar rättighet (403). Kontrollera att PAT:en har Contents: ` +
+      `Read and write för just detta repo, och att den inte väntar på org-godkännande. [${op}] ${bodyText.slice(0, 200)}`,
+    );
+  }
+  if (status === 404) {
+    return new Error(
+      `GitHub hittar inte repot/grenen (404). Kontrollera GITHUB_OWNER/GITHUB_REPO/` +
+      `GITHUB_BRANCH i Vercel — har repot bytt namn måste GITHUB_REPO uppdateras. ` +
+      `(404 kan också betyda att token saknar åtkomst till ett privat repo.) [${op}]`,
+    );
+  }
+  if (status === 409) {
+    return new Error(
+      `GitHub avvisade skrivningen (409, sha-konflikt) — någon annan sparade samtidigt. ` +
+      `Ladda om sidan och spara igen. [${op}]`,
+    );
+  }
+  return new Error(`GitHub ${op} ${status}: ${bodyText.slice(0, 300)}`);
+}
+
 function headers(token: string) {
   return {
     Authorization: `Bearer ${token}`,
@@ -47,9 +85,12 @@ export async function ghGetFile(
   const cfg = getConfig();
   if (!cfg) throw new Error("GitHub env vars saknas");
   const url = `${API}/repos/${cfg.owner}/${cfg.repo}/contents/${encodeURIComponent(path)}?ref=${cfg.branch}`;
-  const res = await fetch(url, { headers: headers(cfg.token), cache: "no-store" });
+  const res = await fetch(url, { headers: headers(cfg.token), cache: "no-store", redirect: "manual" });
+  if (res.status === 301 || res.status === 302 || res.status === 307 || res.status === 308) {
+    throw explainGitHubError("ghGetFile", 404, "redirect — repot har troligen bytt namn");
+  }
   if (res.status === 404) return null;
-  if (!res.ok) throw new Error(`GitHub ghGetFile ${res.status}: ${await res.text()}`);
+  if (!res.ok) throw explainGitHubError("ghGetFile", res.status, await res.text());
   const data = (await res.json()) as { sha: string; content: string };
   return { sha: data.sha, contentBase64: data.content };
 }
@@ -77,9 +118,13 @@ export async function ghPutFile(input: {
     method: "PUT",
     headers: headers(cfg.token),
     body: JSON.stringify(body),
+    redirect: "manual",
   });
+  if (res.status === 301 || res.status === 302 || res.status === 307 || res.status === 308) {
+    throw explainGitHubError("ghPutFile", 404, "redirect — repot har troligen bytt namn");
+  }
   if (!res.ok) {
-    throw new Error(`GitHub ghPutFile ${res.status}: ${await res.text()}`);
+    throw explainGitHubError("ghPutFile", res.status, await res.text());
   }
   const data = (await res.json()) as {
     commit: { sha: string; html_url: string };
@@ -106,9 +151,13 @@ export async function ghDeleteFile(input: {
       sha: input.sha,
       branch: cfg.branch,
     }),
+    redirect: "manual",
   });
+  if (res.status === 301 || res.status === 302 || res.status === 307 || res.status === 308) {
+    throw explainGitHubError("ghDeleteFile", 404, "redirect — repot har troligen bytt namn");
+  }
   if (!res.ok) {
-    throw new Error(`GitHub ghDeleteFile ${res.status}: ${await res.text()}`);
+    throw explainGitHubError("ghDeleteFile", res.status, await res.text());
   }
   const data = (await res.json()) as { commit: { sha: string } };
   return { commitSha: data.commit.sha };

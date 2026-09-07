@@ -71,8 +71,12 @@ export async function PUT(req: Request) {
     });
     return NextResponse.json({ ok: true, team });
   } catch (err) {
+    // Meddelandet från lib/github är redan åtgärdbart ("token har gått ut →
+    // uppdatera GITHUB_TOKEN i Vercel") — visa DET för admin i stället för
+    // ett stumt "Kunde inte spara". details behålls för konsolen/loggen.
+    const msg = err instanceof Error ? err.message : String(err);
     return NextResponse.json(
-      { error: "Kunde inte spara", details: String(err) },
+      { error: `Kunde inte spara: ${msg}`, details: String(err) },
       { status: 502 },
     );
   }

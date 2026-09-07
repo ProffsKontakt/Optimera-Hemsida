@@ -57,7 +57,7 @@ export const DEFAULT_TEAM: TeamMember[] = [
   {
     id: "moltas",
     name: "Moltas Roslund",
-    role: "Sales Operations",
+    role: "Projektansvarig",
     email: "moltas@optimeraenergi.se",
     phone: "0705340154",
     color: "from-[#0a3a4e] to-[#1A1A17]",
@@ -66,7 +66,7 @@ export const DEFAULT_TEAM: TeamMember[] = [
   {
     id: "william",
     name: "William Persson",
-    role: "Säljare",
+    role: "Teknisk rådgivare",
     email: "william@optimeraenergi.se",
     phone: "",
     color: "from-[#4A6B3A] to-[#1A1A17]",
@@ -75,7 +75,7 @@ export const DEFAULT_TEAM: TeamMember[] = [
   {
     id: "kalle",
     name: "Kalle Krus",
-    role: "Säljare",
+    role: "Teknisk rådgivare",
     email: "kalle@optimeraenergi.se",
     phone: "",
     color: "from-[#8A5A2B] to-[#2A2A26]",
@@ -84,7 +84,7 @@ export const DEFAULT_TEAM: TeamMember[] = [
   {
     id: "albin",
     name: "Albin Lygdman",
-    role: "Säljare",
+    role: "Teknisk rådgivare & platschef",
     email: "albin@optimeraenergi.se",
     phone: "",
     color: "from-[#3E5C7A] to-[#0E0E0C]",

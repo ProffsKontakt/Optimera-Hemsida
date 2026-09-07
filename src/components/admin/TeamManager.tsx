@@ -89,9 +89,9 @@ export function TeamManager({ initial }: { initial: Member[] }) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ team: prepared }),
       });
-      const data = await res.json();
+      const data = await res.json().catch(() => null);
       if (!res.ok) {
-        setMsg(data.error ?? "Något gick fel.");
+        setMsg(data?.error ?? `Något gick fel (HTTP ${res.status}).`);
       } else {
         setTeam(data.team);
         setOk(true);
