@@ -20,16 +20,25 @@
   {
     "id": "moltas",
     "name": "Moltas Roslund",
-    "role": "Sales Operations",
+    "role": "Projektansvarig",
     "email": "moltas@optimeraenergi.se",
     "phone": "+46 70 534 01 54",
     "color": "from-[#0a3a4e] to-[#1A1A17]",
     "bio": "Bygger säljprocessen så ingen kund glöms bort. Är personen som ringer dig dagen innan installationen och säger exakt vilka som dyker upp."
   },
   {
+    "id": "albin",
+    "name": "Albin Lygdman",
+    "role": "Teknisk rådgivare & platschef",
+    "email": "albin@optimeraenergi.se",
+    "phone": "+46 70 194 69 76",
+    "color": "from-[#3E5C7A] to-[#0E0E0C]",
+    "bio": "Gillar när kalkylen talar för sig själv. Hjälper dig jämföra alternativ utan säljsnack, med siffrorna på bordet."
+  },
+  {
     "id": "william",
     "name": "William Persson",
-    "role": "Säljare",
+    "role": "Teknisk rådgivare",
     "email": "william@optimeraenergi.se",
     "phone": "+46 70 194 69 81",
     "color": "from-[#4A6B3A] to-[#1A1A17]",
@@ -38,26 +47,17 @@
   {
     "id": "kalle",
     "name": "Kalle Krus",
-    "role": "Säljare",
+    "role": "Teknisk rådgivare",
     "email": "kalle@optimeraenergi.se",
     "phone": "+46 73 121 47 81",
     "color": "from-[#8A5A2B] to-[#2A2A26]",
     "bio": "Rak och lätt att nå. Svarar på frågorna du inte visste att du hade och håller kontakten hela vägen till driftsättning."
   },
   {
-    "id": "albin",
-    "name": "Albin Lygdman",
-    "role": "Säljare",
-    "email": "albin@optimeraenergi.se",
-    "phone": "+46 70 194 69 76",
-    "color": "from-[#3E5C7A] to-[#0E0E0C]",
-    "bio": "Gillar när kalkylen talar för sig själv. Hjälper dig jämföra alternativ utan säljsnack, med siffrorna på bordet."
-  },
-  {
     "id": "tim",
     "name": "Tim Wennberg",
-    "role": "Säljare",
-    "email": "tim@opimeraenergi.se",
+    "role": "Teknisk rådgivare",
+    "email": "tim@optimeraenergi.se",
     "phone": "+46 70 194 69 78",
     "color": "from-[#6B4A7A] to-[#1A1A17]",
     "bio": "God stämning i luren, noggrann i botten. Tar den tid som krävs för att du ska bli nöjd med lösningen, inte bara med priset."
@@ -65,7 +65,7 @@
   {
     "id": "josef",
     "name": "Josef Strand",
-    "role": "Säljare",
+    "role": "Teknisk rådgivare",
     "email": "josef@optimeraenergi.se",
     "phone": "+46 70 194 69 72",
     "color": "from-[#3648C3] to-[#0E0E0C]",
@@ -74,7 +74,7 @@
   {
     "id": "jamy",
     "name": "Jamy Makindu",
-    "role": "Säljare",
+    "role": "Teknisk rådgivare",
     "email": "jamy@optimeraenergi.se",
     "phone": "+46 70 194 69 75",
     "color": "from-[#B86F3C] to-[#2A2A26]",
@@ -83,7 +83,7 @@
   {
     "id": "tommy",
     "name": "Tommy Widh",
-    "role": "Säljare",
+    "role": "Teknisk rådgivare",
     "email": "tommy@optimeraenergi.se",
     "phone": "+46 73 121 42 89",
     "color": "from-[#0a3a4e] to-[#1A1A17]",
