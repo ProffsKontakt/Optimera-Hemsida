@@ -1,5 +1,13 @@
 [
   {
+    "id": "hans-m-reco",
+    "author": "Hans M",
+    "place": "Reco · september 2026",
+    "text": "Kunniga, serviceminded, snabba och allt – från offertförfrågan till installation och i drift utmärkt! Lättillgängliga för mina frågor, snabba rediga svar så att jag som amatör förstod och kunde använda informationen. Mycket bra hjälp och service vid installation av såväl batterier som styrapparna i mobilen. Har rekommenderat er till bekanta som frågat mig ang batteri, installation och naturligtvis pris.",
+    "rating": 5,
+    "visible": true
+  },
+  {
     "id": "ake-l-reco",
     "author": "Åke L",
     "place": "Reco · augusti 2026",
@@ -36,7 +44,7 @@
     "author": "Nils O",
     "place": "Reco · augusti 2026",
     "text": "Bra engagemang hela vägen tills anläggningen va klar.",
-    "rating": 5,
+    "rating": 4,
     "visible": true
   },
   {

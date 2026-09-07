@@ -157,7 +157,7 @@ export default function AboutPage() {
         <div className="mt-12 md:mt-16 grid grid-cols-2 md:grid-cols-4 gap-px bg-ink/10 rounded-2xl overflow-hidden border border-ink/10">
           <Stat n="0" label="Dolda påslag på offerten" />
           <Stat n="25 år" label="Garanti på installationen" />
-          <Stat n="4,7/5" label="Betyg på Reco" />
+          <Stat n="4,8/5" label="Betyg på Reco" />
           <Stat n="9/10" label="Mål: kunder rekommenderar oss" />
         </div>
       </section>

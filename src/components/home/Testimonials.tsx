@@ -139,7 +139,7 @@ export function Testimonials({ reviews }: { reviews: TestimonialItem[] }) {
                   <div className="font-display text-5xl text-indigo leading-none">"</div>
                   {q.rating ? (
                     <span
-                      className="text-sun text-[15px] tracking-[0.1em] pt-1"
+                      className="text-[#47c645] text-[15px] tracking-[0.1em] pt-1"
                       aria-label={`${q.rating} av 5 stjärnor`}
                     >
                       {"★".repeat(q.rating)}

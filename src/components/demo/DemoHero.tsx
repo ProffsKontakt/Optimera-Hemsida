@@ -98,8 +98,8 @@ export function DemoHero({
               rel="noopener noreferrer"
               className="hidden md:inline-flex w-fit items-center gap-2 rounded-full border border-ink/12 bg-cream/80 px-4 py-2 mb-7 text-[13px] text-ink/75 hover:border-ink/35 hover:text-ink transition"
             >
-              <span className="text-sun tracking-[0.08em]">★★★★★</span>
-              <span className="font-medium">4,7 av 5</span>
+              <span className="text-[#47c645] tracking-[0.08em]">★★★★★</span>
+              <span className="font-medium">4,8 av 5</span>
               <span className="text-ink/50">på Reco</span>
             </a>
 
@@ -158,18 +158,18 @@ export function DemoHero({
                 rel="noopener noreferrer"
                 className="mt-5 flex w-fit items-center gap-2 text-[13px] text-ink/80 md:hidden [text-shadow:0_1px_2px_rgba(244,241,234,0.9)]"
               >
-                <span className="text-sun tracking-[0.08em] text-[14px] [text-shadow:none]">
+                <span className="text-[#47c645] tracking-[0.08em] text-[14px] [text-shadow:none]">
                   ★★★★★
                 </span>
                 <span>
-                  <span className="font-medium">4,7 av 5</span> på Reco
+                  <span className="font-medium">4,8 av 5</span> på Reco
                 </span>
               </a>
 
               {/* Stats-raden – endast desktop. */}
               <div className="mt-12 hidden md:grid grid-cols-3 max-w-md gap-2">
                 <Stat n="3" label="installationstjänster" />
-                <Stat n="4,7/5" label="i betyg på Reco" />
+                <Stat n="4,8/5" label="i betyg på Reco" />
                 <Stat n="14d" label="från offert till tak" />
               </div>
             </div>

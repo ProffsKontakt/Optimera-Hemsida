@@ -80,7 +80,7 @@ export default function HomePage() {
         {/* Länk till källan. Snittbetyget uppdateras manuellt vid behov
             (kontrollera på reco.se/optimera-energi). */}
         <p className="mt-8 text-[14px] text-ink/60">
-          <span className="text-sun">★</span> 4,7 av 5 i betyg –{" "}
+          <span className="text-[#47c645]">★</span> 4,8 av 5 i betyg (9 omdömen) –{" "}
           <a
             href="https://www.reco.se/optimera-energi"
             target="_blank"

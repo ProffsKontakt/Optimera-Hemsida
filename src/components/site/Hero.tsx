@@ -64,7 +64,7 @@ export function Hero() {
 
             <div className="mt-14 grid grid-cols-3 max-w-md">
               <Stat n="4" label="installationstjänster" />
-              <Stat n="4,7/5" label="i betyg på Reco" />
+              <Stat n="4,8/5" label="i betyg på Reco" />
               <Stat n="14d" label="från offert till tak" />
             </div>
           </div>
