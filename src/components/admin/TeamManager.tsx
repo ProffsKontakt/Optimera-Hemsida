@@ -5,6 +5,8 @@ import {
   ArrowDown,
   ArrowUp,
   Check,
+  Eye,
+  EyeOff,
   Loader2,
   Plus,
   Save,
@@ -19,6 +21,7 @@ type Member = {
   phone: string;
   color: string;
   bio: string;
+  visible?: boolean;
 };
 
 /** Slugga ett namn till ett stabilt id (förnamn, gemener, a-z0-9-). */
@@ -67,7 +70,16 @@ export function TeamManager({ initial }: { initial: Member[] }) {
     setOk(false);
     setTeam((cur) => [
       ...cur,
-      { id: "", name: "", role: "Säljare", email: "", phone: "", color: "", bio: "" },
+      {
+        id: "",
+        name: "",
+        role: "Säljare",
+        email: "",
+        phone: "",
+        color: "",
+        bio: "",
+        visible: true,
+      },
     ]);
   }
 
@@ -110,21 +122,49 @@ export function TeamManager({ initial }: { initial: Member[] }) {
     <div className="mt-10">
       <div className="space-y-5">
         {team.map((m, i) => (
-          <div key={i} className="rounded-3xl border border-ink/10 bg-cream/40 p-5 md:p-6">
+          <div
+            key={i}
+            className={`rounded-3xl border p-5 md:p-6 transition ${
+              m.visible === false
+                ? "border-ink/10 bg-bone opacity-60"
+                : "border-ink/10 bg-cream/40"
+            }`}
+          >
             <div className="flex items-center justify-between gap-3">
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 min-w-0">
                 <span
                   className={`h-9 w-9 shrink-0 rounded-full bg-gradient-to-br ${m.color || "from-ink/20 to-ink/40"}`}
                   aria-hidden
                 />
-                <div className="font-display text-lg tracking-display-tight">
+                <div className="font-display text-lg tracking-display-tight truncate">
                   {m.name || "Ny medlem"}
                 </div>
                 {m.id && (
-                  <code className="font-mono text-[10px] text-ink/40">team:{m.id}</code>
+                  <code className="font-mono text-[10px] text-ink/40 hidden sm:inline">
+                    team:{m.id}
+                  </code>
                 )}
               </div>
-              <div className="flex items-center gap-1">
+              <div className="flex items-center gap-1 shrink-0">
+                {/* Visa/dölj: dold person ligger kvar i databasen men
+                    renderas aldrig på /om-oss – inte ens i HTML-koden. */}
+                <button
+                  type="button"
+                  onClick={() => update(i, { visible: m.visible === false })}
+                  title={
+                    m.visible === false
+                      ? "Dold på om-oss – klicka för att visa"
+                      : "Visas på om-oss – klicka för att dölja"
+                  }
+                  className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-[12px] transition ${
+                    m.visible === false
+                      ? "border-ink/15 text-ink/50 hover:text-ink"
+                      : "border-moss/30 bg-moss/10 text-moss"
+                  }`}
+                >
+                  {m.visible === false ? <EyeOff size={13} /> : <Eye size={13} />}
+                  {m.visible === false ? "Dold" : "Visas"}
+                </button>
                 <IconBtn label="Flytta upp" onClick={() => move(i, -1)} disabled={i === 0}>
                   <ArrowUp size={14} />
                 </IconBtn>

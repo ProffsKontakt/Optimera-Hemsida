@@ -21,6 +21,9 @@ const MemberSchema = z.object({
   phone: z.string().max(20).default(""),
   color: z.string().max(80).default(""),
   bio: z.string().max(500).default(""),
+  // Publikt synlig på /om-oss. Dolda personer ligger kvar i team.json
+  // men filtreras bort server-side innan sidan renderas.
+  visible: z.boolean().default(true),
 });
 
 const Schema = z.array(MemberSchema).min(1).max(30);

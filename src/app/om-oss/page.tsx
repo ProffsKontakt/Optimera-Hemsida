@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Mail, Phone, ArrowRight } from "lucide-react";
 import { Section } from "@/components/site/Section";
 import { BrandPanel } from "@/components/site/BrandPanel";
-import { getTeam } from "@/lib/team";
+import { getVisibleTeam } from "@/lib/team";
 import { getMedia } from "@/lib/media";
 import {
   JsonLd,
@@ -60,8 +60,9 @@ const TIMELINE = [
 
 // LocalBusiness berikat med founder + employee + foundingDate-data
 // specifikt för /om-oss. Spreadar bas-schemat och lägger Person-arrays.
-// Byggs från getTeam() så admin-redigeringar (/admin/team) slår igenom.
-function teamLocalBusinessSchema(team: ReturnType<typeof getTeam>) {
+// Byggs från getVisibleTeam() så admin-redigeringar (/admin/team) slår
+// igenom – och dolda personer aldrig hamnar i det publika schemat.
+function teamLocalBusinessSchema(team: ReturnType<typeof getVisibleTeam>) {
   return {
     ...localBusinessSchema,
     founder: team
@@ -96,7 +97,9 @@ const COUNT_WORDS = [
 ];
 
 export default function AboutPage() {
-  const team = getTeam();
+  // Dolda personer filtreras bort SERVER-SIDE – de renderas aldrig, så
+  // varken korten, siffrorna eller JSON-LD:n röjer att de finns.
+  const team = getVisibleTeam();
   const countWord = COUNT_WORDS[team.length] ?? String(team.length);
   return (
     <>

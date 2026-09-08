@@ -95,9 +95,9 @@ function SlotCard({
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ slotId: slot.id, alt, frost }),
         });
-        const data = await res.json();
+        const data = await res.json().catch(() => null);
         if (!res.ok) {
-          setMsg(data.error ?? "Något gick fel.");
+          setMsg(data?.error ?? `Något gick fel (HTTP ${res.status}).`);
         } else {
           setOk(true);
           setMsg("Sparat – live på sajten efter deploy (1-2 min).");
@@ -123,15 +123,15 @@ function SlotCard({
     fd.append("file", file);
     try {
       const res = await fetch("/api/admin/media", { method: "POST", body: fd });
-      const data = await res.json();
+      const data = await res.json().catch(() => null);
       if (!res.ok) {
-        setMsg(data.error ?? "Något gick fel.");
+        setMsg(data?.error ?? `Något gick fel (HTTP ${res.status}).`);
       } else {
         setOk(true);
         // Visa vad auto-komprimeringen sparade in.
         const kb = (n: number) => `${Math.round(n / 1024)} kB`;
         const saved =
-          data.originalBytes && data.optimizedBytes
+          data?.originalBytes && data?.optimizedBytes
             ? ` Optimerad: ${kb(data.originalBytes)} → ${kb(
                 data.optimizedBytes,
               )} WebP (−${Math.round(
@@ -139,7 +139,7 @@ function SlotCard({
               )}%).`
             : "";
         setMsg(`Sparat – live på sajten efter deploy (1-2 min).${saved}`);
-        onChange({ url: data.url, alt: data.alt, frost });
+        onChange({ url: data?.url, alt: data?.alt ?? alt, frost });
         setFile(null);
       }
     } catch {
@@ -152,6 +152,7 @@ function SlotCard({
   async function remove() {
     if (!confirm(`Ta bort bilden för "${slot.label}"?`)) return;
     setBusy(true);
+    setMsg(null);
     try {
       const res = await fetch(`/api/admin/media?slotId=${encodeURIComponent(slot.id)}`, {
         method: "DELETE",
@@ -161,12 +162,16 @@ function SlotCard({
         setLocalPreview(null);
         setFile(null);
         setAlt("");
-        setMsg("Borttagen.");
+        setMsg("Borttagen – live på sajten efter deploy (1-2 min).");
         setOk(false);
       } else {
-        const d = await res.json();
-        setMsg(d.error ?? "Kunde inte ta bort.");
+        // Gateway-fel har ingen JSON-kropp; visa då statusen i stället för
+        // att krascha på en parse.
+        const d = await res.json().catch(() => null);
+        setMsg(d?.error ?? `Kunde inte ta bort (HTTP ${res.status}).`);
       }
+    } catch {
+      setMsg("Nätverksfel.");
     } finally {
       setBusy(false);
     }

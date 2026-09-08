@@ -22,6 +22,13 @@ export type TeamMember = {
   /** Gradient som används som avatar tills ett riktigt foto laddats upp. */
   color: string;
   bio: string;
+  /**
+   * Visas personen publikt på /om-oss? Default true. Sätts till false via
+   * togglen i /admin/team – personen ligger kvar i data/team.json (och
+   * behåller sin foto-slot) men filtreras bort SERVER-SIDE av
+   * getVisibleTeam(), så namnet finns aldrig i HTML:en som skickas ut.
+   */
+  visible?: boolean;
 };
 
 /** Gradienter som auto-tilldelas nya medlemmar (cyklar på index). */
@@ -129,6 +136,8 @@ export function getTeam(): TeamMember[] {
               typeof m.color === "string" && m.color
                 ? m.color
                 : TEAM_COLORS[i % TEAM_COLORS.length],
+            // Saknad flagga = synlig (bakåtkompatibelt med äldre poster).
+            visible: m.visible !== false,
           }));
         }
       }
@@ -137,6 +146,15 @@ export function getTeam(): TeamMember[] {
     /* fall through till default */
   }
   return DEFAULT_TEAM;
+}
+
+/**
+ * Teamet som ska visas publikt. ALLA publika ytor (om-oss-korten,
+ * antalsräkningen, JSON-LD) måste gå via den här – getTeam() innehåller
+ * även dolda personer och är bara till för admin.
+ */
+export function getVisibleTeam(): TeamMember[] {
+  return getTeam().filter((m) => m.visible !== false);
 }
 
 /** @deprecated Använd getTeam() – behålls för bakåtkompatibilitet. */

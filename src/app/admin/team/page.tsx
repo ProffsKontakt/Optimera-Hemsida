@@ -19,9 +19,14 @@ export default function AdminTeamPage() {
   if (!process.env.ADMIN_PASSWORD || !isAdminAuthed()) {
     redirect("/admin/login");
   }
+  // getTeam() = ALLA, inklusive dolda (admin ska kunna hantera dem).
   const team = getTeam();
+  const hidden = team.filter((m) => m.visible === false);
   // Foto-status så knappen säger något konkret: vilka saknar porträtt?
-  const missing = team.filter((m) => !getMedia(`team:${m.id}`));
+  // Dolda personer räknas inte – de syns ändå inte publikt.
+  const missing = team.filter(
+    (m) => m.visible !== false && !getMedia(`team:${m.id}`),
+  );
   return (
     <>
       <AdminTopbar />
@@ -42,7 +47,18 @@ export default function AdminTeamPage() {
               /om-oss
             </Link>
             : namn, roll, kontaktuppgifter, bio och ordning. Ändringar
-            committas och är live efter deploy (1–2 min).
+            committas och är live efter deploy (1–2 min). Med{" "}
+            <strong className="font-medium">Visas/Dold</strong> tar du bort
+            någon från sajten utan att radera personen – dolda personer
+            renderas aldrig, så namnet finns inte ens i sidans HTML-kod.
+            {hidden.length > 0 && (
+              <>
+                {" "}
+                Just nu {hidden.length === 1 ? "är" : "är"}{" "}
+                {hidden.map((m) => m.name).join(", ")} dold
+                {hidden.length === 1 ? "" : "a"}.
+              </>
+            )}
           </p>
 
           {/* Foto-genväg: varje teammedlem får en egen bild-slot automatiskt,
@@ -57,7 +73,7 @@ export default function AdminTeamPage() {
               </div>
               <p className="mt-1 text-[13.5px] text-ink/60 leading-relaxed">
                 {missing.length === 0
-                  ? `Alla ${team.length} i teamet har porträtt. `
+                  ? `Alla ${team.length - hidden.length} synliga i teamet har porträtt. `
                   : `${missing.length} av ${team.length} saknar porträtt (${missing
                       .map((m) => m.name.split(" ")[0])
                       .join(", ")}). `}

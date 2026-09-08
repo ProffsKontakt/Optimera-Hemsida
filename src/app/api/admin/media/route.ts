@@ -24,6 +24,37 @@ const MAX_BYTES = 20 * 1024 * 1024; // 20 MB in – komprimeras ändå ned direk
 const WEBP_QUALITY = 82;
 
 /**
+ * Ger admin GitHubs egen förklaring ("token har gått ut → förnya
+ * GITHUB_TOKEN i Vercel") i stället för ett stumt 502. Samma mönster som
+ * /api/admin/team.
+ */
+function githubFailure(action: string, err: unknown) {
+  const msg = err instanceof Error ? err.message : String(err);
+  // eslint-disable-next-line no-console
+  console.error(`[admin/media] ${action} misslyckades:`, err);
+  return NextResponse.json(
+    { error: `${action}: ${msg}`, details: String(err) },
+    { status: 502 },
+  );
+}
+
+/**
+ * Raderar en gammal blob – best effort, får aldrig fälla anropet.
+ * Hoppar över sökvägar i repot (/team/...): de är statiska filer, inte
+ * blobbar, och del() kastar på en icke-blob-URL.
+ */
+async function deleteBlobIfRemote(url: string | undefined) {
+  if (!url || !url.startsWith("http")) return;
+  if (!process.env.BLOB_READ_WRITE_TOKEN) return;
+  try {
+    await del(url);
+  } catch (err) {
+    // eslint-disable-next-line no-console
+    console.warn("[admin/media] kunde inte rensa gammal blob:", err);
+  }
+}
+
+/**
  * Komprimerar en uppladdad bild till webbstandarden: nedskalad till
  * slottets maxbredd (aldrig uppskalad), konverterad till WebP och rensad
  * på EXIF (inkl. GPS-position). `.rotate()` utan argument roterar enligt
@@ -155,11 +186,8 @@ export async function POST(req: Request) {
     };
     await writeManifest(data, sha, `media: sätt bild för ${slotId}`);
 
-    // Rensa gammal blob så vi inte samlar skräp (best effort). Lokala
-    // sökvägar (/team/...) ligger i repot och ska aldrig raderas här.
-    if (previousUrl && previousUrl !== blob.url && previousUrl.startsWith("http")) {
-      del(previousUrl).catch(() => {});
-    }
+    // Rensa gammal blob så vi inte samlar skräp (best effort).
+    if (previousUrl !== blob.url) await deleteBlobIfRemote(previousUrl);
 
     return NextResponse.json({
       ok: true,
@@ -172,10 +200,7 @@ export async function POST(req: Request) {
       height: compressed.height,
     });
   } catch (err) {
-    return NextResponse.json(
-      { error: "Uppladdning misslyckades", details: String(err) },
-      { status: 502 },
-    );
+    return githubFailure("Uppladdning misslyckades", err);
   }
 }
 
@@ -221,10 +246,7 @@ export async function PATCH(req: Request) {
     await writeManifest(data, sha, `media: uppdatera inställningar för ${slotId}`);
     return NextResponse.json({ ok: true, entry });
   } catch (err) {
-    return NextResponse.json(
-      { error: "Uppdatering misslyckades", details: String(err) },
-      { status: 502 },
-    );
+    return githubFailure("Uppdatering misslyckades", err);
   }
 }
 
@@ -246,12 +268,11 @@ export async function DELETE(req: Request) {
     if (!data[slotId]) return NextResponse.json({ ok: true, note: "Redan tom" });
     delete data[slotId];
     await writeManifest(data, sha, `media: ta bort bild för ${slotId}`);
-    if (url) del(url).catch(() => {});
+    // Efter att manifestet sparats: rensa blobben. Får aldrig fälla svaret
+    // – bilden är redan borta från sajten när manifestet är skrivet.
+    await deleteBlobIfRemote(url);
     return NextResponse.json({ ok: true });
   } catch (err) {
-    return NextResponse.json(
-      { error: "Borttagning misslyckades", details: String(err) },
-      { status: 502 },
-    );
+    return githubFailure("Borttagning misslyckades", err);
   }
 }
