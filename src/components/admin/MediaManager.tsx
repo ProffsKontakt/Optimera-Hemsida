@@ -128,7 +128,17 @@ function SlotCard({
         setMsg(data.error ?? "Något gick fel.");
       } else {
         setOk(true);
-        setMsg("Sparat – live på sajten efter deploy (1-2 min).");
+        // Visa vad auto-komprimeringen sparade in.
+        const kb = (n: number) => `${Math.round(n / 1024)} kB`;
+        const saved =
+          data.originalBytes && data.optimizedBytes
+            ? ` Optimerad: ${kb(data.originalBytes)} → ${kb(
+                data.optimizedBytes,
+              )} WebP (−${Math.round(
+                (1 - data.optimizedBytes / data.originalBytes) * 100,
+              )}%).`
+            : "";
+        setMsg(`Sparat – live på sajten efter deploy (1-2 min).${saved}`);
         onChange({ url: data.url, alt: data.alt, frost });
         setFile(null);
       }

@@ -25,7 +25,17 @@ export type MediaSlot = {
   hint?: string;
   /** Visa frostnings-reglage (0–100) för sloten i admin. */
   frost?: boolean;
+  /**
+   * Största bredd (px) bilden sparas i. Uppladdningen skalar ned till detta
+   * och konverterar till WebP – så vi håller sajten snabb utan att någon
+   * behöver tänka på bildoptimering. Sätts efter hur stort slottet visas
+   * (2x för retina). Default: DEFAULT_MAX_WIDTH.
+   */
+  maxWidth?: number;
 };
+
+/** Fallback-bredd för slots utan egen maxWidth. */
+export const DEFAULT_MAX_WIDTH = 1600;
 
 export type MediaEntry = {
   url: string;
@@ -51,6 +61,9 @@ export function listMediaSlots(): MediaSlot[] {
       aspect: "9 / 16",
       hint: "STÅENDE bild. Mobil: frostad fullskärmsbakgrund bakom hero-texten (frostgrad enligt reglaget). Desktop: bilden visas i hero-kortet i stället för 3D-huset.",
       frost: true,
+      // Fullskärmsbakgrund på mobil, men frostas/blurras – behöver inte
+      // vara knivskarp.
+      maxWidth: 1400,
     },
     ...getTeam().map((m) => ({
       id: `team:${m.id}`,
@@ -58,6 +71,8 @@ export function listMediaSlots(): MediaSlot[] {
       label: m.name,
       aspect: "4 / 5",
       hint: "Stående porträtt. Visas annars som färggradient.",
+      // Kortet är ~460px brett på desktop, ~190px på mobil -> 900 = 2x.
+      maxWidth: 900,
     })),
     ...GUIDES.map((g) => ({
       id: `guide:${g.slug}`,

@@ -1,18 +1,56 @@
 import { NextResponse } from "next/server";
 import { put, del } from "@vercel/blob";
+import sharp from "sharp";
 import { isAdminAuthed } from "@/lib/admin-auth";
 import {
   ghGetFile,
   ghPutFile,
   isGitHubConfigured,
 } from "@/lib/github";
-import { isValidSlot, type MediaManifest } from "@/lib/media";
+import {
+  DEFAULT_MAX_WIDTH,
+  isValidSlot,
+  listMediaSlots,
+  type MediaManifest,
+} from "@/lib/media";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 const MANIFEST = "data/media-manifest.json";
-const MAX_BYTES = 8 * 1024 * 1024; // 8 MB
+const MAX_BYTES = 20 * 1024 * 1024; // 20 MB in – komprimeras ändå ned direkt
+
+/** WebP-kvalitet. 82 = visuellt identisk med originalet i praktiken. */
+const WEBP_QUALITY = 82;
+
+/**
+ * Komprimerar en uppladdad bild till webbstandarden: nedskalad till
+ * slottets maxbredd (aldrig uppskalad), konverterad till WebP och rensad
+ * på EXIF (inkl. GPS-position). `.rotate()` utan argument roterar enligt
+ * EXIF-orientering först, annars hamnar mobilfoton på sidan.
+ *
+ * Beskär medvetet INTE till slottets aspect ratio – layouten sköter det
+ * med object-cover, och en serverside-beskärning riskerar att kapa huvuden.
+ */
+async function compressImage(
+  file: File,
+  slotId: string,
+): Promise<{ buffer: Buffer; width: number; height: number }> {
+  const maxWidth =
+    listMediaSlots().find((s) => s.id === slotId)?.maxWidth ??
+    DEFAULT_MAX_WIDTH;
+  const input = Buffer.from(await file.arrayBuffer());
+  const output = await sharp(input)
+    .rotate()
+    .resize({ width: maxWidth, withoutEnlargement: true })
+    .webp({ quality: WEBP_QUALITY, effort: 5 })
+    .toBuffer({ resolveWithObject: true });
+  return {
+    buffer: output.data,
+    width: output.info.width,
+    height: output.info.height,
+  };
+}
 
 async function readManifest(): Promise<{ data: MediaManifest; sha?: string }> {
   const file = await ghGetFile(MANIFEST);
@@ -75,19 +113,37 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Endast bildfiler tillåts" }, { status: 400 });
   }
   if (file.size > MAX_BYTES) {
-    return NextResponse.json({ error: "Bilden är för stor (max 8 MB)" }, { status: 413 });
+    return NextResponse.json({ error: "Bilden är för stor (max 20 MB)" }, { status: 413 });
   }
 
   try {
-    const safeName = (file.name || "image")
-      .toLowerCase()
-      .replace(/[^a-z0-9.]+/g, "-")
-      .slice(-60);
-    const blob = await put(`media/${slotId.replace(":", "/")}/${safeName}`, file, {
-      access: "public",
-      addRandomSuffix: true,
-      contentType: file.type,
-    });
+    // Komprimera FÖRE uppladdning – bara den optimerade WebP:en lagras.
+    let compressed;
+    try {
+      compressed = await compressImage(file, slotId);
+    } catch {
+      return NextResponse.json(
+        { error: "Kunde inte läsa bilden – är filen en giltig JPG/PNG/WebP?" },
+        { status: 400 },
+      );
+    }
+
+    const safeName =
+      (file.name || "image")
+        .toLowerCase()
+        .replace(/\.[a-z0-9]+$/, "")
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-+|-+$/g, "")
+        .slice(-50) || "bild";
+    const blob = await put(
+      `media/${slotId.replace(":", "/")}/${safeName}.webp`,
+      compressed.buffer,
+      {
+        access: "public",
+        addRandomSuffix: true,
+        contentType: "image/webp",
+      },
+    );
 
     const { data, sha } = await readManifest();
     const previousUrl = data[slotId]?.url;
@@ -99,12 +155,22 @@ export async function POST(req: Request) {
     };
     await writeManifest(data, sha, `media: sätt bild för ${slotId}`);
 
-    // Rensa gammal blob så vi inte samlar skräp (best effort).
-    if (previousUrl && previousUrl !== blob.url) {
+    // Rensa gammal blob så vi inte samlar skräp (best effort). Lokala
+    // sökvägar (/team/...) ligger i repot och ska aldrig raderas här.
+    if (previousUrl && previousUrl !== blob.url && previousUrl.startsWith("http")) {
       del(previousUrl).catch(() => {});
     }
 
-    return NextResponse.json({ ok: true, url: blob.url, alt });
+    return NextResponse.json({
+      ok: true,
+      url: blob.url,
+      alt,
+      // Låter admin se att komprimeringen faktiskt gjorde jobbet.
+      originalBytes: file.size,
+      optimizedBytes: compressed.buffer.length,
+      width: compressed.width,
+      height: compressed.height,
+    });
   } catch (err) {
     return NextResponse.json(
       { error: "Uppladdning misslyckades", details: String(err) },

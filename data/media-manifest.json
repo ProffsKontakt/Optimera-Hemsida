@@ -6,9 +6,9 @@
     "frost": 10
   },
   "team:viktor": {
-    "url": "https://mp7xiqe8vjrzq47y.public.blob.vercel-storage.com/media/team/viktor/img-7776-8lqTHCyfYof8Dst1iEqG27tJC2C8Xf.jpeg",
-    "alt": "",
-    "updatedAt": "2026-08-24T15:23:32.867Z"
+    "url": "/team/viktor.webp",
+    "alt": "Viktor Tiberg, Optimera Energi",
+    "updatedAt": "2026-09-08T16:20:21.890Z"
   },
   "team:william": {
     "url": "https://mp7xiqe8vjrzq47y.public.blob.vercel-storage.com/media/team/william/img-7758-U0kG27ahy9Je7Uzk76qx6p2keovH4G.jpeg",
@@ -21,18 +21,23 @@
     "updatedAt": "2026-08-24T15:23:37.427Z"
   },
   "team:josef": {
-    "url": "https://mp7xiqe8vjrzq47y.public.blob.vercel-storage.com/media/team/josef/img-7771-p6aC1wMrSh5p1LgFzrtJReiIEapRR5.jpeg",
-    "alt": "",
-    "updatedAt": "2026-08-24T15:23:38.967Z"
+    "url": "/team/josef.webp",
+    "alt": "Josef Strand, Optimera Energi",
+    "updatedAt": "2026-09-08T16:20:21.890Z"
   },
   "team:moltas": {
-    "url": "https://mp7xiqe8vjrzq47y.public.blob.vercel-storage.com/media/team/moltas/img-7767-5Ed7k1kH3QmoR0CvXxr5Mk6x04mwz9.jpeg",
-    "alt": "",
-    "updatedAt": "2026-08-24T15:23:44.187Z"
+    "url": "/team/moltas.webp",
+    "alt": "Moltas Roslund, Optimera Energi",
+    "updatedAt": "2026-09-08T16:20:21.890Z"
   },
   "team:julian": {
-    "url": "https://mp7xiqe8vjrzq47y.public.blob.vercel-storage.com/media/team/julian/img-7787-FxQBJlsipjXTksINV1iVbbohskCkbC.jpeg",
-    "alt": "",
-    "updatedAt": "2026-08-24T15:23:54.332Z"
+    "url": "/team/julian.webp",
+    "alt": "Julian Nordgren, Optimera Energi",
+    "updatedAt": "2026-09-08T16:20:21.890Z"
+  },
+  "team:albin": {
+    "url": "/team/albin.webp",
+    "alt": "Albin Lygdman, Optimera Energi",
+    "updatedAt": "2026-09-08T16:20:21.890Z"
   }
 }
