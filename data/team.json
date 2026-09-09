@@ -50,6 +50,16 @@
     "visible": false
   },
   {
+    "id": "tommy",
+    "name": "Tommy Widh",
+    "role": "Teknisk rådgivare",
+    "email": "tommy@optimeraenergi.se",
+    "phone": "+46 73 121 42 89",
+    "color": "from-[#0a3a4e] to-[#1A1A17]",
+    "bio": "Vänlig och rutinerad. Ser till att du känner dig trygg med både lösningen och vägen dit – inga överraskningar på slutet.",
+    "visible": true
+  },
+  {
     "id": "kalle",
     "name": "Kalle Krus",
     "role": "Teknisk rådgivare",
@@ -70,16 +80,6 @@
     "visible": true
   },
   {
-    "id": "josef",
-    "name": "Josef Strand",
-    "role": "Teknisk rådgivare",
-    "email": "josef@optimeraenergi.se",
-    "phone": "+46 70 194 69 72",
-    "color": "from-[#3648C3] to-[#0E0E0C]",
-    "bio": "Säger som det är, även när svaret är nej. Ser till att du vet vad som händer härnäst – och att det faktiskt blir gjort.",
-    "visible": true
-  },
-  {
     "id": "jamy",
     "name": "Jamy Makindu",
     "role": "Teknisk rådgivare",
@@ -90,13 +90,13 @@
     "visible": true
   },
   {
-    "id": "tommy",
-    "name": "Tommy Widh",
+    "id": "josef",
+    "name": "Josef Strand",
     "role": "Teknisk rådgivare",
-    "email": "tommy@optimeraenergi.se",
-    "phone": "+46 73 121 42 89",
-    "color": "from-[#0a3a4e] to-[#1A1A17]",
-    "bio": "Vänlig och rutinerad. Ser till att du känner dig trygg med både lösningen och vägen dit – inga överraskningar på slutet.",
+    "email": "josef@optimeraenergi.se",
+    "phone": "+46 70 194 69 72",
+    "color": "from-[#3648C3] to-[#0E0E0C]",
+    "bio": "Säger som det är, även när svaret är nej. Ser till att du vet vad som händer härnäst – och att det faktiskt blir gjort.",
     "visible": true
   }
 ]
