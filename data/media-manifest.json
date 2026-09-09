@@ -34,5 +34,10 @@
     "url": "/team/albin.webp",
     "alt": "Albin Lygdman, Optimera Energi",
     "updatedAt": "2026-09-08T16:20:21.890Z"
+  },
+  "team:kalle": {
+    "url": "https://mp7xiqe8vjrzq47y.public.blob.vercel-storage.com/media/team/kalle/headshots-hemsida-2-yOHr0GPPtrqJj73E3YXZSNHO4jK9kB.webp",
+    "alt": "",
+    "updatedAt": "2026-09-09T07:05:33.585Z"
   }
 }
