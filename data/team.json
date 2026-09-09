@@ -12,11 +12,11 @@
   {
     "id": "julian",
     "name": "Julian Nordgren",
-    "role": "Grundare och Operativ Chef",
+    "role": "Grundare och Tekniskt ansvarig",
     "email": "julian@optimeraenergi.se",
     "phone": "+46 73 173 87 85",
     "color": "from-[#B86F3C] to-[#2A2A26]",
-    "bio": "Operativ ryggrad. Plockar upp telefonen, dimensionerar systemet, mejlar din offert och dyker upp vid första installationen.",
+    "bio": "Operativ och teknisk ryggrad. Svarar och ansvarar för det tekniska hos oss. Plockar alltid upp telefonen, ansvarar för det tekniska, och dyker upp vid första installationen.",
     "visible": true
   },
   {
@@ -26,7 +26,7 @@
     "email": "moltas@optimeraenergi.se",
     "phone": "+46 70 534 01 54",
     "color": "from-[#0a3a4e] to-[#1A1A17]",
-    "bio": "Sköter projekteringen, och genomförande av våra installationer. Är personen som ringer dig och koordinerar er när elektrikern och montören kan komma och utföra installationen.",
+    "bio": "Ansvarig för projekteringen och koordineringen. Är din primära kontaktperson för att installationen ska bli precis som du vill ha den, samt så att vi alltid följer tidsramen.",
     "visible": true
   },
   {
