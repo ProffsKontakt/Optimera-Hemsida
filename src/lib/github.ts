@@ -6,8 +6,13 @@
  * Env vars som krävs i Vercel:
  *   GITHUB_TOKEN  - fine-grained PAT med contents:write
  *   GITHUB_OWNER  - t.ex. "proffskontakt"
- *   GITHUB_REPO   - t.ex. "klokatankar"
- *   GITHUB_BRANCH - t.ex. "main" eller feature-branch
+ *   GITHUB_REPO   - "Optimera-Hemsida" (repot bytte namn från
+ *                   "klokatankar" i september 2026)
+ *   GITHUB_BRANCH - "claude/kloka-tankar-el-website-yRTg7" (den gren
+ *                   Vercel deployar produktion från)
+ *
+ * ghFetch nedan följer GitHubs 301 vid namnbyte, så CMS:et fungerar även
+ * om GITHUB_REPO ligger kvar på ett gammalt namn.
  */
 
 type GhConfig = {
@@ -27,6 +32,32 @@ function getConfig(): GhConfig | null {
 }
 
 const API = "https://api.github.com";
+
+/** owner/repo@branch – för felmeddelanden. Aldrig token. */
+function describeConfig(): string {
+  const owner = process.env.GITHUB_OWNER ?? "(saknas)";
+  const repo = process.env.GITHUB_REPO ?? "(saknas)";
+  const branch = process.env.GITHUB_BRANCH ?? "(saknas)";
+  return `${owner}/${repo}@${branch}`;
+}
+
+/**
+ * Anropar GitHub och FÖLJER en 301 själv.
+ *
+ * Bakgrund: repot bytte namn (klokatankar → Optimera-Hemsida), så GitHub
+ * svarar 301 på det gamla namnet med Location till /repositories/{id}/...
+ * Vi kan inte låta fetch följa den automatiskt (då blir PUT en GET och
+ * bodyn tappas), men vi kan göra om anropet med SAMMA metod mot den nya
+ * URL:en. Det gör CMS:et självläkande: det fungerar även om GITHUB_REPO
+ * i Vercel ligger kvar på ett gammalt namn.
+ */
+async function ghFetch(url: string, init: RequestInit): Promise<Response> {
+  const res = await fetch(url, { ...init, redirect: "manual" });
+  if (![301, 302, 307, 308].includes(res.status)) return res;
+  const location = res.headers.get("location");
+  if (!location) return res;
+  return fetch(location, { ...init, redirect: "manual" });
+}
 
 /**
  * Översätt GitHubs felstatusar till meddelanden som säger VAD man gör åt
@@ -52,7 +83,8 @@ function explainGitHubError(op: string, status: number, bodyText: string): Error
   }
   if (status === 404) {
     return new Error(
-      `GitHub hittar inte repot/grenen (404). Kontrollera GITHUB_OWNER/GITHUB_REPO/` +
+      `GitHub hittar inte repot/grenen (404) med konfigurationen ${describeConfig()}. ` +
+      `Kontrollera GITHUB_OWNER/GITHUB_REPO/` +
       `GITHUB_BRANCH i Vercel — har repot bytt namn måste GITHUB_REPO uppdateras. ` +
       `(404 kan också betyda att token saknar åtkomst till ett privat repo.) [${op}]`,
     );
@@ -85,10 +117,7 @@ export async function ghGetFile(
   const cfg = getConfig();
   if (!cfg) throw new Error("GitHub env vars saknas");
   const url = `${API}/repos/${cfg.owner}/${cfg.repo}/contents/${encodeURIComponent(path)}?ref=${cfg.branch}`;
-  const res = await fetch(url, { headers: headers(cfg.token), cache: "no-store", redirect: "manual" });
-  if (res.status === 301 || res.status === 302 || res.status === 307 || res.status === 308) {
-    throw explainGitHubError("ghGetFile", 404, "redirect — repot har troligen bytt namn");
-  }
+  const res = await ghFetch(url, { headers: headers(cfg.token), cache: "no-store" });
   if (res.status === 404) return null;
   if (!res.ok) throw explainGitHubError("ghGetFile", res.status, await res.text());
   const data = (await res.json()) as { sha: string; content: string };
@@ -114,15 +143,11 @@ export async function ghPutFile(input: {
     branch: cfg.branch,
     ...(input.sha ? { sha: input.sha } : {}),
   };
-  const res = await fetch(url, {
+  const res = await ghFetch(url, {
     method: "PUT",
     headers: headers(cfg.token),
     body: JSON.stringify(body),
-    redirect: "manual",
   });
-  if (res.status === 301 || res.status === 302 || res.status === 307 || res.status === 308) {
-    throw explainGitHubError("ghPutFile", 404, "redirect — repot har troligen bytt namn");
-  }
   if (!res.ok) {
     throw explainGitHubError("ghPutFile", res.status, await res.text());
   }
@@ -143,7 +168,7 @@ export async function ghDeleteFile(input: {
   const cfg = getConfig();
   if (!cfg) throw new Error("GitHub env vars saknas");
   const url = `${API}/repos/${cfg.owner}/${cfg.repo}/contents/${encodeURIComponent(input.path)}`;
-  const res = await fetch(url, {
+  const res = await ghFetch(url, {
     method: "DELETE",
     headers: headers(cfg.token),
     body: JSON.stringify({
@@ -151,11 +176,7 @@ export async function ghDeleteFile(input: {
       sha: input.sha,
       branch: cfg.branch,
     }),
-    redirect: "manual",
   });
-  if (res.status === 301 || res.status === 302 || res.status === 307 || res.status === 308) {
-    throw explainGitHubError("ghDeleteFile", 404, "redirect — repot har troligen bytt namn");
-  }
   if (!res.ok) {
     throw explainGitHubError("ghDeleteFile", res.status, await res.text());
   }

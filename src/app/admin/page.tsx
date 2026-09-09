@@ -2,9 +2,13 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { isAdminAuthed } from "@/lib/admin-auth";
 import { AdminTopbar } from "@/components/admin/AdminTopbar";
+import { CmsStatus } from "@/components/admin/CmsStatus";
 import { LightbulbIcon, Briefcase, Newspaper, ArrowRight, ImageIcon, FlaskConical, BarChart3, Users, MessageSquareQuote } from "lucide-react";
 
-export default function AdminHome() {
+// Statuspanelen gör ett live-anrop mot GitHub – får inte cachas.
+export const dynamic = "force-dynamic";
+
+export default async function AdminHome() {
   if (!process.env.ADMIN_PASSWORD || !isAdminAuthed()) {
     redirect("/admin/login");
   }
@@ -24,6 +28,9 @@ export default function AdminHome() {
             samlingsplats för förslag som rör allt från säljarbete till hur
             CRM:et byggs ut.
           </p>
+          <div className="max-w-3xl">
+            <CmsStatus />
+          </div>
         </div>
 
         <div className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-5 max-w-3xl">
