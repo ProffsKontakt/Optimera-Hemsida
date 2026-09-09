@@ -109,10 +109,34 @@ export function Footer() {
               <span className="block">Org.nr 559375-2206</span>
             </li>
           </ul>
-          <div className="mt-6 flex gap-2">
-            <Badge>F-skatt</Badge>
-            <Badge>BAS-U</Badge>
-            <Badge>SEK</Badge>
+          <div className="mt-6 flex items-center gap-4">
+            <div className="flex flex-wrap gap-2">
+              <Badge>F-skatt</Badge>
+              <Badge>BAS-U</Badge>
+              <Badge>SEK</Badge>
+            </div>
+            {/* Recos "Rekommenderat företag 2026". Vi serverar SVG:n själva
+                i stället för widget.reco.se/badge/2026/6073291.js – scriptet
+                innehåller bara samma statiska SVG (base64) men kostar 20 kB
+                JS, en extra tredjepartsförfrågan och ett innerHTML från
+                extern domän. Byt fil när 2027-badgen kommer. */}
+            <a
+              href="https://www.reco.se/optimera-energi"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Rekommenderat företag 2026 på Reco.se"
+              className="shrink-0 transition-transform duration-300 hover:scale-105"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/reco-badge-2026.svg"
+                alt="Rekommenderat företag 2026 på Reco"
+                width={72}
+                height={72}
+                className="h-[72px] w-[72px]"
+                loading="lazy"
+              />
+            </a>
           </div>
           <div className="mt-5 flex flex-wrap gap-x-4 gap-y-2 text-[13px]">
             <a

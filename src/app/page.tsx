@@ -81,7 +81,7 @@ export default function HomePage() {
             (kontrollera på reco.se/optimera-energi). */}
         <p className="mt-8 flex flex-wrap items-center gap-x-2 gap-y-1 text-[14px] text-ink/60">
           <span className="text-[#47c645]">★</span>
-          <span>4,8 av 5 i betyg (9 omdömen) på</span>
+          <span>4,8 av 5 i betyg (10 omdömen) på</span>
           {/* Officiella Reco-loggan (hämtad från reco.se). */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/reco.svg" alt="Reco" className="h-[18px] w-auto" />
