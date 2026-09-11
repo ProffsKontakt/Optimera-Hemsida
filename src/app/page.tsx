@@ -12,6 +12,7 @@ import { DemoProcess } from "@/components/demo/DemoProcess";
 import { DemoManifesto } from "@/components/demo/DemoManifesto";
 import { Testimonials } from "@/components/home/Testimonials";
 import { CtaPanel } from "@/components/home/CtaPanel";
+import { RecoBadge } from "@/components/site/RecoBadge";
 import {
   JsonLd,
   faqPageSchema,
@@ -75,26 +76,32 @@ export default function HomePage() {
         eyebrow="Recensioner · via Reco"
         title={<>Kunderna säger det bäst.</>}
         className="!py-16 md:!py-24"
+        // Badgen ligger bredvid rubriken på desktop och nere vid betygsraden
+        // på mobil (där rubrikraden är för smal för den).
+        aside={<RecoBadge size={116} tilt className="hidden md:block" />}
       >
         <Testimonials reviews={getVisibleReviews()} />
-        {/* Länk till källan. Snittbetyget uppdateras manuellt vid behov
-            (kontrollera på reco.se/optimera-energi). */}
-        <p className="mt-8 flex flex-wrap items-center gap-x-2 gap-y-1 text-[14px] text-ink/60">
-          <span className="text-[#47c645]">★</span>
-          <span>4,8 av 5 i betyg (10 omdömen) på</span>
-          {/* Officiella Reco-loggan (hämtad från reco.se). */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/reco.svg" alt="Reco" className="h-[18px] w-auto" />
-          <span>–</span>
-          <a
-            href="https://www.reco.se/optimera-energi"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline underline-offset-4 decoration-ink/30 hover:text-ink hover:decoration-ink/60 transition"
-          >
-            läs alla omdömen
-          </a>
-        </p>
+        {/* Betyg + länk till källan. Snittbetyget uppdateras manuellt vid
+            behov (kontrollera på reco.se/optimera-energi). */}
+        <div className="mt-8 flex items-center gap-4">
+          <RecoBadge size={66} tilt className="md:hidden" />
+          <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[14px] text-ink/60">
+            <span className="text-[#47c645]">★</span>
+            <span>4,8 av 5 i betyg (10 omdömen) på</span>
+            {/* Officiella Reco-loggan (hämtad från reco.se). */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/reco.svg" alt="Reco" className="h-[18px] w-auto" />
+            <span>–</span>
+            <a
+              href="https://www.reco.se/optimera-energi"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-4 decoration-ink/30 hover:text-ink hover:decoration-ink/60 transition"
+            >
+              läs alla omdömen
+            </a>
+          </p>
+        </div>
       </DemoSection>
 
       {/* Systemet: sol + batteri + laddbox som EN helhet. Ersätter den

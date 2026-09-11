@@ -2,6 +2,7 @@ import Link from "next/link";
 import { CITIES } from "@/lib/cities";
 import { BATTERY_CITIES } from "@/lib/battery-cities";
 import { VISIBLE_SERVICES } from "@/lib/services";
+import { RecoBadge } from "@/components/site/RecoBadge";
 
 export function Footer() {
   return (
@@ -115,28 +116,10 @@ export function Footer() {
               <Badge>BAS-U</Badge>
               <Badge>SEK</Badge>
             </div>
-            {/* Recos "Rekommenderat företag 2026". Vi serverar SVG:n själva
-                i stället för widget.reco.se/badge/2026/6073291.js – scriptet
-                innehåller bara samma statiska SVG (base64) men kostar 20 kB
-                JS, en extra tredjepartsförfrågan och ett innerHTML från
-                extern domän. Byt fil när 2027-badgen kommer. */}
-            <a
-              href="https://www.reco.se/optimera-energi"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="Rekommenderat företag 2026 på Reco.se"
-              className="shrink-0 transition-transform duration-300 hover:scale-105"
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/reco-badge-2026.svg"
-                alt="Rekommenderat företag 2026 på Reco"
-                width={72}
-                height={72}
-                className="h-[72px] w-[72px]"
-                loading="lazy"
-              />
-            </a>
+            {/* Recos "Rekommenderat företag 2026" – rak här, bland de
+                formella intygen. Se RecoBadge för varför vi inte kör
+                widget-scriptet. */}
+            <RecoBadge size={72} />
           </div>
           <div className="mt-5 flex flex-wrap gap-x-4 gap-y-2 text-[13px]">
             <a
