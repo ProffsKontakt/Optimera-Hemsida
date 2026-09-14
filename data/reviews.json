@@ -8,6 +8,22 @@
     "visible": true
   },
   {
+    "id": "leif-l-reco",
+    "author": "Leif L",
+    "place": "Reco · september 2026",
+    "text": "Trevlig och kunnig personal, från början till färdigställande. Alla kunde svenska. Anläggningen verkar fungera som den utlovat. Tack för ett bra jobb.",
+    "rating": 4,
+    "visible": true
+  },
+  {
+    "id": "anders-j-reco",
+    "author": "Anders J",
+    "place": "Reco · september 2026",
+    "text": "Det kom 2 trevliga pojkar och gick igenom fördelarna med batterier. Julian och Viktor gjorde ett bra jobb, så jag slog till. Monteringen gick snabbt efter beställningen, kan starkt rekommendera Optimera Energi.",
+    "rating": 5,
+    "visible": true
+  },
+  {
     "id": "hans-m-reco",
     "author": "Hans M",
     "place": "Reco · september 2026",
@@ -54,6 +70,14 @@
     "text": "Bra engagemang hela vägen tills anläggningen va klar.",
     "rating": 4,
     "visible": true
+  },
+  {
+    "id": "erik-j-reco",
+    "author": "Erik J",
+    "place": "Reco · augusti 2026",
+    "text": "Dom kom och gjorde installationen. Den fungerade väldigt bra, det enda var att dom kunde säkra upp inmatningen, men det gjorde dom inte så därför var jag tvungen att välja lägre effekt för uppladdningen. Vi får se hur det fungerar i vinter då strömåtgången är högre.",
+    "rating": 5,
+    "visible": false
   },
   {
     "id": "stellan-f-reco",
