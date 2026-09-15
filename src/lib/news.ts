@@ -57,6 +57,61 @@ export type NewsArticle = {
 
 export const NEWS: NewsArticle[] = [
   {
+    slug: "efter-valet-2026-rysarjamnt-vad-hander-med-elen",
+    status: "published",
+    title:
+      "Rysarjämnt efter valet: regeringsfrågan öppen – det här gäller för din el nu",
+    excerpt:
+      "Rödgröna 176 mandat mot Tidöpartiernas 173 i den preliminära räkningen, slutresultatet dröjer och talman väljs först den 28 september. Vi reder ut vad det ovissa läget faktiskt betyder för avdrag, elpriser och dig som funderar på solceller eller batteri.",
+    category: "Valet 2026",
+    publishedAt: "2026-09-15",
+    updatedAt: "2026-09-15",
+    readTimeMin: 6,
+    image: {
+      src: "/news/efter-valet-2026-rysarjamnt-vad-hander-med-elen.jpg",
+      alt: "Svensk villagata i skymning med solpaneler på taken och varmt ljus i fönstren",
+    },
+    sources: [
+      {
+        title: "Rysarjämnt i valet – oppositionen leder knappt",
+        publisher: "SVT Nyheter",
+        url: "https://www.svt.se/nyheter/inrikes/rysarjamnt-i-valet-oppositionen-leder-knappt",
+      },
+      {
+        title: "Senaste nytt om valet 2026",
+        publisher: "SVT Nyheter",
+        url: "https://www.svt.se/nyheter/inrikes/senaste-nytt-om-val-2026",
+      },
+      {
+        title: "Valresultat 2026 – riksdag, region och kommun",
+        publisher: "Valmyndigheten",
+        url: "https://www.val.se/english/election-results/elections-to-the-riksdag-and-regional-and-municipal-councils/election-results-2026",
+      },
+      {
+        title: "Valresultat 2026",
+        publisher: "SVT Nyheter",
+        url: "https://valresultat.svt.se/2026/",
+      },
+      {
+        title:
+          "Sveriges val – tryggare och högre eller lägre och mer varierande elpriser",
+        publisher: "Energiforsk",
+        url: "https://energiforsk.se/nyheter/sveriges-val-tryggare-och-hogre-eller-lagre-och-mer-varierande-elpriser/",
+      },
+      {
+        title:
+          "Bidrag för energieffektivisering i småhus kan sökas från 1 september",
+        publisher: "Boverket",
+        url: "https://www.boverket.se/sv/om-boverket/nyheter-aktuellt/nyheter/bidrag-for-energieffektivisering-fran-1-september/",
+      },
+      {
+        title: "Senaste nytt om svenska valet 2026",
+        publisher: "Sveriges Radio",
+        url: "https://www.sverigesradio.se/artikel/senaste-nytt-om-svenska-valet-2026",
+      },
+    ],
+  },
+  {
     slug: "valet-2026-solceller-elpriser-en-vecka-kvar",
     status: "published",
     title:

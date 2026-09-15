@@ -28,6 +28,72 @@ export type NewsContent = {
 };
 
 const CONTENT: Record<string, NewsContent> = {
+  "efter-valet-2026-rysarjamnt-vad-hander-med-elen": {
+    tldr: [
+      "Preliminärt har det rödgröna blocket 176 mandat mot Tidöpartiernas 173 – men utlandsröster och sena förtidsröster räknas fortfarande, och det slutliga resultatet fastställs av Valmyndigheten först senare i veckan.",
+      "Riksdagen samlas och väljer talman den 28 september; tidigast dagen därpå kan en statsministerkandidat föreslås. Tills en ny regering finns på plats gäller dagens regler: 14,55 % grönt avdrag för solceller, 48,5 % för batteri, Villaeffekten sökbar.",
+      "Energiforsks analys inför valet: medelpriset på el väntas landa runt 60–70 öre/kWh fram mot 2035 oavsett valutgång – ny elproduktion hinner inte påverka priset den här mandatperioden.",
+    ],
+    sections: [
+      {
+        h2: "Rysarjämnt – och inte klart än",
+        body: [
+          "Valnattens räkning gav det rödgröna blocket 176 mandat mot 173 för Tidöpartierna – SVT:s rubrik löd \"rysarjämnt\". Men resultatet är preliminärt: utlandsröster och sent inkomna förtidsröster räknas fortfarande, den preliminära räkningen väntas klar under onsdagen, och med så små marginaler kan enskilda mandat flytta sig innan Valmyndigheten fastställer det slutliga resultatet.",
+          "Vi skriver därför \"preliminärt\" genomgående i den här artikeln – och uppdaterar den när resultatet är fastställt. Datumet ovanför rubriken visar alltid när texten senast ändrades.",
+        ],
+      },
+      {
+        h2: "Tidsplanen: talman den 28 september, regering tidigast därefter",
+        body: [
+          "Den nya riksdagen samlas för upprop och väljer talman den 28 september. Först därefter – tidigast den 29 september – kan talmannen föreslå en statsministerkandidat, och talmannen Andreas Norlén har redan flaggat för att regeringsbildningen ser ut att bli komplicerad.",
+          "Grundlagen ger talmannen fyra försök att få en statsminister vald; misslyckas alla fyra blir det extraval. Med 176 mot 173 och två block som båda saknar egen enkel väg till majoritet kan processen ta veckor, i värsta fall månader. Under tiden styr den sittande regeringen, och några beslut om nya stöd eller avdrag fattas inte i det läget.",
+        ],
+      },
+      {
+        h2: "Dina avdrag och stöd: oförändrade – och trögrörliga",
+        body: [
+          "Ingenting i valresultatet ändrar reglerna du räknar på i dag: grönt avdrag ligger kvar på 14,55 procent för solceller och 48,5 procent för batteri och laddbox med tak på 50 000 kronor per person och år, 60-öringen är fortsatt borttagen, och Villaeffekten – 30 procent av materialkostnaden, max 60 000 kronor, för energieffektivisering i äldre småhus – är sökbar hos länsstyrelsen sedan den 1 september.",
+          "Ändringar kräver en regering som lägger en budgetproposition och en riksdagsmajoritet som röstar igenom den. I praktiken betyder det tidigast budgeten för 2027 – och drar regeringsbildningen ut på tiden skjuts även den tidtabellen.",
+        ],
+        bullets: [
+          "Solceller: 14,55 % grönt avdrag – oförändrat.",
+          "Batteri och laddbox: 48,5 % grönt avdrag – oförändrat.",
+          "Villaeffekten: 30 % av materialkostnaden, max 60 000 kr – sökbar nu, opåverkad av valet.",
+          "Eventuella ändringar: tidigast i budgeten för 2027, senare vid utdragen regeringsbildning.",
+        ],
+      },
+      {
+        h2: "Elpriset bryr sig inte om talmansrundor",
+        body: [
+          "Energiforsk analyserade före valet vad de olika politiska vägvalen betyder för elpriset. Slutsatsen: medelpriset väntas hamna runt 60–70 öre per kilowattimme fram mot 2035 – att jämföra med 43 öre 2024 och 64 öre 2023 – och nya kärnkraftsreaktorer byggs inte på en mandatperiod, så valutgången påverkar inte elpriset de närmaste åren.",
+          "Skillnaderna ligger längre fram: en högerledd regering ökar sannolikheten för mer kärnkraft under 2030- och 2040-talen, medan en S-ledd regering enligt analysen sannolikt ger mer vindkraft, större statlig styrning av elsystemet och en osäkrare finansiering för de planerade reaktorprojekten. Vinterns elpriser avgörs dock av det system som redan finns – väder, bränslepriser och överföringskapacitet.",
+        ],
+      },
+      {
+        h2: "Vad betyder det för dig som funderar på solceller eller batteri?",
+        body: [
+          "Det ovissa regeringsläget är i praktiken ett argument för att räkna på dagens regler i stället för att vänta på besked som kan dröja månader. För batteri ändrar valresultatet ingenting: avdraget på 48,5 procent ligger fast och stödtjänstintäkterna styrs av elsystemets behov, inte av riksdagen.",
+          "För solceller är avvägningen densamma som före valet – en möjlig framtida stödhöjning mot förlorad produktion under vinterns dyra elmånader – men med en ny osäkerhet: ingen vet när en regering som kan ändra något ens är på plats. Villaeffekten kan du däremot söka redan nu, oavsett hur talmansrundorna slutar.",
+          "Vi bevakar regeringsbildningen ur ett enda perspektiv: vad den betyder för din elkostnad. När något faktiskt beslutas uppdaterar vi här och i kalkylatorn.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Vem vann valet 2026?",
+        a: "Det är inte avgjort i praktisk mening. Preliminärt har de rödgröna 176 mandat mot 173 för Tidöpartierna, men slutresultatet fastställs först när utlandsröster och sena förtidsröster räknats. Regeringsfrågan avgörs sedan i riksdagen – talman väljs den 28 september och ett statsministerförslag kan komma tidigast dagen därpå.",
+      },
+      {
+        q: "Påverkar valresultatet grönt avdrag eller Villaeffekten nu?",
+        a: "Nej. 14,55 procent för solceller, 48,5 procent för batteri och laddbox samt Villaeffektens 30 procent gäller oförändrat tills en ny riksdagsmajoritet beslutar annat i en budget – i praktiken tidigast för 2027, och senare om regeringsbildningen drar ut på tiden.",
+      },
+      {
+        q: "Ska jag vänta med solceller eller batteri tills det finns en regering?",
+        a: "För batteri finns inget i valresultatet som ändrar kalkylen – där finns inget skäl att vänta. För solceller är avvägningen densamma som före valet: en möjlig framtida stödhöjning mot förlorad produktion under vinterns dyra månader. Skillnaden nu är att ingen vet när en ny regering är på plats, så att räkna på dagens regler är det enda hederliga.",
+      },
+    ],
+  },
+
   "valet-2026-solceller-elpriser-en-vecka-kvar": {
     tldr: [
       "Grönt avdrag är i dag 14,55 % för solceller och 48,5 % för batteri och laddbox. Striden i valrörelsen gäller solstödet – batteriavdraget ifrågasätts inte i de partijämförelser som publicerats.",
