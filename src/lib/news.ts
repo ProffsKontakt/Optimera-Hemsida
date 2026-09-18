@@ -57,6 +57,116 @@ export type NewsArticle = {
 
 export const NEWS: NewsArticle[] = [
   {
+    slug: "effektavgifter-2026-stoppat-krav-ny-modell-batteri",
+    status: "published",
+    title:
+      "Effektavgifterna är i limbo: kravet stoppat, ny modell dröjer – och nätbolagen kör ändå",
+    excerpt:
+      "Kravet på effekttariffer i alla elnät stoppades i våras och Energimarknadsinspektionen tar fram en ny modell – klar tidigast våren 2027, på en ny regerings bord. Samtidigt får nätbolag som redan infört effektavgifter fortsätta. Vi reder ut vad som gäller för din nätfaktura och varför batteriet blivit det säkraste skyddet.",
+    category: "Elpriser",
+    publishedAt: "2026-09-18",
+    updatedAt: "2026-09-18",
+    readTimeMin: 6,
+    image: {
+      src: "/news/effektavgifter-2026-stoppat-krav-ny-modell-batteri.jpg",
+      alt: "Gul svensk trävilla i skymning med solcellstak och varmt ljus i fönstren",
+    },
+    sources: [
+      {
+        title: "Krav på införande av effektavgifter stoppas",
+        publisher: "Regeringen",
+        url: "https://www.regeringen.se/pressmeddelanden/2026/03/krav-pa-inforande-av-effektavgifter-stoppas/",
+      },
+      {
+        title:
+          "Uppdrag till Energimarknadsinspektionen att upphäva föreskrifter och lämna förslag om en ny utformning av effektavgifterna",
+        publisher: "Regeringen",
+        url: "https://www.regeringen.se/regeringsuppdrag/2026/03/uppdrag-till-energimarknadsinspektionen-att-upphava-foreskrifter-och-lamna-forslag-om-en-ny-utformning-av-effektavgifterna/",
+      },
+      {
+        title:
+          "Ei har fått i uppdrag att ta fram en ny modell för effektavgifter och upphäva befintliga föreskrifter",
+        publisher: "Energimarknadsinspektionen",
+        url: "https://ei.se/om-oss/nyheter/2026/2026-03-13-ei-har-fatt-i-uppdrag-att-ta-fram-en-ny-modell-for-effektavgifter-och-upphava-befintliga-foreskrifter",
+      },
+      {
+        title: "Effektavgifter",
+        publisher: "Energimarknadsinspektionen",
+        url: "https://ei.se/konsument/el/elnatsavgiften-och-elnatsreglering/effektavgifter",
+      },
+      {
+        title: "Nya effekttariffer väcker oro",
+        publisher: "Fastighetstidningen",
+        url: "https://fastighetstidningen.se/nyhet/nya-effekttariffer-vacker-oro/",
+      },
+      {
+        title: "Kommentar: krav på införande av effekttariffer stoppas",
+        publisher: "Energiföretagen Sverige",
+        url: "https://www.energiforetagen.se/pressrum/nyheter/2026/mars/kommentar-krav-pa-inforande-av-effekttariffer-stoppas",
+      },
+      {
+        title: "Senaste nytt om valet 2026",
+        publisher: "SVT Nyheter",
+        url: "https://www.svt.se/nyheter/inrikes/senaste-nytt-om-val-2026",
+      },
+    ],
+  },
+  {
+    slug: "efter-valet-2026-rysarjamnt-vad-hander-med-elen",
+    status: "published",
+    title:
+      "Rysarjämnt efter valet: regeringsfrågan öppen – det här gäller för din el nu",
+    excerpt:
+      "Rödgröna 176 mandat mot Tidöpartiernas 173 i den preliminära räkningen, slutresultatet dröjer och talman väljs först den 28 september. Vi reder ut vad det ovissa läget faktiskt betyder för avdrag, elpriser och dig som funderar på solceller eller batteri.",
+    category: "Valet 2026",
+    publishedAt: "2026-09-15",
+    updatedAt: "2026-09-15",
+    readTimeMin: 6,
+    image: {
+      src: "/news/efter-valet-2026-rysarjamnt-vad-hander-med-elen.jpg",
+      alt: "Svensk villagata i skymning med solpaneler på taken och varmt ljus i fönstren",
+    },
+    sources: [
+      {
+        title: "Rysarjämnt i valet – oppositionen leder knappt",
+        publisher: "SVT Nyheter",
+        url: "https://www.svt.se/nyheter/inrikes/rysarjamnt-i-valet-oppositionen-leder-knappt",
+      },
+      {
+        title: "Senaste nytt om valet 2026",
+        publisher: "SVT Nyheter",
+        url: "https://www.svt.se/nyheter/inrikes/senaste-nytt-om-val-2026",
+      },
+      {
+        title: "Valresultat 2026 – riksdag, region och kommun",
+        publisher: "Valmyndigheten",
+        url: "https://www.val.se/english/election-results/elections-to-the-riksdag-and-regional-and-municipal-councils/election-results-2026",
+      },
+      {
+        title: "Valresultat 2026",
+        publisher: "SVT Nyheter",
+        url: "https://valresultat.svt.se/2026/",
+      },
+      {
+        title:
+          "Sveriges val – tryggare och högre eller lägre och mer varierande elpriser",
+        publisher: "Energiforsk",
+        url: "https://energiforsk.se/nyheter/sveriges-val-tryggare-och-hogre-eller-lagre-och-mer-varierande-elpriser/",
+      },
+      {
+        title:
+          "Bidrag för energieffektivisering i småhus kan sökas från 1 september",
+        publisher: "Boverket",
+        url: "https://www.boverket.se/sv/om-boverket/nyheter-aktuellt/nyheter/bidrag-for-energieffektivisering-fran-1-september/",
+      },
+      {
+        title: "Senaste nytt om svenska valet 2026",
+        publisher: "Sveriges Radio",
+        url: "https://www.sverigesradio.se/artikel/senaste-nytt-om-svenska-valet-2026",
+      },
+    ],
+  },
+  {
     slug: "valet-2026-solceller-elpriser-en-vecka-kvar",
     status: "published",
     title:

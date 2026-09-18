@@ -28,6 +28,138 @@ export type NewsContent = {
 };
 
 const CONTENT: Record<string, NewsContent> = {
+  "effektavgifter-2026-stoppat-krav-ny-modell-batteri": {
+    tldr: [
+      "Regeringen stoppade i mars kravet på att alla elnätsbolag ska införa effekttariffer – motiveringen var att avgifterna slog hårt mot vanliga hushåll och var svåra att förstå. Energimarknadsinspektionen fick i uppdrag att upphäva föreskrifterna senast den 30 juni 2026.",
+      "Frågan är inte död: Ei ska föreslå en ny, enhetlig modell för effektavgifter senast den 12 april 2027 – ett förslag som landar på nästa regerings bord, vilken det nu blir efter det rysarjämna valet.",
+      "Nätbolag som redan infört effektavgifter får fortsätta med dem. Har du en sådan tariff sätter din dyraste timme avgiften – och ett hembatteri som kapar effekttoppar är det mest direkta skyddet, oavsett vad politiken landar i.",
+    ],
+    sections: [
+      {
+        h2: "Vad är en effektavgift?",
+        body: [
+          "En effektavgift är en del av elnätsavgiften som baseras på din högsta effekt – hur många kilowatt du tar ut som mest under en timme – i stället för bara hur många kilowattimmar du använder totalt. Tanken är att styra bort förbrukningstoppar som annars tvingar fram dyra nätinvesteringar.",
+          "För en villa uppstår topparna när mycket händer samtidigt: värmepumpen arbetar, elbilen laddar och middagen lagas. En enda sådan timme kan sätta månadens avgift, även om resten av månaden är snål.",
+        ],
+      },
+      {
+        h2: "Kravet som kom, stoppades – och ska göras om",
+        body: [
+          "Energimarknadsinspektionen hade tidigare beslutat att alla elnätsbolag skulle införa någon form av effekttariff. Men i mars i år stoppade regeringen kravet: modellerna bedömdes vara svåra för kunderna att förstå och agera på, och energi- och näringsminister Ebba Busch pekade på att avgifterna slog hårt mot vanliga hushåll. Ei fick i uppdrag att upphäva föreskrifterna senast den 30 juni 2026.",
+          "Samtidigt fick Ei ett andra uppdrag: att ta fram en ny modell för effektavgifter som ska vara transparent, proportionerlig och likartad i hela landet. Det ska redovisas senast den 12 april 2027 – och hamnar därmed på bordet hos den regering som så småningom tillträder efter det rysarjämna valet. Regeringsfrågan är i skrivande stund öppen; talman väljs först den 28 september.",
+        ],
+      },
+      {
+        h2: "Det viktiga finstilta: bolag som redan infört får fortsätta",
+        body: [
+          "Stoppet betyder inte att effektavgifterna försvinner. Nätbolag som redan har infört dem får behålla dem – det är tvånget som är borta, inte tillåtelsen. Bransch- och fastighetsmedier har samtidigt rapporterat om oro för hur tarifferna slår när fler bolag inför dem på eget initiativ.",
+          "Din nätfaktura styrs alltså i praktiken av ditt nätbolags beslut, inte av riksdagens tidtabell. Kolla ditt nätbolags tariffblad eller fakturans rader: står det en avgift per kilowatt, ofta kopplad till månadens högsta timuttag eller ett snitt av de högsta topparna, har du en effekttariff.",
+        ],
+        bullets: [
+          "Krav på effekttariff i alla nät: stoppat i mars 2026.",
+          "Befintliga effekttariffer: får fortsätta att gälla.",
+          "Ny enhetlig modell: Ei:s förslag redovisas senast 12 april 2027.",
+          "Vem som beslutar om din tariff i dag: ditt nätbolag.",
+        ],
+      },
+      {
+        h2: "Batteriet som effektvakt",
+        body: [
+          "Mot effektavgifter finns ett verktyg som fungerar oavsett hur regelverket landar: ett hembatteri med effektvakt, ofta kallat peak shaving. Batteriet konfigureras med en maxgräns för uttag från nätet, till exempel 8 kilowatt. Behöver huset en kväll 15 kilowatt levererar batteriet mellanskillnaden – och din topp mot nätet stannar på gränsen du satt.",
+          "Det är samma batteri som redan gör nytta i resten av kalkylen: högre självförbrukning av solel, arbitrage mot spotpriset och intäkter från stödtjänster. Effektavgifterna lägger ett fjärde ben under investeringen – och det benet påverkas inte av regeringsbildningen.",
+        ],
+      },
+      {
+        h2: "Vad betyder det för dig?",
+        body: [
+          "Har du redan effekttariff: jämna ut dina toppar. Ladda elbilen på natten, låt inte värmepump och laddning toppa samtidigt, och har du batteri – aktivera effektvakten i ditt energisystem.",
+          "Funderar du på batteri: räkna med effektavgifterna som en osäker men växande post. Blir Ei:s nya modell verklighet får hela landet en enhetlig effektkomponent; tills dess avgör ditt nätbolag. Grönt avdrag på 48,5 procent för batteri gäller oförändrat, som vi gått igenom tidigare i serien.",
+          "Vi följer både Ei:s arbete med den nya modellen och regeringsbildningen, och uppdaterar här när något ändras som påverkar din kalkyl.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Är effekttariffer avskaffade nu?",
+        a: "Nej. Kravet på att alla nätbolag skulle införa dem stoppades i mars 2026 och föreskrifterna upphävdes, men bolag som redan infört effektavgifter får fortsätta. Energimarknadsinspektionen tar dessutom fram en ny enhetlig modell som redovisas senast den 12 april 2027, så frågan kommer tillbaka – i vilken form avgörs av nästa regering och riksdag.",
+      },
+      {
+        q: "Hur vet jag om jag har en effektavgift?",
+        a: "Titta på ditt nätbolags tariffblad eller raderna på nätfakturan. En avgift i kronor per kilowatt, ofta baserad på månadens högsta timuttag eller ett snitt av de högsta topparna, är en effektavgift. Nätavgiften följer ditt nätområde och går inte att byta bort som elhandelsavtalet.",
+      },
+      {
+        q: "Hur mycket sänker ett batteri effektavgiften?",
+        a: "Det beror på ditt nätbolags tariff och hur höga toppar du har i dag. Mekaniken är enkel: batteriets effektvakt håller nätuttaget under en satt gräns, så avgiften beräknas på gränsen i stället för på din verkliga topp. Vill du ha en siffra för ditt eget hus hjälper vi dig räkna på det vid ett hembesök.",
+      },
+    ],
+  },
+
+  "efter-valet-2026-rysarjamnt-vad-hander-med-elen": {
+    tldr: [
+      "Preliminärt har det rödgröna blocket 176 mandat mot Tidöpartiernas 173 – men utlandsröster och sena förtidsröster räknas fortfarande, och det slutliga resultatet fastställs av Valmyndigheten först senare i veckan.",
+      "Riksdagen samlas och väljer talman den 28 september; tidigast dagen därpå kan en statsministerkandidat föreslås. Tills en ny regering finns på plats gäller dagens regler: 14,55 % grönt avdrag för solceller, 48,5 % för batteri, Villaeffekten sökbar.",
+      "Energiforsks analys inför valet: medelpriset på el väntas landa runt 60–70 öre/kWh fram mot 2035 oavsett valutgång – ny elproduktion hinner inte påverka priset den här mandatperioden.",
+    ],
+    sections: [
+      {
+        h2: "Rysarjämnt – och inte klart än",
+        body: [
+          "Valnattens räkning gav det rödgröna blocket 176 mandat mot 173 för Tidöpartierna – SVT:s rubrik löd \"rysarjämnt\". Men resultatet är preliminärt: utlandsröster och sent inkomna förtidsröster räknas fortfarande, den preliminära räkningen väntas klar under onsdagen, och med så små marginaler kan enskilda mandat flytta sig innan Valmyndigheten fastställer det slutliga resultatet.",
+          "Vi skriver därför \"preliminärt\" genomgående i den här artikeln – och uppdaterar den när resultatet är fastställt. Datumet ovanför rubriken visar alltid när texten senast ändrades.",
+        ],
+      },
+      {
+        h2: "Tidsplanen: talman den 28 september, regering tidigast därefter",
+        body: [
+          "Den nya riksdagen samlas för upprop och väljer talman den 28 september. Först därefter – tidigast den 29 september – kan talmannen föreslå en statsministerkandidat, och talmannen Andreas Norlén har redan flaggat för att regeringsbildningen ser ut att bli komplicerad.",
+          "Grundlagen ger talmannen fyra försök att få en statsminister vald; misslyckas alla fyra blir det extraval. Med 176 mot 173 och två block som båda saknar egen enkel väg till majoritet kan processen ta veckor, i värsta fall månader. Under tiden styr den sittande regeringen, och några beslut om nya stöd eller avdrag fattas inte i det läget.",
+        ],
+      },
+      {
+        h2: "Dina avdrag och stöd: oförändrade – och trögrörliga",
+        body: [
+          "Ingenting i valresultatet ändrar reglerna du räknar på i dag: grönt avdrag ligger kvar på 14,55 procent för solceller och 48,5 procent för batteri och laddbox med tak på 50 000 kronor per person och år, 60-öringen är fortsatt borttagen, och Villaeffekten – 30 procent av materialkostnaden, max 60 000 kronor, för energieffektivisering i äldre småhus – är sökbar hos länsstyrelsen sedan den 1 september.",
+          "Ändringar kräver en regering som lägger en budgetproposition och en riksdagsmajoritet som röstar igenom den. I praktiken betyder det tidigast budgeten för 2027 – och drar regeringsbildningen ut på tiden skjuts även den tidtabellen.",
+        ],
+        bullets: [
+          "Solceller: 14,55 % grönt avdrag – oförändrat.",
+          "Batteri och laddbox: 48,5 % grönt avdrag – oförändrat.",
+          "Villaeffekten: 30 % av materialkostnaden, max 60 000 kr – sökbar nu, opåverkad av valet.",
+          "Eventuella ändringar: tidigast i budgeten för 2027, senare vid utdragen regeringsbildning.",
+        ],
+      },
+      {
+        h2: "Elpriset bryr sig inte om talmansrundor",
+        body: [
+          "Energiforsk analyserade före valet vad de olika politiska vägvalen betyder för elpriset. Slutsatsen: medelpriset väntas hamna runt 60–70 öre per kilowattimme fram mot 2035 – att jämföra med 43 öre 2024 och 64 öre 2023 – och nya kärnkraftsreaktorer byggs inte på en mandatperiod, så valutgången påverkar inte elpriset de närmaste åren.",
+          "Skillnaderna ligger längre fram: en högerledd regering ökar sannolikheten för mer kärnkraft under 2030- och 2040-talen, medan en S-ledd regering enligt analysen sannolikt ger mer vindkraft, större statlig styrning av elsystemet och en osäkrare finansiering för de planerade reaktorprojekten. Vinterns elpriser avgörs dock av det system som redan finns – väder, bränslepriser och överföringskapacitet.",
+        ],
+      },
+      {
+        h2: "Vad betyder det för dig som funderar på solceller eller batteri?",
+        body: [
+          "Det ovissa regeringsläget är i praktiken ett argument för att räkna på dagens regler i stället för att vänta på besked som kan dröja månader. För batteri ändrar valresultatet ingenting: avdraget på 48,5 procent ligger fast och stödtjänstintäkterna styrs av elsystemets behov, inte av riksdagen.",
+          "För solceller är avvägningen densamma som före valet – en möjlig framtida stödhöjning mot förlorad produktion under vinterns dyra elmånader – men med en ny osäkerhet: ingen vet när en regering som kan ändra något ens är på plats. Villaeffekten kan du däremot söka redan nu, oavsett hur talmansrundorna slutar.",
+          "Vi bevakar regeringsbildningen ur ett enda perspektiv: vad den betyder för din elkostnad. När något faktiskt beslutas uppdaterar vi här och i kalkylatorn.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Vem vann valet 2026?",
+        a: "Det är inte avgjort i praktisk mening. Preliminärt har de rödgröna 176 mandat mot 173 för Tidöpartierna, men slutresultatet fastställs först när utlandsröster och sena förtidsröster räknats. Regeringsfrågan avgörs sedan i riksdagen – talman väljs den 28 september och ett statsministerförslag kan komma tidigast dagen därpå.",
+      },
+      {
+        q: "Påverkar valresultatet grönt avdrag eller Villaeffekten nu?",
+        a: "Nej. 14,55 procent för solceller, 48,5 procent för batteri och laddbox samt Villaeffektens 30 procent gäller oförändrat tills en ny riksdagsmajoritet beslutar annat i en budget – i praktiken tidigast för 2027, och senare om regeringsbildningen drar ut på tiden.",
+      },
+      {
+        q: "Ska jag vänta med solceller eller batteri tills det finns en regering?",
+        a: "För batteri finns inget i valresultatet som ändrar kalkylen – där finns inget skäl att vänta. För solceller är avvägningen densamma som före valet: en möjlig framtida stödhöjning mot förlorad produktion under vinterns dyra månader. Skillnaden nu är att ingen vet när en ny regering är på plats, så att räkna på dagens regler är det enda hederliga.",
+      },
+    ],
+  },
+
   "valet-2026-solceller-elpriser-en-vecka-kvar": {
     tldr: [
       "Grönt avdrag är i dag 14,55 % för solceller och 48,5 % för batteri och laddbox. Striden i valrörelsen gäller solstödet – batteriavdraget ifrågasätts inte i de partijämförelser som publicerats.",
