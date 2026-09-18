@@ -28,6 +28,72 @@ export type NewsContent = {
 };
 
 const CONTENT: Record<string, NewsContent> = {
+  "effektavgifter-2026-stoppat-krav-ny-modell-batteri": {
+    tldr: [
+      "Regeringen stoppade i mars kravet på att alla elnätsbolag ska införa effekttariffer – motiveringen var att avgifterna slog hårt mot vanliga hushåll och var svåra att förstå. Energimarknadsinspektionen fick i uppdrag att upphäva föreskrifterna senast den 30 juni 2026.",
+      "Frågan är inte död: Ei ska föreslå en ny, enhetlig modell för effektavgifter senast den 12 april 2027 – ett förslag som landar på nästa regerings bord, vilken det nu blir efter det rysarjämna valet.",
+      "Nätbolag som redan infört effektavgifter får fortsätta med dem. Har du en sådan tariff sätter din dyraste timme avgiften – och ett hembatteri som kapar effekttoppar är det mest direkta skyddet, oavsett vad politiken landar i.",
+    ],
+    sections: [
+      {
+        h2: "Vad är en effektavgift?",
+        body: [
+          "En effektavgift är en del av elnätsavgiften som baseras på din högsta effekt – hur många kilowatt du tar ut som mest under en timme – i stället för bara hur många kilowattimmar du använder totalt. Tanken är att styra bort förbrukningstoppar som annars tvingar fram dyra nätinvesteringar.",
+          "För en villa uppstår topparna när mycket händer samtidigt: värmepumpen arbetar, elbilen laddar och middagen lagas. En enda sådan timme kan sätta månadens avgift, även om resten av månaden är snål.",
+        ],
+      },
+      {
+        h2: "Kravet som kom, stoppades – och ska göras om",
+        body: [
+          "Energimarknadsinspektionen hade tidigare beslutat att alla elnätsbolag skulle införa någon form av effekttariff. Men i mars i år stoppade regeringen kravet: modellerna bedömdes vara svåra för kunderna att förstå och agera på, och energi- och näringsminister Ebba Busch pekade på att avgifterna slog hårt mot vanliga hushåll. Ei fick i uppdrag att upphäva föreskrifterna senast den 30 juni 2026.",
+          "Samtidigt fick Ei ett andra uppdrag: att ta fram en ny modell för effektavgifter som ska vara transparent, proportionerlig och likartad i hela landet. Det ska redovisas senast den 12 april 2027 – och hamnar därmed på bordet hos den regering som så småningom tillträder efter det rysarjämna valet. Regeringsfrågan är i skrivande stund öppen; talman väljs först den 28 september.",
+        ],
+      },
+      {
+        h2: "Det viktiga finstilta: bolag som redan infört får fortsätta",
+        body: [
+          "Stoppet betyder inte att effektavgifterna försvinner. Nätbolag som redan har infört dem får behålla dem – det är tvånget som är borta, inte tillåtelsen. Bransch- och fastighetsmedier har samtidigt rapporterat om oro för hur tarifferna slår när fler bolag inför dem på eget initiativ.",
+          "Din nätfaktura styrs alltså i praktiken av ditt nätbolags beslut, inte av riksdagens tidtabell. Kolla ditt nätbolags tariffblad eller fakturans rader: står det en avgift per kilowatt, ofta kopplad till månadens högsta timuttag eller ett snitt av de högsta topparna, har du en effekttariff.",
+        ],
+        bullets: [
+          "Krav på effekttariff i alla nät: stoppat i mars 2026.",
+          "Befintliga effekttariffer: får fortsätta att gälla.",
+          "Ny enhetlig modell: Ei:s förslag redovisas senast 12 april 2027.",
+          "Vem som beslutar om din tariff i dag: ditt nätbolag.",
+        ],
+      },
+      {
+        h2: "Batteriet som effektvakt",
+        body: [
+          "Mot effektavgifter finns ett verktyg som fungerar oavsett hur regelverket landar: ett hembatteri med effektvakt, ofta kallat peak shaving. Batteriet konfigureras med en maxgräns för uttag från nätet, till exempel 8 kilowatt. Behöver huset en kväll 15 kilowatt levererar batteriet mellanskillnaden – och din topp mot nätet stannar på gränsen du satt.",
+          "Det är samma batteri som redan gör nytta i resten av kalkylen: högre självförbrukning av solel, arbitrage mot spotpriset och intäkter från stödtjänster. Effektavgifterna lägger ett fjärde ben under investeringen – och det benet påverkas inte av regeringsbildningen.",
+        ],
+      },
+      {
+        h2: "Vad betyder det för dig?",
+        body: [
+          "Har du redan effekttariff: jämna ut dina toppar. Ladda elbilen på natten, låt inte värmepump och laddning toppa samtidigt, och har du batteri – aktivera effektvakten i ditt energisystem.",
+          "Funderar du på batteri: räkna med effektavgifterna som en osäker men växande post. Blir Ei:s nya modell verklighet får hela landet en enhetlig effektkomponent; tills dess avgör ditt nätbolag. Grönt avdrag på 48,5 procent för batteri gäller oförändrat, som vi gått igenom tidigare i serien.",
+          "Vi följer både Ei:s arbete med den nya modellen och regeringsbildningen, och uppdaterar här när något ändras som påverkar din kalkyl.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Är effekttariffer avskaffade nu?",
+        a: "Nej. Kravet på att alla nätbolag skulle införa dem stoppades i mars 2026 och föreskrifterna upphävdes, men bolag som redan infört effektavgifter får fortsätta. Energimarknadsinspektionen tar dessutom fram en ny enhetlig modell som redovisas senast den 12 april 2027, så frågan kommer tillbaka – i vilken form avgörs av nästa regering och riksdag.",
+      },
+      {
+        q: "Hur vet jag om jag har en effektavgift?",
+        a: "Titta på ditt nätbolags tariffblad eller raderna på nätfakturan. En avgift i kronor per kilowatt, ofta baserad på månadens högsta timuttag eller ett snitt av de högsta topparna, är en effektavgift. Nätavgiften följer ditt nätområde och går inte att byta bort som elhandelsavtalet.",
+      },
+      {
+        q: "Hur mycket sänker ett batteri effektavgiften?",
+        a: "Det beror på ditt nätbolags tariff och hur höga toppar du har i dag. Mekaniken är enkel: batteriets effektvakt håller nätuttaget under en satt gräns, så avgiften beräknas på gränsen i stället för på din verkliga topp. Vill du ha en siffra för ditt eget hus hjälper vi dig räkna på det vid ett hembesök.",
+      },
+    ],
+  },
+
   "efter-valet-2026-rysarjamnt-vad-hander-med-elen": {
     tldr: [
       "Preliminärt har det rödgröna blocket 176 mandat mot Tidöpartiernas 173 – men utlandsröster och sena förtidsröster räknas fortfarande, och det slutliga resultatet fastställs av Valmyndigheten först senare i veckan.",
