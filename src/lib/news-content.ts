@@ -28,6 +28,64 @@ export type NewsContent = {
 };
 
 const CONTENT: Record<string, NewsContent> = {
+  "valresultatet-faststallt-176-173-vad-hander-nu-elen": {
+    tldr: [
+      "Valmyndighetens styrelse fastställde valresultatet den 19 september: Socialdemokraterna, Miljöpartiet, Vänsterpartiet och Centerpartiet samlar 176 mandat mot Tidöpartiernas 173. Valdeltagandet blev 84,9 procent – upp från 84,2 procent 2022.",
+      "Nu flyttar avgörandet till riksdagen: upprop och talmansval den 28 september, och tidigast dagen därpå kan talmannen föreslå en statsminister. Att fyra partier summerar till 176 betyder inte att de bildar regering ihop – det är förhandlingsfrågan som återstår.",
+      "För dina stöd och din elräkning ändrar fastställandet ingenting: grönt avdrag, Villaeffekten och effektavgiftsläget gäller som förut, och eventuella förändringar kräver en regering och en budget.",
+    ],
+    sections: [
+      {
+        h2: "Siffrorna som gäller",
+        body: [
+          "Den 19 september fastställde Valmyndighetens styrelse resultatet i riksdagsvalet. Alla 349 mandat är fördelade och ledamöter och ersättare utsedda: S, MP, V och C samlar 176 mandat, Tidöpartierna M, SD, KD och L 173. Totalt röstade 6 834 413 personer, ett valdeltagande på 84,9 procent – en ökning från 84,2 procent i valet 2022.",
+          "När vi skrev om valnatten den 15 september var siffrorna preliminära, med utlandsröster och sena förtidsröster kvar att räkna. Nu är räkningen klar – och mandatfördelningen 176–173 stod sig hela vägen till det fastställda resultatet.",
+        ],
+      },
+      {
+        h2: "176–173 är inte en regering",
+        body: [
+          "Ett fastställt valresultat pekar inte ut vem som styr. Att fyra partier på den segrande sidan summerar till 176 mandat betyder inte att de bildar regering tillsammans – Socialdemokraterna gick till val som ett eget parti med beskedet att alla partier utom Sverigedemokraterna kan vara möjliga samarbetspartier, och exakt vilka som ska samarbeta, i vilken form, är förhandlingsfrågan som nu tar vid.",
+          "Tidsplanen är däremot spikad: den nya riksdagen samlas för upprop och väljer talman den 28 september. Tidigast dagen därpå kan talmannen föreslå en statsministerkandidat. Grundlagen ger fyra försök – misslyckas alla blir det extraval. Med 176 mot 173 kan processen ta veckor eller mer.",
+        ],
+      },
+      {
+        h2: "Vad fastställandet betyder – och inte betyder – för din elkostnad",
+        body: [
+          "I sak ändrar det fastställda resultatet ingenting för dig som villaägare i dag. Grönt avdrag ligger kvar på 14,55 procent för solceller och 48,5 procent för batteri och laddbox, Villaeffekten är sökbar hos länsstyrelsen, och effektavgifternas regelverk är i det limbo vi beskrev i förra artikeln – Ei:s förslag på ny modell kommer först våren 2027.",
+          "Det enda fastställandet gör är att starta klockan: nu kan talmansprocessen börja på riktigt, och först när en regering är på plats kan en budget läggas som eventuellt rör dina stöd. Ju längre regeringsbildningen drar ut på tiden, desto längre gäller dagens regler.",
+        ],
+        bullets: [
+          "Fastställt resultat: 176–173, alla 349 mandat fördelade.",
+          "Talmansval: 28 september. Statsministerförslag: tidigast 29 september.",
+          "Dina stöd: oförändrade tills en ny riksdagsmajoritet beslutar annat i budget.",
+          "Nästa konkreta datum att bevaka: talmansvalet – vi rapporterar när det påverkar din kalkyl.",
+        ],
+      },
+      {
+        h2: "Vad betyder det för dig?",
+        body: [
+          "Samma raka besked som tidigare i serien: räkna på dagens regler, för det är de enda som finns. Batterikalkylen – 48,5 procents avdrag, stödtjänster, effektvakt – påverkas inte av vem som blir statsminister. För solceller finns nu ett datum att hålla ögonen på i stället för ett diffust \"efter valet\": den 28 september börjar processen som så småningom ger en regering och en budget.",
+          "Vi följer talmansrundorna ur ett enda perspektiv: vad de betyder för din elkostnad. När något beslutas som rör avdrag, stöd eller elpriser uppdaterar vi här och i kalkylatorn.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Vem vann valet, egentligen?",
+        a: "Det fastställda resultatet ger S, MP, V och C tillsammans 176 mandat mot Tidöpartiernas 173. Men att 'vinna' i praktiken betyder att kunna bilda regering, och det avgörs i riksdagen med start vid talmansvalet den 28 september.",
+      },
+      {
+        q: "Kan resultatet ändras nu?",
+        a: "Resultatet är fastställt av Valmyndighetens styrelse. Det kan överklagas till Valprövningsnämnden, men att ett fastställt riksdagsresultat rivs upp är mycket ovanligt. Mandatfördelningen 176–173 är den riksdagen samlas med den 28 september.",
+      },
+      {
+        q: "När vet vi vilka som styr Sverige?",
+        a: "Tidigast efter talmansvalet den 28 september och den statsministeromröstning som följer. Talmannen har fyra försök att få en kandidat vald; misslyckas alla blir det extraval. Med 176 mot 173 kan förhandlingarna ta veckor eller mer – dina stöd och avdrag gäller oförändrat under tiden.",
+      },
+    ],
+  },
+
   "effektavgifter-2026-stoppat-krav-ny-modell-batteri": {
     tldr: [
       "Regeringen stoppade i mars kravet på att alla elnätsbolag ska införa effekttariffer – motiveringen var att avgifterna slog hårt mot vanliga hushåll och var svåra att förstå. Energimarknadsinspektionen fick i uppdrag att upphäva föreskrifterna senast den 30 juni 2026.",

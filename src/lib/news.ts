@@ -57,6 +57,54 @@ export type NewsArticle = {
 
 export const NEWS: NewsArticle[] = [
   {
+    slug: "valresultatet-faststallt-176-173-vad-hander-nu-elen",
+    status: "published",
+    title:
+      "Valresultatet är fastställt: 176–173. Nu avgörs allt i riksdagen – det här betyder det för din el",
+    excerpt:
+      "Valmyndigheten fastställde valresultatet den 19 september: S, MP, V och C samlar 176 mandat mot Tidöpartiernas 173, och valdeltagandet steg till 84,9 procent. Men mandat är inte en regering – avgörandet flyttar nu till riksdagen. Vi går igenom tidsplanen och vad som gäller för dina stöd och din elräkning under tiden.",
+    category: "Valet 2026",
+    publishedAt: "2026-09-21",
+    updatedAt: "2026-09-21",
+    readTimeMin: 5,
+    image: {
+      src: "/news/valresultatet-faststallt-176-173-vad-hander-nu-elen.jpg",
+      alt: "Röd svensk stuga i frostig höstmorgon med solpaneler i lågt gyllene ljus",
+    },
+    sources: [
+      {
+        title: "Valresultat fastställt i 2026 års riksdagsval",
+        publisher: "Valmyndigheten",
+        url: "https://www.val.se/servicelankar/servicelankar/pressrum/nyheter--pressmeddelanden/pressmeddelande-nya/2026-09-19-valresultat-faststallt-i-2026-ars-riksdagsval",
+      },
+      {
+        title: "Den nya riksdagen efter valet",
+        publisher: "Sveriges riksdag",
+        url: "https://www.riksdagen.se/sv/aktuellt/aktuelltnotiser/2026/sep/19/den-nya-riksdagen-efter-valet_cmsad780a37-f1ae-4d47-a4a7-b6ea2a69a21esv/",
+      },
+      {
+        title: "Valmyndigheten: Resultatet fastställt",
+        publisher: "SVT Nyheter",
+        url: "https://www.svt.se/nyheter/inrikes/senaste-nytt-om-val-2026?inlagg=e61012eb5d0beccaf28656645890dcc6",
+      },
+      {
+        title: "Valresultat 2026",
+        publisher: "SVT Nyheter",
+        url: "https://valresultat.svt.se/2026/",
+      },
+      {
+        title: "Valresultatet för riksdagsvalet fastställt",
+        publisher: "Kuriren/TT",
+        url: "https://www.kuriren.nu/nyheter/sverige/artikel/valresultatet-for-riksdagsvalet-faststallt/l61z3gvj",
+      },
+      {
+        title: "Senaste nytt om valet 2026",
+        publisher: "SVT Nyheter",
+        url: "https://www.svt.se/nyheter/inrikes/senaste-nytt-om-val-2026",
+      },
+    ],
+  },
+  {
     slug: "effektavgifter-2026-stoppat-krav-ny-modell-batteri",
     status: "published",
     title:
