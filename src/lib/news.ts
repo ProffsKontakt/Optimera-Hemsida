@@ -57,6 +57,60 @@ export type NewsArticle = {
 
 export const NEWS: NewsArticle[] = [
   {
+    slug: "vinterns-elpriser-2026-prognos-dyrare-soder",
+    status: "published",
+    title:
+      "Prognosen för vintern: 100–110 öre/kWh i söder – upp till 9 000 kr dyrare för en villa",
+    excerpt:
+      "Marknadens vinterprognos är dyster för södra Sverige: 100–110 öre per kilowattimme i elhandelspris och 6 800–9 000 kronor mer än förra vintern för en normalvilla, enligt E.ON. Samtidigt är regeringsbildningen låst. Vi går igenom siffrorna, riskfaktorerna – och det du faktiskt kan styra själv före kylan.",
+    category: "Elpriser",
+    publishedAt: "2026-09-24",
+    updatedAt: "2026-09-24",
+    readTimeMin: 6,
+    image: {
+      src: "/news/vinterns-elpriser-2026-prognos-dyrare-soder.jpg",
+      alt: "Grå svensk trävilla med solpaneler i kallt eftermiddagsljus med frost på gräsmattan",
+    },
+    sources: [
+      {
+        title:
+          "E.ONs elprisexpert: Vinterhalvåret kan bli tusenlappar dyrare för hushåll i södra Sverige",
+        publisher: "E.ON",
+        url: "https://via.tt.se/pressmeddelande/4550366/eons-elprisexpert-vinterhalvaret-kan-bli-tusenlappar-dyrare-for-hushall-i-sodra-sverige?lang=sv",
+      },
+      {
+        title: "Så blir elpriserna hösten och vintern 2026",
+        publisher: "Tibber",
+        url: "https://tibber.com/se/magazine/power-hacks/elpriser-host-vinter",
+      },
+      {
+        title: "Prognos: Här kan fast elpris slå rörligt i vinter",
+        publisher: "Elskling",
+        url: "https://www.elskling.se/tips-rad/nyheter/elavtal-fast-elpris-kan-sla-rorligt-i-sodra-sverige",
+      },
+      {
+        title: "Dessa svenskar kan få 9 000 kronor dyrare el i vinter",
+        publisher: "Dagens PS",
+        url: "https://www.dagensps.se/privatekonomi/dessa-svenskar-kan-fa-9-000-kronor-dyrare-el-i-vinter/",
+      },
+      {
+        title: "Talmannen ger Andersson (S) uppdraget att bilda regering",
+        publisher: "SVT Nyheter",
+        url: "https://www.svt.se/nyheter/inrikes/senaste-nytt-om-val-2026?inlagg=f3b2f667fdf077c25b2339423849bf8b",
+      },
+      {
+        title: "Talmannen: Partier bör vara redo överge röda linjer",
+        publisher: "SVT Nyheter",
+        url: "https://www.svt.se/nyheter/inrikes/senaste-nytt-om-val-2026?inlagg=558bc2f02e92727582fcca417f52fb78",
+      },
+      {
+        title: "Då kan elpriserna gå upp igen: \"Dominoeffekter\"",
+        publisher: "SVT Nyheter",
+        url: "https://www.svt.se/nyheter/inrikes/da-kan-elpriserna-ga-upp-igen-dominoeffekter",
+      },
+    ],
+  },
+  {
     slug: "valresultatet-faststallt-176-173-vad-hander-nu-elen",
     status: "published",
     title:

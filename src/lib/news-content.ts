@@ -28,6 +28,65 @@ export type NewsContent = {
 };
 
 const CONTENT: Record<string, NewsContent> = {
+  "vinterns-elpriser-2026-prognos-dyrare-soder": {
+    tldr: [
+      "Marknadsprognoserna för vinterhalvåret pekar på 100–110 öre/kWh i elhandelspris i södra Sverige (SE3/SE4) och 45–55 öre i norr. För en villa med 20 000 kWh årsförbrukning betyder det cirka 6 800 kronor mer i SE3 och runt 9 000 kronor i SE4 jämfört med förra vintern, enligt E.ON:s genomgång.",
+      "Riskfaktorerna bakom: låga vattenmagasin, osäker kärnkraftstillgänglighet och nätbegränsningar – ett recept på både höga och kraftigt varierande priser. Samtidigt är regeringsbildningen låst: Magdalena Andersson har sonderingsuppdraget, men C:s och V:s röda linjer blockerar och ny talman väljs först den 28 september.",
+      "Det du själv styr är topparna och lagringen: flyttad last, solel med batteri och effektvakt kapar både spotpristoppar och effektavgifter – och volatila priser gör batteriets arbitrage mer värt, inte mindre.",
+    ],
+    sections: [
+      {
+        h2: "Prognosen i siffror",
+        body: [
+          "E.ON:s elprisexpert och flera marknadsbedömningar pekar åt samma håll inför vinterhalvåret: elhandelspriser runt 100–110 öre per kilowattimme i elområde SE3 och SE4 – Stockholm ligger i SE3 – mot 45–55 öre i norra Sverige. Det är väsentligt högre än motsvarande månader i fjol.",
+          "Omräknat till en villa med 20 000 kWh i årsförbrukning handlar det om i storleksordningen 6 800 kronor mer i elhandelskostnad i SE3 och runt 9 000 kronor i SE4 under oktober–mars, jämfört med förra vintern. För vissa hushåll pekar prognoserna på uppåt 1 500 kronor mer i månaden under de dyraste månaderna. Observera att detta gäller elhandelsdelen – nätavgifter och skatter tillkommer.",
+        ],
+      },
+      {
+        h2: "Därför kan det bli dyrt: vatten, kärnkraft, nät",
+        body: [
+          "Bakom prognosen ligger tre riskfaktorer som förstärker varandra: lägre fyllnadsgrad i vattenmagasinen, osäkerhet kring kärnkraftens tillgänglighet under vintern och begränsningar i överföringskapaciteten mellan norr och söder. Tillsammans ger de inte bara högre snittpriser utan också kraftigare svängningar – dyra kvällstimmar och billiga nätter.",
+          "Volatiliteten syns redan i avtalsmarknaden: enligt Elsklings genomgång kan ett fast elpris för första gången på länge slå rörligt i södra Sverige i vinter. Men bundet pris är ett vad om väder och tillgänglighet – inte en garanti. Den som kan styra sin förbrukning, eller lagra el, tjänar i stället på svängningarna med rörligt timpris.",
+        ],
+      },
+      {
+        h2: "Och politiken? Låst – och för långsam för vintern",
+        body: [
+          "Regeringsbildningen har tagit ett steg: talman Andreas Norlén har gett Magdalena Andersson (S) uppdraget att sondera för en ny regering, och Ulf Kristersson har lämnat in sin avskedsansökan. Men läget är låst – Centerpartiet vill inte förhandla med Vänsterpartiet, Miljöpartiet vill samla alla fyra, och talmannen har uppmanat partierna att vara beredda att överge röda linjer. Den nya riksdagen väljer talman på måndag den 28 september, och den nya talmannen sätter tidsplanen.",
+          "För din elräkning i vinter spelar utgången ingen roll på kort sikt: som vi visat tidigare i serien tar strukturella åtgärder år att påverka priset, och inga stödbeslut fattas innan en regering är på plats. Vinterns priser möter du med det som redan står på ditt tak och i din teknikbod.",
+        ],
+      },
+      {
+        h2: "Så möter du vintern – det du faktiskt kan styra",
+        body: [
+          "Flytta lasten: de dyraste timmarna är vardagkvällar. Ladda elbilen på natten, kör tvätt och disk utanför 17–20, och låt inte värmepump och laddning toppa samtidigt – det kapar både spotpriskostnad och eventuella effektavgifter.",
+          "Lagra och styr: ett batteri gör tre jobb i vinter – höjer självförbrukningen av den solel som faktiskt produceras, laddar billigt på natten och används dyrt på kvällen (arbitraget blir mer värt ju mer priserna svänger), och håller effekttopparna nere med effektvakten. Grönt avdrag på 48,5 procent gäller oförändrat, och för äldre hus utan fjärrvärme kan Villaeffekten ge upp till 60 000 kronor för isolering eller värmepump.",
+          "Och det enklaste rådet från E.ON:s expert: lägg undan en elprisbuffert för vinterns räkningar redan nu, om du kan. Vi uppdaterar serien när prognoserna eller politiken ändrar något som påverkar din kalkyl.",
+        ],
+        bullets: [
+          "Prognos SE3 (Stockholm): 100–110 öre/kWh, ca 6 800 kr dyrare vinter för en 20 000 kWh-villa.",
+          "Dyraste timmarna: vardagkvällar 17–20 – flytta det som går att flytta.",
+          "Batteri: självförbrukning + arbitrage + effektvakt, 48,5 % avdrag oförändrat.",
+          "Äldre hus: Villaeffekten ger 30 % av materialkostnaden för energieffektivisering, max 60 000 kr.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Hur mycket dyrare blir vintern för en Stockholmsvilla?",
+        a: "Stockholm ligger i elområde SE3, där prognosen pekar på 100–110 öre/kWh i elhandelspris. För en villa med 20 000 kWh i årsförbrukning motsvarar det enligt E.ON:s genomgång cirka 6 800 kronor mer under oktober–mars än förra vintern – utöver det tillkommer nätavgifter och skatter, som inte följer spotpriset på samma sätt.",
+      },
+      {
+        q: "Ska jag binda elpriset nu?",
+        a: "Enligt Elsklings genomgång kan fast pris slå rörligt i södra Sverige i vinter – men ett bundet avtal är ett vad om väder, vattenmagasin och kärnkraftstillgänglighet, inte en garanti. Har du batteri eller kan styra din förbrukning tjänar du dessutom på prissvängningarna med rörligt timpris. Räkna på din egen förbrukningsprofil i stället för att följa en tumregel.",
+      },
+      {
+        q: "Hjälper ett batteri mot vinterpriserna trots att solen knappt skiner?",
+        a: "Ja, av tre skäl. Vintersolen ger mindre, men batteriet gör mer: det laddar billigt på natten och används under dyra kvällstimmar (arbitrage), det håller effekttopparna nere om ditt nätbolag har effektavgift, och det tar vara på den solel som faktiskt produceras. Ju mer priserna svänger – vilket är exakt vad prognosen pekar på – desto mer är styrningen värd.",
+      },
+    ],
+  },
+
   "valresultatet-faststallt-176-173-vad-hander-nu-elen": {
     tldr: [
       "Valmyndighetens styrelse fastställde valresultatet den 19 september: Socialdemokraterna, Miljöpartiet, Vänsterpartiet och Centerpartiet samlar 176 mandat mot Tidöpartiernas 173. Valdeltagandet blev 84,9 procent – upp från 84,2 procent 2022.",
