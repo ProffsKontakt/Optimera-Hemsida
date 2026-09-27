@@ -69,7 +69,7 @@ export const NEWS: NewsArticle[] = [
     readTimeMin: 6,
     image: {
       src: "/news/kina-fasar-ut-exportrabatter-batteripriser-2027.jpg",
-      alt: "Vitt hembatteri monterat på trävägg i ett svenskt garage i varmt kvällsljus",
+      alt: "Glansiga solpaneler speglar skymningshimlen på ett svenskt villatak",
     },
     sources: [
       {
@@ -178,7 +178,7 @@ export const NEWS: NewsArticle[] = [
     readTimeMin: 5,
     image: {
       src: "/news/valresultatet-faststallt-176-173-vad-hander-nu-elen.jpg",
-      alt: "Röd svensk stuga i frostig höstmorgon med solpaneler i lågt gyllene ljus",
+      alt: "Frost som smälter till glittrande droppar på glansiga solpaneler i lågt morgonljus",
     },
     sources: [
       {
