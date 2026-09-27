@@ -28,6 +28,71 @@ export type NewsContent = {
 };
 
 const CONTENT: Record<string, NewsContent> = {
+  "kina-fasar-ut-exportrabatter-batteripriser-2027": {
+    tldr: [
+      "Kina avskaffade momsrabatten för exporterade solcellsprodukter den 1 april 2026. För batterier sänktes rabatten från 9 till 6 procent under 2026 – och den 1 januari 2027 försvinner den helt.",
+      "Branschbedömningar, bland annat från grossisten Senergia, väntar sig att den långvariga prispressen därmed avtar: en gradvis normalisering uppåt för paneler och en större risk för stigande priser på batterier, där råvaror, regelkrav och logistik drar åt samma håll.",
+      "Ingen kan lova en prishöjning – konkurrens, valutakurser och lager kan dämpa. Men den som redan planerar ett batteri har nu ett konkret datum att förhålla sig till: efter den 1 januari 2027 blir kinesisk batteriexport dyrare i grunden.",
+    ],
+    sections: [
+      {
+        h2: "Vad Kina har beslutat",
+        body: [
+          "Kinesiska exportörer av solceller och batterier har länge fått tillbaka en del av momsen på det de säljer utomlands – en exportrabatt som i praktiken subventionerat världsmarknadspriserna. Nu fasas den ut: för solcellsprodukter försvann rabatten helt den 1 april 2026, och för batteriprodukter sänktes den från 9 till 6 procent under resten av 2026, för att avskaffas helt den 1 januari 2027.",
+          "Syftet, enligt de bedömningar som publicerats, är att dämpa överproduktionen och prisdumpningen på världsmarknaden och styra om mot den kinesiska hemmamarknaden. För världens solcells- och batterikunder betyder det att en av de krafter som pressat priserna nedåt i flera år stängs av.",
+        ],
+      },
+      {
+        h2: "Varför det påverkar svenska priser",
+        body: [
+          "Merparten av världens solpaneler och battericeller tillverkas i Kina, och svenska installationer bygger nästan alltid på kinesisk hårdvara oavsett varumärke på skalet. När exportörens rabatt försvinner höjs golvet för exportpriset – och det fortplantar sig genom grossist- och installatörsled.",
+          "För paneler är bedömningen en gradvis normalisering snarare än en chockhöjning: de historiskt låga modulpriserna väntas inte bestå, men konkurrensen är fortsatt hård. För batterier bedöms uppåtrisken vara större, eftersom flera faktorer samverkar: rabattavvecklingen, råvarupriser, nya återvinningskrav och logistikkostnader. Samtidigt står sig totalkalkylen: i Senergias typfall är 7–9 års återbetalningstid för solceller med batteri fortfarande en rimlig arbetskalkyl.",
+        ],
+      },
+      {
+        h2: "Brasklapparna – det här vet vi inte",
+        body: [
+          "Det går att hitta rubriker som uppmanar till panikköp före årsskiftet. Det är inte vår linje. Rabattavvecklingen är verklig och datumen är fasta, men hur mycket av kostnadsökningen som når svenska slutpriser avgörs av faktorer ingen kan lova något om: konkurrensen mellan tillverkare är stenhård, valutakurser rör sig åt båda håll, och grossisternas lager är köpta till gamla priser.",
+          "Det ärliga läget är alltså: mekanismen pekar uppåt för batteripriser efter den 1 januari 2027, storleken är oviss. Det är ett sakligt datum att väga in i en kalkyl – inte ett skäl att stressa fram ett beslut.",
+        ],
+      },
+      {
+        h2: "Och politiken: talman väljs i morgon",
+        body: [
+          "Parallellt tar regeringsbildningen sitt nästa steg: på måndagen den 28 september samlas den nya riksdagen och väljer talman. Den nya talmannen sätter tidsplanen för när Magdalena Andersson ska återrapportera sitt sonderingsuppdrag – och låsningen mellan Centerpartiet och Vänsterpartiet består, enligt talman Norlén utan \"färre röda linjer\" efter de första rundorna.",
+          "För dina stöd gäller samma besked som tidigare i serien: grönt avdrag på 14,55 procent för solceller och 48,5 procent för batteri ligger fast tills en ny riksdagsmajoritet beslutar annat i en budget.",
+        ],
+      },
+      {
+        h2: "Vad betyder det för dig?",
+        body: [
+          "Om ett batteri redan finns i din plan är årsskiftet ett sakligt datum i kalkylen: dagens 48,5-procentiga avdrag gäller, hårdvarans kostnadsgolv höjs efter den 1 januari, och vinterns volatila elpriser gör batteriets styrning mer värd redan i år – som vi visade i förra artikeln.",
+          "Om du väger ren solanläggning är läget lugnare: panelprisernas normalisering bedöms bli gradvis, och produktionskalkylen står sig. Räkna på ditt eget hus i stället för på rubriker – och vi uppdaterar här när priser eller politik ändrar något som påverkar siffrorna.",
+        ],
+        bullets: [
+          "Batterirabatten i Kina: 6 % ut 2026, 0 % från 1 januari 2027 – fasta datum.",
+          "Panelrabatten: redan borta sedan 1 april 2026, gradvis prisnormalisering väntas.",
+          "Grönt avdrag: 14,55 % sol / 48,5 % batteri – oförändrat tills ny budget.",
+          "Talmansval måndag 28/9 – startskottet för regeringen som styr framtida stöd.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Blir batterier säkert dyrare 2027?",
+        a: "Nej, inte säkert. Rabattavvecklingen höjer exportörernas kostnadsgolv, men hård konkurrens, valutakurser och grossisternas lager kan dämpa effekten i svenska slutpriser. Det som är säkert är mekanismen och datumen: 6 procents rabatt ut 2026, noll från den 1 januari 2027.",
+      },
+      {
+        q: "Påverkas priset på solpaneler också?",
+        a: "Ja, men mindre dramatiskt. Rabatten för solcellsprodukter försvann redan den 1 april 2026, och branschbedömningen är att den historiska prispressen avtar och priserna gradvis normaliseras – inte att de chockhöjs. Konkurrensen mellan tillverkare är fortsatt mycket hård.",
+      },
+      {
+        q: "Hinner jag installera batteri före årsskiftet om jag beställer nu?",
+        a: "Ledtider varierar med säsong, komponentval och nätbolagets handläggning, så det ärliga svaret är: det beror på. Hör av dig så ger vi en konkret tidsplan för ditt hus. Grönt avdrag på 48,5 procent gäller oförändrat och dras direkt på fakturan – det påverkas inte av årsskiftet.",
+      },
+    ],
+  },
+
   "vinterns-elpriser-2026-prognos-dyrare-soder": {
     tldr: [
       "Marknadsprognoserna för vinterhalvåret pekar på 100–110 öre/kWh i elhandelspris i södra Sverige (SE3/SE4) och 45–55 öre i norr. För en villa med 20 000 kWh årsförbrukning betyder det cirka 6 800 kronor mer i SE3 och runt 9 000 kronor i SE4 jämfört med förra vintern, enligt E.ON:s genomgång.",

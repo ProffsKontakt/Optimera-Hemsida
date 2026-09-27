@@ -57,6 +57,61 @@ export type NewsArticle = {
 
 export const NEWS: NewsArticle[] = [
   {
+    slug: "kina-fasar-ut-exportrabatter-batteripriser-2027",
+    status: "published",
+    title:
+      "Kina fasar ut exportrabatterna: batterier kan få högre priser efter årsskiftet",
+    excerpt:
+      "Kinas momsrabatter för exporterade solceller försvann i våras – och för batterier trappas de ned i år och försvinner helt den 1 januari 2027. Branschen väntar sig stigande hårdvarupriser. Vi förklarar mekanismen, brasklapparna och vad det betyder för dig som funderar på batteri, samtidigt som riksdagen väljer talman i morgon.",
+    category: "Marknad",
+    publishedAt: "2026-09-27",
+    updatedAt: "2026-09-27",
+    readTimeMin: 6,
+    image: {
+      src: "/news/kina-fasar-ut-exportrabatter-batteripriser-2027.jpg",
+      alt: "Vitt hembatteri monterat på trävägg i ett svenskt garage i varmt kvällsljus",
+    },
+    sources: [
+      {
+        title:
+          "Nya händelser i Kina påverkar priset på solpaneler och batterier under 2026",
+        publisher: "Senergia",
+        url: "https://senergia.se/nyheter/nya_handelser_i_kina_paverkar_priset_pa_batterier_och_solpaneler_2026/",
+      },
+      {
+        title: "Vad händer med priset på solpaneler och batterier hösten 2026?",
+        publisher: "Senergia",
+        url: "https://senergia.se/teknikblogg/vad-hander-med-priset-pa-solpaneler-och-batterier-hosten-2026/",
+      },
+      {
+        title: "Nya politiska och ekonomiska beslut i Kina",
+        publisher: "Luma Energy",
+        url: "https://luma.energy/om-luma/nyheter/nya-politiska-och-ekonomiska-beslut-i-kina/",
+      },
+      {
+        title:
+          "Photovoltaics: China will abolish export subsidies from April 1, 2026",
+        publisher: "Xpert Digital",
+        url: "https://xpert.digital/en/china-abolishes-export-subsidies",
+      },
+      {
+        title: "Magdalena Andersson (S) får sonderingsuppdrag: \"Stor ödmjukhet\"",
+        publisher: "SVT Nyheter",
+        url: "https://www.svt.se/nyheter/inrikes/magdalena-andersson-s-far-sonderingsuppdrag-stor-odmjukhet",
+      },
+      {
+        title: "Efter valet – vad händer nu?",
+        publisher: "SVT Nyheter",
+        url: "https://www.svt.se/nyheter/inrikes/efter-valet-vad-hander-nu",
+      },
+      {
+        title: "Talmansvalet kan ge fingervisning om nästa regering",
+        publisher: "Altinget",
+        url: "https://www.altinget.se/artikel/talmansvalet-kan-ge-fingervisning-om-nasta-regering",
+      },
+    ],
+  },
+  {
     slug: "vinterns-elpriser-2026-prognos-dyrare-soder",
     status: "published",
     title:
