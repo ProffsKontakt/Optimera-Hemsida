@@ -69,7 +69,7 @@ export const NEWS: NewsArticle[] = [
     readTimeMin: 6,
     image: {
       src: "/news/kina-fasar-ut-exportrabatter-batteripriser-2027.jpg",
-      alt: "Glansiga solpaneler speglar skymningshimlen på ett svenskt villatak",
+      alt: "Kinesisk flagga vajar framför ett stort fabrikskomplex i rödorange kvällsljus",
     },
     sources: [
       {
