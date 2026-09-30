@@ -57,6 +57,54 @@ export type NewsArticle = {
 
 export const NEWS: NewsArticle[] = [
   {
+    slug: "regeringsbildningen-last-budgeten-12-november-elstoden",
+    status: "published",
+    title:
+      "Regeringsbildningen är låst – budgetklockan tickar mot 12 november. Så påverkas dina elstöd",
+    excerpt:
+      "Talmansvalet är avgjort, sonderingsuppdraget är återlämnat och talmannen kallar i dag till nya överläggningar. Samtidigt tickar budgetklockan: senast den 12 november måste en budget för 2027 lämnas – finns ingen ny regering då blir det en avskalad övergångsbudget utan nya reformer. Vi går igenom vad det låsta läget betyder för gröna avdraget, elstöden och din vinterkalkyl.",
+    category: "Energipolitik",
+    publishedAt: "2026-09-30",
+    updatedAt: "2026-09-30",
+    readTimeMin: 6,
+    image: {
+      src: "/news/regeringsbildningen-last-budgeten-12-november-elstoden.jpg",
+      alt: "Glansiga solpaneler speglar en molnstrimmig kvällshimmel, gula höstlöv i förgrunden",
+    },
+    sources: [
+      {
+        title: "Talmannen: ”Nya överläggningar på onsdag”",
+        publisher: "SVT Nyheter",
+        url: "https://www.svt.se/nyheter/inrikes/senaste-nytt-om-val-2026?inlagg=36b70af1d85eb57ba1bb10ede03bc902",
+      },
+      {
+        title: "Talmansvalet i Sverige 2026",
+        publisher: "Wikipedia",
+        url: "https://sv.wikipedia.org/wiki/Talmansvalet_i_Sverige_2026",
+      },
+      {
+        title: "Talmannen inleder process för regeringsbildning",
+        publisher: "Sveriges riksdag",
+        url: "https://www.riksdagen.se/sv/aktuellt/aktuelltnotiser/2026/sep/17/talmannen-inleder-process-for-regeringsbildning_cms6291f93c-a728-4498-a0b9-e30f36627e3fsv/",
+      },
+      {
+        title: "Ödesdatumet: Då får M göra budgeten på walk-over",
+        publisher: "Dagens PS",
+        url: "https://www.dagensps.se/varlden/politik/odesdatumet-da-far-m-gora-budgeten-pa-walk-over/",
+      },
+      {
+        title: "Så blir elpriserna hösten och vintern 2026",
+        publisher: "Tibber",
+        url: "https://tibber.com/se/magazine/power-hacks/elpriser-host-vinter",
+      },
+      {
+        title: "Grönt avdrag 2026 – satser, regler & exempel",
+        publisher: "Energify",
+        url: "https://energify.se/artiklar/gront-avdrag-2026",
+      },
+    ],
+  },
+  {
     slug: "kina-fasar-ut-exportrabatter-batteripriser-2027",
     status: "published",
     title:

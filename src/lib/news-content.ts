@@ -28,6 +28,71 @@ export type NewsContent = {
 };
 
 const CONTENT: Record<string, NewsContent> = {
+  "regeringsbildningen-last-budgeten-12-november-elstoden": {
+    tldr: [
+      "Talmansvalet den 28 september blev startskottet för ett låst läge: Andreas Norlén (M) omvaldes med 200 röster mot 146 sedan Vänsterpartiet stött honom i stället för Socialdemokraternas kandidat – och samma dag lämnade Magdalena Andersson tillbaka sonderingsuppdraget. I dag onsdag håller talmannen nya överläggningar med partiledarna.",
+      "Budgetklockan tickar: senast den 12 november måste budgetpropositionen för 2027 lämnas till riksdagen. Finns ingen ny regering då lägger Kristerssons övergångsregering en avskalad övergångsbudget – utan nya reformer, enligt samma praxis som efter valet 2018.",
+      "För dig som villaägare är beskedet paradoxalt stabilt: grönt avdrag (14,55 procent för solceller, 48,5 procent för batteri och laddbox) och övriga regler ligger fast tills en ny riksdagsmajoritet beslutar annat, och vinterns elprisprognos på 100–110 öre/kWh i söder påverkas inte av regeringsfrågan på kort sikt.",
+    ],
+    sections: [
+      {
+        h2: "Detta har hänt sedan valresultatet",
+        body: [
+          "I måndags, den 28 september, samlades den nyvalda riksdagen och valde talman. Andreas Norlén (M) omvaldes direkt i första omgången med 200 röster mot 146 för Socialdemokraternas kandidat Johanna Haraldsson. Det uppseendeväckande var hur siffran uppstod: Vänsterpartiet röstade på Norlén i stället för på S-kandidaten – ett avsteg från traditionen att största partiet brukar få talmansposten. Haraldsson valdes i stället till förste vice talman.",
+          "Samma dag lämnade Magdalena Andersson tillbaka sonderingsuppdraget till talmannen. Enligt SVT meddelade Norlén därefter att han i dag, onsdagen den 30 september, håller nya överläggningar med partiledarna för att, med hans ord, se över de nya förutsättningarna för sonderingsuppdrag. När den här artikeln publiceras pågår alltså processen – vi uppdaterar när nästa besked kommer.",
+        ],
+      },
+      {
+        h2: "Därför är läget låst",
+        body: [
+          "Mandaten är kända sedan valresultatet fastställdes: 176 mot 173 för S, V, MP och C tillsammans. Men som talmansvalet visade är blocken inte block. SVT:s inrikespolitiske kommentator beskriver läget som helt låst: de rödgröna partierna vill att Ulf Kristersson (M) ska sondera, högerblocket anser att Andersson ska prövas i en statsministeromröstning – och ingen tar bollen. Bakom låsningen ligger dels den förtroendekris mellan S och V som talmansvalet gjorde synlig för alla, dels de spänningar mellan C och V som vi rapporterat om tidigare i serien.",
+          "Sonderingar har ingen formell tidsgräns. Grundlagens yttersta spärr är att fyra nedröstade statsministerförslag utlöser extra val – dit är det långt. Men det finns ett riktmärke från förra gången det var riktigt svårt: efter valet 2018 dröjde det 134 dagar innan en ny regering var på plats.",
+        ],
+      },
+      {
+        h2: "Budgetklockan: 12 november",
+        body: [
+          "Sedan Kristersson begärde entledigande den 17 september styrs Sverige av en övergångsregering. Den sköter det löpande men avstår enligt praxis från ny politik. Och här finns höstens första hårda deadline: budgetpropositionen för 2027 måste lämnas till riksdagen senast den 12 november.",
+          "Finns ingen ny regering på plats då är det övergångsregeringen med finansminister Elisabeth Svantesson som lägger fram budgeten – en avskalad övergångsbudget utan partipolitisk inriktning, där nya reformer inte får ingå. Det har hänt förut: efter valet 2018 blev Magdalena Andersson första finansminister i svensk historia att lägga en övergångsbudget. Konsekvensen för energiområdet är rak: allt partierna lovade i valrörelsen – högkostnadsskydd, förstärkta stöd, ändrade avdrag – förblir löften tills en tillträdd regering kan göra budgetpolitik av dem.",
+        ],
+      },
+      {
+        h2: "Vad det betyder för elstöd, avdrag och elpriser",
+        body: [
+          "Det gröna avdraget ligger fast: 14,55 procent av totalkostnaden för solceller och 48,5 procent för batteri och laddbox (15 respektive 50 procent, räknat på 97 procent av kostnaden), med tak på 50 000 kronor per person och år. En övergångsbudget ändrar inte detta – och ingen av de utlovade förstärkningarna eller nedskärningarna kan beslutas förrän en regering finns.",
+          "Elpriserna styrs på kort sikt av väder, vattenmagasin och kärnkraftstillgänglighet – inte av regeringsfrågan. Prognosbilden vi gick igenom i vinterprisartikeln står sig: 100–110 öre per kilowattimme i elhandelspris i SE3 och SE4, 45–55 öre i norr. Tibbers bedömning är att det inte handlar om en återgång till elkrisens nivåer 2022–2023, men om en dyrare vinter än de två senaste.",
+        ],
+      },
+      {
+        h2: "Vad betyder det för din kalkyl?",
+        body: [
+          "Det låsta läget ger ett ovanligt tydligt besked på kort sikt: reglerna du räknar på i dag är stabila, eftersom ingen i praktiken kan ändra dem före årsskiftet. Osäkerheten ligger bortom övergångsbudgeten – en ny majoritet kan under 2027 både förstärka och banta stöden, och i vilken riktning beror på vilken regering Sverige till slut får.",
+          "Den som väger solceller eller batteri gör därför klokt i att kalkylera på dagens regler i stället för på vallöften. Vinterns prognospriser gör egen produktion och lagring mer värd oavsett vem som regerar, och för batterier finns dessutom det fasta datumet från Kina-artikeln: exportrabatten försvinner helt den 1 januari 2027. Vi bevakar överläggningarna och uppdaterar så fort något ändrar siffrorna.",
+        ],
+        bullets: [
+          "Talman vald 28/9 med V:s stöd, sonderingsuppdraget återlämnat – nya överläggningar i dag 30/9.",
+          "Budget för 2027 senast 12 november – utan ny regering blir det en avskalad övergångsbudget utan nya reformer.",
+          "Grönt avdrag oförändrat: 14,55 % sol / 48,5 % batteri och laddbox, tak 50 000 kr per person och år.",
+          "Elprisprognosen står kvar: 100–110 öre/kWh i söder, 45–55 öre i norr under vinterhalvåret.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "När får Sverige en ny regering?",
+        a: "Ingen vet. Sonderingar har ingen formell tidsgräns, och grundlagens yttersta spärr – extra val – utlöses först efter fyra nedröstade statsministerförslag. Riktmärket från 2018, då läget också var låst, är 134 dagar. Den första hårda deadlinen i praktiken är budgetpropositionen den 12 november.",
+      },
+      {
+        q: "Kan gröna avdraget försvinna i höst?",
+        a: "Nej, inte i höst. Avdraget gäller enligt beslutade regler, en övergångsbudget får enligt praxis inte innehålla nya reformer, och en ändring kräver riksdagsbeslut i en budget från en tillträdd regering. Först under 2027 kan en ny majoritet ändra nivåerna – i vilken riktning beror på vilken regering det blir.",
+      },
+      {
+        q: "Vad är en övergångsregering och vad får den göra?",
+        a: "Det är den avgående regeringen som styr vidare tills en ny har tillträtt – i Sveriges fall Kristerssons regering sedan den 17 september. Den sköter löpande förvaltning men avstår enligt praxis från ny politik, och tvingas läget till det lägger den en avskalad budget utan partipolitisk inriktning.",
+      },
+    ],
+  },
+
   "kina-fasar-ut-exportrabatter-batteripriser-2027": {
     tldr: [
       "Kina avskaffade momsrabatten för exporterade solcellsprodukter den 1 april 2026. För batterier sänktes rabatten från 9 till 6 procent under 2026 – och den 1 januari 2027 försvinner den helt.",
