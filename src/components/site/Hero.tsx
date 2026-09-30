@@ -38,7 +38,7 @@ export function Hero() {
                 gating så LCP fires direkt vid första paint istället för
                 efter hydration. Innehåller brand + service + city för
                 Google ranking på "optimera energi" + lokala intent-termer. */}
-            <h1 className="mt-6 font-display text-[58px] md:text-[92px] leading-[0.95] tracking-display-tight">
+            <h1 className="mt-6 font-display text-[58px] md:text-[92px] leading-[1.05] tracking-display-tight">
               Optimera Energi,
               <br />
               <span className="italic font-serif text-indigo">

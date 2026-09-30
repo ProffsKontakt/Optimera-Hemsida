@@ -83,7 +83,7 @@ export default function CalculatorPage() {
         />
         <div className="mt-8 max-w-3xl">
           <div className="eyebrow">Kalkylator · bygg din lösning i 3D</div>
-          <h1 className="mt-5 font-display text-[44px] sm:text-[56px] md:text-[88px] tracking-display-tight leading-[0.95]">
+          <h1 className="mt-5 font-display text-[44px] sm:text-[56px] md:text-[88px] tracking-display-tight leading-[1.05]">
             Vad vill du ha,
             <br />
             <span className="italic font-serif text-indigo">

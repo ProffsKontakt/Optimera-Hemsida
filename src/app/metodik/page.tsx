@@ -127,7 +127,7 @@ export default function MetodikPage() {
         />
         <div className="mt-8 max-w-4xl">
           <div className="eyebrow">Metodik · så arbetar vi</div>
-          <h1 className="mt-5 font-display text-[44px] sm:text-[56px] md:text-[80px] tracking-display-tight leading-[0.95]">
+          <h1 className="mt-5 font-display text-[44px] sm:text-[56px] md:text-[80px] tracking-display-tight leading-[1.05]">
             Så väljer, dimensionerar{" "}
             <span className="italic font-serif text-indigo">
               och prissätter vi.

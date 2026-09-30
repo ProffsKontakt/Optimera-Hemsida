@@ -38,7 +38,7 @@ export default function AdminTeamPage() {
           >
             <ArrowLeft size={14} /> Admin
           </Link>
-          <h1 className="mt-4 font-display text-[44px] md:text-[64px] tracking-display-tight leading-[0.95]">
+          <h1 className="mt-4 font-display text-[44px] md:text-[64px] tracking-display-tight leading-[1.05]">
             Teamet.
           </h1>
           <p className="mt-4 text-ink/65 max-w-2xl leading-relaxed">

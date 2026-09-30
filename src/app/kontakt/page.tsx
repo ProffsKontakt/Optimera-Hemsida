@@ -58,7 +58,7 @@ export default function KontaktPage() {
       <section className="container-edge pt-12 md:pt-20 pb-10">
         <div className="max-w-3xl">
           <div className="eyebrow">Kontakt</div>
-          <h1 className="mt-5 font-display text-[44px] md:text-[80px] tracking-display-tight leading-[0.95]">
+          <h1 className="mt-5 font-display text-[44px] md:text-[80px] tracking-display-tight leading-[1.05]">
             Hör av dig.
             <br />
             <span className="italic font-serif text-indigo">

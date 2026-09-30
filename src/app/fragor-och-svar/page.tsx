@@ -185,7 +185,7 @@ export default function FaqHubPage() {
         />
         <div className="mt-8 max-w-3xl">
           <div className="eyebrow">Kunskap · vanliga frågor</div>
-          <h1 className="mt-5 font-display text-[44px] sm:text-[56px] md:text-[80px] tracking-display-tight leading-[0.95]">
+          <h1 className="mt-5 font-display text-[44px] sm:text-[56px] md:text-[80px] tracking-display-tight leading-[1.05]">
             Frågor och{" "}
             <span className="italic font-serif text-indigo">svar.</span>
           </h1>

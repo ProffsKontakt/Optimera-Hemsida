@@ -169,7 +169,7 @@ export default function SolcellsbatteriPage() {
         />
         <div className="mt-8 max-w-4xl">
           <div className="eyebrow">Solcellsbatteri · villa &amp; radhus</div>
-          <h1 className="mt-5 font-display text-[44px] sm:text-[56px] md:text-[80px] tracking-display-tight leading-[0.95]">
+          <h1 className="mt-5 font-display text-[44px] sm:text-[56px] md:text-[80px] tracking-display-tight leading-[1.05]">
             Solcellsbatteri till villa,{" "}
             <span className="italic font-serif text-indigo">
               rätt dimensionerat.
