@@ -48,6 +48,22 @@
     "visible": true
   },
   {
+    "id": "soleiman-a-reco",
+    "author": "Soleiman A",
+    "place": "Reco · september 2026",
+    "text": "Ni är bäst tack för hjälpen!",
+    "rating": 5,
+    "visible": true
+  },
+  {
+    "id": "yeray-d-reco",
+    "author": "Yeray D",
+    "place": "Reco · oktober 2026",
+    "text": "Happy with their service and their installation",
+    "rating": 5,
+    "visible": true
+  },
+  {
     "id": "hans-b-reco",
     "author": "Hans B",
     "place": "Reco · augusti 2026",

@@ -206,27 +206,33 @@ export function Testimonials({ reviews }: { reviews: TestimonialItem[] }) {
                     </span>
                   ) : null}
                 </div>
-                <blockquote
-                  className={`mt-2 font-display text-[20px] tracking-display-tight leading-snug ${
-                    q.text.length > CLAMP_CHARS && !expanded[q.id]
-                      ? "line-clamp-5"
-                      : ""
-                  }`}
-                >
-                  {q.text}
-                </blockquote>
-                {q.text.length > CLAMP_CHARS && (
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setExpanded((e) => ({ ...e, [q.id]: !e[q.id] }))
-                    }
-                    className="mt-2 self-start text-[13px] text-indigo underline underline-offset-4 decoration-indigo/40 hover:decoration-indigo transition"
+                {/* Citat + ev. "Läs mer" i ett block, så signaturen kan
+                    skjutas ner med mt-auto. Korten sträcks till samma höjd
+                    (flex-raden stretchar), och utan mt-auto flöt signaturen
+                    upp på korta recensioner och lämnade ett tomrum under. */}
+                <div className="mb-6">
+                  <blockquote
+                    className={`mt-2 font-display text-[20px] tracking-display-tight leading-snug ${
+                      q.text.length > CLAMP_CHARS && !expanded[q.id]
+                        ? "line-clamp-5"
+                        : ""
+                    }`}
                   >
-                    {expanded[q.id] ? "Visa mindre" : "Läs mer"}
-                  </button>
-                )}
-                <figcaption className="mt-6 pt-4 border-t border-ink/10 flex items-center justify-between gap-3 text-[13px]">
+                    {q.text}
+                  </blockquote>
+                  {q.text.length > CLAMP_CHARS && (
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setExpanded((e) => ({ ...e, [q.id]: !e[q.id] }))
+                      }
+                      className="mt-2 text-[13px] text-indigo underline underline-offset-4 decoration-indigo/40 hover:decoration-indigo transition"
+                    >
+                      {expanded[q.id] ? "Visa mindre" : "Läs mer"}
+                    </button>
+                  )}
+                </div>
+                <figcaption className="mt-auto pt-4 border-t border-ink/10 flex items-center justify-between gap-3 text-[13px]">
                   <span className="font-medium">{q.author}</span>
                   <span className="text-ink/55 font-mono text-[11px] uppercase tracking-[0.16em] text-right">
                     {q.place}

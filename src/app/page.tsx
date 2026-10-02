@@ -87,7 +87,7 @@ export default function HomePage() {
           <RecoBadge size={66} tilt className="md:hidden" />
           <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[14px] text-ink/60">
             <span className="text-[#47c645]">★</span>
-            <span>4,8 av 5 i betyg (12 omdömen) på</span>
+            <span>4,8 av 5 i betyg (14 omdömen) på</span>
             {/* Officiella Reco-loggan (hämtad från reco.se). */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/reco.svg" alt="Reco" className="h-[18px] w-auto" />
