@@ -10,19 +10,31 @@ Kunskapsbanken (`/kunskapsbank`) samlar tre databaser:
 
 Typerna finns i `src/lib/kb-types.ts`. Sidorna, sitemapen, sökfunktionen och menyn byggs automatiskt från datafilerna. Lägger du till en post i en datafil behöver ingen annan fil ändras.
 
-## Påfyllning var tredje dag (nyhetsrutinen)
+## Veckorutinen: två nya sidor i veckan
 
-1. Kör `python3 scripts/sokfragor.py sol` och `python3 scripts/sokfragor.py bat`. Skriptet hämtar Googles sökförslag (sv/SE), rangordnar dem och visar det som databaserna **inte** redan täcker.
-2. Välj 1–3 nya solcellsfrågor med tydlig sökvolym (hög poäng, frågeform) som kan besvaras med källbelagd fakta. Lägg till ett batterikoncept bara när sökdatan visar en tydlig lucka (högst ett per körning).
-3. Slå ihop varianter av samma fråga till **en** sida. Varianterna läggs i `searchPhrases`.
-4. Skriv enligt reglerna nedan. Ordningen i `QUESTIONS` styr ordningen på hubben (mest sökt först inom kategorin).
-5. Har en regel eller siffra ändrats (t.ex. grönt avdrag i en ny budget): uppdatera berörda poster och sätt nytt `updatedAt`. Det signalerar färskhet till Google.
+En schemalagd agent kör varje måndag morgon och publicerar två nya sidor utifrån vad svenskar sökt mest på den gångna veckan. Sidorna publiceras direkt, utan manuellt godkännande, och ett mejl sammanfattar vad som publicerats och varför.
+
+1. **Sökdata:** `python3 scripts/veckans-sokningar.py`. Skriptet hämtar Google Trends för Sverige de senaste 7 dagarna – de mest sökta relaterade sökningarna (topp) och de som ökar mest – för grundord som solceller, elpris, effektavgift och växelriktare. Grundorden vägs mot "solceller", så poängen går att jämföra mellan dem. Varje sökning jämförs med kunskapsbanken och guiderna och märks som täckt eller obesvarad. Obesvarade sökningar visas med Googles sökförslag. Svarar inte Trends (HTTP 429) används `python3 scripts/sokfragor.py sol` och `bat`, som bara bygger på sökförslag.
+2. **Välj två ämnen** bland de obesvarade, högst poäng först. Ämnet ska:
+   - höra hemma i Solcellsfrågor (solceller) eller Batteriskolan (batterier, elnät, elpris och styrning)
+   - gå att besvara med källbelagd fakta
+   - inte vara ett varumärke, ett prisuppslag ("elpris idag") eller en ortssökning.
+
+   Nätbolagens regler, till exempel en effektavgift, är sakfrågor och får tas upp.
+3. **Ingen dubblett.** Besvarar en befintlig sida redan frågan: förstärk den sidan (sökfras + svar, nytt `updatedAt`) och ta nästa kandidat. Varianter av samma fråga blir **en** sida, och varianterna läggs i `searchPhrases`.
+4. **Skriv** enligt reglerna och stilen nedan. Placera posten i sin kategori eller grupp: först om sökvolymen är hög, annars sist. Ordningen styr hubben. Lägg till den nya slugen i `related` på 1–3 närliggande sidor, så att länkarna går åt båda hållen.
+5. **Kvalitetsgrind:**
+   - `node scripts/kb-check.mjs --only <slug1>,<slug2> --urls` ger 0 problem och 0 varningar för de nya sidorna.
+   - `npx tsc --noEmit -p .` och `npm run build` är gröna.
+6. **Ändrade regler:** har en regel eller siffra ändrats, till exempel grönt avdrag i en ny budget, uppdatera berörda poster och sätt nytt `updatedAt`. Det signalerar färskhet till Google.
+
+Nyhetsrutinen var tredje dag skriver bara nyheter. Den ska inte ta en huvudfråga som en sida i kunskapsbanken redan besvarar.
 
 ## Redaktionella regler
 
 1. **Inga påhittade fakta.** Varje siffra, regel och datum ska ha täckning i en källa som hämtats och lästs. Kan något inte beläggas: skriv mer allmänt eller stryk det.
 2. **Kontrollera källans år.** Äldre sökträffar ser ofta aktuella ut. Regler har ändrats: 60-öresreduktionen slopades 2026-01-01, och grönt avdrag för solceller sänktes från 20 till 15 % 2025-07-01.
-3. **Primärkällor först:** Skatteverket, Boverket, Energimyndigheten, Elsäkerhetsverket, Ei, Svenska kraftnät, MSB, Riksdagen, Nord Pool och nätbolagen.
+3. **Primärkällor först:** Skatteverket, Boverket, Energimyndigheten, Elsäkerhetsverket, Ei, Svenska kraftnät, Myndigheten för civilt försvar (före 2026 MSB), Riksdagen, Nord Pool och nätbolagen.
 4. **Går källor isär, säg det öppet.** Det är en trovärdighetssignal.
 5. **Partipolitiskt neutralt.** Vallöften är löften, inte beslut.
 6. **Ingen säljton och inga produktrekommendationer.** Förklara hur läsaren själv bedömer saken.
@@ -40,6 +52,22 @@ Typerna finns i `src/lib/kb-types.ts`. Sidorna, sitemapen, sökfunktionen och me
 
 ## Kvalitetsgrind före publicering
 
-- Varje källa svarar (HTTP 200) och stöder påståendet.
+- `node scripts/kb-check.mjs --urls` kontrollerar:
+  - struktur och korslänkar (related, concepts, questions, links)
+  - att varje sökfras besvaras ordagrant
+  - ordmängd, längden på description och typografi
+  - att källorna svarar.
+
+  Skriptet avslutar med felkod vid problem.
+- Varje källa stöder påståendet. Läs den, kontrollera årtalet och kolla inte bara statuskoden.
 - `npx tsc --noEmit -p .` och `npm run build` är gröna.
-- Ingen dubblett: sök efter frågan i datafilen innan en ny post skapas.
+- Ingen dubblett: `veckans-sokningar.py` visar närmaste befintliga sida för varje sökning.
+
+## Verktyg
+
+| Skript | Gör |
+| --- | --- |
+| `scripts/veckans-sokningar.py` | Veckans mest sökta och mest ökande sökningar (Google Trends, Sverige, 7 dagar) med täckningskoll |
+| `scripts/sokfragor.py sol\|bat` | Obesvarade sökförslag från Google-autocomplete, reserv när Trends inte svarar |
+| `scripts/kb-check.mjs` | Kvalitetsgrinden ovan |
+| `scripts/kb-data.mjs` | Läser datafilerna utan bygge, används av de andra skripten |

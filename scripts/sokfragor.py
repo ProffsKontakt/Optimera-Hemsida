@@ -4,7 +4,8 @@
 Hämtar Google-autocomplete (sv/SE) för solcells- och batterifrågor, rangordnar
 förslagen efter hur högt och hur ofta de dyker upp och filtrerar bort det som
 redan täcks av en fråga eller en sökfras i Solcellsfrågor, Batteriskolan eller
-nyheterna. Används av nyhetsrutinen var tredje dag.
+nyheterna. Reserv för veckorutinen när Google Trends inte svarar (se
+veckans-sokningar.py).
 
     python3 scripts/sokfragor.py sol      # nya solcellsfrågor
     python3 scripts/sokfragor.py bat      # nya batterikoncept/frågor
