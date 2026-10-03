@@ -96,6 +96,9 @@ function newsArticleSchema(article: NewsArticle, imageUrl?: string) {
     },
     inLanguage: "sv-SE",
     articleSection: article.category,
+    ...(article.searchPhrases?.length
+      ? { keywords: article.searchPhrases.join(", ") }
+      : {}),
     citation: article.sources.map((s) => ({
       "@type": "CreativeWork",
       name: s.title,
