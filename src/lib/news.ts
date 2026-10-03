@@ -377,12 +377,12 @@ export const NEWS: NewsArticle[] = [
     slug: "effektavgifter-2026-stoppat-krav-ny-modell-batteri",
     status: "published",
     title:
-      "Effektavgifterna är i limbo: kravet stoppat, ny modell dröjer – och nätbolagen kör ändå",
+      "Effektavgifterna är i limbo: kravet stoppat, ny modell dröjer – och nätbolagen väljer själva",
     excerpt:
-      "Kravet på effekttariffer i alla elnät stoppades i våras och Energimarknadsinspektionen tar fram en ny modell – klar tidigast våren 2027, på en ny regerings bord. Samtidigt får nätbolag som redan infört effektavgifter fortsätta. Vi reder ut vad som gäller för din nätfaktura och varför batteriet blivit det säkraste skyddet.",
+      "Kravet på effekttariffer i alla elnät stoppades i våras och Energimarknadsinspektionen tar fram en ny modell – klar tidigast våren 2027, på en ny regerings bord. Samtidigt väljer nätbolagen själva: de som infört effektavgifter får behålla dem, medan Ellevio tog bort sin den 1 juni. Vi reder ut vad som gäller för din nätfaktura och varför batteriet blivit det säkraste skyddet.",
     category: "Elpriser",
     publishedAt: "2026-09-18",
-    updatedAt: "2026-09-18",
+    updatedAt: "2026-10-03",
     readTimeMin: 6,
     image: {
       src: "/news/effektavgifter-2026-stoppat-krav-ny-modell-batteri.jpg",
@@ -425,6 +425,16 @@ export const NEWS: NewsArticle[] = [
         title: "Senaste nytt om valet 2026",
         publisher: "SVT Nyheter",
         url: "https://www.svt.se/nyheter/inrikes/senaste-nytt-om-val-2026",
+      },
+      {
+        title: "Nätavgifter: Ellevio tar bort effektavgiften och återgår till välkänd prismodell",
+        publisher: "Ellevio",
+        url: "https://www.ellevio.se/nyheter/ellevio-i-media/natavgifter-ellevio-tar-bort-effektavgiften-och-atergar-till-valkand-prismodell/",
+      },
+      {
+        title: "Prismodell utan effektavgift",
+        publisher: "Ellevio",
+        url: "https://www.ellevio.se/abonnemang/prismodell-utan-effektavgift/",
       },
     ],
   },

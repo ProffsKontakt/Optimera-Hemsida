@@ -116,7 +116,7 @@ const CONTENT: Record<string, NewsContent> = {
     tldr: [
       "Vad händer med grönt avdrag 2027? Det avgörs i budgeten – och budgetpropositionen för 2027 måste lämnas till riksdagen senast den 12 november. Finns ingen ny regering då lägger Kristerssons övergångsregering en avskalad övergångsbudget utan nya reformer, enligt samma praxis som efter valet 2018.",
       "Fram till dess ligger reglerna fast: grönt avdrag är 15 procent för solceller och 50 procent för batteri och laddbox – vid fast pris 14,55 respektive 48,5 procent av totalkostnaden – med tak på 50 000 kronor per person och år. Vallöften som Socialdemokraternas högkostnadsskydd eller Vänsterpartiets elpristak förblir löften tills en tillträdd regering gör budgetpolitik av dem.",
-      "Elpriset i vinter påverkas inte av regeringsfrågan på kort sikt: prognosen är 100–110 öre per kilowattimme i elhandelspris i SE3 och SE4 och 45–55 öre i norr – dyrare än de två senaste vintrarna, men ingen återgång till elkrisens nivåer.",
+      "Elpriset i vinter påverkas inte av regeringsfrågan på kort sikt: prognosen för oktober–december är 100–110 öre per kilowattimme i elhandelspris i SE3 och SE4 och 45–55 öre i norr – dyrare än de två senaste vintrarna, men ingen återgång till elkrisens nivåer.",
     ],
     sections: [
       {
@@ -138,7 +138,7 @@ const CONTENT: Record<string, NewsContent> = {
         body: [
           "Det gröna avdraget ligger fast tills riksdagen beslutar annat: 15 procent för solceller och 50 procent för batterilager och laddpunkt. Vid fast pris räknas 97 procent av totalpriset som arbete och material, vilket ger 14,55 respektive 48,5 procent av totalkostnaden, och taket är 50 000 kronor per person och år. Frågan många ställer – hur länge kommer grönt avdrag finnas? – avgörs av den regering som tillträder: hinner den lägga budgeten kan ändringar gälla tidigast 2027, åt vilket håll det än blir. Blir det en övergångsbudget ligger dagens nivåer kvar.",
           "Detsamma gäller vallöftena. Socialdemokraternas högkostnadsskydd mot höga elpriser, finansierat med flaskhalsintäkter, och Vänsterpartiets elpristak på 75 öre per kilowattimme är förslag, inte beslut – inget av dem kan införas utan en tillträdd regering och en budget som riksdagen antar.",
-          "Elpriset i vinter styrs på kort sikt av väder, vattenmagasin och kärnkraftstillgänglighet – inte av regeringsfrågan. Prognosen ligger kvar: 100–110 öre per kilowattimme i elhandelspris i SE3 och SE4, 45–55 öre i norr. Tibbers bedömning är att det inte handlar om en återgång till elkrisens nivåer 2022–2023, men om en dyrare vinter än de två senaste.",
+          "Elpriset i vinter styrs på kort sikt av väder, vattenmagasin och kärnkraftstillgänglighet – inte av regeringsfrågan. Prognosen för oktober–december ligger kvar: 100–110 öre per kilowattimme i elhandelspris i SE3 och SE4, 45–55 öre i norr. Tibbers bedömning är att det inte handlar om en återgång till elkrisens nivåer 2022–2023, men om en dyrare vinter än de två senaste.",
         ],
       },
       {
@@ -170,7 +170,7 @@ const CONTENT: Record<string, NewsContent> = {
       },
       {
         q: "Hur blir elpriset i vinter?",
-        a: "Prognoserna pekar på 100–110 öre per kilowattimme i elhandelspris i SE3 och SE4 och 45–55 öre i SE1 och SE2 under vinterhalvåret – högre än de två senaste vintrarna, men enligt Tibber ingen återgång till elkrisens nivåer 2022–2023. Nätavgifter och skatter tillkommer, och regeringsfrågan påverkar inte prognosen på kort sikt.",
+        a: "Prognoserna pekar på 100–110 öre per kilowattimme i elhandelspris i SE3 och SE4 och 45–55 öre i SE1 och SE2 för oktober–december – högre än de två senaste vintrarna, men enligt Tibber ingen återgång till elkrisens nivåer 2022–2023. Nätavgifter och skatter tillkommer, och regeringsfrågan påverkar inte prognosen på kort sikt.",
       },
     ],
   },
@@ -365,6 +365,13 @@ const CONTENT: Record<string, NewsContent> = {
     ],
     sections: [
       {
+        h2: "Uppdatering 3 oktober: Ellevio har tagit bort sin effektavgift",
+        body: [
+          "Artikeln är kompletterad med en uppgift som saknades när den publicerades. Ellevio – med omkring 440 000 villa- och småföretagskunder, många av dem i Stockholmsområdet – tog bort sin effektavgift den 1 juni 2026 och återgick till en tvådelad modell: en fast avgift efter säkringsstorlek och en rörlig överföringsavgift. Ändringen gäller villa, radhus, fritidshus och företag med säkring upp till 63 ampere. Ellevio motiverade bytet med att kravet på effektavgifter tagits bort och att ett nytt regelverk ska tas fram.",
+          "Bilden är alltså splittrad: nätbolag som redan infört effektavgifter får behålla dem, men det största nätbolaget i Stockholmsområdet har valt bort sin. Vilket nätbolag du har avgör vad som gäller för just dig.",
+        ],
+      },
+      {
         h2: "Vad är en effektavgift?",
         body: [
           "En effektavgift är en del av elnätsavgiften som baseras på din högsta effekt – hur många kilowatt du tar ut som mest under en timme – i stället för bara hur många kilowattimmar du använder totalt. Tanken är att styra bort förbrukningstoppar som annars tvingar fram dyra nätinvesteringar.",
@@ -387,6 +394,7 @@ const CONTENT: Record<string, NewsContent> = {
         bullets: [
           "Krav på effekttariff i alla nät: stoppat i mars 2026.",
           "Befintliga effekttariffer: får fortsätta att gälla.",
+          "Ellevio: effektavgiften borttagen sedan 1 juni 2026 – fast avgift efter säkringsstorlek plus överföringsavgift.",
           "Ny enhetlig modell: Ei:s förslag redovisas senast 12 april 2027.",
           "Vem som beslutar om din tariff i dag: ditt nätbolag.",
         ],
@@ -402,7 +410,7 @@ const CONTENT: Record<string, NewsContent> = {
         h2: "Vad betyder det för dig?",
         body: [
           "Har du redan effekttariff: jämna ut dina toppar. Ladda elbilen på natten, låt inte värmepump och laddning toppa samtidigt, och har du batteri – aktivera effektvakten i ditt energisystem.",
-          "Funderar du på batteri: räkna med effektavgifterna som en osäker men växande post. Blir Ei:s nya modell verklighet får hela landet en enhetlig effektkomponent; tills dess avgör ditt nätbolag. Grönt avdrag på 48,5 procent för batteri gäller oförändrat, som vi gått igenom tidigare i serien.",
+          "Funderar du på batteri: räkna med effektavgifterna som en osäker post. Har du Ellevio som nätbolag finns i dag ingen effektavgift att kapa – där bär självförbrukning, spotprisstyrning och stödtjänster batterikalkylen. Blir Ei:s nya modell verklighet får hela landet en enhetlig effektkomponent; tills dess avgör ditt nätbolag. Grönt avdrag på 48,5 procent för batteri gäller oförändrat, som vi gått igenom tidigare i serien.",
           "Vi följer både Ei:s arbete med den nya modellen och regeringsbildningen, och uppdaterar här när något ändras som påverkar din kalkyl.",
         ],
       },
@@ -410,7 +418,7 @@ const CONTENT: Record<string, NewsContent> = {
     faq: [
       {
         q: "Är effekttariffer avskaffade nu?",
-        a: "Nej. Kravet på att alla nätbolag skulle införa dem stoppades i mars 2026 och föreskrifterna upphävdes, men bolag som redan infört effektavgifter får fortsätta. Energimarknadsinspektionen tar dessutom fram en ny enhetlig modell som redovisas senast den 12 april 2027, så frågan kommer tillbaka – i vilken form avgörs av nästa regering och riksdag.",
+        a: "Nej, men det beror på ditt nätbolag. Kravet på att alla nätbolag skulle införa dem stoppades i mars 2026 och föreskrifterna upphävdes. Bolag som redan infört effektavgifter får fortsätta, medan till exempel Ellevio tog bort sin effektavgift den 1 juni 2026. Energimarknadsinspektionen tar dessutom fram en ny enhetlig modell som redovisas senast den 12 april 2027, så frågan kommer tillbaka – i vilken form avgörs av nästa regering och riksdag.",
       },
       {
         q: "Hur vet jag om jag har en effektavgift?",
