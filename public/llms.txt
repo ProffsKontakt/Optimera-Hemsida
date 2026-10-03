@@ -1,10 +1,10 @@
-# Optimera Energi Sverige AB
+# Optimera Energi
 
 > Optimera Energi är en svensk elinstallatör baserad i Solna som installerar solpaneler, batterilager, värmepumpar och laddboxar för villaägare och bostadsrättsföreningar i Stockholm. Vi grundades 2026 på principen "priset på offerten är priset på fakturan" och driver alla installationer med eget montageteam – inga underentreprenörer.
 
 ## Företagsinformation
 
-- **Juridiskt namn**: Optimera Energi Sverige AB
+- **Juridiskt namn**: Optimera Energilösningar i Mälardalen AB (tidigare Optimera Energi Sverige AB)
 - **Organisationsnummer**: 559375-2206
 - **Säte**: Vallgatan 9, 170 67 Solna
 - **Telefon**: 076 305 37 32
