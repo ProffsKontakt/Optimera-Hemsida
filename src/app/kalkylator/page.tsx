@@ -29,7 +29,7 @@ export const metadata = {
 const FAQ = [
   {
     q: "Hur stort grönt teknik-avdrag får jag på solpaneler och batteri?",
-    a: "Solpaneler ger 14,55 % grönt avdrag, batterier 48,5 % (förutsatt att huset har en sol-anläggning), laddboxar 48,5 %, och värmepumpar 30 % ROT-avdrag. Avdragstaket är 50 000 kr per fastighetsägare och år.",
+    a: "Solpaneler ger 14,55 % grönt avdrag, batterier 48,5 % (förutsatt att huset har en sol-anläggning), laddboxar 48,5 %, och värmepumpar ROT-avdrag på 30 % av arbetskostnaden. Avdragstaket är 50 000 kr per fastighetsägare och år.",
   },
   {
     q: "Hur lång är återbetalningstiden för sol och batteri?",

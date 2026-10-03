@@ -3,6 +3,13 @@ import Link from "next/link";
 import { ArrowRight, BatteryCharging, Phone, Sun } from "lucide-react";
 import { BatteryDay } from "@/components/tjanster/BatteryDay";
 import { SolarYear } from "@/components/tjanster/SolarYear";
+import {
+  HeatPumpBanner,
+  HeatPumpChooser,
+  HeatPumpHeroExtras,
+  HeatPumpSupport,
+  HeatPumpTogether,
+} from "@/components/tjanster/heatpump/sections";
 import { Term } from "@/components/site/Term";
 import { SERVICES, getService, type ServiceSlug } from "@/lib/services";
 import { ServiceVignetteLazy as ServiceVignette } from "@/components/3d/ServiceVignetteLazy";
@@ -186,12 +193,17 @@ export default function ServicePage({
                 </div>
               </>
             )}
+
+            {/* Värmepump: siffror + snabbknappar (se heatpump/sections). */}
+            {s.slug === "vaermepumpar" && <HeatPumpHeroExtras />}
           </div>
           {/* 3D-vinjetten döljs på mobil för batteri & sol – snabbare,
               renare första vy (samma grepp som startsidans hero). */}
           <div
             className={`${
-              s.slug === "batterier" || s.slug === "solpaneler"
+              s.slug === "batterier" ||
+              s.slug === "solpaneler" ||
+              s.slug === "vaermepumpar"
                 ? "hidden lg:block "
                 : ""
             }lg:col-span-5`}
@@ -202,6 +214,9 @@ export default function ServicePage({
           </div>
         </div>
       </section>
+
+      {/* Värmepump: bidraget är den starkaste kroken – direkt under heron. */}
+      {s.slug === "vaermepumpar" && <HeatPumpBanner />}
 
       {/* Batteri: fånga bästa kundgruppen direkt – de som redan har sol. */}
       {s.slug === "batterier" && (
@@ -492,6 +507,15 @@ export default function ServicePage({
         </div>
       )}
 
+      {/* Värmepump: vilken typ → vad det kostar efter stöd → helheten. */}
+      {s.slug === "vaermepumpar" && (
+        <>
+          <HeatPumpChooser />
+          <HeatPumpSupport />
+          <HeatPumpTogether />
+        </>
+      )}
+
       {/* "Så jobbar vi" före "Vad du får" – processen säljer tryggheten
           innan specifikationerna. */}
       <Section
@@ -625,7 +649,9 @@ export default function ServicePage({
       {/* Batteri & sol: diskret sticky-yta nere till höger på mobil –
           ring-knapp (till /ring, numret visas medvetet först där) +
           offert-pill som pekar mot wizarden. */}
-      {(s.slug === "batterier" || s.slug === "solpaneler") && (
+      {(s.slug === "batterier" ||
+        s.slug === "solpaneler" ||
+        s.slug === "vaermepumpar") && (
         <div
           className="fixed bottom-4 right-4 z-40 flex items-center gap-2 md:hidden"
           style={{ paddingBottom: "env(safe-area-inset-bottom)" }}

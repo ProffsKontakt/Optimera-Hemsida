@@ -147,24 +147,27 @@ export const SERVICES: Service[] = [
     name: "Värmepumpar",
     short: "Värme",
     badge: "Värmer",
-    // Dold just nu (visas ej i nav/grid/footer/sitemap). Koden behålls –
-    // ta bort denna rad för att lansera värmepumpar igen.
+    // LANSERINGSFLAGGA. Så länge den står kvar nås sidan bara via sin
+    // adress (noindex). Tas raden bort slås allt på samtidigt: meny,
+    // footer, sitemap, indexering, värmepumpskortet i mobilens offertguide
+    // (/offert-start) och tjänstelistorna på om-oss.
     hidden: true,
     oneLiner:
       "Tre kilowatt värme för varje kilowatt el – fysik, inte marknadsföring.",
     lede:
       "Vi installerar luft-vatten, bergvärme och frånluftsvärmepumpar. Det viktiga är inte vilket märke vi sätter – utan att flödet, dimensioneringen och styrningen är rätt för ditt hus.",
+    // Highlights/chips: bara sådant som går att stå för oavsett märke.
+    // Borttaget okt 2026 i väntan på bekräftelse från teamet: "under 35
+    // dB(A)" (luft-vattens utedelar ligger normalt högre, beror på avstånd)
+    // och "12 års kompressorgaranti" (varierar per tillverkare).
     highlights: [
       "Årsvärmefaktor (SCOP) upp till 5,2 i nordiskt klimat",
-      "Tysta utomhusenheter – under 35 dB(A)",
-      "Modulerande växelriktare – inga av/på-cykler",
+      "Varvtalsstyrd kompressor – jämn värme utan av/på-cykler",
+      // (Spotprisstyrning och sol/batteri har egen sektion högre upp på
+      // sidan – upprepas inte här.)
+      "Värme och varmvatten från samma system",
     ],
-    bullets: [
-      "Lasttest av huset på riktigt",
-      "Returtemperatur-optimering",
-      "Smart styrning mot spotpris",
-      "12 års kompressorgaranti",
-    ],
+    bullets: ["Märkesoberoende", "ROT dras direkt på fakturan"],
     workflow: [
       {
         step: "01",
@@ -191,10 +194,40 @@ export const SERVICES: Service[] = [
           "Vi följer upp efter 14 dagar och 6 månader, justerar kurvor och säkerställer optimal drift.",
       },
     ],
+    // FAQ: sökanpassad efter vad villaägare frågar. Avdrag/bidrag är
+    // källkontrollerade – se lib/heatpump.ts innan något ändras.
     faq: [
       {
+        q: "Vad kostar en värmepump?",
+        a: "Det beror främst på typ och hus. Bergvärme kostar mest eftersom borrningen ingår, luft-vatten mindre och luft-luft minst. Det exakta priset räknar vi fram efter ett hembesök – och ROT-avdraget på arbetet drar vi direkt på fakturan. Har du redan en offert kan du räkna på avdrag och bidrag i kalkylatorn på den här sidan.",
+      },
+      {
+        q: "Luft-vatten eller bergvärme – vad ska jag välja?",
+        a: "Har du vattenburen värme och plats att borra ger bergvärme högst och jämnast verkningsgrad, men kostar mer att installera. Luft-vatten kräver ingen borrning och är billigare, men verkningsgraden sjunker när det är riktigt kallt. Vi räknar på båda för ditt hus innan du bestämmer dig.",
+      },
+      {
+        q: "Hur mycket sparar man med en värmepump?",
+        a: "Det beror på vad du värmer med i dag. En värmepump med årsvärmefaktor 3 ger ungefär tre kilowattimmar värme per kilowattimme el. Jämfört med direktverkande el eller elpanna minskar alltså elen för uppvärmningen med ungefär två tredjedelar. Vi räknar på ditt hus och din förbrukning vid hembesöket.",
+      },
+      {
+        q: "Får man ROT-avdrag för värmepump?",
+        a: "Ja. ROT-avdraget är 30 procent av arbetskostnaden, max 50 000 kr per person och år. Vid fast pris räknar Skatteverket arbetet som 35 procent av totalkostnaden för bergvärme och 30 procent för luft-vatten, luft-luft och frånluft – avdraget blir alltså ungefär 9–10,5 procent av totalpriset. Vi drar av det direkt på fakturan.",
+      },
+      {
+        q: "Finns det bidrag för värmepump 2026?",
+        a: "Ja. Villaeffekten – bidraget för energieffektivisering i småhus – ger 30 procent av materialkostnaden, max 60 000 kr per hus. Det gäller hus med värdeår före 1990 som inte är anslutna till fjärrvärme, där ägaren bor stadigvarande. Bergvärme, luft-vatten och frånluft omfattas, men inte luft-luft. Bidraget söks via Boverkets e-tjänst och kan kombineras med ROT-avdraget på arbetet.",
+      },
+      {
+        q: "Behövs tillstånd för bergvärme?",
+        a: "Borrning för bergvärme ska anmälas till kommunen innan den påbörjas, och i vissa områden – till exempel nära vattentäkter – krävs tillstånd. Vi går igenom vad som gäller för din tomt vid hembesöket.",
+      },
+      {
+        q: "Fungerar en luft-vattenvärmepump när det är riktigt kallt?",
+        a: "Ja. Moderna luft-vattenvärmepumpar ger värme även vid sträng kyla, men verkningsgraden sjunker ju kallare det blir, och de allra kallaste dagarna hjälper en elpatron till. Därför dimensionerar vi efter husets effektbehov när det är som kallast.",
+      },
+      {
         q: "Kan jag kombinera värmepump med solel?",
-        a: "Ja, och det är just då magin händer. Värmepumpen drar mest ström under den årstid då solen producerar minst – men kombineras de med batteri och smart styrning kan du höja självförbrukningen till 65–80%.",
+        a: "Ja. Värmepumpen är oftast husets största elförbrukare, så det är där styrningen gör störst skillnad. Med styrning mot spotpris läggs värmen på billiga timmar, solöverskottet kan värma varmvattnet sommartid och ett batteri kan ta effekttopparna. Vi räknar på helheten i samma offert.",
       },
       {
         q: "Hur länge tar installationen?",
@@ -273,3 +306,29 @@ export const getService = (slug: ServiceSlug) =>
 
 /** Tjänster som ska visas publikt (nav, grid, footer, sitemap). */
 export const VISIBLE_SERVICES = SERVICES.filter((s) => !s.hidden);
+
+/** "a, b och c" – svensk uppräkning. */
+export function joinSv(items: string[], conj: "och" | "eller" = "och"): string {
+  if (items.length <= 1) return items.join("");
+  return `${items.slice(0, -1).join(", ")} ${conj} ${items[items.length - 1]}`;
+}
+
+// Kortform i singular för löptext ("Funderar du på sol, batteri eller …?").
+const SHORT_SINGULAR: Partial<Record<string, string>> = {
+  solpaneler: "sol",
+  batterier: "batteri",
+  vaermepumpar: "värmepump",
+  laddboxar: "laddbox",
+};
+
+/**
+ * De synliga tjänsterna i löptext. Används där sajten räknar upp vad vi
+ * gör (t.ex. om-oss), så att en tjänst som lanseras eller pausas via
+ * `hidden` slår igenom överallt utan handpåläggning.
+ */
+export function visibleServiceText(form: "plural" | "short", conj: "och" | "eller" = "och"): string {
+  const words = VISIBLE_SERVICES.map((s) =>
+    form === "short" ? SHORT_SINGULAR[s.slug] ?? s.name.toLowerCase() : s.name.toLowerCase(),
+  );
+  return joinSv(words, conj);
+}

@@ -29,6 +29,7 @@ import { getVisibleTeam, type TeamMember } from "@/lib/team";
 import { getMedia, getInstallationPhotos } from "@/lib/media";
 import { CONTACT_ROUTES } from "@/lib/contact-routes";
 import { RECO } from "@/lib/reco";
+import { VISIBLE_SERVICES, visibleServiceText } from "@/lib/services";
 import {
   JsonLd,
   localBusinessSchema,
@@ -66,11 +67,11 @@ export function generateMetadata(): Metadata {
   const word = countWord(n).toLowerCase();
   return {
     title: "Om oss · Optimera Energi – elfirman som tar hand om dig",
-    description: `Möt de ${word} personerna bakom Optimera Energilösningar i Mälardalen AB – med namn, roll och direktnummer, och se direkt vem du ska kontakta. Vi installerar solpaneler, batterier och laddboxar.`,
+    description: `Möt de ${word} personerna bakom Optimera Energilösningar i Mälardalen AB – med namn, roll och direktnummer, och se direkt vem du ska kontakta. Vi installerar ${visibleServiceText("plural")}.`,
     alternates: { canonical: "/om-oss" },
     openGraph: {
       title: "Om oss – Optimera Energi",
-      description: `${countWord(n)} personer med kontor i Solna som installerar sol, batteri och laddbox – och som finns kvar dagen efter att kontraktet är skrivet.`,
+      description: `${countWord(n)} personer med kontor i Solna som installerar ${visibleServiceText("short")} – och som finns kvar dagen efter att kontraktet är skrivet.`,
       url: "/om-oss",
       type: "website",
     },
@@ -170,7 +171,11 @@ export default function AboutPage() {
   const founders = people.filter((p) => /grundare/i.test(p.role));
   const routes: ResolvedRoute[] = CONTACT_ROUTES.map((r) => ({
     id: r.id,
-    question: r.question,
+    // Nya kunder: frågan räknar upp de tjänster som faktiskt är lanserade.
+    question:
+      r.id === "ny-kund"
+        ? `Funderar du på ${visibleServiceText("short", "eller")}?`
+        : r.question,
     groupTitle: r.groupTitle,
     groupNote: r.groupNote,
     people: team.filter((m) => m.contactFor?.includes(r.id)).map(lite),
@@ -208,8 +213,8 @@ export default function AboutPage() {
             </h1>
             <p className="mt-6 max-w-xl text-ink/70 text-lg leading-relaxed">
               Vi är {countWord(n).toLowerCase()} personer med kontor i Solna
-              som installerar solpaneler, batterier och laddboxar – och som
-              finns kvar dagen efter att kontraktet är skrivet. Här ser du
+              som installerar {visibleServiceText("plural")} – och som finns
+              kvar dagen efter att kontraktet är skrivet. Här ser du
               vilka vi är, och vem du ska prata med.
             </p>
 
@@ -570,9 +575,9 @@ export default function AboutPage() {
               <FactRow k="Auktorisation" v="F-skatt · BAS-U · SEK" />
             </dl>
             <div className="mt-6 pt-5 border-t border-ink/10 flex flex-wrap gap-2 text-[11px] font-mono uppercase tracking-[0.16em] text-ink/65">
-              <Tag>Solpaneler</Tag>
-              <Tag>Batterilager</Tag>
-              <Tag>Laddboxar</Tag>
+              {VISIBLE_SERVICES.map((sv) => (
+                <Tag key={sv.slug}>{sv.name}</Tag>
+              ))}
             </div>
           </aside>
         </div>

@@ -1,3 +1,4 @@
+import { ROT, heatPumpType, type HeatPumpTypeId } from "./heatpump";
 import {
   PANELS,
   BATTERIES,
@@ -472,7 +473,7 @@ export function computeCalc(input: CalcInput): CalcResult {
   //   Batteri        48,5 %   (grön teknik) – kräver att huset har sol
   //                            (befintlig eller ny)
   //   Laddbox        48,5 %   (grön teknik)
-  //   Värmepump      30 %     (ROT)
+  //   Värmepump      ROT – se nedan (eget tak, bara arbetskostnaden)
   const totalAllowance = (input.numOwners ?? 1) * 50_000;
   let remaining = totalAllowance;
 
@@ -500,11 +501,24 @@ export function computeCalc(input: CalcInput): CalcResult {
   );
   remaining -= chargerDeductionKr;
 
-  const heatpumpDeductionKr = Math.min(
-    Math.round((heatpumpPriceKr + heatpumpInstallKr) * 0.3),
-    Math.max(0, remaining),
-  );
-  remaining -= heatpumpDeductionKr;
+  // Värmepump: ROT-avdrag, inte grönt avdrag. Rättat okt 2026 – tidigare
+  // drogs 30 % av HELA priset, mot det gröna taket:
+  //  - ROT är 30 % av ARBETSKOSTNADEN. Vid fast pris räknar Skatteverket
+  //    arbetet som 35 % av totalen för bergvärme och 30 % för luft-vatten,
+  //    frånluft och luft-luft – avdraget blir ~9–10,5 % av totalpriset.
+  //  - ROT har ett eget tak (50 000 kr per person och år), skilt från det
+  //    gröna avdragets tak – det drar alltså inte från `remaining`.
+  // Regler och källor: lib/heatpump.ts.
+  const heatpumpDeductionKr = heat
+    ? Math.min(
+        Math.round(
+          (heatpumpPriceKr + heatpumpInstallKr) *
+            heatPumpType(catalogTypeToHeatPumpType(heat.type)).rotLaborShare *
+            ROT.rate,
+        ),
+        ROT.capPerPerson * (input.numOwners ?? 1),
+      )
+    : 0;
 
   const greenDeductionKr =
     solarDeductionKr +
@@ -585,3 +599,12 @@ export const formatNumber = (n: number, dec = 0) =>
   new Intl.NumberFormat("sv-SE", {
     maximumFractionDigits: dec,
   }).format(n);
+
+/** Katalogens värmepumpstyp → typ-id i lib/heatpump.ts. */
+function catalogTypeToHeatPumpType(
+  t: "luft-vatten" | "bergvärme" | "frånluft" | "luft-luft",
+): HeatPumpTypeId {
+  if (t === "bergvärme") return "berg";
+  if (t === "frånluft") return "franluft";
+  return t;
+}

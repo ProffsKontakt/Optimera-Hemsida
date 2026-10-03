@@ -39,7 +39,7 @@ export const GUIDES: Guide[] = [
     status: "published",
     title: "Grönt avdrag 2026: solpaneler, batteri, laddbox och värmepump",
     excerpt:
-      "14,55 % för solceller, 48,5 % för batteri och laddbox, 30 % ROT för värmepump. Avdragstak, regler och fällor du måste känna till.",
+      "14,55 % för solceller, 48,5 % för batteri och laddbox, ROT på arbetskostnaden för värmepump. Avdragstak, regler och fällor du måste känna till.",
     category: "Ekonomi",
     updatedAt: "2026-05-24",
     readTimeMin: 6,

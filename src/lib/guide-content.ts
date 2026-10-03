@@ -98,7 +98,7 @@ const CONTENT: Record<string, GuideContent> = {
 
   "gront-avdrag-2026": {
     tldr: [
-      "Grönt teknik-avdrag 2026: 14,55 % för solpaneler, 48,5 % för batteri och laddbox, 30 % ROT för värmepump.",
+      "Grönt teknik-avdrag 2026: 14,55 % för solpaneler, 48,5 % för batteri och laddbox, ROT på arbetskostnaden för värmepump.",
       "Avdragstaket är 50 000 kr per fastighetsägare och år. Två ägare ger 100 000 kr.",
       "Avdraget dras direkt på fakturan av installatören. Du betalar nettopriset, vi sköter rapporteringen till Skatteverket.",
     ],
@@ -117,7 +117,7 @@ const CONTENT: Record<string, GuideContent> = {
           "Solpaneler: 14,55 % av hela installationskostnaden (material + arbete).",
           "Batterilager: 48,5 %. Förutsättning är att huset har en sol-anläggning (befintlig eller ny).",
           "Laddbox för elbil: 48,5 %. Gäller hela installationen inklusive nya säkringar.",
-          "Värmepump: 30 % via ROT-avdraget (inte grönt avdrag). Räknas mot ROT-taket, inte grönt-taket.",
+          "Värmepump: ROT-avdrag på 30 % av arbetskostnaden (inte grönt avdrag). Vid fast pris räknar Skatteverket arbetet som 35 % av totalen för bergvärme och 30 % för luftvärmepumpar. Räknas mot ROT-taket, inte grönt-taket.",
         ],
       },
       {
@@ -125,7 +125,7 @@ const CONTENT: Record<string, GuideContent> = {
         body: [
           "Grönt avdrag har ett tak på 50 000 kr per fastighetsägare och kalenderår. Om ni är två ägare på fastigheten är taket 100 000 kr.",
           "ROT-avdraget för värmepump har ett separat tak på 50 000 kr per person och år. Du kan alltså i samma år ta ut maximalt grönt avdrag PLUS maximalt ROT-avdrag.",
-          "Praktiskt exempel: ett par investerar i ett sol+batteri-paket på 200 000 kr. Avdraget blir cirka 70 000 kr fördelat på de två ägarna. Båda kommer under 50 000 kr-taket. Skulle samma par lägga till en värmepump dras dessa 30 % via ROT-avdraget separat.",
+          "Praktiskt exempel: ett par investerar i ett sol+batteri-paket på 200 000 kr. Avdraget blir cirka 70 000 kr fördelat på de två ägarna. Båda kommer under 50 000 kr-taket. Skulle samma par lägga till en värmepump dras ROT-avdraget – 30 % av arbetskostnaden – separat, mot ett eget tak.",
         ],
       },
       {

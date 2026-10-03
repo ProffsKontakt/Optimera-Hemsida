@@ -12,6 +12,7 @@ import {
   Layers,
   Phone,
   PlugZap,
+  Heater,
   Sun,
 } from "lucide-react";
 import { FUNNEL_PRODUCTS, type Funnel } from "@/lib/funnels";
@@ -44,6 +45,7 @@ const PRODUCT_STYLE: Record<
   batterier: { Icon: BatteryCharging, accent: "bg-indigo text-bone" },
   "batteri-utbyggnad": { Icon: Layers, accent: "bg-moss text-bone" },
   laddboxar: { Icon: PlugZap, accent: "bg-copper text-bone" },
+  vaermepumpar: { Icon: Heater, accent: "bg-amber text-ink" },
 };
 
 const HOUSING = ["Villa", "Radhus", "Fritidshus", "Lantbruk", "Brf / styrelse"];
@@ -309,8 +311,12 @@ function StepBehov({
       </div>
 
       <div className="mt-4 grid grid-cols-2 gap-3">
-        {FUNNEL_PRODUCTS.map((p) => {
+        {FUNNEL_PRODUCTS.map((p, i) => {
           const style = PRODUCT_STYLE[p.key] ?? PRODUCT_STYLE.solpaneler;
+          // Udda antal kort: det sista får hela raden i stället för att stå
+          // ensamt i vänsterkolumnen.
+          const lastOdd =
+            FUNNEL_PRODUCTS.length % 2 === 1 && i === FUNNEL_PRODUCTS.length - 1;
           const Icon = style.Icon;
           const on = products.includes(p.key);
           return (
@@ -320,7 +326,7 @@ function StepBehov({
               onClick={() => onToggle(p.key)}
               aria-pressed={on}
               // Grid-stretch ger jämnhöga kort per rad oavsett textlängd.
-              className={`flex flex-col gap-4 rounded-3xl border p-4 text-left transition active:scale-[0.98] ${
+              className={`${lastOdd ? "col-span-2 " : ""}flex flex-col gap-4 rounded-3xl border p-4 text-left transition active:scale-[0.98] ${
                 on
                   ? "border-indigo ring-2 ring-indigo/25 bg-indigo-soft/50"
                   : "border-ink/10 bg-cream/50 hover:border-ink/30"

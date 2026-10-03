@@ -87,7 +87,7 @@ const CATEGORIES: { heading: string; eyebrow: string; items: { q: string; a: str
     items: [
       {
         q: "Hur stort grönt avdrag får jag på solceller och batteri?",
-        a: "Solpaneler ger 14,55 % grönt avdrag, batterier 48,5 % (förutsatt att huset har en solanläggning), laddboxar 48,5 % och värmepumpar 30 % ROT-avdrag. Avdragstaket är 50 000 kr per fastighetsägare och år och dras direkt på fakturan.",
+        a: "Solpaneler ger 14,55 % grönt avdrag, batterier 48,5 % (förutsatt att huset har en solanläggning), laddboxar 48,5 % och värmepumpar ROT-avdrag på 30 % av arbetskostnaden. Avdragstaket är 50 000 kr per fastighetsägare och år och dras direkt på fakturan.",
       },
       {
         q: "Hur lång är återbetalningstiden för sol och batteri?",

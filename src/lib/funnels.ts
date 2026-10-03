@@ -11,6 +11,8 @@
  * API-routen, sitemap m.m.
  */
 
+import { SERVICES } from "./services";
+
 export type FunnelProduct = {
   /** Nyckel som skickas som service i lead-payloaden. */
   key: string;
@@ -19,7 +21,7 @@ export type FunnelProduct = {
 };
 
 /** Produktkorten i steg 1. Samma för alla varianter. */
-export const FUNNEL_PRODUCTS: FunnelProduct[] = [
+const ALL_FUNNEL_PRODUCTS: FunnelProduct[] = [
   {
     key: "solpaneler",
     title: "Solpanelsinstallation",
@@ -40,7 +42,21 @@ export const FUNNEL_PRODUCTS: FunnelProduct[] = [
     title: "Laddbox",
     sub: "Ladda bilen hemma",
   },
+  {
+    key: "vaermepumpar",
+    title: "Värmepump",
+    sub: "Sänk uppvärmningskostnaden",
+  },
 ];
+
+// Kort vars tjänst är dold (services.ts: hidden) visas inte i guiden – så
+// värmepumpen dyker upp här i samma ögonblick som tjänstesidan lanseras.
+const HIDDEN_SERVICE_KEYS = new Set(
+  SERVICES.filter((s) => s.hidden).map((s) => s.slug as string),
+);
+export const FUNNEL_PRODUCTS: FunnelProduct[] = ALL_FUNNEL_PRODUCTS.filter(
+  (p) => !HIDDEN_SERVICE_KEYS.has(p.key),
+);
 
 export type Funnel = {
   /** URL-segmentet, t.ex. "offert-fb" -> optimeraenergi.se/offert-fb */

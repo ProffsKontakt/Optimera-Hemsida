@@ -33,6 +33,15 @@ const TERMS: Record<string, { title: string; body: string }> = {
     title: "Spotpris",
     body: "Elens timpris på elbörsen Nord Pool. Det svänger över dygnet – smart styrning köper när det är billigt och undviker de dyra timmarna.",
   },
+  // Källkontrollerat okt 2026 – se lib/heatpump.ts.
+  "rot-avdrag": {
+    title: "ROT-avdrag",
+    body: "Skatteavdrag på 30 % av arbetskostnaden, max 50 000 kr per person och år. För värmepump till fast pris räknas arbetet som 35 % (bergvärme) eller 30 % (luftvärmepumpar) av totalen. Dras direkt på fakturan.",
+  },
+  villaeffekten: {
+    title: "Villaeffekten",
+    body: "Statligt bidrag för energieffektivisering i småhus: 30 % av materialkostnaden, max 60 000 kr per hus. Gäller hus med värdeår före 1990 utan fjärrvärme. Bergvärme, luft-vatten och frånluft omfattas – inte luft-luft. Söks via Boverkets e-tjänst.",
+  },
 };
 
 export function Term({
