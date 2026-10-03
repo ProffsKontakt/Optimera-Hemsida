@@ -97,6 +97,11 @@ const RELATED = [
     desc: "Mest kWh för pengarna och fri styrning – tanken bakom vårt vanligaste batterival.",
   },
   {
+    href: "/batteriskolan",
+    label: "Batteriskolan – koncept för koncept",
+    desc: "FCR-D, effektavgift, kvartspris och ö-drift förklarade enkelt, med källor.",
+  },
+  {
     href: "/kalkylator",
     label: "Räkna ut batteristorlek",
     desc: "Bygg sol och batteri i 3D och se riktningen på investering och återbetalning.",

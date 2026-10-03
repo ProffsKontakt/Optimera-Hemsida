@@ -307,6 +307,26 @@ export default function NewsArticlePage({
               så rättar vi och noterar ändringen.
             </p>
           </section>
+
+          {/* Intern länkning till kunskapsbankens databaser: läsaren som
+              vill förstå begreppen bakom nyheten hittar dem här. */}
+          <nav
+            aria-label="Mer i kunskapsbanken"
+            className="flex flex-wrap items-center gap-x-5 gap-y-2 text-[14px]"
+          >
+            <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink/50">
+              Mer i kunskapsbanken
+            </span>
+            <Link href="/solcellsfragor" className="text-indigo underline underline-offset-2">
+              Solcellsfrågor
+            </Link>
+            <Link href="/batteriskolan" className="text-indigo underline underline-offset-2">
+              Batteriskolan
+            </Link>
+            <Link href="/nyheter" className="text-indigo underline underline-offset-2">
+              Alla nyheter
+            </Link>
+          </nav>
         </div>
       </article>
 
