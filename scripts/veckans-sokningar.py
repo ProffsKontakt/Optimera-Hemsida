@@ -198,20 +198,22 @@ def content_index():
 
 
 def best_match(query, index, kinds):
-    """Närmaste sida av given sort. Alla sökningens ord i en lika kort fras räknas som
-    full träff; annars mäts överlappet (Jaccard)."""
+    """Närmaste sida av given sort, mätt som ordöverlapp (Jaccard) mot sidans fraser.
+    Vid lika överlapp vinner sidan där flest fraser ligger nära sökningen."""
     q = norm_words(query)
-    best = (0.0, None)
+    best = (0.0, 0, None)
     for entry in index:
-        if entry["kind"] not in kinds:
+        if entry["kind"] not in kinds or not q:
             continue
-        for ws in entry["word_sets"]:
-            if not ws or not q:
-                continue
-            sim = 1.0 if q <= ws and len(ws) <= len(q) + 2 else len(q & ws) / len(q | ws)
-            if sim > best[0]:
-                best = (sim, entry)
-    return best
+        # En fras som krymper till ett ord ("bästa solpaneler" → solceller) säger inget
+        # om en sökning med flera ord.
+        sims = [len(q & ws) / len(q | ws) for ws in entry["word_sets"] if ws and (len(ws) > 1 or len(q) == 1)]
+        if not sims:
+            continue
+        top, near = max(sims), sum(x >= 0.6 for x in sims)
+        if (top, near) > best[:2]:
+            best = (top, near, entry)
+    return best[0], best[2]
 
 
 def relevant(query, suggestions):
@@ -227,6 +229,12 @@ def relevant(query, suggestions):
 
 def classify(query):
     q = query.lower()
+    if len(q.split()) == 1:
+        return "för brett (ett ord)"
+    if re.search(r"\b(husbil|husvagn|båt|camping|12v|12 v)\b", q):
+        return "fordon/fritid"
+    if re.search(r"\b(företag|firma|installatör|installatörer)\b", q) and not QUESTION.search(q):
+        return "företagssökning"
     if re.search(r"\belpris", q) and not QUESTION.search(q):
         return "prisuppslag"
     if GRID_COMPANIES.search(q):
@@ -311,7 +319,8 @@ def main():
     print("\nOBESVARADE – kandidater till veckans sidor (högst poäng först):")
     for r in open_rows[:15]:
         closest = r["closest"]
-        near = f"  (närmast: {closest['href']}, likhet {closest['similarity']})" if closest else ""
+        near = (f"  (närmast: {closest['href']}, likhet {closest['similarity']})"
+                if closest and closest["similarity"] >= 0.4 else "")
         if r["news"]:
             near += f"  [nyhet finns: {r['news']}]"
         print(f"  [{r['score']:>5.1f}] {r['query']:<42} {fmt(r)}{near}")
@@ -320,7 +329,7 @@ def main():
     print("\nREDAN TÄCKTA (kan uppdateras om sidan är tunn eller inaktuell):")
     for r in result["covered"][:15]:
         print(f"  [{r['score']:>5.1f}] {r['query']:<42} {fmt(r)}  → {r['covered_by']}")
-    print("\nÖVERHOPPADE (varumärke, ort, prisuppslag, laddbox, utanför ämnet):")
+    print("\nÖVERHOPPADE (varumärke, ort, prisuppslag, laddbox, för brett, utanför ämnet):")
     for r in result["skipped"][:20]:
         print(f"  [{r['score']:>5.1f}] {r['query']:<42} {r['skip']}")
     if result["daily_trending"]:
