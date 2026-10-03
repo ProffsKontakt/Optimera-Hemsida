@@ -387,7 +387,7 @@ export default function NewsArticlePage({
             aria-label="Mer i kunskapsbanken"
             className="flex flex-wrap items-center gap-x-5 text-[14px]"
           >
-            <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink/50">
+            <span className="basis-full sm:basis-auto font-mono text-[11px] uppercase tracking-[0.18em] text-ink/50">
               Mer i kunskapsbanken
             </span>
             <Link
