@@ -16,7 +16,7 @@
 
 import { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
-import { Html } from "@react-three/drei";
+import { SceneLabel } from "./SceneLabel";
 import * as THREE from "three";
 
 const ANCHOR: [number, number, number] = [0, 0, 0];
@@ -51,13 +51,7 @@ function StatusLED({
 }
 
 function Label({ text, y = -0.55 }: { text: string; y?: number }) {
-  return (
-    <Html position={[0.4, y, 0]}>
-      <div className="font-mono text-[9.5px] uppercase tracking-[0.18em] text-ink/65 bg-bone/85 backdrop-blur px-2 py-0.5 rounded-full border border-ink/10 whitespace-nowrap">
-        {text}
-      </div>
-    </Html>
-  );
+  return <SceneLabel parts={text.split(" · ")} position={[0.4, y, 0]} />;
 }
 
 // === Pylontech Force H3 ====================================================

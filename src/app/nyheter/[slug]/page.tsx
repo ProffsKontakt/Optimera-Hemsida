@@ -19,8 +19,13 @@ import {
   breadcrumbSchema,
 } from "@/components/seo/JsonLd";
 import { getNewsContent } from "@/lib/news-content";
+import { newsTldrReport } from "@/lib/news-quality";
 
 export function generateStaticParams() {
+  // Redaktionsregel 6: varna i byggloggen om "Läget i korthet" upprepar
+  // ingressen eller blivit för långt. Stoppar inte bygget.
+  for (const r of newsTldrReport(NEWS, getNewsContent))
+    console.warn(`⚠ Läget i korthet – ${r.slug}: ${r.issues.join(" ")}`);
   return NEWS.map((n) => ({ slug: n.slug }));
 }
 

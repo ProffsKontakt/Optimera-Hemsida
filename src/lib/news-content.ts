@@ -17,6 +17,12 @@
  *      news.ts) vävs in i rubrik, H2:or och FAQ – men bara där de kan
  *      besvaras med källtäckt fakta. Ingen fras får locka till ett svar
  *      artikeln inte ger.
+ *   6. "Läget i korthet" (tldr) står direkt under ingressen (excerpt i
+ *      news.ts) och får inte upprepa den. Tre punkter med det läsaren
+ *      behöver veta härnäst – siffror, regler, vad det betyder för
+ *      kalkylen. Varje punkt högst två korta meningar och högst 220 tecken.
+ *      Kör `npm run check:news` före publicering: den mäter längd och
+ *      överlapp mot ingressen (se news-quality.ts).
  */
 
 export type NewsSection = {
@@ -34,9 +40,9 @@ export type NewsContent = {
 const CONTENT: Record<string, NewsContent> = {
   "andersson-sonderar-igen-statsministeromrostning-tidslinje": {
     tldr: [
-      "Nu finns en tidslinje för ny regering 2026: i fredags fick Magdalena Andersson (S) tillbaka sonderingsuppdraget. Det inleds formellt måndag den 5 oktober och ska rapporteras till talmannen senast den 12 oktober – därefter väntar en statsministeromröstning i riksdagen, enligt SVT tidigast den 14 oktober.",
-      "Vem som blir statsminister avgörs av riksdagens räknesätt: ett förslag faller bara om minst 175 av 349 ledamöter röstar emot. Tidöpartiernas 173 mandat räcker alltså inte ensamma för att fälla ett förslag – det krävs minst två röster till. Fyra nedröstade förslag i rad innebär extra val inom tre månader.",
-      "För din kalkyl ändrar sonderingen ingenting: grönt avdrag ger fortsatt 14,55 procent av totalkostnaden för solceller och 48,5 procent för batteri och laddbox vid fast pris, tills en tillträdd regering får igenom en ändring. Men hårdvarupriserna väntar inte på politiken – branschens bedömning är att de slutat falla.",
+      "Ett statsministerförslag faller bara om minst 175 av 349 ledamöter röstar emot. Tidöpartiernas 173 mandat räcker alltså inte ensamma för att fälla det.",
+      "Talmannen har fyra försök. Faller alla fyra blir det extra val inom tre månader, och de som väljs sitter bara resten av mandatperioden.",
+      "Grönt avdrag gäller som i dag tills en tillträdd regering får igenom en ändring: vid fast pris 14,55 procent av totalkostnaden för solceller och 48,5 procent för batteri och laddbox.",
     ],
     sections: [
       {
@@ -114,9 +120,9 @@ const CONTENT: Record<string, NewsContent> = {
 
   "regeringsbildningen-last-budgeten-12-november-elstoden": {
     tldr: [
-      "Vad händer med grönt avdrag 2027? Det avgörs i budgeten – och budgetpropositionen för 2027 måste lämnas till riksdagen senast den 12 november. Finns ingen ny regering då lägger Kristerssons övergångsregering en avskalad övergångsbudget utan nya reformer, enligt samma praxis som efter valet 2018.",
-      "Fram till dess ligger reglerna fast: grönt avdrag är 15 procent för solceller och 50 procent för batteri och laddbox – vid fast pris 14,55 respektive 48,5 procent av totalkostnaden – med tak på 50 000 kronor per person och år. Vallöften som Socialdemokraternas högkostnadsskydd eller Vänsterpartiets elpristak förblir löften tills en tillträdd regering gör budgetpolitik av dem.",
-      "Elpriset i vinter påverkas inte av regeringsfrågan på kort sikt: prognosen är 100–110 öre per kilowattimme i elhandelspris i SE3 och SE4 och 45–55 öre i norr – dyrare än de två senaste vintrarna, men ingen återgång till elkrisens nivåer.",
+      "Grönt avdrag ligger fast tills riksdagen beslutar annat: 15 procent för solceller och 50 procent för batteri och laddbox, med tak på 50 000 kronor per person och år.",
+      "Socialdemokraternas högkostnadsskydd och Vänsterpartiets elpristak på 75 öre är förslag, inte beslut. Inget av dem kan införas utan en tillträdd regering och en antagen budget.",
+      "Regeringsfrågan påverkar inte vinterns elpris. Prognosen för elhandelspriset är 100–110 öre per kilowattimme i SE3 och SE4 och 45–55 öre i norr – dyrare än de två senaste vintrarna.",
     ],
     sections: [
       {

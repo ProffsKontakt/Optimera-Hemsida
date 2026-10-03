@@ -1,7 +1,8 @@
 "use client";
 
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Grid, OrbitControls, Html } from "@react-three/drei";
+import { Grid, OrbitControls } from "@react-three/drei";
+import { SceneLabel } from "./SceneLabel";
 import { useMemo, useRef } from "react";
 import * as THREE from "three";
 import { computeCalc, type CalcInput, type CalcResult } from "@/lib/calc";
@@ -688,11 +689,7 @@ function Inverter({
           emissiveIntensity={0.4}
         />
       </mesh>
-      <Html position={[0.4, -0.25, 0]}>
-        <div className="font-mono text-[9.5px] uppercase tracking-[0.18em] text-ink/65 bg-bone/85 backdrop-blur px-2 py-0.5 rounded-full border border-ink/10 whitespace-nowrap">
-          {assignment.brand} · {assignment.kw} kW
-        </div>
-      </Html>
+      <SceneLabel parts={[assignment.brand, `${assignment.kw} kW`]} position={[0.4, -0.25, 0]} />
     </group>
   );
 }
@@ -741,11 +738,7 @@ function HeatPumpUnit() {
           </mesh>
         ))}
       </group>
-      <Html position={[0.5, -0.4, 0]}>
-        <div className="font-mono text-[9.5px] uppercase tracking-[0.18em] text-ink/65 bg-bone/85 backdrop-blur px-2 py-0.5 rounded-full border border-ink/10 whitespace-nowrap">
-          Värmepump
-        </div>
-      </Html>
+      <SceneLabel parts={["Värmepump"]} position={[0.5, -0.4, 0]} />
     </group>
   );
 }
@@ -766,11 +759,7 @@ function ChargerUnit() {
           emissiveIntensity={0.5}
         />
       </mesh>
-      <Html position={[0, -0.4, 0]} center>
-        <div className="font-mono text-[9.5px] uppercase tracking-[0.18em] text-ink/65 bg-bone/85 backdrop-blur px-2 py-0.5 rounded-full border border-ink/10 whitespace-nowrap">
-          Laddbox
-        </div>
-      </Html>
+      <SceneLabel parts={["Laddbox"]} position={[0, -0.4, 0]} center />
     </group>
   );
 }
