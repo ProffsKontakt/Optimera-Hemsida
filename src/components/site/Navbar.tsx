@@ -85,7 +85,10 @@ export function Navbar() {
             className="h-9 w-auto"
             fetchPriority="high"
           />
-          <span className="hidden md:inline-block font-mono text-[10px] uppercase tracking-[0.2em] text-ink/55 border-l border-ink/15 pl-3 ml-1">
+          {/* Taglinen göms i spannet 1024–1279px: där får den fulla menyn
+              (åtta flikar sedan värmepumparna lanserades) inte plats bredvid
+              den, och den bröts på fyra rader. */}
+          <span className="hidden md:inline-block lg:hidden xl:inline-block whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.2em] text-ink/55 border-l border-ink/15 pl-3 ml-1">
             byggd på kloka tankar
           </span>
         </Link>
@@ -95,7 +98,7 @@ export function Navbar() {
             <Link
               key={l.href}
               href={l.href}
-              className="px-3.5 py-2 text-[13.5px] text-ink/75 hover:text-ink rounded-full hover:bg-ink/5 transition-colors"
+              className="whitespace-nowrap px-2.5 xl:px-3.5 py-2 text-[13.5px] text-ink/75 hover:text-ink rounded-full hover:bg-ink/5 transition-colors"
             >
               {l.label}
             </Link>
@@ -215,7 +218,7 @@ function QuoteButton({
       className={`group inline-flex rounded-full p-[3px] bg-gradient-to-r from-indigo via-sun to-indigo animate-gradient-drift transition-transform duration-300 hover:scale-[1.02] ${className}`}
     >
       <span
-        className={`inline-flex items-center justify-center rounded-full bg-bone text-indigo group-hover:bg-indigo group-hover:text-bone transition-colors duration-300 px-5 py-2 text-[13.5px] font-medium ${innerClassName}`}
+        className={`inline-flex items-center justify-center whitespace-nowrap rounded-full bg-bone text-indigo group-hover:bg-indigo group-hover:text-bone transition-colors duration-300 px-5 py-2 text-[13.5px] font-medium ${innerClassName}`}
       >
         Begär offert
       </span>

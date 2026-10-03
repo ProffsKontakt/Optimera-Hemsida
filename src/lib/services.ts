@@ -147,11 +147,9 @@ export const SERVICES: Service[] = [
     name: "Värmepumpar",
     short: "Värme",
     badge: "Värmer",
-    // LANSERINGSFLAGGA. Så länge den står kvar nås sidan bara via sin
-    // adress (noindex). Tas raden bort slås allt på samtidigt: meny,
-    // footer, sitemap, indexering, värmepumpskortet i mobilens offertguide
-    // (/offert-start) och tjänstelistorna på om-oss.
-    hidden: true,
+    // Lanserad okt 2026. Sätt `hidden: true` här för att pausa tjänsten –
+    // då försvinner den samtidigt ur meny, footer, sitemap, indexering,
+    // mobilens offertguide (/offert-start) och tjänstelistorna på om-oss.
     oneLiner:
       "Tre kilowatt värme för varje kilowatt el – fysik, inte marknadsföring.",
     lede:
