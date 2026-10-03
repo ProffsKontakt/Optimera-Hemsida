@@ -86,18 +86,23 @@ export function EnergySystem() {
           <TrendingUp size={20} />
         </span>
         <div className="flex-1">
+          {/* Brytningen läggs FÖRE tankstrecket, enligt designgenomgången:
+              "…inte bara energisnål / – den kan till och med gå plus." Den
+              gula slutsatsen blir en egen rad i stället för att klyvas mitt
+              i ("…inte bara / energisnål – den kan…"). Blocket balanseras
+              för sig (text-wrap ärvs), så även mobilens radbrytning blir
+              jämn.
+
+              Brödtexten som stod här är borttagen: "huset använder sin egen
+              el först, handlar smart med resten – och batteriet tjänar
+              pengar på att stötta elnätet" sammanfattade bara korten 01–03
+              direkt ovanför en gång till. */}
           <h3 className="font-display text-2xl md:text-3xl tracking-display-tight leading-snug">
-            Med solceller och batteri blir villan inte bara energisnål –{" "}
-            <span className="italic font-serif text-sun">
-              den kan till och med gå plus.
+            Med solceller och batteri blir villan inte bara energisnål
+            <span className="block italic font-serif text-sun">
+              – den kan till och med gå plus.
             </span>
           </h3>
-          <p className="mt-3 text-bone/70 text-[15px] leading-relaxed max-w-2xl">
-            Delarna är bra var för sig. Men det är när de pratar med varandra
-            som räkningen krymper på riktigt: huset använder sin egen el först,
-            handlar smart med resten – och batteriet tjänar pengar på att
-            stötta elnätet.
-          </p>
         </div>
         <div className="flex flex-wrap gap-3 md:shrink-0">
           <Link

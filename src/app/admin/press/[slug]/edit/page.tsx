@@ -35,7 +35,7 @@ export default function AdminPressEditPage({
           <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink/55">
             Internt · redigera
           </div>
-          <h1 className="mt-3 font-display text-[36px] md:text-[48px] tracking-display-tight leading-[1.0]">
+          <h1 className="mt-3 font-display text-[36px] md:text-[48px] tracking-display-tight leading-[1.15]">
             {release.title}
           </h1>
         </div>

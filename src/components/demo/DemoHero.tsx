@@ -98,24 +98,27 @@ export function DemoHero({
               rel="noopener noreferrer"
               className="hidden md:inline-flex w-fit items-center gap-2 rounded-full border border-ink/12 bg-cream/80 px-4 py-2 mb-7 text-[13px] text-ink/75 hover:border-ink/35 hover:text-ink transition"
             >
-              <span className="text-[#47c645] tracking-[0.08em]">★★★★★</span>
+              <span className="text-amber-deep tracking-[0.08em]">★★★★★</span>
               <span className="font-medium">4,8 av 5</span>
               <span className="text-ink/50">på</span>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/reco.svg" alt="Reco" className="h-[15px] w-auto" />
             </a>
 
-            {/* Mobil: bara stora rubriken högst upp. Eyebrow endast desktop.
-                "Optimera Energi" stod tidigare även här – samma namn två
-                gånger inom 40px, direkt ovanför rubrikens första rad. */}
-            <div className="eyebrow hidden md:block">
-              Byggd på kloka tankar · Stockholm 2026
-            </div>
+            {/* Ingen eyebrow här längre. Den sa "Byggd på kloka tankar ·
+                Stockholm 2026" – men "kloka tankar" står redan i navbarens
+                tagline precis ovanför och i brödtexten nedanför, och
+                "Stockholm" i rubriken. Designgenomgången (sep 2026) pekade
+                ut just den upprepningen. Mobilen har aldrig visat den. */}
 
-            <h1 className="mt-0 md:mt-6 font-display text-[44px] md:text-[64px] lg:text-[76px] leading-[1.05] tracking-display-tight">
+            <h1 className="mt-0 font-display text-[44px] md:text-[64px] lg:text-[76px] leading-[1.15] tracking-display-tight">
               Optimera Energi,
-              <br />
-              <span className="italic font-serif text-indigo">
+              {/* Stadsraden är ett eget block så den balanseras för sig.
+                  Med <br> + inline-span balanserades hela h1:an som en
+                  enhet, och första radens bredd låste resten – resultatet
+                  blev "sol och batteri i" / "Stockholm." med stadsnamnet
+                  ensamt på sista raden. Nu: "sol och batteri" / "i Stockholm." */}
+              <span className="block italic font-serif text-indigo">
                 {visitorCity
                   ? `sol och batteri ${visitorCity.preposition} ${visitorCity.name}.`
                   : "sol och batteri i Stockholm."}
@@ -162,7 +165,7 @@ export function DemoHero({
                 rel="noopener noreferrer"
                 className="mt-5 flex w-fit items-center gap-2 text-[13px] text-ink/80 md:hidden [text-shadow:0_1px_2px_rgba(244,241,234,0.9)]"
               >
-                <span className="text-[#47c645] tracking-[0.08em] text-[14px] [text-shadow:none]">
+                <span className="text-amber-deep tracking-[0.08em] text-[14px] [text-shadow:none]">
                   ★★★★★
                 </span>
                 <span className="flex items-center gap-1.5">
@@ -172,13 +175,16 @@ export function DemoHero({
                 </span>
               </a>
 
-              {/* Stats-raden – endast desktop. Reco-betyget låg tidigare även
-                  här ("4,8/5 i betyg på Reco") trots att pillen ovanför
-                  rubriken säger exakt samma sak med logotyp. Ett påstående,
-                  ett ställe – resten är siffror man inte får någon
-                  annanstans i vyn. */}
+              {/* Stats-raden – endast desktop. Ett påstående, ett ställe:
+                  här står bara sådant som inte sägs någon annanstans i vyn.
+                  Borttaget: "4,8/5 i betyg på Reco" (pillen ovanför säger
+                  det redan) och "3 installationstjänster" (upprepade bara
+                  brödtextens "solpaneler, batterier och laddboxar").
+                  "0 kr" är samma löfte som CTA-panelen ger ("helt utan
+                  kostnad eller förpliktelse") och stöttar hembesöks-länken
+                  direkt ovanför. */}
               <div className="mt-12 hidden md:grid grid-cols-2 max-w-sm gap-2">
-                <Stat n="3" label="installationstjänster" />
+                <Stat n="0 kr" label="för hembesök och offert" />
                 <Stat n="14d" label="från offert till tak" />
               </div>
             </div>

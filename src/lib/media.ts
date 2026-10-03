@@ -37,6 +37,15 @@ export type MediaSlot = {
 /** Fallback-bredd för slots utan egen maxWidth. */
 export const DEFAULT_MAX_WIDTH = 1600;
 
+/**
+ * Antal foto-platser i installationsgalleriet på om-oss. Galleriet visar
+ * BARA platser som har en uppladdad bild – tomma platser syns inte, och
+ * finns det inga bilder alls döljs hela sektionen. (Tidigare låg fyra grå
+ * platshållare där med påhittade bildtexter som "Easyway 23 kWh inomhus,
+ * Bromma" – specifika installationer utan bild var sämre än ingen bild.)
+ */
+export const INSTALLATION_SLOT_COUNT = 8;
+
 export type MediaEntry = {
   url: string;
   alt: string;
@@ -74,6 +83,15 @@ export function listMediaSlots(): MediaSlot[] {
       // Kortet är ~460px brett på desktop, ~190px på mobil -> 900 = 2x.
       maxWidth: 900,
     })),
+    ...Array.from({ length: INSTALLATION_SLOT_COUNT }, (_, i) => ({
+      id: `installation:${i + 1}`,
+      group: "Installationer (om-oss)",
+      label: `Installationsfoto ${i + 1}`,
+      aspect: "4 / 5",
+      hint: "Riktigt foto från en färdig installation (elskåp, batteri, tak). Alt-texten visas som bildtext – t.ex. \"Easyway 23 kWh inomhus, Bromma\". Tomma platser syns inte på sajten.",
+      // Rutorna är ~300px breda på desktop, ~170px på mobil -> 900 räcker för 2x.
+      maxWidth: 900,
+    })),
     ...GUIDES.map((g) => ({
       id: `guide:${g.slug}`,
       group: "Guider",
@@ -109,4 +127,16 @@ export function getMediaManifest(): MediaManifest {
 export function getMedia(slotId: string): MediaEntry | null {
   const entry = getMediaManifest()[slotId];
   return entry && entry.url ? entry : null;
+}
+
+/** Uppladdade installationsfoton i slot-ordning (tomma platser hoppas över). */
+export function getInstallationPhotos(): (MediaEntry & { slotId: string })[] {
+  const manifest = getMediaManifest();
+  const photos: (MediaEntry & { slotId: string })[] = [];
+  for (let i = 1; i <= INSTALLATION_SLOT_COUNT; i++) {
+    const slotId = `installation:${i}`;
+    const entry = manifest[slotId];
+    if (entry && entry.url) photos.push({ ...entry, slotId });
+  }
+  return photos;
 }

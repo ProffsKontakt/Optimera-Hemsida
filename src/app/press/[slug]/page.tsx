@@ -102,7 +102,7 @@ export default function PressDetailPage({
           <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink/55">
             Pressmeddelande · {r.date} · Stockholm
           </div>
-          <h1 className="mt-5 font-display text-[40px] md:text-[64px] tracking-display-tight leading-[1.0]">
+          <h1 className="mt-5 font-display text-[40px] md:text-[64px] tracking-display-tight leading-[1.15]">
             {r.title}
           </h1>
           <p className="mt-6 text-ink/75 text-lg leading-relaxed">{r.lede}</p>

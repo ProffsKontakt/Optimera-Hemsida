@@ -28,7 +28,7 @@ export default function AdminPressNewPage() {
           <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink/55">
             Internt · nytt pressmeddelande
           </div>
-          <h1 className="mt-3 font-display text-[40px] md:text-[56px] tracking-display-tight leading-[1.05]">
+          <h1 className="mt-3 font-display text-[40px] md:text-[56px] tracking-display-tight leading-[1.15]">
             Skriv något värt att läsa.
           </h1>
         </div>

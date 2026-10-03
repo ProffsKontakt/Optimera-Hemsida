@@ -123,7 +123,7 @@ export default function NewsArticlePage({
       <section className="container-edge pt-20 pb-32">
         <div className="max-w-2xl mx-auto text-center">
           <div className="eyebrow">Snart</div>
-          <h1 className="mt-5 font-display text-4xl md:text-5xl tracking-display-tight">
+          <h1 className="mt-5 font-display text-4xl md:text-5xl tracking-display-tight leading-[1.15]">
             {article.title}
           </h1>
           <p className="mt-6 text-ink/70 leading-relaxed">
@@ -191,7 +191,7 @@ export default function NewsArticlePage({
               </span>
             )}
           </div>
-          <h1 className="font-display text-[40px] md:text-[64px] tracking-display-tight leading-[1.0]">
+          <h1 className="font-display text-[40px] md:text-[64px] tracking-display-tight leading-[1.15]">
             {article.title}
           </h1>
           <p className="mt-6 text-ink/70 text-lg leading-relaxed">

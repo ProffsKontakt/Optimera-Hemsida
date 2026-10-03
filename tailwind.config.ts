@@ -45,6 +45,22 @@ const config: Config = {
       letterSpacing: {
         "display-tight": "-0.035em",
       },
+      // Tailwinds standard sätter line-height: 1 på text-5xl–9xl (och 1,11
+      // på 4xl). Det gör att responsiva klasser som md:text-6xl skriver över
+      // en rubriks egen leading-[…] på desktop – media-query-regeln ligger
+      // senare i CSS:en och vinner. Resultatet var radavstånd 1,0 på nästan
+      // alla stora rubriker på datorn, och då går svansen på p/g/y rakt in
+      // i ringen på å (uppmätt i Poppins 700: p/g = 0,281 em under
+      // baslinjen, å-ringen 0,844 em över → minst 1,125 em behövs).
+      // 1,15 ger kollisionsfritt för alla svenska gemener med lite luft.
+      fontSize: {
+        "4xl": ["2.25rem", { lineHeight: "1.15" }],
+        "5xl": ["3rem", { lineHeight: "1.15" }],
+        "6xl": ["3.75rem", { lineHeight: "1.15" }],
+        "7xl": ["4.5rem", { lineHeight: "1.15" }],
+        "8xl": ["6rem", { lineHeight: "1.15" }],
+        "9xl": ["8rem", { lineHeight: "1.15" }],
+      },
       backgroundImage: {
         "grain":
           "radial-gradient(rgba(14,14,12,0.05) 1px, transparent 1px)",

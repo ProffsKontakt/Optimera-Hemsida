@@ -6,7 +6,7 @@ export default function LoginPage() {
   if (!process.env.ADMIN_PASSWORD) {
     return (
       <div className="container-edge py-32 max-w-xl">
-        <h1 className="font-display text-4xl tracking-display-tight">
+        <h1 className="font-display text-4xl tracking-display-tight leading-[1.15]">
           Admin är inte aktiverad
         </h1>
         <p className="mt-4 text-ink/65 leading-relaxed">

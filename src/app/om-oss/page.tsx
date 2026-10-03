@@ -3,7 +3,7 @@ import { Mail, Phone, ArrowRight } from "lucide-react";
 import { Section } from "@/components/site/Section";
 import { BrandPanel } from "@/components/site/BrandPanel";
 import { getVisibleTeam } from "@/lib/team";
-import { getMedia } from "@/lib/media";
+import { getMedia, getInstallationPhotos } from "@/lib/media";
 import {
   JsonLd,
   localBusinessSchema,
@@ -101,6 +101,7 @@ export default function AboutPage() {
   // varken korten, siffrorna eller JSON-LD:n röjer att de finns.
   const team = getVisibleTeam();
   const countWord = COUNT_WORDS[team.length] ?? String(team.length);
+  const installationPhotos = getInstallationPhotos();
   return (
     <>
       <JsonLd data={aboutPageSchema} />
@@ -117,10 +118,9 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-end">
           <div className="lg:col-span-7">
             <div className="eyebrow">Om Optimera Energi</div>
-            <h1 className="mt-5 font-display text-[44px] md:text-[80px] lg:text-[88px] tracking-display-tight leading-[1.05]">
+            <h1 className="mt-5 font-display text-[44px] md:text-[80px] lg:text-[88px] tracking-display-tight leading-[1.15]">
               En elfirma som
-              <br />
-              <span className="italic font-serif text-indigo">
+              <span className="block italic font-serif text-indigo">
                 tar hand om dig.
               </span>
             </h1>
@@ -171,8 +171,7 @@ export default function AboutPage() {
         title={
           <>
             Den varma kanelbullen
-            <br />
-            <span className="italic font-serif text-indigo">
+            <span className="block italic font-serif text-indigo">
               i en kall vinterstorm.
             </span>
           </>
@@ -246,8 +245,7 @@ export default function AboutPage() {
         title={
           <>
             Vad vi gör
-            <br />
-            <span className="italic font-serif text-indigo">annorlunda.</span>
+            <span className="block italic font-serif text-indigo">annorlunda.</span>
           </>
         }
         intro="Fyra principer som styr varje hembesök, offert och installation."
@@ -366,37 +364,43 @@ export default function AboutPage() {
         </div>
       </Section>
 
-      {/* Bilder från installationer */}
-      <Section
-        eyebrow="En vanlig vecka"
-        title={<>Färdiga batteriinstallationer hos våra kunder.</>}
-        intro="Vi dokumenterar varje arbete vi släpper ifrån oss. När vi är klara ska elskåpet vara snyggare än när vi kom."
-        className="!py-16 md:!py-20"
-      >
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
-          {[
-            "Easyway 23 kWh inomhus, Bromma",
-            "Easyway-installation, Vaxholm",
-            "SAJ HS3 + 14 paneler, Lidingö",
-            "Emaldo Power Store 25,6 kWh, Saltsjöbaden",
-          ].map((caption, i) => (
-            <figure
-              key={i}
-              className="aspect-[4/5] rounded-2xl overflow-hidden border border-ink/10 bg-gradient-to-br from-cream to-bone relative"
-            >
-              <div className="absolute inset-0 bg-grain bg-grain-sm opacity-40" />
-              <figcaption className="absolute inset-x-0 bottom-0 p-3 text-[12.5px] text-ink/75 leading-snug bg-gradient-to-t from-bone via-bone/85 to-transparent">
-                {caption}
-              </figcaption>
-            </figure>
-          ))}
-        </div>
-        <p className="mt-6 text-[12.5px] text-ink/50 max-w-2xl leading-relaxed">
-          Bilderna byts ut till riktiga foton från våra senaste
-          installationer löpande. Vill du att din installation ska få vara
-          med? Säg till.
-        </p>
-      </Section>
+      {/* Bilder från installationer. Fylls från /admin/media → gruppen
+          "Installationer (om-oss)"; alt-texten blir bildtext. Bara
+          uppladdade foton renderas, och utan foton renderas inte sektionen
+          alls – tidigare stod här fyra tomma grå rutor med bildtexter om
+          specifika installationer, vilket designgenomgången (sep 2026)
+          flaggade. */}
+      {installationPhotos.length > 0 && (
+        <Section
+          eyebrow="En vanlig vecka"
+          title={<>Färdiga batteriinstallationer hos våra kunder.</>}
+          intro="Vi dokumenterar varje arbete vi släpper ifrån oss. När vi är klara ska elskåpet vara snyggare än när vi kom."
+          className="!py-16 md:!py-20"
+        >
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+            {installationPhotos.map((photo) => (
+              <figure
+                key={photo.slotId}
+                className="aspect-[4/5] rounded-2xl overflow-hidden border border-ink/10 bg-cream relative"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={photo.url}
+                  alt={photo.alt || "Installation av Optimera Energi"}
+                  loading="lazy"
+                  decoding="async"
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+                {photo.alt && (
+                  <figcaption className="absolute inset-x-0 bottom-0 p-3 pt-8 text-[12.5px] text-bone leading-snug bg-gradient-to-t from-ink/75 via-ink/40 to-transparent">
+                    {photo.alt}
+                  </figcaption>
+                )}
+              </figure>
+            ))}
+          </div>
+        </Section>
+      )}
 
       {/* Tidslinje */}
       <Section

@@ -6,7 +6,7 @@ export default function NotFound() {
       <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink/55">
         404 · ingen sida här
       </div>
-      <h1 className="mt-5 font-display text-[64px] md:text-[120px] tracking-display-tight leading-[0.9]">
+      <h1 className="mt-5 font-display text-[64px] md:text-[120px] tracking-display-tight leading-[1.15]">
         Strömmen gick.
       </h1>
       <p className="mt-6 max-w-xl mx-auto text-ink/65">

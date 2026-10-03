@@ -34,7 +34,7 @@ export function DemoSection({
     >
       {eyebrow && <div className="eyebrow mb-4">{eyebrow}</div>}
       {title && (
-        <h2 className="font-display text-[28px] md:text-[40px] tracking-display-tight leading-[1.12]">
+        <h2 className="font-display text-[28px] md:text-[40px] tracking-display-tight leading-[1.15]">
           {title}
         </h2>
       )}

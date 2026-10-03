@@ -105,7 +105,7 @@ export default async function AdminFunnelPage() {
           >
             <ArrowLeft size={14} /> Admin
           </Link>
-          <h1 className="mt-4 font-display text-[44px] md:text-[64px] tracking-display-tight leading-[1.05]">
+          <h1 className="mt-4 font-display text-[44px] md:text-[64px] tracking-display-tight leading-[1.15]">
             Funnel-statistik.
           </h1>
           <p className="mt-4 text-ink/65 max-w-2xl leading-relaxed">

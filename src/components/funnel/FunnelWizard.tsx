@@ -291,7 +291,7 @@ function StepBehov({
 }) {
   return (
     <div>
-      <h1 className="font-display text-3xl md:text-4xl tracking-display-tight">
+      <h1 className="font-display text-3xl md:text-4xl tracking-display-tight leading-[1.15]">
         {funnel.headline}
       </h1>
       <p className="mt-3 text-ink/65 text-[15px] leading-relaxed">{funnel.intro}</p>
@@ -367,7 +367,7 @@ function StepBehov({
 function StepVag({ path, onSelect }: { path: Path; onSelect: (p: Path) => void }) {
   return (
     <div>
-      <h2 className="font-display text-3xl md:text-4xl tracking-display-tight">
+      <h2 className="font-display text-3xl md:text-4xl tracking-display-tight leading-[1.15]">
         Hur vill du gå vidare?
       </h2>
       <p className="mt-3 text-ink/65 text-[15px] leading-relaxed">
@@ -496,7 +496,7 @@ function StepHem({
 }) {
   return (
     <div>
-      <h2 className="font-display text-3xl md:text-4xl tracking-display-tight">
+      <h2 className="font-display text-3xl md:text-4xl tracking-display-tight leading-[1.15]">
         Om ditt hem.
       </h2>
 
@@ -589,7 +589,7 @@ function StepHem({
 function StepKontakt({ quick }: { quick: boolean }) {
   return (
     <div>
-      <h2 className="font-display text-3xl md:text-4xl tracking-display-tight">
+      <h2 className="font-display text-3xl md:text-4xl tracking-display-tight leading-[1.15]">
         {quick ? "Vi hör av oss." : "Nästan klart."}
       </h2>
       <p className="mt-3 text-ink/65 text-[15px] leading-relaxed">

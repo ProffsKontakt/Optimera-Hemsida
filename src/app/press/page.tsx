@@ -48,10 +48,9 @@ export default function PressPage() {
       <section className="container-edge pt-12 md:pt-20 pb-16">
         <div className="max-w-3xl">
           <div className="eyebrow">Press · För journalister</div>
-          <h1 className="mt-5 font-display text-[44px] md:text-[80px] tracking-display-tight leading-[1.05]">
+          <h1 className="mt-5 font-display text-[44px] md:text-[80px] tracking-display-tight leading-[1.15]">
             Press,
-            <br />
-            <span className="italic font-serif text-indigo">utan omvägar.</span>
+            <span className="block italic font-serif text-indigo">utan omvägar.</span>
           </h1>
           <p className="mt-6 max-w-2xl text-ink/70 text-lg leading-relaxed">
             Skriver du om Optimera Energi? Här hittar du pressmaterial,

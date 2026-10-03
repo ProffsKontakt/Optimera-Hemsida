@@ -15,10 +15,9 @@ export default function OffertKlarPage() {
     <section className="container-edge pt-12 md:pt-20 pb-32">
       <div className="max-w-3xl">
         <div className="eyebrow">Offert · mottagen</div>
-        <h1 className="mt-5 font-display text-[56px] md:text-[88px] tracking-display-tight leading-[1.05]">
+        <h1 className="mt-5 font-display text-[56px] md:text-[88px] tracking-display-tight leading-[1.15]">
           Tack, vi
-          <br />
-          <span className="italic font-serif text-indigo">hörs snart.</span>
+          <span className="block italic font-serif text-indigo">hörs snart.</span>
         </h1>
       </div>
       <div className="mt-10">

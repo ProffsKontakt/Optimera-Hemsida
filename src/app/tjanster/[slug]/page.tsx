@@ -102,7 +102,7 @@ export default function ServicePage({
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
           <div className="lg:col-span-7">
             <div className="eyebrow">Tjänst · {s.badge}</div>
-            <h1 className="mt-5 font-display text-[56px] md:text-[88px] tracking-display-tight leading-[1.05]">
+            <h1 className="mt-5 font-display text-[56px] md:text-[88px] tracking-display-tight leading-[1.15]">
               {s.name}{" "}
               <span className="italic font-serif text-indigo">
                 i Stockholm.
@@ -313,7 +313,7 @@ export default function ServicePage({
                   <span className="inline-flex items-center gap-1.5 rounded-full bg-sun px-3 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-ink">
                     ★ Vår rekommendation
                   </span>
-                  <div className="mt-4 font-serif italic text-5xl md:text-6xl text-indigo leading-none">
+                  <div className="mt-4 font-serif italic text-5xl md:text-6xl text-indigo leading-none md:leading-none">
                     Easyway
                   </div>
                   <p className="mt-4 text-[15.5px] leading-relaxed text-ink/70">
@@ -474,9 +474,11 @@ export default function ServicePage({
                 <h3 className="mt-1 font-display text-2xl tracking-display-tight">
                   JA Solar, glas-glas.
                 </h3>
+                {/* "– samma pris per panel oavsett modell" borttaget här: det
+                    står redan i "Per panel"-prisrutan i sektionen ovanför. */}
                 <p className="mt-2 text-[14.5px] text-ink/70 leading-relaxed max-w-xl">
                   30 års produktgaranti, minst 87 % effekt efter 30 år och
-                  helsvart utförande – samma pris per panel oavsett modell.
+                  helsvart utförande.
                 </p>
               </div>
               <Link
@@ -496,11 +498,17 @@ export default function ServicePage({
         eyebrow="Så jobbar vi"
         title={<span id="sa-jobbar-vi" className="scroll-mt-32">Fyra steg, ärligt prisad.</span>}
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        {/* Subgrid: nummer, rubrik och brödtext ligger på samma rader i alla
+            kort. Utan det började brödtexten lägre i kort 04 ("Aktivering
+            av smartstyrning" bryts på två rader) – korten var lika höga men
+            innehållet hoppade. md:gap-y-0 på korten: annars ärver subgriden
+            förälderns radavstånd (gap-5) mellan sina egna rader, ovanpå
+            elementens marginaler. */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 md:[grid-template-rows:repeat(2,auto_auto_auto)] lg:[grid-template-rows:auto_auto_auto]">
           {s.workflow.map((w, i) => (
             <div
               key={w.step}
-              className="rounded-3xl border border-ink/10 bg-bone p-7"
+              className="rounded-3xl border border-ink/10 bg-bone p-7 md:grid md:row-span-3 md:[grid-template-rows:subgrid] md:gap-y-0"
             >
               {/* Färgad nummer-nod (samma palett som startsidans resa). */}
               <span
@@ -524,7 +532,15 @@ export default function ServicePage({
       {/* Cream-band även här – växlande bakgrund ger segmenten egna zoner. */}
       <div className="bg-cream/45 border-y border-ink/5">
       <Section eyebrow="Vad du får" title={<>Inte bara specifikationer – så det faktiskt beter sig.</>}>
-        <ul className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        {/* Kolumnantal efter antal kort: laddboxar har fyra highlights, och
+            i ett tre-kolumnsrutnät hamnade det fjärde ensamt på en egen rad. */}
+        <ul
+          className={`grid grid-cols-1 gap-5 ${
+            s.highlights.length === 4
+              ? "md:grid-cols-2 lg:grid-cols-4"
+              : "md:grid-cols-3"
+          }`}
+        >
           {s.highlights.map((h, i) => (
             <li
               key={i}

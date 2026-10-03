@@ -18,7 +18,7 @@ const items = [
     eyebrow: "02 · Förståelse först",
     title: "Vi förstår er situation innan vi pratar lösning.",
     body:
-      "Innan vi pratar lösning vill vi förstå er situation. Vi räknar på er förbrukning, kartlägger ert hus, och ser om lösningen passar er. Först då lägger vi ett konkret förslag, med en klar förklaring av varför andra alternativ inte når lika långt.",
+      "Vi räknar på er förbrukning, kartlägger ert hus, och ser om lösningen passar er. Först då lägger vi ett konkret förslag, med en klar förklaring av varför andra alternativ inte når lika långt.",
   },
   {
     eyebrow: "03 · Hand-plockat sortiment",
@@ -39,12 +39,15 @@ export function DemoManifesto() {
   // kolumner, så blocken får en gemensam baslinje i stället för att sluta
   // huller om buller. Raderna deklareras per brytpunkt eftersom antalet
   // kortrader ändras (2 kolumner = 2 rader, 4 kolumner = 1 rad).
+  // md:gap-y-0 på varje kolumn: en subgrid ärver annars förälderns
+  // radavstånd (gap-y-12 = 48px) MELLAN sina egna rader, vilket la
+  // ~60px extra luft mellan etikett, rubrik och brödtext.
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12 md:[grid-template-rows:repeat(2,auto_auto_1fr)] lg:[grid-template-rows:auto_auto_1fr]">
       {items.map((it, i) => (
         <motion.div
           key={it.eyebrow}
-          className="md:grid md:row-span-3 md:[grid-template-rows:subgrid]"
+          className="md:grid md:row-span-3 md:[grid-template-rows:subgrid] md:gap-y-0"
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}

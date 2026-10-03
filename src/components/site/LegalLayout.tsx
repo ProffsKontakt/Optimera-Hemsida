@@ -19,7 +19,7 @@ export function LegalLayout({
     <article className="container-edge py-16 md:py-24">
       <header className="max-w-3xl">
         <div className="eyebrow">{eyebrow}</div>
-        <h1 className="mt-5 font-display text-[40px] md:text-[64px] tracking-display-tight leading-[1] mb-3">
+        <h1 className="mt-5 font-display text-[40px] md:text-[64px] tracking-display-tight leading-[1.15] mb-3">
           {title}
         </h1>
         <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink/55">

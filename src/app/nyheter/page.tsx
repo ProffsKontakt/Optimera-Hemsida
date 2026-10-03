@@ -45,10 +45,9 @@ export default function NewsHubPage() {
       <section className="container-edge pt-12 md:pt-20 pb-12">
         <div className="max-w-3xl">
           <div className="eyebrow">Nyheter · Kunskapsbas</div>
-          <h1 className="mt-5 font-display text-[44px] sm:text-[56px] md:text-[80px] tracking-display-tight leading-[1.05]">
+          <h1 className="mt-5 font-display text-[44px] sm:text-[56px] md:text-[80px] tracking-display-tight leading-[1.15]">
             Nyheterna som påverkar
-            <br />
-            <span className="italic font-serif text-indigo">
+            <span className="block italic font-serif text-indigo">
               din elräkning.
             </span>
           </h1>

@@ -34,8 +34,9 @@ export const SERVICES: Service[] = [
       "Optimering per panel där skugga gör skada",
       "Snyggt dolda kabelvägar – vi syr ihop arkitekturen",
     ],
+    // "Modulnivå-optimering" borttaget – samma sak som highlight-kortet
+    // "Optimering per panel där skugga gör skada" direkt ovanför chipsen.
     bullets: [
-      "Modulnivå-optimering",
       "MID-godkända mätare",
       "Anmälan till nätägare ingår",
       "Drönarbesiktning av tak",
@@ -94,8 +95,9 @@ export const SERVICES: Service[] = [
       "Stödtjänster (FCR-D, aFRR) kan ge intäkter ovanpå besparingen",
       "Skalbart från 5 kWh till 50 kWh",
     ],
+    // "Skalbart 5–50 kWh" borttaget – highlight-kortet "Skalbart från 5 kWh
+    // till 50 kWh" står precis ovanför chipsen på tjänstesidan.
     bullets: [
-      "Skalbart 5–50 kWh",
       "Cykelgaranti 6000+",
       "Smart styrning mot spotpris",
       "Fjärrövervakning från vår jourcentral",

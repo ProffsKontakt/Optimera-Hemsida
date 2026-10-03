@@ -45,7 +45,7 @@ export default function StudioPage() {
       <section className="container-edge pt-12 md:pt-20 pb-10">
         <div className="max-w-3xl">
           <div className="eyebrow">Studio · internt</div>
-          <h1 className="mt-5 font-display text-[44px] md:text-[72px] tracking-display-tight leading-[1.05]">
+          <h1 className="mt-5 font-display text-[44px] md:text-[72px] tracking-display-tight leading-[1.15]">
             Higgsfield-verkstaden.
           </h1>
           <p className="mt-6 max-w-xl text-ink/70 text-lg leading-relaxed">

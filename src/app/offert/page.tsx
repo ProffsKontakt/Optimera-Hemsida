@@ -30,10 +30,9 @@ export default function OffertPage({
       <section className="container-edge pt-12 md:pt-20 pb-10">
         <div className="max-w-3xl">
           <div className="eyebrow">Offert · hembesök · gratis</div>
-          <h1 className="mt-5 font-display text-[56px] md:text-[88px] tracking-display-tight leading-[1.05]">
+          <h1 className="mt-5 font-display text-[44px] sm:text-[56px] md:text-[88px] tracking-display-tight leading-[1.15]">
             Berätta vad du
-            <br />
-            <span className="italic font-serif text-indigo">drömmer om.</span>
+            <span className="block italic font-serif text-indigo">drömmer om.</span>
           </h1>
           <p className="mt-6 max-w-2xl text-ink/70 text-lg leading-relaxed">
             Välj en tid som passar er nedan, så ringer vi dagen innan och

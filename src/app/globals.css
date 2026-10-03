@@ -163,8 +163,12 @@
       ensamt slutord (balance är för dyrt på långa stycken och kapas ändå av
       webbläsaren efter ~6 rader).
 
-   2. Explicita <br> i en rubrik står kvar; balance jämnar ut inom varje
-      segment, så hero-rubrikens tvingade brytning påverkas inte.
+   2. Använd INTE <br> för att tvinga ny rad i en rubrik. balance räknar
+      hela rubriken som en enhet, och den längsta tvingade raden låser
+      bredden – så en kursiv andra del kunde bryta som "sol och batteri i" /
+      "Stockholm." med stadsnamnet ensamt. Gör i stället den andra delen till
+      ett eget block: <span className="block italic font-serif …">. Då
+      börjar den på ny rad precis som förut, men balanseras för sig.
    --------------------------------------------------------------------------- */
 h1,
 h2,
@@ -177,6 +181,10 @@ h4,
 p,
 li,
 blockquote,
-figcaption {
+figcaption,
+blockquote.font-display {
+  /* blockquote.font-display: recensionscitaten har rubriktypsnittet men är
+     brödtext. balance slutar verka efter ~6 rader (webbläsarens gräns), så
+     långa citat fick ensamma slutord – pretty är byggt för just det. */
   text-wrap: pretty;
 }

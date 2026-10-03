@@ -198,11 +198,11 @@ export function Testimonials({ reviews }: { reviews: TestimonialItem[] }) {
                   <div className="font-display text-5xl text-indigo leading-none">"</div>
                   {q.rating ? (
                     <span
-                      className="text-[#47c645] text-[15px] tracking-[0.1em] pt-1"
+                      className="text-amber-deep text-[15px] tracking-[0.1em] pt-1"
                       aria-label={`${q.rating} av 5 stjärnor`}
                     >
                       {"★".repeat(q.rating)}
-                      <span className="text-ink/15">{"★".repeat(5 - q.rating)}</span>
+                      <span className="text-ink/10">{"★".repeat(5 - q.rating)}</span>
                     </span>
                   ) : null}
                 </div>

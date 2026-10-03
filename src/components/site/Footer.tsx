@@ -54,7 +54,7 @@ export function Footer() {
           {/* Ingen hårdkodad <br> här: den tvingade fram "hållning." ensamt
               på en tredje rad. text-wrap: balance (globals.css) fördelar
               raderna jämnt i stället, vid varje spaltbredd. */}
-          <div className="font-display text-4xl md:text-5xl tracking-display-tight leading-[1.05]">
+          <div className="font-display text-4xl md:text-5xl tracking-display-tight leading-[1.15]">
             Energin är inte bara ström – den är en hållning.
           </div>
           <p className="mt-6 text-ink/65 max-w-md text-[15px] leading-relaxed">

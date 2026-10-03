@@ -86,7 +86,7 @@ export default function HomePage() {
         <div className="mt-8 flex items-center gap-4">
           <RecoBadge size={66} tilt className="md:hidden" />
           <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[14px] text-ink/60">
-            <span className="text-[#47c645]">★</span>
+            <span className="text-amber-deep">★</span>
             <span>4,8 av 5 i betyg (14 omdömen) på</span>
             {/* Officiella Reco-loggan (hämtad från reco.se). */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -105,7 +105,12 @@ export default function HomePage() {
       </DemoSection>
 
       {/* Systemet: sol + batteri + laddbox som EN helhet. Ersätter den
-          gamla tjänste-griden; korten länkar till tjänstesidorna. */}
+          gamla tjänste-griden; korten länkar till tjänstesidorna.
+          Ingen ingress: den sa "Tillsammans gör de villan inte bara
+          energisnål – den kan till och med gå plus över året", alltså
+          ordagrant samma poäng som bannern längst ned i sektionen.
+          Rubriken + de tre korten bär upplägget; bannern levererar
+          slutsatsen en gång. */}
       <DemoSection
         eyebrow="Så går det ihop"
         title={
@@ -114,7 +119,6 @@ export default function HomePage() {
             <span className="italic font-serif text-indigo">Ett system.</span>
           </>
         }
-        intro="Var för sig sänker de räkningen. Tillsammans gör de villan inte bara energisnål – den kan till och med gå plus över året."
       >
         <EnergySystem />
       </DemoSection>

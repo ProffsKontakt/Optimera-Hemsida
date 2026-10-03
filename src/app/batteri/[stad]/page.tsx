@@ -92,10 +92,9 @@ export default function BatteryCityPage({
           <div className="eyebrow flex items-center gap-2">
             <MapPin size={12} /> {city.region}
           </div>
-          <h1 className="mt-5 font-display text-[44px] sm:text-[56px] md:text-[80px] tracking-display-tight leading-[1.05]">
+          <h1 className="mt-5 font-display text-[44px] sm:text-[56px] md:text-[80px] tracking-display-tight leading-[1.15]">
             Batteri {city.preposition} {city.name},
-            <br />
-            <span className="italic font-serif text-indigo">
+            <span className="block italic font-serif text-indigo">
               som tjänar pengar.
             </span>
           </h1>
