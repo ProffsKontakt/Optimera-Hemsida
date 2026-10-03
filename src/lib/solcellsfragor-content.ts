@@ -27,7 +27,7 @@ export const QUESTIONS: SolarQuestion[] = [
         h2: "Villkor att känna till",
         paragraphs: ["Avdraget gäller bara när vissa villkor är uppfyllda:"],
         bullets: [
-          "Du äger småhuset eller ägarlägenheten, och installationen görs för ditt eget hushåll eller dina föräldrars.",
+          "Du äger småhuset eller ägarlägenheten, eller har bostadsrätten, och installationen görs för ditt eget hushåll eller dina föräldrars. För bostadsrätt ska installationen vara kopplad till just din lägenhet och följa med vid en försäljning.",
           "Anläggningen ska vara nätansluten, och installationen färdigställd och slutbetald.",
           "Bara arbete och material räknas – inte frakt, resor, maskiner eller projektering.",
         ],
