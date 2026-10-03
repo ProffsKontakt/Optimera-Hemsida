@@ -19,7 +19,7 @@ import { X } from "lucide-react";
 const TERMS: Record<string, { title: string; body: string; href?: string }> = {
   "gront-avdrag": {
     title: "Grönt avdrag",
-    body: "Statligt avdrag för grön teknik som dras direkt på fakturan – 14,55 % för solceller och 48,5 % för batteri och laddbox. Taket är 50 000 kr per fastighetsägare och år.",
+    body: "Statligt avdrag för grön teknik som dras direkt på fakturan – 14,55 % för solceller och 48,5 % för batteri och laddbox. Taket är 50 000 kr per person och år.",
     href: "/solcellsfragor/bidrag-for-solceller",
   },
   stodtjanster: {
