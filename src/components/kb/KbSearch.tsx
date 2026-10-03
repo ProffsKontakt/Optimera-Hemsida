@@ -37,6 +37,8 @@ function normalize(s: string): string {
     .normalize("NFD")
     .replace(/[̀-ͯ]/g, "")
     .replace(/[^a-z0-9]+/g, " ")
+    // "20 000" och "20000" ska ge samma träff.
+    .replace(/(\d) (?=\d{3}\b)/g, "$1")
     .trim();
 }
 
