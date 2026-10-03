@@ -57,6 +57,55 @@ export type NewsArticle = {
 
 export const NEWS: NewsArticle[] = [
   {
+    slug: "andersson-sonderar-igen-statsministeromrostning-tidslinje",
+    status: "published",
+    title:
+      "Andersson sonderar igen – nu finns en tidslinje: omröstning tidigast den 14 oktober",
+    excerpt:
+      "Efter en vecka där ingen ville ta sonderingsuppdraget fick Magdalena Andersson tillbaka det i fredags: formell start måndag den 5 oktober, återrapport senast den 12:e – och en statsministeromröstning kan komma tidigast den 14 oktober. Vi går igenom den nya tidslinjen, Centerpartiets utspel och vad datumen betyder för dina elstöd och din kalkyl.",
+    category: "Valet 2026",
+    publishedAt: "2026-10-03",
+    updatedAt: "2026-10-03",
+    readTimeMin: 5,
+    image: {
+      src: "/news/andersson-sonderar-igen-statsministeromrostning-tidslinje.jpg",
+      alt: "Stående solpaneler i rad mot djupblå hösthimmel medan röda och gula löv virvlar förbi",
+    },
+    sources: [
+      {
+        title: "Talmannen håller pressträff om sonderingsuppdraget",
+        publisher: "TV4 Nyheterna",
+        url: "https://www.tv4.se/artikel/1vTaygMHQHj4VhfJdYJuDO/talmannen-haller-presstraeff",
+      },
+      {
+        title: "Regeringsbildningen: Inget besked från talmannen",
+        publisher: "SVT Nyheter",
+        url: "https://www.svt.se/nyheter/inrikes/senaste-nytt-om-val-2026?inlagg=35b63a7593913e1fe10c18489bde5660",
+      },
+      {
+        title: "”Vill ingen bilda regering?” Talmannen inleder nya samtal",
+        publisher: "SVT Nyheter",
+        url: "https://www.svt.se/nyheter/inrikes/vill-ingen-bilda-regering-talmannen-inleder-nya-samtal",
+      },
+      {
+        title:
+          "Analys: ”Frågan är när talmannen tar till sitt skarpaste vapen”",
+        publisher: "SVT Nyheter",
+        url: "https://www.svt.se/nyheter/inrikes/fragan-ar-nar-talmannen-tar-till-sitt-skarpaste-vapen",
+      },
+      {
+        title: "Ödesdatumet: Då får M göra budgeten på walk-over",
+        publisher: "Dagens PS",
+        url: "https://www.dagensps.se/varlden/politik/odesdatumet-da-far-m-gora-budgeten-pa-walk-over/",
+      },
+      {
+        title: "Vad händer med priset på solpaneler och batterier hösten 2026?",
+        publisher: "Senergia",
+        url: "https://senergia.se/teknikblogg/vad-hander-med-priset-pa-solpaneler-och-batterier-hosten-2026/",
+      },
+    ],
+  },
+  {
     slug: "regeringsbildningen-last-budgeten-12-november-elstoden",
     status: "published",
     title:

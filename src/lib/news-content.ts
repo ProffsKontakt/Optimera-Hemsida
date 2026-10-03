@@ -28,6 +28,70 @@ export type NewsContent = {
 };
 
 const CONTENT: Record<string, NewsContent> = {
+  "andersson-sonderar-igen-statsministeromrostning-tidslinje": {
+    tldr: [
+      "I fredags fick Magdalena Andersson (S) tillbaka sonderingsuppdraget – en knapp vecka efter att hon lämnat det. Uppdraget inleds formellt måndag den 5 oktober och ska rapporteras till talmannen senast den 12 oktober. Därefter väntar en statsministeromröstning i riksdagen – tidigast den 14 oktober.",
+      "Talmannens motivering: förutsättningarna är desamma som när Andersson först fick uppdraget – samma valresultat, samma mandatfördelning (176–173) och samma partier som pekar på henne. Parallellt har Centerpartiet bjudit in S, V och MP till gemensamma samtal, den första synliga rörelsen efter talmansvalets förtroendekris.",
+      "För din kalkyl: inget är ändrat i stöden, men osäkerheten har fått datum – 12 oktober (rapport), 14 oktober (tidigaste omröstning) och 12 november (budgetdeadline). Och hårdvarupriserna väntar inte på politiken: branschbedömningen är att de slutat falla.",
+    ],
+    sections: [
+      {
+        h2: "Veckan då ingen ville sondera",
+        body: [
+          "Förra artikeln slutade i ett läge där ingen tog bollen – och så förblev det i flera dagar. Andersson motiverade sitt återlämnande öppet: ”När Vänsterpartiet valde att lämna föll poängen med min sondering”, och pekade på Kristersson som given kandidat. Kristersson pekade tillbaka på de fyra partier som ”på valnatten sa att de vunnit valet” – alltså den rödgröna sidans 176 mandat. Två ledare, samma svar: inte jag, utan du.",
+          "Onsdagens överläggningar hos talmannen gav inget besked. I stället meddelade Andreas Norlén att han skulle överväga nästa steg under informella samtal med partiföreträdarna och återkomma senare i veckan. SVT:s analys satte samtidigt fingret på talmannens yttersta verktyg: att helt enkelt sätta ut ett datum för en statsministeromröstning och tvinga fram ett avgörande.",
+        ],
+      },
+      {
+        h2: "Beskedet: Andersson får bollen igen",
+        body: [
+          "I fredags kom beskedet på talmannens pressträff: sonderingsuppdraget går tillbaka till Magdalena Andersson. Uppdraget inleds formellt måndag den 5 oktober och ska rapporteras till talmannen senast måndag den 12 oktober – då kan hon antingen slutrapportera eller begära förlängd tid. Efter sonderingen genomförs en statsministeromröstning i riksdagen.",
+          "Motiveringen var torrt konstitutionell: förutsättningarna är identiska med när Andersson först fick uppdraget – samma valresultat, samma mandatfördelning och samma partier som pekar på henne som statsministerkandidat med riksdagsmajoritet bakom sig. Enligt SVT kan en statsministeromröstning hållas tidigast den 14 oktober. Och grundlagens ram står kvar: efter fyra nedröstade statsministerförslag väntar extra val – ett tryck på alla inblandade att kompromissa innan dess.",
+        ],
+      },
+      {
+        h2: "Centerpartiets utspel – en spricka som lagas?",
+        body: [
+          "Parallellt med talmannens samtal gjorde Centerpartiet något som kan visa sig viktigare än veckans formalia: partiet bjöd in Socialdemokraterna, Vänsterpartiet och Miljöpartiet till ett gemensamt möte om samhällsutmaningar och läget i Sverige. Det är den första synliga rörelsen mot att de fyra partier som tillsammans håller 176 mandat försöker hitta formerna igen efter talmansvalets öppna förtroendekris mellan S och V.",
+          "Vad mötet leder till vet ingen ännu – källäget säger att inbjudan skett, inte vad den ger. Men att sonderingen nu återupptas samtidigt som de fyra partierna börjar tala med varandra igen är det första tecknet sedan valnatten på att den majoritet som finns på pappret också kan bli en regering i praktiken. Vi skriver det som det är: ett tecken, inte ett besked.",
+        ],
+      },
+      {
+        h2: "Tidslinjen som påverkar dina elstöd",
+        body: [
+          "För första gången sedan valet finns nu en konkret tidslinje att förhålla sig till. Så länge den löper gäller samma besked som tidigare i serien: grönt avdrag på 14,55 procent för solceller och 48,5 procent för batteri och laddbox ligger fast, och inga nya stöd eller nedskärningar kan beslutas förrän en tillträdd regering lägger en budget som riksdagen antar.",
+        ],
+        bullets: [
+          "Måndag 5 oktober: Anderssons sonderingsuppdrag inleds formellt.",
+          "Måndag 12 oktober: senaste dag för återrapport – slutrapport eller förlängning.",
+          "Tidigast 14 oktober: statsministeromröstning i riksdagen.",
+          "12 november: budgetpropositionen för 2027 måste lämnas – utan regering blir det en avskalad övergångsbudget utan nya reformer.",
+        ],
+      },
+      {
+        h2: "Vad betyder det för din kalkyl?",
+        body: [
+          "Politiskt är läget alltså oförändrat stabilt på kort sikt: reglerna du räknar på i dag kan i praktiken inte ändras före årsskiftet. Men hårdvarusidan rör sig oberoende av Rosenbad. Grossisten Senergia bedömde i september att priserna har slutat falla – med gradvis normalisering uppåt för paneler och större uppåtrisk för batterier. Utöver de kinesiska momsrabatter som fasas ut (batterier helt den 1 januari 2027, som vi rapporterat) infördes den 1 september en kinesisk konsumtionsskatt på 2 procent för batterier, och motsvarande skatt träffar solpaneler den 1 april 2027.",
+          "Branschrådet därifrån är rakt: vänta inte på prisfall. Vårt råd är som vanligt lugnare – räkna på ditt eget hus med dagens regler och dagens priser. Båda är ovanligt förutsägbara just nu, och det är mer än man kunnat säga om svensk energipolitik på länge. Vi bevakar sonderingen och uppdaterar när tidslinjen ger besked.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "När kan Sverige tidigast få en ny statsminister?",
+        a: "Sonderingen pågår formellt 5–12 oktober, och en statsministeromröstning kan enligt SVT hållas tidigast den 14 oktober. Går allt i lås kan en regering alltså tillträda i mitten av oktober – men sonderingen kan också förlängas, och efter fyra nedröstade statsministerförslag väntar extra val. Efter valet 2018 tog processen 134 dagar.",
+      },
+      {
+        q: "Ändras gröna avdraget av att Andersson sonderar?",
+        a: "Nej. En sondering är inte regeringsmakt – avdraget på 14,55 procent för solceller och 48,5 procent för batteri och laddbox (tak 50 000 kronor per person och år) gäller tills en tillträdd regering får igenom en ändring i riksdagen, och en övergångsbudget får enligt praxis inte innehålla nya reformer.",
+      },
+      {
+        q: "Ska jag vänta med solceller eller batteri tills regeringsfrågan är löst?",
+        a: "Det finns inget i källäget som talar för att väntan lönar sig: stöden är oförändrade, och branschbedömningen är att hårdvarupriserna slutat falla, med uppåtrisk för batterier när kinesiska skatter och rabattavvecklingar slår igenom. Osäkerheten gäller 2027 års politik – den som vill ha dagens villkor låser dem genom att räkna och beställa på dem.",
+      },
+    ],
+  },
+
   "regeringsbildningen-last-budgeten-12-november-elstoden": {
     tldr: [
       "Talmansvalet den 28 september blev startskottet för ett låst läge: Andreas Norlén (M) omvaldes med 200 röster mot 146 sedan Vänsterpartiet stött honom i stället för Socialdemokraternas kandidat – och samma dag lämnade Magdalena Andersson tillbaka sonderingsuppdraget. I dag onsdag håller talmannen nya överläggningar med partiledarna.",
