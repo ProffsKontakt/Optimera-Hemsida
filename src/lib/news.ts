@@ -48,6 +48,13 @@ export type NewsArticle = {
    */
   image?: { src: string; alt: string };
   /**
+   * Sökfrågor artikeln är skriven för att besvara, hämtade från aktuella
+   * söktrender (Google-autocomplete sv/SE) vid publicering. Frågorna ska
+   * återfinnas ordagrant eller nära ordagrant i rubrik, H2:or eller FAQ.
+   * Läggs som keywords i NewsArticle-schemat.
+   */
+  searchPhrases?: string[];
+  /**
    * Källorna artikeln bygger på. Visas i artikelns källblock och läggs i
    * NewsArticle-schemats citation – trovärdighetssignal för läsare,
    * Google och AI-search.
@@ -60,17 +67,28 @@ export const NEWS: NewsArticle[] = [
     slug: "andersson-sonderar-igen-statsministeromrostning-tidslinje",
     status: "published",
     title:
-      "Andersson sonderar igen – nu finns en tidslinje: omröstning tidigast den 14 oktober",
+      "När blir det ny regering? Andersson sonderar igen – statsministeromröstning tidigast 14 oktober",
     excerpt:
-      "Efter en vecka där ingen ville ta sonderingsuppdraget fick Magdalena Andersson tillbaka det i fredags: formell start måndag den 5 oktober, återrapport senast den 12:e – och en statsministeromröstning kan komma tidigast den 14 oktober. Vi går igenom den nya tidslinjen, Centerpartiets utspel och vad datumen betyder för dina elstöd och din kalkyl.",
+      "Efter en vecka där ingen ville ta sonderingsuppdraget fick Magdalena Andersson tillbaka det i fredags. Nu finns en tidslinje för ny regering 2026: formell start den 5 oktober, återrapport senast den 12:e och statsministeromröstning tidigast den 14 oktober. Vi förklarar vad ett sonderingsuppdrag är, hur omröstningen går till och vad det betyder för dina elstöd.",
     category: "Valet 2026",
     publishedAt: "2026-10-03",
     updatedAt: "2026-10-03",
-    readTimeMin: 5,
+    readTimeMin: 6,
     image: {
       src: "/news/andersson-sonderar-igen-statsministeromrostning-tidslinje.jpg",
       alt: "Stående solpaneler i rad mot djupblå hösthimmel medan röda och gula löv virvlar förbi",
     },
+    searchPhrases: [
+      "när blir det ny regering efter valet",
+      "ny regering 2026",
+      "vem blir statsminister",
+      "statsministeromröstning",
+      "sonderingsuppdrag mening",
+      "hur många statsministeromröstningar innan nyval",
+      "extra val 2026",
+      "regeringsbildning 2026",
+      "längsta regeringsbildningen",
+    ],
     sources: [
       {
         title: "Talmannen håller pressträff om sonderingsuppdraget",
@@ -94,9 +112,29 @@ export const NEWS: NewsArticle[] = [
         url: "https://www.svt.se/nyheter/inrikes/fragan-ar-nar-talmannen-tar-till-sitt-skarpaste-vapen",
       },
       {
+        title: "Så bildas regeringen",
+        publisher: "Sveriges riksdag",
+        url: "https://www.riksdagen.se/sv/sa-fungerar-riksdagen/demokrati/sa-bildas-regeringen/",
+      },
+      {
+        title: "Extra val",
+        publisher: "Sveriges riksdag",
+        url: "https://www.riksdagen.se/sv/sa-fungerar-riksdagen/demokrati/val-till-riksdagen/extra-val/",
+      },
+      {
+        title: "Ny bok: 134 dagar – om regeringsbildningen efter valet 2018",
+        publisher: "Lunds universitet",
+        url: "https://www.svet.lu.se/artikel/ny-bok-134-dagar-om-regeringsbildningen-efter-valet-2018",
+      },
+      {
         title: "Ödesdatumet: Då får M göra budgeten på walk-over",
         publisher: "Dagens PS",
         url: "https://www.dagensps.se/varlden/politik/odesdatumet-da-far-m-gora-budgeten-pa-walk-over/",
+      },
+      {
+        title: "Så fungerar skattereduktionen för grön teknik",
+        publisher: "Skatteverket",
+        url: "https://www.skatteverket.se/privat/fastigheterochbostad/gronteknik/safungerarskattereduktionenforgronteknik.4.676f4884175c97df4192870.html",
       },
       {
         title: "Vad händer med priset på solpaneler och batterier hösten 2026?",
@@ -109,17 +147,27 @@ export const NEWS: NewsArticle[] = [
     slug: "regeringsbildningen-last-budgeten-12-november-elstoden",
     status: "published",
     title:
-      "Regeringsbildningen är låst – budgetklockan tickar mot 12 november. Så påverkas dina elstöd",
+      "Grönt avdrag 2027: budgeten ska läggas senast 12 november – med eller utan ny regering",
     excerpt:
-      "Talmansvalet är avgjort, sonderingsuppdraget är återlämnat och talmannen kallar i dag till nya överläggningar. Samtidigt tickar budgetklockan: senast den 12 november måste en budget för 2027 lämnas – finns ingen ny regering då blir det en avskalad övergångsbudget utan nya reformer. Vi går igenom vad det låsta läget betyder för gröna avdraget, elstöden och din vinterkalkyl.",
-    category: "Energipolitik",
-    publishedAt: "2026-09-30",
-    updatedAt: "2026-09-30",
+      "Vad händer med grönt avdrag 2027? Det avgörs i budgeten – och den måste lämnas till riksdagen senast den 12 november, mitt i en regeringsbildning där sonderingarna nyss börjat om. Utan ny regering blir det en avskalad övergångsbudget utan nya reformer. Vi går igenom vad det betyder för grönt avdrag, elstöden, elpriset i vinter och din kalkyl.",
+    category: "Stöd & avdrag",
+    publishedAt: "2026-10-03",
+    updatedAt: "2026-10-03",
     readTimeMin: 6,
     image: {
       src: "/news/regeringsbildningen-last-budgeten-12-november-elstoden.jpg",
       alt: "Glansiga solpaneler speglar en molnstrimmig kvällshimmel, gula höstlöv i förgrunden",
     },
+    searchPhrases: [
+      "grönt avdrag 2027",
+      "hur länge kommer grönt avdrag finnas",
+      "budgetpropositionen 2027",
+      "när kommer budgeten",
+      "vad är en övergångsregering",
+      "hur blir elpriset i vinter",
+      "elpriset i vinter 2026",
+      "högkostnadsskydd el",
+    ],
     sources: [
       {
         title: "Talmannen: ”Nya överläggningar på onsdag”",
@@ -137,9 +185,24 @@ export const NEWS: NewsArticle[] = [
         url: "https://www.riksdagen.se/sv/aktuellt/aktuelltnotiser/2026/sep/17/talmannen-inleder-process-for-regeringsbildning_cms6291f93c-a728-4498-a0b9-e30f36627e3fsv/",
       },
       {
+        title: "Talmannen håller pressträff om sonderingsuppdraget",
+        publisher: "TV4 Nyheterna",
+        url: "https://www.tv4.se/artikel/1vTaygMHQHj4VhfJdYJuDO/talmannen-haller-presstraeff",
+      },
+      {
         title: "Ödesdatumet: Då får M göra budgeten på walk-over",
         publisher: "Dagens PS",
         url: "https://www.dagensps.se/varlden/politik/odesdatumet-da-far-m-gora-budgeten-pa-walk-over/",
+      },
+      {
+        title: "Så fungerar skattereduktionen för grön teknik",
+        publisher: "Skatteverket",
+        url: "https://www.skatteverket.se/privat/fastigheterochbostad/gronteknik/safungerarskattereduktionenforgronteknik.4.676f4884175c97df4192870.html",
+      },
+      {
+        title: "Partiernas energipolitik inför valet 2026",
+        publisher: "Elbruk",
+        url: "https://www.elbruk.se/blogg/partiernas-energipolitik-2026",
       },
       {
         title: "Så blir elpriserna hösten och vintern 2026",
@@ -147,9 +210,9 @@ export const NEWS: NewsArticle[] = [
         url: "https://tibber.com/se/magazine/power-hacks/elpriser-host-vinter",
       },
       {
-        title: "Grönt avdrag 2026 – satser, regler & exempel",
-        publisher: "Energify",
-        url: "https://energify.se/artiklar/gront-avdrag-2026",
+        title: "Vad händer med priset på solpaneler och batterier hösten 2026?",
+        publisher: "Senergia",
+        url: "https://senergia.se/teknikblogg/vad-hander-med-priset-pa-solpaneler-och-batterier-hosten-2026/",
       },
     ],
   },
