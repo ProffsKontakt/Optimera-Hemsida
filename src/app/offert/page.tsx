@@ -30,7 +30,7 @@ export default function OffertPage({
       <section className="container-edge pt-12 md:pt-20 pb-10">
         <div className="max-w-3xl">
           <div className="eyebrow">Offert · hembesök · gratis</div>
-          <h1 className="mt-5 font-display text-[56px] md:text-[88px] tracking-display-tight leading-[0.95]">
+          <h1 className="mt-5 font-display text-[56px] md:text-[88px] tracking-display-tight leading-[1.05]">
             Berätta vad du
             <br />
             <span className="italic font-serif text-indigo">drömmer om.</span>

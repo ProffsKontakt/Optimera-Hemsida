@@ -20,7 +20,7 @@ export default function RingPage() {
         <span className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-indigo text-bone">
           <Phone size={22} />
         </span>
-        <h1 className="mt-6 font-display text-[40px] md:text-[56px] tracking-display-tight leading-[1.02]">
+        <h1 className="mt-6 font-display text-[40px] md:text-[56px] tracking-display-tight leading-[1.05]">
           Slå oss{" "}
           <span className="italic font-serif text-indigo">en signal.</span>
         </h1>

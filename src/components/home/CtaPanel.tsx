@@ -10,7 +10,7 @@ export function CtaPanel() {
           <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink/55">
             Nästa steg
           </div>
-          <h2 className="mt-4 font-display text-4xl md:text-6xl tracking-display-tight leading-[1.02]">
+          <h2 className="mt-4 font-display text-4xl md:text-6xl tracking-display-tight leading-[1.05]">
             Boka ett hembesök.
             <br />
             <span className="italic font-serif text-indigo">

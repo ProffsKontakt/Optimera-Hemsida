@@ -105,12 +105,14 @@ export function DemoHero({
               <img src="/reco.svg" alt="Reco" className="h-[15px] w-auto" />
             </a>
 
-            {/* Mobil: bara stora rubriken högst upp. Eyebrow endast desktop. */}
+            {/* Mobil: bara stora rubriken högst upp. Eyebrow endast desktop.
+                "Optimera Energi" stod tidigare även här – samma namn två
+                gånger inom 40px, direkt ovanför rubrikens första rad. */}
             <div className="eyebrow hidden md:block">
-              Optimera Energi · Byggd på kloka tankar · Stockholm 2026
+              Byggd på kloka tankar · Stockholm 2026
             </div>
 
-            <h1 className="mt-0 md:mt-6 font-display text-[44px] md:text-[64px] lg:text-[76px] leading-[1.02] tracking-display-tight">
+            <h1 className="mt-0 md:mt-6 font-display text-[44px] md:text-[64px] lg:text-[76px] leading-[1.05] tracking-display-tight">
               Optimera Energi,
               <br />
               <span className="italic font-serif text-indigo">
@@ -170,10 +172,13 @@ export function DemoHero({
                 </span>
               </a>
 
-              {/* Stats-raden – endast desktop. */}
-              <div className="mt-12 hidden md:grid grid-cols-3 max-w-md gap-2">
+              {/* Stats-raden – endast desktop. Reco-betyget låg tidigare även
+                  här ("4,8/5 i betyg på Reco") trots att pillen ovanför
+                  rubriken säger exakt samma sak med logotyp. Ett påstående,
+                  ett ställe – resten är siffror man inte får någon
+                  annanstans i vyn. */}
+              <div className="mt-12 hidden md:grid grid-cols-2 max-w-sm gap-2">
                 <Stat n="3" label="installationstjänster" />
-                <Stat n="4,8/5" label="i betyg på Reco" />
                 <Stat n="14d" label="från offert till tak" />
               </div>
             </div>

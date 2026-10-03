@@ -102,7 +102,7 @@ export default function ServicePage({
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
           <div className="lg:col-span-7">
             <div className="eyebrow">Tjänst · {s.badge}</div>
-            <h1 className="mt-5 font-display text-[56px] md:text-[88px] tracking-display-tight leading-[0.95]">
+            <h1 className="mt-5 font-display text-[56px] md:text-[88px] tracking-display-tight leading-[1.05]">
               {s.name}{" "}
               <span className="italic font-serif text-indigo">
                 i Stockholm.

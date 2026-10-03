@@ -78,7 +78,7 @@ export default function EasywayPage() {
         </Link>
         <div className="mt-8 max-w-3xl">
           <div className="eyebrow">Batteri · Vår rekommendation</div>
-          <h1 className="mt-5 font-display text-[56px] md:text-[88px] tracking-display-tight leading-[0.95]">
+          <h1 className="mt-5 font-display text-[56px] md:text-[88px] tracking-display-tight leading-[1.05]">
             Därför{" "}
             <span className="italic font-serif text-indigo">Easyway.</span>
           </h1>

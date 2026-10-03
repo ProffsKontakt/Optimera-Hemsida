@@ -31,7 +31,7 @@ export default function AdminMediaPage() {
           <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink/55">
             Internt · bilder
           </div>
-          <h1 className="mt-3 font-display text-[44px] md:text-[64px] tracking-display-tight leading-[0.95]">
+          <h1 className="mt-3 font-display text-[44px] md:text-[64px] tracking-display-tight leading-[1.05]">
             Media.
           </h1>
           <p className="mt-4 text-ink/65 max-w-2xl leading-relaxed">

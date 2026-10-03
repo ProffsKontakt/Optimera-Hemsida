@@ -20,7 +20,7 @@ export default async function AdminHome() {
           <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink/55">
             Internt · Optimera Energi
           </div>
-          <h1 className="mt-4 font-display text-[48px] md:text-[72px] tracking-display-tight leading-[0.95]">
+          <h1 className="mt-4 font-display text-[48px] md:text-[72px] tracking-display-tight leading-[1.05]">
             Bakom kulisserna.
           </h1>
           <p className="mt-5 text-ink/65 max-w-xl leading-relaxed">

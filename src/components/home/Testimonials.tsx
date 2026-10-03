@@ -82,26 +82,73 @@ export function Testimonials({ reviews }: { reviews: TestimonialItem[] }) {
     raf = requestAnimationFrame(tick);
 
     // Mus-drag ("plocka" karusellen på desktop). Touch sköts av native scroll.
-    let dragging = false;
+    //
+    // OBS pointer capture: den får INTE sättas redan på pointerdown. När
+    // capture är aktiv vid pointerup omdirigerar webbläsaren click-eventet
+    // till capture-elementet (scrollern) i stället för det man faktiskt
+    // tryckte på – vilket gjorde att "Läs mer" aldrig gick att klicka med
+    // mus, medan touch fungerade (touch tar early return nedan och sätter
+    // aldrig capture). Därför: vänta tills pekaren rört sig förbi
+    // DRAG_THRESHOLD, först då är det ett drag och först då tas capture.
+    const DRAG_THRESHOLD = 4;
+    let armed = false; // musknapp nere, men ännu inte ett drag
+    let dragging = false; // drag pågår, capture tagen
+    let movedDuringPress = false;
+    let pointerId = -1;
     let dragStartX = 0;
     let dragStartScroll = 0;
+
     const onPointerDown = (e: PointerEvent) => {
       pause();
       if (e.pointerType !== "mouse" || e.button !== 0) return;
-      dragging = true;
+      armed = true;
+      dragging = false;
+      movedDuringPress = false;
+      pointerId = e.pointerId;
       dragStartX = e.clientX;
       dragStartScroll = el.scrollLeft;
-      el.setPointerCapture(e.pointerId);
     };
+
     const onPointerMove = (e: PointerEvent) => {
-      if (!dragging) return;
+      if (!armed) return;
+      const dx = e.clientX - dragStartX;
+      if (!dragging) {
+        if (Math.abs(dx) < DRAG_THRESHOLD) return;
+        dragging = true;
+        movedDuringPress = true;
+        // Capture först nu, så draget följer med utanför elementet.
+        try {
+          el.setPointerCapture(pointerId);
+        } catch {
+          /* pekaren kan redan vara släppt */
+        }
+      }
       pause();
-      el.scrollLeft = dragStartScroll - (e.clientX - dragStartX);
+      el.scrollLeft = dragStartScroll - dx;
       pos = el.scrollLeft;
     };
+
     const endDrag = () => {
+      if (dragging) {
+        try {
+          el.releasePointerCapture(pointerId);
+        } catch {
+          /* redan släppt */
+        }
+      }
+      armed = false;
       dragging = false;
     };
+
+    // Svälj klicket om användaren faktiskt draggade, så att ett drag som
+    // råkar sluta ovanpå "Läs mer" inte fäller ut recensionen.
+    const onClickCapture = (e: MouseEvent) => {
+      if (!movedDuringPress) return;
+      movedDuringPress = false;
+      e.preventDefault();
+      e.stopPropagation();
+    };
+
     const onTouchMove = () => pause();
     const onWheel = () => pause();
 
@@ -109,6 +156,7 @@ export function Testimonials({ reviews }: { reviews: TestimonialItem[] }) {
     el.addEventListener("pointermove", onPointerMove);
     el.addEventListener("pointerup", endDrag);
     el.addEventListener("pointercancel", endDrag);
+    el.addEventListener("click", onClickCapture, true);
     el.addEventListener("touchmove", onTouchMove, { passive: true });
     el.addEventListener("wheel", onWheel, { passive: true });
 
@@ -119,6 +167,7 @@ export function Testimonials({ reviews }: { reviews: TestimonialItem[] }) {
       el.removeEventListener("pointermove", onPointerMove);
       el.removeEventListener("pointerup", endDrag);
       el.removeEventListener("pointercancel", endDrag);
+      el.removeEventListener("click", onClickCapture, true);
       el.removeEventListener("touchmove", onTouchMove);
       el.removeEventListener("wheel", onWheel);
     };
@@ -157,27 +206,33 @@ export function Testimonials({ reviews }: { reviews: TestimonialItem[] }) {
                     </span>
                   ) : null}
                 </div>
-                <blockquote
-                  className={`mt-2 font-display text-[20px] tracking-display-tight leading-snug ${
-                    q.text.length > CLAMP_CHARS && !expanded[q.id]
-                      ? "line-clamp-5"
-                      : ""
-                  }`}
-                >
-                  {q.text}
-                </blockquote>
-                {q.text.length > CLAMP_CHARS && (
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setExpanded((e) => ({ ...e, [q.id]: !e[q.id] }))
-                    }
-                    className="mt-2 self-start text-[13px] text-indigo underline underline-offset-4 decoration-indigo/40 hover:decoration-indigo transition"
+                {/* Citat + ev. "Läs mer" i ett block, så signaturen kan
+                    skjutas ner med mt-auto. Korten sträcks till samma höjd
+                    (flex-raden stretchar), och utan mt-auto flöt signaturen
+                    upp på korta recensioner och lämnade ett tomrum under. */}
+                <div className="mb-6">
+                  <blockquote
+                    className={`mt-2 font-display text-[20px] tracking-display-tight leading-snug ${
+                      q.text.length > CLAMP_CHARS && !expanded[q.id]
+                        ? "line-clamp-5"
+                        : ""
+                    }`}
                   >
-                    {expanded[q.id] ? "Visa mindre" : "Läs mer"}
-                  </button>
-                )}
-                <figcaption className="mt-6 pt-4 border-t border-ink/10 flex items-center justify-between gap-3 text-[13px]">
+                    {q.text}
+                  </blockquote>
+                  {q.text.length > CLAMP_CHARS && (
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setExpanded((e) => ({ ...e, [q.id]: !e[q.id] }))
+                      }
+                      className="mt-2 text-[13px] text-indigo underline underline-offset-4 decoration-indigo/40 hover:decoration-indigo transition"
+                    >
+                      {expanded[q.id] ? "Visa mindre" : "Läs mer"}
+                    </button>
+                  )}
+                </div>
+                <figcaption className="mt-auto pt-4 border-t border-ink/10 flex items-center justify-between gap-3 text-[13px]">
                   <span className="font-medium">{q.author}</span>
                   <span className="text-ink/55 font-mono text-[11px] uppercase tracking-[0.16em] text-right">
                     {q.place}

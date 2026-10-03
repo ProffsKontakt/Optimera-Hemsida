@@ -4,56 +4,69 @@ import { BATTERY_CITIES } from "@/lib/battery-cities";
 import { VISIBLE_SERVICES } from "@/lib/services";
 import { RecoBadge } from "@/components/site/RecoBadge";
 
+/** Kommuner som har en batteri-landningssida, så footern bara länkar dit när den finns. */
+const BATTERY_SLUGS = new Set(BATTERY_CITIES.map((c) => c.slug));
+
 export function Footer() {
   return (
     <footer className="mt-32 bg-cream border-t border-ink/10 text-ink">
       {/* Stockholm-kommuner: intern länkning till city-landing-sidor.
-          Hjälper Google upptäcka /solceller/[stad]-routes från footer
-          och ger besökare en tydlig signal om var vi arbetar. */}
+          Hjälper Google upptäcka /solceller/[stad]- och /batteri/[stad]-
+          routes från footern och visar besökaren var vi arbetar.
+
+          Tidigare låg det två listor här ("Vi installerar solpaneler i" och
+          "Vi installerar batterilager i") med exakt samma åtta kommuner –
+          samma ortsnamn lästes två gånger. Nu står varje ort en gång med
+          båda länkarna under sig: kunden får svaret direkt, och alla 16
+          landningssidor behåller sin interna länk. */}
       <div className="border-b border-ink/10">
         <div className="container-edge py-8">
-          <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink/50 mb-4">
-            Vi installerar solpaneler i
+          <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink/50 mb-5">
+            Vi installerar i
           </div>
-          <div className="flex flex-wrap gap-x-5 gap-y-2 text-[14px]">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-4">
             {CITIES.map((c) => (
-              <Link
-                key={c.slug}
-                href={`/solceller/${c.slug}`}
-                className="text-ink/70 hover:text-ink transition"
-              >
-                {c.name}
-              </Link>
-            ))}
-          </div>
-          <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink/50 mt-7 mb-4">
-            Vi installerar batterilager i
-          </div>
-          <div className="flex flex-wrap gap-x-5 gap-y-2 text-[14px]">
-            {BATTERY_CITIES.map((c) => (
-              <Link
-                key={c.slug}
-                href={`/batteri/${c.slug}`}
-                className="text-ink/70 hover:text-ink transition"
-              >
-                {c.name}
-              </Link>
+              <div key={c.slug}>
+                <div className="text-[14.5px] text-ink/85">{c.name}</div>
+                <div className="mt-1 flex gap-3 font-mono text-[10.5px] uppercase tracking-[0.14em]">
+                  <Link
+                    href={`/solceller/${c.slug}`}
+                    className="text-ink/45 hover:text-ink transition"
+                  >
+                    Solceller
+                  </Link>
+                  {BATTERY_SLUGS.has(c.slug) && (
+                    <Link
+                      href={`/batteri/${c.slug}`}
+                      className="text-ink/45 hover:text-ink transition"
+                    >
+                      Batteri
+                    </Link>
+                  )}
+                </div>
+              </div>
             ))}
           </div>
         </div>
       </div>
       <div className="container-edge py-20 grid grid-cols-1 md:grid-cols-12 gap-12">
         <div className="md:col-span-5">
+          {/* Ingen hårdkodad <br> här: den tvingade fram "hållning." ensamt
+              på en tredje rad. text-wrap: balance (globals.css) fördelar
+              raderna jämnt i stället, vid varje spaltbredd. */}
           <div className="font-display text-4xl md:text-5xl tracking-display-tight leading-[1.05]">
-            Energin är inte bara
-            <br />
-            ström – den är en hållning.
+            Energin är inte bara ström – den är en hållning.
           </div>
           <p className="mt-6 text-ink/65 max-w-md text-[15px] leading-relaxed">
             Optimera Energi installerar solpaneler, batterier och laddboxar.
             Vi gör det med kloka tankar bakom varje beslut –
             och med fika, raka besked och ingenjörskonst utan kompromiss.
           </p>
+          {/* Recos "Rekommenderat företag 2026". Ligger under texten i stället
+              för nere i kontaktkolumnen – balanserar den vänstra spalten som
+              annars slutar tvärt. Se RecoBadge för varför vi inte kör
+              widget-scriptet. */}
+          <RecoBadge size={80} className="mt-8 block" />
         </div>
 
         <div className="md:col-span-2">
@@ -110,16 +123,10 @@ export function Footer() {
               <span className="block">Org.nr 559375-2206</span>
             </li>
           </ul>
-          <div className="mt-6 flex items-center gap-4">
-            <div className="flex flex-wrap gap-2">
-              <Badge>F-skatt</Badge>
-              <Badge>BAS-U</Badge>
-              <Badge>SEK</Badge>
-            </div>
-            {/* Recos "Rekommenderat företag 2026" – rak här, bland de
-                formella intygen. Se RecoBadge för varför vi inte kör
-                widget-scriptet. */}
-            <RecoBadge size={72} />
+          <div className="mt-6 flex flex-wrap gap-2">
+            <Badge>F-skatt</Badge>
+            <Badge>BAS-U</Badge>
+            <Badge>SEK</Badge>
           </div>
           <div className="mt-5 flex flex-wrap gap-x-4 gap-y-2 text-[13px]">
             <a

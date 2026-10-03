@@ -48,7 +48,7 @@ export default function PressPage() {
       <section className="container-edge pt-12 md:pt-20 pb-16">
         <div className="max-w-3xl">
           <div className="eyebrow">Press · För journalister</div>
-          <h1 className="mt-5 font-display text-[44px] md:text-[80px] tracking-display-tight leading-[0.95]">
+          <h1 className="mt-5 font-display text-[44px] md:text-[80px] tracking-display-tight leading-[1.05]">
             Press,
             <br />
             <span className="italic font-serif text-indigo">utan omvägar.</span>

@@ -152,3 +152,31 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Typografi-justeringar efter designgenomgång (sep 2026).
+
+   1. Radbrytning: rubriker bryts så att raderna blir ungefär lika långa och
+      inget ensamt ord hamnar sist. text-wrap: balance gör det automatiskt –
+      bättre än handsatta <br> eftersom det följer med vid varje skärmbredd
+      och varje textändring. Brödtext får "pretty", som bara skyddar mot
+      ensamt slutord (balance är för dyrt på långa stycken och kapas ändå av
+      webbläsaren efter ~6 rader).
+
+   2. Explicita <br> i en rubrik står kvar; balance jämnar ut inom varje
+      segment, så hero-rubrikens tvingade brytning påverkas inte.
+   --------------------------------------------------------------------------- */
+h1,
+h2,
+h3,
+h4,
+.font-display {
+  text-wrap: balance;
+}
+
+p,
+li,
+blockquote,
+figcaption {
+  text-wrap: pretty;
+}
