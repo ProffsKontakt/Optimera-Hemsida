@@ -188,3 +188,31 @@ blockquote.font-display {
      långa citat fick ensamma slutord – pretty är byggt för just det. */
   text-wrap: pretty;
 }
+
+/* ---------------------------------------------------------------------------
+   Långa svenska sammansättningar ("statsministeromröstning",
+   "batteriinstallationer") får inte plats i en stor rubrik på en telefon –
+   de rann ut över skärmkanten och kapades. overflow-wrap bryter bara ett
+   ord som inte får plats alls (påverkar inget annat). På smala skärmar
+   avstavas dessutom riktigt långa ord korrekt (sidan har lang="sv"), och
+   bara ord på minst 12 tecken – vanliga ord avstavas aldrig.
+   --------------------------------------------------------------------------- */
+h1,
+h2,
+h3,
+h4,
+p,
+li,
+blockquote {
+  overflow-wrap: break-word;
+}
+
+@media (max-width: 640px) {
+  h1,
+  h2,
+  h3 {
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    hyphenate-limit-chars: 12 5 5;
+  }
+}

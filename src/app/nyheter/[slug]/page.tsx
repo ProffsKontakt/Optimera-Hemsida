@@ -1,14 +1,17 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowRight, Calendar, Clock, ExternalLink } from "lucide-react";
+import { ArrowLeft, ArrowRight, Calendar, ChevronDown, Clock, ExternalLink } from "lucide-react";
 import { Section } from "@/components/site/Section";
 import { BrandPanel } from "@/components/site/BrandPanel";
 import {
   NEWS,
   findNewsArticle,
   formatNewsDate,
+  publishedNews,
   type NewsArticle,
 } from "@/lib/news";
+import { ShareButton } from "@/components/news/ShareButton";
+import { formatHeadline } from "@/lib/hyphenate";
 import { getMedia } from "@/lib/media";
 import {
   JsonLd,
@@ -144,6 +147,10 @@ export default function NewsArticlePage({
   }
 
   const showUpdated = article.updatedAt !== article.publishedAt;
+  // Tre senaste andra publicerade artiklar.
+  const more = publishedNews()
+    .filter((n) => n.slug !== article.slug)
+    .slice(0, 3);
 
   return (
     <>
@@ -161,11 +168,20 @@ export default function NewsArticlePage({
         <JsonLd data={faqPageSchema(content.faq)} />
       )}
 
-      <section className="container-edge pt-12 md:pt-20 pb-10">
+      {/* Läsarvy (okt 2026): optimerad för telefon. Mindre rubrik som inte
+          fyller hela skärmen, 17px brödtext, tillbakalänk och fler nyheter
+          i slutet så läsaren aldrig hamnar i en återvändsgränd. */}
+      <section className="container-edge pt-6 md:pt-16 pb-8 md:pb-10">
         <div className="max-w-3xl">
+          <Link
+            href="/nyheter"
+            className="mb-5 md:mb-8 inline-flex h-10 items-center gap-1.5 text-[14px] text-ink/60 hover:text-ink transition"
+          >
+            <ArrowLeft size={15} /> Alla nyheter
+          </Link>
           {/* Hero-bilden ligger ovanför rubriken – färg och liv direkt. */}
           {img && (
-            <div className="mb-8 overflow-hidden rounded-3xl border border-ink/10 aspect-[16/9] bg-cream">
+            <div className="mb-6 md:mb-8 overflow-hidden rounded-2xl md:rounded-3xl border border-ink/10 aspect-[16/9] bg-cream">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={img.src}
@@ -175,7 +191,7 @@ export default function NewsArticlePage({
               />
             </div>
           )}
-          <div className="flex flex-wrap items-center gap-3 mb-5">
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 mb-4 md:mb-5">
             <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink/55">
               {article.category}
             </span>
@@ -191,23 +207,30 @@ export default function NewsArticlePage({
               </span>
             )}
           </div>
-          <h1 className="font-display text-[40px] md:text-[64px] tracking-display-tight leading-[1.15]">
-            {article.title}
+          {/* Mobil: mjuka bindestreck i långa ord (lib/hyphenate.ts) så att
+              t.ex. "statsministeromröstning" bryts snyggt i alla webbläsare,
+              och radfyllning (pretty) i stället för balansering – balance
+              valde annars onödiga brytningar mitt i ord.
+              Från sm: bindestrecken ignoreras (hyphens:none) och storleken
+              är vald så att även långa ord får plats (64px gav 780px för
+              ett ord i en 768px-spalt). */}
+          <h1 className="font-display text-[30px] sm:text-[40px] md:text-[52px] lg:text-[56px] tracking-display-tight leading-[1.15] [text-wrap:pretty] sm:[text-wrap:balance] sm:[-webkit-hyphens:none] sm:[hyphens:none]">
+            {formatHeadline(article.title, { hyphenate: true })}
           </h1>
-          <p className="mt-6 text-ink/70 text-lg leading-relaxed">
+          <p className="mt-5 md:mt-6 text-ink/75 text-[18px] md:text-lg leading-relaxed">
             {article.excerpt}
           </p>
         </div>
       </section>
 
-      <article className="container-edge pb-16 md:pb-24">
-        <div className="max-w-3xl space-y-10">
+      <article className="container-edge pb-10 md:pb-20">
+        <div className="max-w-3xl space-y-10 md:space-y-12">
           {content?.tldr && (
-            <aside className="rounded-2xl border border-indigo/25 bg-indigo/5 p-6">
+            <aside className="rounded-2xl border border-indigo/25 bg-indigo/5 p-5 md:p-6">
               <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-indigo mb-3">
                 Läget i korthet
               </div>
-              <ul className="space-y-2 text-[15px] text-ink/85 leading-relaxed">
+              <ul className="space-y-3 text-[16px] text-ink/85 leading-relaxed">
                 {content.tldr.map((t) => (
                   <li key={t} className="flex gap-3">
                     <span className="mt-2 h-1.5 w-1.5 rounded-full bg-indigo shrink-0" />
@@ -220,22 +243,22 @@ export default function NewsArticlePage({
 
           {content?.sections.map((s) => (
             <section key={s.h2}>
-              <h2 className="font-display text-2xl md:text-3xl tracking-display-tight leading-snug mb-4">
+              <h2 className="font-display text-[24px] md:text-3xl tracking-display-tight leading-snug mb-3 md:mb-4">
                 {s.h2}
               </h2>
               {s.body.map((p, i) => (
                 <p
                   key={i}
-                  className="mt-3 text-ink/80 text-[15.5px] leading-relaxed"
+                  className="mt-4 text-ink/85 text-[17px] leading-[1.7]"
                 >
                   {p}
                 </p>
               ))}
               {s.bullets && (
-                <ul className="mt-4 space-y-2 text-[15px] text-ink/80">
+                <ul className="mt-5 space-y-3 text-[17px] leading-[1.6] text-ink/85">
                   {s.bullets.map((b) => (
                     <li key={b} className="flex gap-3">
-                      <span className="mt-2 h-1.5 w-1.5 rounded-full bg-indigo shrink-0" />
+                      <span className="mt-[0.6em] h-1.5 w-1.5 rounded-full bg-indigo shrink-0" />
                       <span>{b}</span>
                     </li>
                   ))}
@@ -249,16 +272,22 @@ export default function NewsArticlePage({
               <h2 className="font-display text-2xl md:text-3xl tracking-display-tight leading-snug mb-4">
                 Vanliga frågor
               </h2>
-              <div className="space-y-4">
+              <div className="space-y-3">
                 {content.faq.map((q) => (
                   <details
                     key={q.q}
-                    className="rounded-2xl border border-ink/10 bg-bone p-5"
+                    className="group rounded-2xl border border-ink/10 bg-bone"
                   >
-                    <summary className="cursor-pointer font-display text-lg tracking-display-tight">
-                      {q.q}
+                    {/* Hela raden är tryckyta; egen chevron i stället för
+                        webbläsarens ▶-markör. */}
+                    <summary className="flex cursor-pointer list-none items-start justify-between gap-4 p-5 font-display text-[18px] leading-snug tracking-display-tight [&::-webkit-details-marker]:hidden">
+                      <span>{q.q}</span>
+                      <ChevronDown
+                        size={18}
+                        className="mt-1 shrink-0 text-ink/50 transition-transform group-open:rotate-180"
+                      />
                     </summary>
-                    <p className="mt-3 text-ink/75 text-[14.5px] leading-relaxed">
+                    <p className="px-5 pb-5 -mt-1 text-ink/80 text-[16px] leading-[1.65]">
                       {q.a}
                     </p>
                   </details>
@@ -273,7 +302,7 @@ export default function NewsArticlePage({
             <h2 className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink/55 mb-4">
               Källor
             </h2>
-            <ol className="space-y-2.5 text-[14px] leading-relaxed">
+            <ol className="space-y-1 text-[14.5px] leading-relaxed">
               {article.sources.map((s, i) => (
                 <li key={s.url} className="flex gap-3">
                   <span className="font-mono text-[11px] text-ink/40 pt-0.5 shrink-0">
@@ -283,7 +312,7 @@ export default function NewsArticlePage({
                     href={s.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-ink/80 hover:text-ink transition-colors inline-flex items-start gap-1.5"
+                    className="flex-1 py-1.5 text-ink/80 hover:text-ink transition-colors inline-flex items-start justify-between gap-2"
                   >
                     <span>
                       {s.title}
@@ -300,17 +329,56 @@ export default function NewsArticlePage({
               åsikter. Hittar du ett fel? Mejla{" "}
               <a
                 href="mailto:hej@optimeraenergi.se"
-                className="underline decoration-ink/30 hover:text-ink"
+                className="inline-block py-1 underline decoration-ink/30 hover:text-ink"
               >
                 hej@optimeraenergi.se
               </a>{" "}
               så rättar vi och noterar ändringen.
             </p>
           </section>
+
+          <div className="flex flex-wrap items-center gap-3">
+            <ShareButton title={article.title} url={`${BASE}/nyheter/${article.slug}`} />
+            <Link
+              href="/nyheter"
+              className="inline-flex h-11 items-center gap-1.5 rounded-full px-3 text-[14px] text-ink/60 hover:text-ink transition"
+            >
+              <ArrowLeft size={15} /> Alla nyheter
+            </Link>
+          </div>
+
+          {/* Fler nyheter – läsaren ska aldrig hamna i en återvändsgränd. */}
+          {more.length > 0 && (
+            <section>
+              <h2 className="font-display text-[24px] md:text-3xl tracking-display-tight leading-snug mb-2">
+                Fler nyheter
+              </h2>
+              <ul className="divide-y divide-ink/10 border-y border-ink/10">
+                {more.map((n) => (
+                  <li key={n.slug}>
+                    <Link
+                      href={`/nyheter/${n.slug}`}
+                      className="group flex items-start justify-between gap-4 py-4"
+                    >
+                      <span>
+                        <span className="block font-mono text-[11px] uppercase tracking-[0.16em] text-ink/50">
+                          {n.category} · {formatNewsDate(n.publishedAt)}
+                        </span>
+                        <span className="mt-1 block font-display text-[18px] leading-snug tracking-display-tight group-hover:text-indigo transition-colors">
+                          {formatHeadline(n.title)}
+                        </span>
+                      </span>
+                      <ArrowRight size={16} className="mt-6 shrink-0 text-ink/40 group-hover:text-indigo transition-colors" />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
         </div>
       </article>
 
-      <Section className="!py-16 md:!py-20">
+      <Section className="!pt-4 !pb-16 md:!py-20">
         <BrandPanel>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-end">
             <div>

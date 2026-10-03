@@ -505,7 +505,7 @@ export default function AboutPage() {
       <div className="bg-cream/45 border-y border-ink/5">
         <Section
           eyebrow="Bolagsresan"
-          title={<>Vår väg mot den kompletta energileverantören.</>}
+          title={<>Vår väg mot den kompletta energi­leverantören.</>}
           intro="Hur vi byggs år för år. Allt i tjänst av att förtjäna ditt förtroende."
           className="!py-16 md:!py-24"
         >

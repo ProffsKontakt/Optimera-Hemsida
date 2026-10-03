@@ -1,3 +1,4 @@
+import { formatHeadline } from "@/lib/hyphenate";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { NEWS, publishedNews, formatNewsDate } from "@/lib/news";
@@ -42,7 +43,7 @@ export default function NewsHubPage() {
           })),
         })}
       />
-      <section className="container-edge pt-12 md:pt-20 pb-12">
+      <section className="container-edge pt-8 md:pt-20 pb-0 md:pb-12">
         <div className="max-w-3xl">
           <div className="eyebrow">Nyheter · Kunskapsbas</div>
           <h1 className="mt-5 font-display text-[44px] sm:text-[56px] md:text-[80px] tracking-display-tight leading-[1.15]">
@@ -61,7 +62,9 @@ export default function NewsHubPage() {
         </div>
       </section>
 
-      <Section className="!py-12 md:!py-16">
+      {/* Mobil: hero-botten + sektionstopp + sektionens inre marginal
+          staplades till ~145px tomrum före första kortet. */}
+      <Section className="!pt-0 !pb-12 md:!py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {sorted.map((n) => {
             const isPublished = n.status === "published";
@@ -106,10 +109,13 @@ export default function NewsHubPage() {
                       {isPublished ? formatNewsDate(n.publishedAt) : "Snart"}
                     </span>
                   </div>
-                  <h2 className="mt-4 font-display text-2xl md:text-[26px] tracking-display-tight leading-tight">
-                    {n.title}
+                  <h2 className="mt-4 font-display text-[22px] md:text-[26px] tracking-display-tight leading-tight">
+                    {formatHeadline(n.title)}
                   </h2>
-                  <p className="mt-3 text-ink/70 text-[14.5px] leading-relaxed">
+                  {/* Mobil: tre rader räcker för att skumma listan – hela
+                      ingressen finns i artikeln. Ett kort tog annars en hel
+                      skärm. */}
+                  <p className="mt-3 text-ink/70 text-[14.5px] leading-relaxed line-clamp-3 md:line-clamp-none">
                     {n.excerpt}
                   </p>
                   <div className="mt-6 pt-5 border-t border-ink/10 flex items-center justify-between gap-3 text-[13px] text-ink/70">

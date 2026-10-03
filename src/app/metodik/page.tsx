@@ -130,7 +130,7 @@ export default function MetodikPage() {
           <h1 className="mt-5 font-display text-[44px] sm:text-[56px] md:text-[80px] tracking-display-tight leading-[1.15]">
             Så väljer, dimensionerar{" "}
             <span className="italic font-serif text-indigo">
-              och prissätter vi.
+              och prissätter vi.
             </span>
           </h1>
           <p className="mt-6 max-w-2xl text-ink/70 text-lg leading-relaxed">

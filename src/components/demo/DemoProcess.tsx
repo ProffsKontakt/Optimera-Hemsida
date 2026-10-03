@@ -42,7 +42,7 @@ const steps = [
   },
   {
     n: "05",
-    label: "Noggrant utvalda installatörer",
+    label: "Noggrant utvalda installa­törer",
     body: "Certifierade installatörer som vi handplockat och kvalitetssäkrat – samma höga krav på varje jobb, och vi tar fullt ansvar för garantin.",
     accent: "bg-copper text-bone",
     tilt: -1,
