@@ -141,6 +141,16 @@ const ALL_ITEMS = CATEGORIES.flatMap((c) => c.items);
 
 const RELATED = [
   {
+    href: "/solcellsfragor",
+    label: "Solcellsfrågor",
+    desc: "Svar på de frågor svenskar oftast söker på om solceller – en sida per fråga, med källor.",
+  },
+  {
+    href: "/batteriskolan",
+    label: "Batteriskolan",
+    desc: "FCR-D, effektavgift, kvartspris och andra batterikoncept förklarade ett i taget.",
+  },
+  {
     href: "/solcellsbatteri",
     label: "Solcellsbatteri till villa",
     desc: "Pris, storlek, grönt avdrag och batterimärken – vår pelarsida om batteri.",

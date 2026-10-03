@@ -4,6 +4,8 @@ import { CITIES } from "@/lib/cities";
 import { BATTERY_CITIES } from "@/lib/battery-cities";
 import { publishedGuides } from "@/lib/guides";
 import { publishedNews } from "@/lib/news";
+import { allQuestions, solarUpdatedAt } from "@/lib/solcellsfragor";
+import { allConcepts, batteryUpdatedAt } from "@/lib/batteriskolan";
 
 // Per-route hardcoded ISO-datum. Tidigare användes new Date() vid build vilket
 // gjorde att alla URLer fick samma timestamp varje deploy – det signalerar
@@ -29,6 +31,8 @@ const LAST_MOD = {
   faq: "2026-07-08",
   // Nyhetshubben (valbevakning + energinyheter) lanserad 2026-09-06.
   nyheterHub: "2026-09-06",
+  // Kunskapsbankens samlingssida (nyheter + Solcellsfrågor + Batteriskolan).
+  kunskapsbank: "2026-10-03",
 } as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -50,6 +54,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...publishedNews().map((n) => ({
       url: `${base}/nyheter/${n.slug}`,
       lastModified: n.updatedAt,
+    })),
+    // Kunskapsbanken: samlingssida + två databaser med en sida per fråga
+    // respektive koncept. lastmod per sida = postens updatedAt.
+    { url: `${base}/kunskapsbank`, lastModified: LAST_MOD.kunskapsbank },
+    { url: `${base}/solcellsfragor`, lastModified: solarUpdatedAt() },
+    ...allQuestions().map((q) => ({
+      url: `${base}/solcellsfragor/${q.slug}`,
+      lastModified: q.updatedAt,
+    })),
+    { url: `${base}/batteriskolan`, lastModified: batteryUpdatedAt() },
+    ...allConcepts().map((c) => ({
+      url: `${base}/batteriskolan/${c.slug}`,
+      lastModified: c.updatedAt,
     })),
     { url: `${base}/kontakt`, lastModified: LAST_MOD.kontakt },
     { url: `${base}/tankar`, lastModified: LAST_MOD.tankar },

@@ -14,15 +14,30 @@ import {
   Mail,
   Newspaper,
   Zap,
+  Library,
+  MessageCircleQuestion,
+  GraduationCap,
+  BookOpen,
+  ChevronDown,
 } from "lucide-react";
 import { VISIBLE_SERVICES } from "@/lib/services";
 
+type NavChild = { href: string; label: string; desc: string };
+type NavLink = { href: string; label: string; children?: NavChild[] };
+
+// Kunskapsbanken först: sajtens mest lättnavigerade sektion. Undermenyn
+// samlar nyheterna (ny artikel var tredje dag) och de två databaserna.
+const KNOWLEDGE_LINKS: NavChild[] = [
+  { href: "/nyheter", label: "Nyheter", desc: "Energinyheterna som påverkar din elräkning" },
+  { href: "/solcellsfragor", label: "Solcellsfrågor", desc: "Svar på det svenskar söker om solceller" },
+  { href: "/batteriskolan", label: "Batteriskolan", desc: "Hembatteriets koncept, ett i taget" },
+  { href: "/guider", label: "Guider", desc: "Pris, grönt avdrag och återbetalning" },
+];
+
 // Tjänste-länkarna byggs från VISIBLE_SERVICES så dolda tjänster (t.ex.
 // värmepump just nu) automatiskt försvinner ur navigeringen.
-const links = [
-  // Nyheter först: kunskapsbasen ska vara sajtens mest lättnavigerade
-  // sektion – uppdateras var tredje dag under valbevakningen.
-  { href: "/nyheter", label: "Nyheter" },
+const links: NavLink[] = [
+  { href: "/kunskapsbank", label: "Kunskapsbank", children: KNOWLEDGE_LINKS },
   ...VISIBLE_SERVICES.map((s) => ({ href: `/tjanster/${s.slug}`, label: s.short })),
   { href: "/kalkylator", label: "Kalkylator" },
   { href: "/om-oss", label: "Om oss" },
@@ -32,7 +47,11 @@ const links = [
 /* Mobilmenyns ikoner + accentfärger per länk (gör menyn roligare att se
    på). Ikon väljs på href, färgerna cyklar genom brand-paletten. */
 const MENU_ICONS: Record<string, React.ReactNode> = {
+  "/kunskapsbank": <Library size={16} />,
   "/nyheter": <Newspaper size={16} />,
+  "/solcellsfragor": <MessageCircleQuestion size={16} />,
+  "/batteriskolan": <GraduationCap size={16} />,
+  "/guider": <BookOpen size={16} />,
   "/tjanster/solpaneler": <Sun size={16} />,
   "/tjanster/batterier": <BatteryCharging size={16} />,
   "/tjanster/laddboxar": <PlugZap size={16} />,
@@ -94,15 +113,53 @@ export function Navbar() {
         </Link>
 
         <nav className="hidden lg:flex items-center gap-1">
-          {links.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              className="whitespace-nowrap px-2.5 xl:px-3.5 py-2 text-[13.5px] text-ink/75 hover:text-ink rounded-full hover:bg-ink/5 transition-colors"
-            >
-              {l.label}
-            </Link>
-          ))}
+          {links.map((l) =>
+            l.children ? (
+              <div key={l.href} className="group relative">
+                <Link
+                  href={l.href}
+                  className="inline-flex items-center gap-1 whitespace-nowrap px-2.5 xl:px-3.5 py-2 text-[13.5px] text-ink/75 hover:text-ink rounded-full hover:bg-ink/5 transition-colors"
+                >
+                  {l.label}
+                  <ChevronDown
+                    size={13}
+                    className="text-ink/45 transition-transform duration-200 group-hover:rotate-180 group-focus-within:rotate-180"
+                  />
+                </Link>
+                {/* pt-2 överbryggar glappet så att hover inte bryts på
+                    vägen ner till panelen. */}
+                <div className="invisible absolute left-0 top-full z-50 pt-2 opacity-0 translate-y-1 transition duration-200 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:visible group-focus-within:opacity-100 group-focus-within:translate-y-0">
+                  <div className="w-[340px] rounded-3xl border border-ink/10 bg-bone p-2 shadow-xl shadow-ink/10">
+                    {l.children.map((c) => (
+                      <Link
+                        key={c.href}
+                        href={c.href}
+                        className="flex items-start gap-3 rounded-2xl p-3 transition-colors hover:bg-ink/5 focus-visible:bg-ink/5"
+                      >
+                        <span className="mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-full bg-cream text-indigo">
+                          {MENU_ICONS[c.href] ?? <Zap size={16} />}
+                        </span>
+                        <span>
+                          <span className="block text-[14px] text-ink">{c.label}</span>
+                          <span className="block text-[12.5px] leading-snug text-ink/55">
+                            {c.desc}
+                          </span>
+                        </span>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <Link
+                key={l.href}
+                href={l.href}
+                className="whitespace-nowrap px-2.5 xl:px-3.5 py-2 text-[13.5px] text-ink/75 hover:text-ink rounded-full hover:bg-ink/5 transition-colors"
+              >
+                {l.label}
+              </Link>
+            ),
+          )}
         </nav>
 
         <div className="flex items-center gap-3">
@@ -155,7 +212,9 @@ export function Navbar() {
                   <Link
                     href={l.href}
                     onClick={() => setOpen(false)}
-                    className="group flex items-center gap-4 py-3.5 border-b border-ink/8"
+                    className={`group flex items-center gap-4 py-3.5 ${
+                      l.children ? "" : "border-b border-ink/8"
+                    }`}
                   >
                     <span
                       className={`grid h-9 w-9 shrink-0 place-items-center rounded-full transition-transform duration-300 group-active:scale-90 ${
@@ -170,6 +229,20 @@ export function Navbar() {
                       {l.label}
                     </span>
                   </Link>
+                  {l.children && (
+                    <div className="flex flex-wrap gap-2 border-b border-ink/8 pb-4 pl-[52px]">
+                      {l.children.map((c) => (
+                        <Link
+                          key={c.href}
+                          href={c.href}
+                          onClick={() => setOpen(false)}
+                          className="rounded-full border border-ink/15 bg-cream px-3.5 py-1.5 text-[13.5px] text-ink/80 active:scale-95 transition-transform"
+                        >
+                          {c.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
                 </motion.div>
               ))}
               <motion.div
