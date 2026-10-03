@@ -7,7 +7,10 @@
     "phone": "+46 76 305 37 32",
     "color": "from-[#3648C3] to-[#0E0E0C]",
     "bio": "Driver bolaget framåt och håller siffrorna ärliga. Tror att det bästa kvittot på en bra installation är när kunden ringer för att tipsa grannen.",
-    "visible": true
+    "visible": true,
+    "contactFor": [
+      "foretag"
+    ]
   },
   {
     "id": "julian",
@@ -17,7 +20,10 @@
     "phone": "+46 73 173 87 85",
     "color": "from-[#B86F3C] to-[#2A2A26]",
     "bio": "Operativ och teknisk ryggrad. Svarar och ansvarar för det tekniska hos oss. Plockar alltid upp telefonen, ansvarar för det tekniska, och dyker upp vid första installationen.",
-    "visible": true
+    "visible": true,
+    "contactFor": [
+      "teknik"
+    ]
   },
   {
     "id": "moltas",
@@ -27,7 +33,10 @@
     "phone": "+46 70 534 01 54",
     "color": "from-[#0a3a4e] to-[#1A1A17]",
     "bio": "Ansvarig för projekteringen och koordineringen. Är din primära kontaktperson för att installationen ska bli precis som du vill ha den, samt så att vi alltid följer tidsramen.",
-    "visible": true
+    "visible": true,
+    "contactFor": [
+      "projekt"
+    ]
   },
   {
     "id": "albin",
@@ -37,7 +46,10 @@
     "phone": "+46 70 194 69 76",
     "color": "from-[#3E5C7A] to-[#0E0E0C]",
     "bio": "Gillar när kalkylen talar för sig själv. Hjälper dig jämföra alternativ utan säljsnack, med siffrorna på bordet.",
-    "visible": true
+    "visible": true,
+    "contactFor": [
+      "ny-kund"
+    ]
   },
   {
     "id": "william",
@@ -47,7 +59,10 @@
     "phone": "+46 70 194 69 81",
     "color": "from-[#4A6B3A] to-[#1A1A17]",
     "bio": "Räknar hellre än överdriver. Går igenom din förbrukning och visar vad som faktiskt lönar sig innan du bestämmer dig.",
-    "visible": false
+    "visible": false,
+    "contactFor": [
+      "ny-kund"
+    ]
   },
   {
     "id": "tommy",
@@ -57,7 +72,10 @@
     "phone": "+46 73 121 42 89",
     "color": "from-[#0a3a4e] to-[#1A1A17]",
     "bio": "Vänlig och rutinerad. Ser till att du känner dig trygg med både lösningen och vägen dit – inga överraskningar på slutet.",
-    "visible": true
+    "visible": true,
+    "contactFor": [
+      "ny-kund"
+    ]
   },
   {
     "id": "kalle",
@@ -67,7 +85,10 @@
     "phone": "+46 73 121 47 81",
     "color": "from-[#8A5A2B] to-[#2A2A26]",
     "bio": "Rak och lätt att nå. Svarar på frågorna du inte visste att du hade och håller kontakten hela vägen till driftsättning.",
-    "visible": true
+    "visible": true,
+    "contactFor": [
+      "ny-kund"
+    ]
   },
   {
     "id": "tim",
@@ -77,7 +98,10 @@
     "phone": "+46 70 194 69 78",
     "color": "from-[#6B4A7A] to-[#1A1A17]",
     "bio": "God stämning i luren, noggrann i botten. Tar den tid som krävs för att du ska bli nöjd med lösningen, inte bara med priset.",
-    "visible": true
+    "visible": true,
+    "contactFor": [
+      "ny-kund"
+    ]
   },
   {
     "id": "jamy",
@@ -87,7 +111,10 @@
     "phone": "+46 70 194 69 75",
     "color": "from-[#B86F3C] to-[#2A2A26]",
     "bio": "Aldrig bråttom. Går igenom allt i din takt och ser till att du förstår vad du säger ja till innan du gör det.",
-    "visible": true
+    "visible": true,
+    "contactFor": [
+      "ny-kund"
+    ]
   },
   {
     "id": "josef",
@@ -97,6 +124,9 @@
     "phone": "+46 70 194 69 72",
     "color": "from-[#3648C3] to-[#0E0E0C]",
     "bio": "Säger som det är, även när svaret är nej. Ser till att du vet vad som händer härnäst – och att det faktiskt blir gjort.",
-    "visible": true
+    "visible": true,
+    "contactFor": [
+      "ny-kund"
+    ]
   }
 ]

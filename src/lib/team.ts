@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import { isContactRouteId, type ContactRouteId } from "./contact-routes";
 
 /**
  * Teamet bakom Optimera Energi.
@@ -29,6 +30,11 @@ export type TeamMember = {
    * getVisibleTeam(), så namnet finns aldrig i HTML:en som skickas ut.
    */
   visible?: boolean;
+  /**
+   * Situationer där personen är rätt kontakt ("Vem ska du höra av dig
+   * till?" på /om-oss). Kryssas i /admin/team. Se lib/contact-routes.ts.
+   */
+  contactFor?: ContactRouteId[];
 };
 
 /** Gradienter som auto-tilldelas nya medlemmar (cyklar på index). */
@@ -138,6 +144,9 @@ export function getTeam(): TeamMember[] {
                 : TEAM_COLORS[i % TEAM_COLORS.length],
             // Saknad flagga = synlig (bakåtkompatibelt med äldre poster).
             visible: m.visible !== false,
+            contactFor: Array.isArray(m.contactFor)
+              ? m.contactFor.filter(isContactRouteId)
+              : [],
           }));
         }
       }

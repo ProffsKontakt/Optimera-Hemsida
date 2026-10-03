@@ -13,6 +13,7 @@ import { DemoManifesto } from "@/components/demo/DemoManifesto";
 import { Testimonials } from "@/components/home/Testimonials";
 import { CtaPanel } from "@/components/home/CtaPanel";
 import { RecoBadge } from "@/components/site/RecoBadge";
+import { RECO } from "@/lib/reco";
 import {
   JsonLd,
   faqPageSchema,
@@ -81,19 +82,19 @@ export default function HomePage() {
         aside={<RecoBadge size={116} tilt className="hidden md:block" />}
       >
         <Testimonials reviews={getVisibleReviews()} />
-        {/* Betyg + länk till källan. Snittbetyget uppdateras manuellt vid
-            behov (kontrollera på reco.se/optimera-energi). */}
+        {/* Betyg + länk till källan. Snittbetyget uppdateras i lib/reco.ts
+            (kontrollera på reco.se/optimera-energi). */}
         <div className="mt-8 flex items-center gap-4">
           <RecoBadge size={66} tilt className="md:hidden" />
           <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[14px] text-ink/60">
             <span className="text-amber-deep">★</span>
-            <span>4,8 av 5 i betyg (14 omdömen) på</span>
+            <span>{RECO.average} av 5 i betyg ({RECO.count} omdömen) på</span>
             {/* Officiella Reco-loggan (hämtad från reco.se). */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/reco.svg" alt="Reco" className="h-[18px] w-auto" />
             <span>–</span>
             <a
-              href="https://www.reco.se/optimera-energi"
+              href={RECO.url}
               target="_blank"
               rel="noopener noreferrer"
               className="underline underline-offset-4 decoration-ink/30 hover:text-ink hover:decoration-ink/60 transition"

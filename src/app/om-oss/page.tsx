@@ -1,9 +1,34 @@
 import Link from "next/link";
-import { Mail, Phone, ArrowRight } from "lucide-react";
+import type { Metadata } from "next";
+import {
+  ArrowDown,
+  ArrowRight,
+  Ban,
+  Mail,
+  MapPin,
+  Phone,
+  Receipt,
+  ShieldCheck,
+  UserCheck,
+} from "lucide-react";
 import { Section } from "@/components/site/Section";
 import { BrandPanel } from "@/components/site/BrandPanel";
-import { getVisibleTeam } from "@/lib/team";
+import { RecoBadge } from "@/components/site/RecoBadge";
+import { FounderVideo } from "@/components/about/FounderVideo";
+import {
+  ContactRouter,
+  type ResolvedRoute,
+  type RoutePerson,
+} from "@/components/about/ContactRouter";
+import {
+  AvatarStack,
+  displayPhone,
+  telHref,
+} from "@/components/about/people";
+import { getVisibleTeam, type TeamMember } from "@/lib/team";
 import { getMedia, getInstallationPhotos } from "@/lib/media";
+import { CONTACT_ROUTES } from "@/lib/contact-routes";
+import { RECO } from "@/lib/reco";
 import {
   JsonLd,
   localBusinessSchema,
@@ -11,19 +36,46 @@ import {
   breadcrumbSchema,
 } from "@/components/seo/JsonLd";
 
-export const metadata = {
-  title: "Om oss · Optimera Energi – elfirman som tar hand om dig",
-  description:
-    "Möt teamet bakom Optimera Energilösningar i Mälardalen AB. Tre människor i Solna som installerar solpaneler, batterier, värmepumpar och laddboxar – och som finns kvar dagen efter kontraktet är skrivet.",
-  alternates: { canonical: "/om-oss" },
-  openGraph: {
-    title: "Om oss – Optimera Energi",
-    description:
-      "Tre människor i Solna som installerar sol, batteri, värme och laddboxar – och som finns kvar dagen efter kontraktet är skrivet.",
-    url: "/om-oss",
-    type: "website",
-  },
-};
+/*
+ * /om-oss – strukturerad för förtroende (okt 2026):
+ *  1. Hero + "Vem ska du höra av dig till?"  – rätt person direkt
+ *  2. Teamet                                  – ansikten, roller, nummer
+ *  3. Så började det                          – grundarfilmen (eller
+ *                                               grundarnas porträtt)
+ *  4. Det här kan du räkna med                – fyra konkreta löften
+ *  5. Installationsbilder (när de finns)
+ *  6. Bolagsresan
+ *  7. Besök oss + bolagsfakta
+ *
+ * Borttaget: "9/10 – Mål: kunder rekommenderar oss" (statsraden och
+ * tidslinjens 2030-steg), samt alla omnämnanden av värmepumpar – tjänsten
+ * är dold på resten av sajten.
+ */
+
+// Rubriker räknas från teamlistan så de aldrig ljuger när teamet ändras.
+const COUNT_WORDS = [
+  "Noll", "En", "Två", "Tre", "Fyra", "Fem", "Sex", "Sju", "Åtta", "Nio",
+  "Tio", "Elva", "Tolv", "Tretton", "Fjorton", "Femton",
+];
+function countWord(n: number): string {
+  return COUNT_WORDS[n] ?? String(n);
+}
+
+export function generateMetadata(): Metadata {
+  const n = getVisibleTeam().length;
+  const word = countWord(n).toLowerCase();
+  return {
+    title: "Om oss · Optimera Energi – elfirman som tar hand om dig",
+    description: `Möt de ${word} personerna bakom Optimera Energilösningar i Mälardalen AB – med namn, roll och direktnummer, och se direkt vem du ska kontakta. Vi installerar solpaneler, batterier och laddboxar.`,
+    alternates: { canonical: "/om-oss" },
+    openGraph: {
+      title: "Om oss – Optimera Energi",
+      description: `${countWord(n)} personer med kontor i Solna som installerar sol, batteri och laddbox – och som finns kvar dagen efter att kontraktet är skrivet.`,
+      url: "/om-oss",
+      type: "website",
+    },
+  };
+}
 
 const TIMELINE = [
   {
@@ -50,58 +102,88 @@ const TIMELINE = [
     body:
       "När vi blir balansansvarig partner kan vi ge våra kunder spotpris utan påslag och en transparent ekonomi i din egen produktion.",
   },
+];
+
+const PROMISES = [
   {
-    year: "2030",
-    title: "Sveriges mest rekommenderade installatör.",
-    body:
-      "Målet är inte att bli störst. Målet är att 9 av 10 kunder vill skicka oss vidare till vänner och grannar.",
+    icon: <Receipt size={18} />,
+    title: "Fast pris",
+    body: "Priset på offerten är priset på fakturan. Inga dolda påslag.",
+  },
+  {
+    icon: <UserCheck size={18} />,
+    title: "En fast kontaktperson",
+    body: "Samma person från första mejl till sista uppföljning.",
+  },
+  {
+    icon: <Ban size={18} />,
+    title: "Ärliga råd",
+    body: "Vi säger nej till installationer som inte passar dig.",
+  },
+  {
+    icon: <ShieldCheck size={18} />,
+    title: "25 års garanti",
+    body: "Garantin på installationen följer med huset om du säljer.",
   },
 ];
 
 // LocalBusiness berikat med founder + employee + foundingDate-data
-// specifikt för /om-oss. Spreadar bas-schemat och lägger Person-arrays.
-// Byggs från getVisibleTeam() så admin-redigeringar (/admin/team) slår
-// igenom – och dolda personer aldrig hamnar i det publika schemat.
-function teamLocalBusinessSchema(team: ReturnType<typeof getVisibleTeam>) {
+// specifikt för /om-oss. Byggs från getVisibleTeam() så admin-redigeringar
+// (/admin/team) slår igenom – och dolda personer aldrig hamnar i schemat.
+function teamLocalBusinessSchema(team: TeamMember[]) {
+  const person = (m: TeamMember) => ({
+    "@type": "Person",
+    name: m.name,
+    jobTitle: m.role,
+    email: m.email,
+    ...(m.phone ? { telephone: telHref(m.phone) } : {}),
+  });
   return {
     ...localBusinessSchema,
-    founder: team
-      .filter((m) => m.role.includes("Grundare"))
-      .map((m) => ({
-        "@type": "Person",
-        name: m.name,
-        jobTitle: m.role,
-        email: m.email,
-        ...(m.phone ? { telephone: telHref(m.phone) } : {}),
-      })),
-    employee: team.map((m) => ({
-      "@type": "Person",
-      name: m.name,
-      jobTitle: m.role,
-      email: m.email,
-      ...(m.phone ? { telephone: telHref(m.phone) } : {}),
-    })),
+    founder: team.filter((m) => /grundare/i.test(m.role)).map(person),
+    employee: team.map(person),
     foundingDate: "2026",
-    foundingLocation: {
-      "@type": "Place",
-      name: "Solna, Sverige",
-    },
+    foundingLocation: { "@type": "Place", name: "Solna, Sverige" },
     numberOfEmployees: team.length,
   };
 }
 
-// Rubriken räknas från teamlistan så den aldrig ljuger när teamet ändras.
-const COUNT_WORDS = [
-  "Noll", "En", "Två", "Tre", "Fyra", "Fem", "Sex", "Sju", "Åtta", "Nio",
-  "Tio", "Elva", "Tolv",
-];
-
 export default function AboutPage() {
   // Dolda personer filtreras bort SERVER-SIDE – de renderas aldrig, så
-  // varken korten, siffrorna eller JSON-LD:n röjer att de finns.
+  // varken korten, kontaktvägarna, siffrorna eller JSON-LD:n röjer dem.
   const team = getVisibleTeam();
-  const countWord = COUNT_WORDS[team.length] ?? String(team.length);
+  const n = team.length;
   const installationPhotos = getInstallationPhotos();
+  const film = getMedia("om-oss:grundarfilm");
+  const filmPoster = getMedia("om-oss:grundarfilm-omslag");
+
+  const lite = (m: TeamMember): RoutePerson => ({
+    id: m.id,
+    name: m.name,
+    role: m.role,
+    phone: m.phone,
+    email: m.email,
+    color: m.color,
+    photo: getMedia(`team:${m.id}`)?.url,
+  });
+  const people = team.map(lite);
+  const founders = people.filter((p) => /grundare/i.test(p.role));
+  const routes: ResolvedRoute[] = CONTACT_ROUTES.map((r) => ({
+    id: r.id,
+    question: r.question,
+    groupTitle: r.groupTitle,
+    groupNote: r.groupNote,
+    people: team.filter((m) => m.contactFor?.includes(r.id)).map(lite),
+  }));
+  // Kortens etikett ("Kontakt för: Pågående installation"). Inte för nya
+  // kunder – det gäller alla rådgivare och säger inget utöver rollen.
+  const routeLabel = (m: TeamMember) =>
+    CONTACT_ROUTES.filter(
+      (r) => r.id !== "ny-kund" && m.contactFor?.includes(r.id),
+    )
+      .map((r) => r.cardLabel)
+      .join(" · ");
+
   return (
     <>
       <JsonLd data={aboutPageSchema} />
@@ -113,269 +195,281 @@ export default function AboutPage() {
         ])}
       />
 
-      {/* Hero – text + snapshot-kort */}
-      <section className="container-edge pt-12 md:pt-20 pb-16 md:pb-24">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-end">
-          <div className="lg:col-span-7">
+      {/* 1. Hero + vem ska du höra av dig till */}
+      <section className="container-edge pt-10 md:pt-16 pb-12 md:pb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          <div className="lg:col-span-6">
             <div className="eyebrow">Om Optimera Energi</div>
-            <h1 className="mt-5 font-display text-[44px] md:text-[80px] lg:text-[88px] tracking-display-tight leading-[1.15]">
+            <h1 className="mt-5 font-display text-[44px] md:text-[72px] lg:text-[76px] tracking-display-tight leading-[1.15]">
               En elfirma som
               <span className="block italic font-serif text-indigo">
                 tar hand om dig.
               </span>
             </h1>
             <p className="mt-6 max-w-xl text-ink/70 text-lg leading-relaxed">
-              Optimera Energilösningar i Mälardalen AB grundades på en enkel idé: branschen
-              behöver en installatör som faktiskt finns kvar dagen efter
-              kontraktet är skrivet.
+              Vi är {countWord(n).toLowerCase()} personer med kontor i Solna
+              som installerar solpaneler, batterier och laddboxar – och som
+              finns kvar dagen efter att kontraktet är skrivet. Här ser du
+              vilka vi är, och vem du ska prata med.
             </p>
+
+            {/* Förtroenderad: ansiktena + Reco. whitespace-nowrap håller
+                varje del hel; raden bryts hellre mellan delarna. */}
+            <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
+              <a
+                href="#teamet"
+                className="group inline-flex items-center gap-3 whitespace-nowrap"
+              >
+                <AvatarStack people={people} max={5} size={40} />
+                <span className="inline-flex items-center gap-1.5 text-[14px] text-ink/70 group-hover:text-ink transition">
+                  Möt teamet <ArrowDown size={14} />
+                </span>
+              </a>
+              <a
+                href={RECO.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex flex-col gap-0.5 whitespace-nowrap text-[13.5px] leading-tight text-ink/70 hover:text-ink transition"
+              >
+                <span className="text-amber-deep tracking-[0.1em]" aria-hidden>
+                  ★★★★★
+                </span>
+                <span>
+                  <span className="font-medium text-ink">{RECO.average} av 5</span> på
+                  Reco · {RECO.count} omdömen
+                </span>
+              </a>
+            </div>
           </div>
 
-          <aside className="lg:col-span-5">
-            <div className="rounded-3xl border border-ink/10 bg-bone p-7 md:p-8">
-              <div className="font-mono text-[10.5px] uppercase tracking-[0.2em] text-ink/55 mb-5">
-                Bolagsfakta
-              </div>
-              <dl className="space-y-3.5 text-[14px]">
-                <FactRow k="Juridiskt namn" v="Optimera Energilösningar i Mälardalen AB" />
-                <FactRow k="Org.nummer" v="559375-2206" />
-                <FactRow k="Säte" v="Vallgatan 9, Solna" />
-                <FactRow k="Grundat" v="2026" />
-                {/* Dynamisk från TEAM så siffran aldrig driftar mot rubriken
-                    "Sju människor..." och numberOfEmployees i schemat. */}
-                <FactRow k="Medarbetare" v={String(team.length)} />
-                <FactRow k="Auktorisation" v="F-skatt · BAS-U · SEK" />
-              </dl>
-              <div className="mt-6 pt-5 border-t border-ink/10 flex flex-wrap gap-2 text-[11px] font-mono uppercase tracking-[0.16em] text-ink/65">
-                <Tag>Solpaneler</Tag>
-                <Tag>Batterilager</Tag>
-                <Tag>Värmepumpar</Tag>
-                <Tag>Laddboxar</Tag>
-              </div>
-            </div>
-          </aside>
-        </div>
-
-        {/* Stats-rad */}
-        <div className="mt-12 md:mt-16 grid grid-cols-2 md:grid-cols-4 gap-px bg-ink/10 rounded-2xl overflow-hidden border border-ink/10">
-          <Stat n="0" label="Dolda påslag på offerten" />
-          <Stat n="25 år" label="Garanti på installationen" />
-          <Stat n="4,8/5" label="Betyg på Reco" />
-          <Stat n="9/10" label="Mål: kunder rekommenderar oss" />
+          <div className="lg:col-span-6">
+            <ContactRouter routes={routes} />
+          </div>
         </div>
       </section>
 
-      {/* Vår vision */}
-      <Section
-        eyebrow="Vår vision"
-        title={
-          <>
-            Den varma kanelbullen
-            <span className="block italic font-serif text-indigo">
-              i en kall vinterstorm.
-            </span>
-          </>
-        }
-        className="!py-16 md:!py-20"
-      >
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
-          <div className="lg:col-span-7 space-y-5 text-ink/75 text-[16px] md:text-[17px] leading-relaxed">
-            <p>
-              Efter att ha jobbat i solcells- och energibranschen länge har
-              vi sett samma sak gång på gång: bolag som fular sig med
-              installationer och säljer på så mycket som möjligt för att
-              maxa marginalen, oavsett om kunden faktiskt behöver det.
-              Människor som vill göra något för miljön förtjänar bättre
-              än så.
-            </p>
-            <p>
-              Vår vision är att vara installatören som tar hand om dig.
-              Allt ska kännas bra från första kontakt till sista inkopplade
-              kontakt. Vi ringer dagen innan, vi förklarar varje siffra på
-              offerten, vi finns kvar år efter installationen.
-            </p>
-            <p>
-              Solcells- och batteribranschen har länge varit som en kall
-              vinterstorm man slänger sig ut i när man vill göra något för
-              sig själv eller miljön. Vi ska vara känslan av en varm
-              kanelbulle mitt i den stormen. Familjär service kombinerat
-              med ingenjörskonst som håller i 25 år.
-            </p>
-          </div>
-          <div className="lg:col-span-5">
-            <BrandPanel>
-              <div className="space-y-5">
-                <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink/55">
-                  Det här är löftet
-                </div>
-                <ul className="space-y-3 text-[15px] text-ink/80 leading-relaxed">
-                  <li className="flex gap-3">
-                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-indigo shrink-0" />
-                    <span>Priset på offerten är priset på fakturan.</span>
-                  </li>
-                  <li className="flex gap-3">
-                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-indigo shrink-0" />
-                    <span>
-                      Vi säger nej till installationer som inte passar dig.
-                    </span>
-                  </li>
-                  <li className="flex gap-3">
-                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-indigo shrink-0" />
-                    <span>
-                      Du har en fast kontaktperson från första mejl till
-                      sista uppföljning.
-                    </span>
-                  </li>
-                  <li className="flex gap-3">
-                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-indigo shrink-0" />
-                    <span>
-                      Garantin på vårt arbete gäller även när du sålt huset.
-                    </span>
-                  </li>
-                </ul>
-              </div>
-            </BrandPanel>
-          </div>
-        </div>
-      </Section>
-
-      {/* Värderingar */}
-      <Section
-        eyebrow="Vad vi tror på"
-        title={
-          <>
-            Vad vi gör
-            <span className="block italic font-serif text-indigo">annorlunda.</span>
-          </>
-        }
-        intro="Fyra principer som styr varje hembesök, offert och installation."
-        className="!py-16 md:!py-20"
-      >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
-          <Belief
-            n="01"
-            title="Genuinitet, vi säger nej när vi måste"
-            body="Vi finns inte för att sälja paket. När vi tycker att du borde vänta, dimensionera mindre, eller satsa på värmepump istället för fler paneler, då säger vi det. Det är därför vi finns."
-          />
-          <Belief
-            n="02"
-            title="Förståelse innan lösning"
-            body="Innan vi pratar lösning vill vi förstå er situation. Vi räknar på er förbrukning, kartlägger ert hus, och ser om lösningen passar er. Först då lägger vi ett konkret förslag."
-          />
-          <Belief
-            n="03"
-            title="Hand-plockat sortiment"
-            body="Vi kan installera vilket märke som helst. Men vi har valt det vi säljer efter hundratals tester. Inte det dyraste. Inte det billigaste. Det som ger mest värde för pengarna utan att tumma på 25-årsperspektivet."
-          />
-          <Belief
-            n="04"
-            title="Erfarenhet från branschens bästa"
-            body="En kompetent skara elektriker, projektörer, ekonomer och säljare med rötter i Sveriges mest välrenommerade bolag inom solenergi och el. Vi tar med oss det som avgör skillnaden mellan en bra och en utmärkt installation."
-          />
-        </div>
-      </Section>
-
-      {/* Team */}
+      {/* 2. Teamet */}
       <Section
         eyebrow="Teamet"
-        title={<>{countWord} människor som svarar i telefonen.</>}
-        intro="Du får aldrig en växel eller en chatt-bot. Du pratar med en av oss, varje gång."
-        className="!py-16 md:!py-20"
+        title={<span id="teamet" className="scroll-mt-28">{countWord(n)} människor som svarar i telefonen.</span>}
+        intro="Ingen växel och ingen chattbot. Vi har rötter i några av Sveriges mest välrenommerade bolag inom solenergi och el – ring eller mejla den du vill prata med direkt."
+        className="!pt-4 md:!pt-8 !pb-16 md:!pb-24"
       >
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-5">
           {team.map((m) => {
             const photo = getMedia(`team:${m.id}`);
+            const label = routeLabel(m);
             return (
-            <article
-              key={m.email}
-              className="rounded-3xl border border-ink/10 overflow-hidden bg-bone flex flex-col"
-            >
-              <div className={`aspect-[4/5] bg-gradient-to-br ${m.color} relative`}>
-                {photo ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={photo.url}
-                    alt={photo.alt || m.name}
-                    className="absolute inset-0 h-full w-full object-cover"
-                  />
-                ) : (
-                  <div className="absolute inset-0 mix-blend-overlay opacity-25 bg-grain bg-grain-sm" />
-                )}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
-                <div className="absolute bottom-0 inset-x-0 p-3 md:p-5 text-bone">
-                  <div className="font-mono text-[9px] md:text-[10.5px] uppercase tracking-[0.14em] md:tracking-[0.18em] text-bone/75 truncate">
-                    {m.role}
-                  </div>
-                  <div className="font-display text-base md:text-2xl tracking-display-tight mt-0.5 md:mt-1 leading-tight">
-                    {m.name}
+              <article
+                key={m.id}
+                id={`person-${m.id}`}
+                className="scroll-mt-28 rounded-3xl border border-ink/10 overflow-hidden bg-bone flex flex-col target:ring-2 target:ring-indigo target:ring-offset-4 target:ring-offset-bone"
+              >
+                <div className={`aspect-[4/5] bg-gradient-to-br ${m.color} relative`}>
+                  {photo ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={photo.url}
+                      alt={photo.alt || m.name}
+                      loading="lazy"
+                      decoding="async"
+                      className="absolute inset-0 h-full w-full object-cover"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 mix-blend-overlay opacity-25 bg-grain bg-grain-sm" />
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  {label && (
+                    <span className="absolute left-2.5 top-2.5 md:left-4 md:top-4 inline-flex max-w-[calc(100%-1.25rem)] items-center gap-1.5 rounded-full bg-bone/90 backdrop-blur px-2.5 py-1 text-[10.5px] md:text-[12px] font-medium text-ink/85">
+                      <Phone size={11} className="shrink-0 text-indigo" />
+                      <span className="truncate">{label}</span>
+                    </span>
+                  )}
+                  <div className="absolute bottom-0 inset-x-0 p-3 md:p-5 text-bone">
+                    <div className="font-mono text-[9px] md:text-[10.5px] uppercase tracking-[0.14em] md:tracking-[0.18em] text-bone/80 truncate">
+                      {m.role}
+                    </div>
+                    <div className="font-display text-base md:text-2xl tracking-display-tight mt-0.5 md:mt-1 leading-tight">
+                      {m.name}
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="p-3.5 md:p-7 flex flex-col gap-3 md:gap-4 flex-1">
-                {/* Bion döljs på mobil (2-kolumnsläget) – annars blir det
-                    ett jäkla skrollande. */}
-                <p className="hidden md:block text-ink/70 text-[14.5px] leading-relaxed">
-                  {m.bio}
-                </p>
-                <div className="mt-auto md:pt-4 md:border-t md:border-ink/10">
-                  {/* Mobil: kompakta ikon-knappar. */}
-                  <div className="flex gap-2 md:hidden">
-                    <a
-                      href={`mailto:${m.email}`}
-                      aria-label={`Mejla ${m.name}`}
-                      className="grid h-9 w-9 place-items-center rounded-full border border-ink/15 text-ink/70 active:bg-ink/5"
-                    >
-                      <Mail size={14} />
-                    </a>
-                    {m.phone && (
+                <div className="p-3.5 md:p-7 flex flex-col gap-3 md:gap-4 flex-1">
+                  {/* Bion döljs i mobilens tvåkolumnsläge – annars blir det
+                      ett jäkla skrollande. */}
+                  <p className="hidden md:block text-ink/70 text-[14.5px] leading-relaxed">
+                    {m.bio}
+                  </p>
+                  <div className="mt-auto md:pt-4 md:border-t md:border-ink/10">
+                    {/* Mobil: kompakta ikon-knappar. */}
+                    <div className="flex gap-2 md:hidden">
                       <a
-                        href={`tel:${telHref(m.phone)}`}
-                        aria-label={`Ring ${m.name}`}
+                        href={`mailto:${m.email}`}
+                        aria-label={`Mejla ${m.name}`}
                         className="grid h-9 w-9 place-items-center rounded-full border border-ink/15 text-ink/70 active:bg-ink/5"
                       >
-                        <Phone size={14} />
+                        <Mail size={14} />
                       </a>
-                    )}
-                  </div>
-                  {/* Desktop: fulla kontaktrader. */}
-                  <div className="hidden md:block space-y-2 text-[13.5px]">
-                    <a
-                      href={`mailto:${m.email}`}
-                      className="flex items-center gap-2 text-ink/70 hover:text-indigo transition break-all"
-                    >
-                      <Mail size={13} className="shrink-0" />
-                      {m.email}
-                    </a>
-                    {m.phone && (
+                      {m.phone && (
+                        <a
+                          href={`tel:${telHref(m.phone)}`}
+                          aria-label={`Ring ${m.name}`}
+                          className="grid h-9 w-9 place-items-center rounded-full border border-ink/15 text-ink/70 active:bg-ink/5"
+                        >
+                          <Phone size={14} />
+                        </a>
+                      )}
+                    </div>
+                    {/* Desktop: fulla kontaktrader. */}
+                    <div className="hidden md:block space-y-2 text-[13.5px]">
                       <a
-                        href={`tel:${telHref(m.phone)}`}
-                        className="flex items-center gap-2 text-ink/70 hover:text-indigo transition"
+                        href={`mailto:${m.email}`}
+                        className="flex items-center gap-2 text-ink/70 hover:text-indigo transition break-all"
                       >
-                        <Phone size={13} className="shrink-0" />
-                        {formatPhone(m.phone)}
+                        <Mail size={13} className="shrink-0" />
+                        {m.email}
                       </a>
-                    )}
+                      {m.phone && (
+                        <a
+                          href={`tel:${telHref(m.phone)}`}
+                          className="flex items-center gap-2 text-ink/70 hover:text-indigo transition"
+                        >
+                          <Phone size={13} className="shrink-0" />
+                          {displayPhone(m.phone)}
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </div>
-              </div>
-            </article>
+              </article>
             );
           })}
         </div>
       </Section>
 
-      {/* Bilder från installationer. Fylls från /admin/media → gruppen
-          "Installationer (om-oss)"; alt-texten blir bildtext. Bara
-          uppladdade foton renderas, och utan foton renderas inte sektionen
-          alls – tidigare stod här fyra tomma grå rutor med bildtexter om
-          specifika installationer, vilket designgenomgången (sep 2026)
-          flaggade. */}
+      {/* 3. Så började det – grundarfilmen, eller grundarnas porträtt tills
+          en film laddats upp i /admin/media → "Om oss". */}
+      <div className="bg-cream/45 border-y border-ink/5">
+        <Section
+          eyebrow="Så började det"
+          title={
+            <>
+              Den varma kanelbullen
+              <span className="block italic font-serif text-indigo">
+                i en kall vinterstorm.
+              </span>
+            </>
+          }
+          className="!py-16 md:!py-24"
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+            {(film || founders.length > 0) && (
+              <div className="lg:col-span-7">
+                {film ? (
+                  <FounderVideo
+                    url={film.url}
+                    poster={filmPoster?.url}
+                    title={film.alt || "Så började Optimera Energi"}
+                  />
+                ) : (
+                  <div className={`grid gap-3 md:gap-4 ${founders.length > 1 ? "grid-cols-2" : "grid-cols-1 max-w-sm"}`}>
+                    {founders.slice(0, 2).map((f) => (
+                      <figure
+                        key={f.id}
+                        className={`relative aspect-[4/5] overflow-hidden rounded-[28px] bg-gradient-to-br ${f.color}`}
+                      >
+                        {f.photo && (
+                          // eslint-disable-next-line @next/next/no-img-element
+                          <img
+                            src={f.photo}
+                            alt={f.name}
+                            loading="lazy"
+                            decoding="async"
+                            className="absolute inset-0 h-full w-full object-cover"
+                          />
+                        )}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                        <figcaption className="absolute bottom-0 inset-x-0 p-4 md:p-6 text-bone">
+                          <div className="font-mono text-[9.5px] md:text-[10.5px] uppercase tracking-[0.16em] text-bone/80">
+                            {f.role}
+                          </div>
+                          <div className="mt-1 font-display text-lg md:text-2xl tracking-display-tight leading-tight">
+                            {f.name}
+                          </div>
+                        </figcaption>
+                      </figure>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+
+            <div
+              className={`space-y-5 text-ink/75 text-[16px] md:text-[17px] leading-relaxed ${
+                film || founders.length > 0 ? "lg:col-span-5" : "lg:col-span-8"
+              }`}
+            >
+              <p>
+                Efter att ha jobbat i solcells- och energibranschen länge har
+                vi sett samma sak gång på gång: bolag som fular sig med
+                installationer och säljer på så mycket som möjligt för att
+                maxa marginalen, oavsett om kunden faktiskt behöver det.
+                Människor som vill göra något för miljön förtjänar bättre än
+                så.
+              </p>
+              <p>
+                Vår vision är att vara installatören som tar hand om dig.
+                Allt ska kännas bra från första kontakt till sista inkopplade
+                kontakt. Vi ringer dagen innan, vi förklarar varje siffra på
+                offerten, vi finns kvar år efter installationen.
+              </p>
+              <p>
+                Solcells- och batteribranschen har länge varit som en kall
+                vinterstorm man slänger sig ut i när man vill göra något för
+                sig själv eller miljön. Vi ska vara känslan av en varm
+                kanelbulle mitt i den stormen. Familjär service kombinerat
+                med ingenjörskonst som håller i 25 år.
+              </p>
+            </div>
+          </div>
+        </Section>
+      </div>
+
+      {/* 4. Det här kan du räkna med */}
+      <Section
+        eyebrow="Det här kan du räkna med"
+        title={<>Fyra saker vi aldrig tummar på.</>}
+        className="!py-16 md:!py-24"
+      >
+        <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
+          {PROMISES.map((p) => (
+            <li
+              key={p.title}
+              className="rounded-3xl border border-ink/10 bg-bone p-6 md:p-7"
+            >
+              <span className="grid h-10 w-10 place-items-center rounded-full bg-indigo text-bone">
+                {p.icon}
+              </span>
+              <h3 className="mt-5 font-display text-xl tracking-display-tight leading-snug">
+                {p.title}
+              </h3>
+              <p className="mt-2 text-[14.5px] text-ink/65 leading-relaxed">
+                {p.body}
+              </p>
+            </li>
+          ))}
+        </ul>
+      </Section>
+
+      {/* 5. Bilder från installationer. Fylls från /admin/media → gruppen
+          "Installationer (om-oss)"; alt-texten blir bildtext. Utan foton
+          renderas inte sektionen alls. */}
       {installationPhotos.length > 0 && (
         <Section
           eyebrow="En vanlig vecka"
           title={<>Färdiga batteriinstallationer hos våra kunder.</>}
           intro="Vi dokumenterar varje arbete vi släpper ifrån oss. När vi är klara ska elskåpet vara snyggare än när vi kom."
-          className="!py-16 md:!py-20"
+          className="!pt-0 !pb-16 md:!pb-24"
         >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
             {installationPhotos.map((photo) => (
@@ -402,60 +496,86 @@ export default function AboutPage() {
         </Section>
       )}
 
-      {/* Tidslinje */}
-      <Section
-        eyebrow="Bolagsresan"
-        title={<>Vår väg mot den kompletta energileverantören.</>}
-        intro="Hur vi byggs år för år. Allt i tjänst av att förtjäna ditt förtroende."
-        className="!py-16 md:!py-20"
-      >
-        <ol className="relative border-l-2 border-ink/10 ml-3 md:ml-6 space-y-10">
-          {TIMELINE.map((step, i) => (
-            <li key={i} className="pl-6 md:pl-10 relative">
-              <span
-                className="absolute -left-[9px] top-1.5 h-4 w-4 rounded-full ring-4 ring-bone bg-indigo"
-                aria-hidden
-              />
-              <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink/55">
-                {step.year}
-              </div>
-              <h3 className="mt-2 font-display text-2xl md:text-3xl tracking-display-tight leading-snug">
-                {step.title}
-              </h3>
-              <p className="mt-3 max-w-2xl text-ink/70 leading-relaxed">
-                {step.body}
-              </p>
-            </li>
-          ))}
-        </ol>
-      </Section>
+      {/* 6. Bolagsresan */}
+      <div className="bg-cream/45 border-y border-ink/5">
+        <Section
+          eyebrow="Bolagsresan"
+          title={<>Vår väg mot den kompletta energileverantören.</>}
+          intro="Hur vi byggs år för år. Allt i tjänst av att förtjäna ditt förtroende."
+          className="!py-16 md:!py-24"
+        >
+          <ol className="relative border-l-2 border-ink/10 ml-3 md:ml-6 space-y-10">
+            {TIMELINE.map((step, i) => (
+              <li key={i} className="pl-6 md:pl-10 relative">
+                <span
+                  className="absolute -left-[9px] top-1.5 h-4 w-4 rounded-full ring-4 ring-cream bg-indigo"
+                  aria-hidden
+                />
+                <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink/55">
+                  {step.year}
+                </div>
+                <h3 className="mt-2 font-display text-2xl md:text-3xl tracking-display-tight leading-snug">
+                  {step.title}
+                </h3>
+                <p className="mt-3 max-w-2xl text-ink/70 leading-relaxed">
+                  {step.body}
+                </p>
+              </li>
+            ))}
+          </ol>
+        </Section>
+      </div>
 
-      {/* CTA-panel: Kom förbi */}
-      <Section className="!py-16 md:!py-20">
-        <BrandPanel>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-end">
-            <div>
-              <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink/55">
-                Kom förbi
+      {/* 7. Besök oss + bolagsfakta */}
+      <Section className="!py-16 md:!py-24">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 md:gap-6 items-stretch">
+          <div className="lg:col-span-7">
+            <BrandPanel className="h-full">
+              <div className="flex h-full flex-col">
+                <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink/55">
+                  Kom förbi
+                </div>
+                <h2 className="mt-3 font-display text-3xl md:text-5xl tracking-display-tight leading-[1.15]">
+                  Vallgatan 9, Solna.
+                </h2>
+                <p className="mt-5 max-w-md text-ink/70 leading-relaxed">
+                  Säg till om du vill titta in. Vi öppnar gärna upp kontoret
+                  för en kopp kaffe och ett rakt samtal om vad du funderar på.
+                </p>
+                <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:mt-auto sm:pt-8">
+                  <Link href="/offert" className="btn-primary justify-center">
+                    Boka hembesök <ArrowRight size={16} />
+                  </Link>
+                  <Link href="/kontakt" className="btn-ghost justify-center">
+                    <MapPin size={15} /> Hitta hit
+                  </Link>
+                </div>
               </div>
-              <h3 className="mt-3 font-display text-3xl md:text-5xl tracking-display-tight leading-tight">
-                Vallgatan 9, Solna.
-              </h3>
-              <p className="mt-5 max-w-md text-ink/70 leading-relaxed">
-                Säg till om du vill titta in. Vi öppnar gärna upp kontoret för
-                en kopp kaffe och ett rakt samtal om vad du funderar på.
-              </p>
-            </div>
-            <div className="flex flex-col gap-3">
-              <Link href="/kontakt" className="btn-primary justify-center">
-                Se kontaktuppgifter <ArrowRight size={16} />
-              </Link>
-              <Link href="/offert" className="btn-ghost justify-center">
-                Eller boka hembesök
-              </Link>
-            </div>
+            </BrandPanel>
           </div>
-        </BrandPanel>
+
+          <aside className="lg:col-span-5 rounded-3xl border border-ink/10 bg-bone p-7 md:p-8">
+            <div className="flex items-start justify-between gap-4">
+              <div className="font-mono text-[10.5px] uppercase tracking-[0.2em] text-ink/55">
+                Bolagsfakta
+              </div>
+              <RecoBadge size={64} />
+            </div>
+            <dl className="mt-4 space-y-3.5 text-[14px]">
+              <FactRow k="Juridiskt namn" v="Optimera Energilösningar i Mälardalen AB" />
+              <FactRow k="Org.nummer" v="559375-2206" />
+              <FactRow k="Säte" v="Vallgatan 9, Solna" />
+              <FactRow k="Grundat" v="2026" />
+              <FactRow k="Medarbetare" v={String(n)} />
+              <FactRow k="Auktorisation" v="F-skatt · BAS-U · SEK" />
+            </dl>
+            <div className="mt-6 pt-5 border-t border-ink/10 flex flex-wrap gap-2 text-[11px] font-mono uppercase tracking-[0.16em] text-ink/65">
+              <Tag>Solpaneler</Tag>
+              <Tag>Batterilager</Tag>
+              <Tag>Laddboxar</Tag>
+            </div>
+          </aside>
+        </div>
       </Section>
     </>
   );
@@ -476,44 +596,4 @@ function Tag({ children }: { children: React.ReactNode }) {
       {children}
     </span>
   );
-}
-
-function Stat({ n, label }: { n: string; label: string }) {
-  return (
-    <div className="bg-bone p-5 md:p-7">
-      <div className="font-display text-3xl md:text-4xl tracking-display-tight leading-none">
-        {n}
-      </div>
-      <div className="mt-2 text-[12.5px] text-ink/60 leading-snug">
-        {label}
-      </div>
-    </div>
-  );
-}
-
-function Belief({ n, title, body }: { n: string; title: string; body: string }) {
-  return (
-    <div className="rounded-3xl border border-ink/10 bg-cream/40 p-7 md:p-8">
-      <div className="font-mono text-[11px] tracking-[0.18em] text-ink/55">
-        ÖVERTYGELSE {n}
-      </div>
-      <h3 className="mt-4 font-display text-2xl tracking-display-tight leading-snug">
-        {title}
-      </h3>
-      <p className="mt-3 text-ink/65 text-[14.5px] leading-relaxed">{body}</p>
-    </div>
-  );
-}
-
-function formatPhone(p: string): string {
-  if (p.length === 10) {
-    return `${p.slice(0, 3)} ${p.slice(3, 6)} ${p.slice(6, 8)} ${p.slice(8)}`;
-  }
-  return p;
-}
-
-/** tel:-href som tål både "07x…" och redan internationellt "+46 …". */
-function telHref(p: string): string {
-  const digits = p.replace(/[^\d+]/g, "");
-  return digits.startsWith("+") ? digits : `+46${digits.replace(/^0/, "")}`;
 }

@@ -12,6 +12,7 @@ import {
   Save,
   Trash2,
 } from "lucide-react";
+import { CONTACT_ROUTES, type ContactRouteId } from "@/lib/contact-routes";
 
 type Member = {
   id: string;
@@ -22,6 +23,7 @@ type Member = {
   color: string;
   bio: string;
   visible?: boolean;
+  contactFor?: ContactRouteId[];
 };
 
 /** Slugga ett namn till ett stabilt id (förnamn, gemener, a-z0-9-). */
@@ -208,6 +210,41 @@ export function TeamManager({ initial }: { initial: Member[] }) {
                 className="mt-1 w-full rounded-xl border border-ink/15 bg-bone px-3 py-2 text-[14px] outline-none focus:border-indigo"
               />
             </label>
+            {/* Styr "Vem ska du höra av dig till?" högst upp på /om-oss.
+                Kryssa flera personer för samma situation så visas de som
+                en grupp (t.ex. alla rådgivare för nya kunder). */}
+            <fieldset className="mt-3">
+              <legend className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink/45">
+                Kontaktperson för (visas högst upp på om-oss)
+              </legend>
+              <div className="mt-1.5 flex flex-wrap gap-2">
+                {CONTACT_ROUTES.map((r) => {
+                  const on = (m.contactFor ?? []).includes(r.id);
+                  return (
+                    <button
+                      key={r.id}
+                      type="button"
+                      aria-pressed={on}
+                      onClick={() =>
+                        update(i, {
+                          contactFor: on
+                            ? (m.contactFor ?? []).filter((x) => x !== r.id)
+                            : [...(m.contactFor ?? []), r.id],
+                        })
+                      }
+                      className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-[12px] transition ${
+                        on
+                          ? "border-indigo/40 bg-indigo/10 text-indigo"
+                          : "border-ink/15 text-ink/55 hover:text-ink"
+                      }`}
+                    >
+                      {on && <Check size={12} />}
+                      {r.label}
+                    </button>
+                  );
+                })}
+              </div>
+            </fieldset>
           </div>
         ))}
       </div>

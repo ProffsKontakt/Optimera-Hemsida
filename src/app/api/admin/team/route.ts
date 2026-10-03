@@ -3,6 +3,7 @@ import { z } from "zod";
 import { isAdminAuthed } from "@/lib/admin-auth";
 import { ghGetFile, ghPutFile, isGitHubConfigured } from "@/lib/github";
 import { getTeam, TEAM_COLORS } from "@/lib/team";
+import { CONTACT_ROUTE_IDS } from "@/lib/contact-routes";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -24,6 +25,10 @@ const MemberSchema = z.object({
   // Publikt synlig på /om-oss. Dolda personer ligger kvar i team.json
   // men filtreras bort server-side innan sidan renderas.
   visible: z.boolean().default(true),
+  // "Vem ska du höra av dig till?" på /om-oss. Måste finnas här – zod
+  // stryker okända nycklar, så utan raden skulle varje sparning i admin
+  // tyst radera kontaktvägarna.
+  contactFor: z.array(z.enum(CONTACT_ROUTE_IDS)).max(4).default([]),
 });
 
 const Schema = z.array(MemberSchema).min(1).max(30);

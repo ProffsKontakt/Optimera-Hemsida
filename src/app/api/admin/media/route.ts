@@ -13,6 +13,11 @@ import {
   listMediaSlots,
   type MediaManifest,
 } from "@/lib/media";
+import { isOwnBlobUrl, parseVideoUrl } from "@/lib/video";
+
+function isVideoSlot(slotId: string): boolean {
+  return listMediaSlots().find((s) => s.id === slotId)?.kind === "video";
+}
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -40,11 +45,12 @@ function githubFailure(action: string, err: unknown) {
 
 /**
  * Raderar en gammal blob – best effort, får aldrig fälla anropet.
- * Hoppar över sökvägar i repot (/team/...): de är statiska filer, inte
- * blobbar, och del() kastar på en icke-blob-URL.
+ * Bara URL:er i vår egen Blob-butik: sökvägar i repot (/team/...) är
+ * statiska filer, och en video-slot kan peka på YouTube/Vimeo – del()
+ * kastar på allt som inte är en blob.
  */
 async function deleteBlobIfRemote(url: string | undefined) {
-  if (!url || !url.startsWith("http")) return;
+  if (!isOwnBlobUrl(url)) return;
   if (!process.env.BLOB_READ_WRITE_TOKEN) return;
   try {
     await del(url);
@@ -137,6 +143,14 @@ export async function POST(req: Request) {
   if (!isValidSlot(slotId)) {
     return NextResponse.json({ error: "Okänd slot" }, { status: 400 });
   }
+  if (isVideoSlot(slotId)) {
+    // Videofiler går direkt webbläsare → Blob (för stora för den här
+    // routen), och länkar sparas via PATCH.
+    return NextResponse.json(
+      { error: "Den här platsen tar en video – använd videouppladdningen" },
+      { status: 400 },
+    );
+  }
   if (!(file instanceof File)) {
     return NextResponse.json({ error: "Ingen fil bifogad" }, { status: 400 });
   }
@@ -224,12 +238,13 @@ export async function PATCH(req: Request) {
     return NextResponse.json({ error: "GitHub env vars saknas" }, { status: 500 });
   }
   const body = (await req.json().catch(() => null)) as
-    | { slotId?: string; frost?: unknown; alt?: unknown }
+    | { slotId?: string; frost?: unknown; alt?: unknown; url?: unknown }
     | null;
   const slotId = String(body?.slotId ?? "");
   if (!isValidSlot(slotId)) {
     return NextResponse.json({ error: "Okänd slot" }, { status: 400 });
   }
+  if (isVideoSlot(slotId)) return patchVideoSlot(slotId, body);
   try {
     const { data, sha } = await readManifest();
     const entry = data[slotId];
@@ -247,6 +262,55 @@ export async function PATCH(req: Request) {
     return NextResponse.json({ ok: true, entry });
   } catch (err) {
     return githubFailure("Uppdatering misslyckades", err);
+  }
+}
+
+/**
+ * Sätt eller byt film för en video-slot. Tar emot antingen URL:en till en
+ * fil som admin-klienten just laddat upp direkt till Blob, eller en
+ * YouTube-/Vimeo-länk. Valideras med samma parser som den publika
+ * spelaren använder – det som sparas här går alltid att spela upp.
+ */
+async function patchVideoSlot(
+  slotId: string,
+  body: { alt?: unknown; url?: unknown } | null,
+) {
+  const url = typeof body?.url === "string" ? body.url.trim() : undefined;
+  const alt = typeof body?.alt === "string" ? body.alt.slice(0, 300) : undefined;
+  if (url !== undefined && !parseVideoUrl(url)) {
+    return NextResponse.json(
+      {
+        error:
+          "Länken känns inte igen. Klistra in en YouTube- eller Vimeo-länk (https://…), eller ladda upp filen direkt.",
+      },
+      { status: 400 },
+    );
+  }
+  try {
+    const { data, sha } = await readManifest();
+    const previous = data[slotId];
+    if (url === undefined) {
+      // Bara beskrivningen ändras.
+      if (!previous) {
+        return NextResponse.json({ error: "Ingen film sparad ännu" }, { status: 404 });
+      }
+      if (alt !== undefined) previous.alt = alt;
+      previous.updatedAt = new Date().toISOString();
+    } else {
+      data[slotId] = {
+        url,
+        alt: alt ?? previous?.alt ?? "",
+        updatedAt: new Date().toISOString(),
+      };
+    }
+    await writeManifest(data, sha, `media: sätt film för ${slotId}`);
+    // En ersatt, egen uppladdad fil städas bort (best effort).
+    if (url !== undefined && previous?.url && previous.url !== url) {
+      await deleteBlobIfRemote(previous.url);
+    }
+    return NextResponse.json({ ok: true, entry: data[slotId] });
+  } catch (err) {
+    return githubFailure("Kunde inte spara filmen", err);
   }
 }
 

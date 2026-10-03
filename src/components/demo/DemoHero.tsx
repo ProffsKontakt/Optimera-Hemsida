@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import { ArrowRight } from "lucide-react";
+import { RECO } from "@/lib/reco";
 import { CanvasErrorBoundary } from "@/components/3d/CanvasErrorBoundary";
 import { SceneFallback } from "@/components/3d/SceneFallback";
 import { Defer } from "@/components/3d/Defer";
@@ -93,13 +94,13 @@ export function DemoHero({
             {/* Reco-betyget som förtroende-pill (endast desktop) – fyller
                 vänsterytan med social proof i stället för luft. */}
             <a
-              href="https://www.reco.se/optimera-energi"
+              href={RECO.url}
               target="_blank"
               rel="noopener noreferrer"
               className="hidden md:inline-flex w-fit items-center gap-2 rounded-full border border-ink/12 bg-cream/80 px-4 py-2 mb-7 text-[13px] text-ink/75 hover:border-ink/35 hover:text-ink transition"
             >
               <span className="text-amber-deep tracking-[0.08em]">★★★★★</span>
-              <span className="font-medium">4,8 av 5</span>
+              <span className="font-medium">{RECO.average} av 5</span>
               <span className="text-ink/50">på</span>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/reco.svg" alt="Reco" className="h-[15px] w-auto" />
@@ -160,7 +161,7 @@ export function DemoHero({
               {/* Social proof i mobilens första vy – Reco-betyget som en
                   diskret stjärnrad (desktop har pillen ovanför rubriken). */}
               <a
-                href="https://www.reco.se/optimera-energi"
+                href={RECO.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-5 flex w-fit items-center gap-2 text-[13px] text-ink/80 md:hidden [text-shadow:0_1px_2px_rgba(244,241,234,0.9)]"
@@ -169,7 +170,7 @@ export function DemoHero({
                   ★★★★★
                 </span>
                 <span className="flex items-center gap-1.5">
-                  <span><span className="font-medium">4,8 av 5</span> på</span>
+                  <span><span className="font-medium">{RECO.average} av 5</span> på</span>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src="/reco.svg" alt="Reco" className="h-[14px] w-auto [text-shadow:none]" />
                 </span>

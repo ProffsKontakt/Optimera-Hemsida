@@ -26,6 +26,12 @@ export type MediaSlot = {
   /** Visa frostnings-reglage (0–100) för sloten i admin. */
   frost?: boolean;
   /**
+   * "video": sloten tar en film i stället för en bild – antingen en fil
+   * som laddas upp direkt till Vercel Blob eller en YouTube-/Vimeo-länk
+   * (se lib/video.ts). Default är bild.
+   */
+  kind?: "image" | "video";
+  /**
    * Största bredd (px) bilden sparas i. Uppladdningen skalar ned till detta
    * och konverterar till WebP – så vi håller sajten snabb utan att någon
    * behöver tänka på bildoptimering. Sätts efter hur stort slottet visas
@@ -83,6 +89,22 @@ export function listMediaSlots(): MediaSlot[] {
       // Kortet är ~460px brett på desktop, ~190px på mobil -> 900 = 2x.
       maxWidth: 900,
     })),
+    {
+      id: "om-oss:grundarfilm",
+      group: "Om oss",
+      label: "Grundarfilmen (video)",
+      aspect: "16 / 9",
+      kind: "video" as const,
+      hint: "Filmen om hur Optimera grundades. Ladda upp filen direkt (MP4, helst 1080p och under ~200 MB) – eller klistra in en YouTube-/Vimeo-länk. Egen uppladdning rekommenderas: ingen tredjepart, och den spelas även för besökare som nekat cookies. Sektionen visar grundarnas porträtt tills en film finns.",
+    },
+    {
+      id: "om-oss:grundarfilm-omslag",
+      group: "Om oss",
+      label: "Grundarfilmen – omslagsbild",
+      aspect: "16 / 9",
+      hint: "Stillbilden som visas innan man trycker play. Valfri – utan den visas en mörk ruta med play-knapp.",
+      maxWidth: 1600,
+    },
     ...Array.from({ length: INSTALLATION_SLOT_COUNT }, (_, i) => ({
       id: `installation:${i + 1}`,
       group: "Installationer (om-oss)",

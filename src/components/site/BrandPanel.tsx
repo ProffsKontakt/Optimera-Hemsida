@@ -24,7 +24,10 @@ export function BrandPanel({
         className,
       ].join(" ")}
     >
-      <div className="relative rounded-[29px] bg-bone p-8 md:p-14">
+      {/* h-full: fyller ramen när panelen sträcks (t.ex. bredvid en
+          faktaruta i ett grid). Med auto-höjd på ramen blir det auto här
+          också, så övriga användningar påverkas inte. */}
+      <div className="relative h-full rounded-[29px] bg-bone p-8 md:p-14">
         {children}
       </div>
     </div>
