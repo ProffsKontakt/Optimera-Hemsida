@@ -367,7 +367,7 @@ const CONTENT: Record<string, NewsContent> = {
   "effektavgifter-2026-stoppat-krav-ny-modell-batteri": {
     tldr: [
       "Regeringen stoppade i mars kravet på att alla elnätsbolag ska införa effekttariffer – motiveringen var att avgifterna slog hårt mot vanliga hushåll och var svåra att förstå. Energimarknadsinspektionen fick i uppdrag att upphäva föreskrifterna senast den 30 juni 2026.",
-      "Frågan är inte död: Ei ska föreslå en ny, enhetlig modell för effektavgifter senast den 12 april 2027 – ett förslag som landar på nästa regerings bord, vilken det nu blir efter det rysarjämna valet.",
+      "Frågan är inte död: Ei ska senast den 12 april 2027 föreslå en ny modell som gör effektavgifterna mer enhetliga och begripliga – ett förslag som landar på nästa regerings bord, vilken det nu blir efter det rysarjämna valet.",
       "Nätbolag som redan infört effektavgifter får fortsätta med dem. Har du en sådan tariff sätter din dyraste timme avgiften – och ett hembatteri som kapar effekttoppar är det mest direkta skyddet, oavsett vad politiken landar i.",
     ],
     sections: [
@@ -402,7 +402,7 @@ const CONTENT: Record<string, NewsContent> = {
           "Krav på effekttariff i alla nät: stoppat i mars 2026.",
           "Befintliga effekttariffer: får fortsätta att gälla.",
           "Ellevio: effektavgiften borttagen sedan 1 juni 2026 – fast avgift efter säkringsstorlek plus överföringsavgift.",
-          "Ny enhetlig modell: Ei:s förslag redovisas senast 12 april 2027.",
+          "Ny modell för mer enhetliga effektavgifter: Ei:s förslag redovisas senast 12 april 2027.",
           "Vem som beslutar om din tariff i dag: ditt nätbolag.",
         ],
       },
@@ -417,7 +417,7 @@ const CONTENT: Record<string, NewsContent> = {
         h2: "Vad betyder det för dig?",
         body: [
           "Har du redan effekttariff: jämna ut dina toppar. Ladda elbilen på natten, låt inte värmepump och laddning toppa samtidigt, och har du batteri – aktivera effektvakten i ditt energisystem.",
-          "Funderar du på batteri: räkna med effektavgifterna som en osäker post. Har du Ellevio som nätbolag finns i dag ingen effektavgift att kapa – där bär självförbrukning, spotprisstyrning och stödtjänster batterikalkylen. Blir Ei:s nya modell verklighet får hela landet en enhetlig effektkomponent; tills dess avgör ditt nätbolag. Grönt avdrag på 48,5 procent för batteri gäller oförändrat, som vi gått igenom tidigare i serien.",
+          "Funderar du på batteri: räkna med effektavgifterna som en osäker post. Har du Ellevio som nätbolag finns i dag ingen effektavgift att kapa – där bär självförbrukning, spotprisstyrning och stödtjänster batterikalkylen. Blir Ei:s nya modell verklighet ska effektavgifterna bli mer enhetliga över landet; tills dess avgör ditt nätbolag. Grönt avdrag på 48,5 procent för batteri gäller oförändrat, som vi gått igenom tidigare i serien.",
           "Vi följer både Ei:s arbete med den nya modellen och regeringsbildningen, och uppdaterar här när något ändras som påverkar din kalkyl.",
         ],
       },
@@ -425,7 +425,7 @@ const CONTENT: Record<string, NewsContent> = {
     faq: [
       {
         q: "Är effekttariffer avskaffade nu?",
-        a: "Nej, men det beror på ditt nätbolag. Kravet på att alla nätbolag skulle införa dem stoppades i mars 2026 och föreskrifterna upphävdes. Bolag som redan infört effektavgifter får fortsätta, medan till exempel Ellevio tog bort sin effektavgift den 1 juni 2026. Energimarknadsinspektionen tar dessutom fram en ny enhetlig modell som redovisas senast den 12 april 2027, så frågan kommer tillbaka – i vilken form avgörs av nästa regering och riksdag.",
+        a: "Nej, men det beror på ditt nätbolag. Kravet på att alla nätbolag skulle införa dem stoppades i mars 2026 och föreskrifterna upphävdes. Bolag som redan infört effektavgifter får fortsätta, medan till exempel Ellevio tog bort sin effektavgift den 1 juni 2026. Energimarknadsinspektionen tar dessutom fram en ny modell som ska göra effektavgifterna mer enhetliga och begripliga, och redovisar den senast den 12 april 2027, så frågan kommer tillbaka – i vilken form avgörs av nästa regering och riksdag.",
       },
       {
         q: "Hur vet jag om jag har en effektavgift?",
