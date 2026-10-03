@@ -248,7 +248,7 @@ const CONTENT: Record<string, NewsContent> = {
 
   "vinterns-elpriser-2026-prognos-dyrare-soder": {
     tldr: [
-      "Marknadsprognoserna för vinterhalvåret pekar på 100–110 öre/kWh i elhandelspris i södra Sverige (SE3/SE4) och 45–55 öre i norr. För en villa med 20 000 kWh årsförbrukning betyder det cirka 6 800 kronor mer i SE3 och runt 9 000 kronor i SE4 jämfört med förra vintern, enligt E.ON:s genomgång.",
+      "Tibbers prognos för oktober–december pekar på 100–110 öre/kWh i elhandelspris i södra Sverige (SE3/SE4) och 45–55 öre i norr. För hela vinterhalvåret räknar E.ON med att en villa med 20 000 kWh årsförbrukning får betala cirka 6 800 kronor mer i SE3 och runt 9 000 kronor i SE4 än förra vintern.",
       "Riskfaktorerna bakom: låga vattenmagasin, osäker kärnkraftstillgänglighet och nätbegränsningar – ett recept på både höga och kraftigt varierande priser. Samtidigt är regeringsbildningen låst: Magdalena Andersson har sonderingsuppdraget, men C:s och V:s röda linjer blockerar och ny talman väljs först den 28 september.",
       "Det du själv styr är topparna och lagringen: flyttad last, solel med batteri och effektvakt kapar både spotpristoppar och effektavgifter – och volatila priser gör batteriets arbitrage mer värt, inte mindre.",
     ],
@@ -256,8 +256,8 @@ const CONTENT: Record<string, NewsContent> = {
       {
         h2: "Prognosen i siffror",
         body: [
-          "E.ON:s elprisexpert och flera marknadsbedömningar pekar åt samma håll inför vinterhalvåret: elhandelspriser runt 100–110 öre per kilowattimme i elområde SE3 och SE4 – Stockholm ligger i SE3 – mot 45–55 öre i norra Sverige. Det är väsentligt högre än motsvarande månader i fjol.",
-          "Omräknat till en villa med 20 000 kWh i årsförbrukning handlar det om i storleksordningen 6 800 kronor mer i elhandelskostnad i SE3 och runt 9 000 kronor i SE4 under oktober–mars, jämfört med förra vintern. För vissa hushåll pekar prognoserna på uppåt 1 500 kronor mer i månaden under de dyraste månaderna. Observera att detta gäller elhandelsdelen – nätavgifter och skatter tillkommer.",
+          "Marknadsbedömningarna pekar åt samma håll. Tibbers prognos för oktober–december är elhandelspriser runt 100–110 öre per kilowattimme i elområde SE3 och SE4 – Stockholm ligger i SE3 – mot 45–55 öre i norra Sverige, och E.ON:s elprisexpert räknar med en klart dyrare vinter än i fjol.",
+          "E.ON:s genomgång räknar på en villa med 20 000 kWh i årsförbrukning: i storleksordningen 6 800 kronor mer i elhandelskostnad i SE3 och runt 9 000 kronor i SE4 under oktober–mars, jämfört med förra vintern. För vissa hushåll pekar prognoserna på uppåt 1 500 kronor mer i månaden under de dyraste månaderna. Observera att detta gäller elhandelsdelen – nätavgifter och skatter tillkommer.",
         ],
       },
       {
@@ -280,9 +280,10 @@ const CONTENT: Record<string, NewsContent> = {
           "Flytta lasten: de dyraste timmarna är vardagkvällar. Ladda elbilen på natten, kör tvätt och disk utanför 17–20, och låt inte värmepump och laddning toppa samtidigt – det kapar både spotpriskostnad och eventuella effektavgifter.",
           "Lagra och styr: ett batteri gör tre jobb i vinter – höjer självförbrukningen av den solel som faktiskt produceras, laddar billigt på natten och används dyrt på kvällen (arbitraget blir mer värt ju mer priserna svänger), och håller effekttopparna nere med effektvakten. Grönt avdrag på 48,5 procent gäller oförändrat, och för äldre hus utan fjärrvärme kan Villaeffekten ge upp till 60 000 kronor för isolering eller värmepump.",
           "Och det enklaste rådet från E.ON:s expert: lägg undan en elprisbuffert för vinterns räkningar redan nu, om du kan. Vi uppdaterar serien när prognoserna eller politiken ändrar något som påverkar din kalkyl.",
+          "Rättelse 3 oktober: en tidigare version angav att prognosen på 100–110 öre/kWh gällde hela vinterhalvåret och kom från E.ON. Rätt är att det är Tibbers prognos för oktober–december. E.ON:s beräkning gäller kronbeloppen för oktober–mars.",
         ],
         bullets: [
-          "Prognos SE3 (Stockholm): 100–110 öre/kWh, ca 6 800 kr dyrare vinter för en 20 000 kWh-villa.",
+          "Prognos SE3 (Stockholm): 100–110 öre/kWh för oktober–december (Tibber), ca 6 800 kr dyrare vinter för en 20 000 kWh-villa (E.ON).",
           "Dyraste timmarna: vardagkvällar 17–20 – flytta det som går att flytta.",
           "Batteri: självförbrukning + arbitrage + effektvakt, 48,5 % avdrag oförändrat.",
           "Äldre hus: Villaeffekten ger 30 % av materialkostnaden för energieffektivisering, max 60 000 kr.",
@@ -292,7 +293,7 @@ const CONTENT: Record<string, NewsContent> = {
     faq: [
       {
         q: "Hur mycket dyrare blir vintern för en Stockholmsvilla?",
-        a: "Stockholm ligger i elområde SE3, där prognosen pekar på 100–110 öre/kWh i elhandelspris. För en villa med 20 000 kWh i årsförbrukning motsvarar det enligt E.ON:s genomgång cirka 6 800 kronor mer under oktober–mars än förra vintern – utöver det tillkommer nätavgifter och skatter, som inte följer spotpriset på samma sätt.",
+        a: "Stockholm ligger i elområde SE3, där Tibbers prognos för oktober–december pekar på 100–110 öre/kWh i elhandelspris. För en villa med 20 000 kWh i årsförbrukning räknar E.ON med cirka 6 800 kronor mer under oktober–mars än förra vintern – utöver det tillkommer nätavgifter och skatter, som inte följer spotpriset på samma sätt.",
       },
       {
         q: "Ska jag binda elpriset nu?",

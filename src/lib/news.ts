@@ -277,10 +277,10 @@ export const NEWS: NewsArticle[] = [
     title:
       "Prognosen för vintern: 100–110 öre/kWh i söder – upp till 9 000 kr dyrare för en villa",
     excerpt:
-      "Marknadens vinterprognos är dyster för södra Sverige: 100–110 öre per kilowattimme i elhandelspris och 6 800–9 000 kronor mer än förra vintern för en normalvilla, enligt E.ON. Samtidigt är regeringsbildningen låst. Vi går igenom siffrorna, riskfaktorerna – och det du faktiskt kan styra själv före kylan.",
+      "Marknadens vinterprognos är dyster för södra Sverige: 100–110 öre per kilowattimme i elhandelspris för oktober–december enligt Tibber, och 6 800–9 000 kronor mer än förra vintern för en normalvilla enligt E.ON. Samtidigt är regeringsbildningen låst. Vi går igenom siffrorna, riskfaktorerna – och det du faktiskt kan styra själv före kylan.",
     category: "Elpriser",
     publishedAt: "2026-09-24",
-    updatedAt: "2026-09-24",
+    updatedAt: "2026-10-03",
     readTimeMin: 6,
     image: {
       src: "/news/vinterns-elpriser-2026-prognos-dyrare-soder.jpg",
