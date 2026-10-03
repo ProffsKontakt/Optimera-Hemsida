@@ -69,7 +69,7 @@ const CATEGORIES: { heading: string; eyebrow: string; items: { q: string; a: str
       },
       {
         q: "Behöver jag bygglov för solceller?",
-        a: "I de flesta fall nej – paneler som följer takets lutning är bygglovsbefriade på en- och tvåbostadshus. Vi kollar din kommun innan vi börjar.",
+        a: "I de flesta fall nej. Sedan 1 december 2025 krävs inget bygglov för solceller på tak eller fasad på villor, radhus och andra en- och tvåbostadshus. Undantag finns bland annat för kulturhistoriskt värdefulla hus och där detaljplanen kräver lov. Vi kollar din kommun innan vi börjar.",
       },
       {
         q: "Kan jag ladda batteriet från elnätet när det är billigt?",
