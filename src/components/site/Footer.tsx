@@ -51,16 +51,15 @@ export function Footer() {
       </div>
       <div className="container-edge py-20 grid grid-cols-1 md:grid-cols-12 gap-12">
         <div className="md:col-span-5">
-          {/* Ingen hårdkodad <br> här: den tvingade fram "hållning." ensamt
-              på en tredje rad. text-wrap: balance (globals.css) fördelar
-              raderna jämnt i stället, vid varje spaltbredd. */}
+          {/* Ingen hårdkodad <br> här: text-wrap: balance (globals.css)
+              fördelar raderna jämnt vid varje spaltbredd. */}
           <div className="font-display text-4xl md:text-5xl tracking-display-tight leading-[1.15]">
-            Energin är inte bara ström – den är en hållning.
+            För dig som vill optimera din energianvändning
           </div>
           <p className="mt-6 text-ink/65 max-w-md text-[15px] leading-relaxed">
             Optimera Energi installerar solpaneler, batterier, värmepumpar och
-            laddboxar – för dig som vill Optimera din energianvändning. Med
-            fika, raka besked och ingenjörskonst utan kompromiss.
+            laddboxar i Stockholmsområdet. Med fika, raka besked och
+            ingenjörskonst utan kompromiss.
           </p>
           {/* Recos "Rekommenderat företag 2026". Ligger under texten i stället
               för nere i kontaktkolumnen – balanserar den vänstra spalten som
