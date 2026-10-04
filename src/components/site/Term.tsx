@@ -16,14 +16,16 @@ import { X } from "lucide-react";
  * Användning: <Term id="gront-avdrag">grönt avdrag</Term>
  * Okänt id renderar bara barnen (ingen krasch om en term tas bort).
  */
-const TERMS: Record<string, { title: string; body: string }> = {
+const TERMS: Record<string, { title: string; body: string; href?: string }> = {
   "gront-avdrag": {
     title: "Grönt avdrag",
-    body: "Statligt avdrag för grön teknik som dras direkt på fakturan – 14,55 % för solceller och 48,5 % för batteri och laddbox. Taket är 50 000 kr per fastighetsägare och år.",
+    body: "Statligt avdrag för grön teknik som dras direkt på fakturan – 14,55 % för solceller och 48,5 % för batteri och laddbox. Taket är 50 000 kr per person och år.",
+    href: "/solcellsfragor/bidrag-for-solceller",
   },
   stodtjanster: {
     title: "Stödtjänster",
     body: "Batteriet hjälper Svenska kraftnät att hålla elnätet i balans och får betalt för att stå redo. Ersättningen varierar med marknadsläget.",
+    href: "/batteriskolan/stodtjanster",
   },
   elomrade: {
     title: "Elområde",
@@ -32,6 +34,7 @@ const TERMS: Record<string, { title: string; body: string }> = {
   spotpris: {
     title: "Spotpris",
     body: "Elens timpris på elbörsen Nord Pool. Det svänger över dygnet – smart styrning köper när det är billigt och undviker de dyra timmarna.",
+    href: "/batteriskolan/spotprisstyrning",
   },
   // Källkontrollerat okt 2026 – se lib/heatpump.ts.
   "rot-avdrag": {
@@ -110,6 +113,14 @@ export function Term({
               <p className="mt-3 text-[14.5px] leading-relaxed text-ink/75">
                 {t.body}
               </p>
+              {t.href && (
+                <a
+                  href={t.href}
+                  className="mt-4 inline-flex text-[13.5px] font-medium text-indigo underline underline-offset-2"
+                >
+                  Läs mer i kunskapsbanken →
+                </a>
+              )}
             </div>
           </div>,
           document.body,

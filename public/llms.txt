@@ -1,10 +1,10 @@
-# Optimera Energi Sverige AB
+# Optimera Energi
 
 > Optimera Energi är en svensk elinstallatör baserad i Solna som installerar solpaneler, batterilager, värmepumpar och laddboxar för villaägare och bostadsrättsföreningar i Stockholm. Vi grundades 2026 på principen "priset på offerten är priset på fakturan" och driver alla installationer med eget montageteam – inga underentreprenörer.
 
 ## Företagsinformation
 
-- **Juridiskt namn**: Optimera Energi Sverige AB
+- **Juridiskt namn**: Optimera Energilösningar i Mälardalen AB (tidigare Optimera Energi Sverige AB)
 - **Organisationsnummer**: 559375-2206
 - **Säte**: Vallgatan 9, 170 67 Solna
 - **Telefon**: 076 305 37 32
@@ -31,6 +31,10 @@
 - [Solcellsbatteri till villa](https://optimeraenergi.se/solcellsbatteri): pelarsida om solcellsbatteri – pris (ca 70 000–200 000 kr före avdrag), batteristorlek (tumregel: årsförbrukning ÷ 200–275 kalla dygn, t.ex. 15 000 kWh/år ≈ 55–75 kWh), 48,5 % grönt avdrag, återbetalning, batterimärken (Easyway, SAJ HS3, Emaldo) och när det passar
 - [Kalkylator](https://optimeraenergi.se/kalkylator): designa anläggningen i 3D, se investering, grönt avdrag, årlig besparing och återbetalningstid i realtid; exakta siffror räknas fram vid hembesök
 - [Begär offert / boka hembesök](https://optimeraenergi.se/offert): välj hembesök eller telefonkontakt, hembesöket är kostnadsfritt
+- [Kunskapsbank](https://optimeraenergi.se/kunskapsbank): samlingssida för nyheter, Solcellsfrågor och Batteriskolan, med sökfunktion
+- [Solcellsfrågor](https://optimeraenergi.se/solcellsfragor): databas med svar på de frågor svenskar oftast söker på om solceller (pris, lönsamhet, produktion, bygglov, skatt på såld el, säkerhet) – en sida per fråga, direkt svar först, alltid med källor
+- [Batteriskolan](https://optimeraenergi.se/batteriskolan): hembatteriets koncept förklarade ett i taget – FCR-D, stödtjänster, effektavgift, kvartspris, spotprisstyrning, dimensionering, ö-drift, brandsäkerhet och grönt avdrag – med källor
+- [Nyheter](https://optimeraenergi.se/nyheter): energinyheterna som påverkar villaägares elräkning (valet 2026, elpriser, stöd och avdrag), ny artikel var tredje dag, partipolitiskt neutralt med källor
 - [Frågor och svar](https://optimeraenergi.se/fragor-och-svar): samlade svar om solcellsbatteri, solceller, pris, grönt avdrag och stödtjänster
 - [Metodik](https://optimeraenergi.se/metodik): hur vi väljer produkter (hand-plockat sortiment), sätter pris (offert = faktura), dimensionerar efter förbrukning och när vi säger nej
 - [Om oss](https://optimeraenergi.se/om-oss): teamet, vision, bolagsresan

@@ -122,7 +122,7 @@ const CONTENT: Record<string, NewsContent> = {
     tldr: [
       "Grönt avdrag ligger fast tills riksdagen beslutar annat: 15 procent för solceller och 50 procent för batteri och laddbox, med tak på 50 000 kronor per person och år.",
       "Socialdemokraternas högkostnadsskydd och Vänsterpartiets elpristak på 75 öre är förslag, inte beslut. Inget av dem kan införas utan en tillträdd regering och en antagen budget.",
-      "Regeringsfrågan påverkar inte vinterns elpris. Prognosen för elhandelspriset är 100–110 öre per kilowattimme i SE3 och SE4 och 45–55 öre i norr – dyrare än de två senaste vintrarna.",
+      "Regeringsfrågan påverkar inte vinterns elpris. Prognosen för oktober–december är 100–110 öre per kilowattimme i SE3 och SE4 och 45–55 öre i norr – dyrare än de två senaste vintrarna.",
     ],
     sections: [
       {
@@ -144,7 +144,7 @@ const CONTENT: Record<string, NewsContent> = {
         body: [
           "Det gröna avdraget ligger fast tills riksdagen beslutar annat: 15 procent för solceller och 50 procent för batterilager och laddpunkt. Vid fast pris räknas 97 procent av totalpriset som arbete och material, vilket ger 14,55 respektive 48,5 procent av totalkostnaden, och taket är 50 000 kronor per person och år. Frågan många ställer – hur länge kommer grönt avdrag finnas? – avgörs av den regering som tillträder: hinner den lägga budgeten kan ändringar gälla tidigast 2027, åt vilket håll det än blir. Blir det en övergångsbudget ligger dagens nivåer kvar.",
           "Detsamma gäller vallöftena. Socialdemokraternas högkostnadsskydd mot höga elpriser, finansierat med flaskhalsintäkter, och Vänsterpartiets elpristak på 75 öre per kilowattimme är förslag, inte beslut – inget av dem kan införas utan en tillträdd regering och en budget som riksdagen antar.",
-          "Elpriset i vinter styrs på kort sikt av väder, vattenmagasin och kärnkraftstillgänglighet – inte av regeringsfrågan. Prognosen ligger kvar: 100–110 öre per kilowattimme i elhandelspris i SE3 och SE4, 45–55 öre i norr. Tibbers bedömning är att det inte handlar om en återgång till elkrisens nivåer 2022–2023, men om en dyrare vinter än de två senaste.",
+          "Elpriset i vinter styrs på kort sikt av väder, vattenmagasin och kärnkraftstillgänglighet – inte av regeringsfrågan. Prognosen för oktober–december ligger kvar: 100–110 öre per kilowattimme i elhandelspris i SE3 och SE4, 45–55 öre i norr. Tibbers bedömning är att det inte handlar om en återgång till elkrisens nivåer 2022–2023, men om en dyrare vinter än de två senaste.",
         ],
       },
       {
@@ -176,7 +176,7 @@ const CONTENT: Record<string, NewsContent> = {
       },
       {
         q: "Hur blir elpriset i vinter?",
-        a: "Prognoserna pekar på 100–110 öre per kilowattimme i elhandelspris i SE3 och SE4 och 45–55 öre i SE1 och SE2 under vinterhalvåret – högre än de två senaste vintrarna, men enligt Tibber ingen återgång till elkrisens nivåer 2022–2023. Nätavgifter och skatter tillkommer, och regeringsfrågan påverkar inte prognosen på kort sikt.",
+        a: "Prognoserna pekar på 100–110 öre per kilowattimme i elhandelspris i SE3 och SE4 och 45–55 öre i SE1 och SE2 för oktober–december – högre än de två senaste vintrarna, men enligt Tibber ingen återgång till elkrisens nivåer 2022–2023. Nätavgifter och skatter tillkommer, och regeringsfrågan påverkar inte prognosen på kort sikt.",
       },
     ],
   },
@@ -248,7 +248,7 @@ const CONTENT: Record<string, NewsContent> = {
 
   "vinterns-elpriser-2026-prognos-dyrare-soder": {
     tldr: [
-      "Marknadsprognoserna för vinterhalvåret pekar på 100–110 öre/kWh i elhandelspris i södra Sverige (SE3/SE4) och 45–55 öre i norr. För en villa med 20 000 kWh årsförbrukning betyder det cirka 6 800 kronor mer i SE3 och runt 9 000 kronor i SE4 jämfört med förra vintern, enligt E.ON:s genomgång.",
+      "Tibbers prognos för oktober–december pekar på 100–110 öre/kWh i elhandelspris i södra Sverige (SE3/SE4) och 45–55 öre i norr. För hela vinterhalvåret räknar E.ON med att en villa med 20 000 kWh årsförbrukning får betala cirka 6 800 kronor mer i SE3 och runt 9 000 kronor i SE4 än förra vintern.",
       "Riskfaktorerna bakom: låga vattenmagasin, osäker kärnkraftstillgänglighet och nätbegränsningar – ett recept på både höga och kraftigt varierande priser. Samtidigt är regeringsbildningen låst: Magdalena Andersson har sonderingsuppdraget, men C:s och V:s röda linjer blockerar och ny talman väljs först den 28 september.",
       "Det du själv styr är topparna och lagringen: flyttad last, solel med batteri och effektvakt kapar både spotpristoppar och effektavgifter – och volatila priser gör batteriets arbitrage mer värt, inte mindre.",
     ],
@@ -256,8 +256,8 @@ const CONTENT: Record<string, NewsContent> = {
       {
         h2: "Prognosen i siffror",
         body: [
-          "E.ON:s elprisexpert och flera marknadsbedömningar pekar åt samma håll inför vinterhalvåret: elhandelspriser runt 100–110 öre per kilowattimme i elområde SE3 och SE4 – Stockholm ligger i SE3 – mot 45–55 öre i norra Sverige. Det är väsentligt högre än motsvarande månader i fjol.",
-          "Omräknat till en villa med 20 000 kWh i årsförbrukning handlar det om i storleksordningen 6 800 kronor mer i elhandelskostnad i SE3 och runt 9 000 kronor i SE4 under oktober–mars, jämfört med förra vintern. För vissa hushåll pekar prognoserna på uppåt 1 500 kronor mer i månaden under de dyraste månaderna. Observera att detta gäller elhandelsdelen – nätavgifter och skatter tillkommer.",
+          "Marknadsbedömningarna pekar åt samma håll. Tibbers prognos för oktober–december är elhandelspriser runt 100–110 öre per kilowattimme i elområde SE3 och SE4 – Stockholm ligger i SE3 – mot 45–55 öre i norra Sverige, och E.ON:s elprisexpert räknar med en klart dyrare vinter än i fjol.",
+          "E.ON:s genomgång räknar på en villa med 20 000 kWh i årsförbrukning: i storleksordningen 6 800 kronor mer i elhandelskostnad i SE3 och runt 9 000 kronor i SE4 under oktober–mars, jämfört med förra vintern. För vissa hushåll pekar prognoserna på uppåt 1 500 kronor mer i månaden under de dyraste månaderna. Observera att detta gäller elhandelsdelen – nätavgifter och skatter tillkommer.",
         ],
       },
       {
@@ -280,9 +280,10 @@ const CONTENT: Record<string, NewsContent> = {
           "Flytta lasten: de dyraste timmarna är vardagkvällar. Ladda elbilen på natten, kör tvätt och disk utanför 17–20, och låt inte värmepump och laddning toppa samtidigt – det kapar både spotpriskostnad och eventuella effektavgifter.",
           "Lagra och styr: ett batteri gör tre jobb i vinter – höjer självförbrukningen av den solel som faktiskt produceras, laddar billigt på natten och används dyrt på kvällen (arbitraget blir mer värt ju mer priserna svänger), och håller effekttopparna nere med effektvakten. Grönt avdrag på 48,5 procent gäller oförändrat, och för äldre hus utan fjärrvärme kan Villaeffekten ge upp till 60 000 kronor för isolering eller värmepump.",
           "Och det enklaste rådet från E.ON:s expert: lägg undan en elprisbuffert för vinterns räkningar redan nu, om du kan. Vi uppdaterar serien när prognoserna eller politiken ändrar något som påverkar din kalkyl.",
+          "Rättelse 3 oktober: en tidigare version angav att prognosen på 100–110 öre/kWh gällde hela vinterhalvåret och kom från E.ON. Rätt är att det är Tibbers prognos för oktober–december. E.ON:s beräkning gäller kronbeloppen för oktober–mars.",
         ],
         bullets: [
-          "Prognos SE3 (Stockholm): 100–110 öre/kWh, ca 6 800 kr dyrare vinter för en 20 000 kWh-villa.",
+          "Prognos SE3 (Stockholm): 100–110 öre/kWh för oktober–december (Tibber), ca 6 800 kr dyrare vinter för en 20 000 kWh-villa (E.ON).",
           "Dyraste timmarna: vardagkvällar 17–20 – flytta det som går att flytta.",
           "Batteri: självförbrukning + arbitrage + effektvakt, 48,5 % avdrag oförändrat.",
           "Äldre hus: Villaeffekten ger 30 % av materialkostnaden för energieffektivisering, max 60 000 kr.",
@@ -292,7 +293,7 @@ const CONTENT: Record<string, NewsContent> = {
     faq: [
       {
         q: "Hur mycket dyrare blir vintern för en Stockholmsvilla?",
-        a: "Stockholm ligger i elområde SE3, där prognosen pekar på 100–110 öre/kWh i elhandelspris. För en villa med 20 000 kWh i årsförbrukning motsvarar det enligt E.ON:s genomgång cirka 6 800 kronor mer under oktober–mars än förra vintern – utöver det tillkommer nätavgifter och skatter, som inte följer spotpriset på samma sätt.",
+        a: "Stockholm ligger i elområde SE3, där Tibbers prognos för oktober–december pekar på 100–110 öre/kWh i elhandelspris. För en villa med 20 000 kWh i årsförbrukning räknar E.ON med cirka 6 800 kronor mer under oktober–mars än förra vintern – utöver det tillkommer nätavgifter och skatter, som inte följer spotpriset på samma sätt.",
       },
       {
         q: "Ska jag binda elpriset nu?",
@@ -366,10 +367,17 @@ const CONTENT: Record<string, NewsContent> = {
   "effektavgifter-2026-stoppat-krav-ny-modell-batteri": {
     tldr: [
       "Regeringen stoppade i mars kravet på att alla elnätsbolag ska införa effekttariffer – motiveringen var att avgifterna slog hårt mot vanliga hushåll och var svåra att förstå. Energimarknadsinspektionen fick i uppdrag att upphäva föreskrifterna senast den 30 juni 2026.",
-      "Frågan är inte död: Ei ska föreslå en ny, enhetlig modell för effektavgifter senast den 12 april 2027 – ett förslag som landar på nästa regerings bord, vilken det nu blir efter det rysarjämna valet.",
+      "Frågan är inte död: Ei ska senast den 12 april 2027 föreslå en ny modell som gör effektavgifterna mer enhetliga och begripliga – ett förslag som landar på nästa regerings bord, vilken det nu blir efter det rysarjämna valet.",
       "Nätbolag som redan infört effektavgifter får fortsätta med dem. Har du en sådan tariff sätter din dyraste timme avgiften – och ett hembatteri som kapar effekttoppar är det mest direkta skyddet, oavsett vad politiken landar i.",
     ],
     sections: [
+      {
+        h2: "Uppdatering 3 oktober: Ellevio har tagit bort sin effektavgift",
+        body: [
+          "Artikeln är kompletterad med en uppgift som saknades när den publicerades. Ellevio – med omkring 440 000 villa- och småföretagskunder, många av dem i Stockholmsområdet – tog bort sin effektavgift den 1 juni 2026 och återgick till en tvådelad modell: en fast avgift efter säkringsstorlek och en rörlig överföringsavgift. Ändringen gäller villa, radhus, fritidshus och företag med säkring upp till 63 ampere. Ellevio motiverade bytet med att kravet på effektavgifter tagits bort och att ett nytt regelverk ska tas fram.",
+          "Bilden är alltså splittrad: nätbolag som redan infört effektavgifter får behålla dem, men det största nätbolaget i Stockholmsområdet har valt bort sin. Vilket nätbolag du har avgör vad som gäller för just dig.",
+        ],
+      },
       {
         h2: "Vad är en effektavgift?",
         body: [
@@ -393,7 +401,8 @@ const CONTENT: Record<string, NewsContent> = {
         bullets: [
           "Krav på effekttariff i alla nät: stoppat i mars 2026.",
           "Befintliga effekttariffer: får fortsätta att gälla.",
-          "Ny enhetlig modell: Ei:s förslag redovisas senast 12 april 2027.",
+          "Ellevio: effektavgiften borttagen sedan 1 juni 2026 – fast avgift efter säkringsstorlek plus överföringsavgift.",
+          "Ny modell för mer enhetliga effektavgifter: Ei:s förslag redovisas senast 12 april 2027.",
           "Vem som beslutar om din tariff i dag: ditt nätbolag.",
         ],
       },
@@ -408,7 +417,7 @@ const CONTENT: Record<string, NewsContent> = {
         h2: "Vad betyder det för dig?",
         body: [
           "Har du redan effekttariff: jämna ut dina toppar. Ladda elbilen på natten, låt inte värmepump och laddning toppa samtidigt, och har du batteri – aktivera effektvakten i ditt energisystem.",
-          "Funderar du på batteri: räkna med effektavgifterna som en osäker men växande post. Blir Ei:s nya modell verklighet får hela landet en enhetlig effektkomponent; tills dess avgör ditt nätbolag. Grönt avdrag på 48,5 procent för batteri gäller oförändrat, som vi gått igenom tidigare i serien.",
+          "Funderar du på batteri: räkna med effektavgifterna som en osäker post. Har du Ellevio som nätbolag finns i dag ingen effektavgift att kapa – där bär självförbrukning, spotprisstyrning och stödtjänster batterikalkylen. Blir Ei:s nya modell verklighet ska effektavgifterna bli mer enhetliga över landet; tills dess avgör ditt nätbolag. Grönt avdrag på 48,5 procent för batteri gäller oförändrat, som vi gått igenom tidigare i serien.",
           "Vi följer både Ei:s arbete med den nya modellen och regeringsbildningen, och uppdaterar här när något ändras som påverkar din kalkyl.",
         ],
       },
@@ -416,7 +425,7 @@ const CONTENT: Record<string, NewsContent> = {
     faq: [
       {
         q: "Är effekttariffer avskaffade nu?",
-        a: "Nej. Kravet på att alla nätbolag skulle införa dem stoppades i mars 2026 och föreskrifterna upphävdes, men bolag som redan infört effektavgifter får fortsätta. Energimarknadsinspektionen tar dessutom fram en ny enhetlig modell som redovisas senast den 12 april 2027, så frågan kommer tillbaka – i vilken form avgörs av nästa regering och riksdag.",
+        a: "Nej, men det beror på ditt nätbolag. Kravet på att alla nätbolag skulle införa dem stoppades i mars 2026 och föreskrifterna upphävdes. Bolag som redan infört effektavgifter får fortsätta, medan till exempel Ellevio tog bort sin effektavgift den 1 juni 2026. Energimarknadsinspektionen tar dessutom fram en ny modell som ska göra effektavgifterna mer enhetliga och begripliga, och redovisar den senast den 12 april 2027, så frågan kommer tillbaka – i vilken form avgörs av nästa regering och riksdag.",
       },
       {
         q: "Hur vet jag om jag har en effektavgift?",
