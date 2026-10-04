@@ -9,8 +9,12 @@ import {
   SOLAR_CATEGORIES,
   allQuestions,
   questionsInCategory,
+  solarCategoryHref,
   solarUpdatedAt,
 } from "@/lib/solcellsfragor";
+import { KbHubImage, KbTiles } from "@/components/kb/KbVisuals";
+import { KB_HUB_IMAGE, solarCategoryImageKey } from "@/lib/kb-visuals";
+import { kbImage } from "@/lib/media";
 import { allConcepts } from "@/lib/batteriskolan";
 
 const PATH = "/solcellsfragor";
@@ -37,6 +41,7 @@ export default function SolarQuestionsHub() {
     id: c.slug,
     title: c.title,
     intro: c.intro,
+    image: kbImage(solarCategoryImageKey(c.slug)),
     items: questionsInCategory(c.slug).map((q) => ({
       href: `${PATH}/${q.slug}`,
       title: q.question,
@@ -70,7 +75,8 @@ export default function SolarQuestionsHub() {
             { name: "Solcellsfrågor", href: PATH },
           ]}
         />
-        <div className="mt-8 max-w-3xl">
+        <div className="mt-8 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-center">
+        <div className="lg:col-span-7">
           <div className="eyebrow">Kunskapsbank · {questions.length} frågor</div>
           <h1 className="mt-5 font-display text-[44px] sm:text-[56px] md:text-[80px] tracking-display-tight leading-[1.05]">
             Solcellsfrågor.{" "}
@@ -86,6 +92,23 @@ export default function SolarQuestionsHub() {
             <LastUpdated date={solarUpdatedAt()} />
           </div>
         </div>
+        <div className="hidden lg:block lg:col-span-5">
+          <KbHubImage image={kbImage(KB_HUB_IMAGE.solcellsfragor)} tone="indigo" />
+        </div>
+        </div>
+      </section>
+
+      {/* Kategorierna som bildrutor – hoppar till respektive lista nedan. */}
+      <section className="container-edge pt-6 pb-4 md:pt-8">
+        <KbTiles
+          tone="indigo"
+          tiles={groups.map((g) => ({
+            href: solarCategoryHref(g.id as (typeof SOLAR_CATEGORIES)[number]["slug"]),
+            title: g.title,
+            meta: `${g.items.length} frågor`,
+            image: g.image!,
+          }))}
+        />
       </section>
 
       <section className="container-edge pt-4 pb-16 md:pb-24">
@@ -93,6 +116,7 @@ export default function SolarQuestionsHub() {
           groups={groups}
           placeholder={`Sök bland ${questions.length} solcellsfrågor…`}
           variant="list"
+          tone="indigo"
         />
       </section>
 

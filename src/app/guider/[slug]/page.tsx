@@ -4,7 +4,9 @@ import { ArrowRight, Clock } from "lucide-react";
 import { GUIDES, findGuide, guideReviewLabel, publishedGuides } from "@/lib/guides";
 import { getGuideContent } from "@/lib/guide-content";
 import { VISIBLE_SERVICES } from "@/lib/services";
-import { getMedia } from "@/lib/media";
+import { getMedia, kbImage } from "@/lib/media";
+import { KbHeroImage } from "@/components/kb/KbVisuals";
+import { guideCategoryImageKey } from "@/lib/kb-visuals";
 import { JsonLd, articleSchema } from "@/components/seo/JsonLd";
 import { AnswerBox, Breadcrumbs, CtaBlock, FaqBlock, LastUpdated } from "@/components/seo/aeo";
 import { KbSources } from "@/components/kb/KbParts";
@@ -48,6 +50,10 @@ export default function GuidePage({ params }: { params: { slug: string } }) {
   if (!guide) notFound();
   const content = getGuideContent(guide.slug);
   const heroImage = getMedia(`guide:${guide.slug}`);
+  // Guidens egen bild om en laddats upp, annars kategorins foto.
+  const hero = heroImage
+    ? { src: heroImage.url, alt: heroImage.alt || guide.title }
+    : kbImage(guideCategoryImageKey(guide.category));
   const path = `/guider/${guide.slug}`;
 
   if (guide.status === "draft") {
@@ -92,7 +98,7 @@ export default function GuidePage({ params }: { params: { slug: string } }) {
           url: path,
           datePublished: guide.publishedAt ?? guide.updatedAt,
           dateModified: guide.updatedAt,
-          image: heroImage?.url,
+          image: hero.src,
           sources,
           keywords: guide.searchPhrases,
           articleSection: `Guider · ${guide.category}`,
@@ -108,9 +114,12 @@ export default function GuidePage({ params }: { params: { slug: string } }) {
             { name: guide.title, href: path },
           ]}
         />
+        <div className="mt-6 md:mt-8 max-w-3xl">
+          <KbHeroImage image={hero} tone="moss" label={`Guider · ${guide.category}`} />
+        </div>
         <div className="mt-8 max-w-3xl">
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
-            <span className="eyebrow">Guider · {guide.category}</span>
+            <span className="eyebrow !text-moss">Guider · {guide.category}</span>
             <span className="flex items-center gap-1.5 font-mono text-[11px] text-ink/45">
               <Clock size={11} /> {guide.readTimeMin} min
             </span>
@@ -125,30 +134,21 @@ export default function GuidePage({ params }: { params: { slug: string } }) {
         </div>
       </section>
 
-      {heroImage && (
-        <div className="container-edge pb-4 md:pb-8">
-          <div className="max-w-3xl overflow-hidden rounded-3xl border border-ink/10 aspect-[16/9] bg-cream">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={heroImage.url} alt={heroImage.alt || guide.title} className="h-full w-full object-cover" />
-          </div>
-        </div>
-      )}
-
       <article className="container-edge pb-16 md:pb-20">
         <div className="max-w-3xl space-y-10">
           {/* Kort svar först – det stycke AI-motorer och Googles utdrag
               oftast lyfter. Äldre guider har punkter i stället. */}
           {content?.answer ? (
-            <AnswerBox>
+            <AnswerBox tone="moss">
               <p>{nb(content.answer)}</p>
             </AnswerBox>
           ) : (
             content?.tldr && (
-              <AnswerBox>
+              <AnswerBox tone="moss">
                 <ul className="space-y-2">
                   {content.tldr.map((t) => (
                     <li key={t} className="flex gap-3">
-                      <span className="mt-2.5 h-1.5 w-1.5 rounded-full bg-indigo shrink-0" />
+                      <span className="mt-2.5 h-1.5 w-1.5 rounded-full bg-moss shrink-0" />
                       <span>{nb(t)}</span>
                     </li>
                   ))}
@@ -205,7 +205,7 @@ export default function GuidePage({ params }: { params: { slug: string } }) {
                 <ul className="mt-4 space-y-2.5 text-[16px] leading-[1.6] text-ink/80">
                   {s.bullets.map((b) => (
                     <li key={b} className="flex gap-3">
-                      <span className="mt-[0.6em] h-1.5 w-1.5 rounded-full bg-indigo shrink-0" />
+                      <span className="mt-[0.6em] h-1.5 w-1.5 rounded-full bg-moss shrink-0" />
                       <span>{nb(b)}</span>
                     </li>
                   ))}

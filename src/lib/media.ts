@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import { GUIDES } from "./guides";
 import { NEWS } from "./news";
+import { KB_IMAGES, defaultKbImage, type KbImage, type KbImageKey } from "./kb-visuals";
 import { getTeam } from "./team";
 
 /**
@@ -121,6 +122,15 @@ export function listMediaSlots(): MediaSlot[] {
       aspect: "16 / 9",
       hint: "Hero-bild överst i guiden. Helst riktigt installationsfoto.",
     })),
+    // Kunskapsbankens kategoribilder. Har committade standardfoton i
+    // public/kb/ – ladda upp ett riktigt installationsfoto för att ersätta.
+    ...(Object.keys(KB_IMAGES) as KbImageKey[]).map((key) => ({
+      id: `kb:${key}`,
+      group: "Kunskapsbank – bilder",
+      label: KB_IMAGES[key].label,
+      aspect: "16 / 9",
+      hint: "Visas i kunskapsbankens bildrutor och som bildband överst på alla sidor i kategorin. Har en standardbild – ladda upp ett riktigt foto för att ersätta den. Alt-texten beskriver vad som syns.",
+    })),
     ...NEWS.map((n) => ({
       id: `news:${n.slug}`,
       group: "Nyheter",
@@ -149,6 +159,14 @@ export function getMediaManifest(): MediaManifest {
 export function getMedia(slotId: string): MediaEntry | null {
   const entry = getMediaManifest()[slotId];
   return entry && entry.url ? entry : null;
+}
+
+/** Kunskapsbankens foto för en nyckel: uppladdat i admin om det finns, annars standardbilden. */
+export function kbImage(key: KbImageKey): KbImage {
+  const uploaded = getMedia(`kb:${key}`);
+  return uploaded
+    ? { src: uploaded.url, alt: uploaded.alt || KB_IMAGES[key].alt }
+    : defaultKbImage(key);
 }
 
 /** Uppladdade installationsfoton i slot-ordning (tomma platser hoppas över). */

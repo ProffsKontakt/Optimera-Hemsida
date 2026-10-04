@@ -31,6 +31,31 @@ visas som "Uppdaterad" i stället för "Faktagranskad" tills de skrivits om.
 llms.txt genereras från datafilerna (`src/app/llms.txt/route.ts`) och
 listar varje sida med sitt korta svar. Nya sidor kommer med automatiskt.
 
+## Färg och bilder
+
+Varje databas har en egen färg, så att man ser var man är: Nyheter är
+solgul, Solcellsfrågor indigo, Batteriskolan koppar och Guider mossgrön.
+Färgerna och bildkopplingarna finns i `src/lib/kb-visuals.ts`.
+
+Varje kategori i Solcellsfrågor, grupp i Batteriskolan och guidekategori
+har ett foto i `public/kb/`. Det visas:
+- i hubbarnas bildrutor och vid kategorirubrikerna
+- som bildband överst på alla sidor i kategorin
+
+**Nya sidor får alltså automatiskt en bild.** Ingen bildgenerering behövs.
+
+- **Byta bild:** ladda upp ett riktigt foto i admin → Media under
+  "Kunskapsbank – bilder", bildplatsen `kb:<namn>`. En guide kan dessutom
+  få en egen bild under `guide:<slug>`.
+- **Ny kategori, grupp eller guidekategori:** lägg till ett foto i
+  `public/kb/` och en rad i `KB_IMAGES`. Annars visas reservbilden.
+
+Bildreglerna för nya foton är desamma som för nyheterna:
+- **Paneler:** stående moduler med tunna mellanrum och blank glasyta.
+- **Innehåll:** inga personer, ingen text, inga logotyper, inga flaggor och
+  inga registreringsskyltar.
+- **Granskning:** granska varje bild inzoomad innan den används.
+
 ## Veckorutinen: två nya sidor och faktagranskning varje vecka
 
 En schemalagd agent kör varje måndag morgon och publicerar två nya sidor utifrån vad svenskar sökt mest på den gångna veckan. Sidorna publiceras direkt, utan manuellt godkännande, och ett mejl sammanfattar vad som publicerats och varför.

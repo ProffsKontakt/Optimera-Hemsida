@@ -1,8 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState, type ReactNode } from "react";
 import { ArrowRight, Search, X } from "lucide-react";
+import { KB_TONES, type KbImage, type KbTone } from "@/lib/kb-visuals";
 
 /**
  * Sök i kunskapsbanken. Hela listan renderas i initial server-HTML (tom
@@ -28,6 +30,8 @@ export type KbGroup = {
   id: string;
   title: string;
   intro?: string;
+  /** Kategorins foto – visas som miniatyr vid rubriken. */
+  image?: KbImage;
   items: KbItem[];
 };
 
@@ -47,6 +51,7 @@ export function KbSearch({
   placeholder,
   variant = "list",
   showAllWhenEmpty = true,
+  tone = "indigo",
   footer,
 }: {
   groups: KbGroup[];
@@ -55,6 +60,8 @@ export function KbSearch({
   variant?: "list" | "cards";
   /** false = visa bara träffar (t.ex. på kunskapsbankens samlingssida). */
   showAllWhenEmpty?: boolean;
+  /** Databasens färg (lib/kb-visuals.ts). */
+  tone?: KbTone;
   footer?: ReactNode;
 }) {
   const [query, setQuery] = useState("");
@@ -167,13 +174,21 @@ export function KbSearch({
           <div className="mt-12 space-y-16">
             {groups.map((g) => (
               <section key={g.id} id={g.id} className="scroll-mt-28">
-                <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
-                  <h2 className="font-display text-3xl md:text-4xl tracking-display-tight leading-tight">
-                    {g.title}
-                  </h2>
-                  <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink/45">
-                    {g.items.length} {variant === "cards" ? "koncept" : "frågor"}
-                  </span>
+                <div className="flex items-center gap-4 md:gap-5">
+                  {g.image && (
+                    <span className="relative h-14 w-14 md:h-16 md:w-16 shrink-0 overflow-hidden rounded-2xl bg-cream">
+                      <Image src={g.image.src} alt="" fill sizes="64px" className="object-cover" />
+                      <span aria-hidden className={`absolute inset-x-0 bottom-0 h-1 ${KB_TONES[tone].bar}`} />
+                    </span>
+                  )}
+                  <div className="flex min-w-0 flex-1 flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+                    <h2 className="font-display text-[26px] md:text-4xl tracking-display-tight leading-tight">
+                      {g.title}
+                    </h2>
+                    <span className={`font-mono text-[11px] uppercase tracking-[0.18em] ${KB_TONES[tone].text}`}>
+                      {g.items.length} {variant === "cards" ? "koncept" : "frågor"}
+                    </span>
+                  </div>
                 </div>
                 {g.intro && (
                   <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-ink/65">
@@ -189,7 +204,7 @@ export function KbSearch({
                         className="group flex flex-col rounded-3xl border border-ink/10 bg-bone p-6 transition-colors hover:border-ink/30"
                       >
                         {item.eyebrow && (
-                          <span className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-indigo">
+                          <span className={`font-mono text-[10.5px] uppercase tracking-[0.18em] ${KB_TONES[tone].text}`}>
                             {item.eyebrow}
                           </span>
                         )}
@@ -201,7 +216,7 @@ export function KbSearch({
                             {item.snippet}
                           </span>
                         )}
-                        <span className="mt-auto pt-5 inline-flex items-center gap-2 text-[13px] text-ink/60 group-hover:text-indigo">
+                        <span className={`mt-auto pt-5 inline-flex items-center gap-2 text-[13px] text-ink/60 ${KB_TONES[tone].hover}`}>
                           Läs mer <ArrowRight size={14} />
                         </span>
                       </Link>
@@ -220,7 +235,7 @@ export function KbSearch({
                           </span>
                           <ArrowRight
                             size={15}
-                            className="mt-1 shrink-0 text-ink/30 transition-transform group-hover:translate-x-0.5 group-hover:text-indigo"
+                            className={`mt-1 shrink-0 text-ink/30 transition-transform group-hover:translate-x-0.5 ${KB_TONES[tone].hover}`}
                           />
                         </Link>
                       </li>

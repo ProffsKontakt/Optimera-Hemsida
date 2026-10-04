@@ -39,14 +39,16 @@ function BlockEyebrow({
   tone = "ink",
 }: {
   children: ReactNode;
-  tone?: "ink" | "indigo" | "moss";
+  tone?: "ink" | "indigo" | "moss" | "copper";
 }) {
   const color =
     tone === "indigo"
       ? "text-indigo"
       : tone === "moss"
         ? "text-moss"
-        : "text-ink/55";
+        : tone === "copper"
+          ? "text-copper"
+          : "text-ink/55";
   return (
     <div
       className={`font-mono text-[11px] uppercase tracking-[0.18em] ${color}`}
@@ -62,21 +64,30 @@ function BlockEyebrow({
  * engines plockar ofta första meningen som svar – led därför med en
  * fetstilt kärnmening (skicka <strong>…</strong> som första nod).
  * ================================================================== */
+const ANSWER_TONES = {
+  indigo: "border-indigo/20 bg-indigo/[0.04]",
+  copper: "border-copper/30 bg-copper/[0.07]",
+  moss: "border-moss/30 bg-moss/[0.07]",
+} as const;
+
 export function AnswerBox({
   question,
   children,
+  tone = "indigo",
   className = "",
 }: {
   /** Frågan sidan besvarar (valfritt, visas som liten rubrik). */
   question?: string;
   children: ReactNode;
+  /** Kunskapsbankens databasfärg: Solcellsfrågor indigo, Batteriskolan koppar, Guider mossgrön. */
+  tone?: keyof typeof ANSWER_TONES;
   className?: string;
 }) {
   return (
     <div
-      className={`rounded-3xl border border-indigo/20 bg-indigo/[0.04] p-7 md:p-9 ${className}`}
+      className={`rounded-3xl border p-7 md:p-9 ${ANSWER_TONES[tone]} ${className}`}
     >
-      <BlockEyebrow tone="indigo">Kort svar</BlockEyebrow>
+      <BlockEyebrow tone={tone}>Kort svar</BlockEyebrow>
       {question && (
         <p className="mt-3 font-display text-lg md:text-xl tracking-display-tight leading-snug text-ink/80">
           {question}

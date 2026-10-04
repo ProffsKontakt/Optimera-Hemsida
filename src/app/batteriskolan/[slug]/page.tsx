@@ -18,6 +18,9 @@ import {
   findConcept,
 } from "@/lib/batteriskolan";
 import { findQuestion } from "@/lib/solcellsfragor";
+import { KbHeroImage } from "@/components/kb/KbVisuals";
+import { batteryGroupImageKey } from "@/lib/kb-visuals";
+import { kbImage } from "@/lib/media";
 
 const BASE = "https://optimeraenergi.se";
 
@@ -111,6 +114,14 @@ export default function BatteryConceptPage({
             { name: c.term, href: path },
           ]}
         />
+        {/* Gruppens foto som bildband – alla koncept i gruppen delar det. */}
+        <div className="mt-6 md:mt-8 max-w-3xl">
+          <KbHeroImage
+            image={kbImage(batteryGroupImageKey(c.group))}
+            tone="copper"
+            label={group ? `Batteriskolan · ${group.title}` : "Batteriskolan"}
+          />
+        </div>
         <div className="mt-8 max-w-3xl">
           <div className="eyebrow">
             Batteriskolan · {c.term}
@@ -126,7 +137,7 @@ export default function BatteryConceptPage({
 
       <article className="container-edge pb-16 md:pb-20">
         <div className="max-w-3xl space-y-12">
-          <AnswerBox>
+          <AnswerBox tone="copper">
             <p>{c.shortAnswer}</p>
           </AnswerBox>
 
@@ -134,7 +145,7 @@ export default function BatteryConceptPage({
 
           {c.example && (
             <aside className="rounded-3xl border border-ink/10 bg-cream/50 p-7 md:p-8">
-              <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-indigo">
+              <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-copper">
                 <Calculator size={13} /> Räkneexempel
               </div>
               <h2 className="mt-3 font-display text-xl md:text-2xl tracking-display-tight leading-snug">
@@ -143,7 +154,7 @@ export default function BatteryConceptPage({
               <ul className="mt-4 space-y-2 text-[15px] leading-relaxed text-ink/80">
                 {c.example.lines.map((l) => (
                   <li key={l} className="flex gap-3">
-                    <span className="mt-2.5 h-1.5 w-1.5 rounded-full bg-indigo shrink-0" />
+                    <span className="mt-2.5 h-1.5 w-1.5 rounded-full bg-copper shrink-0" />
                     <span>{l}</span>
                   </li>
                 ))}

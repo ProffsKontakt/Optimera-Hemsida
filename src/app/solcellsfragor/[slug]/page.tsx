@@ -13,6 +13,9 @@ import {
   solarCategoryHref,
 } from "@/lib/solcellsfragor";
 import { findConcept } from "@/lib/batteriskolan";
+import { KbHeroImage } from "@/components/kb/KbVisuals";
+import { solarCategoryImageKey } from "@/lib/kb-visuals";
+import { kbImage } from "@/lib/media";
 
 export function generateStaticParams() {
   return allQuestions().map((q) => ({ slug: q.slug }));
@@ -100,6 +103,14 @@ export default function SolarQuestionPage({
             { name: q.question, href: path },
           ]}
         />
+        {/* Kategorins foto som bildband – alla frågor i kategorin delar det. */}
+        <div className="mt-6 md:mt-8 max-w-3xl">
+          <KbHeroImage
+            image={kbImage(solarCategoryImageKey(q.category))}
+            tone="indigo"
+            label={category ? `Solcellsfrågor · ${category.title}` : "Solcellsfrågor"}
+          />
+        </div>
         <div className="mt-8 max-w-3xl">
           <div className="eyebrow">
             Solcellsfrågor{category ? ` · ${category.title}` : ""}
