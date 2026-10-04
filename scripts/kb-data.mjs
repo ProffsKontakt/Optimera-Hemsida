@@ -29,6 +29,7 @@ export function loadKb() {
     concepts: loadModule("src/lib/batteriskolan-content.ts").CONCEPTS,
     news: loadModule("src/lib/news.ts").NEWS,
     guides: loadModule("src/lib/guides.ts").GUIDES,
+    guideContent: loadModule("src/lib/guide-content.ts").GUIDE_CONTENT,
   };
 }
 
@@ -49,7 +50,7 @@ export function contentIndex(kb = loadKb()) {
       phrases: [n.title, ...(n.searchPhrases ?? [])],
     })),
     ...kb.guides.filter((g) => g.status === "published").map((g) => ({
-      kind: "guide", href: `/guider/${g.slug}`, title: g.title, phrases: [g.title],
+      kind: "guide", href: `/guider/${g.slug}`, title: g.title, phrases: [g.title, ...(g.searchPhrases ?? [])],
     })),
   ];
 }

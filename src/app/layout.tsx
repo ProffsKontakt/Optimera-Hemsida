@@ -93,15 +93,13 @@ export const metadata: Metadata = {
     locale: "sv_SE",
     url: "/",
     siteName: "Optimera Energi",
-    title:
-      "Optimera Energi – Hela energiomställningen, byggd på kloka tankar",
+    title: "Optimera Energi – För dig som vill Optimera din energianvändning",
     description:
       "Solpaneler, batterier, värmepumpar och laddboxar i Stockholm. Hand-plockat sortiment, transparent prissättning, noggrant utvalda installatörer.",
   },
   twitter: {
     card: "summary_large_image",
-    title:
-      "Optimera Energi – Hela energiomställningen, byggd på kloka tankar",
+    title: "Optimera Energi – För dig som vill Optimera din energianvändning",
     description:
       "Solpaneler, batterier, värmepumpar och laddboxar i Stockholm.",
   },

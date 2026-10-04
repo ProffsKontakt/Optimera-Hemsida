@@ -232,7 +232,7 @@ export default function KnowledgeBankPage() {
               <span>
                 <span className="block font-display text-xl tracking-display-tight">Guider</span>
                 <span className="block text-[13.5px] text-ink/60">
-                  Fördjupning om pris, grönt avdrag och återbetalningstid.
+                  Fördjupning om värmepump, laddbox, elpris, pris och avdrag.
                 </span>
               </span>
             </span>
@@ -256,6 +256,22 @@ export default function KnowledgeBankPage() {
               </span>
             </span>
             <ArrowRight size={16} className="shrink-0 text-ink/35 group-hover:text-indigo" />
+          </Link>
+        </div>
+
+        {/* Kontakt försvann ur toppmenyn när kunskapsbanken tog dess plats –
+            här är vägen vidare för den som inte hittar sitt svar. */}
+        <div className="mt-5 flex flex-col gap-4 rounded-3xl border border-ink/10 bg-bone p-6 md:flex-row md:items-center md:justify-between md:p-8">
+          <div>
+            <div className="font-display text-xl md:text-2xl tracking-display-tight">
+              Hittar du inte svaret?
+            </div>
+            <p className="mt-1 text-[14.5px] text-ink/65">
+              Fråga oss direkt – det du undrar över blir ofta nästa sida här.
+            </p>
+          </div>
+          <Link href="/kontakt" className="btn-primary shrink-0 justify-center">
+            Kontakta oss <ArrowRight size={16} />
           </Link>
         </div>
       </Section>

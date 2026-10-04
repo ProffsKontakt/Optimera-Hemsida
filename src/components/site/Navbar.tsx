@@ -25,23 +25,24 @@ import { VISIBLE_SERVICES } from "@/lib/services";
 type NavChild = { href: string; label: string; desc: string };
 type NavLink = { href: string; label: string; children?: NavChild[] };
 
-// Kunskapsbanken först: sajtens mest lättnavigerade sektion. Undermenyn
-// samlar nyheterna (ny artikel var tredje dag) och de två databaserna.
+// Kunskapsbankens undermeny: nyheterna (ny artikel var tredje dag), de två
+// databaserna och guiderna.
 const KNOWLEDGE_LINKS: NavChild[] = [
   { href: "/nyheter", label: "Nyheter", desc: "Energinyheterna som påverkar din elräkning" },
   { href: "/solcellsfragor", label: "Solcellsfrågor", desc: "Svar på det svenskar söker om solceller" },
   { href: "/batteriskolan", label: "Batteriskolan", desc: "Hembatteriets koncept, ett i taget" },
-  { href: "/guider", label: "Guider", desc: "Pris, grönt avdrag och återbetalning" },
+  { href: "/guider", label: "Guider", desc: "Värmepump, laddbox, elpris, pris och avdrag" },
 ];
 
-// Tjänste-länkarna byggs från VISIBLE_SERVICES så dolda tjänster (t.ex.
-// värmepump just nu) automatiskt försvinner ur navigeringen.
+// Tjänste-länkarna byggs från VISIBLE_SERVICES så dolda tjänster
+// automatiskt försvinner ur navigeringen.
 const links: NavLink[] = [
-  { href: "/kunskapsbank", label: "Kunskapsbank", children: KNOWLEDGE_LINKS },
   ...VISIBLE_SERVICES.map((s) => ({ href: `/tjanster/${s.slug}`, label: s.short })),
   { href: "/kalkylator", label: "Kalkylator" },
   { href: "/om-oss", label: "Om oss" },
-  { href: "/kontakt", label: "Kontakt" },
+  // Kunskapsbanken tog Kontakts plats i menyn (okt 2026). Kontakt nås via
+  // Om oss, footern, offertknappen och kunskapsbankens "Hittar du inte svaret?".
+  { href: "/kunskapsbank", label: "Kunskapsbank", children: KNOWLEDGE_LINKS },
 ];
 
 /* Mobilmenyns ikoner + accentfärger per länk (gör menyn roligare att se
@@ -105,10 +106,11 @@ export function Navbar() {
             fetchPriority="high"
           />
           {/* Taglinen göms i spannet 1024–1279px: där får den fulla menyn
-              (åtta flikar sedan värmepumparna lanserades) inte plats bredvid
-              den, och den bröts på fyra rader. */}
-          <span className="hidden md:inline-block lg:hidden xl:inline-block whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.2em] text-ink/55 border-l border-ink/15 pl-3 ml-1">
-            byggd på kloka tankar
+              (åtta flikar) inte plats bredvid den. Två rader så att den inte
+              blir bredare än den gamla korta taglinen. */}
+          <span className="hidden md:block lg:hidden xl:block font-mono text-[9.5px] leading-[1.45] uppercase tracking-[0.16em] text-ink/55 border-l border-ink/15 pl-3 ml-1">
+            <span className="block whitespace-nowrap">För dig som vill Optimera</span>
+            <span className="block whitespace-nowrap">din energianvändning</span>
           </span>
         </Link>
 
@@ -127,8 +129,9 @@ export function Navbar() {
                   />
                 </Link>
                 {/* pt-2 överbryggar glappet så att hover inte bryts på
-                    vägen ner till panelen. */}
-                <div className="invisible absolute left-0 top-full z-50 pt-2 opacity-0 translate-y-1 transition duration-200 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:visible group-focus-within:opacity-100 group-focus-within:translate-y-0">
+                    vägen ner till panelen. Högerförankrad: kunskapsbanken
+                    är sista fliken, så panelen öppnar inåt mot sidan. */}
+                <div className="invisible absolute right-0 top-full z-50 pt-2 opacity-0 translate-y-1 transition duration-200 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:visible group-focus-within:opacity-100 group-focus-within:translate-y-0">
                   <div className="w-[340px] rounded-3xl border border-ink/10 bg-bone p-2 shadow-xl shadow-ink/10">
                     {l.children.map((c) => (
                       <Link

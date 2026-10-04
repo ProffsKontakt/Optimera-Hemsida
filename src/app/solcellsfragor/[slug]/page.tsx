@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { ArrowRight } from "lucide-react";
 import { Section } from "@/components/site/Section";
 import { BrandPanel } from "@/components/site/BrandPanel";
-import { JsonLd, faqPageSchema } from "@/components/seo/JsonLd";
+import { JsonLd, articleSchema, faqPageSchema } from "@/components/seo/JsonLd";
 import { AnswerBox, Breadcrumbs, LastUpdated } from "@/components/seo/aeo";
 import { KbBody, KbLinkCards, KbSources, snippetOf } from "@/components/kb/KbParts";
 import {
@@ -74,6 +74,20 @@ export default function SolarQuestionPage({
   return (
     <>
       <JsonLd data={faqPageSchema([{ q: q.question, a: schemaAnswer }])} />
+      {/* Article med källorna som citation – visar AI-motorerna vad svaret
+          bygger på och när det senast granskades. */}
+      <JsonLd
+        data={articleSchema({
+          headline: q.question,
+          description: q.description,
+          url: path,
+          datePublished: q.updatedAt,
+          dateModified: q.updatedAt,
+          sources: q.sources,
+          keywords: q.searchPhrases,
+          articleSection: category ? `Solcellsfrågor · ${category.title}` : "Solcellsfrågor",
+        })}
+      />
 
       <section className="container-edge pt-10 md:pt-16 pb-6">
         <Breadcrumbs

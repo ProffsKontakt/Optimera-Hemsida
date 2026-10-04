@@ -17,7 +17,6 @@ const LAST_MOD = {
   offert: "2026-05-19",
   omOss: "2026-07-08",
   kontakt: "2026-05-09",
-  tankar: "2026-05-09",
   tjanster: "2026-05-19",
   legal: "2026-05-09",
   cities: "2026-05-24",
@@ -69,7 +68,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: c.updatedAt,
     })),
     { url: `${base}/kontakt`, lastModified: LAST_MOD.kontakt },
-    { url: `${base}/tankar`, lastModified: LAST_MOD.tankar },
     { url: `${base}/guider`, lastModified: LAST_MOD.guiderHub },
     { url: `${base}/press`, lastModified: LAST_MOD.press },
     ...VISIBLE_SERVICES.map((s) => ({

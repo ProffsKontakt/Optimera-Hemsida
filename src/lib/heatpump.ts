@@ -14,9 +14,15 @@
  *    MATERIALKOSTNADEN, max 60 000 kr per småhus, beviljas från 10 000 kr.
  *    Hus med värdeår före 1990, inte anslutet till fjärrvärme, ägaren bor
  *    där stadigvarande. Bergvärme/jord/sjö, luft-vatten och frånluft
- *    omfattas – luft-luft gör det INTE. Söks via Boverkets e-tjänst från
- *    1 sep 2026, normalt inom sex månader. Kan kombineras med ROT (bidraget
- *    gäller material, ROT gäller arbete).
+ *    omfattas – luft-luft gör det INTE. Värmepumpen ska vara styrbar och
+ *    ligga i någon av de två högsta använda energiklasserna. Söks i
+ *    Boverkets e-tjänst (Länsstyrelsen beslutar) från 1 sep 2026, SENAST
+ *    sex månader efter att installationen påbörjades (start 17 okt 2025–
+ *    31 aug 2026: senast 28 feb 2027) och senast 1 jun 2030. Material ska
+ *    vara beställt tidigast 17 okt 2025. Taket 60 000 kr inkluderar bidrag
+ *    som betalats ut i omgången 2023–2025. Ingen publicerad handläggningstid.
+ *    Kan kombineras med ROT (bidraget gäller material, ROT gäller arbete).
+ *    Mer i guiden /guider/villaeffekten-bidrag.
  *
  * Ingen fs-import: används även i klientkomponenter.
  */

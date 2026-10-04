@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "Optimera Energi – byggd på kloka tankar";
+export const alt = "Optimera Energi – för dig som vill Optimera din energianvändning";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -86,8 +86,8 @@ export default function OG() {
               maxWidth: 800,
             }}
           >
-            Solpaneler, batterier, värmepumpar och laddboxar – byggda på
-            kloka tankar.
+            Solpaneler, batterier, värmepumpar och laddboxar – för dig som
+            vill Optimera din energianvändning.
           </div>
         </div>
       </div>

@@ -42,6 +42,9 @@ const nextConfig = {
         destination: "https://optimeraenergi.se/:path*",
         permanent: true,
       },
+      // Bloggsidan "Tankar" togs bort (okt 2026) – kunskapsbanken har tagit
+      // dess roll. Permanent redirect så att gamla länkar landar rätt.
+      { source: "/tankar", destination: "/kunskapsbank", permanent: true },
     ];
   },
   // Säkerhetshuvuden globalt. Google rankar säkra sidor bättre och vissa

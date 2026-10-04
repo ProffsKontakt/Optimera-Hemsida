@@ -24,7 +24,7 @@ export default function IdeaCornerPage() {
             Idé-hörnan.
           </h1>
           <p className="mt-4 text-ink/65 max-w-2xl leading-relaxed">
-            En plats för kloka tankar – om sälj, CRM-utbyggnad, drift och
+            En plats för idéer – om sälj, CRM-utbyggnad, drift och
             marknad. Skriv ner det när det är färskt; flytta till
             <em> bearbetas</em> när någon plockat upp det; markera <em>klar</em>
             {" "}när vi byggt eller lanserat det.

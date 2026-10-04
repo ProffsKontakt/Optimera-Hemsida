@@ -31,6 +31,17 @@ export function keepRangesTogether(text: string): string {
   return text.replace(/(\d)\s?([–-])\s?(?=\d)/g, "$1⁠$2⁠");
 }
 
+/**
+ * Håller ihop tal med tusentalsavgränsare ("60 000") och tal med sin enhet
+ * ("30 %", "4 kr", "11 kW") med hårda mellanslag (U+00A0). Annars kan en
+ * smal skärm bryta "högst 60 / 000 kr" mitt i beloppet.
+ */
+export function keepNumbersTogether(text: string): string {
+  return text
+    .replace(/(\d) (?=\d{3}(?!\d))/g, "$1\u00A0")
+    .replace(/(\d) (?=(?:%|kr|öre|kWh|kWp|kW|mil|år|A|°C)(?![\p{L}\d]))/gu, "$1\u00A0");
+}
+
 /** Synlig rubriktext: intervall hålls ihop, långa ord kan avstavas. */
 export function formatHeadline(text: string, opts: { hyphenate?: boolean } = {}): string {
   const t = keepRangesTogether(text);

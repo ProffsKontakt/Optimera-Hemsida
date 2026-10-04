@@ -1,4 +1,5 @@
-// Kvalitetsgrind för kunskapsbanken (Solcellsfrågor och Batteriskolan).
+// Kvalitetsgrind för kunskapsbanken (Solcellsfrågor, Batteriskolan och
+// guider i AI-sökformatet, dvs. med kort svar).
 //
 //   node scripts/kb-check.mjs              # struktur, länkar, sökfraser och typografi
 //   node scripts/kb-check.mjs --only a,b   # varningar och URL-koll bara för dessa slugs
@@ -15,7 +16,7 @@ const args = process.argv.slice(2);
 const only = args.includes("--only") ? new Set(args[args.indexOf("--only") + 1].split(",")) : null;
 const checkUrls = args.includes("--urls");
 
-const { questions, concepts, news, guides } = loadKb();
+const { questions, concepts, news, guides, guideContent } = loadKb();
 const read = (rel) => fs.readFileSync(path.join(ROOT, rel), "utf8");
 const typeUnion = (name) =>
   [...read("src/lib/kb-types.ts").match(new RegExp(`type ${name}\\s*=([^;]+);`))[1].matchAll(/"([^"]+)"/g)].map((m) => m[1]);
@@ -118,9 +119,29 @@ for (const c of concepts) {
   typography(s, all.join(" "));
 }
 
+// Guider i AI-sökformatet (har answer). Äldre guider med tldr granskas av
+// kunskapsbankens rutin och skrivs om till formatet efter hand.
+const newGuides = guides.filter((g) => g.status === "published" && guideContent[g.slug]?.answer);
+for (const g of newGuides) {
+  const s = g.slug;
+  const c = guideContent[s];
+  if ((g.sources ?? []).length < 2) problem(s, `för få källor (${(g.sources ?? []).length}, minst 2)`);
+  const sa = words(c.answer);
+  if (sa < 30 || sa > 85) warn(s, `kortsvaret är ${sa} ord (sikta på 40–80)`);
+  if ((c.keyFacts ?? []).length < 3) warn(s, "faktarutan har färre än 3 rader");
+  const notQ = c.sections.filter((x) => !x.h2.trim().endsWith("?"));
+  if (notQ.length) warn(s, `H2 som inte är frågor: ${notQ.map((x) => `"${x.h2}"`).join(", ")}`);
+  if (c.faq.length < 3) warn(s, `${c.faq.length} FAQ-frågor (minst 3)`);
+  if (g.excerpt.length < 90 || g.excerpt.length > 170) warn(s, `excerpt är ${g.excerpt.length} tecken (90–170)`);
+  const all = [c.answer, ...(c.keyFacts ?? []).map((f) => `${f.label} ${f.value}`),
+    ...c.sections.flatMap((x) => [...x.body, ...(x.bullets ?? [])]), ...c.faq.flatMap((f) => [f.q, f.a])];
+  phraseCheck(s, g.searchPhrases ?? [], [g.title, ...c.sections.map((x) => x.h2), ...all].join(" "));
+  typography(s, all.join(" "));
+}
+
 // Samma sökfras på två sidor gör att de konkurrerar om samma sökning.
 const owner = new Map();
-for (const x of [...questions, ...concepts])
+for (const x of [...questions, ...concepts, ...newGuides.map((g) => ({ slug: g.slug, searchPhrases: g.searchPhrases ?? [] }))])
   for (const p of x.searchPhrases) {
     const key = norm(p);
     if (owner.has(key) && owner.get(key) !== x.slug) warn(x.slug, `sökfrasen "${p}" finns även på ${owner.get(key)}`);
@@ -132,7 +153,8 @@ for (const h of [...read("src/components/site/Term.tsx").matchAll(/href: "(\/(?:
   if (!validHref(h)) problem("Term.tsx", `länkar till saknad sida ${h}`);
 
 if (checkUrls) {
-  const entries = [...questions, ...concepts].filter((x) => !only || only.has(x.slug));
+  const entries = [...questions, ...concepts, ...newGuides.map((g) => ({ slug: g.slug, sources: g.sources ?? [] }))]
+    .filter((x) => !only || only.has(x.slug));
   const bySlug = new Map();
   for (const x of entries) for (const src of x.sources) bySlug.set(src.url, [...(bySlug.get(src.url) ?? []), x.slug]);
   const urls = [...bySlug.keys()];
@@ -151,7 +173,7 @@ if (checkUrls) {
   console.log(`Kontrollerade ${urls.length} käll-URL:er.`);
 }
 
-console.log(`Solcellsfrågor: ${questions.length}  Batteriskolan: ${concepts.length}`);
+console.log(`Solcellsfrågor: ${questions.length}  Batteriskolan: ${concepts.length}  Guider (nytt format): ${newGuides.length}`);
 console.log(`\nPROBLEM (${problems.length})${problems.map((p) => `\n  - ${p}`).join("")}`);
 console.log(`\nVARNINGAR (${warnings.length})${warnings.map((w) => `\n  - ${w}`).join("")}`);
 process.exit(problems.length ? 1 : 0);

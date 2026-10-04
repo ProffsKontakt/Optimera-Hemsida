@@ -43,7 +43,7 @@ Sajten hade redan en ovanligt stark teknisk SEO-grund:
   ReserveAction).
 - **`src/app/layout.tsx`** – global metadata (title-template, description, Open
   Graph, Twitter, canonical, robots, verification, `metadataBase`).
-- **`public/llms.txt`** – redan skapad med företagsfakta och viktiga sidor.
+- **`src/app/llms.txt/route.ts`** – genereras sedan okt 2026 från datafilerna: företagsfakta, tjänster och hela kunskapsbanken med korta svar.
 - **Per-route metadata** på tjänster, kalkylator, om oss, offert, batteri- och
   solceller-stadssidor.
 - **FAQ-data** per tjänst och på kalkylatorn (men se gap nedan).
@@ -122,7 +122,7 @@ Alla server-renderade, riktig HTML, matchar designsystemet:
   `Metodik` och `Frågor & svar` under Företaget.
 - **`src/components/seo/JsonLd.tsx`** – ny `articleSchema()`-hjälpare.
 - **`src/app/sitemap.ts`** – nya sidor + bumpade lastmod för kalkylatorn.
-- **`public/llms.txt`** – nya sidor tillagda (endast befintliga URL:er).
+- **llms.txt** – nya sidor tillagda (endast befintliga URL:er).
 
 ---
 
@@ -222,11 +222,11 @@ disallow till `/admin`, `/api`, `/studio`.
 5. Lägg URL:en i `src/app/sitemap.ts` (+ ett `LAST_MOD`-datum).
 6. Länka till sidan från relevanta befintliga sidor med **beskrivande** ankartext
    (inte "läs mer"), och lägg den i `Footer.tsx` om den är viktig.
-7. Lägg URL:en i `public/llms.txt`.
+7. Lägg URL:en i `src/app/llms.txt/route.ts` om sidan inte redan kommer med automatiskt (kunskapsbanken gör det).
 8. Kör `npm run typecheck` och `npm run build`.
 
 Använd **bara verifierad företagsdata** (priser, avdrag, specifikationer). Källor:
-`src/lib/catalog.ts`, batteri-stadssidorna, kalkylatorns FAQ, `public/llms.txt`.
+`src/lib/catalog.ts`, batteri-stadssidorna, kalkylatorns FAQ, `src/app/llms.txt/route.ts`.
 
 ---
 

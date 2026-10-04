@@ -106,11 +106,10 @@ export function DemoHero({
               <img src="/reco.svg" alt="Reco" className="h-[15px] w-auto" />
             </a>
 
-            {/* Ingen eyebrow här längre. Den sa "Byggd på kloka tankar ·
-                Stockholm 2026" – men "kloka tankar" står redan i navbarens
-                tagline precis ovanför och i brödtexten nedanför, och
-                "Stockholm" i rubriken. Designgenomgången (sep 2026) pekade
-                ut just den upprepningen. Mobilen har aldrig visat den. */}
+            {/* Ingen eyebrow här: taglinen står redan i navbaren precis
+                ovanför och i brödtexten nedanför, och "Stockholm" i
+                rubriken. Designgenomgången (sep 2026) pekade ut just den
+                upprepningen. */}
 
             <h1 className="mt-0 font-display text-[44px] md:text-[64px] lg:text-[76px] leading-[1.15] tracking-display-tight">
               Optimera Energi,
@@ -132,9 +131,9 @@ export function DemoHero({
               {/* Mobil: full svärta + mjuk bone-halo (ljus "skugga" åt rätt
                   håll för mörk text på foto). Desktop: dämpad som förut. */}
               <p className="md:mt-6 max-w-lg text-ink md:text-ink/75 text-[17px] leading-relaxed [text-shadow:0_1px_2px_rgba(244,241,234,0.9),0_0_14px_rgba(244,241,234,0.85)] md:[text-shadow:none]">
-                Solpaneler, batterier och laddboxar, byggda på kloka tankar och
-                installerade av noggrant utvalda installatörer – med
-                kanelbullar och respekt för ditt hem.
+                Solpaneler, batterier, värmepumpar och laddboxar för dig som
+                vill Optimera din energianvändning – installerade av noggrant
+                utvalda installatörer, med kanelbullar och respekt för ditt hem.
               </p>
 
               {/* EN primär handling. Sekundär blir lugn textlänk – mobil

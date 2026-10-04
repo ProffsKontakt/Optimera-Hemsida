@@ -58,9 +58,9 @@ export function Footer() {
             Energin är inte bara ström – den är en hållning.
           </div>
           <p className="mt-6 text-ink/65 max-w-md text-[15px] leading-relaxed">
-            Optimera Energi installerar solpaneler, batterier och laddboxar.
-            Vi gör det med kloka tankar bakom varje beslut –
-            och med fika, raka besked och ingenjörskonst utan kompromiss.
+            Optimera Energi installerar solpaneler, batterier, värmepumpar och
+            laddboxar – för dig som vill Optimera din energianvändning. Med
+            fika, raka besked och ingenjörskonst utan kompromiss.
           </p>
           {/* Recos "Rekommenderat företag 2026". Ligger under texten i stället
               för nere i kontaktkolumnen – balanserar den vänstra spalten som

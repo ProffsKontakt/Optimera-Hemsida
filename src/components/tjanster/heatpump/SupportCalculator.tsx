@@ -148,8 +148,9 @@ export function SupportCalculator({ initialType = "luft-vatten" }: { initialType
         </div>
         <p className="mt-auto pt-6 text-[12px] leading-relaxed text-bone/50">
           Förenklad uppskattning med Skatteverkets schablon för fast pris. ROT-taket
-          delas med annat rot-arbete samma år, och produkten måste uppfylla
-          Boverkets energikrav för bidraget. Källor:{" "}
+          delas med annat rot-arbete samma år. För bidraget ska pumpen vara
+          styrbar och uppfylla Boverkets energikrav, och bidrag som betalats ut
+          2023–2025 räknas in i taket. Källor:{" "}
           <a href={HEATPUMP_SOURCES.rotSchablon} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-bone">
             Skatteverket
           </a>

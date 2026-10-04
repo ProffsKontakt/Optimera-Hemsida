@@ -319,6 +319,11 @@ export function articleSchema(input: {
   /** "Article" (default) eller "TechArticle" för mer teknisk fördjupning. */
   type?: "Article" | "TechArticle";
   image?: string;
+  /** Källorna sidan bygger på – blir citation. AI-motorer väger källbelagda svar högre. */
+  sources?: { title: string; publisher: string; url: string }[];
+  /** Sökfraser sidan besvarar – blir keywords. */
+  keywords?: string[];
+  articleSection?: string;
 }) {
   const absoluteUrl = input.url.startsWith("http")
     ? input.url
@@ -342,6 +347,18 @@ export function articleSchema(input: {
     mainEntityOfPage: absoluteUrl,
     author: { "@id": `${BASE}#organization` },
     publisher: { "@id": `${BASE}#organization` },
+    ...(input.articleSection ? { articleSection: input.articleSection } : {}),
+    ...(input.keywords?.length ? { keywords: input.keywords.join(", ") } : {}),
+    ...(input.sources?.length
+      ? {
+          citation: input.sources.map((s) => ({
+            "@type": "CreativeWork",
+            name: s.title,
+            url: s.url,
+            publisher: { "@type": "Organization", name: s.publisher },
+          })),
+        }
+      : {}),
   };
 }
 

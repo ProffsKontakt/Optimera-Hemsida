@@ -31,7 +31,7 @@ export function Hero() {
               className="hidden md:block brand-stripe absolute -left-4 top-2 h-24"
             />
             <div className="eyebrow">
-              Optimera Energi · Byggd på kloka tankar · Stockholm 2026
+              Optimera Energi · Stockholm 2026
             </div>
 
             {/* H1 är LCP-elementet. Renderas SYNKRONT utan framer-motion-
@@ -46,8 +46,8 @@ export function Hero() {
             </h1>
 
             <p className="mt-8 max-w-xl text-ink/70 text-lg leading-relaxed">
-              Solpaneler, batterier, värmepumpar och laddboxar, byggda på
-              kloka tankar och installerade av noggrant utvalda installatörer som
+              Solpaneler, batterier, värmepumpar och laddboxar för dig som
+              vill Optimera din energianvändning, installerade av noggrant utvalda installatörer som
               dyker upp med kanelbullar och respekt för ditt hem.
             </p>
 

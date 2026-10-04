@@ -83,6 +83,9 @@ export default function BatteryConceptPage({
           datePublished: c.updatedAt,
           dateModified: c.updatedAt,
           type: "TechArticle",
+          sources: c.sources,
+          keywords: c.searchPhrases,
+          articleSection: "Batteriskolan",
         })}
       />
       <JsonLd

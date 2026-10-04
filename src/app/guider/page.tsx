@@ -7,7 +7,7 @@ import { JsonLd, collectionPageSchema } from "@/components/seo/JsonLd";
 export const metadata = {
   title: "Guider om sol, batteri, värme och laddning",
   description:
-    "Långa svar på korta frågor. Återbetalningstid, grönt avdrag, batteripris, värmepump och allt däremellan, skrivet av elektrikerna som faktiskt installerar.",
+    "Långa svar på korta frågor: värmepump, laddbox, elpris och elområden, grönt avdrag, bidrag och återbetalningstid – med källor.",
   alternates: { canonical: "/guider" },
   openGraph: {
     title: "Guider · Optimera Energi",
@@ -42,7 +42,7 @@ export default function GuidesHubPage() {
       />
       <section className="container-edge pt-12 md:pt-20 pb-12">
         <div className="max-w-3xl">
-          <div className="eyebrow">Guider · Tankar från taket</div>
+          <div className="eyebrow">Kunskapsbank · Guider</div>
           <h1 className="mt-5 font-display text-[44px] sm:text-[56px] md:text-[80px] tracking-display-tight leading-[1.15]">
             Långa svar
             <span className="block italic font-serif text-indigo">
@@ -50,9 +50,9 @@ export default function GuidesHubPage() {
             </span>
           </h1>
           <p className="mt-6 max-w-2xl text-ink/70 text-lg leading-relaxed">
-            Återbetalningstid, grönt avdrag, batteripris, värmepump och allt
-            däremellan. Skrivet av elektrikerna som faktiskt installerar, inte
-            av marknadsavdelningen.
+            Värmepump, laddbox, elpris och elområden, grönt avdrag, bidrag och
+            återbetalningstid. Raka svar med källor du kan klicka dig vidare
+            till – för frågorna som inte ryms i Solcellsfrågor och Batteriskolan.
           </p>
         </div>
       </section>
