@@ -58,11 +58,11 @@ Bildreglerna för nya foton är desamma som för nyheterna:
 
 ## Veckorutinen: två nya sidor och faktagranskning varje vecka
 
-En schemalagd agent kör varje måndag morgon och publicerar två nya sidor utifrån vad svenskar sökt mest på den gångna veckan. Sidorna publiceras direkt, utan manuellt godkännande, och ett mejl sammanfattar vad som publicerats och varför.
+En schemalagd agent kör varje måndag morgon. Den tar fram två nya sidor utifrån vad svenskar sökt mest på den gångna veckan och faktagranskar 2–3 befintliga sidor. Allt läggs fram för granskning i en PR och går live när Julian har mergat den. Ett mejl sammanfattar vad som tagits fram och varför.
 
-1. **Sökdata:** `python3 scripts/veckans-sokningar.py`. Skriptet hämtar Google Trends för Sverige de senaste 7 dagarna – de mest sökta relaterade sökningarna (topp) och de som ökar mest – för grundord som solceller, elpris, effektavgift och växelriktare. Grundorden vägs mot "solceller", så poängen går att jämföra mellan dem. Varje sökning jämförs med kunskapsbanken och guiderna och märks som täckt eller obesvarad. Obesvarade sökningar visas med Googles sökförslag. Svarar inte Trends (HTTP 429) används `python3 scripts/sokfragor.py sol` och `bat`, som bara bygger på sökförslag.
+1. **Sökdata:** `python3 scripts/veckans-sokningar.py`. Skriptet hämtar Google Trends för Sverige de senaste 7 dagarna – de mest sökta relaterade sökningarna (topp) och de som ökar mest – för grundord som solceller, elpris, effektavgift, växelriktare, laddbox, värmepump och elavtal. Grundorden vägs mot "solceller", så poängen går att jämföra mellan dem. Varje sökning jämförs med kunskapsbanken och guiderna och märks som täckt eller obesvarad. Obesvarade sökningar visas med Googles sökförslag. Svarar inte Trends (HTTP 429) används `python3 scripts/sokfragor.py sol` och `bat`, som bara bygger på sökförslag.
 2. **Välj två ämnen** bland de obesvarade, högst poäng först. Ämnet ska:
-   - höra hemma i Solcellsfrågor (solceller) eller Batteriskolan (batterier, elnät, elpris och styrning)
+   - höra hemma i Solcellsfrågor (solceller), Batteriskolan (batterier, elnät, elpris och styrning) eller Guider (värmepump, laddbox, elpris och elområden, stöd och avdrag)
    - gå att besvara med källbelagd fakta
    - inte vara ett varumärke, ett prisuppslag ("elpris idag") eller en ortssökning.
 

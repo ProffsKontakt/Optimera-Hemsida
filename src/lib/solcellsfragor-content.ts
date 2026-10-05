@@ -1870,7 +1870,8 @@ export const QUESTIONS: SolarQuestion[] = [
       "solceller-pa-platt-tak",
       "solpanel-matt-och-vikt",
       "installera-solceller-sjalv",
-      "hur-lange-haller-solceller"
+      "hur-lange-haller-solceller",
+      "integrerade-solceller"
     ],
     links: [
       {
@@ -2643,7 +2644,8 @@ export const QUESTIONS: SolarQuestion[] = [
       "solceller-pa-platt-papp-och-tegeltak",
       "solceller-pa-platt-tak",
       "bidrag-for-solceller",
-      "besikta-solceller"
+      "besikta-solceller",
+      "integrerade-solceller"
     ],
     links: [
       {
@@ -2803,6 +2805,102 @@ export const QUESTIONS: SolarQuestion[] = [
       }
     ],
     updatedAt: "2026-10-03"
+  },
+  {
+    slug: "integrerade-solceller",
+    category: "planering-tak-och-bygglov",
+    question: "Vad är integrerade solceller, och lönar sig ett solcellstak?",
+    description: "Integrerade solceller är en del av taket, som solcellstakpannor eller plåttak med solceller. De kostar mer per kWp än vanliga paneler och passar bäst vid takbyte.",
+    shortAnswer: "Integrerade solceller är en del av själva taket, till exempel solcellstakpannor, glasmoduler eller plåttak med solceller. Ett solcellstak kostar mer per kWp än vanliga paneler ovanpå taket och producerar något mindre, så det väljs främst för utseendet och passar bäst när taket ändå ska bytas.",
+    body: [
+      {
+        h2: "Integrerade solceller på tak: takpannor, glas eller plåttak",
+        paragraphs: [
+          "Alla tre finns, och RISE skiljer på två typer. Helt integrerade produkter är själva väderskyddet: tas en modul bort måste något annat ersätta den. Andra smälter främst in estetiskt bland vanliga takpannor eller falsad plåt, och taket är tätt även utan dem."
+        ]
+      },
+      {
+        h2: "Integrerade solceller: pris och skillnad mot vanliga paneler",
+        paragraphs: [
+          "Integrerade lösningar är fortfarande dyrare än vanliga solceller, skriver Energimyndigheten. I RISE:s test kostade integrerade system, installerade 2020, 33 000–51 000 kr per kWp inklusive moms och före stöd, mot uppskattat 17 900 kr per kWp för ett vanligt villasystem 2019. Siffrorna är vägledande. Sparat takmaterial väger lätt mot systemkostnaden, enligt RISE.",
+          "Integrerade moduler ventileras sämre och blir varmare än paneler ovanpå taket, vilket sänker produktionen. I testet kostade värmen 1–6 procent av årsproduktionen. Kablaget skyddas bättre mot väder men blir ofta svåråtkomligt för inspektion. Flera nyare produkter är mindre testade, och köparen kan behöva förhandla om starkare garantier, enligt RISE."
+        ]
+      },
+      {
+        h2: "Gäller grönt avdrag för ett solcellstak?",
+        paragraphs: [
+          "Ja, för solcellsdelen. Grönt avdrag är 15 procent av arbete och material för solcellssystemet, inklusive kablage och växelriktare. Ombyggnad av taket inför installationen ger inget grönt avdrag, men takomläggningen kan ge rotavdrag. Samma arbete kan inte ge båda avdragen. Skatteverkets sidor för privatpersoner tar inte upp solceller som också är taktäckning, så be installatören dela upp offerten i solcellsdel och takdel."
+        ]
+      },
+      {
+        h2: "Behöver integrerade solceller bygglov?",
+        paragraphs: [
+          "Oftast inte. Sedan den 1 december 2025 gäller samma bygglovsregler för integrerade solceller som för vanliga paneler. På villor och andra en- och tvåbostadshus krävs varken bygglov för solceller på taket eller för ny taktäckning. Undantag finns, till exempel för särskilt värdefulla byggnader och områden eller om detaljplanen kräver bygglov."
+        ]
+      }
+    ],
+    searchPhrases: [
+      "integrerade solceller",
+      "integrerade solceller tak",
+      "integrerade solceller takpannor",
+      "integrerade solceller plåttak",
+      "integrerade solceller pris"
+    ],
+    sources: [
+      {
+        title: "Det här ingår i en solcellsanläggning",
+        publisher: "Energimyndigheten (Solelportalen)",
+        url: "https://www.energimyndigheten.se/effektiv-energianvandning/guider/solelportalen/har-mitt-hus-ratt-forutsattningar/det-har-ingar-i-en-solcellsanlaggning/"
+      },
+      {
+        title: "Så undersöker du taket",
+        publisher: "Energimyndigheten (Solelportalen)",
+        url: "https://www.energimyndigheten.se/effektiv-energianvandning/guider/solelportalen/har-mitt-hus-ratt-forutsattningar/sa-undersoker-du-taket/"
+      },
+      {
+        title: "Provning av solelsystem för villor – slutrapport 2021",
+        publisher: "RISE på uppdrag av Energimyndigheten",
+        url: "https://www.energimyndigheten.se/4acd02/globalassets/tester/slutrapport-systemtester-solel-sign-pk_jp_cm.pdf"
+      },
+      {
+        title: "Godkända arbeten – grön teknik",
+        publisher: "Skatteverket",
+        url: "https://www.skatteverket.se/privat/fastigheterochbostad/gronteknik/godkandaarbetengronteknik.4.676f4884175c97df419290e.html"
+      },
+      {
+        title: "Så fungerar skattereduktionen för grön teknik",
+        publisher: "Skatteverket",
+        url: "https://www.skatteverket.se/privat/fastigheterochbostad/gronteknik/safungerarskattereduktionenforgronteknik.4.676f4884175c97df4192870.html"
+      },
+      {
+        title: "Ändra fasad eller tak",
+        publisher: "Boverket",
+        url: "https://www.boverket.se/sv/byggande/bygglov-rivningslov-marklov-och-anmalan/vad-far-jag-bygga-utan-bygglov/andra-fasad-eller-tak/"
+      },
+      {
+        title: "Nya bygglovsregler",
+        publisher: "Svensk Solenergi",
+        url: "https://svensksolenergi.se/nya-bygglovsregler/"
+      }
+    ],
+    related: [
+      "byta-tak-innan-solceller",
+      "solceller-pa-platt-papp-och-tegeltak",
+      "bygglov-for-solceller",
+      "vad-kostar-solceller"
+    ],
+    concepts: [],
+    links: [
+      {
+        href: "/guider/gront-avdrag-2026",
+        label: "Guide: Grönt avdrag 2026"
+      },
+      {
+        href: "/tjanster/solpaneler",
+        label: "Solpaneler: så går installationen till"
+      }
+    ],
+    updatedAt: "2026-10-05"
   },
   {
     slug: "salja-el-fran-solceller",
@@ -3856,10 +3954,17 @@ export const QUESTIONS: SolarQuestion[] = [
   {
     slug: "solceller-och-huspriset",
     category: "drift-sakerhet-och-livslangd",
-    question: "Påverkar solceller huspriset och energideklarationen?",
-    description: "Solel som används i huset kan ge bättre energideklaration, men effekten på huspriset är dåligt belagd. Fastighetsavgiften 2026 är högst 10 425 kr per hus.",
-    shortAnswer: "Solceller kan förbättra husets energideklaration, men hur mycket de påverkar priset vid en försäljning är dåligt belagt i Sverige. Fastighetsavgiften har ett tak på 10 425 kronor per bostadsbyggnad för 2026, och Skatteverkets vägledning till fastighetsdeklarationen tar inte upp solceller bland standardfrågorna.",
+    question: "Påverkar solceller huspriset, taxeringsvärdet och energideklarationen?",
+    description: "Solceller ger inga standardpoäng och höjer inte taxeringsvärdet. Solel kan ge bättre energideklaration, men effekten på huspriset är dåligt belagd.",
+    shortAnswer: "Solceller höjer inte taxeringsvärdet: de ger inga standardpoäng när Skatteverket värderar småhus inför 2027 års fastighetstaxering. De kan förbättra husets energideklaration, men hur mycket de påverkar priset vid en försäljning är dåligt belagt i Sverige.",
     body: [
+      {
+        h2: "Påverkar solceller taxeringsvärdet?",
+        paragraphs: [
+          "Nej. Taxeringsvärdet för ett småhus räknas fram ur bland annat husets storlek, värdeår och standard, och standarden mäts i standardpoäng inom fem områden: exteriör, energihushållning, kök, sanitet och övrig interiör. Inför 2027 års fastighetstaxering ger energihushållning poäng för att el finns indragen, för två-, tre- eller fyrglasfönster, för att det finns ett system för uppvärmning och för ett elsystem som bytts 2015 eller senare. Solceller finns inte med bland de poänggivande posterna.",
+          "Har du fått en fastighetsdeklaration för småhus ska den lämnas senast den 2 november 2026. Beslutet om det nya taxeringsvärdet kommer i mitten av juni 2027 om du har digital brevlåda."
+        ]
+      },
       {
         h2: "Energideklarationen",
         paragraphs: [
@@ -3876,11 +3981,13 @@ export const QUESTIONS: SolarQuestion[] = [
       {
         h2: "Fastighetsavgift, inte fastighetsskatt",
         paragraphs: [
-          "För ett färdigbyggt småhus betalar du kommunal fastighetsavgift, inte statlig fastighetsskatt. Avgiften för 2026 är 0,75 procent av taxeringsvärdet, men högst 10 425 kronor per bostadsbyggnad. Taket nås vid ett taxeringsvärde på 1 390 000 kronor, så har huset ett högre värde än så påverkas avgiften inte om värdet stiger. Taxeringsvärdet bygger bland annat på husets storlek, ålder och standardpoäng, och i Skatteverkets vägledning till fastighetsdeklarationen för småhus 2027 nämns inte solceller bland standardfrågorna."
+          "För ett färdigbyggt småhus betalar du kommunal fastighetsavgift, inte statlig fastighetsskatt. Avgiften för 2026 är 0,75 procent av taxeringsvärdet, men högst 10 425 kronor per bostadsbyggnad. Taket nås vid ett taxeringsvärde på 1 390 000 kronor, så har huset ett högre värde än så påverkas avgiften inte om värdet stiger. Eftersom solcellerna inte påverkar taxeringsvärdet påverkar de inte heller fastighetsavgiften."
         ]
       }
     ],
     searchPhrases: [
+      "påverkar solceller taxeringsvärdet",
+      "solceller taxeringsvärde",
       "påverkar solceller huspriset",
       "hur påverkar solceller energideklaration",
       "solceller vid husförsäljning",
@@ -3909,6 +4016,16 @@ export const QUESTIONS: SolarQuestion[] = [
         url: "https://www.skatteverket.se/privat/fastigheterochbostad/fastighetsavgiftochfastighetsskatt.4.69ef368911e1304a625800013531.html"
       },
       {
+        title: "Deklarera småhus – fastighetsdeklaration 2026 inför 2027 års taxering",
+        publisher: "Skatteverket",
+        url: "https://www.skatteverket.se/privat/fastigheterochbostad/fastighetstaxering/deklarerasmahus.4.76a43be412206334b8980001091.html"
+      },
+      {
+        title: "Skatteverkets föreskrifter (SKVFS 2026:9) om värderingen av småhusenheter vid 2027 års allmänna fastighetstaxering, bilaga 1",
+        publisher: "Skatteverket (fulltext via lagen.nu)",
+        url: "https://lagen.nu/skvfs/2026:9"
+      },
+      {
         title: "Innehållet i fastighetsdeklarationen",
         publisher: "Skatteverket",
         url: "https://www.skatteverket.se/privat/fastigheterochbostad/fastighetstaxering/deklarerasmahus/innehalletifastighetsdeklarationen.4.515a6be615c637b9aa41532d.html"
@@ -3925,7 +4042,7 @@ export const QUESTIONS: SolarQuestion[] = [
       "sjalvforbrukning"
     ],
     links: [],
-    updatedAt: "2026-10-03"
+    updatedAt: "2026-10-05"
   },
   {
     slug: "solceller-och-forsakring",
@@ -4369,6 +4486,10 @@ export const QUESTIONS: SolarQuestion[] = [
       {
         href: "/tjanster/laddboxar",
         label: "Laddboxar från Optimera Energi"
+      },
+      {
+        href: "/guider/installera-laddbox-hemma",
+        label: "Guide: Installera laddbox hemma"
       }
     ],
     updatedAt: "2026-10-03"

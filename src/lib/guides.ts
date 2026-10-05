@@ -44,6 +44,76 @@ export type Guide = {
 
 export const GUIDES: Guide[] = [
   {
+    slug: "installera-laddbox-hemma",
+    status: "published",
+    title: "Vad kostar det att installera en laddbox hemma 2026, och vad krävs?",
+    excerpt: "En laddbox kostar cirka 5 000–12 000 kr plus installation (2024). Här är vad som höjer priset, vem som får installera och vad grönt avdrag ger 2026.",
+    category: "Laddbox",
+    publishedAt: "2026-10-05",
+    updatedAt: "2026-10-05",
+    readTimeMin: 8,
+    searchPhrases: [
+      "installera laddbox",
+      "installation laddbox",
+      "installera laddbox hemma pris",
+      "vad kostar laddbox med installation",
+      "vad kostar en laddbox",
+      "installera laddbox själv",
+      "bidrag laddbox",
+      "laddbox dubbla uttag",
+    ],
+    services: [
+      "laddboxar",
+    ],
+    sources: [
+      {
+        title: "Installera din laddningspunkt",
+        publisher: "Elsäkerhetsverket",
+        url: "https://www.elsakerhetsverket.se/privatpersoner/din-elanlaggning/bygga-och-renovera/installation-av-elbilsladdare/installera-din-laddningspunkt/",
+      },
+      {
+        title: "Laddstationer – frågor och svar",
+        publisher: "Elsäkerhetsverket",
+        url: "https://www.elsakerhetsverket.se/privatpersoner/dina-elprodukter/produkter/laddstationer/",
+      },
+      {
+        title: "Säker utbyggnad och användning av laddinfrastruktur för laddbara fordon (vägledning MSB2559, maj 2025)",
+        publisher: "MSB, Boverket och Elsäkerhetsverket",
+        url: "https://rib.msb.se/filer/pdf/31090.pdf",
+      },
+      {
+        title: "Så fungerar skattereduktion för grön teknik",
+        publisher: "Skatteverket",
+        url: "https://www.skatteverket.se/privat/fastigheterochbostad/gronteknik/safungerarskattereduktionenforgronteknik.4.676f4884175c97df4192870.html",
+      },
+      {
+        title: "Godkända arbeten – grön teknik",
+        publisher: "Skatteverket",
+        url: "https://www.skatteverket.se/privat/fastigheterochbostad/gronteknik/godkandaarbetengronteknik.4.676f4884175c97df419290e.html",
+      },
+      {
+        title: "Ökade möjligheter till hemmaladdning av elfordon (prop. 2025/26:148, antagen av riksdagen)",
+        publisher: "Sveriges riksdag",
+        url: "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/proposition/okade-mojligheter-till-hemmaladdning-av-elfordon_hd03148/",
+      },
+      {
+        title: "Ladda bilen för föreningar och boendeorganisationer",
+        publisher: "Naturvårdsverket",
+        url: "https://www.naturvardsverket.se/amnesomraden/klimatomstallningen/ladda-bilen/ladda-bilen-for-foreningar-och-boendeorganisationer/",
+      },
+      {
+        title: "Installera laddplats hemma – så gör du",
+        publisher: "Energi- och klimatrådgivningen",
+        url: "https://energiochklimatradgivningen.se/hushall/resahallbart/laddaelbilenhemma.852.html",
+      },
+      {
+        title: "Goda råd: Ladda din elbil säkert! (reviderad juni 2026)",
+        publisher: "Brandskyddsföreningen",
+        url: "https://www.brandskyddsforeningen.se/globalassets/artikelsidor/sakra-hemmet/goda-rad-blad/goda-rad-blad-pdf/goda_rad_elbilar-revidering-20260603.pdf",
+      },
+    ],
+  },
+  {
     slug: "villaeffekten-bidrag",
     status: "published",
     title: "Vad är Villaeffekten och vem kan söka bidraget 2026?",
@@ -264,32 +334,239 @@ export const GUIDES: Guide[] = [
   {
     slug: "aterbetalningstid-solceller",
     status: "published",
-    title: "Återbetalningstid på solceller 2026: så räknar du",
-    excerpt:
-      "Spotpris, självförbrukning, batterilager och stödtjänster. Vi går igenom varje variabel som faktiskt påverkar din återbetalningstid – med riktiga räkneexempel från Stockholm.",
+    title: "Hur räknar man ut återbetalningstiden för solceller 2026?",
+    excerpt: "Nettopris delat med årlig nytta. Räkneexempel 2026 steg för steg: egenanvändning, SE3 mot SE4, med och utan batteri och vad slopade 60-öringen betydde.",
     category: "Ekonomi",
-    updatedAt: "2026-05-24",
-    readTimeMin: 8,
+    publishedAt: "2026-05-24",
+    updatedAt: "2026-10-05",
+    readTimeMin: 9,
+    searchPhrases: [
+      "hur räknar man ut återbetalningstid på solceller",
+      "räkna på återbetalningstid solceller",
+      "återbetalningstid solceller kalkyl",
+      "återbetalningstid solceller räkneexempel",
+      "återbetalningstid solceller utan 60 öre",
+      "kalkyl solceller med batteri",
+      "energimyndigheten solceller kalkyl",
+    ],
+    services: [
+      "solpaneler",
+      "batterier",
+    ],
+    sources: [
+      {
+        title: "Så fungerar skattereduktion för grön teknik",
+        publisher: "Skatteverket",
+        url: "https://www.skatteverket.se/privat/fastigheterochbostad/gronteknik/safungerarskattereduktionenforgronteknik.4.676f4884175c97df4192870.html",
+      },
+      {
+        title: "Mikroproduktion av förnybar el – privatbostad",
+        publisher: "Skatteverket",
+        url: "https://www.skatteverket.se/privat/fastigheterochbostad/inkomsterfranbostad/mikroproduktionavfornybarelprivatbostad.4.12815e4f14a62bc048f41a7.html",
+      },
+      {
+        title: "Skatt på el (skattesats 2026)",
+        publisher: "Skatteverket",
+        url: "https://www.skatteverket.se/foretag/skatterochavdrag/punktskatter/energiskatter/skattpael",
+      },
+      {
+        title: "Solelkalkylen (förifyllda antaganden för privatperson)",
+        publisher: "Energimyndigheten (Solelportalen)",
+        url: "https://www.energimyndigheten.se/effektiv-energianvandning/guider/solelportalen/vad-kostar-det/solelkalkyl/",
+      },
+      {
+        title: "Koppla batterier till solcellerna",
+        publisher: "Energimyndigheten (Solelportalen)",
+        url: "https://www.energimyndigheten.se/effektiv-energianvandning/guider/solelportalen/hur-stor-anlaggning-passar-mig/batterier-kopplat-till-solceller/",
+      },
+      {
+        title: "Säkringsabonnemang – priser från 1 juni 2026",
+        publisher: "Ellevio",
+        url: "https://www.ellevio.se/globalassets/content/priserabonnemang-pdf/2026/sakring/sakringsabonnemang-16-63a_260601.pdf",
+      },
+      {
+        title: "Dagen före-priser, års- och dagsmedel för SE1–SE4 i SEK",
+        publisher: "Nord Pool",
+        url: "https://data.nordpoolgroup.com/auction/day-ahead/prices?deliveryDate=latest&currency=SEK&aggregation=Yearly&deliveryAreas=SE1,SE2,SE3,SE4",
+      },
+      {
+        title: "Day-ahead prices (kvartspriser för SE3 och SE4)",
+        publisher: "Energinet, Energi Data Service",
+        url: "https://www.energidataservice.dk/tso-electricity/DayAheadPrices",
+      },
+      {
+        title: "PVGIS – beräkning av solelproduktion (Stockholm och Malmö)",
+        publisher: "EU-kommissionens forskningscentrum JRC",
+        url: "https://re.jrc.ec.europa.eu/pvg_tools/en/",
+      },
+      {
+        title: "Vad är stödtjänster – allt du behöver veta (utbetalningar via FlexME)",
+        publisher: "Mölndal Energi",
+        url: "https://www.molndalenergi.se/kunskap/vad-ar-stodtjanster",
+      },
+    ],
   },
   {
     slug: "gront-avdrag-2026",
     status: "published",
-    title: "Grönt avdrag 2026: solpaneler, batteri, laddbox och värmepump",
-    excerpt:
-      "14,55 % för solceller, 48,5 % för batteri och laddbox, ROT på arbetskostnaden för värmepump. Avdragstak, regler och fällor du måste känna till.",
+    title: "Hur mycket grönt avdrag får man 2026 – och vad gäller 2027?",
+    excerpt: "Grönt avdrag 2026: 15 % för solceller, 50 % för batteri och laddbox, högst 50 000 kr per person och år. Villkor, vad som ingår, värmepump och läget inför 2027.",
     category: "Ekonomi",
-    updatedAt: "2026-05-24",
-    readTimeMin: 6,
+    publishedAt: "2026-05-24",
+    updatedAt: "2026-10-05",
+    readTimeMin: 8,
+    searchPhrases: [
+      "grönt avdrag 2026",
+      "grönt avdrag 2027",
+      "grönt avdrag skatteverket",
+      "skattereduktion grön teknik",
+      "grön teknik avdrag",
+      "grönt avdrag per person",
+      "grönt avdrag värmepump",
+      "grönt avdrag och rotavdrag",
+    ],
+    services: [
+      "solpaneler",
+      "batterier",
+      "laddboxar",
+      "vaermepumpar",
+    ],
+    sources: [
+      {
+        title: "Så fungerar skattereduktionen för grön teknik",
+        publisher: "Skatteverket",
+        url: "https://www.skatteverket.se/privat/fastigheterochbostad/gronteknik/safungerarskattereduktionenforgronteknik.4.676f4884175c97df4192870.html",
+      },
+      {
+        title: "Godkända arbeten – grön teknik",
+        publisher: "Skatteverket",
+        url: "https://www.skatteverket.se/privat/fastigheterochbostad/gronteknik/godkandaarbetengronteknik.4.676f4884175c97df419290e.html",
+      },
+      {
+        title: "Grön teknik – med vanliga frågor om växelriktare, elcentral och batteri",
+        publisher: "Skatteverket",
+        url: "https://www.skatteverket.se/privat/fastigheterochbostad/gronteknik.4.676f4884175c97df4192860.html",
+      },
+      {
+        title: "Grön teknik i deklarationen",
+        publisher: "Skatteverket",
+        url: "https://www.skatteverket.se/privat/fastigheterochbostad/gronteknik/gronteknikideklarationen.4.676f4884175c97df419292e.html",
+      },
+      {
+        title: "Grönt avdrag för batterier (nytt ställningstagande 4 juli 2024)",
+        publisher: "Skatteverket",
+        url: "https://www.skatteverket.se/omoss/pressochmedia/nyheter/2024/nyheter/grontavdragforbatterier.5.5dc1d8b31903014b1bf172d.html",
+      },
+      {
+        title: "Ger arbetet rätt till rotavdrag?",
+        publisher: "Skatteverket",
+        url: "https://www.skatteverket.se/foretag/skatterochavdrag/rotochrut/gerarbetetratttillrotavdrag.4.5c1163881590be297b5173bf.html",
+      },
+      {
+        title: "Betänkande 2024/25:SkU17 Förändrade skattesubventioner för solceller och mikroproduktion av el",
+        publisher: "Sveriges riksdag",
+        url: "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/betankande/forandrade-skattesubventioner-for-solceller-och_hc01sku17/",
+      },
+      {
+        title: "Skatteförslag som remitterats inför höstbudgeten 2027",
+        publisher: "Regeringen",
+        url: "https://www.regeringen.se/regeringens-politik/skatt-och-tull/skatteforslag-som-remitterats-infor-hostbudgeten-2027/",
+      },
+      {
+        title: "Proposition 2025/26:282 Effektivare kontrollmöjligheter i systemen för rot, rut, grön teknik och personalliggare",
+        publisher: "Sveriges riksdag",
+        url: "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/proposition/effektivare-kontrollmojligheter-i-systemen-for-rot_hd03282/",
+      },
+    ],
   },
   {
     slug: "solceller-pris-2026-stockholm",
     status: "published",
     title: "Vad kostar solceller i Stockholm 2026?",
-    excerpt:
-      "Riktiga priser från en installatör som inte vill sälja dig en lösning du inte behöver. Kr/kWp-tabell, exempel på 5/10/15 kW-installationer.",
+    excerpt: "Energimyndighetens prisexempel: 92 500 kr för 5 kW före avdrag. Så påverkar grönt avdrag, bygglov, nätbolag och elområde SE3 solcellspriset i Stockholm.",
     category: "Solceller",
-    updatedAt: "2026-06-14",
-    readTimeMin: 7,
+    publishedAt: "2026-06-14",
+    updatedAt: "2026-10-05",
+    readTimeMin: 8,
+    searchPhrases: [
+      "vad kostar solceller i stockholm",
+      "solceller pris stockholm",
+      "solceller stockholm 2026",
+      "solceller stockholm bygglov",
+      "hur mycket el ger solceller i stockholm",
+      "nätnytta ellevio",
+    ],
+    services: [
+      "solpaneler",
+      "batterier",
+    ],
+    sources: [
+      {
+        title: "Välj en anläggning som passar dina behov (prisexempel 5 och 15 kW)",
+        publisher: "Energimyndigheten (Solelportalen)",
+        url: "https://www.energimyndigheten.se/effektiv-energianvandning/guider/solelportalen/hur-stor-anlaggning-passar-mig/valj-en-anlaggning-som-passar-dina-behov/",
+      },
+      {
+        title: "Så fungerar skattereduktionen för grön teknik",
+        publisher: "Skatteverket",
+        url: "https://www.skatteverket.se/privat/fastigheterochbostad/gronteknik/safungerarskattereduktionenforgronteknik.4.676f4884175c97df4192870.html",
+      },
+      {
+        title: "Ändra fasad eller tak",
+        publisher: "Boverket",
+        url: "https://www.boverket.se/sv/byggande/bygglov-rivningslov-marklov-och-anmalan/vad-far-jag-bygga-utan-bygglov/andra-fasad-eller-tak/",
+      },
+      {
+        title: "Ellag (1997:857), 4 kap. 11 och 38 §§ – lagen upphävs 1 januari 2027",
+        publisher: "Sveriges riksdag",
+        url: "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/ellag-1997857_sfs-1997-857/",
+      },
+      {
+        title: "Elområden",
+        publisher: "Svenska kraftnät",
+        url: "https://www.svk.se/om-kraftsystemet/om-elmarknaden/elomraden/",
+      },
+      {
+        title: "Solenergianläggningar – solceller och solfångare",
+        publisher: "Stockholms stad",
+        url: "https://bygglov.stockholm/nar-behovs-bygglov/bygga-nytt-och-bygga-till/solenergianlaggningar--solceller-och-solfangare/",
+      },
+      {
+        title: "Taxa för stadsbyggnadsnämnden, prisjusterad för 2024 (tabell 1a, en- och tvåbostadshus)",
+        publisher: "Stockholms stad",
+        url: "https://start.stockholm/globalassets/start/om-stockholms-stad/organisation/fackforvaltningar/stadsbyggnadskontoret/taxa/faststalld-taxa-for-stadsbyggnadsnamnden-prisjusterad-for-2024-ta.pdf",
+      },
+      {
+        title: "Solceller och solfångare",
+        publisher: "Solna stad",
+        url: "https://www.solna.se/bygga-bo--miljo/bygga/vanliga-byggatgarder/solceller-och-solfangare",
+      },
+      {
+        title: "Abonnemang för elproduktion (mikroproduktion under 63 A)",
+        publisher: "Ellevio",
+        url: "https://www.ellevio.se/abonnemang/abonnemang-mikroproduktion/",
+      },
+      {
+        title: "Mikroproduktion 16–25 A: ersättning för överskottsproduktion från 1 januari 2026",
+        publisher: "Ellevio",
+        url: "https://www.ellevio.se/globalassets/content/priserabonnemang-pdf/2026/produktion/prislista_mikro_16-25a_260101.pdf",
+      },
+      {
+        title: "Ersättning för egenproducerad el 2026",
+        publisher: "Vattenfall Eldistribution",
+        url: "https://www.vattenfalleldistribution.se/elnatsanslutning/anslut-elproduktion/ersattning-egen-el/",
+      },
+      {
+        title: "PVGIS 5.3: Stockholm (59,33° N, 18,07° E), 1 kWp, söder respektive öster/väster, 30° lutning, 14 % förluster, soldata 2005–2023",
+        publisher: "EU-kommissionens gemensamma forskningscentrum (JRC)",
+        url: "https://re.jrc.ec.europa.eu/pvg_tools/en/",
+      },
+      {
+        title: "Månadspriser på elbörsen mellan 1996 och 2025",
+        publisher: "Konsumenternas energimarknadsbyrå",
+        url: "https://www.energimarknadsbyran.se/media/1834/manadspriser-pa-elborsen-mellan-1996-och-2025.pdf",
+      },
+    ],
   },
   {
     slug: "solcellsbatteri-pris",

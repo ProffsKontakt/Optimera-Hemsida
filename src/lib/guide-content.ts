@@ -34,6 +34,141 @@ export type GuideContent = {
 };
 
 export const GUIDE_CONTENT: Record<string, GuideContent> = {
+  "installera-laddbox-hemma": {
+    answer: "En laddbox kostar cirka 5 000–12 000 kr plus installation, enligt Energi- och klimatrådgivningen (prisnivå 2024). Installationen kostar mer om kabeln från elcentralen blir lång, om elcentralen måste byggas ut eller om huvudsäkringen behöver höjas. Arbetet ska göras av ett elinstallationsföretag som är registrerat hos Elsäkerhetsverket. Grönt avdrag sänker 2026 priset med 50 % av arbete och material, alltså 48,5 % av totalpriset vid fast pris.",
+    keyFacts: [
+      {
+        label: "Laddbox, pris (2024)",
+        value: "Cirka 5 000–12 000 kr plus installation",
+      },
+      {
+        label: "Grönt avdrag för laddbox 2026",
+        value: "50 % av arbete och material, 48,5 % av totalpriset vid fast pris",
+      },
+      {
+        label: "Avdragstak 2026",
+        value: "50 000 kr per person och år, sammanlagt för all grön teknik",
+      },
+      {
+        label: "Vem får installera",
+        value: "Bara ett elinstallationsföretag som är registrerat hos Elsäkerhetsverket",
+      },
+      {
+        label: "Bidraget Ladda bilen 2026 (föreningar)",
+        value: "50 % av bidragsberättigade kostnader, högst 15 000 kr per laddpunkt",
+      },
+      {
+        label: "Bostadsrätt sedan 29 maj 2026",
+        value: "Rätt att begära en laddpunkt vid din parkeringsplats, på egen bekostnad",
+      },
+    ],
+    sections: [
+      {
+        h2: "Vad kostar en laddbox med installation?",
+        body: [
+          "Själva laddboxen kostar cirka 5 000–12 000 kr plus installation, enligt Energi- och klimatrådgivningens prisnivå för 2024. Energi- och klimatrådgivningen är ett samarbete mellan Energimyndigheten och kommunerna.",
+          "Vad installationen kostar beror på förutsättningarna hemma hos dig. Billigast är oftast en laddbox på hus- eller garageväggen. En fristående laddstolpe brukar kräva markarbete och kan bli dyrare.",
+          "Det här påverkar priset:",
+        ],
+        bullets: [
+          "Kabeldragningen. Laddboxen ska ha en egen grupp, alltså en egen krets från elcentralen (proppskåpet). Ju längre och krångligare väg kabeln ska dras, desto mer material och arbetstid.",
+          "Jordfelsbrytaren. Laddboxen ska ha en egen jordfelsbrytare, ett skydd som slår av strömmen om ström läcker ut där den inte ska. Den kan vara inbyggd i laddboxen. Annars behöver en separat jordfelsbrytare installeras.",
+          "Elcentralen. Måste elcentralen bytas eller byggas ut blir det ett extra arbete. Det ingår inte i grönt avdrag, och Skatteverket hänvisar i stället till rotavdraget.",
+          "Huvudsäkringen. Den avgör hur mycket ström hela huset kan ta ut samtidigt. Räcker den inte kan den behöva höjas, och då ska nätbolaget kontaktas. En större huvudsäkring gör också elnätsabonnemanget dyrare.",
+          "Lastbalansering. Med lastbalansering sänker laddboxen effekten när resten av huset drar mycket ström. Det kräver utrustning vid elmätaren, men kan göra att du slipper höja huvudsäkringen.",
+          "Tillbehör. Ibland behövs påkörningsskydd, väderskydd eller belysning vid laddplatsen.",
+        ],
+      },
+      {
+        h2: "Finns det bidrag för laddbox 2026?",
+        body: [
+          "För dig som privatperson är stödet grönt avdrag, inte ett bidrag: 2026 får du skattereduktion med 50 % av kostnaden för arbete och material. Bidraget Ladda bilen från Naturvårdsverket söks av föreningar och andra organisationer, till exempel bostadsrättsföreningar och samfälligheter.",
+          "Grönt avdrag är högst 50 000 kr per person och år, sammanlagt för solceller, batteri och laddbox. Vid fast pris räknas 97 % av totalpriset som arbete och material, så avdraget blir 48,5 % av totalen. För varje 10 000 kr i fast pris blir avdraget alltså 4 850 kr.",
+          "Företaget drar av beloppet direkt på fakturan. Det ska vara godkänt för F-skatt, och du måste betala elektroniskt, till exempel med kort eller via banken. Kontanter godtas inte. För avdrag ska laddboxen också vara förberedd för elmätning och ha uttag eller kontakt av typ 2 eller Combo.",
+          "Det här ger inget grönt avdrag:",
+        ],
+        bullets: [
+          "Material som du köper själv. Har du egen laddbox och låter ett företag installera den får du avdrag bara för arbetet.",
+          "Nyinstallation, byte eller utbyggnad av elcentralen. Grönt avdrag och rotavdrag kan inte ges för samma arbete.",
+          "Resor, maskiner, administration och projektering. Vid fast pris räknas de som 3 % av totalpriset.",
+          "Mobila laddare och extra laddkablar.",
+          "En laddbox som flera hushåll använder.",
+          "En installation som du också får bidrag för från staten, en kommun eller en region.",
+        ],
+      },
+      {
+        h2: "Får man installera en laddbox själv?",
+        body: [
+          "Nej. Enligt Elsäkerhetsverket ska en laddbox alltid installeras av ett elinstallationsföretag som är registrerat hos myndigheten. Företaget ska vara registrerat för verksamhetstypen Övriga anläggningar för användning av el. Det kontrollerar du i Elsäkerhetsverkets e-tjänst Kolla elföretaget, och som köpare är du skyldig att göra den kontrollen.",
+          "Det är straffbart att utföra elinstallationsarbete utan behörighet, och sådana brott utreds av polisen. Ett olagligt utfört arbete kan också ge dig problem när du säljer huset eller har ett försäkringsärende. Dessutom kräver grönt avdrag att ett företag utför installationen.",
+          "Det du själv gör är att planera: var laddboxen ska sitta, vilken effekt du behöver och vad du ska fråga installatören. Fråga det här innan du beställer:",
+        ],
+        bullets: [
+          "Har ni F-skatt, och drar ni grönt avdrag direkt på fakturan?",
+          "Är priset fast, eller står arbete, material och övriga kostnader var för sig?",
+          "Klarar elanläggningen och huvudsäkringen laddningen, eller behövs lastbalansering?",
+          "Har laddboxen inbyggd jordfelsbrytare, eller behövs en separat?",
+          "Måste elcentralen byggas ut, och vad kostar det arbetet separat?",
+          "Sköter ni kontakten med nätbolaget om huvudsäkringen behöver höjas?",
+          "Får jag en dokumenterad kontroll innan laddboxen tas i drift, plus bruks- och underhållsanvisningar?",
+        ],
+      },
+      {
+        h2: "Vad krävs tekniskt vid installation av laddbox?",
+        body: [
+          "Laddboxen ska ha egen matning från elcentralen och en egen jordfelsbrytare, och installationen ska klara hög last under lång tid. Laddning ger en jämn och hög belastning i timmar, medan de flesta elanläggningar är byggda för toppar under kortare tid. Elinstallatören ska därför kontrollera att din anläggning klarar den nya belastningen.",
+          "Laddning sker på fyra säkerhetsnivåer, mod 1–4. En laddbox laddar enligt mod 3, som är den säkraste nivån för laddning med växelström. Laddboxen kommunicerar med bilen under hela laddningen och låser kabeln. I ett vanligt uttag laddar bilen enligt mod 2, och då kan kabeln dras ur mitt under laddningen.",
+          "Behövs en större huvudsäkring ska nätbolaget kontaktas, så att ledningen in till huset klarar belastningen. Elinstallationsföretaget sköter vanligen den kontakten. Vilken laddeffekt du behöver och vad elen kostar per år läser du i guiden om vad det kostar att ladda elbilen hemma.",
+          "Checklista för installationen:",
+        ],
+        bullets: [
+          "Egen grupp från elcentralen, dimensionerad för hög last under lång tid.",
+          "Egen jordfelsbrytare. Laddboxen får inte kopplas in under husets befintliga jordfelsbrytare.",
+          "Uttag eller fast kabel med typ 2-kontakt. Typ 2 är vanligast, och typ 2 eller Combo är ett krav för grönt avdrag.",
+          "CE-märkning och bruks- och säkerhetsanvisning på svenska.",
+          "Lastbalansering eller lastbegränsning om huvudsäkringen annars kan lösa ut.",
+          "Dokumentation och märkning av den nya delen av elanläggningen.",
+        ],
+      },
+      {
+        h2: "När behövs en laddbox med dubbla uttag?",
+        body: [
+          "En laddbox med dubbla uttag behövs när två bilar ska kunna ladda samtidigt, till exempel om hushållet har två laddbara bilar som står hemma på natten. Räcker det att bilarna turas om, klarar du dig med ett uttag.",
+          "Varje uttag är en egen laddningspunkt, eftersom en laddningspunkt är där ett fordon i taget kan laddas. Varje laddningspunkt ska ha ett eget skydd med jordfelsbrytare.",
+          "Två bilar delar på husets huvudsäkring. Laddar båda med 11 kW samtidigt tar de tillsammans 22 kW. Det motsvarar 3 × 32 A, mer än vad en huvudsäkring på 25 A eller mindre klarar. Med en sådan huvudsäkring behöver laddboxen lastbalansering, så att uttagen och resten av huset delar på den effekt som finns.",
+          "Grönt avdrag gäller båda uttagen så länge bara ditt hushåll använder dem. Delar du laddboxen med en granne ger den inget grönt avdrag.",
+        ],
+      },
+      {
+        h2: "Hur går det till i en bostadsrättsförening eller samfällighet?",
+        body: [
+          "I en bostadsrättsförening får du sedan 29 maj 2026 begära att föreningen installerar en laddningspunkt vid din parkeringsplats, men du betalar kostnaderna själv. Rätten gäller när föreningen har upplåtit både lägenheten och parkeringsplatsen till dig, och platsen ligger i samma hus eller i närheten. Har du lägenheten eller platsen i andra hand gäller den inte.",
+          "Det är föreningen som installerar, och styrelsen fattar beslutet. Du står för alla kostnader som laddningspunkten medför, till exempel installation, förberedande arbete, el, underhåll och administration. Föreningen får bara säga nej om det finns befogad anledning. Enligt propositionen kan det vara att det redan finns eller planeras gemensamma laddplatser som du kan erbjudas, eller att installationen kräver uppgraderingar av fastighetens elinfrastruktur och ger kostnader som du inte ska betala. Säger föreningen nej kan du begära att hyresnämnden prövar frågan.",
+          "Grönt avdrag kan du få i bostadsrätt om laddpunkten hör till din lägenhet, bara gynnar den, avtalet tecknas med dig och laddpunkten följer med lägenheten vid en försäljning. Eftersom det är föreningen som installerar enligt de nya reglerna bör du fråga Skatteverket innan arbetet beställs om avdraget gäller i ditt fall.",
+          "Vill föreningen själv bygga laddplatser för de boende kan den söka Naturvårdsverkets bidrag Ladda bilen: 50 % av de bidragsberättigade kostnaderna, högst 15 000 kr per laddpunkt. Samfälligheter kan också söka.",
+          "Har du gemensam parkering i en samfällighet gäller inte de nya reglerna, eftersom parkeringsplatser i en gemensamhetsanläggning är undantagna. Samfällighetsföreningen får bara sköta det som ingår i anläggningens ändamål, och för att ändra ändamålet krävs en ny förrättning hos lantmäterimyndigheten. Ett förslag om att slippa förrättningen för laddplatser är inte beslutat. Regeringen skrev i mars 2026 att den avser att återkomma i frågan.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Kan man köpa laddboxen själv och låta ett elinstallationsföretag installera den?",
+        a: "Ja, men då får du grönt avdrag bara för arbetet. Köper du laddboxen av företaget som installerar den räknas den som material, och då ger den också avdrag. Laddboxen ska vara CE-märkt och ha bruks- och säkerhetsanvisning på svenska.",
+      },
+      {
+        q: "Behöver man ny jordfelsbrytare till laddbox?",
+        a: "Laddboxen ska ha en egen jordfelsbrytare och får inte kopplas in under husets befintliga. Jordfelsbrytaren kan vara inbyggd i laddboxen. Annars behöver en separat jordfelsbrytare installeras, vilket påverkar priset.",
+      },
+      {
+        q: "Behöver man bygglov för en laddbox?",
+        a: "Det finns inget generellt krav på bygglov eller bygganmälan för att installera en laddningspunkt, enligt myndigheternas gemensamma vägledning från 2025. Kommunens byggnadsnämnd avgör i det enskilda fallet, till exempel om fasaden påverkas eller brandskyddet ändras.",
+      },
+      {
+        q: "Kan bostadsrättsföreningen säga nej till laddbox?",
+        a: "Bara om det finns befogad anledning, till exempel att föreningen redan har eller planerar gemensamma laddplatser. Rätten gäller begäranden från och med 29 maj 2026, och du betalar själv installationen. Säger föreningen nej kan du begära att hyresnämnden prövar frågan.",
+      },
+    ],
+  },
   "villaeffekten-bidrag": {
     answer: "Villaeffekten är statens bidrag för energieffektivisering i småhus. Sedan 1 september 2026 kan du få 30 % av materialkostnaden, högst 60 000 kr per hus, för till exempel bergvärme, luft-vattenvärmepump, tilläggsisolering eller nya fönster. Huset ska ha värdeår före 1990 och inte ha fjärrvärme, och du ska äga och bo i det. Du söker i Boverkets e-tjänst och Länsstyrelsen beslutar.",
     keyFacts: [
@@ -478,239 +613,374 @@ export const GUIDE_CONTENT: Record<string, GuideContent> = {
   },
 
   "aterbetalningstid-solceller": {
-    tldr: [
-      "En ren solanläggning i Stockholm (SE3) har återbetalningstid på 8–11 år vid dagens spotpris.",
-      "Med batteri och stödtjänster (FCR-D / aFRR) via Energy IQ eller Enequi Core kommer återbetalningstiden ner mot 3–5 år för hus med högre förbrukning.",
-      "Elområde, självförbrukningsgrad och om du använder en EMS-plattform påverkar mer än vilket panelmärke du väljer.",
+    answer: "Återbetalningstiden för solceller blir cirka 8,5–19 år 2026 i vårt räkneexempel för 7 kWp i Stockholm (SE3), beroende på vad anläggningen kostar. Du räknar ut den som nettopriset efter grönt avdrag delat med årlig nytta: egenanvänd el gånger hela elpriset plus såld el gånger spotpriset. Exemplet ger cirka 5 900 kr per år. Högre egenanvändning, elområde SE4 och, med batteri, stödtjänster kortar tiden. Att skattereduktionen på 60 öre/kWh för såld el slopades 2026 förlängde den.",
+    keyFacts: [
+      {
+        label: "Räkneexempel 2026: 7 kWp i Stockholm (SE3)",
+        value: "Cirka 5 900 kr per år: 8,5 år vid 50 000 kr och 19 år vid 110 000 kr netto",
+      },
+      {
+        label: "Värde per kWh 2026 (SE3, Ellevios nät)",
+        value: "Egenanvänd cirka 1,40 kr, såld cirka 55 öre",
+      },
+      {
+        label: "Grönt avdrag 2026 vid fast pris",
+        value: "14,55 % för solceller och 48,5 % för batteri, högst 50 000 kr per person och år",
+      },
+      {
+        label: "Skattereduktion 60 öre/kWh för såld el",
+        value: "Slopad för el som matas in från 1 januari 2026",
+      },
+      {
+        label: "Spotpris vägt efter solproduktion, okt 2025–sep 2026",
+        value: "Cirka 55 öre/kWh i SE3 och 64 öre/kWh i SE4",
+      },
+      {
+        label: "Energimyndighetens solelkalkyl, förifyllda värden (okt 2026)",
+        value: "Cirka 23 år för en typisk villa, med 2 % kalkylränta",
+      },
     ],
     sections: [
       {
-        h2: "Vad återbetalningstid faktiskt betyder",
+        h2: "Hur räknar man ut återbetalningstiden steg för steg?",
         body: [
-          "Återbetalningstid är antal år tills besparingen och eventuella intäkter har täckt din nettoinvestering. Nettoinvestering = bruttopris minus grönt avdrag (14,55 % för sol, 48,5 % för batteri och laddbox).",
-          "Det är inte samma sak som livslängd. JA Solar-paneler har 25 års effektgaranti, så efter återbetalning fortsätter anläggningen att tjäna pengar i minst 15 år till. Det är där den riktiga vinsten ligger.",
-        ],
-      },
-      {
-        h2: "Räkneexempel: 20 paneler i Solna, ren solanläggning",
-        body: [
-          "20 st JA Solar 500 W = 10 kWp installerat. Pris efter grönt avdrag landar på cirka 55 500 kr.",
-          "Med Stockholm-snitt (1 050 kWh/kWp/år, spotpris 1,45 kr/kWh, feed-in 0,85 kr/kWh) och 32 % självförbrukning utan batteri ger anläggningen ungefär 9 200 kr i årlig besparing.",
-          "Återbetalningstid: 55 500 / 9 200 = 6 år. Det är bra, men inte fantastiskt – och hela uppsidan ligger i åren efter återbetalning.",
-        ],
-      },
-      {
-        h2: "Räkneexempel: samma anläggning plus 23 kWh Easyway",
-        body: [
-          "Lägg till en Easyway 23 kWh-batteri med Solis 10 kW växelriktare och Energy IQ som EMS. Bruttopris för batteripaketet 118 146 kr, nettopris efter 48,5 % grönt avdrag cirka 60 845 kr.",
-          "Självförbrukningsgraden hoppar från 32 % till 60 %, vilket gör att solbesparingen växer till 12 000 kr. Plus 7 800 kr i stödtjänstintäkt från FCR-D (Solis 10 kW × 65 kr/månad × 12). Plus 13 800 kr i batteri-arbitrage som EMS-en löper.",
-          "Total årlig nettonytta: cirka 30 000–38 000 kr. Återbetalningstid för helhetspaketet: 116 000 / 35 000 = drygt 3 år.",
+          "Du räknar ut återbetalningstiden genom att dela nettopriset med den årliga nyttan, alltså värdet av el du slipper köpa plus ersättningen för el du säljer. Det ger en enkel återbetalningstid i år, utan ränta och reparationer. Gör så här:",
         ],
         bullets: [
-          "Solanläggning ensam: 6 års återbetalning, 9 200 kr/år.",
-          "Solanläggning + batteri + EMS: 3,3 års återbetalning, 35 000 kr/år.",
-          "Skillnaden ligger i självförbrukning och stödtjänster, inte i hårdvarans märke.",
+          "Nettopris: totalpriset minus grönt avdrag. Avdraget är 15 % av kostnaden för arbete och material för solceller och 50 % för batteri. Vid fast pris räknas 97 % av totalpriset som arbete och material, så avdraget blir 14,55 % respektive 48,5 % av totalpriset. Taket är 50 000 kr per person och år för all grön teknik.",
+          "Årsproduktion: effekten i kWp, kilowatt toppeffekt, gånger antalet kWh per kWp och år. Energimyndigheten anger 800–1 100 kWh per kW och år som normalt för ett fast system utan skuggning.",
+          "Egenanvändning: den del av solelen du använder själv i samma stund som den produceras. En vanlig villa har 20–50 %, enligt Energimyndigheten. Resten matas ut på nätet och säljs.",
+          "Värde per kWh: egenanvänd el ersätter spotpris, elhandlarens påslag, energiskatt, rörlig nätavgift och moms. Såld el ger ungefär spotpriset, alltså elbörsens pris, plus några öre i nätnytta från nätbolaget.",
+          "Återbetalningstid = nettopris ÷ (egenanvända kWh × köppris + sålda kWh × säljpris).",
         ],
       },
       {
-        h2: "Variablerna som faktiskt rör nålen",
+        h2: "Vad är en kWh solel värd 2026?",
         body: [
-          "Vi har räknat på tusentals scenarier. Tre variabler påverkar mer än alla andra tillsammans:",
+          "En egenanvänd kWh är värd cirka 1,40 kr och en såld kWh cirka 55 öre i vårt exempel för Stockholm 2026, alltså ungefär 2,5 gånger mer. Därför betyder egenanvändningen så mycket.",
+          "Spotpriset 55 öre/kWh är samma nivå som Energimyndigheten antar för såld el i sin solelkalkyl. Det motsvarar också vad solelen var värd i SE3 under oktober 2025–september 2026: vägt efter när solceller producerar var spotpriset cirka 55 öre/kWh, mot 73 öre i snitt för alla timmar. Det är vår beräkning med en produktionsprofil från PVGIS, EU:s beräkningsverktyg för solel.",
+          "Skattereduktionen på 60 öre/kWh gäller inte el som matas in från 1 januari 2026. Ersättningen för såld el är inkomst av kapital, men 40 000 kr per år och privatbostad dras av som schablon.",
         ],
         bullets: [
-          "Spotpris och elområde. SE3 (Stockholm) ger 1,45 kr/kWh i snitt, SE4 (Skåne) 1,85, SE1/SE2 (norr) 0,55–0,65. Norra Sverige har dubbelt så lång återbetalningstid.",
-          "Självförbrukning. Ju mer av din producerade el du själv använder, desto mer värd är varje kWh. Batteri lyfter självförbrukningen från 32 % till 60–92 %.",
-          "Stödtjänster. Enequi Core eller Energy IQ ger access till FCR-D och aFRR – 65 kr per kW växelriktare per månad i ren intäkt. Inga andra EMS:er erbjuder detta i Sverige idag.",
+          "Spotpris: 55 öre/kWh, cirka 69 öre med 25 % moms.",
+          "Energiskatt: 36,0 öre/kWh 2026, 45 öre med moms.",
+          "Rörlig överföringsavgift hos Ellevio från 1 juni 2026: 20,8 öre/kWh, 26,0 öre med moms. Andra nätbolag har andra avgifter.",
+          "Egenanvänd kWh: 69 + 45 + 26 öre, alltså cirka 1,40 kr, plus eventuellt påslag från elhandlaren.",
+          "Såld kWh: spotpriset, cirka 55 öre, utan moms om du säljer varor och tjänster för högst 120 000 kr per år. Nätnyttan, vanligen några öre per kWh, räknar vi inte med.",
         ],
       },
       {
-        h2: "Vad vi rekommenderar",
+        h2: "Hur mycket påverkar egenanvändningen återbetalningstiden?",
         body: [
-          "Räkna på din egen anläggning i vår kalkylator innan du bokar hembesök. Den använder samma motor och samma siffror som vi använder vid offert – byt panelmärke, batteri, EMS och se hur återbetalningstiden ändras i realtid.",
-          "Vid hembesöket går vi igenom takets faktiska förutsättningar (orientering, lutning, skuggning) och justerar siffrorna efter det. Inget är slutgiltigt förrän vi har sett taket med drönaren.",
+          "Tio procentenheter mer egenanvändning ger cirka 600 kr mer per år för 7 kWp, eftersom 700 kWh då ersätter köpt el för 1,40 kr i stället för att säljas för 55 öre. Det kan flytta återbetalningstiden flera år.",
+          "Räkneexemplets antaganden: 7 kWp i Stockholm, till exempel 14 paneler på 500 W, som ger 7 000 kWh per år. Det är 1 000 kWh per kWp, i nivå med vad PVGIS ger för ett skuggfritt tak i söderläge. Nettopriset är antingen 50 000 kr, i nivå med Optimera Energis riktpris för en typisk villa med 14 paneler, eller 110 000 kr, som motsvarar Energimyndighetens medelpris för 2024 på 18 400 kr per kW före avdrag.",
+        ],
+        bullets: [
+          "20 % egenanvändning: cirka 5 000 kr per år. Knappt 10 år vid 50 000 kr och cirka 22 år vid 110 000 kr.",
+          "35 % egenanvändning: cirka 5 900 kr per år. Cirka 8,5 år respektive 19 år.",
+          "50 % egenanvändning: cirka 6 800 kr per år. Drygt 7 år respektive 16 år.",
+          "Ju mer el du använder dagtid, desto högre egenanvändning. Disk, tvätt och elbilsladdning när solen lyser höjer den, liksom ett batteri. En anläggning som är stor jämfört med din elanvändning dagtid sänker den.",
+        ],
+      },
+      {
+        h2: "Hur skiljer sig återbetalningstiden mellan SE3 och SE4?",
+        body: [
+          "Samma anläggning betalar sig cirka 1,5 år snabbare i Malmö (SE4) än i Stockholm (SE3) i vårt exempel: knappt 7 år mot 8,5 år vid 50 000 kr. Två saker skiljer: spotpriset och hur mycket solen ger.",
+          "Under oktober 2025–september 2026 var spotpriset i snitt 43 öre/kWh i SE1, 44 öre i SE2, 73 öre i SE3 och 90 öre i SE4, enligt Nord Pool. Vägt efter när solceller producerar var skillnaden mellan SE3 och SE4 ungefär hälften så stor, cirka 55 mot 64 öre/kWh, enligt vår beräkning. Elen är nämligen ofta billigare när solen lyser än på kvällen.",
+          "PVGIS ger cirka 10 % högre årsproduktion i Malmö än i Stockholm för samma tak: cirka 1 080 mot 980 kWh per kWp, med 35 graders lutning mot söder.",
+        ],
+        bullets: [
+          "Stockholm (SE3): 7 000 kWh, 35 % egenanvändning och 55 öre ger cirka 5 900 kr per år. Cirka 8,5 år vid 50 000 kr och 19 år vid 110 000 kr.",
+          "Malmö (SE4): 7 700 kWh, 35 % egenanvändning och 64 öre ger cirka 7 300 kr per år, och en egenanvänd kWh är värd cirka 1,51 kr. Knappt 7 år respektive cirka 15 år.",
+          "Vi räknar med Ellevios överföringsavgift i båda fallen, så att bara elområdet skiljer. Kontrollera ditt eget nätbolags avgift. I SE1 och SE2 är varje kWh solel mindre värd, eftersom spotpriset har varit lägre där.",
+        ],
+      },
+      {
+        h2: "Blir återbetalningstiden kortare med batteri?",
+        body: [
+          "Ett batteri kortar återbetalningstiden i vårt exempel bara om det också säljer stödtjänster. Utan stödtjänster tar sol och batteri tillsammans knappt 11 år att betala, mot 8,5 år för solcellerna ensamma.",
+          "Antaganden: grundexemplet i SE3 får ett 10 kWh-batteri för 90 000 kr, inom Optimera Energis prisintervall 70 000–110 000 kr för ett installerat 10 kWh-batteri. Efter 48,5 % grönt avdrag kostar det cirka 46 400 kr. Batteriet flyttar 9 kWh solel till kvällen 150 dagar per år, alltså 1 350 kWh. Egenanvändningen stiger då från 35 till drygt 50 %.",
+          "Varje flyttad kWh är värd cirka 1,50 kr. I stället för att säljas för cirka 43 öre mitt på dagen ersätter den köpt el för cirka 1,94 kr på kvällen, med moms, energiskatt och nätavgift. Det bygger på att spotpriset i SE3 april–september 2026 i snitt var 43 öre/kWh klockan 10–15 och 98 öre klockan 17–21, exklusive moms, enligt vår beräkning. Det blir cirka 2 000 kr per år. Prisstyrning vintertid, alltså att ladda billigt och använda elen när den är dyr, ger uppskattningsvis 1 000 kr till.",
+          "Stödtjänster innebär att Svenska kraftnät köper effekt i förväg för att hålla elnätet i balans. Villaägare säljer oftast stödtjänsten FCR-D via en aggregator. Under de timmar batteriet är sålt kan det inte användas till annat, så vi räknar då med att solel och prisstyrning bara ger cirka 1 000 kr per år.",
+        ],
+        bullets: [
+          "Utan stödtjänster: batteriet ensamt ger cirka 3 000 kr per år och tar cirka 15 år. Sol och batteri kostar 96 400 kr netto, ger cirka 8 900 kr per år och tar knappt 11 år.",
+          "Med FCR-D på 10 kW till Mölndal Energis utbetalningsnivåer, i snitt 52 kr per kW och månad 2025 och cirka 33 kr januari–juni 2026, exklusive moms: 4 000–6 200 kr per år. Sol och batteri tar då cirka 7,5–9 år.",
+          "Med Optimera Energis kalkylatorschablon (65 kr per kW växelriktareffekt och månad): 7 800 kr per år och cirka 6,5 år för sol och batteri. Faktiska ersättningar har varierat och legat lägre. Hos Mölndal Energi gav juni 2026 bara 17 kr per kW, exklusive moms.",
+          "Optimera Energi anger att ett batteri typiskt höjer självförbrukningen från 30–40 % till 70–80 % och att en helt ny sol- och batterilösning oftast tar 4–7,5 år. Vårt exempel ger lägre egenanvändning och längre tid. Skillnaden beror främst på batteriets storlek, när du använder el och vad stödtjänsterna betalar, och ingen kan lova en viss ersättning.",
+          "De flesta batterier har 10 års garanti, enligt Energimyndigheten. Jämför återbetalningstiden med den.",
+        ],
+      },
+      {
+        h2: "Varför ger olika kalkyler så olika återbetalningstid?",
+        body: [
+          "Kalkylerna skiljer sig mest i pris per kW, produktion, elpris och ränta. Energimyndighetens solelkalkyl ger med sina förifyllda värden för en typisk villa cirka 23 år, betydligt längre än vårt exempel.",
+          "Den utgår bland annat från medelpriset 2024 på 18 400 kr per kW före avdrag och 900 kWh per kW och år, som är medelproduktionen för anläggningar i elcertifikatsystemet. Den räknar också med kalkylränta, alltså vad pengarna kunde ha gett med en annan placering eller vad ett lån kostar. Förifyllt är 2 %, och Energimyndigheten anger 1–4 % som rimligt för en privatperson.",
+          "Lägger du in vårt exempel med 50 000 kr netto i solelkalkylen blir återbetalningstiden cirka 10 år med 2 % kalkylränta, mot 8,5 år i den enkla kalkylen. Tänk också på garantierna: Energimyndigheten anger cirka 15 års produktionsgaranti för solceller men 5 år för de flesta växelriktare, så ta höjd för en reparation eller ett byte.",
+        ],
+        bullets: [
+          "Längre tid: högre pris per kW, skugga eller sämre väderstreck, låg egenanvändning, lägre elpris, ränta och reparationer.",
+          "Kortare tid: lägre pris, hög egenanvändning, högre elpris, elområde SE4 och, för batteri, stödtjänster.",
+          "Be alltid om antagandena bakom en kalkyl: pris efter avdrag, kWh per kWp, egenanvändning och elpris.",
         ],
       },
     ],
     faq: [
       {
-        q: "Hur lång återbetalningstid får jag om jag bor i SE4?",
-        a: "I SE4 (Skåne och södra Götaland) är spotpriset cirka 28 % högre än i SE3, vilket sänker återbetalningstiden för sol med ungefär ett år. Med Emaldo Power Store kvalificerar du dig dessutom för Grid Rewards (1 370 kr/månad garanterat) – det ger ytterligare 16 440 kr i årlig intäkt på batteridelen.",
+        q: "Hur påverkade slopade 60-öringen återbetalningstiden för solceller?",
+        a: "Utan 60 öre/kWh blev återbetalningstiden knappt 3 år längre i vårt grundexempel. De 4 550 kWh som säljs gav tidigare cirka 2 700 kr per år i skattereduktion, om hushållet köpte minst lika mycket el från nätet. Då betalades 50 000 kr på knappt 6 år i stället för 8,5. Underlaget var högst 30 000 kWh per år, och skattereduktionen gäller inte el som matas in från 1 januari 2026.",
       },
       {
-        q: "Vad händer med ekonomin om jag redan har solpaneler?",
-        a: "Om du har befintlig solanläggning behöver du inte räkna med solinvesteringen igen – då är det batteripaketet som ska betala sig självt. Med 23 kWh Easyway, Solis 10 kW och Energy IQ ligger nettoinvesteringen på cirka 60 000 kr och årlig nettonytta 30 000–38 000 kr. Återbetalningstid 1,6–2 år.",
+        q: "Räknar man med grönt avdrag i återbetalningstiden?",
+        a: "Ja. Räkna på nettopriset efter avdraget, eftersom företaget drar av det direkt på fakturan. För solceller är avdraget 15 % av arbete och material, vid fast pris 14,55 % av totalpriset, och för batteri 48,5 %. Taket är 50 000 kr per person och år, och du måste ha betalat tillräckligt med skatt för att få hela avdraget.",
       },
       {
-        q: "Räknar ni med elprisstegring i återbetalningstiden?",
-        a: "Nej, vi räknar konservativt med dagens spotpriser och feed-in-priser. Verklig återbetalningstid blir nästan alltid kortare än vad kalkylatorn visar eftersom elpriset historiskt stigit 4-6 % per år. Vi vill hellre överraska dig positivt än sälja på framtidssiffror.",
+        q: "Ska man räkna med att elpriset stiger?",
+        a: "Räkna hellre med flera elpriser än med en stadig ökning. Spotpriset i SE3 var i snitt 41 öre/kWh 2024, 51 öre 2025 och 77 öre januari–september 2026, enligt Nord Pool. Energimyndighetens scenarier pekar på omkring 50–60 öre/kWh i snitt 2030–2060. Högre elpris kortar återbetalningstiden och lägre elpris förlänger den.",
       },
       {
-        q: "Hur räknar grön teknik-avdraget mot återbetalningstiden?",
-        a: "Avdraget hanteras automatiskt av installatören i fakturan, så du betalar redan ditt nettopris. Avdragstaket är 50 000 kr per fastighetsägare och år. För ett par ägare och en kombinerad sol-, batteri- och laddboxinstallation kan ni komma upp i hela 100 000 kr i avdrag samma år.",
+        q: "Vad räknar Energimyndighetens solelkalkyl med?",
+        a: "Förifyllt för en typisk villa: 18 400 kr per kW före avdrag, 900 kWh per kW och år, 40 % egenanvändning, 2 kr/kWh för köpt el, 55 öre för såld el, 5 öre i nätnytta, 2 % kalkylränta och 30 års ekonomisk livslängd. Det ger cirka 23 år. Byt till dina egna värden, särskilt pris och produktion, så ändras resultatet mycket.",
+      },
+      {
+        q: "Hur gör man en kalkyl för solceller med batteri?",
+        a: "Lägg ihop nettopriserna och den årliga nyttan av båda. Batteriets nytta är skillnaden mellan kvällens köppris och dagens säljpris för den el det flyttar, plus prisstyrning och eventuella stödtjänster. I vårt exempel kostar sol och batteri 96 400 kr efter avdrag och ger cirka 8 900 kr per år utan stödtjänster, alltså knappt 11 år.",
       },
     ],
   },
 
   "gront-avdrag-2026": {
-    tldr: [
-      "Grönt teknik-avdrag 2026: 14,55 % för solpaneler, 48,5 % för batteri och laddbox, ROT på arbetskostnaden för värmepump.",
-      "Avdragstaket är 50 000 kr per fastighetsägare och år. Två ägare ger 100 000 kr.",
-      "Avdraget dras direkt på fakturan av installatören. Du betalar nettopriset, vi sköter rapporteringen till Skatteverket.",
+    answer: "Grönt avdrag 2026 är 15 % av kostnaden för arbete och material när ett företag installerar solceller, och 50 % för batteri som lagrar egenproducerad el och för laddbox till elbil. Vid fast pris blir det 14,55 % respektive 48,5 % av totalpriset. Avdraget är högst 50 000 kr per person och år för all grön teknik och dras direkt på fakturan. För 2027 är inga ändringar beslutade per 5 oktober 2026.",
+    keyFacts: [
+      {
+        label: "Solceller 2026",
+        value: "15 % av arbete och material, sänkt från 20 % den 1 juli 2025",
+      },
+      {
+        label: "Batteri och laddbox 2026",
+        value: "50 % av arbete och material",
+      },
+      {
+        label: "Vid fast pris 2026",
+        value: "14,55 % av totalpriset för solceller, 48,5 % för batteri och laddbox",
+      },
+      {
+        label: "Tak för grönt avdrag 2026",
+        value: "50 000 kr per person och år för all grön teknik tillsammans",
+      },
+      {
+        label: "Värmepump 2026",
+        value: "Inget grönt avdrag – rotavdrag med 30 % av arbetskostnaden",
+      },
+      {
+        label: "Grönt avdrag 2027",
+        value: "Inga ändringar beslutade per 5 oktober 2026; budgetpropositionen senast 12 november 2026",
+      },
     ],
     sections: [
       {
-        h2: "Vad är grönt teknik-avdrag?",
+        h2: "Hur mycket är grönt avdrag 2026?",
         body: [
-          "Grönt teknik-avdrag är ett skatteavdrag som infördes 2021 för att accelerera energiomställningen i svenska hem. Det funkar som ROT- och RUT-avdraget – installatören drar av en procent av arbets- och materialkostnaden direkt på din faktura och fakturerar Skatteverket separat.",
-          "Du behöver inte själv ansöka, vi sköter all administration. Det enda kravet på dig är att du har en taxerad inkomst som motsvarar avdraget.",
+          "Grönt avdrag 2026 är 15 % av kostnaden för arbete och material för solceller och 50 % för batteri och laddbox. Det formella namnet är skattereduktion för installation av grön teknik, och den har funnits sedan 1 januari 2021. Avdraget för solceller sänktes från 20 till 15 % den 1 juli 2025, efter beslut i riksdagen.",
+          "Bara arbete och material ger avdrag. Har du och företaget kommit överens om ett fast pris för hela installationen, så kallad totalentreprenad, får arbete och material enligt Skatteverket räknas som 97 % av totalpriset. Avdraget blir då 14,55 % av totalpriset för solceller och 48,5 % för batteri och laddbox.",
+          "Taket är 50 000 kr per person och år, och det är gemensamt för solceller, batteri och laddbox. Installerar du solceller och batteri vid samma tillfälle räknas växelriktaren till solcellsinstallationen, enligt Skatteverket. Solcellerna och batteriet bör redovisas var för sig på fakturan.",
+          "Räkneexempel med påhittade priser: solceller för 120 000 kr och ett batteri för 100 000 kr, båda till fast pris. Avdraget blir 17 460 kr för solcellerna och 48 500 kr för batteriet, totalt 65 960 kr. Äger du huset ensam stannar avdraget vid 50 000 kr. Äger ni huset tillsammans, båda betalar och ni delar lika blir det 32 980 kr var. Exemplet förutsätter att ingen av er har använt grönt avdrag för något annat samma år och att ni har betalat tillräckligt med skatt.",
         ],
       },
       {
-        h2: "Procentsatser per tjänst 2026",
-        body: ["Aktuella satser för året:"],
-        bullets: [
-          "Solpaneler: 14,55 % av hela installationskostnaden (material + arbete).",
-          "Batterilager: 48,5 %. Förutsättning är att huset har en sol-anläggning (befintlig eller ny).",
-          "Laddbox för elbil: 48,5 %. Gäller hela installationen inklusive nya säkringar.",
-          "Värmepump: ROT-avdrag på 30 % av arbetskostnaden (inte grönt avdrag). Vid fast pris räknar Skatteverket arbetet som 35 % av totalen för bergvärme och 30 % för luftvärmepumpar. Räknas mot ROT-taket, inte grönt-taket.",
-        ],
-      },
-      {
-        h2: "Avdragstak och hur det räknas",
+        h2: "Vilka villkor gäller för grönt avdrag?",
         body: [
-          "Grönt avdrag har ett tak på 50 000 kr per fastighetsägare och kalenderår. Om ni är två ägare på fastigheten är taket 100 000 kr.",
-          "ROT-avdraget för värmepump har ett separat tak på 50 000 kr per person och år. Du kan alltså i samma år ta ut maximalt grönt avdrag PLUS maximalt ROT-avdrag.",
-          "Praktiskt exempel: ett par investerar i ett sol+batteri-paket på 200 000 kr. Avdraget blir cirka 70 000 kr fördelat på de två ägarna. Båda kommer under 50 000 kr-taket. Skulle samma par lägga till en värmepump dras ROT-avdraget – 30 % av arbetskostnaden – separat, mot ett eget tak.",
-        ],
-      },
-      {
-        h2: "Vanliga missförstånd",
-        body: [
-          "Vi möter samma missförstånd om och om igen. Här är de tre vanligaste:",
+          "Du får grönt avdrag om du äger bostaden när arbetet görs, installationen hör till ditt eller din förälders hushåll och ett företag gör jobbet. Bostaden kan vara ett småhus, en ägarlägenhet, en bostadsrätt som du har eller ett hus under byggnad som ska bli småhus eller ägarlägenhet. Även ett fritidshus som du äger räknas.",
+          "Bor du i bostadsrätt ska installationen vara kopplad till din lägenhet och bara komma den till nytta, men den behöver inte sitta i eller på lägenheten. Avtalet ska tecknas med dig, och installationen ska följa med lägenheten om du säljer. En gemensam anläggning som flera hushåll använder, till exempel solceller som förser hela huset, ger inget grönt avdrag. Avdraget ges bara till privatpersoner, inte till föreningen.",
+          "Dessutom gäller det här:",
         ],
         bullets: [
-          "Du behöver inte ansöka i förväg. Installatören sköter rapporteringen efter att jobbet är klart.",
-          "Batteriavdraget kräver att huset har sol. Skatteverket godkänner inte 48,5 % på batterier i hus utan solanläggning. Vi installerar alltid batteri ihop med sol (befintlig eller ny).",
-          "Avdraget gäller på material PLUS arbete. Det är inte ett ROT-avdrag som bara gäller arbete – hela installationskostnaden inkluderas.",
+          "Företaget ska vara godkänt för F-skatt när ni gör avtalet eller när du betalar. Det kan du kontrollera i Skatteverkets tjänst Hämta företagsinformation.",
+          "Köper du bara material får du inget avdrag. Har du eget material får du avdrag bara för arbetet.",
+          "Du ska betala elektroniskt, till exempel med kort, Swish eller via banken. Kontant betalning ger inget avdrag.",
+          "Bostaden ska vara ansluten till elnätet. Hyrd eller uthyrd bostad och ditt barns bostad ger inget avdrag, och inte heller en installation som också förser till exempel ett uthyrt hus med el.",
+          "Du ska ha fyllt 18 år senast vid årets slut och vara skattskyldig i Sverige.",
+          "Får du rotavdrag, försäkringsersättning eller bidrag från stat, kommun eller region för installationen ger den inget grönt avdrag.",
         ],
       },
       {
-        h2: "Räkneexempel: full installation hos Optimera Energi",
+        h2: "Vad ingår i grönt avdrag för solceller, batteri och laddbox?",
         body: [
-          "Ett par i Solna bygger ut: 20 paneler, 23 kWh Easyway, Easee laddbox, ingen värmepump.",
+          "Grönt avdrag gäller själva installationen och det material som behövs för den, men inte kostnader runt omkring som resor, frakt, maskiner, projektering och administration. Den delen betalar du fullt ut. Det här står i Skatteverkets lista över godkända arbeten:",
         ],
         bullets: [
-          "Solpaneler: bruttopris 65 000 kr, avdrag 9 458 kr (14,55 %).",
-          "Batteri inkl Solis växelriktare: bruttopris 118 146 kr, avdrag 57 301 kr (48,5 %).",
-          "Laddbox + installation: bruttopris 16 500 kr, avdrag 8 003 kr (48,5 %).",
-          "Totalt grönt avdrag: 74 762 kr fördelat på 2 ägare. Båda långt under 50 000 kr-taket.",
-          "Nettopris efter avdrag: 124 884 kr.",
+          "Solceller: avdraget gäller solcellerna och material som behövs, till exempel stativ, kablage och växelriktare. Anslutningsavgiften till elnätet, byte eller uppgradering av elcentralen, ombyggnad av taket och återställningsarbete ingår inte. Reparation och nedmontering ger inget grönt avdrag men kan ge rotavdrag.",
+          "Batteri: batteriet ska vara kopplat till en nätansluten anläggning för egen förnybar el, till exempel solceller, och lagra egenproducerad el. Solcellerna ska redan finnas eller installeras samtidigt. Ett batteri utan egen elproduktion ger inget avdrag, och inte heller reparation och underhåll.",
+          "Stödtjänster: sedan 4 juli 2024 godtar Skatteverket att batteriet delvis används för stödtjänster till elnätet eller för elprisarbitrage, alltså att lagra el när den är billig och använda den när den är dyr. Villkoret är att batteriet också lagrar din egen el.",
+          "Laddbox: avdraget gäller en väggfast laddbox eller en fristående laddstolpe som bara ditt hushåll använder. Den ska vara förberedd för elmätning och debitering av elkostnad och ha uttag eller kontaktdon av typ 2 eller typ Combo enligt standarderna EN 62196-2 och EN 62196-3.",
+          "Det som normalt ger avdrag för laddboxen är själva laddningspunkten, fästet, kabeldragningen till elcentralen och laddkabeln. Nyinstallation, byte eller utökning av elcentralen ingår inte, och inte heller mobila laddare eller extra laddkablar. Arbetet med elcentralen kan i stället ge rotavdrag.",
         ],
       },
       {
-        h2: "Vad du behöver veta innan du tecknar avtal",
+        h2: "Hur fungerar grönt avdrag hos Skatteverket?",
         body: [
-          "Säkerställ att installatören har F-skatt och är registrerad för grönt avdrag hos Skatteverket. Optimera Energilösningar i Mälardalen AB (org.nr 559375-2206) är båda. Vi visar avdraget separat på offerten så du ser exakt vad du betalar netto.",
-          "Vi rekommenderar att du loggar in på skatteverket.se efter installation och bekräftar att avdraget bokförts mot din person. Det är samma princip som ROT-avdrag – tar normalt 4-8 veckor från fakturadatum.",
+          "Företaget drar av grönt avdrag direkt på fakturan och begär sedan pengarna från Skatteverket, så du behöver inte ansöka själv. Grönt avdrag är en skattereduktion, alltså en minskning av din skatt, som du får i förskott som avdrag på fakturan. Systemet liknar rot- och rutavdraget men är en egen skattereduktion med eget tak.",
+          "Företaget får begära utbetalning först när installationen är klar och slutbetald, och begäran ska ha kommit in till Skatteverket senast den 31 januari året efter att du betalade. När Skatteverket har beslutat får du ett meddelande om preliminär skattereduktion. Kontrollera att företaget, betalningsdagen, beloppet och fastighetsbeteckningen stämmer. Vill du veta om begäran har skickats in frågar du företaget, eftersom Skatteverket inte får lämna ut det.",
+          "Avdraget syns i deklarationen året efter. Har du betalat för lite skatt för att rymma avdraget får du betala tillbaka skillnaden. Skatteverkets exempel: blir din slutliga skatt 35 000 kr och företaget har fått 50 000 kr för din installation, betalar du tillbaka 15 000 kr. Med Skatteverkets tjänst Räkna ut skatt kan du uppskatta utrymmet i förväg, särskilt om du också använder rot- eller rutavdrag samma år.",
+          "Det är året du slutbetalar som avgör vilket år avdraget räknas till. Betalar du en del i förskott ett år och slutbetalar nästa år räknas båda betalningarna till det andra året. Hur mycket du har kvar av årets tak kan du få veta genom ett intyg från Skatteverket.",
+        ],
+      },
+      {
+        h2: "Får man grönt avdrag för värmepump, och kan det kombineras med rotavdrag?",
+        body: [
+          "Nej, en värmepump ger inte grönt avdrag, men installationen kan ge rotavdrag med 30 % av arbetskostnaden 2026. Grönt avdrag gäller bara solceller, batterier och laddningspunkter, medan Skatteverket räknar installation av värmepump som rotarbete.",
+          "Vid fast pris kan arbetet enligt Skatteverkets schablon räknas som 35 % av totalpriset för bergvärme och andra vätska-vattenvärmepumpar och 30 % för luftvärmepumpar, till exempel luft-vatten, luft-luft och frånluft. Rotavdraget blir då cirka 10,5 % respektive 9 % av totalpriset.",
+          "Rot- och rutavdrag har ett eget tak på upp till 75 000 kr per person och år, skilt från taket för grönt avdrag. Du kan alltså få båda samma år för olika arbeten, om du har betalat tillräckligt med skatt. Men grönt avdrag och rotavdrag kan aldrig ges för samma arbete.",
+          "Skatteverkets exempel: lägger du om taket och installerar sedan solceller kan du få rotavdrag för takomläggningen och grönt avdrag för solcellerna. På samma sätt kan arbete med elcentralen inför en laddbox ge rotavdrag, medan laddboxen ger grönt avdrag.",
+        ],
+      },
+      {
+        h2: "Vad gäller för grönt avdrag 2027?",
+        body: [
+          "För 2027 är inga ändringar av grönt avdrag beslutade per 5 oktober 2026, så dagens procentsatser och tak gäller tills riksdagen beslutar något annat.",
+          "Under ett valår lämnas budgetpropositionen tre veckor efter statsministeromröstningen eller regeringsskiftet. Budgetpropositionen för 2027 ska enligt regeringen lämnas till riksdagen senast den 12 november 2026. I regeringens sammanställning från maj 2026 över skatteförslag som skickats på remiss inför höstbudgeten 2027 finns inget om grönt avdrag. Regeringen skriver samtidigt att det beror på bland annat valutgången och det ekonomiska läget om förslagen kommer med i budgeten.",
+          "Ett förslag som rör grönt avdrag från 1 januari 2027 ligger redan hos riksdagen: effektivare kontroll av rot, rut och grön teknik (proposition 2025/26:282). Företaget ska då bland annat ange om underentreprenörer eller bemanningsföretag har anlitats, och uppgifterna ska lämnas på heder och samvete. Förslaget gäller inte procentsatserna eller taket, och riksdagen har ännu inte beslutat om det.",
+          "Avdraget räknas till det år du slutbetalar och mot det årets tak. Planerar du en installation kring årsskiftet bör du läsa om reglerna på nytt när budgetpropositionen har lämnats.",
         ],
       },
     ],
     faq: [
       {
-        q: "Kan jag få grönt avdrag om jag bor i bostadsrätt?",
-        a: "Ja, om du som bostadsrättshavare bekostar installationen och den sker inom din lägenhet eller på dina egna installationer. För gemensamma anläggningar (t.ex. solpaneler på taket i en BRF) är det föreningen som äger anläggningen och avdragsreglerna blir andra. Vi tar diskussionen med er styrelse om ni är osäkra.",
+        q: "Är grönt avdrag per person eller per hushåll?",
+        a: "Per person. Taket är 50 000 kr per person och år för all grön teknik tillsammans. Äger ni bostaden tillsammans och båda betalar kan ni dela avdraget, och då har var och en sitt eget tak. Båda behöver ha betalat tillräckligt med skatt, och det bör stå på fakturan hur mycket var och en ska få.",
       },
       {
-        q: "Vad händer om min inkomst inte räcker till avdraget?",
-        a: "Avdraget kräver att du har en taxerad inkomst som motsvarar minst avdragsbeloppet. Saknar du tillräcklig inkomst kan du inte få avdraget. För par är det dock möjligt att fördela avdraget mellan ägarna så att den med högre inkomst tar mer av det.",
+        q: "Är grönt avdrag samma som rotavdrag?",
+        a: "Nej. Grönt avdrag är en egen skattereduktion med eget tak, även om den fungerar på samma sätt med avdrag direkt på fakturan. Grönt avdrag gäller arbete och material, rotavdraget bara arbetskostnaden. Samma arbete kan inte ge båda.",
       },
       {
-        q: "Räknas Emaldo Grid Rewards mot avdraget?",
-        a: "Nej, Emaldo Grid Rewards är en intäkt från Emaldo (inte ett avdrag på installationspriset). Du får både grönt avdrag på 48,5 % på batteripaketet OCH månadsutbetalningarna från Emaldo, om du bor i SE3 eller SE4.",
+        q: "Vad händer om min skatt inte räcker till grönt avdrag?",
+        a: "Då får du betala tillbaka det du fått för mycket när den slutliga skatten räknas ut, eftersom avdraget inte kan bli större än din slutliga skatt. Är ni gifta eller sambor med gemensamt hushåll kan ni omfördela avdraget till den som har skatt kvar att räkna av mot, om den personen också uppfyller villkoren.",
       },
       {
-        q: "Kan jag kombinera grönt avdrag med ROT?",
-        a: "Ja, men inte på samma åtgärd. Grönt avdrag och ROT har separata tak (50 000 kr vardera per person och år). En sol- och batteriinstallation tar grönt avdrag, en värmepump tar ROT. Du kan alltså få båda samma år om du installerar olika åtgärder.",
+        q: "Får man grönt avdrag för växelriktaren?",
+        a: "Ja, växelriktaren räknas som material som behövs för solcellsinstallationen. Installerar du solceller och batteri vid samma tillfälle räknar Skatteverket växelriktaren till solcellsinstallationen, så den ger 15 % och inte 50 %.",
+      },
+      {
+        q: "Gäller grönt avdrag för fritidshus?",
+        a: "Ja, om du äger fritidshuset, det är inrett för boende, används av ditt hushåll och är anslutet till elnätet. Hyr du ut det, eller bor någon annan där permanent, får du inget avdrag för installationen.",
       },
     ],
   },
 
   "solceller-pris-2026-stockholm": {
-    tldr: [
-      "Solceller i Stockholm 2026 kostar cirka 6 300–8 000 kr per kWp netto efter grönt avdrag, beroende på anläggningens storlek.",
-      "En typisk villa med 14 paneler (7 kWp) landar runt 50 000 kr efter det gröna avdraget på 14,55 %.",
-      "Priset styrs mest av takets förutsättningar (lutning, skuggning, infästning) och om du lägger till batteri, inte av panelmärket.",
+    answer: "Solceller på en villa i Stockholm kostar 2026 runt 92 500 kr för 5 kW före avdrag, räknat med Energimyndighetens allmänna prisexempel, och cirka 79 000 kr efter grönt avdrag på 14,55 %. Optimera Energis riktpris för en typisk villa med 14 paneler är runt 50 000 kr efter avdrag. I stora delar av Stockholms stad krävs bygglov, som kostar 5 620 kr enligt stadens taxa.",
+    keyFacts: [
+      {
+        label: "Energimyndighetens prisexempel 2026, 5 kW",
+        value: "Cirka 92 500 kr inkl. moms före avdrag, runt 79 000 kr efter",
+      },
+      {
+        label: "Grönt avdrag för solceller 2026",
+        value: "15 % av arbete och material, 14,55 % av totalpriset vid fast pris, högst 50 000 kr per person och år",
+      },
+      {
+        label: "Solel per kWp i Stockholm (PVGIS)",
+        value: "Cirka 940–970 kWh per år mot söder, 30 graders lutning",
+      },
+      {
+        label: "Bygglovsavgift i Stockholms stad (taxa sedan 2024)",
+        value: "5 620 kr för solpaneler på en villa, när lov krävs",
+      },
+      {
+        label: "Ellevios nätnytta 2026, nätprisområde Stockholm",
+        value: "3,30–4,40 öre/kWh exkl. moms, ingen avgift för inmatning",
+      },
+      {
+        label: "Avgiftsfri inmatning enligt ellagen",
+        value: "Högst 63 A och 43,5 kW, ellagen upphävs 1 januari 2027",
+      },
     ],
     sections: [
       {
-        h2: "Vad solceller kostar i Stockholm 2026",
+        h2: "Vilket pris ska du räkna med för solceller i Stockholm?",
         body: [
-          "Vi prissätter solceller efter en enkel modell: ett baspris för ställning, infästning och elarbete (10 000–22 500 kr beroende på jobbets storlek) plus 2 500 kr per JA Solar-panel. Ovanpå det drar vi av grönt avdrag på 14,55 % direkt på fakturan, så du ser nettopriset på offerten.",
-          "I Stockholm (elområde SE3) landar de flesta villaanläggningar mellan 35 000 och 95 000 kr netto. Spannet låter brett, men det handlar nästan helt om hur många paneler taket rymmer och hur krångligt det är att montera dem, inte om vilket märke du väljer.",
+          "Räkna med ungefär 92 500 kr inklusive moms före avdrag för en villaanläggning på 5 kW, enligt Energimyndighetens prisexempel. Myndigheten beskriver 5 kW som rimligt för en vanlig villa. Effekten anges ofta i kWp, kilowatt peak, som är panelernas sammanlagda toppeffekt.",
+          "Optimera Energis riktpris för en typisk villa med 14 paneler är runt 50 000 kr efter grönt avdrag på 14,55 %. Det är företagets eget pris och inte ett marknadssnitt. Priset skiljer sig mellan leverantörer, så be om flera offerter och räkna om dem till kronor per kW.",
+          "Enligt Energimyndigheten påverkas priset bland annat av anläggningens storlek, vilken leverantör du väljer, vilken typ av solceller du vill ha och hur svår installationen är. Kostnaden per watt blir oftast lägre ju större anläggningen är, eftersom arbetskostnaden är ungefär densamma för en stor och en liten anläggning.",
+          "Två kostnader utöver själva anläggningen kan tillkomma: avgiften för bygglov där lov krävs och, från 2027, avgifter till nätbolaget, eftersom ellagens regler om avgiftsfri anslutning och inmatning då upphör. Båda förklaras längre ned.",
         ],
       },
       {
-        h2: "Pris per kWp: exempel på 5, 10 och 15 kW i Stockholm",
+        h2: "Vad kostar 5, 10 och 15 kW efter grönt avdrag?",
         body: [
-          "En JA Solar-panel på 500 W motsvarar 0,5 kWp, så 10 paneler = 5 kWp. Ju större anläggning, desto lägre pris per kWp eftersom baspris och resvägar slås ut på fler paneler. Riktpriser för Stockholm 2026, netto efter grönt avdrag:",
+          "Räknat på Energimyndighetens prisexempel kostar 5 kW cirka 79 000 kr och 15 kW cirka 192 000 kr efter grönt avdrag. För 10 kW blir det cirka 128 000–158 000 kr, om priset per kW hamnar mellan de två exemplen. Grönt avdrag är skattereduktionen för installation av grön teknik. För solceller är den 15 % av kostnaden för arbete och material. Vid fast pris räknas 97 % av totalpriset som arbete och material, så avdraget blir 14,55 % av totalpriset.",
+          "Företaget drar av skattereduktionen direkt på fakturan. Resor, utrustning och projektering ger inget avdrag. Taket är 50 000 kr per person och år för all grön teknik tillsammans, och du behöver ha betalat tillräckligt med skatt. Solceller ensamma når taket först vid ett totalpris på cirka 344 000 kr, men installerar du samma år ett batteri, som ger 50 % avdrag, kan du slå i taket. Äger ni huset tillsammans kan ni båda få skattereduktion.",
+          "Exemplen räknar med priser inklusive moms och 14,55 % avdrag:",
         ],
         bullets: [
-          "5 kWp (10 paneler): cirka 40 000 kr netto, runt 8 000 kr/kWp. Passar radhus och mindre villatak.",
-          "10 kWp (20 paneler): cirka 68 000 kr netto, runt 6 800 kr/kWp. Den vanligaste storleken i Stockholms villaområden.",
-          "15 kWp (30 paneler): cirka 95 000 kr netto, runt 6 300 kr/kWp. Stora sadeltak i Täby, Danderyd och Nacka.",
-          "Lägg till batteri och priset per nyttjad kilowattimme sjunker ytterligare, eftersom du då slipper sälja överskott billigt till nätet.",
+          "5 kW: 92 500 kr före avdrag, cirka 13 500 kr i avdrag och cirka 79 000 kr efter. Energimyndighetens exempel för en vanlig villa.",
+          "10 kW: cirka 150 000–185 000 kr före avdrag och 128 000–158 000 kr efter. Energimyndigheten har inget exempel för 10 kW, så här antas 15 000–18 500 kr per kW, alltså mellan myndighetens exempel för 15 och 5 kW.",
+          "15 kW: 225 000 kr före avdrag, Energimyndighetens genomsnittspris för en mindre fastighet eller ett mindre lantbruk. Sitter anläggningen på din villa blir avdraget cirka 32 700 kr och priset cirka 192 000 kr.",
         ],
       },
       {
-        h2: "Vad som påverkar priset på ditt tak",
+        h2: "Hur mycket el ger solceller i Stockholm?",
         body: [
-          "Två likadana villor i Bromma kan få olika pris, och det är takets förutsättningar som avgör. Det här rör nålen mest:",
+          "I Stockholm ger solceller cirka 940–970 kWh per kWp och år mot söder med 30 graders lutning, enligt EU-kommissionens beräkningsverktyg PVGIS. Beräkningen bygger på soldata från 2005–2023 och 14 % förluster i systemet, och spannet beror på hur panelerna är monterade. Energimyndigheten anger 800–1 100 kWh per kW och år i söderläge med 30–50 graders lutning och utan skugga.",
+          "Solinstrålningen mot en vågrät yta är i snitt cirka 990 kWh per kvadratmeter och år enligt samma beräkning. Drygt tre fjärdedelar av solelen kommer under april–september. En kWp ger runt 140 kWh i juni men bara cirka 10 kWh i december.",
+          "Mot öster eller väster ger samma tak cirka 730–760 kWh per kWp, knappt 80 % av söderläget. Delvis skuggade anläggningar ger i regel mindre, enligt Energimyndigheten. Med Stockholms stads solkarta kan du uppskatta hur mycket energi ditt eget tak kan ge.",
+          "Med siffrorna från PVGIS för söder och 30 graders lutning blir årsproduktionen:",
         ],
         bullets: [
-          "Taklutning och orientering: söderläge med 30–45 graders lutning ger mest el per panel. Platta tak kräver ställning som vinklar panelerna, vilket kostar lite mer.",
-          "Skuggning: skuggar en skorsten eller ett träd delar av taket använder vi effektoptimerare eller mikroväxelriktare så att en skuggad panel inte drar ner hela strängen. Det är en post på offerten.",
-          "Infästning: tegel, betongpannor och plåt kräver olika montagebleck. Äldre tak i Stockholms innerstad kan behöva extra arbete.",
-          "Växelriktare och batteri: storleken på växelriktaren och om du vill ha batterilager påverkar totalpriset mer än valet av panel.",
+          "5 kWp: cirka 4 700–4 800 kWh per år",
+          "10 kWp: cirka 9 400–9 700 kWh per år",
+          "15 kWp: cirka 14 000–14 500 kWh per år",
         ],
       },
       {
-        h2: "Grönt avdrag drar ner priset med 14,55 %",
+        h2: "Behöver du bygglov för solceller i Stockholm?",
         body: [
-          "Grönt teknik-avdrag för solceller är 14,55 % av hela installationskostnaden, material och arbete. Du behöver inte ansöka, vi som installatör drar av summan direkt på fakturan och rapporterar till Skatteverket.",
-          "Avdragstaket är 50 000 kr per fastighetsägare och år. Lägger du till batteri (48,5 % avdrag) i samma projekt kan ett par komma upp i betydligt högre total avdragssumma samma år. Vi visar avdraget separat på offerten så du ser exakt vad du betalar netto.",
+          "Ofta ja i Stockholms stad, trots att reglerna från 1 december 2025 i grunden gör solceller på villor bygglovsfria. Enligt Boverket behöver du inget bygglov för solceller på taket eller fasaden på ett småhus, som en villa eller ett radhus. Undantagen gör dock att lov krävs i vissa områden.",
+          "Stockholms stad skriver att du behöver bygglov för solceller i stora delar av staden. Inom detaljplan, alltså kommunens plan för hur ett område får bebyggas, krävs lov om huset ligger inom eller i anslutning till ett riksintresse för totalförsvaret, ett område av nationell betydelse för försvaret. Stora delar av Stockholm omfattas bland annat av riksintresset för väderradarn i Håtuna.",
+          "Lov krävs också för särskilt kulturhistoriskt värdefulla byggnader och områden, och där detaljplanen har bestämmelser om skydd för särskilda värden. Stadsmuseets klassificeringskarta ger en första indikation på om ditt hus berörs. Det är kommunen som avgör, i Stockholms stad stadsbyggnadskontoret.",
+          "Krävs lov kostar det 5 620 kr för solpaneler på en villa enligt stadsbyggnadsnämndens taxa, som gäller sedan februari 2024: 3 350 kr för lovet och 2 270 kr för genomförandet. Beslut ska komma inom tio veckor från att ansökan är komplett, och tiden kan förlängas en gång med högst tio veckor.",
+          "I kranskommunerna gäller samma regler i plan- och bygglagen, men utfallet beror på detaljplan, kulturvärden och riksintressen där huset ligger. Solna stad skriver till exempel att du alltid behöver bygglov om solcellerna sätts upp inom detaljplan och samtidigt inom eller i anslutning till ett riksintresse för totalförsvaret. Fråga byggnadsnämnden i din kommun innan du beställer. Även utan bygglov ska installationen vara varsam mot huset, och taket ska klara den nya lasten.",
         ],
       },
       {
-        h2: "Lönar sig solceller i Stockholm?",
+        h2: "Vilka villkor har nätbolagen i Stockholm för solceller?",
         body: [
-          "Ja. I SE3 ligger spotpriset runt 1,45 kr/kWh i snitt och ett välplacerat tak i Stockholm producerar cirka 1 050 kWh per kWp och år. En ren solanläggning betalar sig på 8–11 år och har sedan minst 15 år kvar av sin 25-åriga effektgaranti, det är där den riktiga vinsten ligger.",
-          "Med batterilager och stödtjänster (FCR-D / aFRR) kommer återbetalningstiden ner mot 3–5 år för hus med högre förbrukning, eftersom du då använder mer av din egen el och batteriet dessutom tjänar pengar åt dig när det står stilla.",
+          "Ellevio, som äger elnätet i nätområdet Stockholm, tar 2026 ingen avgift för inmatningen och betalar 3,30–4,40 öre/kWh i nätnytta. Nätnytta är nätbolagets ersättning för att din el minskar förlusterna i elnätet. Den högre nivån gäller under höglasttid, vardagar kl. 6–22 från november till mars. Beloppen är exklusive moms, och privatpersoner får dem utan moms. Drygt 80 % av solelen i Stockholm produceras april–oktober, så det mesta ger den lägre nivån.",
+          "Ellevios villkor för mikroproduktion, egen elproduktion med huvudsäkring upp till 63 A, är att växelriktarens effekt inte får vara större än huvudsäkringen tillåter. Växelriktaren gör om solelen till växelström. Gränsen är 11,1 kW vid 16 A, 13,9 kW vid 20 A och 17,3 kW vid 25 A. Med en separat produktionssäkring på högst 25 A kan även 16 och 20 A få upp till 17,3 kW.",
+          "I länet finns också andra nätbolag, bland dem Vattenfall Eldistribution, som betalar 10,4 öre/kWh i nätnytta 2026 för inmatning på lågspänning, som villor har. Vilket nätbolag du har står på elnätsfakturan, och villkoren för solel skiljer sig mellan bolagen.",
+          "Enligt ellagen ska du inte betala någon avgift för inmatningen om din säkring är högst 63 A och anläggningen kan mata in högst 43,5 kW. Du ska inte heller betala för att ansluta anläggningen, om dess effekt inte är större än ditt uttagsabonnemang. Ellagen upphävs den 1 januari 2027, och då upphör också de reglerna. Fråga ditt nätbolag vilka avgifter som gäller från 2027, särskilt om anläggningen ansluts efter årsskiftet.",
         ],
       },
       {
-        h2: "Så får du ett exakt pris för ditt hus",
+        h2: "Vad är solelen värd i elområde SE3?",
         body: [
-          "Räkna på din egen anläggning i vår kalkylator innan du bokar hembesök, den använder samma prismodell och samma siffror som vi använder vid offert. Byt antal paneler, lägg till batteri och se priset och återbetalningstiden ändras i realtid.",
-          "Vid hembesöket gör vi en drönarbesiktning av taket och justerar siffrorna efter de faktiska förutsättningarna. Inget pris är slutgiltigt förrän vi har sett taket, vi säljer hellre rätt anläggning än störst.",
+          "En kWh du säljer ger det elhandlaren betalar plus några öre i nätnytta, medan en kWh du använder själv sparar allt du annars hade betalat för den. Sverige har fyra elområden, SE1–SE4, och ibland skiljer sig elpriset mellan dem. Stockholm ligger i elområde 3, SE3.",
+          "Som jämförelse låg månadsmedelpriset på elbörsen i SE3 mellan 23 och 52 öre/kWh under april–september 2025, och på 51,4 öre/kWh för hela året. Vad du får för den el du säljer beror på avtalet med din elhandlare.",
+          "Den el du använder själv slipper du köpa. Då slipper du också nätbolagets överföringsavgift och energiskatten för den kilowattimmen, plus moms. Därför är egenanvänd solel oftast värd mer än såld.",
         ],
       },
     ],
     faq: [
       {
-        q: "Vad kostar solceller till en villa i Stockholm?",
-        a: "En typisk Stockholmsvilla med 14 paneler (7 kWp) landar runt 50 000 kr netto efter grönt avdrag på 14,55 %. Mindre anläggningar på 5 kWp ligger runt 40 000 kr och större på 15 kWp runt 95 000 kr. Priset beror främst på antal paneler och takets förutsättningar.",
+        q: "Behöver man bygglov för solceller i Stockholm?",
+        a: "Ofta ja i Stockholms stad. Staden skriver att lov krävs i stora delar av Stockholm, bland annat på grund av riksintresset för väderradarn i Håtuna. Lov krävs också för särskilt kulturhistoriskt värdefulla byggnader och områden. Stadsbyggnadskontoret avgör vad som gäller för ditt hus.",
       },
       {
-        q: "Hur många solpaneler får plats på ett villatak i Stockholm?",
-        a: "De flesta villatak i Stockholms villaområden rymmer 16–30 paneler, alltså 8–15 kWp. Stora sadeltak i Täby, Danderyd och Nacka tar ofta fler. Vi gör en drönarbesiktning innan offert för att veta exakt hur många paneler som ryms utan att gissa.",
+        q: "Vad kostar bygglov för solceller i Stockholm?",
+        a: "I Stockholms stad kostar bygglov för solpaneler på en villa 5 620 kr enligt stadsbyggnadsnämndens taxa från februari 2024, varav 3 350 kr för lovet och 2 270 kr för genomförandet. Andra kommuner tar ut avgift enligt sina egna taxor.",
       },
       {
-        q: "Är solceller värt det i Stockholm?",
-        a: "Ja. Trots att Stockholm ligger i mellersta Sverige producerar ett välplacerat tak cirka 1 050 kWh per kWp och år, och med SE3-spotpris runt 1,45 kr/kWh betalar sig en ren solanläggning på 8–11 år. Med batteri och stödtjänster kommer tiden ner mot 3–5 år.",
+        q: "Hur mycket el ger 10 kW solceller i Stockholm?",
+        a: "Cirka 9 400–9 700 kWh per år mot söder med 30 graders lutning, enligt EU:s beräkningsverktyg PVGIS. Mot öster eller väster blir det cirka 7 300–7 600 kWh, och skugga sänker produktionen ytterligare.",
       },
       {
-        q: "Behöver jag bygglov för solceller i Stockholm, och kostar det extra?",
-        a: "Inom detaljplan krävs oftast inget bygglov om panelerna följer takfallet. För kulturskyddade fastigheter eller fasadmontage kan ansökan behövas. Vi tar dialogen med Stadsbyggnadskontoret åt dig och kan ofta avgöra inom en arbetsdag, det tillkommer ingen dold kostnad för det.",
+        q: "Vad betalar Ellevio för solel 2026?",
+        a: "Ellevio betalar nätnytta på 3,30 öre/kWh, och 4,40 öre/kWh under höglasttid, i nätprisområde Stockholm 2026, exklusive moms. Ellevio tar ingen avgift för inmatningen. Betalt för själva elen får du av det elhandelsföretag du säljer överskottet till.",
+      },
+      {
+        q: "Kostar det något att mata in solel på elnätet?",
+        a: "Enligt ellagen ska du inte betala någon avgift för inmatningen om din säkring är högst 63 A och anläggningen kan mata in högst 43,5 kW, och Ellevio tar ingen sådan avgift 2026. Ellagen upphävs den 1 januari 2027, så fråga ditt nätbolag vilka avgifter som gäller därefter.",
       },
     ],
   },
