@@ -3856,10 +3856,17 @@ export const QUESTIONS: SolarQuestion[] = [
   {
     slug: "solceller-och-huspriset",
     category: "drift-sakerhet-och-livslangd",
-    question: "Påverkar solceller huspriset och energideklarationen?",
-    description: "Solel som används i huset kan ge bättre energideklaration, men effekten på huspriset är dåligt belagd. Fastighetsavgiften 2026 är högst 10 425 kr per hus.",
-    shortAnswer: "Solceller kan förbättra husets energideklaration, men hur mycket de påverkar priset vid en försäljning är dåligt belagt i Sverige. Fastighetsavgiften har ett tak på 10 425 kronor per bostadsbyggnad för 2026, och Skatteverkets vägledning till fastighetsdeklarationen tar inte upp solceller bland standardfrågorna.",
+    question: "Påverkar solceller huspriset, taxeringsvärdet och energideklarationen?",
+    description: "Solceller ger inga standardpoäng och höjer inte taxeringsvärdet. Solel kan ge bättre energideklaration, men effekten på huspriset är dåligt belagd.",
+    shortAnswer: "Solceller höjer inte taxeringsvärdet: de ger inga standardpoäng när Skatteverket värderar småhus inför 2027 års fastighetstaxering. De kan förbättra husets energideklaration, men hur mycket de påverkar priset vid en försäljning är dåligt belagt i Sverige.",
     body: [
+      {
+        h2: "Påverkar solceller taxeringsvärdet?",
+        paragraphs: [
+          "Nej. Taxeringsvärdet för ett småhus räknas fram ur bland annat husets storlek, värdeår och standard, och standarden mäts i standardpoäng inom fem områden: exteriör, energihushållning, kök, sanitet och övrig interiör. Inför 2027 års fastighetstaxering ger energihushållning poäng för att el finns indragen, för två-, tre- eller fyrglasfönster, för att det finns ett system för uppvärmning och för ett elsystem som bytts 2015 eller senare. Solceller finns inte med bland de poänggivande posterna.",
+          "Har du fått en fastighetsdeklaration för småhus ska den lämnas senast den 2 november 2026. Beslutet om det nya taxeringsvärdet kommer i mitten av juni 2027 om du har digital brevlåda."
+        ]
+      },
       {
         h2: "Energideklarationen",
         paragraphs: [
@@ -3876,11 +3883,13 @@ export const QUESTIONS: SolarQuestion[] = [
       {
         h2: "Fastighetsavgift, inte fastighetsskatt",
         paragraphs: [
-          "För ett färdigbyggt småhus betalar du kommunal fastighetsavgift, inte statlig fastighetsskatt. Avgiften för 2026 är 0,75 procent av taxeringsvärdet, men högst 10 425 kronor per bostadsbyggnad. Taket nås vid ett taxeringsvärde på 1 390 000 kronor, så har huset ett högre värde än så påverkas avgiften inte om värdet stiger. Taxeringsvärdet bygger bland annat på husets storlek, ålder och standardpoäng, och i Skatteverkets vägledning till fastighetsdeklarationen för småhus 2027 nämns inte solceller bland standardfrågorna."
+          "För ett färdigbyggt småhus betalar du kommunal fastighetsavgift, inte statlig fastighetsskatt. Avgiften för 2026 är 0,75 procent av taxeringsvärdet, men högst 10 425 kronor per bostadsbyggnad. Taket nås vid ett taxeringsvärde på 1 390 000 kronor, så har huset ett högre värde än så påverkas avgiften inte om värdet stiger. Eftersom solcellerna inte påverkar taxeringsvärdet påverkar de inte heller fastighetsavgiften."
         ]
       }
     ],
     searchPhrases: [
+      "påverkar solceller taxeringsvärdet",
+      "solceller taxeringsvärde",
       "påverkar solceller huspriset",
       "hur påverkar solceller energideklaration",
       "solceller vid husförsäljning",
@@ -3909,6 +3918,16 @@ export const QUESTIONS: SolarQuestion[] = [
         url: "https://www.skatteverket.se/privat/fastigheterochbostad/fastighetsavgiftochfastighetsskatt.4.69ef368911e1304a625800013531.html"
       },
       {
+        title: "Deklarera småhus – fastighetsdeklaration 2026 inför 2027 års taxering",
+        publisher: "Skatteverket",
+        url: "https://www.skatteverket.se/privat/fastigheterochbostad/fastighetstaxering/deklarerasmahus.4.76a43be412206334b8980001091.html"
+      },
+      {
+        title: "Skatteverkets föreskrifter (SKVFS 2026:9) om värderingen av småhusenheter vid 2027 års allmänna fastighetstaxering, bilaga 1",
+        publisher: "Skatteverket (fulltext via lagen.nu)",
+        url: "https://lagen.nu/skvfs/2026:9"
+      },
+      {
         title: "Innehållet i fastighetsdeklarationen",
         publisher: "Skatteverket",
         url: "https://www.skatteverket.se/privat/fastigheterochbostad/fastighetstaxering/deklarerasmahus/innehalletifastighetsdeklarationen.4.515a6be615c637b9aa41532d.html"
@@ -3925,7 +3944,7 @@ export const QUESTIONS: SolarQuestion[] = [
       "sjalvforbrukning"
     ],
     links: [],
-    updatedAt: "2026-10-03"
+    updatedAt: "2026-10-05"
   },
   {
     slug: "solceller-och-forsakring",
