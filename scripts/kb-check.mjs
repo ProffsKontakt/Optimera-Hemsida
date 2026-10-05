@@ -158,10 +158,16 @@ if (checkUrls) {
   const bySlug = new Map();
   for (const x of entries) for (const src of x.sources) bySlug.set(src.url, [...(bySlug.get(src.url) ?? []), x.slug]);
   const urls = [...bySlug.keys()];
-  const status = (url) => new Promise((resolve) =>
-    execFile("curl", ["-sL", "-o", "/dev/null", "-w", "%{http_code}", "--max-time", "25", "-A",
+  const curl = (url, seconds) => new Promise((resolve) =>
+    execFile("curl", ["-sL", "-o", "/dev/null", "-w", "%{http_code}", "--max-time", String(seconds), "-A",
       "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/124 Safari/537.36", url],
     (_err, out) => resolve(String(out).trim() || "000")));
+  // Myndigheternas sidor svarar ibland inte alls på första försöket; ett nytt
+  // försök med längre tid skiljer ett tillfälligt avbrott från en död länk.
+  const status = async (url) => {
+    const first = await curl(url, 25);
+    return first === "000" ? curl(url, 60) : first;
+  };
   const results = [];
   for (let i = 0; i < urls.length; i += 8)
     results.push(...(await Promise.all(urls.slice(i, i + 8).map(async (u) => [u, await status(u)]))));
