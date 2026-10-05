@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Veckans mest sökta solcells- och batterifrågor i Sverige.
+"""Veckans mest sökta frågor om solceller, batterier, laddbox, värmepump och elpris i Sverige.
 
 Underlag för veckoagenten som varje vecka skriver två nya sidor till kunskapsbanken.
 Hämtar Google Trends för Sverige de senaste 7 dagarna: de mest sökta relaterade
@@ -39,12 +39,15 @@ ANCHOR = "solceller"
 SEED_GROUPS = [
     ["solpaneler", "solcellsbatteri", "elpris", "effektavgift"],
     ["hembatteri", "växelriktare", "kvartspris", "laddbox"],
+    # Guiderna tar värmepump, elavtal och avdrag (docs/kunskapsbank.md steg 8).
+    ["värmepump", "bergvärme", "elavtal", "grönt avdrag"],
 ]
 SEEDS = [ANCHOR] + [k for g in SEED_GROUPS for k in g]
 
 TOPIC = re.compile(
     r"sol|panel|batteri|växelriktare|elpris|spotpris|kvartspris|effekt|elnät|nätavgift|elavtal|"
-    r"stödtjänst|fcr|säkring|laddbox|elbil|värmepump|kwh|kwp|grönt avdrag|skattereduktion|mikroproduc"
+    r"stödtjänst|fcr|säkring|laddbox|elbil|värmepump|kwh|kwp|grönt avdrag|skattereduktion|mikroproduc|"
+    r"bergvärme|luft-vatten|luft vatten|luftvärmepump|fjärrvärme|villaeffekt|rotavdrag"
 )
 QUESTION = re.compile(r"^(hur|vad|varför|när|kan|måste|behöver|får|lönar|ska|vilken|vilka|vilket|går|är|"
                       r"fungerar|finns|vem|var|blir|påverkar)\b")
@@ -59,7 +62,7 @@ BRANDS = re.compile(
     r"\b(tibber|greenely|vattenfall|e\.?on|ellevio|fortum|göteborg energi|mälarenergi|jämtkraft|skellefteå kraft|"
     r"telge|öresundskraft|freebo|svea solar|otovo|soltech|solcellskollen|sungrow|huawei|tesla|powerwall|emaldo|"
     r"ferroamp|checkwatt|cornex|catl|byd|nibe|jinko|longi|ja solar|trina|solaredge|enphase|fronius|growatt|"
-    r"saj|easyway|polarium|solis|solax|goodwe|deye|sma|kostal|victron|sonnen|pixii|sigenergy|easee|zaptec|"
+    r"saj|easyway|polarium|ivt|thermia|mitsubishi|daikin|panasonic|bosch|toshiba|solis|solax|goodwe|deye|sma|kostal|victron|sonnen|pixii|sigenergy|easee|zaptec|"
     r"wallbox|charge amps|ctek|garo|defa|monta|ngenic|bauhaus|biltema|jula|clas ohlson|ikea|kjell|elgiganten|hornbach|byggmax|"
     r"blocket|flashback|reddit|avanza|nordnet|handelsbanken|swedbank|seb|nordea|ica banken)\b"
 )
@@ -245,8 +248,6 @@ def classify(query):
         return "ort"
     if REALTIME.search(q):
         return "prisuppslag"
-    if re.search(r"laddbox|laddstolpe", q) and not re.search(r"sol|batteri", q):
-        return "laddbox (ingen databas än)"
     if not TOPIC.search(q):
         return "utanför ämnet"
     return None
@@ -329,7 +330,7 @@ def main():
     print("\nREDAN TÄCKTA (kan uppdateras om sidan är tunn eller inaktuell):")
     for r in result["covered"][:15]:
         print(f"  [{r['score']:>5.1f}] {r['query']:<42} {fmt(r)}  → {r['covered_by']}")
-    print("\nÖVERHOPPADE (varumärke, ort, prisuppslag, laddbox, för brett, utanför ämnet):")
+    print("\nÖVERHOPPADE (varumärke, ort, prisuppslag, för brett, utanför ämnet):")
     for r in result["skipped"][:20]:
         print(f"  [{r['score']:>5.1f}] {r['query']:<42} {r['skip']}")
     if result["daily_trending"]:
