@@ -64,6 +64,71 @@ export type NewsArticle = {
 
 export const NEWS: NewsArticle[] = [
   {
+    slug: "varfor-ar-elpriset-sa-hogt-just-nu-oktober-2026",
+    status: "published",
+    title:
+      "Varför är elpriset så högt just nu? September dyrast i söder sedan 2022 – och oktober pekar ännu högre",
+    excerpt:
+      "Elpriset i SE4 steg 49 procent från augusti till september, till 120 öre per kilowattimme – det dyraste i södra Sverige sedan december 2022. För oktober pekar marknaden mot omkring 140 öre. Vi reder ut varför, om elpriset kommer att stiga mer i vinter och om man ska binda elpriset nu – elområde för elområde.",
+    category: "Elpriser",
+    publishedAt: "2026-10-06",
+    updatedAt: "2026-10-06",
+    readTimeMin: 8,
+    image: {
+      src: "/news/varfor-ar-elpriset-sa-hogt-just-nu-oktober-2026.jpg",
+      alt: "Fyra stående solpaneler med blankt svart glas som speglar sol och moln på ett rött tegeltak, med vit skorsten och gula höstträd mot blå himmel",
+    },
+    searchPhrases: [
+      "varför är elpriset så högt just nu",
+      "varför är elpriset så högt i område 4",
+      "varför stiger elpriset nu",
+      "elpriset september",
+      "elpris oktober",
+      "kommer elpriset att stiga",
+      "kärnkraft revision 2026",
+      "ska man binda elpriset nu",
+      "binda elpriset över vintern",
+    ],
+    sources: [
+      {
+        title:
+          "E.ONs elprisexpert: Elpriset i södra Sverige högst sedan 2022 – väntas stiga ytterligare i oktober",
+        publisher: "E.ON",
+        url: "https://via.tt.se/pressmeddelande/4578878/eons-elprisexpert-elpriset-i-sodra-sverige-hogst-sedan-2022-vantas-stiga-ytterligare-i-oktober?lang=sv",
+      },
+      {
+        title: "Elmarknaden just nu: Svängiga elpriser inför uppvärmningssäsongen",
+        publisher: "Vattenfall",
+        url: "https://news.cision.com/se/vattenfall/r/elmarknaden-just-nu--svangiga-elpriser-infor-uppvarmningssasongen,c4403328",
+      },
+      {
+        title: "Billigaste elavtalet i vinter – där du bor",
+        publisher: "Elskling (Zmarta)",
+        url: "https://www.mynewsdesk.com/se/zmarta/pressreleases/billigaste-elavtalet-i-vinter-daer-du-bor-3470568",
+      },
+      {
+        title: "Kraftläget i Sverige, vecka 39 2026",
+        publisher: "Energiföretagen Sverige",
+        url: "https://www.energiforetagen.se/globalassets/energiforetagen/statistik/kraftlaget/tidigare-kraftlagen/2026/kraftlaget-sverige-veckorapport-vecka-2026-39.pdf",
+      },
+      {
+        title: "Day-ahead-priser SE1–SE4, månads- och dygnsmedel 2026",
+        publisher: "Nord Pool",
+        url: "https://data.nordpoolgroup.com/auction/day-ahead/prices?deliveryDate=2026-10-06&currency=SEK&aggregation=Monthly&deliveryAreas=SE1,SE2,SE3,SE4",
+      },
+      {
+        title: "Så blir elpriserna hösten och vintern 2026",
+        publisher: "Tibber",
+        url: "https://tibber.com/se/magazine/power-hacks/elpriser-host-vinter",
+      },
+      {
+        title: "Så fungerar skattereduktionen för grön teknik",
+        publisher: "Skatteverket",
+        url: "https://www.skatteverket.se/privat/fastigheterochbostad/gronteknik/safungerarskattereduktionenforgronteknik.4.676f4884175c97df4192870.html",
+      },
+    ],
+  },
+  {
     slug: "andersson-sonderar-igen-statsministeromrostning-tidslinje",
     status: "published",
     title:

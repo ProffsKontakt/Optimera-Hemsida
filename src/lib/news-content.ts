@@ -38,6 +38,99 @@ export type NewsContent = {
 };
 
 const CONTENT: Record<string, NewsContent> = {
+  "varfor-ar-elpriset-sa-hogt-just-nu-oktober-2026": {
+    tldr: [
+      "Tre faktorer samverkar: de svenska vattenmagasinen var 74,7 procent fulla mot normalt 80,8, kärnkraften producerade 18 procent mindre än i fjol vecka 39 och stamnätsarbeten begränsar flödet söderut.",
+      "Flera reaktorer står för årlig revision. Enligt Vattenfall väntas Ringhals 3, Forsmark 1 och Ringhals 4 vara i normal produktion igen från slutet av oktober till november.",
+      "Fast eller rörligt? Elsklings vinterprognos ger fast pris en fördel på drygt 700 kronor i månaden för en villa i SE4 och drygt 200 i SE3, medan rörligt ser billigast ut i SE1 och SE2.",
+    ],
+    sections: [
+      {
+        h2: "Varför är elpriset så högt just nu?",
+        body: [
+          "Tre saker drar åt samma håll, och de förklarar också varför elpriset stiger nu när uppvärmningssäsongen börjar. Enligt E.ON:s elprisexpert Anna Rylander påverkar vattenläget i Norden och underhållet av svensk kärnkraft tillgången på el. Samtidigt begränsar planerade arbeten i stamnätet hur mycket el som kan föras från mellersta till södra Sverige.",
+          "”När mindre el kan överföras blir södra Sverige mer känsligt för exempelvis låg vind- eller solkraftsproduktion och kärnkraftsunderhåll. Det kan också bidra till större prisskillnader inom landet”, säger Anna Rylander.",
+          "Energiföretagens veckorapport visar läget i siffror. I slutet av vecka 39 (21–27 september) var de svenska vattenmagasinen 74,7 procent fulla, mot ett medelvärde på 80,8 procent för samma vecka åren 1960–2025. Kärnkraften producerade 609 gigawattimmar under veckan, 18 procent mindre än samma vecka i fjol. Vattenfall lägger till två faktorer: läget för vattenkraften är fortsatt ansträngt i södra Norge, vilket påverkar elpriset i södra Sverige, och Europas gaslager ligger kvar på låga nivåer.",
+          "Allt pekar inte åt samma håll. Nederbörd i norr har enligt Vattenfall fyllt på magasinen, och ökad tillrinning har minskat underskottet i den hydrologiska balansen – det samlade vatteninnehållet i snö, mark och magasin. Enligt Energiföretagen var tillrinningen vecka 39 104 procent av medianvärdet för 1960–2025. I norr finns alltså mer vatten, men just nu begränsar arbetena i stamnätet hur mycket el som kan föras vidare till södra Sverige.",
+        ],
+      },
+      {
+        h2: "Elpriset september 2026: så mycket steg det",
+        body: [
+          "September blev den dyraste månaden i södra Sverige sedan december 2022, enligt E.ON. Medelspotpriset i SE4 landade på 120,20 öre per kilowattimme – 49 procent högre än i augusti och 70 procent högre än i september 2025, enligt Nord Pools månadsmedel. I SE3, där bland annat Stockholm och Göteborg ligger, blev september 87,33 öre.",
+          "I norr är nivåerna lägre men uppgången i procent större: SE1 gick från 17,28 öre i september i fjol till 45,95 öre i år, och SE2 från 16,32 till 51,50 öre. Alla siffror är spotpriser. På fakturan tillkommer bland annat elhandlarens påslag, energiskatt, moms och elnätsavgift.",
+        ],
+        bullets: [
+          "SE4 (Malmö): 120,20 öre/kWh i september – 80,47 i augusti och 70,60 i september 2025.",
+          "SE3 (Stockholm): 87,33 öre/kWh – 66,66 i augusti och 52,33 i september 2025.",
+          "SE2 (Sundsvall): 51,50 öre/kWh – 44,15 i augusti och 16,32 i september 2025.",
+          "SE1 (Luleå): 45,95 öre/kWh – 38,77 i augusti och 17,28 i september 2025.",
+        ],
+      },
+      {
+        h2: "Elpris oktober: kommer elpriset att stiga?",
+        body: [
+          "I SE4 pekar marknaden uppåt. Enligt E.ON låg marknadens prissättning för oktober den 30 september på omkring 140 öre per kilowattimme – drygt 20 öre, eller omkring 18 procent, över septembers snitt. Oktobers första sex dygn ligger i linje med det: 139,7 öre i snitt i SE4, enligt Nord Pool.",
+          "I resten av landet har oktober hittills varit billigare än september: 54,1 öre i SE3, 24,3 öre i SE2 och 22,8 öre i SE1. Skillnaden mellan norr och söder är periodvis extrem. Den 6 oktober är spotpriset i snitt 100,1 öre per kilowattimme i SE4 men 1,3 öre i SE1, och i SE4 varierar priset under dygnet mellan 3 och 329 öre.",
+          "För hela vinterhalvåret oktober–mars räknar Elskling med att spotpriset blir närmare 60 procent högre än förra vintern i SE4, drygt 30 procent högre i SE3 och omkring 6 procent högre i SE1. När vi skrev om vinterprognoserna den 24 september pekade Tibbers prognos på 100–110 öre/kWh för oktober–december i både SE3 och SE4. Hittills ligger SE4 över det spannet och SE3 en bra bit under – en påminnelse om att två elområden med samma prognos kan gå helt olika vägar.",
+          "Prognoserna är osäkra och påverkas enligt E.ON bland annat av väder, vattenläge och kärnkraftens tillgänglighet. Kärnkraften är en av få faktorer med en känd tidplan: flera reaktorer står för årlig revision, och enligt Vattenfall väntas Ringhals 3, Forsmark 1 och Ringhals 4 vara i normal produktion igen från slutet av oktober till november.",
+        ],
+      },
+      {
+        h2: "Ska man binda elpriset nu?",
+        body: [
+          "Det beror på var du bor. Jämförelsetjänsten Elskling har räknat på vinterhalvåret oktober 2026–mars 2027 för en villa som gör av med 20 000 kWh om året, varav 13 000 kWh under vintern. Fastpriserna är de bästa som fanns hos Elskling, och det rörliga priset bygger på terminspriser från Euronext den 30 september. Slutsatsen: fast pris ser billigast ut i SE3 och SE4, rörligt i SE1 och SE2.",
+          "Men ett fast avtal är ingen gratis vinst. ”Fast elavtal ska i första hand ses som en försäkring mot obehagliga prischocker. Dessutom måste du räkna med att få betala samma elpris under det billigare sommarhalvåret när de rörliga elpriserna är lägre”, säger Krisztian Horvath, elprisanalytiker på Elskling. Ett tvåårigt avtal som tecknas nu omfattar alltså också två somrar.",
+          "Det finns mellanvägar om du vill binda elpriset över vintern. E.ON:s elprisexpert nämner avtal där du tillfälligt kan låsa priset under en period, till exempel vintermånaderna. Kvartspris är enligt Vattenfall bara värt att överväga om du kan flytta elanvändningen till billigare perioder. E.ON förklarar skillnaden: med kvartspris får tidpunkten direkt genomslag på kostnaden, med rörligt månadspris är det månadens snitt som gäller och med fast pris påverkas du inte direkt av de kortsiktiga variationerna.",
+        ],
+        bullets: [
+          "SE4: tvåårigt fast pris kan bli drygt 700 kr billigare i månaden än rörligt, drygt 4 200 kr över sex vintermånader.",
+          "SE3: fast pris kan bli drygt 200 kr billigare i månaden.",
+          "SE2: rörligt ser ut att bli omkring 100 kr billigare i månaden.",
+          "SE1: rörligt kan bli drygt 300 kr billigare i månaden, runt 2 000 kr över vinterhalvåret.",
+        ],
+      },
+      {
+        h2: "Vad kan du göra åt elkostnaden i vinter?",
+        body: [
+          "Börja med det som drar mest. ”Fokusera på det som drar mest hemma. Se över inomhustemperatur, varmvatten, uppvärmning och laddning snarare än belysning och små apparater”, säger Jens Berggren, klimatcoach på Vattenfall. Minskad elanvändning sänker inte bara elhandelskostnaden utan också energiskatten och de rörliga delarna av elnätsavgiften.",
+          "Har du kvartspris kan det enligt E.ON löna sig att följa priset och flytta flexibel användning, som elbilsladdning, till billigare perioder. Med rörligt månadspris är det i första hand förbrukningen du kan påverka. Och har du rörligt pris är det enligt Vattenfalls privatkundschef Jonas Stenbeck bra att ha marginal för dyrare månader.",
+        ],
+      },
+      {
+        h2: "Vad betyder det för din kalkyl?",
+        body: [
+          "För dig som funderar på solceller eller batteri är hösten en påminnelse om två saker. Den första är att elområdet avgör mycket. Den 6 oktober är spotpriset i SE4 i snitt nästan 80 gånger högre än i SE1, och i en kalkyl är det ditt eget elområdes prisnivå som räknas – inte ett rikssnitt eller en enskild dyr månad.",
+          "Den andra är att svängningarna är lika viktiga som snittet. Ett batteri som styrs efter spotpriset laddar när elen är billig och används när den är dyr, och den 6 oktober skiljer det mellan 3 och 329 öre per kilowattimme inom samma dygn i SE4. Men det kräver ett elavtal som följer spotpriset över dygnet, som kvartspris. Med fast pris påverkas din elhandelskostnad inte av när du använder elen.",
+          "Stöden ligger fast: grönt avdrag gäller som i dag tills en tillträdd regering får igenom en ändring. Vid fast pris motsvarar det 14,55 procent av totalpriset för solceller och 48,5 procent för batteri, med ett tak på 50 000 kronor per person och år. Vi följer prisläget och uppdaterar när prognoserna ändras.",
+        ],
+        bullets: [
+          "September 2026, SE4: 120,20 öre/kWh – högst sedan december 2022 enligt E.ON.",
+          "Oktober, SE4: marknaden pekade den 30 september mot omkring 140 öre/kWh.",
+          "Grönt avdrag oförändrat: 14,55 % för solceller och 48,5 % för batteri vid fast pris, tak 50 000 kr per person och år.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Varför är elpriset så högt i område 4?",
+        a: "Elområde 4 omfattar Skåne, Blekinge och södra Småland. Enligt E.ON begränsar planerade arbeten i stamnätet just nu hur mycket el som kan föras från mellersta till södra Sverige, och då blir södra Sverige mer känsligt för svag vind- och solkraftsproduktion och för kärnkraftsunderhåll. Vattenfall pekar dessutom på ett ansträngt vattenläge i södra Norge. Resultatet syns i statistiken: 120,20 öre/kWh i SE4 i september mot 45,95 öre i SE1.",
+      },
+      {
+        q: "Kommer elpriset att stiga i vinter?",
+        a: "Prognoserna pekar uppåt jämfört med förra vintern, mest i söder. Elskling räknar med att spotpriset för oktober–mars blir närmare 60 procent högre i SE4, drygt 30 procent högre i SE3 och omkring 6 procent högre i SE1. För oktober pekade marknadens prissättning enligt E.ON mot omkring 140 öre/kWh i SE4. Båda bedömningarna bygger på marknadspriser från den 30 september och kan snabbt ändras av väder, vattenläge och kärnkraftens tillgänglighet.",
+      },
+      {
+        q: "Ska man binda elpriset över vintern?",
+        a: "Enligt Elsklings prognos kan fast pris löna sig i vinter i SE3 och SE4 – mest i SE4, där ett tvåårigt avtal kan bli drygt 700 kronor billigare i månaden för en villa – medan rörligt ser billigast ut i SE1 och SE2. Ett fast avtal är en försäkring mot prischocker, men du betalar samma pris även under den billigare sommaren. Kan du flytta förbrukningen, till exempel med batteri eller styrd elbilsladdning, har du enligt Vattenfall bättre möjligheter att dra nytta av kvartspris.",
+      },
+      {
+        q: "När sjunker elpriset?",
+        a: "Det kan ingen säga säkert. En faktor med känd tidplan är kärnkraften: enligt Vattenfall väntas Ringhals 3, Forsmark 1 och Ringhals 4 vara i normal produktion igen från slutet av oktober till november. Samtidigt pekar Elsklings prognos mot högre elpriser än förra vintern i hela landet, och enligt E.ON kan väder och tillgänglig produktion snabbt förändra bilden.",
+      },
+    ],
+  },
+
   "andersson-sonderar-igen-statsministeromrostning-tidslinje": {
     tldr: [
       "Ett statsministerförslag faller bara om minst 175 av 349 ledamöter röstar emot. Tidöpartiernas 173 mandat räcker alltså inte ensamma för att fälla det.",
