@@ -413,7 +413,7 @@ export default function ServicePage({
           eyebrow="Vad kostar det?"
           title={<>Pris för solpaneler i Stockholm.</>}
         >
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             <div className="rounded-3xl border border-ink/10 bg-cream/40 p-7">
               <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink/55">
                 Baspris
@@ -424,18 +424,6 @@ export default function ServicePage({
               <p className="mt-3 text-[14.5px] text-ink/70 leading-relaxed">
                 Täcker resor, ställning, montage, kabel och driftsättning.
                 Trappstegspris efter antal paneler.
-              </p>
-            </div>
-            <div className="rounded-3xl border border-ink/10 bg-cream/40 p-7">
-              <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink/55">
-                Per panel
-              </div>
-              <div className="mt-3 font-display text-2xl tracking-display-tight">
-                2 500 kr
-              </div>
-              <p className="mt-3 text-[14.5px] text-ink/70 leading-relaxed">
-                JA Solar 500 W eller 455 W, samma pris per panel oavsett
-                modell. Helsvart all-black ingår.
               </p>
             </div>
             {/* Typvilla-kortet i driftande gradient-ram – det svar de
@@ -489,8 +477,6 @@ export default function ServicePage({
                 <h3 className="mt-1 font-display text-2xl tracking-display-tight">
                   JA Solar, glas-glas.
                 </h3>
-                {/* "– samma pris per panel oavsett modell" borttaget här: det
-                    står redan i "Per panel"-prisrutan i sektionen ovanför. */}
                 <p className="mt-2 text-[14.5px] text-ink/70 leading-relaxed max-w-xl">
                   30 års produktgaranti, minst 87 % effekt efter 30 år och
                   helsvart utförande.
