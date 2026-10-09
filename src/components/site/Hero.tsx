@@ -6,6 +6,7 @@ import { ArrowRight } from "lucide-react";
 import { CanvasErrorBoundary } from "@/components/3d/CanvasErrorBoundary";
 import { SceneFallback } from "@/components/3d/SceneFallback";
 import { Defer } from "@/components/3d/Defer";
+import { RECO } from "@/lib/reco";
 
 // Three.js + R3F är ~200 KB minified och påverkar LCP/TBT på mobil rejält.
 // Hero-canvasen är dekorativ – inte LCP-element – så vi dynamic-importerar
@@ -63,7 +64,7 @@ export function Hero() {
 
             <div className="mt-14 grid grid-cols-3 max-w-md">
               <Stat n="4" label="installationstjänster" />
-              <Stat n="4,8/5" label="i betyg på Reco" />
+              <Stat n={`${RECO.average}/5`} label="i betyg på Reco" />
               <Stat n="14d" label="från offert till tak" />
             </div>
           </div>

@@ -5,8 +5,8 @@
  */
 export const RECO = {
   /** Snittbetyg som det skrivs på svenska. */
-  average: "4,8",
+  average: "4,7",
   /** Antal omdömen totalt på profilen. */
-  count: 14,
+  count: 15,
   url: "https://www.reco.se/optimera-energi",
 } as const;
