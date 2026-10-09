@@ -38,6 +38,88 @@ export type NewsContent = {
 };
 
 const CONTENT: Record<string, NewsContent> = {
+  "elnatsavgift-2027-flaskhalsintakter-8-miljarder": {
+    tldr: [
+      "Fördelningen: energiavgiften minskar med drygt 2 miljarder och den fasta avgiften med drygt 6,3. Men avdraget på den fasta avgiften krymper med cirka 350 miljoner jämfört med i år.",
+      "Vad det blir i kronor för din villa går inte att säga i förväg. Det beror enligt Svenska kraftnät på var du bor och hur region- och lokalnätsbolagen för vidare avgifterna.",
+      "Två regeringsuppdrag om nya sätt att använda flaskhalsinkomsterna redovisas snart: Ei:s senast den 30 oktober och Svenska kraftnäts senast den 14 januari 2027.",
+    ],
+    sections: [
+      {
+        h2: "Sänks elnätsavgiften 2027?",
+        body: [
+          "Inte automatiskt. Svenska kraftnät sänker från den 1 januari 2027 avgifterna för stamnätet med drygt 8,3 miljarder kronor. Men rabatten går till de nätkunder som är direktanslutna till stamnätet – regionnätsbolag och stora elproducenter. Hushåll betalar ingen avgift direkt till Svenska kraftnät.",
+          "Elen når ditt hus i tre led: transmissionsnät, regionnät och lokalnät. Svenska kraftnät driver transmissionsnätet, även kallat stamnätet, och tar betalt av regionnätsbolagen. Kostnaden förs sedan vidare till lokalnätsbolagen, som du betalar din elnätsavgift till. Hur stor del av din faktura som påverkas beror enligt Svenska kraftnät på var i landet du bor och hur region- och lokalnätsbolagen väljer att föra vidare avgifterna.",
+          "”När vi minskar avgifterna hålls bland annat nätavgiften ner för elförbrukare i södra Sverige. Det är också de som främst drabbas av flaskhalsarna i stamnätet”, säger Svenska kraftnäts generaldirektör Maja Lundbäck.",
+        ],
+      },
+      {
+        h2: "Flaskhalsintäkter – vad är det?",
+        body: [
+          "Flaskhalsintäkter uppstår när stamnätet inte räcker till för att föra över så mycket el mellan två elområden som efterfrågas. Elen blir då dyrare i området med underskott, och prisskillnaden går till den som för över elen – i Sverige framför allt Svenska kraftnät, som kallar pengarna flaskhalsinkomster. Förenklat räknas intäkten fram som prisskillnaden gånger flödet mellan områdena. Det är alltså samma prisskillnader mellan norr och söder som vi skrev om den 6 oktober som fyller på kassan.",
+          "Pengarna får inte användas för att öka Svenska kraftnäts vinst. Enligt EU:s elmarknadsförordning ska de i första hand gå till att hålla uppe och öka överföringskapaciteten, till exempel genom nya ledningar, men de får också användas för att sänka avgiften för stamnätet. Ei beslutar inför varje år hur de får användas.",
+          "Summorna är stora. Vid årsskiftet 2025–2026 hade Svenska kraftnät drygt 85 miljarder kronor i flaskhalsinkomster, och de kommande tio åren väntas ytterligare 133 miljarder komma in. Pengarna går framför allt till nätinvesteringar och avgiftssänkningar. Myndigheten planerar nätinvesteringar för cirka 130 miljarder kronor 2026–2036 och räknar med att flaskhalsinkomsterna är förbrukade omkring 2035.",
+        ],
+      },
+      {
+        h2: "Därför höjs ändå den fasta avgiften för stamnätet",
+        body: [
+          "Svenska kraftnät har använt flaskhalsinkomster för att sänka avgiften för stamnätet sedan 2021. För 2027 sänks energiavgiften med drygt 2 miljarder kronor, motsvarande 80 procent av den energiavgift som debiterades 2025, och den fasta avgiften med drygt 6,3 miljarder.",
+          "Men avdraget på den fasta avgiften krymper med cirka 350 miljoner kronor jämfört med i år. Eftersom dagens rabatterade avgift är så låg ger det enligt Svenska kraftnät en höjning på cirka 20 procent i genomsnitt för nätkunderna, med variationer beroende på var de finns och vilket abonnemang de har. Skälet är myndighetens stora investeringar: utrymmet för avgiftssänkningar bedöms minska framöver, och avgiften ska stegvis tillbaka till full kostnadstäckning.",
+          "Samtidigt inför Svenska kraftnät en ny avgiftsmodell för stamnätet från 2027, med fyra delar: fast avgift, energiavgift, kundspecifik avgift och effektavgift. Modellen införs stegvis och gäller nätbolagen och de stora producenterna, inte ditt eget elnätsavtal.",
+        ],
+      },
+      {
+        h2: "Kommer elnätsavgiften höjas 2027?",
+        body: [
+          "Det avgör ditt nätbolag, och svaret kan bli olika i olika delar av landet. E.ON, som driver regionnät, beskriver mekanismen: bolaget sänkte den samlade tariffnivån i regionnätet 2026 tack vare förra årets återföring från Svenska kraftnät, och 2027 års återföring gör det möjligt att behålla den lägre nivån. Men eftersom återföringen är mindre än i år ökar E.ON:s kostnader för transmissionsnätet jämfört med 2026. Beskedet innebär enligt bolaget ”inte någon ny kostnadsminskning utöver den som redan är inräknad”.",
+          "Stamnätet är dessutom bara en del av nätbolagens kostnader. Enligt E.ON beror nätavgifternas utveckling på den samlade kostnadsbilden, där avgifterna till transmissionsnätet ingår, men också på investeringar för att utveckla och förnya befintliga elnät och möta elektrifieringens behov. ”Region- och lokalnätsbolagen ska hålla sig inom beslutade intäktsramar. Det gör att våra avgiftsreduceringar ska nå kunder där det behövs som mest”, säger Maja Lundbäck.",
+          "Här går beskrivningarna isär. Svenska kraftnät talar om minskade avgifter som kan lindra effekterna av stigande elpriser. E.ON:s besked och myndighetens egen prislista visar en mer blandad bild: rabatten är stor men mindre än i år, och den fasta avgiften för stamnätet stiger. Rabatten dämpar alltså kostnaderna, men den garanterar ingen lägre elnätsavgift för ditt hushåll.",
+        ],
+      },
+      {
+        h2: "Vad händer med flaskhalspengarna efter valet?",
+        body: [
+          "Hur pengarna ska användas framöver är en politisk fråga, och två utredningar är på väg. Ei har sedan januari ett regeringsuppdrag att redogöra för vad flaskhalsinkomsterna får användas till enligt dagens regler och att analysera andra samhällsekonomiskt effektiva användningsområden. Det ska redovisas senast den 30 oktober 2026.",
+          "Den 1 september, före valet, gav regeringen dessutom Svenska kraftnät i uppdrag att beräkna hur stora överskott av flaskhalsinkomster som väntas de kommande fem åren och att föreslå nya användningsområden, så att pengarna snabbare kan komma elkunderna och kraftsystemet till nytta. Svenska kraftnät ska redovisa senast den 14 januari 2027.",
+          "Partierna har gått till val på olika linjer. Enligt Elbruks genomgång av partiernas energipolitik vill Socialdemokraterna ha ett högkostnadsskydd mot höga elpriser finansierat med flaskhalsintäkterna, medan Kristdemokraterna vill ha större nationellt inflytande över hur flaskhalsintäkterna får användas. Det är förslag och positioner, inte beslut.",
+          "Regeringsfrågan är samtidigt inte avgjord. Magdalena Andersson ska rapportera sitt sonderingsuppdrag till talmannen senast den 12 oktober, och därefter hålls en statsministeromröstning i riksdagen, enligt talman Andreas Norlén.",
+        ],
+      },
+      {
+        h2: "Vad betyder det för din kalkyl?",
+        body: [
+          "Räkna inte med en lägre elnätsavgift 2027 bara för att miljarderna finns. Vänta in ditt nätbolags besked om nästa års avgifter och räkna på din egen förbrukning.",
+          "Det du själv styr är den rörliga delen. Enligt Vattenfall sänker minskad elanvändning inte bara elhandelskostnaden utan också energiskatten och de rörliga delarna av elnätsavgiften. Samma sak gäller solel som du använder själv: varje kilowattimme du slipper köpa slipper du också betala de rörliga nätavgifterna och energiskatten för. Ju högre den rörliga nätavgiften är, desto mer är egenanvändningen värd.",
+          "Den fasta delen av nätavgiften påverkar du inte med din förbrukning. Vi följer frågan och uppdaterar när nätbolagen har lämnat besked om 2027 års avgifter och när Ei och Svenska kraftnät har redovisat sina uppdrag.",
+        ],
+        bullets: [
+          "Drygt 8,3 miljarder kronor 2027: drygt 6,3 miljarder på stamnätets fasta avgift och drygt 2 miljarder på energiavgiften.",
+          "Den fasta stamnätsavgiften höjs ändå med cirka 20 procent i snitt för nätbolagen och de stora producenterna.",
+          "Ei redovisar sitt uppdrag om flaskhalsinkomsterna senast 30 oktober 2026, Svenska kraftnät sitt senast 14 januari 2027.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Flaskhalsintäkter – vad är det?",
+        a: "Pengar som uppstår när stamnätet inte räcker till för att föra över all el som efterfrågas mellan två elområden. Elen blir då dyrare i området med underskott, och prisskillnaden gånger flödet går till den som för över elen – i Sverige framför allt Svenska kraftnät. Enligt EU:s regler ska pengarna i första hand användas för att hålla uppe och öka överföringskapaciteten, och en del får användas för att sänka avgiften för stamnätet.",
+      },
+      {
+        q: "Blir det sänkt elnätsavgift 2027?",
+        a: "Inte automatiskt. Svenska kraftnät sänker avgifterna för stamnätet med drygt 8,3 miljarder kronor, men rabatten är mindre än i år och den fasta stamnätsavgiften höjs med cirka 20 procent i snitt. E.ON räknar med att bolagets kostnad för transmissionsnätet ökar jämfört med 2026. Vad det betyder för ditt hushåll avgörs av hur region- och lokalnätsbolagen sätter sina avgifter för 2027.",
+      },
+      {
+        q: "Varför är elnätsavgiften så hög?",
+        a: "Nätavgifterna speglar nätbolagens samlade kostnader. Enligt E.ON ingår avgifterna till det överliggande transmissionsnätet, men också investeringar för att utveckla och förnya befintliga elnät och möta elektrifieringens behov. Svenska kraftnät planerar själv nätinvesteringar för cirka 130 miljarder kronor 2026–2036 och har börjat trappa ned rabatten på stamnätsavgiften för att stegvis nå full kostnadstäckning.",
+      },
+      {
+        q: "Får hushållen pengar direkt från Svenska kraftnät?",
+        a: "Nej. Hushåll betalar ingen avgift direkt till Svenska kraftnät, och pengarna betalas inte ut till hushållen. Rabatten minskar vad regionnätsbolag och stora elproducenter betalar för stamnätet. Hur mycket som når din faktura beror på var du bor och hur ditt nätbolag för vidare avgifterna.",
+      },
+    ],
+  },
+
   "varfor-ar-elpriset-sa-hogt-just-nu-oktober-2026": {
     tldr: [
       "Tre faktorer samverkar: de svenska vattenmagasinen var 74,7 procent fulla mot normalt 80,8, kärnkraften producerade 18 procent mindre än i fjol vecka 39 och stamnätsarbeten begränsar flödet söderut.",

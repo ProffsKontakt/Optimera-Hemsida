@@ -64,6 +64,86 @@ export type NewsArticle = {
 
 export const NEWS: NewsArticle[] = [
   {
+    slug: "elnatsavgift-2027-flaskhalsintakter-8-miljarder",
+    status: "published",
+    title:
+      "Sänks elnätsavgiften 2027? 8,3 miljarder i flaskhalspengar – men ingen automatisk rabatt för hushållen",
+    excerpt:
+      "Svenska kraftnät använder drygt 8,3 miljarder kronor i flaskhalsintäkter för att sänka stamnätsavgifterna från den 1 januari 2027. Men pengarna går till nätbolagen, inte till hushållen – och den fasta stamnätsavgiften höjs ändå med cirka 20 procent i snitt. Vi förklarar vad flaskhalsintäkter är, om elnätsavgiften kommer att höjas och vad som händer med pengarna efter valet.",
+    category: "Energipolitik",
+    publishedAt: "2026-10-09",
+    updatedAt: "2026-10-09",
+    readTimeMin: 7,
+    image: {
+      src: "/news/elnatsavgift-2027-flaskhalsintakter-8-miljarder.jpg",
+      alt: "Fyra stående solpaneler med blankt svart glas som speglar moln och sol, med kraftledningsstolpar över gula fält i bakgrunden",
+    },
+    searchPhrases: [
+      "elnätsavgift 2027",
+      "sänkt elnätsavgift",
+      "kommer elnätsavgiften höjas",
+      "varför är elnätsavgiften så hög",
+      "flaskhalsintäkter",
+      "flaskhalsintäkter vad är det",
+      "flaskhalsintäkter svenska kraftnät",
+      "transmissionsnät regionnät lokalnät",
+    ],
+    sources: [
+      {
+        title:
+          "Svenska kraftnät använder flaskhalsinkomster för att minska avgifter med 8,3 miljarder kronor",
+        publisher: "Svenska kraftnät",
+        url: "https://www.svk.se/press-och-nyheter/nyheter/allmanna-nyheter/2026/svenska-kraftnat-anvander-flaskhalsinkomster-for-att-minska-avgifter-med-83-miljarder-kronor/",
+      },
+      {
+        title: "Beslutad transmissionsnätsavgift och avgifter för balansansvariga parter 2027",
+        publisher: "Svenska kraftnät",
+        url: "https://www.svk.se/press-och-nyheter/nyheter/elmarknad-allmant/2026/beslutad-transmissionsnatsavgift-och-avgifter-for-balansansvariga-parter-2027/",
+      },
+      {
+        title: "Om flaskhalsinkomster",
+        publisher: "Svenska kraftnät",
+        url: "https://www.svk.se/om-kraftsystemet/om-elmarknaden/elomraden/om-flaskhalsinkomster/",
+      },
+      {
+        title: "Flaskhalsinkomster används för att stärka elnätet",
+        publisher: "Svenska kraftnät",
+        url: "https://www.svk.se/om-kraftsystemet/om-elmarknaden/elomraden/om-flaskhalsinkomster/flaskhalsinkomster-anvands-for-att-starka-elnatet/",
+      },
+      {
+        title: "E.ON kommenterar: Rätt att flaskhalsintäkterna kommer elnätskunderna till del",
+        publisher: "E.ON",
+        url: "https://via.tt.se/pressmeddelande/4575218/eon-kommenterar-ratt-att-flaskhalsintakterna-kommer-elnatskunderna-till-del?lang=sv",
+      },
+      {
+        title:
+          "Svenska kraftnät får i uppdrag att beräkna överskott av flaskhalsinkomster och föreslå hur de ska användas",
+        publisher: "Regeringen",
+        url: "https://regeringen.se/pressmeddelanden/2026/09/svenska-kraftnat-far-i-uppdrag-att-berakna-overskott-av-flaskhalsinkomster-och-foresla-hur-de-ska-anvandas/",
+      },
+      {
+        title: "Nytt regeringsuppdrag: Nya användningsområden för flaskhalsinkomster",
+        publisher: "Energimarknadsinspektionen",
+        url: "https://ei.se/om-oss/nyheter/2026/2026-01-16-nytt-regeringsuppdrag-nya-anvandningsomraden-for-flaskhalsinkomster",
+      },
+      {
+        title: "Talmannens sonderingsuppdrag till Magdalena Andersson återupptas",
+        publisher: "Sveriges riksdag",
+        url: "https://www.riksdagen.se/sv/aktuellt/aktuelltnotiser/2026/okt/2/talmannens-sonderingsuppdrag-till-magdalena_cms77150d24-8e8b-479f-9da0-8df5bf84b9b6sv/",
+      },
+      {
+        title: "Partiernas energipolitik inför valet 2026",
+        publisher: "Elbruk",
+        url: "https://www.elbruk.se/blogg/partiernas-energipolitik-2026",
+      },
+      {
+        title: "Elmarknaden just nu: Svängiga elpriser inför uppvärmningssäsongen",
+        publisher: "Vattenfall",
+        url: "https://news.cision.com/se/vattenfall/r/elmarknaden-just-nu--svangiga-elpriser-infor-uppvarmningssasongen,c4403328",
+      },
+    ],
+  },
+  {
     slug: "varfor-ar-elpriset-sa-hogt-just-nu-oktober-2026",
     status: "published",
     title:
