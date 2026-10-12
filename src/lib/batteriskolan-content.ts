@@ -1350,6 +1350,10 @@ export const CONCEPTS: BatteryConcept[] = [
       {
         href: "/kalkylator",
         label: "Räkna på batteriet i kalkylatorn"
+      },
+      {
+        href: "/guider/jamfora-elavtal",
+        label: "Guide: Så jämför du elavtal"
       }
     ],
     updatedAt: "2026-10-03"

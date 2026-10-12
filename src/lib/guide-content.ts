@@ -34,6 +34,256 @@ export type GuideContent = {
 };
 
 export const GUIDE_CONTENT: Record<string, GuideContent> = {
+  "luft-luftvarmepump": {
+    answer: "En luft-luftvärmepump kostar vanligtvis 18 000–30 000 kr inklusive installation, enligt Energi- och klimatrådgivningen (2025). Rotavdraget 2026 motsvarar 9 % av totalpriset vid fast pris. Energimyndigheten anger att pumpen ger 3,5–5 kWh värme per kWh el över ett år, så den värmen kräver cirka 70–80 % mindre el än direktverkande el. Hur mycket du sparar beror på hur stor del av huset den värmer. Den värmer inte tappvarmvattnet och ger varken Villaeffekten eller grönt avdrag.",
+    keyFacts: [
+      {
+        label: "Pris inklusive installation (2025)",
+        value: "Vanligtvis 18 000–30 000 kr, enligt Energi- och klimatrådgivningen",
+      },
+      {
+        label: "Årsvärmefaktor, SCOP (2025)",
+        value: "3,5–5,0 kWh värme per kWh el, enligt Energimyndighetens värmepumpsguide",
+      },
+      {
+        label: "Rotavdrag 2026 vid fast pris",
+        value: "30 % av arbetet, som räknas som 30 % av totalpriset – alltså 9 % av totalen",
+      },
+      {
+        label: "Villaeffekten och grönt avdrag 2026",
+        value: "Gäller inte luft-luftvärmepumpar",
+      },
+      {
+        label: "Vem får installera",
+        value: "Certifierad personal för köldmediet och ett registrerat elinstallationsföretag för elen",
+      },
+      {
+        label: "Fritidshus med luft-luftvärmepump (2023)",
+        value: "192 000 av Sveriges 544 000 fritidshus",
+      },
+    ],
+    sections: [
+      {
+        h2: "Vad är en luft-luftvärmepump, och vad värmer den inte?",
+        body: [
+          "En luft-luftvärmepump hämtar värme ur uteluften och blåser ut den som varm luft i huset, men den värmer varken tappvarmvattnet, alltså vattnet i kranar och dusch, eller vattenburna radiatorer. Den består av en utedel och en innedel. Mellan dem cirkulerar ett köldmedium, en vätska med mycket låg kokpunkt som tar upp värme ur luften även när det är kallt ute.",
+          "Innedelen är ett fläktaggregat som ofta sitter ovanför en dörr eller nära taket. Eftersom den värmer med luft fungerar den bäst när luften kan spridas fritt, till exempel i ett hus med öppen planlösning.",
+          "Luftvärmepump är ett vidare begrepp. Boverket räknar både luft-luft och luft-vatten som luftvärmepumpar, eftersom båda hämtar värmen ur uteluften. En luft-vattenvärmepump värmer i stället radiatorerna och varmvattnet, och passar bäst om huset redan har vattenburen värme. Den jämförs med bergvärme i guiden Luft-vatten eller bergvärme.",
+          "Hur effektiv pumpen är mäts med årsvärmefaktorn, SCOP: hur många kWh värme den ger per kWh el i snitt över ett år. Energimyndighetens värmepumpsguide från 2025 anger SCOP 3,5–5,0 för luft-luft, men värdet varierar mycket med teknisk lösning och var huset ligger.",
+        ],
+      },
+      {
+        h2: "Vad kostar en luft-luftvärmepump, och vad ger rotavdraget?",
+        body: [
+          "En luft-luftvärmepump kostar vanligtvis 18 000–30 000 kr inklusive installation, och rotavdraget 2026 motsvarar 9 % av totalpriset vid fast pris. Prisuppgiften kommer från Energi- och klimatrådgivningen, som är ett samarbete mellan Energimyndigheten och kommunerna. Sidan uppdaterades senast i december 2025 och anger inte om priset gäller före eller efter rotavdrag. Där finns också en checklista för dig som ska ta in offerter på värmepumpar, och kommunens energi- och klimatrådgivare hjälper dig kostnadsfritt.",
+          "Rotavdraget är 30 % av arbetskostnaden. Vid totalentreprenad till fast pris, där arbete, material och resor ingår i ett överenskommet pris, får arbetet räknas fram med en schablon. För luftvärmepumpar, alltså luft-luft, luft-vatten och frånluft, är Skatteverkets schablon 30 % av totalpriset. Rotavdraget blir då 9 % av totalen.",
+          "Skatteverkets exempel: en luftvärmepump för 20 000 kr till fast pris ger 6 000 kr i arbetskostnad och 1 800 kr i rotavdrag. Är totalpriset före avdrag 18 000–30 000 kr blir rotavdraget på samma sätt 1 620–2 700 kr.",
+          "I en bostadsrätt ger bara den del av arbetet som görs inne i bostaden rotavdrag, och schablonen får inte användas. Är huset yngre än fem år ger bara arbete som återställer VVS-utrustningen till ursprungligt skick rotavdrag.",
+          "Det här gäller inte för luft-luftvärmepumpar:",
+        ],
+        bullets: [
+          "Grönt avdrag, skattereduktionen för grön teknik. Det gäller bara solceller, batterier som lagrar egen el och laddningspunkter för elbilar, inte värmepumpar.",
+          "Villaeffekten, Boverkets bidrag för energieffektivisering i småhus. Bidrag lämnas för vissa styrbara värmepumpar, till exempel luft-vatten och bergvärme, men inte för luft-luftvärmepumpar.",
+          "Rotavdrag för service och kontroll av pumpen. Felsökning ger däremot rotavdrag.",
+        ],
+      },
+      {
+        h2: "Hur mycket sparar en luft-luftvärmepump?",
+        body: [
+          "För den värme som pumpen levererar går det åt cirka 70–80 % mindre el än med direktverkande el, om årsvärmefaktorn ligger på 3,5–5,0. Med direktverkande el, alltså elelement, blir 1 kWh el 1 kWh värme, medan pumpen ger 3,5–5 kWh. Hur mycket du sparar per år beror på hur stor del av husets värme pumpen står för.",
+          "Boverket skriver att en luftvärmepump normalt är lönsam, men att besparingen beror på hur ditt nuvarande värmesystem fungerar, hur välisolerat huset är och var i landet det ligger. Räkna också med att rum långt från innedelen blir 1–2 °C kallare. Där kan elementen behövas som komplement.",
+          "Räkneexempel med antaganden: pumpen står för 7 000 kWh av husets värme under ett år, och årsvärmefaktorn blir 3,5. Då drar pumpen 2 000 kWh el, i stället för 7 000 kWh med elementen. Du köper alltså 5 000 kWh mindre el. Anta att du betalar 2 kr per kWh för elhandel, elnät, energiskatt och moms tillsammans. Det är ett antaget exempelpris, och besparingen blir då 10 000 kr per år. Täcker pumpen mindre av värmen, eller blir årsvärmefaktorn lägre, blir besparingen mindre.",
+          "Kyler du huset med pumpen på sommaren äter kylan upp en del av besparingen, enligt både Energimyndigheten och Boverket. Boverket råder dig att notera husets energianvändning före installationen och följa upp den under första året. Då ser du vad pumpen faktiskt ger, och om något behöver åtgärdas.",
+        ],
+      },
+      {
+        h2: "När passar en luft-luftvärmepump, och när räcker den inte?",
+        body: [
+          "En luft-luftvärmepump passar bäst i ett hus utan vattenburen värme, till exempel med direktverkande el, och med öppen planlösning, men den fungerar som ett komplement till elementen och värmer inte tappvarmvattnet. Enligt Energimyndigheten är den ett av få enkla alternativ för att sänka elkostnaden för uppvärmning i hus med direktverkande el. Bergvärme och luft-vatten förutsätter att huset har radiatorer med rör.",
+          "I fritidshus är luft-luft den vanligaste värmepumpen. Enligt Energimyndighetens undersökning för 2023 fanns den i 192 000 av Sveriges 544 000 fritidshus, och 84 000 fritidshus installerade en mellan 2018 och 2023. Den vanligaste uppvärmningen i fritidshus var luft-luftvärmepump tillsammans med direktverkande el och/eller biobränsle, i 27 % av husen.",
+          "De kallaste dagarna kan huset behöva värme från en annan källa, och luftburen värme kan ha svårt att nå ut till alla delar av huset. Boverket råder dig att låta elementen sitta kvar. Har huset vattenburen värme, eller vill du även värma varmvattnet, är luft-vatten eller bergvärme mer aktuellt. De kan dessutom ge Villaeffekten.",
+          "Så får du ut mest av pumpen:",
+        ],
+        bullets: [
+          "Placera innedelen centralt, så att värmen sprids i huset.",
+          "Håll innerdörrarna öppna.",
+          "Ställ elementens termostater 2 °C lägre än pumpens, så att elementen bara går in när pumpen inte räcker.",
+          "Vill du nå fler rum kan utedelen kopplas till två eller flera innedelar, så kallad multisplit.",
+          "Stäng av pumpens autoläge när du eldar i braskaminen, annars kan den börja kyla.",
+        ],
+      },
+      {
+        h2: "Hur klarar en luft-luftvärmepump vintern?",
+        body: [
+          "En luft-luftvärmepump ger värme även när det är kallt ute, men verkningsgraden och värmeeffekten sjunker när utetemperaturen faller. Köldmediet kan ta upp värme även ur mycket kall uteluft, till exempel −25 °C, enligt Elsäkerhetsverket, som samtidigt påpekar att luft-luftpumpens prestanda påverkas i hög grad av utetemperaturen.",
+          "När det är riktigt kallt finns det begränsat med värme att hämta. Därför fungerar pumpen inte lika effektivt i norra Sverige med långa, kalla vintrar, enligt Energimyndigheten. Energi- och klimatrådgivningen skriver att uteluftvärmepumpar passar särskilt bra i södra och mellersta Sverige.",
+          "Tänk på det här inför vintern:",
+        ],
+        bullets: [
+          "Jämför effektiviteten vid uppvärmning i nordiskt klimat på energimärkningen. Det motsvarar klimatet i Helsingfors, enligt Energimyndigheten.",
+          "Se till att pumpen är gjord för uppvärmning i kallt klimat. I andra delar av världen används samma typ av maskin främst för kylning och är då optimerad för det.",
+          "Välj gärna en pump med varvtalsstyrd kompressor, det vill säga en kompressor som kan gå i olika hastigheter, och hellre en större modell än en för liten. Det ger effektivare uppvärmning och lägre ljudnivå, enligt Energi- och klimatrådgivningen.",
+          "Led bort smältvattnet från utedelen, så att det inte bildas is under pumpen eller en isgata vid entrén.",
+          "Håll utedelen fri från löv, snö och is. Bygger isen ända upp till pumpens underdel kan den sluta fungera.",
+        ],
+      },
+      {
+        h2: "Vem får installera en luft-luftvärmepump, och hur sköter du den?",
+        body: [
+          "En luft-luftvärmepump ska installeras av certifierad personal och anslutas av ett registrerat elinstallationsföretag, men filtren rengör du själv. Enligt Naturvårdsverket får du som privatperson inte själv installera, serva, läckagekontrollera eller demontera en värmepump med f-gaser, det vill säga fluorerade växthusgaser som används som köldmedium. Att koppla ihop delar som innehåller köldmedium, som ute- och innedelen, räknas som installation. Kontrollera att installatören har giltiga certifikat.",
+          "Elsäkerhetsverket skriver att installation av värmepump ska utföras av ett registrerat elföretag. Om företaget är registrerat, och för vilka arbeten, ser du i Elsäkerhetsverkets register på Kollaelföretaget.se. Pumpen ska också vara CE-märkt.",
+          "Kontakta kommunen innan du beställer. I vissa kommuner krävs bygglov eller bygganmälan för en luftvärmepump, och detaljplanen kan ha egna regler. Placera utedelen där ljudet inte stör grannar eller din egen sömn. I Naturvårdsverkets vägledning räknas ljud från värmepumpar som buller från industrier. Jämför också ljudnivån på energimärkningen, eftersom innedelar ofta kan låta ganska mycket, enligt Boverket.",
+          "Så sköter du pumpen:",
+        ],
+        bullets: [
+          "Rengör filtren i innedelen ungefär var tredje vecka, enligt Boverket. Vissa filter kan sköljas, andra dammsugas.",
+          "Håll utedelen fri från löv, snö och is.",
+          "Låt en certifierad tekniker serva pumpen varje år eller vartannat år, helst före uppvärmningssäsongen, som Energimyndigheten rekommenderar. Servicen ger inget rotavdrag.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Kan en luft värmepump med AC kyla huset på sommaren?",
+        a: "Ja. De flesta luft-luftvärmepumpar har en kylfunktion (AC), och energimärkningen visar hur effektivt pumpen både kyler och värmer. Kylan kostar el och minskar en del av besparingen. I autoläge börjar pumpen kyla när det blir för varmt inne, så stäng av autoläget om du vill slippa aktiv kyla. Kylning kan också ge drag och fuktrisker.",
+      },
+      {
+        q: "Kan en luft-luftvärmepump ha 2 innedelar?",
+        a: "Ja. Utedelen kan kopplas till två eller flera innedelar så att värmen sprids bättre i huset, vilket kallas multisplit. Med en enda innedel får du räkna med att rum långt bort blir 1–2 °C kallare, enligt Boverket.",
+      },
+      {
+        q: "Får man installera en luft-luftvärmepump själv?",
+        a: "Nej. Enligt Naturvårdsverket får privatpersoner inte själva installera, serva eller demontera värmepumpar med f-gaser, utan det ska göras av certifierad personal. Elinstallationen ska dessutom göras av ett elföretag som är registrerat hos Elsäkerhetsverket.",
+      },
+      {
+        q: "Hur ofta ska man rengöra filtret i en luft-luftvärmepump?",
+        a: "Boverket råder dig att rengöra filtren i innedelen ungefär var tredje vecka, så att pumpen behåller en god effektivitet. Hur du gör står i manualen: vissa filter kan sköljas, andra dammsugas.",
+      },
+      {
+        q: "Vilka bidrag och avdrag finns för luft-luftvärmepump 2026?",
+        a: "Rotavdraget gäller: 30 % av arbetskostnaden, vilket vid fast pris blir 9 % av totalpriset. Luft-luftvärmepumpar ger däremot varken grönt avdrag eller Villaeffekten, Boverkets bidrag för energieffektivisering i småhus.",
+      },
+    ],
+  },
+  "jamfora-elavtal": {
+    answer: "Jämför elavtal på jämförpriset i öre/kWh, som enligt Energimarknadsinspektionen (Ei) inkluderar påslag, fasta avgifter och moms, och inte bara på spotpriset. Ei:s Elpriskollen är Sveriges enda oberoende jämförelsetjänst för elavtal. Ska villan styra värmepump, elbil eller batteri mot elpriset krävs ett kvartsprisavtal för att det ska sänka elhandelskostnaden. Fast pris ger förutsägbarhet men blir enligt Ei ofta dyrare över tid. Ett byte är gratis och ska kunna ske inom tre veckor enligt ellagen 2026.",
+    keyFacts: [
+      {
+        label: "Oberoende jämförelse",
+        value: "Ei:s Elpriskollen – alla elhandlare måste rapportera sina priser till Ei",
+      },
+      {
+        label: "Byte av elhandlare (ellagen 2026)",
+        value: "Kostnadsfritt, inom 3 veckor från att du begärt bytet",
+      },
+      {
+        label: "Ångerrätt",
+        value: "14 dagar för avtal på webben, i app, per telefon eller vid hembesök",
+      },
+      {
+        label: "Brytavgift vid fast pris",
+        value: "Högst elhandlarens direkta förlust – inget schablonbelopp, ingen utebliven vinst",
+      },
+      {
+        label: "Längsta uppsägningstid",
+        value: "Månadspris 3 månader, anvisat avtal 14 dagar",
+      },
+      {
+        label: "Besked innan tidsbestämt avtal löper ut",
+        value: "Tidigast 90 och senast 60 dagar före",
+      },
+    ],
+    sections: [
+      {
+        h2: "Hur jämför man elavtal så att jämförelsen blir rätt?",
+        body: [
+          "Jämför elavtal på jämförpriset, alltså totalkostnaden per kWh, och inte bara på spotpriset, elbörsens pris, eller påslaget. Enligt Energimarknadsinspektionen (Ei) anges jämförpriset i öre/kWh och inkluderar alla rörliga och fasta kostnader samt moms. Påslaget är det elhandlaren tar utöver elbörsens pris. En del elhandlare tar i stället, eller dessutom, en fast avgift per månad eller år.",
+          "Enklast är Ei:s jämförelsetjänst Elpriskollen, där du jämför de vanligaste elavtalen från samtliga elhandlare. Alla elhandlare måste rapportera sina avtal och priser till Ei. Myndigheten får ingen provision, och ingen elhandlare kan köpa sig en bättre placering.",
+          "Tänk på det här när du jämför:",
+        ],
+        bullets: [
+          "Samma avtalstyp. Jämförpriset tar inte hänsyn till när på dygnet du använder el. Ei råder dig därför att vara försiktig när du jämför kvartspris, där priset ändras varje kvart, med andra avtalstyper.",
+          "Din egen förbrukning. En fast avgift väger tyngre ju mindre el du använder: samma månadsavgift blir fyra gånger så dyr per kWh vid 5 000 kWh om året som vid 20 000 kWh. Förbrukningen står på elfakturan.",
+          "Rörligt månadspris. Jämförelsen bygger på vad elhandlarna fakturerade förra månaden, så du vet inte i förväg vad nästa månad kostar.",
+          "Rabatter. Som nyinflyttad får du ofta erbjudanden med extrapriser, men avtalet kan övergå i ett betydligt sämre avtal när rabattperioden tar slut, varnar Ei.",
+          "Villkor och klagomål. Kontrollera bindningstid, uppsägningstid, brytavgift, alltså avgiften om du bryter avtalet i förtid, och vad som händer när avtalet löper ut. Konsumenternas Energimarknadsbyrå listar elhandlare med många klagomål och uppdaterar listan varje kvartal.",
+        ],
+      },
+      {
+        h2: "Vilket elavtal passar bäst för en villa?",
+        body: [
+          "Vilket elavtal som passar bäst beror på om villan kan flytta elanvändningen till billiga tider och hur stora prissvängningar hushållets ekonomi tål.",
+          "Med kvartspris betalar du spotpriset för varje kvart plus påslag och moms. Enligt Ei krävs kvartspris för att styrning av elanvändningen ska sänka elhandelskostnaden. Kvartsprisavtal har dessutom ofta lägre påslag, så många sparar pengar även utan att ändra sina vanor. Men använder du regelbundet mycket el när priset är högt kan kostnaden bli högre än med andra avtal.",
+          "Med månadspris, som ofta kallas rörligt pris, betalar du ett medelpris för månaden som vägs efter hur alla elhandlarens kunder med samma avtal använder el. Använder du redan mycket el när spotpriset är lågt, ofta på natten, betalar du då mer per kWh än med kvartspris, enligt Ei.",
+          "Har ditt nätbolag effektavgift påverkas även elnätskostnaden av när du använder el, och då behöver du styra efter både effektavgiften och spotpriset.",
+          "Ei:s råd är att välja avtalstyp efter din ekonomi:",
+        ],
+        bullets: [
+          "Kan flytta förbrukningen, till exempel med styrbar värmepump, elbil eller batteri: kvartspris.",
+          "Har råd med tillfälliga prisuppgångar: rörligt månadspris, som också ger dig prisnedgångarna.",
+          "Vill veta vad varje kWh kostar: fast pris.",
+          "Stor elanvändning på vintern: ett mixavtal, en blandning av fast och rörligt pris, kan minska risken för höga vinterkostnader, enligt Energimarknadsbyrån. Väg den lägre risken mot den extra kostnad som mixavtalet kan innebära.",
+        ],
+      },
+      {
+        h2: "Fast elavtal eller rörligt – vad har lönat sig?",
+        body: [
+          "Rörligt pris har historiskt ofta blivit billigare, medan fast pris fungerar som en försäkring mot prisökningar under avtalstiden. Sedan januari 2012 har det rörliga priset varit lägre än medelpriset för ettåriga fastprisavtal vid ungefär 60 procent av tillfällena, enligt Konsumenternas Energimarknadsbyrå.",
+          "Ei förklarar varför fast pris ofta blir dyrare: elhandlaren måste ta höjd för att inköpen kan bli dyrare än det pris ni har avtalat. Du betalar alltså för tryggheten. Enligt Energimarknadsbyrån finns heller inget tydligt mönster för vilken årstid det lönar sig att teckna fast pris.",
+          "Fast pris tecknas oftast på 1, 2 eller 3 år. Elhandlaren ska meddela dig tidigast 90 och senast 60 dagar innan ett tidsbestämt avtal löper ut. Väljer du inget nytt avtal inom uppsägningstiden tecknar elhandlaren dig på det avtal som villkoren anger, till priset i beskedet.",
+        ],
+      },
+      {
+        h2: "Vilket elavtal är bäst för en villa med solceller?",
+        body: [
+          "Det bästa elavtalet för en villa med solceller ger bra villkor både för el du köper och för el du säljer. Enligt Ei kräver de flesta elhandlare som köper överskottsel att du också köper din el av dem. Eftersom en stor del av elanvändningen sker när solcellerna inte producerar ska du jämföra båda priserna.",
+          "Ersättningen för såld el är hos många elhandlare spotpriset minus ett litet avdrag, enligt Energimyndigheten. En del erbjuder högre ersättning det första året, så kontrollera vad som gäller sedan. Nätbolaget betalar dessutom nätnytta, vanligen några öre/kWh, bland annat för att din el minskar förlusterna i elnätet.",
+          "Har du inget säljavtal är elhandlaren du köper el av ändå skyldig att ta emot överskottet och ge dig en skälig ersättning, enligt ellagen. För att få så bra betalt som möjligt råder Ei dig att jämföra erbjudanden och teckna ett säljavtal.",
+          "Har du batteri och vill ladda när elen är billig och använda den när den är dyr behöver du kvartspris.",
+        ],
+      },
+      {
+        h2: "Hur byter man elavtal och hur lång tid tar det?",
+        body: [
+          "Du tecknar avtal med den nya elhandlaren, som anmäler bytet till ditt nätbolag, och enligt ellagen ska du kunna byta inom tre veckor från att du begärt det. Nätbolaget läser av elmätaren och skickar mätarställningen till både den gamla och den nya elhandlaren. Bytet är gratis, och elen stängs inte av under tiden.",
+          "Enligt Energimarknadsbyrån kan ett byte registreras vilken dag i månaden som helst, men elhandlarna behöver ofta en månad på sig. Hör därför av dig i god tid. Säg också själv upp det gamla avtalet skriftligt, till exempel med mejl, även om det nya bolaget erbjuder sig att göra det. Då kan du visa när du sa upp det. Den gamla elhandlaren ska skicka slutfaktura inom sex veckor.",
+          "Bara den som står på elnätsavtalet kan teckna elhandelsavtal för bostaden. Innan du tecknar eller förlänger ett avtal ska elhandlaren ge dig en kortfattad sammanfattning av de viktigaste villkoren.",
+        ],
+        bullets: [
+          "Ångerrätt: tecknar du avtalet på webben, i en app, per telefon eller vid ett hembesök har du 14 dagars ångerrätt. Saknas information om den kan den förlängas med upp till ett år, enligt Konsumentverket.",
+          "Telefonförsäljning: blir du uppringd räcker inte ett muntligt ja. Avtalet blir giltigt först när du har godkänt det skriftligt, till exempel med sms, mejl eller bank-id. Ringer du själv till elhandlaren gäller inte det kravet.",
+          "Fast pris: byter du innan bindningstiden är slut kan du få betala brytavgift. Planera därför bytet till när avtalet löper ut.",
+        ],
+      },
+      {
+        h2: "Hur säger man upp elavtal, och vad gäller vid flytt?",
+        body: [
+          "Du säger upp elavtalet hos din elhandlare med den uppsägningstid som står i villkoren. Uppsägningstiden är tiden från att du säger upp avtalet tills det slutar gälla, medan bindningstiden är hur länge du är bunden till avtalet. Kvartsprisavtal har oftast en månads eller 14 dagars uppsägningstid. Månadspris får ha högst tre månaders bindnings- eller uppsägningstid. Ett anvisat avtal, som du får om du inte själv väljer elhandlare, får ha högst 14 dagars uppsägningstid.",
+          "Bryter du ett tidsbestämt avtal med fast pris i förtid får elhandlaren ta ut en brytavgift, men bara om villkoren tydligt säger det. Avgiften får inte vara högre än elhandlarens direkta ekonomiska förlust. Den får inte vara ett i förväg bestämt belopp och inte innehålla kvarvarande månadsavgifter eller utebliven vinst. Det är elhandlaren som ska visa att avgiften är skälig, och ingen brytavgift får tas ut bara för att du avbryter en uppsägningstid.",
+          "Vid flytt ska du säga upp elnätsavtalet senast en månad före utflyttningen, om inget annat avtalats, och meddela elhandlaren att du flyttar. En del elhandelsavtal kan avslutas vid flytt, andra följer med till den nya adressen. Avslutar du inte avtalen fortsätter du att betala för elen i den gamla bostaden.",
+          "Teckna elavtal innan flytten. Kontakta nätbolaget där du flyttar in för ett elnätsabonnemang, även om elen redan är påslagen, och teckna elhandelsavtal med den elhandlare du valt. Väljer du ingen får du ett anvisat avtal hos en elhandlare som nätbolaget samarbetar med, och det är enligt Ei ofta dyrare. Den 1 januari 2027 ersätts ellagen av en ny elmarknadslag, och den 1 juli 2027 ersätts de anvisade avtalen av en leveransskyldig sistahandsleverantör, enligt riksdagens beslut.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Kostar det något att byta elavtal?",
+        a: "Nej. Enligt ellagen är ett byte av elhandlare kostnadsfritt för konsumenter, och ingen av elhandlarna får ta ut en administrativ avgift. Undantaget är brytavgift när ett tidsbestämt avtal med fast pris sägs upp i förtid.",
+      },
+      {
+        q: "Kan man säga upp ett fast elavtal i förtid?",
+        a: "Ja, men elhandlaren får ta ut en brytavgift om villkoren tydligt säger det. Ei beskriver en metod som ger en bra uppskattning av förlusten: skillnaden mellan ditt fasta pris och det fastpris som erbjuds när du säger upp, gånger din beräknade återstående förbrukning. Har elhandlaren inga faktiska kostnader, till exempel för att den inte har prissäkrat din leverans, får ingen avgift tas ut.",
+      },
+      {
+        q: "Kan man ångra ett elavtal?",
+        a: "Ja. Tecknar du elavtalet på webben, i en app, per telefon eller vid ett hembesök har du 14 dagars ångerrätt. Meddela elhandlaren via ångerfunktionen eller skriftligt, till exempel med mejl, och spara en kopia.",
+      },
+      {
+        q: "Vad händer om man inte väljer något elavtal?",
+        a: "Då får du ett anvisat avtal hos den elhandlare som nätbolaget samarbetar med. Det är enligt Ei ofta dyrare än ett avtal du väljer själv, men har högst 14 dagars uppsägningstid. Den 1 juli 2027 ersätts anvisningen av en leveransskyldig sistahandsleverantör.",
+      },
+    ],
+  },
   "installera-laddbox-hemma": {
     answer: "En laddbox kostar cirka 5 000–12 000 kr plus installation, enligt Energi- och klimatrådgivningen (prisnivå 2024). Installationen kostar mer om kabeln från elcentralen blir lång, om elcentralen måste byggas ut eller om huvudsäkringen behöver höjas. Arbetet ska göras av ett elinstallationsföretag som är registrerat hos Elsäkerhetsverket. Grönt avdrag sänker 2026 priset med 50 % av arbete och material, alltså 48,5 % av totalpriset vid fast pris.",
     keyFacts: [
