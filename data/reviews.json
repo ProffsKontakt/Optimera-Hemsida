@@ -1,5 +1,13 @@
 [
   {
+    "id": "lars-b-reco",
+    "author": "Lars B",
+    "place": "Reco · oktober 2026",
+    "text": "Optimera Energi har verkligen ansträngt sig för att leverera en batterilösning som passar just mina behov och önskemål. Först pratade vi om Solis S6 15kW med styrning genom EneKey, men det slutade i Solinteg 20kW med styrning genom Keep AI. Batterierna var aldrig någon diskussion, EasyWay/Eway Prismatic-batterier från stor leverantör (tror det är Cornex). Mina önskemål, som var lite utöver det vanliga, var att jag ville få ett 1-fas 32A-uttag i garaget, samtidigt som huvudsäkringen från elnätet bara ligger på 25A. 32A-uttagen (både 1-fas och 3-fas, får bara använda ett i taget) finns på plats och elnätet och batteriet kommer nu att hjälpas åt att leverera 32A. Det lilla minuset är att batteriet tar någon sekund att koppla in sig till att leverera ström, så man måste smyga igång lasten om den ska upp över 25A. Utöver detta fanns krav från myndigheten att det ska vara brandskyddsklassat från bostaden, vilket gjorde att vi var tvungna att byta till EI30-dörr till garaget. Något som Optimera Energi också gjorde riktigt snyggt. Jag vill ge stort beröm för flexibilitet (även efter att kontraktet signerats) i hur batterilösningen byggs upp och den kompetens som folket på Optimera besitter. Allt blev snyggt gjort, det fungerar direkt och det var inga frågetecken kring vilken typ av elabonnemang jag skulle välja. Ganska coolt att se hur Keep AI jobbar för att få ner kostnaden för el. Kan varmt rekommendera Optimera Energi AB som batterileverantör.",
+    "rating": 5,
+    "visible": true
+  },
+  {
     "id": "peter-l-reco",
     "author": "Peter L",
     "place": "Reco · september 2026",
