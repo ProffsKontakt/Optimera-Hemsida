@@ -64,6 +64,84 @@ export type NewsArticle = {
 
 export const NEWS: NewsArticle[] = [
   {
+    slug: "elstod-2026-hogkostnadsskydd-elomrade-4-oktober",
+    status: "published",
+    title:
+      "Kommer det elstöd 2026? Så nära är elområde 4 högkostnadsskyddet på 1,50 kronor",
+    excerpt:
+      "Regeringen har lovat ett högkostnadsskydd under resten av 2026 om spotpriset i ett elområde i snitt överstiger 1,50 kronor per kilowattimme under en kalendermånad. Efter oktobers första tolv dagar ligger elområde 4 på 1,36 kronor – högre än något helt månadssnitt hittills i år. Vi går igenom hur skyddet är tänkt att fungera, vad som är oklart och vad som gäller för elstödet som redan har betalats ut.",
+    category: "Stöd & avdrag",
+    publishedAt: "2026-10-12",
+    updatedAt: "2026-10-12",
+    readTimeMin: 9,
+    image: {
+      src: "/news/elstod-2026-hogkostnadsskydd-elomrade-4-oktober.jpg",
+      alt: "Fyra stående solpaneler med smala svarta ramar och blankt glas som speglar moln, på ett rött tegeltak med vindkraftverk och plöjda fält i bakgrunden",
+    },
+    searchPhrases: [
+      "kommer det elstöd 2026",
+      "elstöd 2026 utbetalning",
+      "när betalas elstödet ut 2026",
+      "hur mycket elstöd får man 2026",
+      "högkostnadsskydd mot höga elpriser",
+      "kommer det mer elstöd",
+      "elprisstöd 2027",
+    ],
+    sources: [
+      {
+        title: "Frågor och svar om det tillfälliga el- och gasstödet",
+        publisher: "Regeringen",
+        url: "https://www.regeringen.se/regeringens-politik/energi/fragor-och-svar-om-det-tillfalliga-el--och-gasstodet/",
+      },
+      {
+        title: "Budgetpropositionen för 2026, utgiftsområde 21 Energi (prop. 2025/26:1)",
+        publisher: "Sveriges riksdag",
+        url: "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/proposition/budgetpropositionen-for-2026-utgiftsomrade-21_hd031d23/",
+      },
+      {
+        title:
+          "Extra ändringsbudget för 2026 – Sänkt skatt på drivmedel samt el- och gasprisstöd (bet. 2025/26:FiU48)",
+        publisher: "Sveriges riksdag",
+        url: "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/betankande/extra-andringsbudget-for-2026-sankt-skatt-pa_hd01fiu48/",
+      },
+      {
+        title: "Utbetalning av elstöd 2026",
+        publisher: "Försäkringskassan",
+        url: "https://www.forsakringskassan.se/privatperson/utbetalning-av-elstod-2026",
+      },
+      {
+        title: "Day-ahead-priser per elområde, dygnssnitt oktober 2026",
+        publisher: "Nord Pool",
+        url: "https://data.nordpoolgroup.com/auction/day-ahead/prices?deliveryDate=2026-10-12&currency=SEK&aggregation=Daily&deliveryAreas=SE1,SE2,SE3,SE4",
+      },
+      {
+        title: "Day-ahead-priser per elområde, månadssnitt 2026",
+        publisher: "Nord Pool",
+        url: "https://data.nordpoolgroup.com/auction/day-ahead/prices?deliveryDate=2026-10-12&currency=SEK&aggregation=Monthly&deliveryAreas=SE1,SE2,SE3,SE4",
+      },
+      {
+        title: "Högkostnadsskydd för el högaktuellt: ”Oro att det ska skena”",
+        publisher: "Sveriges Radio Ekot",
+        url: "https://www.sverigesradio.se/artikel/regeringens-utlovade-el-stod-rycker-narmare",
+      },
+      {
+        title: "Partiernas energipolitik inför valet 2026",
+        publisher: "Elbruk",
+        url: "https://www.elbruk.se/blogg/partiernas-energipolitik-2026",
+      },
+      {
+        title: "Talmannen inleder process för regeringsbildning",
+        publisher: "Sveriges riksdag",
+        url: "https://www.riksdagen.se/sv/aktuellt/aktuelltnotiser/2026/sep/17/talmannen-inleder-process-for-regeringsbildning_cms6291f93c-a728-4498-a0b9-e30f36627e3fsv/",
+      },
+      {
+        title: "Talmannens sonderingsuppdrag till Magdalena Andersson återupptas",
+        publisher: "Sveriges riksdag",
+        url: "https://www.riksdagen.se/sv/aktuellt/aktuelltnotiser/2026/okt/2/talmannens-sonderingsuppdrag-till-magdalena_cms77150d24-8e8b-479f-9da0-8df5bf84b9b6sv/",
+      },
+    ],
+  },
+  {
     slug: "elnatsavgift-2027-flaskhalsintakter-8-miljarder",
     status: "published",
     title:
