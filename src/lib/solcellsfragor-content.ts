@@ -574,6 +574,10 @@ export const QUESTIONS: SolarQuestion[] = [
       {
         href: "/kalkylator",
         label: "Räkna på ditt hus i kalkylatorn"
+      },
+      {
+        href: "/guider/luft-luftvarmepump",
+        label: "Guide: Vad kostar en luft-luftvärmepump?"
       }
     ],
     updatedAt: "2026-10-03"
@@ -3155,6 +3159,10 @@ export const QUESTIONS: SolarQuestion[] = [
       {
         href: "/solcellsbatteri",
         label: "Solcellsbatteri: pris, storlek och märken"
+      },
+      {
+        href: "/guider/jamfora-elavtal",
+        label: "Guide: Så jämför du elavtal"
       }
     ],
     updatedAt: "2026-10-03"
