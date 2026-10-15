@@ -38,6 +38,186 @@ export type NewsContent = {
 };
 
 const CONTENT: Record<string, NewsContent> = {
+  "elbrist-i-vinter-svenska-kraftnat-effektbrist-elpriser": {
+    tldr: [
+      "Bakom prisrisken ligger låga gaslager i Europa, låga vattenmagasin i södra Norge och Sverige och pågående kärnkraftsrevisioner. Magasinen var 75,3 procent fulla vecka 41, mot normalt 81,0.",
+      "Oktober är hittills årets dyraste månad i elområde 4: 1,42 kronor per kilowattimme i snitt den 1–15 oktober, enligt Nord Pool. Inom ett dygn har priset svängt mellan 5 öre och 3 kronor.",
+      "Manuell frånkoppling är myndighetens sista nödåtgärd och har aldrig använts. De mest ansträngda tiderna om elen blir knapp är runt klockan 8–11 och 17–19.",
+    ],
+    sections: [
+      {
+        h2: "Blir det elbrist i vinter? Svenska kraftnäts besked",
+        body: [
+          "Risken är låg, enligt Svenska kraftnät (Svk) – men elen kan bli dyr. När myndigheten summerade läget inför vintern den 12 oktober var beskedet att Sverige går in i vintern med ett robust elsystem och låg risk för effektbrist. Marginalerna är däremot mindre än tidigare, och framför allt ökar risken för höga elpriser och stora prisskillnader i landet.",
+          "”Vi är redo för en vinter som präglas av stor osäkerhet i omvärlden. Vårt ansvar är att se till att det svenska elsystemet är robust och att vi har resurser och beredskap för att upprätthålla en trygg elförsörjning”, säger Svenska kraftnäts generaldirektör Maja Lundbäck. Hon jämför med krisvintern 2022/23: de åtgärder som genomförts har enligt henne stärkt elsystemet, inte minst i södra Sverige.",
+          "Inför vintern upphandlar Svk en strategisk reserv, förstärker beredskapen med gasturbiner och utökar reparationsberedskapen. Myndigheten har också tillsatt en särskild stab för att samordna förberedelserna.",
+        ],
+      },
+      {
+        h2: "Effektbrist vs elbrist – vad är skillnaden?",
+        body: [
+          "Orden används ofta som synonymer, men Svenska kraftnät skiljer på dem. Elbrist betyder brist på elenergi sett över längre tid. Det har Sverige som helhet generellt inte: det produceras mer el än det konsumeras de flesta av årets timmar, och Sverige är en stor nettoexportör av el.",
+          "Effektbrist är något annat: att det vid ett givet tillfälle inte finns tillräckligt med el för att möta efterfrågan i Sverige eller i något av de fyra elområdena. Eftersom det i varje ögonblick måste produceras lika mycket el som förbrukas kan landet ha ett stort överskott över året och ändå riskera underskott under enstaka timmar, vanligen på vintern. Ett tredje begrepp, kapacitetsbrist, betyder att nätet inte räcker till för att flytta elen dit den behövs – till exempel till en storstad eller mellan norra och södra Sverige.",
+          "Risken för effektbrist är störst under elanvändningens två toppar, på morgonen och på kvällen, särskilt kalla dagar när det inte blåser.",
+        ],
+      },
+      {
+        h2: "Vad händer om elen inte räcker till? Så fungerar manuell förbrukningsfrånkoppling",
+        body: [
+          "Svk har flera verktyg innan det blir aktuellt att stänga av el för kunder. Ett är den strategiska reserven: resurser som myndigheten tecknar avtal om och som kan aktiveras när marknadens resurser inte räcker för att balansera systemet. Hur stor reserven ska vara avgörs av risken för effektbrist – Sveriges tillförlitlighetsnorm är en timme per år – och kostnaden betalas genom en avgift på de balansansvarigas förbrukning i elområde 3 och 4.",
+          "Den absolut sista åtgärden är manuell förbrukningsfrånkoppling. Då beordrar Svk utvalda elnätsbolag att inom 15 minuter koppla bort ledningar i ett område, för att förhindra ett större avbrott. Svk bestämmer elområde, omfattning och hur länge. Nätbolagen bestämmer vilka ledningar som stängs av och tar så långt det går hänsyn till samhällsviktiga elanvändare, enligt prioriteringsmetoden Styrel. Åtgärden har funnits länge men har aldrig använts.",
+          "För ett hushåll skulle en frånkoppling vara ungefär som ett vanligt, men kontrollerat, strömavbrott. Hur länge den varar går inte att säga i förväg – enligt Svk troligen ett par timmar – och drar den ut på tiden kan nätbolagen låta områden turas om att vara utan el. Stäng av elektriska apparater inför återinkopplingen, så underlättar du när elen kopplas på igen.",
+          "Svk informerar allmänheten på sin webbplats och via media så snart elbörsen visar att det finns timmar under kommande dygn då produktionen inte räcker. Då ber myndigheten hushåll och företag att minska eller skjuta upp förbrukningen vid topparna, runt klockan 8–11 och 17–19.",
+        ],
+      },
+      {
+        h2: "Kommer elpriset bli högt i vinter?",
+        body: [
+          "Här ser Svenska kraftnät den stora risken: perioder med höga elpriser och stora prisskillnader mellan olika delar av landet, något som enligt myndigheten redan har märkts under och efter sommaren. Bakom ligger låga gaslager i Europa till följd av konflikter och krig i omvärlden, låga vattenmagasin i södra Norge och Sverige samt pågående revisioner i flera kärnkraftsreaktorer.",
+          "Vädret avgör mycket. ”En kall vinter i Europa med hög gasförbrukning och lite vind kan ge fortsatt höga priser. En mildare vinter med mer vindkraftsproduktion och något mindre konsumtion skulle kunna minska prispressen betydligt”, säger Maja Lundbäck.",
+          "Siffrorna bekräftar bilden. Enligt Energiföretagens veckorapport var de svenska vattenmagasinen 75,3 procent fulla i slutet av vecka 41 (5–11 oktober), mot ett medelvärde på 81,0 procent för åren 1960–2025. Tillrinningen var samtidigt 111 procent av medianvärdet, så magasinen fylldes på något under veckan.",
+          "Och oktober är redan årets dyraste månad hittills i elområde 4. Enligt Nord Pool har spotpriset där legat på 1,42 kronor per kilowattimme i snitt den 1–15 oktober, mot 1,13 kronor i januari och februari, som var de dyraste hela månaderna hittills i år. I elområde 3 är oktobersnittet 78 öre. Priset svänger också kraftigt inom dygnet: den 14 oktober kostade elen i elområde 4 mellan 5 öre och 3,00 kronor per kilowattimme beroende på kvart.",
+        ],
+      },
+      {
+        h2: "Elbrist i södra Sverige – vad gör Svenska kraftnät?",
+        body: [
+          "Svk:s bedömning om låg risk för effektbrist gäller Sverige som helhet, och myndigheten lyfter särskilt att åtgärderna har stärkt elsystemet i södra Sverige. Det som märks i söder är i stället priset: den 1–15 oktober låg elområde 4 på 1,42 kronor per kilowattimme i snitt, mot 35 öre i elområde 1.",
+          "Svk styr inte elpriserna, som sätts på en avreglerad elmarknad, men säger sig arbeta för hög överföringskapacitet inom landet och ett effektivt utnyttjande av elsystemet. Inför vintern har myndigheten beslutat att använda flaskhalsinkomster för att sänka avgifterna i transmissionsnätet, som vi skrev om den 9 oktober, och stärker möjligheterna till prissäkring. Ett regeringsuppdrag om hur flaskhalsinkomsterna ska användas redovisas i januari 2027.",
+        ],
+      },
+      {
+        h2: "Vad betyder det för din kalkyl?",
+        body: [
+          "För en villaägare är vinterns risk alltså i första hand priset, inte att elen tar slut. Det du själv kan påverka handlar om när och hur mycket el du köper.",
+          "Med kvartspris betalar du spotpriset kvart för kvart, och då gör det skillnad att flytta förbrukning som tvätt, disk och elbilsladdning bort från topparna. Det är samma tider som Svk ber hushållen att undvika om elen blir knapp. Med månadspris betalar du områdets volymvägda snitt för månaden, och då är det mängden som räknas. El du producerar och använder själv, eller lagrar till kvällen, behöver du inte köpa – och Svk nämner själv batterilager som ett sätt att minska risken för lokal kapacitetsbrist.",
+          "Högkostnadsskyddet, som vi skrev om den 12 oktober, är fortfarande inom räckhåll men inte passerat: efter 15 dagar ligger oktober i elområde 4 på 1,42 kronor, och resten av månaden behöver kosta omkring 1,57 kronor i snitt för att regeringens gräns på 1,50 kronor ska nås. Oavsett effektläget sker enligt Svk omkring 5 miljoner strömavbrott i Sverige varje år av olika skäl, och Myndigheten för civilt försvar har råd om vad du behöver ha hemma för att klara ett avbrott.",
+        ],
+        bullets: [
+          "Effektbrist i vinter: låg risk enligt Svenska kraftnät (12 oktober 2026). Manuell förbrukningsfrånkoppling har aldrig använts.",
+          "Elpriset: stor risk för perioder med höga priser och stora prisskillnader. Elområde 4 har legat på 1,42 kr/kWh i snitt den 1–15 oktober.",
+          "Vattenmagasinen: 75,3 procent fulla vecka 41, mot normalt 81,0 procent.",
+          "Mest ansträngda tider om elen blir knapp: runt klockan 8–11 och 17–19.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Har Sverige elbrist?",
+        a: "Nej, inte sett över året. Enligt Svenska kraftnät produceras det mer el än det konsumeras de flesta av årets timmar, och Sverige är en stor nettoexportör av el. Det som kan uppstå är effektbrist – att elen inte räcker under enskilda timmar, vanligen kalla och vindstilla vinterdagar. Inför vintern 2026/27 bedömer Svenska kraftnät den risken som låg.",
+      },
+      {
+        q: "Vad är skillnaden mellan effektbrist och elbrist?",
+        a: "Elbrist är brist på elenergi över en längre tid. Effektbrist är när det vid ett visst tillfälle inte finns tillräckligt med el för att möta efterfrågan i landet eller i ett elområde. Sverige kan alltså ha ett stort elöverskott över året och ändå riskera effektbrist under enstaka timmar. Kapacitetsbrist betyder i sin tur att nätet inte räcker till för att flytta elen dit den behövs.",
+      },
+      {
+        q: "Vad händer vid manuell förbrukningsfrånkoppling?",
+        a: "Svenska kraftnät beordrar utvalda elnätsbolag att inom 15 minuter koppla bort ledningar i ett område för att förhindra ett större avbrott. För hushållen blir det som ett kontrollerat strömavbrott, troligen i ett par timmar, och vid längre frånkoppling kan områden turas om. Nätbolagen tar så långt det går hänsyn till samhällsviktiga elanvändare. Åtgärden har aldrig använts.",
+      },
+      {
+        q: "Kommer elpriset bli högt i vinter?",
+        a: "Svenska kraftnät bedömer att det är stor risk för perioder med höga elpriser och stora prisskillnader mellan landets delar, på grund av låga gaslager i Europa, låga vattenmagasin i södra Norge och Sverige och pågående kärnkraftsrevisioner. Hur högt avgörs mycket av vädret: en kall och vindsnål vinter kan ge fortsatt höga priser, en mildare och blåsigare vinter kan minska prispressen betydligt.",
+      },
+      {
+        q: "Blir det elbrist i södra Sverige?",
+        a: "Svenska kraftnät bedömer risken för effektbrist som låg för Sverige som helhet och framhåller att genomförda åtgärder har stärkt elsystemet, inte minst i södra Sverige. Det som märks i söder är i stället priset: den 1–15 oktober låg elområde 4 på 1,42 kronor per kilowattimme i snitt, mot 35 öre i elområde 1.",
+      },
+    ],
+  },
+
+  "elstod-2026-hogkostnadsskydd-elomrade-4-oktober": {
+    tldr: [
+      "Ingen månad i år har nått gränsen i något område. Dyrast var januari och februari i elområde 4, med 1,13 kronor i snitt.",
+      "Hur stor ersättningen blir har regeringen inte redovisat. Miljarden som var avsatt gick till det tillfälliga stödet för januari–februari, och mer pengar måste tillföras om skyddet slår till.",
+      "Elstödet för januari och februari betalas ut sedan juni: 14–29 öre per kWh beroende på område, cirka 1 850 kronor för en villa i elområde 4 som förbrukat 6 400 kWh.",
+    ],
+    sections: [
+      {
+        h2: "Kommer det elstöd 2026? Två stöd som ofta blandas ihop",
+        body: [
+          "Ett stöd är redan utbetalt, och ett till kan bli aktuellt. Det första är det tillfälliga el- och gasstödet för januari och februari, som Försäkringskassan har betalat ut sedan juni. Det andra är regeringens högkostnadsskydd, som bara gäller om spotpriset i ett elområde i snitt överstiger 1,50 kronor per kilowattimme under en kalendermånad. Det har inte hänt någon månad hittills i år.",
+          "Nu har högkostnadsskyddet blivit aktuellt. Den 8 oktober rapporterade Ekot att elpriset i elområde 4, sydligaste Sverige, i slutet av september och i början av oktober låg på den nivån. Per Tryding, vice vd på Sydsvenska handelskammaren, sa till Ekot att det behövs ett stöd: ”Det är en stor oro för att elpriset ska skena iväg.”",
+        ],
+      },
+      {
+        h2: "Elområde 4 i oktober: 1,36 kronor i snitt efter tolv dagar",
+        body: [
+          "Enligt Nord Pools dygnspriser ligger spotpriset i elområde 4 på 1,36 kronor per kilowattimme i snitt för den 1–12 oktober. Det är högre än något helt månadssnitt hittills i år – dyrast var januari och februari, med 1,13 kronor vardera. I elområde 3 ligger oktobersnittet hittills på 73 öre, och längre norrut på 40 öre i elområde 2 och 36 öre i elområde 1.",
+          "Snittet svänger snabbt. Efter de åtta första dagarna låg elområde 4 på 1,50 kronor, precis vid gränsen. Dyrast var den 7 oktober, med 2,18 kronor i dygnssnitt. Sedan föll priset till 45 öre den 9 oktober och 54 öre den 10 oktober, innan det steg till 2,00 kronor den 12 oktober.",
+          "För att oktober som helhet ska hamna över 1,50 kronor behöver de 19 återstående dagarna kosta omkring 1,59 kronor i snitt – mer än snittet hittills. Om det blir så avgörs av väder och tillgången på el under resten av månaden, och det går inte att veta i förväg. Bakgrunden till höstens höga priser i södra Sverige gick vi igenom i vår artikel den 6 oktober.",
+        ],
+      },
+      {
+        h2: "Högkostnadsskydd mot höga elpriser – så är det tänkt att fungera",
+        body: [
+          "Högkostnadsskyddet aviserades i budgetpropositionen för 2026. Där skrev regeringen att den avser att införa ett skydd om månadsmedelvärdet för spotpriset överstiger 1,5 kronor per kilowattimme inom ett elprisområde, och att hushåll som värms upp med gas ska få motsvarande stöd. Gränsen räknas alltså per elområde, inte för hela landet. I regeringens frågor och svar, senast uppdaterade i juli, står att skyddet ligger kvar under hela 2026.",
+          "Spotpriset är elbörsens pris, utan energiskatt, moms och elhandlarens påslag. Med energiskatten på 36,0 öre och 25 procent moms motsvarar 1,50 kronor i spotpris drygt 2,30 kronor per kilowattimme – innan påslaget och elnätsavgiften.",
+          "Pengarna som var avsatta är däremot redan använda. I budgeten för 2026 anvisades en miljard kronor för skyddet. Priserna i början av året var höga men nådde aldrig gränsen, och i vårens extra ändringsbudget användes miljarden i stället till det tillfälliga stödet för januari och februari. Samtidigt skrev regeringen att den avser att genomföra högkostnadsskyddet om månadssnittet överstiger 1,5 kronor i något elområde under mars–december 2026, och att ytterligare pengar då kommer att behöva tillföras. Sådana anslagsändringar beslutas av riksdagen.",
+          "Här finns en lucka i källäget. Varken budgetpropositionen, ändringsbudgeten eller regeringens frågor och svar beskriver hur stor ersättningen blir, hur den ska räknas eller när den skulle betalas ut. Det går därför inte att säga vad skyddet skulle vara värt för ditt hushåll.",
+        ],
+      },
+      {
+        h2: "Elstöd 2026 utbetalning: så fungerade stödet för januari och februari",
+        body: [
+          "Det tillfälliga el- och gasstödet kostar totalt cirka 3,4 miljarder kronor och finansierades i en extra ändringsbudget i våras. Det baseras på hushållets faktiska elförbrukning i januari och februari 2026 och betalas till den som stod på elnätsavtalet den 28 februari 2026. Ingen ansökan behövdes.",
+          "Försäkringskassan började betala ut i början av juni, och enligt myndigheten har de allra flesta fått sitt elstöd. Har du inte fått något kan pengarna ha gått till ett konto som du tidigare anmält till Swedbanks kontoregister, till exempel ett lönekonto – leta efter en insättning märkt ”elstöd” eller ”insättning”. Den som nyligen har skickat in kontouppgifter får pengarna i de utbetalningar som Försäkringskassan gör varje vecka sedan slutet av augusti. Ingen myndighet eller bank kontaktar privatpersoner om utbetalningen, så blir du kontaktad om elstödet kan det vara ett bedrägeriförsök.",
+          "Stödet är 14 öre per kilowattimme i elområde 1 och 2, 26 öre i elområde 3 och 29 öre i elområde 4, för högst 10 000 kilowattimmar per bostad. Enligt regeringen motsvarar det cirka 15–25 procent av börspriset under perioden. Hushåll som värms med gas från det västsvenska naturgasnätet får 29 öre per kilowattimme gas, och gasstödet betalas enligt regeringen ut under hösten 2026. Regeringens räkneexempel:",
+        ],
+        bullets: [
+          "Villa i elområde 1 eller 2 som förbrukat 7 900 kWh i januari och februari: cirka 1 100 kronor.",
+          "Villa i elområde 3 med 6 400 kWh: cirka 1 660 kronor.",
+          "Villa i elområde 4 med 6 400 kWh: cirka 1 850 kronor.",
+          "Lägenhet med 750 kWh: cirka 105 kronor i elområde 1 och 2, 195 kronor i elområde 3 och 217 kronor i elområde 4.",
+        ],
+      },
+      {
+        h2: "Kommer det mer elstöd – och blir det elprisstöd 2027?",
+        body: [
+          "Om det blir mer stöd i år avgörs i första hand av elpriset. Passerar ett elområde 1,50 kronor i månadssnitt säger regeringen att den avser att genomföra högkostnadsskyddet. Hur snabbt det i så fall skulle gå, och hur mycket pengar som skulle behövas, har inte redovisats.",
+          "Löftet gavs av regeringen Kristersson. Ulf Kristersson begärde entledigande den 17 september, och när den här artikeln skrevs, den 12 oktober, var regeringsfrågan inte löst – Magdalena Andersson (S) hade talmannens sonderingsuppdrag. Hur processen går till förklarar vi i vår artikel om tidslinjen för en ny regering.",
+          "För 2027 finns inget elstöd beslutat, och högkostnadsskyddet är bara utlovat för 2026. Partierna har gått till val på olika linjer. Enligt Elbruks genomgång vill Socialdemokraterna ha ett högkostnadsskydd finansierat med flaskhalsintäkterna, medan Vänsterpartiet vill ha ett elpristak på 75 öre per kilowattimme som täcker 90 procent av hushållets elkostnad över taket och finansieras med en avgift på elbranschen. Det är förslag, inte beslut.",
+          "Regeringen har också föreslagit att den årliga indexeringen av energiskatten på el slopas permanent. Förslaget finns i en promemoria som har skickats på remiss inför höstbudgeten 2027. Redan den 1 januari 2026 sänktes energiskatten med nästan 20 procent, till 36,0 öre per kilowattimme.",
+        ],
+      },
+      {
+        h2: "Vad betyder det för din kalkyl?",
+        body: [
+          "Räkna inte med högkostnadsskyddet i din elbudget. Det är ett skydd mot extrema månader, inte en rabatt: så länge månadssnittet i ditt elområde ligger under 1,50 kronor betalar du hela priset själv, och vad skyddet skulle ge om gränsen passeras är inte känt.",
+          "Det du själv styr är hur mycket el du köper och när. Med kvartspris betalar du spotpriset kvart för kvart, och i oktober har enskilda kvartar i elområde 4 kostat över 3 kronor per kilowattimme – då lönar det sig att flytta förbrukning till billigare timmar. Med månadspris betalar du områdets volymvägda snitt för månaden, och då är det mängden som räknas. Varje kilowattimme du sparar in, eller producerar och använder själv, behöver du inte köpa till spotpris med energiskatt och moms ovanpå.",
+          "Har du inte fått elstödet för januari och februari: kontrollera gamla konton innan du kontaktar Försäkringskassan. Vi följer frågan och uppdaterar artikeln om oktober passerar gränsen i något elområde eller om regeringen beskriver hur skyddet ska fungera.",
+        ],
+        bullets: [
+          "Högkostnadsskyddet gäller om spotpriset i ett elområde i snitt överstiger 1,50 kr/kWh under en kalendermånad 2026. Ersättningens storlek är inte redovisad.",
+          "Elområde 4, 1–12 oktober: 1,36 kr/kWh i snitt. Resten av månaden behöver kosta omkring 1,59 kr/kWh för att oktober ska passera gränsen.",
+          "Elstödet för januari–februari: 14–29 öre/kWh beroende på elområde, högst 10 000 kWh per bostad, utbetalt sedan juni.",
+          "2027: inget elstöd beslutat. Förslaget om att slopa indexeringen av energiskatten på el har skickats på remiss.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Kommer det elstöd 2026?",
+        a: "Det tillfälliga elstödet för januari och februari 2026 är redan utbetalt. Därutöver har regeringen lovat ett högkostnadsskydd under resten av 2026 om spotpriset i ett elområde i snitt överstiger 1,50 kronor per kilowattimme under en kalendermånad. Ingen månad har nått dit hittills i år, men elområde 4 låg på 1,36 kronor i snitt efter oktobers första tolv dagar. Hur stor ersättningen skulle bli har regeringen inte redovisat.",
+      },
+      {
+        q: "När betalas elstödet ut 2026?",
+        a: "Försäkringskassan började betala ut elstödet för januari och februari i början av juni 2026, och de allra flesta har fått det. Den som nyligen har skickat in kontouppgifter får pengarna i de utbetalningar som görs varje vecka sedan slutet av augusti. Har du inte fått något kan pengarna ha hamnat på ett konto som du tidigare anmält till Swedbanks kontoregister. Du behöver inte ansöka.",
+      },
+      {
+        q: "Hur mycket elstöd får man 2026?",
+        a: "Stödet för januari och februari är 14 öre per kilowattimme i elområde 1 och 2, 26 öre i elområde 3 och 29 öre i elområde 4, för högst 10 000 kWh per bostad. Enligt regeringens räkneexempel får en villa som förbrukat 6 400 kWh cirka 1 660 kronor i elområde 3 och 1 850 kronor i elområde 4, medan en villa i elområde 1 eller 2 med 7 900 kWh får cirka 1 100 kronor.",
+      },
+      {
+        q: "Får elområde 4 högkostnadsskydd i oktober?",
+        a: "Det avgörs när månaden är slut. Gränsen räknas per elområde: överstiger spotpriset i elområde 4 i snitt 1,50 kronor per kilowattimme för hela oktober säger regeringen att högkostnadsskyddet ska gälla där. Efter tolv dagar låg snittet på 1,36 kronor, och resten av månaden behöver kosta omkring 1,59 kronor i snitt för att gränsen ska passeras. Hur stort stödet blir och när det betalas ut är inte redovisat.",
+      },
+      {
+        q: "Blir det elprisstöd 2027?",
+        a: "Inget elstöd för 2027 är beslutat, och regeringens högkostnadsskydd är bara utlovat för 2026. Socialdemokraterna vill ha ett högkostnadsskydd finansierat med flaskhalsintäkter och Vänsterpartiet ett elpristak på 75 öre per kilowattimme, men det är förslag, inte beslut. Regeringen har föreslagit att den årliga indexeringen av energiskatten på el slopas permanent, och förslaget har skickats på remiss inför höstbudgeten 2027.",
+      },
+    ],
+  },
+
   "elnatsavgift-2027-flaskhalsintakter-8-miljarder": {
     tldr: [
       "Fördelningen: energiavgiften minskar med drygt 2 miljarder och den fasta avgiften med drygt 6,3. Men avdraget på den fasta avgiften krymper med cirka 350 miljoner jämfört med i år.",

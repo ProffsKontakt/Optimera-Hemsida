@@ -44,6 +44,165 @@ export type Guide = {
 
 export const GUIDES: Guide[] = [
   {
+    slug: "luft-luftvarmepump",
+    status: "published",
+    title: "Vad kostar en luft-luftvärmepump och hur mycket sparar den?",
+    excerpt: "En luft-luftvärmepump kostar vanligtvis 18 000–30 000 kr med installation (2025). Här är vad den sparar, hur den klarar vintern och vad rotavdraget ger 2026.",
+    category: "Värmepump",
+    publishedAt: "2026-10-12",
+    updatedAt: "2026-10-12",
+    readTimeMin: 9,
+    searchPhrases: [
+      "luft värmepump",
+      "luft luft värmepump",
+      "luft luft värmepump pris",
+      "luft luft värmepump installation",
+      "luft värmepump med ac",
+      "luft luft värmepump 2 innedelar",
+      "luft luft värmepump vinter",
+    ],
+    services: [
+      "vaermepumpar",
+    ],
+    sources: [
+      {
+        title: "Välj rätt värmepump",
+        publisher: "Energimyndigheten",
+        url: "https://www.energimyndigheten.se/effektiv-energianvandning/guider/husguiden-for-dig-som-vill-energieffektivisera-ditt-hus/se-over-husets-uppvarmningssystem/valj-ratt-varmepump/",
+      },
+      {
+        title: "Värmepumpar – en guide från energi- och klimatrådgivningen (ET 2025:05)",
+        publisher: "Energimyndigheten",
+        url: "https://energiochklimatradgivningen.se/download/18.5e9a579b195c021e865e6618/1742900645694/V%C3%A4rmepumpar_en%20guide%20fr%C3%A5n%20energi-%20och%20klimatr%C3%A5dgivningen%202025.pdf.pdf",
+      },
+      {
+        title: "Ny energistatistik för fritidshus (undersökning för 2023)",
+        publisher: "Energimyndigheten",
+        url: "https://www.energimyndigheten.se/nyhetsarkiv/2024/ny-energistatistik-for-fritidshus/",
+      },
+      {
+        title: "Installation av luft-vattenvärmepump eller luft-luftvärmepump (Energiguiden)",
+        publisher: "Boverket",
+        url: "https://www.boverket.se/sv/energiguiden/energirenovera-smahus/5.valja_atgarder/luftvarmepump/",
+      },
+      {
+        title: "Möjliga åtgärder vid ansökan om bidrag för energieffektivisering i småhus",
+        publisher: "Boverket",
+        url: "https://www.boverket.se/sv/bidrag--garantier/bidrag-for-energieffektivisering-i-smahus/mojliga-energieffektiviseringsatgarder/",
+      },
+      {
+        title: "Ger arbetet rätt till rotavdrag? (schablon för arbetskostnad vid installation av värmepump)",
+        publisher: "Skatteverket",
+        url: "https://www.skatteverket.se/foretag/skatterochavdrag/rotochrut/gerarbetetratttillrotavdrag.4.5c1163881590be297b5173bf.html",
+      },
+      {
+        title: "Så fungerar skattereduktionen för grön teknik",
+        publisher: "Skatteverket",
+        url: "https://www.skatteverket.se/privat/fastigheterochbostad/gronteknik/safungerarskattereduktionenforgronteknik.4.676f4884175c97df4192870.html",
+      },
+      {
+        title: "Privatpersoner måste anlita certifierad personal för installation av värmepump",
+        publisher: "Naturvårdsverket",
+        url: "https://www.naturvardsverket.se/vagledning-och-stod/kemikalier/fluorerade-vaxthusgaser/privatpersoner-maste-anlita-certifierad-personal-for-installation-av-varmepump/",
+      },
+      {
+        title: "Värmepumpar",
+        publisher: "Elsäkerhetsverket",
+        url: "https://www.elsakerhetsverket.se/privatpersoner/dina-elprodukter/produkter/varmepumpar/",
+      },
+      {
+        title: "Luft-luftvärmepump",
+        publisher: "Energi- och klimatrådgivningen",
+        url: "https://energiochklimatradgivningen.se/hushall/uppvarmning/olikavarmesystem/varmepumpar/luftluftvarmepump.857.html",
+      },
+    ],
+  },
+  {
+    slug: "jamfora-elavtal",
+    status: "published",
+    title: "Hur jämför man elavtal – och vilket passar en villa?",
+    excerpt: "Jämför elavtal på jämförpriset i öre/kWh i Ei:s Elpriskollen. Så väljer du avtal till villan, byter gratis inom tre veckor och undviker brytavgift 2026.",
+    category: "Elpris",
+    publishedAt: "2026-10-12",
+    updatedAt: "2026-10-12",
+    readTimeMin: 8,
+    searchPhrases: [
+      "elavtal jämför",
+      "bästa elavtal villa",
+      "fast elavtal eller rörligt",
+      "bästa elavtalet villa med solceller",
+      "säga upp elavtal",
+      "säga upp elavtal vid flytt",
+      "teckna elavtal innan flytt",
+    ],
+    services: [
+      "batterier",
+      "solpaneler",
+    ],
+    sources: [
+      {
+        title: "Olika avtalstyper",
+        publisher: "Energimarknadsinspektionen",
+        url: "https://ei.se/konsument/el/elavtal/olika-avtalstyper",
+      },
+      {
+        title: "Elhandelsavtal",
+        publisher: "Energimarknadsinspektionen",
+        url: "https://ei.se/konsument/el/elavtal/elhandelsavtal",
+      },
+      {
+        title: "Elhandelsavtal med kvartspris",
+        publisher: "Energimarknadsinspektionen",
+        url: "https://ei.se/konsument/anvand-el-smartare/elhandelsavtal-med-kvartspris",
+      },
+      {
+        title: "Frågor och svar för dig som är elkonsument",
+        publisher: "Energimarknadsinspektionen",
+        url: "https://ei.se/konsument/el/fragor-och-svar-for-dig-som-ar-elkonsument",
+      },
+      {
+        title: "Byte av elhandelsföretag och brytavgifter",
+        publisher: "Energimarknadsinspektionen",
+        url: "https://ei.se/bransch/ellagens-kundnara-bestammelser/kundnara-bestammelser---elhandelsforetag/byte-av-elhandelsforetag-och-brytavgifter",
+      },
+      {
+        title: "Mikroproduktion av el",
+        publisher: "Energimarknadsinspektionen",
+        url: "https://ei.se/konsument/el/mikroproduktion-av-el",
+      },
+      {
+        title: "Ellag (1997:857), 9 kap. Leverans av el och aggregeringstjänster",
+        publisher: "Sveriges riksdag",
+        url: "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/ellag-1997857_sfs-1997-857/",
+      },
+      {
+        title: "Nya lagar om elsystemet (betänkande 2025/26:NU25, beslut 15 juni 2026)",
+        publisher: "Sveriges riksdag",
+        url: "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/betankande/nya-lagar-om-elsystemet_hd01nu25/",
+      },
+      {
+        title: "Ångra ett elavtal",
+        publisher: "Konsumentverket",
+        url: "https://www.konsumentverket.se/varor-och-tjanster/angra-ett-elavtal/",
+      },
+      {
+        title: "Fördjupning om löpande intäkter (Solelportalen)",
+        publisher: "Energimyndigheten",
+        url: "https://www.energimyndigheten.se/effektiv-energianvandning/guider/solelportalen/vilka-stod-och-intakter-kan-jag-fa/fordjupning-om-lopande-intakter/",
+      },
+      {
+        title: "Välja fast eller rörligt elpris – vad passar dig?",
+        publisher: "Konsumenternas Energimarknadsbyrå",
+        url: "https://www.energimarknadsbyran.se/el/dina-elavtal-och-kostnader/elhandelsavtalet/valja-elavtal/olika-avtalstyper/valja-fast-eller-rorligt-elpris/",
+      },
+      {
+        title: "3 saker du bör göra när du byter elavtal",
+        publisher: "Konsumenternas Energimarknadsbyrå",
+        url: "https://www.energimarknadsbyran.se/el/dina-elavtal-och-kostnader/elhandelsavtalet/valja-elavtal/jamfora-elpriser/3-saker-du-bor-gora-nar-du-byter-elavtal/",
+      },
+    ],
+  },
+  {
     slug: "installera-laddbox-hemma",
     status: "published",
     title: "Vad kostar det att installera en laddbox hemma 2026, och vad krävs?",
