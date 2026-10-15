@@ -64,6 +64,79 @@ export type NewsArticle = {
 
 export const NEWS: NewsArticle[] = [
   {
+    slug: "elbrist-i-vinter-svenska-kraftnat-effektbrist-elpriser",
+    status: "published",
+    title:
+      "Blir det elbrist i vinter? Svenska kraftnät: låg risk för effektbrist – men stor risk för höga elpriser",
+    excerpt:
+      "Svenska kraftnät bedömer att risken för effektbrist i vinter är låg, men att det är stor risk för perioder med höga elpriser och stora prisskillnader i landet. Vi förklarar skillnaden mellan elbrist och effektbrist, vad som händer om elen inte räcker till, hur manuell förbrukningsfrånkoppling fungerar – och vad det betyder för dig som villaägare.",
+    category: "Elpriser",
+    publishedAt: "2026-10-15",
+    updatedAt: "2026-10-15",
+    readTimeMin: 8,
+    image: {
+      src: "/news/elbrist-i-vinter-svenska-kraftnat-effektbrist-elpriser.jpg",
+      alt: "Fyra stående solpaneler med smala svarta ramar på ett mörkt tegeltak, där det blanka glaset speglar solen och kopparfärgade moln, med en kraftledningsstolpe och höstfält i bakgrunden",
+    },
+    searchPhrases: [
+      "elbrist i vinter",
+      "har sverige elbrist",
+      "effektbrist vs elbrist",
+      "effektbrist svenska kraftnät",
+      "elbrist södra sverige",
+      "manuell förbrukningsfrånkoppling",
+      "strategisk reserv",
+      "kommer elpriset bli högt i vinter",
+    ],
+    sources: [
+      {
+        title: "Redo för vinterns utmaningar",
+        publisher: "Svenska kraftnät",
+        url: "https://www.svk.se/press-och-nyheter/nyheter/allmanna-nyheter/2026/redo-for-vinterns-utmaningar/",
+      },
+      {
+        title: "Effektläget vintern 2026-2027",
+        publisher: "Svenska kraftnät",
+        url: "https://www.svk.se/om-kraftsystemet/vintern-2026-2027/effektlaget-vintern-2026-2027/",
+      },
+      {
+        title: "Elpriser vintern 2026-2027",
+        publisher: "Svenska kraftnät",
+        url: "https://www.svk.se/om-kraftsystemet/vintern-2026-2027/elpriser-vintern-2026-2027/",
+      },
+      {
+        title: "Elbrist, effektbrist eller kapacitetsbrist?",
+        publisher: "Svenska kraftnät",
+        url: "https://www.svk.se/om-kraftsystemet/nar-elen-inte-racker-till/elbrist-effektbrist-eller-kapacitetsbrist/",
+      },
+      {
+        title: "Så här funkar frånkoppling om elen inte räcker till",
+        publisher: "Svenska kraftnät",
+        url: "https://www.svk.se/om-kraftsystemet/nar-elen-inte-racker-till/sa-har-funkar-frankoppling-om-elen-inte-racker-till/",
+      },
+      {
+        title: "Strategisk reserv",
+        publisher: "Svenska kraftnät",
+        url: "https://www.svk.se/aktorsportalen/bidra-med-reserver/om-olika-reserver/strategisk-reserv/",
+      },
+      {
+        title: "Kraftläget i Sverige – veckorapport, vecka 41 2026",
+        publisher: "Energiföretagen Sverige",
+        url: "https://www.energiforetagen.se/statistik/kraftlaget/",
+      },
+      {
+        title: "Day-ahead-priser per elområde, dygnssnitt oktober 2026",
+        publisher: "Nord Pool",
+        url: "https://data.nordpoolgroup.com/auction/day-ahead/prices?deliveryDate=2026-10-15&currency=SEK&aggregation=Daily&deliveryAreas=SE1,SE2,SE3,SE4",
+      },
+      {
+        title: "Day-ahead-priser per elområde, månadssnitt 2026",
+        publisher: "Nord Pool",
+        url: "https://data.nordpoolgroup.com/auction/day-ahead/prices?deliveryDate=2026-10-15&currency=SEK&aggregation=Monthly&deliveryAreas=SE1,SE2,SE3,SE4",
+      },
+    ],
+  },
+  {
     slug: "elstod-2026-hogkostnadsskydd-elomrade-4-oktober",
     status: "published",
     title:

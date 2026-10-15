@@ -38,6 +38,93 @@ export type NewsContent = {
 };
 
 const CONTENT: Record<string, NewsContent> = {
+  "elbrist-i-vinter-svenska-kraftnat-effektbrist-elpriser": {
+    tldr: [
+      "Bakom prisrisken ligger låga gaslager i Europa, låga vattenmagasin i södra Norge och Sverige och pågående kärnkraftsrevisioner. Magasinen var 75,3 procent fulla vecka 41, mot normalt 81,0.",
+      "Oktober är hittills årets dyraste månad i elområde 4: 1,42 kronor per kilowattimme i snitt den 1–15 oktober, enligt Nord Pool. Inom ett dygn har priset svängt mellan 5 öre och 3 kronor.",
+      "Manuell frånkoppling är myndighetens sista nödåtgärd och har aldrig använts. De mest ansträngda tiderna om elen blir knapp är runt klockan 8–11 och 17–19.",
+    ],
+    sections: [
+      {
+        h2: "Blir det elbrist i vinter? Svenska kraftnäts besked",
+        body: [
+          "Risken är låg, enligt Svenska kraftnät (Svk) – men elen kan bli dyr. När myndigheten summerade läget inför vintern den 12 oktober var beskedet att Sverige går in i vintern med ett robust elsystem och låg risk för effektbrist. Marginalerna är däremot mindre än tidigare, och framför allt ökar risken för höga elpriser och stora prisskillnader i landet.",
+          "”Vi är redo för en vinter som präglas av stor osäkerhet i omvärlden. Vårt ansvar är att se till att det svenska elsystemet är robust och att vi har resurser och beredskap för att upprätthålla en trygg elförsörjning”, säger Svenska kraftnäts generaldirektör Maja Lundbäck. Hon jämför med krisvintern 2022/23: de åtgärder som genomförts har enligt henne stärkt elsystemet, inte minst i södra Sverige.",
+          "Inför vintern upphandlar Svk en strategisk reserv, förstärker beredskapen med gasturbiner och utökar reparationsberedskapen. Myndigheten har också tillsatt en särskild stab för att samordna förberedelserna.",
+        ],
+      },
+      {
+        h2: "Effektbrist vs elbrist – vad är skillnaden?",
+        body: [
+          "Orden används ofta som synonymer, men Svenska kraftnät skiljer på dem. Elbrist betyder brist på elenergi sett över längre tid. Det har Sverige som helhet generellt inte: det produceras mer el än det konsumeras de flesta av årets timmar, och Sverige är en stor nettoexportör av el.",
+          "Effektbrist är något annat: att det vid ett givet tillfälle inte finns tillräckligt med el för att möta efterfrågan i Sverige eller i något av de fyra elområdena. Eftersom det i varje ögonblick måste produceras lika mycket el som förbrukas kan landet ha ett stort överskott över året och ändå riskera underskott under enstaka timmar, vanligen på vintern. Ett tredje begrepp, kapacitetsbrist, betyder att nätet inte räcker till för att flytta elen dit den behövs – till exempel till en storstad eller mellan norra och södra Sverige.",
+          "Risken för effektbrist är störst under elanvändningens två toppar, på morgonen och på kvällen, särskilt kalla dagar när det inte blåser.",
+        ],
+      },
+      {
+        h2: "Vad händer om elen inte räcker till? Så fungerar manuell förbrukningsfrånkoppling",
+        body: [
+          "Svk har flera verktyg innan det blir aktuellt att stänga av el för kunder. Ett är den strategiska reserven: resurser som myndigheten tecknar avtal om och som kan aktiveras när marknadens resurser inte räcker för att balansera systemet. Hur stor reserven ska vara avgörs av risken för effektbrist – Sveriges tillförlitlighetsnorm är en timme per år – och kostnaden betalas genom en avgift på de balansansvarigas förbrukning i elområde 3 och 4.",
+          "Den absolut sista åtgärden är manuell förbrukningsfrånkoppling. Då beordrar Svk utvalda elnätsbolag att inom 15 minuter koppla bort ledningar i ett område, för att förhindra ett större avbrott. Svk bestämmer elområde, omfattning och hur länge. Nätbolagen bestämmer vilka ledningar som stängs av och tar så långt det går hänsyn till samhällsviktiga elanvändare, enligt prioriteringsmetoden Styrel. Åtgärden har funnits länge men har aldrig använts.",
+          "För ett hushåll skulle en frånkoppling vara ungefär som ett vanligt, men kontrollerat, strömavbrott. Hur länge den varar går inte att säga i förväg – enligt Svk troligen ett par timmar – och drar den ut på tiden kan nätbolagen låta områden turas om att vara utan el. Stäng av elektriska apparater inför återinkopplingen, så underlättar du när elen kopplas på igen.",
+          "Svk informerar allmänheten på sin webbplats och via media så snart elbörsen visar att det finns timmar under kommande dygn då produktionen inte räcker. Då ber myndigheten hushåll och företag att minska eller skjuta upp förbrukningen vid topparna, runt klockan 8–11 och 17–19.",
+        ],
+      },
+      {
+        h2: "Kommer elpriset bli högt i vinter?",
+        body: [
+          "Här ser Svenska kraftnät den stora risken: perioder med höga elpriser och stora prisskillnader mellan olika delar av landet, något som enligt myndigheten redan har märkts under och efter sommaren. Bakom ligger låga gaslager i Europa till följd av konflikter och krig i omvärlden, låga vattenmagasin i södra Norge och Sverige samt pågående revisioner i flera kärnkraftsreaktorer.",
+          "Vädret avgör mycket. ”En kall vinter i Europa med hög gasförbrukning och lite vind kan ge fortsatt höga priser. En mildare vinter med mer vindkraftsproduktion och något mindre konsumtion skulle kunna minska prispressen betydligt”, säger Maja Lundbäck.",
+          "Siffrorna bekräftar bilden. Enligt Energiföretagens veckorapport var de svenska vattenmagasinen 75,3 procent fulla i slutet av vecka 41 (5–11 oktober), mot ett medelvärde på 81,0 procent för åren 1960–2025. Tillrinningen var samtidigt 111 procent av medianvärdet, så magasinen fylldes på något under veckan.",
+          "Och oktober är redan årets dyraste månad hittills i elområde 4. Enligt Nord Pool har spotpriset där legat på 1,42 kronor per kilowattimme i snitt den 1–15 oktober, mot 1,13 kronor i januari och februari, som var de dyraste hela månaderna hittills i år. I elområde 3 är oktobersnittet 78 öre. Priset svänger också kraftigt inom dygnet: den 14 oktober kostade elen i elområde 4 mellan 5 öre och 3,00 kronor per kilowattimme beroende på kvart.",
+        ],
+      },
+      {
+        h2: "Elbrist i södra Sverige – vad gör Svenska kraftnät?",
+        body: [
+          "Svk:s bedömning om låg risk för effektbrist gäller Sverige som helhet, och myndigheten lyfter särskilt att åtgärderna har stärkt elsystemet i södra Sverige. Det som märks i söder är i stället priset: den 1–15 oktober låg elområde 4 på 1,42 kronor per kilowattimme i snitt, mot 35 öre i elområde 1.",
+          "Svk styr inte elpriserna, som sätts på en avreglerad elmarknad, men säger sig arbeta för hög överföringskapacitet inom landet och ett effektivt utnyttjande av elsystemet. Inför vintern har myndigheten beslutat att använda flaskhalsinkomster för att sänka avgifterna i transmissionsnätet, som vi skrev om den 9 oktober, och stärker möjligheterna till prissäkring. Ett regeringsuppdrag om hur flaskhalsinkomsterna ska användas redovisas i januari 2027.",
+        ],
+      },
+      {
+        h2: "Vad betyder det för din kalkyl?",
+        body: [
+          "För en villaägare är vinterns risk alltså i första hand priset, inte att elen tar slut. Det du själv kan påverka handlar om när och hur mycket el du köper.",
+          "Med kvartspris betalar du spotpriset kvart för kvart, och då gör det skillnad att flytta förbrukning som tvätt, disk och elbilsladdning bort från topparna. Det är samma tider som Svk ber hushållen att undvika om elen blir knapp. Med månadspris betalar du områdets volymvägda snitt för månaden, och då är det mängden som räknas. El du producerar och använder själv, eller lagrar till kvällen, behöver du inte köpa – och Svk nämner själv batterilager som ett sätt att minska risken för lokal kapacitetsbrist.",
+          "Högkostnadsskyddet, som vi skrev om den 12 oktober, är fortfarande inom räckhåll men inte passerat: efter 15 dagar ligger oktober i elområde 4 på 1,42 kronor, och resten av månaden behöver kosta omkring 1,57 kronor i snitt för att regeringens gräns på 1,50 kronor ska nås. Oavsett effektläget sker enligt Svk omkring 5 miljoner strömavbrott i Sverige varje år av olika skäl, och Myndigheten för civilt försvar har råd om vad du behöver ha hemma för att klara ett avbrott.",
+        ],
+        bullets: [
+          "Effektbrist i vinter: låg risk enligt Svenska kraftnät (12 oktober 2026). Manuell förbrukningsfrånkoppling har aldrig använts.",
+          "Elpriset: stor risk för perioder med höga priser och stora prisskillnader. Elområde 4 har legat på 1,42 kr/kWh i snitt den 1–15 oktober.",
+          "Vattenmagasinen: 75,3 procent fulla vecka 41, mot normalt 81,0 procent.",
+          "Mest ansträngda tider om elen blir knapp: runt klockan 8–11 och 17–19.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Har Sverige elbrist?",
+        a: "Nej, inte sett över året. Enligt Svenska kraftnät produceras det mer el än det konsumeras de flesta av årets timmar, och Sverige är en stor nettoexportör av el. Det som kan uppstå är effektbrist – att elen inte räcker under enskilda timmar, vanligen kalla och vindstilla vinterdagar. Inför vintern 2026/27 bedömer Svenska kraftnät den risken som låg.",
+      },
+      {
+        q: "Vad är skillnaden mellan effektbrist och elbrist?",
+        a: "Elbrist är brist på elenergi över en längre tid. Effektbrist är när det vid ett visst tillfälle inte finns tillräckligt med el för att möta efterfrågan i landet eller i ett elområde. Sverige kan alltså ha ett stort elöverskott över året och ändå riskera effektbrist under enstaka timmar. Kapacitetsbrist betyder i sin tur att nätet inte räcker till för att flytta elen dit den behövs.",
+      },
+      {
+        q: "Vad händer vid manuell förbrukningsfrånkoppling?",
+        a: "Svenska kraftnät beordrar utvalda elnätsbolag att inom 15 minuter koppla bort ledningar i ett område för att förhindra ett större avbrott. För hushållen blir det som ett kontrollerat strömavbrott, troligen i ett par timmar, och vid längre frånkoppling kan områden turas om. Nätbolagen tar så långt det går hänsyn till samhällsviktiga elanvändare. Åtgärden har aldrig använts.",
+      },
+      {
+        q: "Kommer elpriset bli högt i vinter?",
+        a: "Svenska kraftnät bedömer att det är stor risk för perioder med höga elpriser och stora prisskillnader mellan landets delar, på grund av låga gaslager i Europa, låga vattenmagasin i södra Norge och Sverige och pågående kärnkraftsrevisioner. Hur högt avgörs mycket av vädret: en kall och vindsnål vinter kan ge fortsatt höga priser, en mildare och blåsigare vinter kan minska prispressen betydligt.",
+      },
+      {
+        q: "Blir det elbrist i södra Sverige?",
+        a: "Svenska kraftnät bedömer risken för effektbrist som låg för Sverige som helhet och framhåller att genomförda åtgärder har stärkt elsystemet, inte minst i södra Sverige. Det som märks i söder är i stället priset: den 1–15 oktober låg elområde 4 på 1,42 kronor per kilowattimme i snitt, mot 35 öre i elområde 1.",
+      },
+    ],
+  },
+
   "elstod-2026-hogkostnadsskydd-elomrade-4-oktober": {
     tldr: [
       "Ingen månad i år har nått gränsen i något område. Dyrast var januari och februari i elområde 4, med 1,13 kronor i snitt.",
