@@ -64,6 +64,85 @@ export type NewsArticle = {
 
 export const NEWS: NewsArticle[] = [
   {
+    slug: "blir-det-extra-val-andersson-nedrostad-budget-elskatt-elstod",
+    status: "published",
+    title:
+      "Blir det extra val? Nej till Andersson – så påverkas budgeten, elskatten och elstödet",
+    excerpt:
+      "Riksdagen röstade nej till Magdalena Andersson som statsminister, och nu undrar många: blir det extra val? Vi reder ut vad som händer nu i valet, när ett extra val kan bli aktuellt och vad det kostar – och vad läget betyder för budgeten, energiskatten på el 2027 och elstödet.",
+    category: "Valet 2026",
+    publishedAt: "2026-10-18",
+    updatedAt: "2026-10-18",
+    readTimeMin: 8,
+    image: {
+      src: "/news/blir-det-extra-val-andersson-nedrostad-budget-elskatt-elstod.jpg",
+      alt: "Fem stående solpaneler med smala svarta ramar på det mörka plåttaket till ett mörkbetsat trähus med vita fönster, där det blanka glaset speglar moln, med gula björkar och en stilla sjö i bakgrunden",
+    },
+    searchPhrases: [
+      "blir det extra val",
+      "när blir det extra val",
+      "vad händer om det blir extra val",
+      "extra val eller nyval",
+      "extra val hur går det till",
+      "vad kostar ett extra val",
+      "vad händer nu i valet",
+      "energiskatt el 2027",
+      "vad händer med elstödet",
+    ],
+    sources: [
+      {
+        title: "Nej till Magdalena Andersson (S) som statsminister",
+        publisher: "Sveriges riksdag",
+        url: "https://www.riksdagen.se/sv/aktuellt/aktuelltnotiser/2026/okt/15/nej-till-magdalena-andersson-s-som-statsminister_cmsd2ab1134-a03c-4be2-b345-af0aacff33d3sv/",
+      },
+      {
+        title: "Pressträff med talman Andreas Norlén (16 oktober 2026)",
+        publisher: "Sveriges riksdag",
+        url: "https://www.riksdagen.se/sv/aktuellt/aktuelltnotiser/2026/okt/16/presstraff-med-talman-andreas-norlen_cmsdb45efd2-39d1-4b4b-8107-50eaab30dccfsv/",
+      },
+      {
+        title: "Extra val",
+        publisher: "Sveriges riksdag",
+        url: "https://www.riksdagen.se/sv/sa-fungerar-riksdagen/demokrati/val-till-riksdagen/extra-val/",
+      },
+      {
+        title: "Omval och extra val",
+        publisher: "Valmyndigheten",
+        url: "https://www.val.se/det-svenska-valsystemet/grunderna-i-det-svenska-valsystemet/omval-och-extra-val",
+      },
+      {
+        title: "Valmyndigheten: Så mycket skulle ett extraval kosta",
+        publisher: "SVT Nyheter",
+        url: "https://www.svt.se/nyheter/ekonomi/valmyndigheten-sa-mycket-skulle-ett-extraval-kostat",
+      },
+      {
+        title: "Regeringen förbereder övergångsbudget – försvaret får mer pengar",
+        publisher: "TV4 Nyheterna",
+        url: "https://www.tv4.se/artikel/4WBi30KOaBFtclHvzY0r4N/regeringen-foerbereder-oevergangsbudget-foersvaret-far-mer-pengar",
+      },
+      {
+        title: "Nytt hinder för Andersson: V blockar rödgrön budget",
+        publisher: "TV4 Nyheterna",
+        url: "https://www.tv4.se/artikel/1sSJ5BKTwghe8mVVLIwER4/nya-bakslaget-foer-andersson-v-blockar-roedgroen-budget",
+      },
+      {
+        title: "Slopad indexering av energiskatten på el (promemoria, Fi2026/00776)",
+        publisher: "Regeringen, Finansdepartementet",
+        url: "https://www.regeringen.se/rattsliga-dokument/departementsserien-och-promemorior/2026/03/slopad-indexering-av-energiskatten-pa-el/",
+      },
+      {
+        title: "Konsumentprisindex (KPI), juni 2026",
+        publisher: "SCB",
+        url: "https://www.scb.se/hitta-statistik/statistik-efter-amne/priser-och-ekonomiska-tendenser/priser/konsumentprisindex-kpi/pong/statistiknyhet/konsumentprisindex-kpi-juni-2026/",
+      },
+      {
+        title: "Day-ahead-priser per elområde, dygnssnitt oktober 2026",
+        publisher: "Nord Pool",
+        url: "https://data.nordpoolgroup.com/auction/day-ahead/prices?deliveryDate=2026-10-18&currency=SEK&aggregation=Daily&deliveryAreas=SE1,SE2,SE3,SE4",
+      },
+    ],
+  },
+  {
     slug: "elbrist-i-vinter-svenska-kraftnat-effektbrist-elpriser",
     status: "published",
     title:

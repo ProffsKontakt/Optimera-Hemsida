@@ -38,6 +38,98 @@ export type NewsContent = {
 };
 
 const CONTENT: Record<string, NewsContent> = {
+  "blir-det-extra-val-andersson-nedrostad-budget-elskatt-elstod": {
+    tldr: [
+      "Förslaget föll med 248 röster mot 99, och bara Socialdemokraterna röstade ja. Talmannen har tre försök kvar, och först om alla faller hålls extra val inom tre månader.",
+      "Valmyndigheten beräknar kostnaden till strax över 630 miljoner kronor. Sedan demokratins genombrott på 1920-talet har Sverige bara haft ett extra val, år 1958.",
+      "Utan nytt beslut räknas elskatten upp till omkring 36,2 öre per kWh 2027. Elområde 4 har hittills i oktober kostat 1,47 kronor i snitt, nära gränsen 1,50 för högkostnadsskyddet.",
+    ],
+    sections: [
+      {
+        h2: "Vad händer nu i valet – blir det extra val?",
+        body: [
+          "Torsdagen den 15 oktober prövade riksdagen talman Andreas Norléns förslag att göra Magdalena Andersson (S) till statsminister. Förslaget föll: 248 ledamöter röstade nej, 99 röstade ja och 2 var frånvarande. Ett förslag faller om minst 175 av riksdagens 349 ledamöter röstar emot. Alla ja-röster kom från Socialdemokraterna, medan Moderaterna, Sverigedemokraterna, Vänsterpartiet, Centerpartiet, Kristdemokraterna, Miljöpartiet och Liberalerna röstade nej.",
+          "Dagen efter meddelade talmannen att han fortsätter med informella samtal och ger besked om nästa steg måndagen den 19 oktober, med en pressträff klockan 13.30. ”Det krävs inte att någon har ett formellt sonderingsuppdrag för att partierna ska kunna ha dialog med varandra”, sa Andreas Norlén. Till dess att en ny regering tillträder styr övergångsregeringen, med Ulf Kristersson (M) som statsminister och statsråd från Moderaterna, Kristdemokraterna och Liberalerna.",
+          "Blir det extra val? Inte än, och inte automatiskt. Talmannen får lägga fram fyra förslag till statsminister, och Andersson var det första. Först om riksdagen röstar nej till alla fyra ska ett extra val hållas, inom tre månader. Det är då talmannen som bestämmer valdag i samråd med Valmyndigheten – övergångsregeringen får inte själv besluta om extra val. Hur sondering och statsministeromröstning går till förklarade vi i vår artikel den 3 oktober.",
+          "Extra val är ovanliga i Sverige. Sedan demokratins genombrott i början av 1920-talet har bara ett hållits: valet till andra kammaren den 1 juni 1958, då den stora frågan var tilläggspensionen ATP. Ett extra val ändrar inte heller tidpunkten för nästa ordinarie val – de som väljs sitter bara resten av mandatperioden.",
+        ],
+      },
+      {
+        h2: "Extra val – hur går det till och vad kostar det?",
+        body: [
+          "Extra val eller nyval? Det är samma sak – riksdagen använder båda orden om ett riksdagsval som hålls mellan de ordinarie valen. Omval är däremot något annat: då har Valprövningsnämnden efter en överklagan beslutat att ett val ska göras om.",
+          "Vad kostar ett extra val? Strax över 630 miljoner kronor för staten, enligt en grov beräkning från Valmyndigheten. ”Den allra största andelen är statsbidrag till kommuner för förtidsröstning. Sen är det stora kostnader för distribution av röster, skickande av röster åt olika håll, tryck av valmaterial, papper”, säger myndighetens kanslichef Anna Nyqvist till SVT. En del valkuvert kan finnas kvar från valet i september, men det mesta materialet måste tryckas på nytt.",
+          "Själva valet går i princip till som ett vanligt val, med röstlängd, röstkort och förtidsröstning. Skillnaden är tiden. Valmyndigheten, kommunernas valnämnder och länsstyrelserna ska alltid vara beredda att genomföra ett extra val inom tre månader, och därför kortas flera steg:",
+        ],
+        bullets: [
+          "Partier som vill registrera sin partibeteckning ska anmäla det senast en vecka efter beslutet om extra val. Inför ordinarie val gäller sista februari.",
+          "Röstlängden bestäms 30 dagar före valdagen, och fram till dess kan partier anmäla att de vill delta.",
+          "Ambassader och konsulat tar emot röster från 20 dagar före valdagen, mot 24 dagar inför ordinarie val.",
+          "Förtidsröstningen startar 10 dagar före valdagen, mot 18 dagar normalt. Då ska alla väljare också ha fått sina röstkort.",
+        ],
+      },
+      {
+        h2: "Vad händer med budgeten? Övergångsbudget den 12 november",
+        body: [
+          "Budgeten för 2027 kommer oavsett hur regeringsfrågan löses. Enligt TV4 Nyheterna arbetar finansminister Elisabeth Svantesson (M) med en övergångsbudget som läggs fram den 12 november. ”Jag ser som min uppgift att lägga en budget som får Sverige att funka”, säger hon. En övergångsregering bör inte gå fram med egna nya reformer, och Svantesson har samlat riksdagens alla åtta partier för att se vad de kan enas om, till exempel anslagen till försvaret.",
+          "Den 27 november är sista dag för partierna att lämna egna budgetförslag, och den 9 december röstar riksdagen om vilken budget som ska gälla nästa år. Vänsterpartiet har sagt att partiet ställer sig bakom övergångsbudgeten. ”Jag ser det som självklart att vi tillsammans sluter upp kring den övergångsbudget som regeringen är skyldig att lägga fram”, säger Ida Gabrielsson (V) till TV4. Svantesson utesluter samtidigt inte att Moderaterna och andra partier lägger egna budgetförslag för att samla en majoritet.",
+          "För hushållen finns en viktig detalj. De tillfälliga åtgärder som regeringen Kristersson införde för 2026 löper ut om inget nytt beslutas – då höjs till exempel bränsleskatterna och arbetsgivaravgifterna för unga automatiskt. ”Huvudprincipen är att tillfälligt är tillfälligt”, säger Svantesson. Enligt Vänsterpartiet kan de rödgröna, om de bildar regering, i stället göra en gemensam ändringsbudget senare.",
+        ],
+      },
+      {
+        h2: "Energiskatt på el 2027: höjs elskatten?",
+        body: [
+          "Bara marginellt, om inget nytt beslutas. Energiskatten på el sänktes den 1 januari 2026 med nästan 20 procent, till 36,0 öre per kilowattimme. Men enligt lagen räknas skatten om varje år efter konsumentprisindex, och för 2027 gäller omräkningen om inte riksdagen beslutar något annat.",
+          "Regeringen föreslog i mars att indexeringen ska slopas permanent, så att skatten ligger kvar på 36,0 öre även 2027. Förslaget skickades på remiss inför budgeten, men om det kommer med beror enligt Finansdepartementet bland annat på valutgången och det ekonomiska läget. Utan ett sådant beslut fastställer regeringen 2027 års skattesats i en förordning före utgången av november.",
+          "Hur mycket handlar det om? Omräkningen bygger på förändringen i konsumentprisindex mellan juni förra året och juni i år, och enligt SCB var inflationstakten 0,7 procent i juni. Räknat på SCB:s indextal blir skatten omkring 36,2 öre per kilowattimme, alltså 0,2 öre mer. För en villa som köper 20 000 kWh el om året blir det runt 50 kronor dyrare med moms. Elpriset och nätavgiften väger betydligt tyngre på elräkningen än indexeringen.",
+        ],
+      },
+      {
+        h2: "Vad händer med elstödet och högkostnadsskyddet?",
+        body: [
+          "Elstödet för januari och februari 2026 är redan utbetalt. Kvar finns regeringens högkostnadsskydd, som enligt löftet ska gälla om spotpriset i ett elområde i snitt överstiger 1,50 kronor per kilowattimme under en kalendermånad 2026. Löftet gavs av regeringen Kristersson, som nu är övergångsregering, och hur ersättningen skulle räknas har fortfarande inte redovisats – något vi gick igenom den 12 oktober.",
+          "Nu närmar sig elområde 4 gränsen. Enligt Nord Pools dygnspriser ligger spotpriset där på 1,47 kronor per kilowattimme i snitt den 1–18 oktober, upp från 1,36 kronor efter de tolv första dagarna. För att oktober som helhet ska passera 1,50 kronor behöver resten av månaden kosta omkring 1,54 kronor i snitt. I elområde 3 ligger snittet hittills på 78 öre.",
+          "För 2027 finns inget elstöd beslutat, och högkostnadsskyddet är bara utlovat för 2026 – ska det finnas kvar krävs ett nytt beslut. Socialdemokraternas högkostnadsskydd finansierat med flaskhalsintäkter och Vänsterpartiets elpristak på 75 öre per kilowattimme är vallöften, inte beslut. Blir det extra val dröjer det längre innan en ny regering kan lägga fram egna förslag.",
+        ],
+      },
+      {
+        h2: "Vad betyder det för din kalkyl?",
+        body: [
+          "Regeringsfrågan är olöst, men för din energikalkyl är läget ovanligt förutsägbart. Grönt avdrag gäller som i dag tills riksdagen beslutar något annat: 15 procent för solceller och 50 procent för batteri och laddbox, vilket vid fast pris blir 14,55 respektive 48,5 procent av totalkostnaden, med tak på 50 000 kronor per person och år. En övergångsbudget innehåller enligt praxis inga nya reformer, och ett extra val skjuter i första hand upp förändringar.",
+          "Det som rör sig är elpriset, och oktober är dyr i söder. Varje kilowattimme du producerar och använder själv, eller flyttar till billigare timmar med ett batteri, slipper du köpa till spotpris med energiskatt, nätavgift och moms ovanpå. Elskatten ändras med högst några tiondels öre 2027, hur budgetfrågan än slutar. Vi följer talmannens besked den 19 oktober och budgeten den 12 november och uppdaterar när läget ändras.",
+        ],
+        bullets: [
+          "Statsministeromröstningen 15 oktober: 248 nej, 99 ja. Talmannen har tre förslag kvar innan det blir extra val.",
+          "Extra val: inom tre månader efter ett fjärde nej. Kostnad enligt Valmyndigheten: strax över 630 miljoner kronor.",
+          "Budgeten: övergångsbudget 12 november, egna budgetförslag senast 27 november, omröstning 9 december.",
+          "Elskatten 2027: 36,0 öre per kWh om indexeringen slopas, annars omkring 36,2 öre.",
+          "Elområde 4, 1–18 oktober: 1,47 kr/kWh i snitt. Gränsen för högkostnadsskyddet är 1,50 kr som månadssnitt.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Blir det extra val?",
+        a: "Det är inte bestämt. Riksdagen röstade nej till talmannens första förslag, Magdalena Andersson (S), den 15 oktober. Talmannen får lägga fram fyra förslag, så tre försök återstår. Först om alla fyra röstas ned ska ett extra val hållas inom tre månader. Talmannen ger besked om nästa steg måndagen den 19 oktober.",
+      },
+      {
+        q: "När blir det extra val?",
+        a: "Tidigast när ytterligare tre förslag till statsminister har röstats ned – och då inom tre månader. Talmannen bestämmer valdag i samråd med Valmyndigheten och avgör också hur tätt omröstningarna kommer. Övergångsregeringen får inte själv besluta om extra val. De som väljs sitter fram till nästa ordinarie val, 2030.",
+      },
+      {
+        q: "Vad kostar ett extra val?",
+        a: "Strax över 630 miljoner kronor för staten, enligt en grov beräkning från Valmyndigheten. Den största delen är statsbidrag till kommunerna för förtidsröstning. Därtill kommer distribution av röster och tryck av valmaterial – en del valkuvert finns kvar från september, men det mesta måste tryckas nytt.",
+      },
+      {
+        q: "Vad händer om det blir extra val?",
+        a: "Då hålls ett riksdagsval som går till som ett vanligt val men med kortare frister: förtidsröstningen startar till exempel 10 dagar före valdagen i stället för 18. Övergångsregeringen styr vidare tills en ny regering har tillträtt efter valet. Budgeten för 2027 ska enligt planen röstas om i riksdagen den 9 december.",
+      },
+      {
+        q: "Höjs energiskatten på el 2027?",
+        a: "Bara lite, om inget nytt beslutas. Skatten är 36,0 öre per kilowattimme 2026 och räknas enligt lagen om efter konsumentprisindex. Med inflationen mellan juni 2025 och juni 2026 blir den omkring 36,2 öre 2027, enligt vår beräkning på SCB:s siffror. Regeringen har föreslagit att indexeringen slopas så att skatten ligger kvar på 36,0 öre, men om förslaget kommer med avgörs i budgeten.",
+      },
+    ],
+  },
   "elbrist-i-vinter-svenska-kraftnat-effektbrist-elpriser": {
     tldr: [
       "Bakom prisrisken ligger låga gaslager i Europa, låga vattenmagasin i södra Norge och Sverige och pågående kärnkraftsrevisioner. Magasinen var 75,3 procent fulla vecka 41, mot normalt 81,0.",
