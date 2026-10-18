@@ -32,7 +32,7 @@ export function generateStaticParams() {
 const BASE = "https://optimeraenergi.se";
 
 /** Admin-uppladdad bild (media-CMS) vinner över den committade. */
-function resolveHeroImage(article: NewsArticle) {
+function resolveHeroImage(article: NewsArticle): NewsArticle["image"] {
   const override = getMedia(`news:${article.slug}`);
   if (override) {
     return {
@@ -80,7 +80,11 @@ export function generateMetadata({ params }: { params: { slug: string } }) {
  * för E-E-A-T, plus källorna som CreativeWork-citations – viktigt för
  * trovärdighet i Google News-ekosystemet och AI-search.
  */
-function newsArticleSchema(article: NewsArticle, imageUrl?: string) {
+function newsArticleSchema(
+  article: NewsArticle,
+  imageUrl?: string,
+  imageCredit?: string,
+) {
   return {
     "@context": "https://schema.org",
     "@type": "NewsArticle",
@@ -89,7 +93,11 @@ function newsArticleSchema(article: NewsArticle, imageUrl?: string) {
     description: article.excerpt,
     datePublished: article.publishedAt,
     dateModified: article.updatedAt,
-    image: imageUrl ?? `${BASE}/opengraph-image`,
+    image: imageUrl
+      ? imageCredit
+        ? { "@type": "ImageObject", url: imageUrl, creditText: imageCredit }
+        : imageUrl
+      : `${BASE}/opengraph-image`,
     author: {
       "@type": "Person",
       name: "Viktor Tiberg",
@@ -167,7 +175,11 @@ export default function NewsArticlePage({
         ])}
       />
       <JsonLd
-        data={newsArticleSchema(article, img ? absoluteUrl(img.src) : undefined)}
+        data={newsArticleSchema(
+          article,
+          img ? absoluteUrl(img.src) : undefined,
+          img?.credit,
+        )}
       />
       {content?.faq && content.faq.length > 0 && (
         <JsonLd data={faqPageSchema(content.faq)} />
@@ -184,17 +196,36 @@ export default function NewsArticlePage({
           >
             <ArrowLeft size={15} /> Alla nyheter
           </Link>
-          {/* Hero-bilden ligger ovanför rubriken – färg och liv direkt. */}
+          {/* Hero-bilden ligger ovanför rubriken – färg och liv direkt.
+              Pressbilder och licensierade foton visar fotobyline under. */}
           {img && (
-            <div className="mb-6 md:mb-8 overflow-hidden rounded-2xl md:rounded-3xl border border-ink/10 aspect-[16/9] bg-cream">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={img.src}
-                alt={img.alt}
-                fetchPriority="high"
-                className="h-full w-full object-cover"
-              />
-            </div>
+            <figure className="mb-6 md:mb-8">
+              <div className="overflow-hidden rounded-2xl md:rounded-3xl border border-ink/10 aspect-[16/9] bg-cream">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  fetchPriority="high"
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              {img.credit && (
+                <figcaption className="mt-2 text-right font-mono text-[11px] leading-snug text-ink/50">
+                  {img.creditUrl ? (
+                    <a
+                      href={img.creditUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-ink hover:underline underline-offset-2"
+                    >
+                      {img.credit}
+                    </a>
+                  ) : (
+                    img.credit
+                  )}
+                </figcaption>
+              )}
+            </figure>
           )}
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 mb-4 md:mb-5">
             <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink/55">

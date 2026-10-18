@@ -45,8 +45,18 @@ export type NewsArticle = {
    * OG-/schema-bild. Ligger versionshanterad i public/news/ så att bilden
    * granskas i samma PR som texten. Kan ersättas via media-CMS:en
    * (slot "news:<slug>") utan kodändring.
+   *
+   * Bildpolicy (Julian 18/10 2026): bilden ska höra ihop med nyheten –
+   * pressbild på personen, händelsen eller organisationen i nyheten,
+   * ett fritt licensierat foto eller egen datagrafik. Inga AI-genererade
+   * hus med solpaneler, inga AI-bilder av verkliga personer och inga
+   * TV-skärmdumpar eller byråbilder utan licens.
+   *
+   * credit – fotobyline enligt bildgivarens villkor, t.ex.
+   * "Foto: Johan Asp/Svenska kraftnät". Visas under bilden.
+   * creditUrl – länk till källan eller licensen.
    */
-  image?: { src: string; alt: string };
+  image?: { src: string; alt: string; credit?: string; creditUrl?: string };
   /**
    * Sökfrågor artikeln är skriven för att besvara, hämtade från aktuella
    * söktrender (Google-autocomplete sv/SE) vid publicering. Frågorna ska
@@ -76,7 +86,9 @@ export const NEWS: NewsArticle[] = [
     readTimeMin: 8,
     image: {
       src: "/news/blir-det-extra-val-andersson-nedrostad-budget-elskatt-elstod.jpg",
-      alt: "Fem stående solpaneler med smala svarta ramar på det mörka plåttaket till ett mörkbetsat trähus med vita fönster, där det blanka glaset speglar moln, med gula björkar och en stilla sjö i bakgrunden",
+      alt: "Storskärmen i riksdagens kammare visar resultatet av statsministeromröstningen om Magdalena Andersson: 99 ja, 248 nej, 0 avstår och 2 frånvarande",
+      credit: "Foto: Riksdagsförvaltningen/Sveriges riksdag",
+      creditUrl: "https://www.riksdagen.se/sv/kontakt-och-besok/press/pressbilder/",
     },
     searchPhrases: [
       "blir det extra val",
@@ -155,7 +167,9 @@ export const NEWS: NewsArticle[] = [
     readTimeMin: 8,
     image: {
       src: "/news/elbrist-i-vinter-svenska-kraftnat-effektbrist-elpriser.jpg",
-      alt: "Fyra stående solpaneler med smala svarta ramar på ett mörkt tegeltak, där det blanka glaset speglar solen och kopparfärgade moln, med en kraftledningsstolpe och höstfält i bakgrunden",
+      alt: "Maja Lundbäck, generaldirektör för Svenska kraftnät",
+      credit: "Foto: Johan Asp/Svenska kraftnät",
+      creditUrl: "https://www.svk.se/press-och-nyheter/press/portrattbilder/",
     },
     searchPhrases: [
       "elbrist i vinter",
@@ -228,7 +242,9 @@ export const NEWS: NewsArticle[] = [
     readTimeMin: 9,
     image: {
       src: "/news/elstod-2026-hogkostnadsskydd-elomrade-4-oktober.jpg",
-      alt: "Fyra stående solpaneler med smala svarta ramar och blankt glas som speglar moln, på ett rött tegeltak med vindkraftverk och plöjda fält i bakgrunden",
+      alt: "Stapeldiagram över spotpriset i elområde 4 per dygn den 1–12 oktober 2026: från 0,45 kronor den 9 oktober till 2,18 kronor den 7 oktober, med ett snitt på 1,36 kronor, under gränsen 1,50 kronor för högkostnadsskyddet",
+      credit: "Grafik: Optimera Energi · Källa: Nord Pool",
+      creditUrl: "https://data.nordpoolgroup.com/auction/day-ahead/prices?deliveryDate=2026-10-12&currency=SEK&aggregation=Daily&deliveryAreas=SE1,SE2,SE3,SE4",
     },
     searchPhrases: [
       "kommer det elstöd 2026",
