@@ -34,6 +34,226 @@ export type GuideContent = {
 };
 
 export const GUIDE_CONTENT: Record<string, GuideContent> = {
+  "borra-bergvarme": {
+    answer: "Ett borrhål för bergvärme är vanligen 100–300 meter djupt, och medianen i SGU:s brunnsarkiv var cirka 175 meter (2016). Djupet beror på husets värmebehov, berget och grundvattennivån. Borrningen ingår oftast i totalpriset för bergvärme, omkring 120 000–250 000 kr för en villa enligt Energi- och klimatrådgivningen (2023). Innan du borrar ska du alltid anmäla bergvärmen till kommunen, och vissa kommuner kräver tillstånd.",
+    keyFacts: [
+      {
+        label: "Borrdjup för bergvärme",
+        value: "Vanligen 100–300 m, median cirka 175 m i SGU:s brunnsarkiv (SGU 2016)",
+      },
+      {
+        label: "Värme ur borrhålet",
+        value: "Cirka 145 kWh per meter borrhål och år, enligt Energi- och klimatrådgivningen",
+      },
+      {
+        label: "Bergvärme med borrning, villa (2023)",
+        value: "Omkring 120 000–250 000 kr installerat, enligt Energi- och klimatrådgivningen",
+      },
+      {
+        label: "Avstånd enligt SGU",
+        value: "Minst 20 m mellan energibrunnar och minst 10 m innanför tomtgränsen",
+      },
+      {
+        label: "Före borrning",
+        value: "Anmälan till kommunen, i vissa områden tillstånd – annars miljösanktionsavgift på 1 000 kr",
+      },
+      {
+        label: "Rotavdrag 2026 vid fast pris",
+        value: "30 % av arbetet, som räknas som 35 % av totalpriset – alltså 10,5 % av totalen",
+      },
+    ],
+    sections: [
+      {
+        h2: "Hur djupt borrar man för bergvärme?",
+        body: [
+          "Ett borrhål för bergvärme, en så kallad energibrunn, är vanligen 100–300 meter djupt. Det skriver Sveriges geologiska undersökning (SGU) i en översikt från 2016, där medianen bland energibrunnarna i SGU:s brunnsarkiv var cirka 175 meter. SGU noterar också en tendens mot ännu djupare hål.",
+          "Hur djupt just ditt hål behöver vara avgör installatören utifrån husets värmebehov, berget och grundvattennivån. Det är delen under grundvattenytan, det aktiva borrhålsdjupet, som ger värme. Ligger grundvattnet djupt kan det därför krävas ett djupare hål för samma värme, enligt Energimyndighetens värmepumpsguide.",
+          "Ett grovt räkneexempel: Energi- och klimatrådgivningen räknar med att ett borrhål ger ungefär 145 kWh värme per meter och år. Ett hus som behöver 20 000 kWh värme och varmvatten om året, med en värmepump som ger 3 kWh värme per kWh el, hämtar cirka 13 300 kWh ur berget. Det motsvarar drygt 90 meter aktivt borrhål, plus den del av hålet som ligger ovanför grundvattenytan. Exemplet ersätter inte installatörens dimensionering.",
+          "Ligger andra energibrunnar nära kan hålet behöva borras djupare eller luta bort från dem, så att brunnarna inte konkurrerar om värmen.",
+        ],
+      },
+      {
+        h2: "Vad kostar det att borra för bergvärme?",
+        body: [
+          "Borrningen ingår oftast i ett totalpris. Energi- och klimatrådgivningen anger att berg-, jord- eller sjövärme för en villa vanligen kostar omkring 120 000–250 000 kr installerat (prisnivå 2023). Det finns ingen officiell prisuppgift per borrad meter, så be om offerter där borrdjup och foderrör står för sig.",
+          "Det här påverkar vad borrningen kostar:",
+        ],
+        bullets: [
+          "Djupet. Fler meter borrhål kostar mer, och djupet styrs av värmebehovet, berget och grundvattennivån.",
+          "Jorddjupet. Genom jordlagret ner till berget sätts ett foderrör. I höglänt terräng och i moränområden är jorddjupet oftast mindre än 10 meter enligt SGU, medan det i dalgångar och låglänta områden kan vara längre ner till berget.",
+          "Diametern. De flesta energibrunnar borras med 115 mm. SGU skriver att borrkostnaden vanligen stiger med större diameter, medan värmeöverföringen bara påverkas marginellt.",
+          "Antalet hål. Ett stort värmebehov kan kräva flera hål, och de ska helst ligga minst 20 meter från varandra.",
+          "Borrkax och vatten. Slammet från borrningen ska tas om hand, till exempel i en container där partiklarna sjunker till botten, innan vattnet släpps ut.",
+        ],
+      },
+      {
+        h2: "Vilka avdrag och bidrag finns för bergvärme 2026?",
+        body: [
+          "Rotavdraget 2026 är 30 % av arbetskostnaden. Vid fast pris räknar Skatteverket 35 % av totalpriset som arbete, både för borrning och för installation av en bergvärmepump. Avdraget blir då 10,5 % av totalen. För en bergvärmeinstallation till fast pris på 180 000 kr blir det 180 000 × 0,35 × 0,30 = 18 900 kr.",
+          "Villaeffekten kan dessutom ge 30 % av materialkostnaden, högst 60 000 kr per hus, för en styrbar bergvärmepump. Huset ska ha värdeår före 1990 och får inte vara anslutet till fjärrvärme. Bidraget gäller bara material, till exempel själva värmepumpen, inte arbete.",
+        ],
+      },
+      {
+        h2: "Vad är foderrör vid bergvärme?",
+        body: [
+          "Foderrör, eller infodringsrör, är röret som borraren driver ner genom jordlagret till fast berg i början av borrningen. Enligt SGU ska foderröret gå minst 2 meter ner i fast berg och gjutas fast, så att ytligt grundvatten, jord och sten inte tränger in i borrhålet.",
+          "Ju längre det är ner till berget, desto längre foderrör behövs. Kontrollera därför hur många meter foderrör som ingår i priset. Det är en av punkterna i Energi- och klimatrådgivningens checklista för offerter, tillsammans med aktivt borrhålsdjup och avståndet mellan borrhålen.",
+          "Hur långt det är till berget på din tomt får du en uppfattning om i SGU:s kartvisare Jorddjup och i uppgifterna om grannarnas brunnar i kartvisaren Brunnar.",
+        ],
+      },
+      {
+        h2: "Var får man borra – och hur långt från tomtgränsen?",
+        body: [
+          "Det finns inga nationella regler om avståndet mellan energibrunnar, men SGU rekommenderar minst 20 meter mellan två brunnar och att de borras minst 10 meter innanför tomtgränsen. Då hamnar ditt hål alltid minst 20 meter från grannens. Står brunnarna för tätt kan de påverka varandra så att värmepumpen ger mindre än väntat.",
+          "Energi- och klimatrådgivningen rekommenderar också minst 4 meter till huset. Har du eller grannen egen dricksvattenbrunn eller eget avlopp gäller längre avstånd. Härnösands kommun anger till exempel minst 20 meter till en grävd brunn och 30 meter till en borrad brunn eller en egen avloppsanläggning.",
+          "Kommunen kan också vilja höra grannarna, eftersom ditt borrhål kan påverka deras möjligheter att borra. Solna stad ger till exempel alla angränsande fastigheter och alla fastigheter inom 20 meter från borrhålet möjlighet att yttra sig.",
+          "I SGU:s kartvisare Brunnar ser du var grannarnas vatten- och energibrunnar ligger och hur djupa de är, med uppgifter om jorddjup och foderrörslängd. Uppgifterna kommer från brunnsborrarna, som enligt lag ska skicka in sina brunnsprotokoll till SGU – för energibrunnar sedan 1985.",
+        ],
+      },
+      {
+        h2: "Vilken anmälan eller vilket tillstånd krävs innan du borrar?",
+        body: [
+          "Du måste alltid göra en anmälan till kommunen innan du borrar för bergvärme. Det följer av 17 § förordningen om miljöfarlig verksamhet och hälsoskydd. Kommunen får också kräva tillstånd i hela kommunen eller i vissa områden, om det behövs för att skydda hälsa eller miljö. I till exempel vattenskyddsområden kan bergvärme vara helt förbjuden, enligt Energimyndighetens värmepumpsguide.",
+          "Gör anmälan i god tid. Solna stad vill till exempel ha den senast sex veckor innan installationen, och arbetet får inte börja innan anmälan är gjord eller tillståndet har vunnit laga kraft. Ett tillstånd gäller i fem år men förfaller om arbetet inte har påbörjats inom två år.",
+          "Borrar du utan anmälan ska kommunen ta ut en miljösanktionsavgift på 1 000 kr, och 3 000 kr om kommunen kräver tillstånd och du saknar det. Bygglov krävs enligt Solna stad inte för själva bergvärmepumpen, men Energimyndighetens värmepumpsguide påpekar att en del kommuner kräver bygglov eller tillstånd för att borra. Fråga därför din kommun.",
+          "Kontrollera också att det inte går ledningar eller tunnlar under tomten där du vill borra, till exempel via Ledningskollen.",
+        ],
+      },
+      {
+        h2: "Hur går det till att installera bergvärme?",
+        body: [
+          "Så brukar det gå till att installera bergvärme, från offert till drift:",
+        ],
+        bullets: [
+          "Offerter. Ta in minst tre offerter på samma underlag: husets energianvändning per år, nuvarande uppvärmning, varmvattenbehov och huvudsäkringens storlek. Jämför aktivt borrhålsdjup, foderrörslängd och borrhålsavstånd.",
+          "Anmälan. Du eller installatören anmäler bergvärmen till kommunen med en karta över borrhålets läge. Borra inte innan anmälan är gjord, och i tillståndsområden inte förrän tillståndet har vunnit laga kraft.",
+          "Borrning. Anlita en certifierad brunnsborrare – certifieringen sköts av RISE. Energibrunnen ska utformas enligt SGU:s norm Normbrunn-16.",
+          "Kollektorslang och värmepump. En kollektorslang med köldbärarvätska, oftast etanol och vatten, sänks ned i hålet och kopplas till värmepumpen. Elarbetet ska göras av ett registrerat elinstallationsföretag.",
+          "Protokoll. Brunnsborraren skickar brunnsprotokollet till SGU, och en del kommuner vill också ha en kopia.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Hur djupt ska man borra för bergvärme?",
+        a: "Vanligen 100–300 meter enligt SGU, och medianen i brunnsarkivet var cirka 175 meter 2016. Installatören dimensionerar hålet efter husets värmebehov, berget och grundvattennivån. Ett borrhål ger ungefär 145 kWh värme per meter och år, enligt Energi- och klimatrådgivningen.",
+      },
+      {
+        q: "Kan man se på en karta var grannarna har borrat för bergvärme?",
+        a: "Ja. I SGU:s kartvisare Brunnar finns läge, djup, jorddjup och foderrörslängd för många vatten- och energibrunnar. Energibrunnar som borrats efter 1985 finns där med stor sannolikhet, eftersom brunnsborrarna sedan dess ska lämna uppgifterna till SGU.",
+      },
+      {
+        q: "Vad händer om man borrar för bergvärme utan anmälan?",
+        a: "Då ska kommunen besluta om en miljösanktionsavgift: 1 000 kr om anläggningen bara krävde anmälan och 3 000 kr om kommunen kräver tillstånd. Anmäl därför alltid innan borrningen börjar.",
+      },
+      {
+        q: "Hur nära tomtgränsen får man borra för bergvärme?",
+        a: "Det finns ingen nationell regel om avståndet, men SGU rekommenderar minst 10 meter till tomtgränsen och 20 meter till andra energibrunnar. Borrar du närmare kan ditt hål påverka grannens möjlighet att borra, och kommunen kan vilja höra grannen innan den tar ställning.",
+      },
+    ],
+  },
+  "jordvarme-eller-bergvarme": {
+    answer: "Jordvärme är i regel 20 000–30 000 kr billigare att installera än bergvärme, enligt Energi- och klimatrådgivningen, men kräver en stor tomt där kollektorslangen grävs ner på cirka 1 meters djup. Bergvärme hämtar värmen ur ett 100–300 meter djupt borrhål, tar lite plats och påverkas inte av utetemperaturen. Båda kräver vattenburen värme och en anmälan till kommunen, och båda kan ge rotavdrag och bidrag från Villaeffekten 2026.",
+    keyFacts: [
+      {
+        label: "Prisskillnad (2023)",
+        value: "Jordvärme är i regel 20 000–30 000 kr billigare än bergvärme, enligt Energi- och klimatrådgivningen",
+      },
+      {
+        label: "Totalpris för en villa (2023)",
+        value: "Omkring 120 000–250 000 kr för berg-, jord- eller sjövärme",
+      },
+      {
+        label: "Djup",
+        value: "Jordvärmeslangen cirka 1 m, bergvärmens borrhål vanligen 100–300 m (SGU)",
+      },
+      {
+        label: "Anmälan",
+        value: "Krävs till kommunen för både jord- och bergvärme",
+      },
+      {
+        label: "Villaeffekten 2026",
+        value: "30 % av materialet, högst 60 000 kr – gäller styrbar jord- och bergvärmepump",
+      },
+      {
+        label: "Frikyla",
+        value: "Borrhålet håller cirka 10 °C på sommaren och kan kyla huset, enligt Boverket",
+      },
+    ],
+    sections: [
+      {
+        h2: "Vad är skillnaden mellan jordvärme och bergvärme?",
+        body: [
+          "Skillnaden är var värmen hämtas. Bergvärme hämtar värme ur ett borrhål i berget, vanligen 100–300 meter djupt. Jordvärme, även kallad ytjordvärme, hämtar värme ur jorden via en kollektorslang som grävs ner vågrätt, enligt SGU oftast på cirka 1 meters djup.",
+          "I båda fallen cirkulerar en köldbärarvätska i slangen och tar upp värmen, som värmepumpen sedan höjer till en temperatur som räcker för radiatorer och varmvatten. Båda kräver att huset har vattenburen värme, alltså radiatorer eller golvvärme.",
+          "Värmen i jorden fylls på av solen under sommaren. Bergvärmen påverkas däremot inte av utetemperaturen, enligt Energimyndighetens värmepumpsguide.",
+        ],
+      },
+      {
+        h2: "Vad kostar jordvärme jämfört med bergvärme?",
+        body: [
+          "Jordvärme är i regel 20 000–30 000 kr billigare än bergvärme, enligt Energi- och klimatrådgivningen. För en villa kostar berg-, jord- eller sjövärme vanligen omkring 120 000–250 000 kr installerat (prisnivå 2023).",
+          "Grävningen och återställningen av gräsmattan ska stå med i offerten för jordvärme, liksom slangens längd, enligt Energi- och klimatrådgivningens checklista för offerter. För bergvärme gäller i stället borrdjup och foderrör.",
+          "Rotavdraget 2026 är 30 % av arbetskostnaden, och grävning för värmeförsörjning räknas som markarbete som ger rotavdrag. Vid fast pris för en bergvärmeinstallation räknar Skatteverket 35 % av totalpriset som arbete, så avdraget blir 10,5 % av totalen.",
+          "Villaeffekten ger 30 % av materialkostnaden, högst 60 000 kr per hus, för en styrbar jord- eller bergvärmepump. Huset ska ha värdeår före 1990, inte vara anslutet till fjärrvärme, och du ska äga och bo i det. Bidraget betalas bara ut om det blir minst 10 000 kr, alltså vid materialkostnader på minst 33 334 kr.",
+        ],
+      },
+      {
+        h2: "Hur djupt ska slangen ligga för jordvärme?",
+        body: [
+          "Slangen för jordvärme ska ligga på frostfritt djup, alltså så djupt att marken inte fryser. Hur djupt det är varierar med var i landet du bor, enligt Energi- och klimatrådgivningen. SGU anger att slangen oftast grävs ner på cirka 1 meters djup och att den ibland läggs i flera lager ned till 5–10 meter.",
+          "Ligger slangen för grunt kan den frysa, spricka och gå sönder. Hur lång slangen behöver vara beror på husets värmebehov och på jorden, så den ska dimensioneras av installatören och stå i offerten.",
+          "Bergvärmens borrhål är i stället vanligen 100–300 meter djupt. Hur djupt det blir och vad borrningen kostar går vi igenom i guiden om att borra för bergvärme.",
+        ],
+      },
+      {
+        h2: "Vilka nackdelar har jordvärme?",
+        body: [
+          "Jordvärme är billigare men har några nackdelar jämfört med bergvärme:",
+        ],
+        bullets: [
+          "Den kräver en stor yta. SGU skriver att ytjordvärme används när en större markyta kan utnyttjas eller där det är långt ner till berget.",
+          "Växtligheten kan påverkas. Marken ovanför slangen blir kallare, och det kan märkas i trädgården, enligt SGU.",
+          "Marken runt slangen kan frysa på vintern. Det frigör extra värme när vattnet blir is, men verkningsgraden kan samtidigt bli sämre när temperaturen är låg.",
+          "Trädgården grävs upp. Slangen grävs ner över en stor yta, och gräsmattan behöver återställas.",
+          "Kylan är begränsad. SGU skriver att jorden är för varm på sommaren för att ytjordvärme ska kunna användas för kylning, men Boverket ser det annorlunda (se nedan).",
+        ],
+      },
+      {
+        h2: "Kan man få kyla från bergvärme eller jordvärme?",
+        body: [
+          "Ja, med bergvärme. Borrhålet håller cirka 10 °C på sommaren, och den svalkan kan användas som så kallad frikyla, enligt Boverket. Frikyla med bergvärme kyler hela eller delar av huset med el bara till cirkulationspumpar och fläktkonvektorer, så det behövs ingen el för att producera kylan.",
+          "För jordvärme går källorna isär. Boverket skriver att frikyla är mest effektivt med bergvärme men att det också går med mark- och jordvärme. SGU skriver att marken är för varm på sommaren för att ytjordvärme ska kunna användas för kylning. Är kyla viktigt för dig talar det alltså för bergvärme.",
+        ],
+      },
+      {
+        h2: "När passar jordvärme bättre än bergvärme?",
+        body: [
+          "Jordvärme passar när tomten är stor, marken går att gräva i och det är långt ner till berget. SGU skriver att ytjordvärme används i stället för bergvärme i områden med stora jorddjup eller när en större markyta kan utnyttjas. Ett borrhål behöver nämligen foderrör genom hela jordlagret ner till berget.",
+          "Bergvärme passar när tomten är liten eller trädgården inte ska grävas upp, när du vill ha frikyla och när värmebehovet är stort. Energi- och klimatrådgivningen beskriver bergvärme som ett lönsamt alternativ för hus som behöver 15 000–25 000 kWh värme och varmvatten om året eller mer. Borrhålet ska ligga minst 20 meter från andra energibrunnar och 10 meter från tomtgränsen, enligt SGU.",
+          "Har du en sjö intill tomten finns också sjövärme, där slangen läggs på sjöbotten. Det kräver tillstånd från kommunen.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Är jordvärme billigare än bergvärme?",
+        a: "Ja, att installera. Energi- och klimatrådgivningen anger att jordvärme i regel är 20 000–30 000 kr billigare än bergvärme. Driftkostnaden beror på husets värmebehov och elpriset, och SGU påpekar att verkningsgraden kan bli sämre när marken runt jordvärmeslangen fryser.",
+      },
+      {
+        q: "Behöver man anmäla jordvärme till kommunen?",
+        a: "Ja. Enligt förordningen om miljöfarlig verksamhet och hälsoskydd krävs en anmälan till kommunen innan du inrättar en värmepump som tar värme ur mark, ytvatten eller grundvatten. Det gäller jord-, berg- och sjövärme. Kommunen kan kräva tillstånd i vissa områden.",
+      },
+      {
+        q: "Kan man ha jordvärme utan vattenburen värme?",
+        a: "Nej. Berg-, jord- och sjövärmepumpar används i hus med vattenburet värmesystem, alltså radiatorer eller golvvärme. Saknar huset det behöver ett vattenburet system installeras först, och Villaeffekten kan ge bidrag även för det.",
+      },
+      {
+        q: "Ger jordvärme bidrag från Villaeffekten?",
+        a: "Ja, en styrbar jordvärmepump ingår i Villaeffekten 2026: 30 % av materialkostnaden, högst 60 000 kr per hus. Huset ska ha värdeår före 1990 och får inte vara anslutet till fjärrvärme, och produkten ska ligga i någon av de två högsta energiklasser som används i betydande grad.",
+      },
+    ],
+  },
   "luft-luftvarmepump": {
     answer: "En luft-luftvärmepump kostar vanligtvis 18 000–30 000 kr inklusive installation, enligt Energi- och klimatrådgivningen (2025). Rotavdraget 2026 motsvarar 9 % av totalpriset vid fast pris. Energimyndigheten anger att pumpen ger 3,5–5 kWh värme per kWh el över ett år, så den värmen kräver cirka 70–80 % mindre el än direktverkande el. Hur mycket du sparar beror på hur stor del av huset den värmer. Den värmer inte tappvarmvattnet och ger varken Villaeffekten eller grönt avdrag.",
     keyFacts: [
@@ -267,6 +487,10 @@ export const GUIDE_CONTENT: Record<string, GuideContent> = {
     ],
     faq: [
       {
+        q: "Vilket elavtal är billigast?",
+        a: "Det beror på när du använder el, så jämför jämförpriset för din egen förbrukning i Ei:s Elpriskollen. Rörligt pris har historiskt oftast blivit billigare än fast: sedan januari 2012 har det varit lägre än medelpriset för ettåriga fastprisavtal vid ungefär 60 procent av tillfällena, enligt Energimarknadsbyrån. Kan du flytta förbrukningen till billiga tider krävs kvartspris för att det ska sänka kostnaden, enligt Ei.",
+      },
+      {
         q: "Kostar det något att byta elavtal?",
         a: "Nej. Enligt ellagen är ett byte av elhandlare kostnadsfritt för konsumenter, och ingen av elhandlarna får ta ut en administrativ avgift. Undantaget är brytavgift när ett tidsbestämt avtal med fast pris sägs upp i förtid.",
       },
@@ -285,7 +509,7 @@ export const GUIDE_CONTENT: Record<string, GuideContent> = {
     ],
   },
   "installera-laddbox-hemma": {
-    answer: "En laddbox kostar cirka 5 000–12 000 kr plus installation, enligt Energi- och klimatrådgivningen (prisnivå 2024). Installationen kostar mer om kabeln från elcentralen blir lång, om elcentralen måste byggas ut eller om huvudsäkringen behöver höjas. Arbetet ska göras av ett elinstallationsföretag som är registrerat hos Elsäkerhetsverket. Grönt avdrag sänker 2026 priset med 50 % av arbete och material, alltså 48,5 % av totalpriset vid fast pris.",
+    answer: "En laddbox hemma för elbilen kostar cirka 5 000–12 000 kr plus installation, enligt Energi- och klimatrådgivningen (prisnivå 2024). Installationen kostar mer om kabeln från elcentralen blir lång, om elcentralen måste byggas ut eller om huvudsäkringen behöver höjas. Arbetet ska göras av ett elinstallationsföretag som är registrerat hos Elsäkerhetsverket. Grönt avdrag sänker 2026 priset med 50 % av arbete och material, alltså 48,5 % av totalpriset vid fast pris.",
     keyFacts: [
       {
         label: "Laddbox, pris (2024)",
