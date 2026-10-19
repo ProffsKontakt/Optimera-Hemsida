@@ -45,8 +45,18 @@ export type NewsArticle = {
    * OG-/schema-bild. Ligger versionshanterad i public/news/ så att bilden
    * granskas i samma PR som texten. Kan ersättas via media-CMS:en
    * (slot "news:<slug>") utan kodändring.
+   *
+   * Bildpolicy (Julian 18/10 2026): bilden ska höra ihop med nyheten –
+   * pressbild på personen, händelsen eller organisationen i nyheten,
+   * ett fritt licensierat foto eller egen datagrafik. Inga AI-genererade
+   * hus med solpaneler, inga AI-bilder av verkliga personer och inga
+   * TV-skärmdumpar eller byråbilder utan licens.
+   *
+   * credit – fotobyline enligt bildgivarens villkor, t.ex.
+   * "Foto: Johan Asp/Svenska kraftnät". Visas under bilden.
+   * creditUrl – länk till källan eller licensen.
    */
-  image?: { src: string; alt: string };
+  image?: { src: string; alt: string; credit?: string; creditUrl?: string };
   /**
    * Sökfrågor artikeln är skriven för att besvara, hämtade från aktuella
    * söktrender (Google-autocomplete sv/SE) vid publicering. Frågorna ska
@@ -63,6 +73,242 @@ export type NewsArticle = {
 };
 
 export const NEWS: NewsArticle[] = [
+  {
+    slug: "blir-det-extra-val-andersson-nedrostad-budget-elskatt-elstod",
+    status: "published",
+    title:
+      "Blir det extra val? Nej till Andersson – så påverkas budgeten, elskatten och elstödet",
+    excerpt:
+      "Riksdagen röstade nej till Magdalena Andersson som statsminister, och nu undrar många: blir det extra val? Vi reder ut vad som händer nu i valet, när ett extra val kan bli aktuellt och vad det kostar – och vad läget betyder för budgeten, energiskatten på el 2027 och elstödet.",
+    category: "Valet 2026",
+    publishedAt: "2026-10-18",
+    updatedAt: "2026-10-18",
+    readTimeMin: 8,
+    image: {
+      src: "/news/blir-det-extra-val-andersson-nedrostad-budget-elskatt-elstod.jpg",
+      alt: "Storskärmen i riksdagens kammare visar resultatet av statsministeromröstningen om Magdalena Andersson: 99 ja, 248 nej, 0 avstår och 2 frånvarande",
+      credit: "Foto: Riksdagsförvaltningen/Sveriges riksdag",
+      creditUrl: "https://www.riksdagen.se/sv/kontakt-och-besok/press/pressbilder/",
+    },
+    searchPhrases: [
+      "blir det extra val",
+      "när blir det extra val",
+      "vad händer om det blir extra val",
+      "extra val eller nyval",
+      "extra val hur går det till",
+      "vad kostar ett extra val",
+      "vad händer nu i valet",
+      "energiskatt el 2027",
+      "vad händer med elstödet",
+    ],
+    sources: [
+      {
+        title: "Nej till Magdalena Andersson (S) som statsminister",
+        publisher: "Sveriges riksdag",
+        url: "https://www.riksdagen.se/sv/aktuellt/aktuelltnotiser/2026/okt/15/nej-till-magdalena-andersson-s-som-statsminister_cmsd2ab1134-a03c-4be2-b345-af0aacff33d3sv/",
+      },
+      {
+        title: "Pressträff med talman Andreas Norlén (16 oktober 2026)",
+        publisher: "Sveriges riksdag",
+        url: "https://www.riksdagen.se/sv/aktuellt/aktuelltnotiser/2026/okt/16/presstraff-med-talman-andreas-norlen_cmsdb45efd2-39d1-4b4b-8107-50eaab30dccfsv/",
+      },
+      {
+        title: "Extra val",
+        publisher: "Sveriges riksdag",
+        url: "https://www.riksdagen.se/sv/sa-fungerar-riksdagen/demokrati/val-till-riksdagen/extra-val/",
+      },
+      {
+        title: "Omval och extra val",
+        publisher: "Valmyndigheten",
+        url: "https://www.val.se/det-svenska-valsystemet/grunderna-i-det-svenska-valsystemet/omval-och-extra-val",
+      },
+      {
+        title: "Valmyndigheten: Så mycket skulle ett extraval kosta",
+        publisher: "SVT Nyheter",
+        url: "https://www.svt.se/nyheter/ekonomi/valmyndigheten-sa-mycket-skulle-ett-extraval-kostat",
+      },
+      {
+        title: "Regeringen förbereder övergångsbudget – försvaret får mer pengar",
+        publisher: "TV4 Nyheterna",
+        url: "https://www.tv4.se/artikel/4WBi30KOaBFtclHvzY0r4N/regeringen-foerbereder-oevergangsbudget-foersvaret-far-mer-pengar",
+      },
+      {
+        title: "Nytt hinder för Andersson: V blockar rödgrön budget",
+        publisher: "TV4 Nyheterna",
+        url: "https://www.tv4.se/artikel/1sSJ5BKTwghe8mVVLIwER4/nya-bakslaget-foer-andersson-v-blockar-roedgroen-budget",
+      },
+      {
+        title: "Slopad indexering av energiskatten på el (promemoria, Fi2026/00776)",
+        publisher: "Regeringen, Finansdepartementet",
+        url: "https://www.regeringen.se/rattsliga-dokument/departementsserien-och-promemorior/2026/03/slopad-indexering-av-energiskatten-pa-el/",
+      },
+      {
+        title: "Konsumentprisindex (KPI), juni 2026",
+        publisher: "SCB",
+        url: "https://www.scb.se/hitta-statistik/statistik-efter-amne/priser-och-ekonomiska-tendenser/priser/konsumentprisindex-kpi/pong/statistiknyhet/konsumentprisindex-kpi-juni-2026/",
+      },
+      {
+        title: "Day-ahead-priser per elområde, dygnssnitt oktober 2026",
+        publisher: "Nord Pool",
+        url: "https://data.nordpoolgroup.com/auction/day-ahead/prices?deliveryDate=2026-10-18&currency=SEK&aggregation=Daily&deliveryAreas=SE1,SE2,SE3,SE4",
+      },
+    ],
+  },
+  {
+    slug: "elbrist-i-vinter-svenska-kraftnat-effektbrist-elpriser",
+    status: "published",
+    title:
+      "Blir det elbrist i vinter? Svenska kraftnät: låg risk för effektbrist – men stor risk för höga elpriser",
+    excerpt:
+      "Svenska kraftnät bedömer att risken för effektbrist i vinter är låg, men att det är stor risk för perioder med höga elpriser och stora prisskillnader i landet. Vi förklarar skillnaden mellan elbrist och effektbrist, vad som händer om elen inte räcker till, hur manuell förbrukningsfrånkoppling fungerar – och vad det betyder för dig som villaägare.",
+    category: "Elpriser",
+    publishedAt: "2026-10-15",
+    updatedAt: "2026-10-15",
+    readTimeMin: 8,
+    image: {
+      src: "/news/elbrist-i-vinter-svenska-kraftnat-effektbrist-elpriser.jpg",
+      alt: "Maja Lundbäck, generaldirektör för Svenska kraftnät",
+      credit: "Foto: Johan Asp/Svenska kraftnät",
+      creditUrl: "https://www.svk.se/press-och-nyheter/press/portrattbilder/",
+    },
+    searchPhrases: [
+      "elbrist i vinter",
+      "har sverige elbrist",
+      "effektbrist vs elbrist",
+      "effektbrist svenska kraftnät",
+      "elbrist södra sverige",
+      "manuell förbrukningsfrånkoppling",
+      "strategisk reserv",
+      "kommer elpriset bli högt i vinter",
+    ],
+    sources: [
+      {
+        title: "Redo för vinterns utmaningar",
+        publisher: "Svenska kraftnät",
+        url: "https://www.svk.se/press-och-nyheter/nyheter/allmanna-nyheter/2026/redo-for-vinterns-utmaningar/",
+      },
+      {
+        title: "Effektläget vintern 2026-2027",
+        publisher: "Svenska kraftnät",
+        url: "https://www.svk.se/om-kraftsystemet/vintern-2026-2027/effektlaget-vintern-2026-2027/",
+      },
+      {
+        title: "Elpriser vintern 2026-2027",
+        publisher: "Svenska kraftnät",
+        url: "https://www.svk.se/om-kraftsystemet/vintern-2026-2027/elpriser-vintern-2026-2027/",
+      },
+      {
+        title: "Elbrist, effektbrist eller kapacitetsbrist?",
+        publisher: "Svenska kraftnät",
+        url: "https://www.svk.se/om-kraftsystemet/nar-elen-inte-racker-till/elbrist-effektbrist-eller-kapacitetsbrist/",
+      },
+      {
+        title: "Så här funkar frånkoppling om elen inte räcker till",
+        publisher: "Svenska kraftnät",
+        url: "https://www.svk.se/om-kraftsystemet/nar-elen-inte-racker-till/sa-har-funkar-frankoppling-om-elen-inte-racker-till/",
+      },
+      {
+        title: "Strategisk reserv",
+        publisher: "Svenska kraftnät",
+        url: "https://www.svk.se/aktorsportalen/bidra-med-reserver/om-olika-reserver/strategisk-reserv/",
+      },
+      {
+        title: "Kraftläget i Sverige – veckorapport, vecka 41 2026",
+        publisher: "Energiföretagen Sverige",
+        url: "https://www.energiforetagen.se/statistik/kraftlaget/",
+      },
+      {
+        title: "Day-ahead-priser per elområde, dygnssnitt oktober 2026",
+        publisher: "Nord Pool",
+        url: "https://data.nordpoolgroup.com/auction/day-ahead/prices?deliveryDate=2026-10-15&currency=SEK&aggregation=Daily&deliveryAreas=SE1,SE2,SE3,SE4",
+      },
+      {
+        title: "Day-ahead-priser per elområde, månadssnitt 2026",
+        publisher: "Nord Pool",
+        url: "https://data.nordpoolgroup.com/auction/day-ahead/prices?deliveryDate=2026-10-15&currency=SEK&aggregation=Monthly&deliveryAreas=SE1,SE2,SE3,SE4",
+      },
+    ],
+  },
+  {
+    slug: "elstod-2026-hogkostnadsskydd-elomrade-4-oktober",
+    status: "published",
+    title:
+      "Kommer det elstöd 2026? Så nära är elområde 4 högkostnadsskyddet på 1,50 kronor",
+    excerpt:
+      "Regeringen har lovat ett högkostnadsskydd under resten av 2026 om spotpriset i ett elområde i snitt överstiger 1,50 kronor per kilowattimme under en kalendermånad. Efter oktobers första tolv dagar ligger elområde 4 på 1,36 kronor – högre än något helt månadssnitt hittills i år. Vi går igenom hur skyddet är tänkt att fungera, vad som är oklart och vad som gäller för elstödet som redan har betalats ut.",
+    category: "Stöd & avdrag",
+    publishedAt: "2026-10-12",
+    updatedAt: "2026-10-12",
+    readTimeMin: 9,
+    image: {
+      src: "/news/elstod-2026-hogkostnadsskydd-elomrade-4-oktober.jpg",
+      alt: "Stapeldiagram över spotpriset i elområde 4 per dygn den 1–12 oktober 2026: från 0,45 kronor den 9 oktober till 2,18 kronor den 7 oktober, med ett snitt på 1,36 kronor, under gränsen 1,50 kronor för högkostnadsskyddet",
+      credit: "Grafik: Optimera Energi · Källa: Nord Pool",
+      creditUrl: "https://data.nordpoolgroup.com/auction/day-ahead/prices?deliveryDate=2026-10-12&currency=SEK&aggregation=Daily&deliveryAreas=SE1,SE2,SE3,SE4",
+    },
+    searchPhrases: [
+      "kommer det elstöd 2026",
+      "elstöd 2026 utbetalning",
+      "när betalas elstödet ut 2026",
+      "hur mycket elstöd får man 2026",
+      "högkostnadsskydd mot höga elpriser",
+      "kommer det mer elstöd",
+      "elprisstöd 2027",
+    ],
+    sources: [
+      {
+        title: "Frågor och svar om det tillfälliga el- och gasstödet",
+        publisher: "Regeringen",
+        url: "https://www.regeringen.se/regeringens-politik/energi/fragor-och-svar-om-det-tillfalliga-el--och-gasstodet/",
+      },
+      {
+        title: "Budgetpropositionen för 2026, utgiftsområde 21 Energi (prop. 2025/26:1)",
+        publisher: "Sveriges riksdag",
+        url: "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/proposition/budgetpropositionen-for-2026-utgiftsomrade-21_hd031d23/",
+      },
+      {
+        title:
+          "Extra ändringsbudget för 2026 – Sänkt skatt på drivmedel samt el- och gasprisstöd (bet. 2025/26:FiU48)",
+        publisher: "Sveriges riksdag",
+        url: "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/betankande/extra-andringsbudget-for-2026-sankt-skatt-pa_hd01fiu48/",
+      },
+      {
+        title: "Utbetalning av elstöd 2026",
+        publisher: "Försäkringskassan",
+        url: "https://www.forsakringskassan.se/privatperson/utbetalning-av-elstod-2026",
+      },
+      {
+        title: "Day-ahead-priser per elområde, dygnssnitt oktober 2026",
+        publisher: "Nord Pool",
+        url: "https://data.nordpoolgroup.com/auction/day-ahead/prices?deliveryDate=2026-10-12&currency=SEK&aggregation=Daily&deliveryAreas=SE1,SE2,SE3,SE4",
+      },
+      {
+        title: "Day-ahead-priser per elområde, månadssnitt 2026",
+        publisher: "Nord Pool",
+        url: "https://data.nordpoolgroup.com/auction/day-ahead/prices?deliveryDate=2026-10-12&currency=SEK&aggregation=Monthly&deliveryAreas=SE1,SE2,SE3,SE4",
+      },
+      {
+        title: "Högkostnadsskydd för el högaktuellt: ”Oro att det ska skena”",
+        publisher: "Sveriges Radio Ekot",
+        url: "https://www.sverigesradio.se/artikel/regeringens-utlovade-el-stod-rycker-narmare",
+      },
+      {
+        title: "Partiernas energipolitik inför valet 2026",
+        publisher: "Elbruk",
+        url: "https://www.elbruk.se/blogg/partiernas-energipolitik-2026",
+      },
+      {
+        title: "Talmannen inleder process för regeringsbildning",
+        publisher: "Sveriges riksdag",
+        url: "https://www.riksdagen.se/sv/aktuellt/aktuelltnotiser/2026/sep/17/talmannen-inleder-process-for-regeringsbildning_cms6291f93c-a728-4498-a0b9-e30f36627e3fsv/",
+      },
+      {
+        title: "Talmannens sonderingsuppdrag till Magdalena Andersson återupptas",
+        publisher: "Sveriges riksdag",
+        url: "https://www.riksdagen.se/sv/aktuellt/aktuelltnotiser/2026/okt/2/talmannens-sonderingsuppdrag-till-magdalena_cms77150d24-8e8b-479f-9da0-8df5bf84b9b6sv/",
+      },
+    ],
+  },
   {
     slug: "elnatsavgift-2027-flaskhalsintakter-8-miljarder",
     status: "published",
