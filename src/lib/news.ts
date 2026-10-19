@@ -321,8 +321,10 @@ export const NEWS: NewsArticle[] = [
     updatedAt: "2026-10-09",
     readTimeMin: 7,
     image: {
-      src: "/news/elnatsavgift-2027-flaskhalsintakter-8-miljarder.jpg",
-      alt: "Fyra stående solpaneler med blankt svart glas som speglar moln och sol, med kraftledningsstolpar över gula fält i bakgrunden",
+      src: "/news/elnatsavgift-2027-flaskhalsintakter-8-miljarder-foto.jpg",
+      alt: "Flygbild över en av Svenska kraftnäts stamnätsledningar, där en kraftledningsstolpe står i en ledningsgata genom skogen",
+      credit: "Foto: Tomas Ärlemo/Svenska kraftnät",
+      creditUrl: "https://www.svk.se/press-och-nyheter/press/miljobilder-kartor/",
     },
     searchPhrases: [
       "elnätsavgift 2027",
@@ -401,8 +403,10 @@ export const NEWS: NewsArticle[] = [
     updatedAt: "2026-10-06",
     readTimeMin: 8,
     image: {
-      src: "/news/varfor-ar-elpriset-sa-hogt-just-nu-oktober-2026.jpg",
-      alt: "Fyra stående solpaneler med blankt svart glas som speglar sol och moln på ett rött tegeltak, med vit skorsten och gula höstträd mot blå himmel",
+      src: "/news/varfor-ar-elpriset-sa-hogt-just-nu-oktober-2026-diagram.jpg",
+      alt: "Stapeldiagram över spotpriset i elområde 4 per månad från januari 2024 till september 2026, där september 2026 sticker ut med 1,20 kronor per kWh",
+      credit: "Grafik: Optimera Energi · Källa: Nord Pool",
+      creditUrl: "https://data.nordpoolgroup.com/auction/day-ahead/prices?deliveryDate=2026-09-30&currency=SEK&aggregation=Monthly&deliveryAreas=SE3,SE4",
     },
     searchPhrases: [
       "varför är elpriset så högt just nu",
@@ -466,8 +470,10 @@ export const NEWS: NewsArticle[] = [
     updatedAt: "2026-10-03",
     readTimeMin: 6,
     image: {
-      src: "/news/andersson-sonderar-igen-statsministeromrostning-tidslinje.jpg",
-      alt: "Stående solpaneler i rad mot djupblå hösthimmel medan röda och gula löv virvlar förbi",
+      src: "/news/andersson-sonderar-igen-statsministeromrostning-tidslinje-foto.jpg",
+      alt: "Magdalena Andersson (S) och talman Andreas Norlén skakar hand i riksdagen den 18 september 2026",
+      credit: "Foto: Linnea Bengtsson/Sveriges riksdag",
+      creditUrl: "https://www.riksdagen.se/sv/kontakt-och-besok/press/pressbilder/",
     },
     searchPhrases: [
       "när blir det ny regering efter valet",
@@ -546,8 +552,10 @@ export const NEWS: NewsArticle[] = [
     updatedAt: "2026-10-03",
     readTimeMin: 6,
     image: {
-      src: "/news/regeringsbildningen-last-budgeten-12-november-elstoden.jpg",
-      alt: "Glansiga solpaneler speglar en molnstrimmig kvällshimmel, gula höstlöv i förgrunden",
+      src: "/news/regeringsbildningen-last-budgeten-12-november-elstoden-foto.jpg",
+      alt: "Finansminister Elisabeth Svantesson (M) lämnar över budgetpropositionen för 2026 till talman Andreas Norlén i riksdagens kammare den 22 september 2025",
+      credit: "Foto: Alessandro Raffaele Berellini/Sveriges riksdag",
+      creditUrl: "https://www.riksdagen.se/sv/kontakt-och-besok/press/pressbilder/",
     },
     searchPhrases: [
       "grönt avdrag 2027",
@@ -619,8 +627,10 @@ export const NEWS: NewsArticle[] = [
     updatedAt: "2026-09-27",
     readTimeMin: 6,
     image: {
-      src: "/news/kina-fasar-ut-exportrabatter-batteripriser-2027.jpg",
-      alt: "Kinesisk flagga vajar framför ett stort fabrikskomplex i rödorange kvällsljus",
+      src: "/news/kina-fasar-ut-exportrabatter-batteripriser-2027-foto.jpg",
+      alt: "Containerhamnen Yangshan utanför Shanghai, med kranar och staplade containrar vid havet",
+      credit: "Foto: Gmbsfd, CC BY-SA 4.0, via Wikimedia Commons (beskuren)",
+      creditUrl: "https://commons.wikimedia.org/wiki/File:Yangshan_Port_20170923-2.jpg",
     },
     sources: [
       {
@@ -674,8 +684,10 @@ export const NEWS: NewsArticle[] = [
     updatedAt: "2026-10-03",
     readTimeMin: 6,
     image: {
-      src: "/news/vinterns-elpriser-2026-prognos-dyrare-soder.jpg",
-      alt: "Grå svensk trävilla med solpaneler i kallt eftermiddagsljus med frost på gräsmattan",
+      src: "/news/vinterns-elpriser-2026-prognos-dyrare-soder-foto.jpg",
+      alt: "Kraftledningsstolpe i vinterlandskap med snötäckta fjäll i bakgrunden",
+      credit: "Foto: Tomas Ärlemo/Svenska kraftnät",
+      creditUrl: "https://www.svk.se/press-och-nyheter/press/miljobilder-kartor/",
     },
     sources: [
       {
@@ -728,8 +740,10 @@ export const NEWS: NewsArticle[] = [
     updatedAt: "2026-09-21",
     readTimeMin: 5,
     image: {
-      src: "/news/valresultatet-faststallt-176-173-vad-hander-nu-elen.jpg",
-      alt: "Frost som smälter till glittrande droppar på glansiga solpaneler i lågt morgonljus",
+      src: "/news/valresultatet-faststallt-176-173-vad-hander-nu-elen-foto.jpg",
+      alt: "Riksdagshuset speglas i Strömmen i Stockholm, med Rosenbad till vänster",
+      credit: "Foto: Melker Dahlstrand/Sveriges riksdag",
+      creditUrl: "https://www.riksdagen.se/sv/kontakt-och-besok/press/pressbilder/",
     },
     sources: [
       {
@@ -776,8 +790,10 @@ export const NEWS: NewsArticle[] = [
     updatedAt: "2026-10-03",
     readTimeMin: 6,
     image: {
-      src: "/news/effektavgifter-2026-stoppat-krav-ny-modell-batteri.jpg",
-      alt: "Gul svensk trävilla i skymning med solcellstak och varmt ljus i fönstren",
+      src: "/news/effektavgifter-2026-stoppat-krav-ny-modell-batteri-foto.jpg",
+      alt: "Ställverk med kraftledningsportaler i en transformatorstation",
+      credit: "Foto: Tomas Ärlemo/Svenska kraftnät",
+      creditUrl: "https://www.svk.se/press-och-nyheter/press/miljobilder-kartor/",
     },
     sources: [
       {
@@ -841,8 +857,10 @@ export const NEWS: NewsArticle[] = [
     updatedAt: "2026-09-15",
     readTimeMin: 6,
     image: {
-      src: "/news/efter-valet-2026-rysarjamnt-vad-hander-med-elen.jpg",
-      alt: "Svensk villagata i skymning med solpaneler på taken och varmt ljus i fönstren",
+      src: "/news/efter-valet-2026-rysarjamnt-vad-hander-med-elen-foto.jpg",
+      alt: "Händer som sorterar valkuvert på ett bord under rösträkningen",
+      credit: "Foto: Fialotta Bratt/Valmyndigheten",
+      creditUrl: "https://val.mediaflowportal.com/",
     },
     sources: [
       {
@@ -896,8 +914,10 @@ export const NEWS: NewsArticle[] = [
     updatedAt: "2026-09-06",
     readTimeMin: 7,
     image: {
-      src: "/news/valet-2026-solceller-elpriser-en-vecka-kvar.jpg",
-      alt: "Faluröd svensk villa med solpaneler på taket i gyllene septemberljus",
+      src: "/news/valet-2026-solceller-elpriser-en-vecka-kvar-foto.jpg",
+      alt: "En hand håller en mobil med ett digitalt röstkort för valet den 13 september 2026, framför en skylt med texten Här kan du rösta",
+      credit: "Foto: Fialotta Bratt/Valmyndigheten",
+      creditUrl: "https://val.mediaflowportal.com/",
     },
     sources: [
       {
