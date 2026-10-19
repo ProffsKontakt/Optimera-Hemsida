@@ -2314,7 +2314,7 @@ export const QUESTIONS: SolarQuestion[] = [
         h2: "Säkringen avgör",
         paragraphs: [
           "Det är effekten hos växelriktaren, som gör om solelen till växelström, som räknas och som anges i föranmälan till nätbolaget, inte panelernas. Enligt Svensk Solenergi och Energiföretagen får växelriktarens ström vara lika stor som, men inte större än, huvudsäkringen. Med trefas motsvarar 35 A cirka 24,2 kW och 63 A cirka 43,5 kW.",
-          "Du får alltså installera något mer paneleffekt än säkringen motsvarar, eftersom växelriktaren ofta dimensioneras till 80–90 procent av panelernas effekt. Hur många paneler du kan ha beror därmed på säkringen: med en säkring på 20 ampere räcker det till ungefär 15–17 kWp, eller 30–38 paneler på 450–500 W. Vill du ha mer kan du höja säkringen, vilket kostar, eller begränsa växelriktarens effekt. Vissa nätbolag tillåter också en separat produktionssäkring. Energimyndigheten påpekar att det är tillåtet att överskrida regelverkens gränsvärden, men att du då går miste om förmånerna."
+          "Du får alltså installera något mer paneleffekt än säkringen motsvarar, eftersom växelriktaren ofta dimensioneras till 80–90 procent av panelernas effekt. Hur många paneler du kan ha beror därmed på säkringen: med en säkring på 20 ampere räcker det till ungefär 15–17 kWp, eller 30–38 paneler på 450–500 W. Vill du ha mer kan du höja säkringen, vilket kostar, eller begränsa växelriktarens effekt. Vissa nätbolag tillåter också en separat produktionssäkring. Energimyndigheten påpekar att det är tillåtet att överskrida regelverkens gränsvärden, men att du då går miste om förmånerna. Enligt myndigheten är det dock sällan säkringen som begränsar en villa, utan oftast takytan."
         ]
       },
       {
@@ -2373,7 +2373,7 @@ export const QUESTIONS: SolarQuestion[] = [
       "sakringsabonnemang",
       "kw-och-kwh"
     ],
-    updatedAt: "2026-10-03"
+    updatedAt: "2026-10-19"
   },
   {
     slug: "installera-solceller-sjalv",
@@ -3106,7 +3106,7 @@ export const QUESTIONS: SolarQuestion[] = [
         h2: "Så mycket tjänar du: ett räkneexempel",
         paragraphs: [
           "Exempel: Du säljer 4 000 kWh från dina solceller under ett år, med antagandet att du i snitt får 35 öre/kWh från elhandlaren och 4 öre/kWh i nätnytta. Det ger 4 000 × 0,39 kronor = 1 560 kronor. Med 60-öringen hade samma försäljning gett 2 400 kronor till.",
-          "Som jämförelse låg månadsmedelpriset på elbörsen i elområde 3 mellan 23 och 52 öre/kWh under april–september 2025. Den el du använder själv är oftast minst lika mycket värd, eftersom du då slipper elpris, energiskatt, rörlig nätavgift och moms."
+          "Som jämförelse låg månadsmedelpriset på elbörsen i elområde 3 mellan 23 och 52 öre/kWh under april–september 2025 och mellan 54 och 87 öre/kWh under samma månader 2026, enligt Nord Pool. Den el du använder själv är oftast minst lika mycket värd, eftersom du då slipper elpris, energiskatt, rörlig nätavgift och moms."
         ]
       }
     ],
@@ -3141,6 +3141,11 @@ export const QUESTIONS: SolarQuestion[] = [
         title: "Månadspriser på elbörsen mellan 1996 och 2025",
         publisher: "Konsumenternas energimarknadsbyrå",
         url: "https://www.energimarknadsbyran.se/media/1834/manadspriser-pa-elborsen-mellan-1996-och-2025.pdf"
+      },
+      {
+        title: "Day-ahead-priser, månadsmedel SE3 2026",
+        publisher: "Nord Pool",
+        url: "https://data.nordpoolgroup.com/auction/day-ahead/prices?deliveryDate=2026-09-30&currency=SEK&aggregation=Monthly&deliveryAreas=SE3"
       }
     ],
     related: [
@@ -3165,7 +3170,7 @@ export const QUESTIONS: SolarQuestion[] = [
         label: "Guide: Så jämför du elavtal"
       }
     ],
-    updatedAt: "2026-10-03"
+    updatedAt: "2026-10-19"
   },
   {
     slug: "skatt-pa-sald-solel",
@@ -3178,7 +3183,7 @@ export const QUESTIONS: SolarQuestion[] = [
         h2: "Så beskattas ersättningen",
         paragraphs: [
           "Ersättningen från elhandlaren räknas som inkomst från din privatbostad, på samma sätt som till exempel uthyrning. Schablonavdraget på 40 000 kronor gäller bostadens samlade inkomster under året. Bara det som överstiger 40 000 kronor beskattas.",
-          "Ersättning för nätnytta från nätbolaget räknas in på samma sätt. Har du ett hembatteri som får betalt för stödtjänster, så kallad frekvensreglering, räknas även den ersättningen in bland bostadens inkomster.",
+          "Ersättning för nätnytta från nätbolaget räknas in på samma sätt. Har du ett hembatteri som får betalt för stödtjänster, så kallad frekvensreglering, räknas även den ersättningen in bland bostadens inkomster. Får du i stället ersättning via elbilens batteri eller laddboxen gäller inte schablonavdraget, utan du drar av de faktiska kostnaderna.",
           "Skatteverkets hjälpblankett SKV 2199 hjälper dig att räkna ihop inkomsterna. Den skickas inte in. Blir det ett överskott efter avdraget fyller du i det i deklarationen."
         ]
       },
@@ -3236,7 +3241,7 @@ export const QUESTIONS: SolarQuestion[] = [
         label: "Guide: Grönt avdrag 2026"
       }
     ],
-    updatedAt: "2026-10-03"
+    updatedAt: "2026-10-19"
   },
   {
     slug: "maste-man-salja-elen",
