@@ -18,7 +18,7 @@ const LAST_MOD = {
   omOss: "2026-07-08",
   kontakt: "2026-05-09",
   tjanster: "2026-05-19",
-  legal: "2026-10-14",
+  legal: "2026-10-20",
   cities: "2026-05-24",
   guiderHub: "2026-05-24",
   press: "2026-05-24",

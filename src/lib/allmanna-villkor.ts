@@ -3,8 +3,8 @@
  *
  * GENERERAD, redigera inte för hand. Källa: sentinel-hq
  * src/lib/offert/terms-content.ts (buildAllmannaVillkorSektioner, md5
- * 966d80fb6ba90242ecc0064d75b6ffd4) med prislistan i offert_villkor_priser
- * (senast ändrad 2026-09-08). Genererad 2026-10-14.
+ * bb370859bc36fc595192c9c69724353a) med prislistan i offert_villkor_priser
+ * (senast ändrad 2026-09-08). Genererad 2026-10-20.
  *
  * Ändras villkoren eller prislistan i Hubben ska filen genereras om, annars
  * säger hemsidan något annat än offerten kunden skriver under.
@@ -16,7 +16,7 @@ export interface VillkorSektion {
   delar: (string | string[])[];
 }
 
-export const VILLKOR_UPPDATERADE = "2026-10-14";
+export const VILLKOR_UPPDATERADE = "2026-10-20";
 
 export const VILLKOR_INTRO = "Optimera Energilösningar i Mälardalen AB · Org.nr 559375-2206 · Tillämplighet och allmänna villkor";
 
@@ -124,7 +124,7 @@ export const VILLKOR_SEKTIONER: VillkorSektion[] = [
       "Konsumenten har rätt att kräva att näringsidkaren avhjälper fel, om detta inte medför oskäligt stora kostnader eller olägenheter för näringsidkaren i förhållande till felets betydelse för konsumenten. Även om konsumenten inte kräver det, får näringsidkaren avhjälpa felet om denne utan uppskov efter mottagen reklamation erbjuder sig att göra detta och konsumenten inte har särskilda skäl att avvisa erbjudandet. Avhjälpande ska ske inom skälig tid efter att konsumenten gett näringsidkaren tillfälle till det och utan kostnad för konsumenten, med undantag för kostnader som skulle ha uppkommit även om tjänsten utförts felfritt eller, om felet beror på olyckshändelse eller liknande, kostnader för att ersätta material som konsumenten enligt avtalet tillhandahållit och bekostat.",
       "Om konsumenten vill åberopa att tjänsten är felaktig ska denne reklamera inom skälig tid efter att felet märkts eller borde ha märkts. Reklamation som sker inom två månader från det att felet upptäckts ska alltid anses ha skett i rätt tid. Reklamation får dock inte ske senare än tre år efter att uppdraget avslutades eller, när det gäller arbete på mark, byggnader, anläggningar eller andra fasta saker, senare än tio år efter att uppdraget avslutades, om inte annat följer av garanti eller liknande utfästelse.",
       "Om slutbesiktning har avtalats ska utföraren i god tid underrätta beställaren om när arbetet beräknas vara avslutat och när slutbesiktning kan genomföras. Beställaren eller utföraren har rätt att vid avtalad garantitid begära garantibesiktning före garantitidens utgång samt att begära efterbesiktning av arbete som utförts för att avhjälpa fel. Enligt konsumenttjänstlagen ska beställaren meddela utföraren om besiktning begärs och utse en besiktningsman. Om inte annat avtalats ska beställaren slutligt svara för ersättningen till besiktningsmannen vid slutbesiktning och garantibesiktning. Vid efterbesiktning ska utföraren stå för den del av kostnaden som hänför sig till den nya besiktningen om fel kvarstår, annars svarar beställaren för kostnaden. Resultatet av slutbesiktningen ska snarast redovisas skriftligen till parterna.",
-      "För levererade produkter gäller respektive tillverkares garantivillkor. Garantitider framgår av offerten eller av tillverkarens produktdokumentation. Garantierna omfattar inte fel som beror på yttre påverkan, olyckshändelse, felaktig användning eller skötsel, ingrepp eller ändringar utförda av annan än utföraren eller av utföraren anvisad part, eller på att beställarens el-, internet- eller Wi-Fi-anslutning inte uppfyllt kraven. Vissa tillverkargarantier förutsätter att anläggningen är kontinuerligt uppkopplad mot internet; beställaren ansvarar för att anläggningen förblir uppkopplad, och utföraren ansvarar inte för garantiinskränkningar som beror på bruten uppkoppling.",
+      "För levererade produkter gäller respektive tillverkares garantivillkor. Garantitider framgår av offerten eller av tillverkarens garantivillkor och produktdokumentation. Garantierna omfattar inte fel som beror på yttre påverkan, olyckshändelse, felaktig användning eller skötsel, ingrepp eller ändringar utförda av annan än utföraren eller av utföraren anvisad part, eller på att beställarens el-, internet- eller Wi-Fi-anslutning inte uppfyllt kraven. Vissa tillverkargarantier förutsätter att anläggningen är kontinuerligt uppkopplad mot internet; beställaren ansvarar för att anläggningen förblir uppkopplad, och utföraren ansvarar inte för garantiinskränkningar som beror på bruten uppkoppling.",
       "För det fall Optimera Energilösningar i Mälardalen AB skulle försättas i konkurs, inleda rekonstruktion eller likvidation, eller upphöra med sin verksamhet blir Energy Group AES AB beställarens kontakt för garantiärenden avseende produktgarantin för produkter som levererats via Energy Group. Energy Group AES AB driver ärendet mot tillverkaren av den produkt som gått sönder. Godkänner tillverkaren ärendet erhåller beställaren ersättningsprodukten utan materialkostnad, med den garantitid som gällde när anläggningen togs i drift; garantitiden börjar inte om och förkortas inte. Energy Group AES AB anvisar även ett behörigt installationsföretag som kan utföra arbetet; arbetet beställer beställaren direkt av installatören på vanliga villkor. Åtagandet följer respektive tillverkares garantivillkor och omfattar inte fel som beror på installation eller dimensionering, skador av yttre påverkan eller ingrepp av annan än behörig installatör. Beställaren bör spara orderbekräftelse eller faktura, som visar vilka produkter som omfattas. Skulle en enskild tillverkare upphöra bistår Energy Group AES AB beställaren med att hitta en likvärdig ersättningsprodukt; kostnaden för denna står beställaren för."
     ]
   },
