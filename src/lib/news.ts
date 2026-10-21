@@ -74,6 +74,87 @@ export type NewsArticle = {
 
 export const NEWS: NewsArticle[] = [
   {
+    slug: "solcellsforetag-konkurs-garanti-forskott-2026",
+    status: "published",
+    title:
+      "Vad händer om solcellsföretaget går i konkurs? Så gäller garantin, förskottet och fakturan",
+    excerpt:
+      "Konkurserna bland solcellsföretag fortsätter, och i slutet av september hamnade ett 80-tal pågående solcellsprojekt i ett konkursbo. Vad händer om solcellsföretaget går i konkurs – före, under eller efter installationen? Vi reder ut vad som gäller för garantin, förskottet och fakturan enligt Konsumentverket, och hur du skyddar dig.",
+    category: "Marknad",
+    publishedAt: "2026-10-21",
+    updatedAt: "2026-10-21",
+    readTimeMin: 7,
+    image: {
+      src: "/news/solcellsforetag-konkurs-garanti-forskott-2026.jpg",
+      alt: "Tre montörer monterar svarta solpaneler på ett rött tegeltak, med en byggnadsställning längs husets fasad",
+      credit: "Foto: W.carter, CC0, via Wikimedia Commons (beskuren)",
+      creditUrl: "https://commons.wikimedia.org/wiki/File:Three_men_installing_solar_panels_on_a_house.jpg",
+    },
+    searchPhrases: [
+      "vad händer om solcellsföretag går i konkurs",
+      "solcellsföretag konkurs 2026",
+      "solcellsinstallatör konkurs",
+      "solceller konkurs",
+      "vad händer med garanti om företag går i konkurs",
+      "garanti installation solceller",
+      "förskottsbetalning konkurs",
+      "invändningsrätt konkurs",
+      "hålla inne betalning till hantverkare",
+    ],
+    sources: [
+      {
+        title: "När hantverkaren eller husbyggaren går i konkurs",
+        publisher: "Konsumentverket",
+        url: "https://www.konsumentverket.se/varor-och-tjanster/hantverkare-eller-husbyggare-i-konkurs/",
+      },
+      {
+        title: "Solcellsföretaget Sesol i konkurs. Vad händer nu? (frågor och svar, uppdaterad 2026)",
+        publisher: "Konsumentverket",
+        url: "https://www.konsumentverket.se/fragor-och-svar/3225929/solcellsforetaget-sesol-i-konkurs-vad-hander-nu/",
+      },
+      {
+        title: "Företaget har gått i konkurs – vad gäller?",
+        publisher: "Konsumentverket",
+        url: "https://www.konsumentverket.se/konsumentratt/foretag-i-konkurs/",
+      },
+      {
+        title: "Garanti – vad är garanti och när gäller den?",
+        publisher: "Konsumentverket",
+        url: "https://www.konsumentverket.se/konsumentratt/garanti/",
+      },
+      {
+        title: "Solcellsleverantören kan inte leverera (frågor och svar, uppdaterad 3 september 2026)",
+        publisher: "Konsumentverket",
+        url: "https://www.konsumentverket.se/fragor-och-svar/2655982/solcellsleverantoren-kan-inte-leverera/",
+      },
+      {
+        title: "Storförluster knäckte solcellsföretag – 80 projekt drabbas (29 september 2026)",
+        publisher: "Elinstallatören",
+        url: "https://www.elinstallatoren.se/storforluster-knackte-solcellsforetag-80-projekt-drabbas/",
+      },
+      {
+        title: "Stark finansiär räckte inte när miljonförlusterna radades upp (7 oktober 2026)",
+        publisher: "Elinstallatören",
+        url: "https://www.elinstallatoren.se/stark-finansiar-rackte-inte-nar-miljonforlusterna-radades-upp/",
+      },
+      {
+        title: "Hack i konkurskurvan – högsta septembernivån på över 30 år (1 oktober 2026)",
+        publisher: "Creditsafe",
+        url: "https://www.mynewsdesk.com/se/creditsafe/pressreleases/hack-i-konkurskurvan-hoegsta-septembernivaan-paa-oever-30-aar-3469900",
+      },
+      {
+        title: "Solpaneler har aldrig varit billigare – det är därför branschen blöder (21 augusti 2026)",
+        publisher: "Realtid",
+        url: "https://www.realtid.se/it-tech/solpaneler-har-aldrig-varit-billigare-det-ar-darfor-branschen-bloder/",
+      },
+      {
+        title: "Solcellsföretag i konkurs – lista 2024–2026 (uppdaterad oktober 2026)",
+        publisher: "Laddtorsk",
+        url: "https://laddtorsk.se/solcellsforetag-i-konkurs-2025/",
+      },
+    ],
+  },
+  {
     slug: "blir-det-extra-val-andersson-nedrostad-budget-elskatt-elstod",
     status: "published",
     title:

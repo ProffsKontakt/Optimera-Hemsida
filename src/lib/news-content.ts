@@ -38,6 +38,88 @@ export type NewsContent = {
 };
 
 const CONTENT: Record<string, NewsContent> = {
+  "solcellsforetag-konkurs-garanti-forskott-2026": {
+    tldr: [
+      "Rätten att reklamera mot företaget upphör vid konkursen. Garantier från tillverkaren av paneler, växelriktare eller batteri gäller däremot som vanligt.",
+      "Har du inte betalat för det som återstår får du hålla inne lika mycket som det kostar att låta någon annan göra klart. Ett förskott blir oftast en oprioriterad fordran.",
+      "Betalade du med kreditkort eller faktura via ett faktureringsbolag kan du rikta samma krav mot kreditgivaren. Det kallas invändningsrätt enligt konsumentkreditlagen.",
+    ],
+    sections: [
+      {
+        h2: "Varför går så många solcellsföretag i konkurs 2026?",
+        body: [
+          "Den 28 september beslutade Stockholms tingsrätt om konkurs i solcellsföretaget Raymond Solar AB. Ett 80-tal projekt var igång, och alla kommer inte att kunna slutföras. ”Vissa kommer att behöva avbrytas”, säger konkursförvaltaren Lars Lundberg på 7wise advokatbyrå till Elinstallatören. Bland kunderna fanns privatpersoner, bostadsrättsföreningar och fastighetsägare. Kreditupplysningsföretaget Creditsafe räknar bolaget till septembers större konkurser.",
+          "I början av oktober rapporterade Elinstallatören att Solortus AB i Västervik hade gått i konkurs. Företaget hade tagit emot förskott från 27 kunder och beställt varor från sin leverantör, men varorna skickades aldrig eftersom leverantören inte fick betalt, berättar konkursförvaltaren Dan Bengtsson. I våras gick solcellsföretaget Sesol i konkurs, och Konsumentverket har sedan dess besvarat en rad frågor från dess kunder.",
+          "Hur många solcellsföretag som har gått i konkurs skiljer sig mellan sammanställningarna. Realtid rapporterade i augusti att 196 svenska solcellsinstallatörer gick i konkurs 2025, en ökning med 33 procent. Sajten Laddtorsk, som för en lista över konkurserna, anger i dag 186 företag för 2025, 147 för 2024 och drygt hundra under årets nio första månader.",
+          "En förklaring är prisfallet. Enligt Realtid har priset på solpaneler fallit med omkring 90 procent sedan 2010. Kinesiska paneler säljs i Europa under de europeiska tillverkarnas produktionskostnad, säger Johan Lindahl, generalsekreterare i branschorganisationen ESMC, enligt tidningen. Samma prisfall som gör solel billigare för kunderna gör det nästan omöjligt att tjäna pengar på att bygga anläggningarna, skriver Realtid.",
+        ],
+      },
+      {
+        h2: "Vad händer med garantin om företaget går i konkurs?",
+        body: [
+          "När företaget går i konkurs försvinner din rätt att reklamera, alltså att klaga på fel enligt konsumentlagstiftningen. Du kan inte längre kräva att företaget åtgärdar fel kostnadsfritt, skriver Konsumentverket.",
+          "Garantier som någon annan har lämnat gäller däremot som vanligt. Det kan vara tillverkarens garanti på solpanelerna, på växelriktaren eller på batteriet. Läs garantivillkoren för att se hur länge garantin gäller och vad som krävs, och vänd dig direkt till tillverkaren. I många fall kan du också reklamera en felaktig vara direkt till leverantören eller tillverkaren och ställa samma krav som på företaget: att felet lagas, att varan byts ut, prisavdrag eller att köpet hävs.",
+          "Hur är det då med garantin på installationen av solceller? En installationsgaranti lämnas av installatören själv och försvinner därför i regel med företaget. Fel i själva monteringen får du alltså oftast bekosta själv efter en konkurs, om inte någon som tar över verksamheten åtar sig ansvaret. Har installatören orsakat en skada, till exempel en vattenskada, kan du däremot anmäla den till företagets ansvarsförsäkring. Försäkringen ersätter aldrig kostnaden för att rätta till ett felaktigt utfört arbete.",
+        ],
+      },
+      {
+        h2: "Får jag tillbaka förskottet om solcellsföretaget går i konkurs?",
+        body: [
+          "Oftast inte. Har du betalat direkt till företaget, till exempel med Swish, banköverföring eller kontant, blir pengarna en del av konkursboet. Ditt krav blir en oprioriterad fordran, och eftersom vissa skulder betalas först är chansen att få tillbaka pengarna liten, enligt Konsumentverket. Kraven skickar du till konkursförvaltaren tillsammans med kvitton och annan dokumentation.",
+          "Har du betalat med kreditkort eller med faktura via ett faktureringsbolag skyddas du av konsumentkreditlagen. Då kan du ställa samma krav på kreditgivaren eller banken som du annars hade ställt på konkursboet. Det kallas invändningsrätt, och den gäller även vid konkurs. Kontakta kreditgivaren och säg att du vill använda invändningsrätten. Säger kreditgivaren nej kan du anmäla tvisten till Allmänna reklamationsnämnden (ARN). Det kostar 150 kronor.",
+          "Har du betalat för material som redan levererats till dig får du i regel behålla det. Material som enligt avtalet är ditt men som fortfarande finns hos företaget kan du ibland få ut med så kallad separationsrätt, om du kan visa att det är ditt och peka ut det bland de andra varorna.",
+          "En förskottsbetalning vid konkurs är alltså en risk som kunden själv bär. Fallet Solortus, där 27 kunder hade betalat förskott för varor som aldrig skickades, visar hur det kan gå.",
+        ],
+      },
+      {
+        h2: "Hur mycket får du hålla inne om installationen inte är klar?",
+        body: [
+          "Har du ännu inte betalat för arbetet får du hålla inne så mycket som motsvarar det som inte är klart eller som är felaktigt. Beloppet ska motsvara vad det kostar att låta ett annat företag göra färdigt anläggningen, och den summan kan du använda till just det. Det är samma regler som när du vill hålla inne betalning till hantverkare som går i konkurs, enligt Konsumentverket.",
+          "Konkursboet har rätt att ta betalt för det arbete som företaget faktiskt har utfört på ett fackmässigt sätt. Får du en faktura för arbete eller material som inte levererats ska du skriftligt, till exempel med mejl, meddela konkursboet att du håller inne betalningen, hur mycket och varför.",
+          "Har arbetet inte påbörjats kan du kontakta konkursboet och argumentera för att få häva avtalet, eftersom arbetet troligen inte kommer att utföras i tid. Konkursförvaltaren hittar du genom tingsrätten i den stad där företaget hade sitt huvudkontor.",
+        ],
+      },
+      {
+        h2: "Vad gäller om företaget rekonstrueras eller tas över?",
+        body: [
+          "Är företaget i rekonstruktion i stället för konkurs beror din rätt att reklamera och använda garantier på vad rekonstruktören har beslutat. Ofta får företaget inte betala ut några pengar under en rekonstruktion, så ekonomiska krav får vänta. Fråga företaget vad som gäller.",
+          "Köps verksamheten upp kan den nya ägaren ibland ta över skulder och krav, men inte alltid. Erbjuder ett nytt bolag att ta över ditt avtal krävs att avtalsvillkoren tillåter det. Annars bör du ha rätt att frånträda avtalet, och det meddelar du skriftligt till det nya bolaget och konkursboet.",
+          "Leasar du anläggningen eller batteriet gäller inte konsumentlagstiftningen, utan då är det leasingavtalet som styr. Slutar en övervakningsapp att fungera efter konkursen kan du ha krav mot appens leverantör, om den är någon annan än installatören.",
+        ],
+      },
+      {
+        h2: "Vad betyder det för din kalkyl?",
+        body: [
+          "Konkursen påverkar inte hur mycket el anläggningen producerar, men den flyttar risken till dig: fel som inte täcks av tillverkarens garanti får du i regel betala själv, och pengar du betalat i förskott kan vara förlorade. Så minskar du risken:",
+        ],
+        bullets: [
+          "Betala i takt med leveransen. Ett förskott blir en oprioriterad fordran om företaget går i konkurs, så betala helst inte för material och arbete innan det är levererat.",
+          "Välj betalsätt med invändningsrätt. Kreditkort eller faktura via ett faktureringsbolag ger dig rätt att rikta samma krav mot kreditgivaren.",
+          "Spara dokumentationen. Avtal, fakturor, kvitton, serienummer och tillverkarnas garantibevis behövs både för garantianspråk och för krav mot ett konkursbo.",
+          "Kontrollera vem som lämnar garantin. Tillverkarnas garantier på paneler, växelriktare och batteri gäller även om installatören försvinner, men installatörens egen garanti gör det i regel inte.",
+          "Är du redan drabbad? Kontakta konkursförvaltaren. Kommunens konsumentvägledning kan hjälpa dig, och tvister med en kreditgivare kan prövas av ARN.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Vad händer med garantin om företaget går i konkurs?",
+        a: "Rätten att reklamera mot företaget upphör, så det kan inte längre åtgärda fel kostnadsfritt. Garantier som tillverkaren eller leverantören har lämnat gäller som vanligt, till exempel på solpaneler, växelriktare och batteri. Följ garantivillkoren och vänd dig direkt till den som har lämnat garantin.",
+      },
+      {
+        q: "Vad händer om solcellsföretaget går i konkurs innan installationen är klar?",
+        a: "Det är inte säkert att installationen blir klar: vissa projekt kan drivas vidare av konkursboet, andra avbryts. Har du betalat för levererat material och utfört arbete behöver du inte betala mer i nuläget, och materialet får du i regel behålla. För det som återstår får du hålla inne lika mycket som det kostar att låta ett annat företag göra klart. Meddela konkursboet skriftligt.",
+      },
+      {
+        q: "Får man tillbaka förskottsbetalning vid konkurs?",
+        a: "Sällan. Ett förskott som betalats direkt till företaget blir en oprioriterad fordran i konkursboet, och vissa skulder betalas före. Har du betalat med kreditkort eller faktura via ett faktureringsbolag kan du i stället använda invändningsrätten och kräva pengarna av kreditgivaren.",
+      },
+      {
+        q: "Vem kontaktar man när solcellsföretaget har gått i konkurs?",
+        a: "Konkursförvaltaren, som du hittar genom tingsrätten där företaget hade sitt huvudkontor. Garantianspråk skickar du till tillverkaren. Kommunens konsumentvägledning kan hjälpa till, och en tvist med en kreditgivare kan prövas av ARN för 150 kronor.",
+      },
+    ],
+  },
   "blir-det-extra-val-andersson-nedrostad-budget-elskatt-elstod": {
     tldr: [
       "Förslaget föll med 248 röster mot 99, och bara Socialdemokraterna röstade ja. Talmannen har tre försök kvar, och först om alla faller hålls extra val inom tre månader.",
