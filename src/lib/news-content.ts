@@ -38,6 +38,88 @@ export type NewsContent = {
 };
 
 const CONTENT: Record<string, NewsContent> = {
+  "nar-startar-ringhals-4-igen-karnkraft-ur-drift-november-2026": {
+    tldr: [
+      "Ringhals 3 har stått still sedan 4 maj och skulle enligt planen ha varit tillbaka i juli. Sedan juni har återstarten skjutits upp fem gånger, senast den 23 oktober.",
+      "Forsmark 1 kopplas in den 17 november men ger bara 520 av 1 098 megawatt till och med 12 december, eftersom arbetet på en av turbinerna fortsätter.",
+      "Enligt Vattenfall kan återstarterna bidra till att stabilisera priserna, om inga nya förseningar kommer. Vattenbristen i Norge och gasmarknaden kan dra åt andra hållet.",
+    ],
+    sections: [
+      {
+        h2: "Vilka kärnkraftverk står stilla just nu?",
+        body: [
+          "Sverige har sex kärnkraftsreaktorer: tre i Forsmark, två i Ringhals och en i Oskarshamn. Den 24 oktober producerar hälften av dem ingen el. Ringhals 3, Ringhals 4 och Forsmark 1 står på 0 megawatt enligt Vattenfalls driftdata, medan Forsmark 2 och Forsmark 3 går. Oskarshamn 3 är också i drift enligt OKG, som driver reaktorn.",
+          "De tre avställda reaktorerna har tillsammans en installerad effekt på 3 313 megawatt: 1 081 megawatt i Ringhals 3, 1 134 i Ringhals 4 och 1 098 i Forsmark 1. Det framgår av bolagens meddelanden till elbörsen Nord Pool, där alla tre är registrerade i elområde 3.",
+        ],
+      },
+      {
+        h2: "När startar Ringhals 3 och 4 igen?",
+        body: [
+          "Den 20 oktober meddelade Vattenfall nya datum för båda reaktorerna. Ringhals 4 tidigareläggs tio dagar och beräknas vara tillbaka på nätet den 20 november. Ringhals 3 gick åt andra hållet. Enligt meddelandena till Nord Pool flyttades återstarten samma dag från 31 oktober till 7 november, och den 23 oktober en gång till, till 18 november. I meddelandena till Nord Pool anges Ringhals 3 och 4 som otillgängliga till och med 18 respektive 20 november.",
+          "För Ringhals 3 är det den femte förseningen sedan juni. Reaktorn stängdes för årlig revision den 4 maj, och enligt planen från mars skulle revisionen vara klar den 23 juli. I juni flyttades återstarten först till 10 augusti och sedan till 30 augusti, i juli till 31 oktober och i oktober alltså två gånger till. Startar reaktorn den 18 november har den stått still i sex och en halv månad. ”Det har varit en lång underhållsperiod med flera tillkommande arbeten som lett till oförutsedda förlängningar”, säger Ringhals produktionschef Sven-Anders Andersson i Vattenfalls besked.",
+          "Ringhals 4:s årliga revision började den 2 september och skulle enligt den ursprungliga planen vara klar den 15 oktober. I september sköts återstarten upp till 30 november på grund av oförutsett underhåll. Att den nu har tidigarelagts till 20 november beror enligt meddelandet till Nord Pool på att arbetet ligger före tidplan.",
+        ],
+      },
+      {
+        h2: "Varför står Ringhals still?",
+        body: [
+          "Enligt Sveriges Radio P4 Halland är det svart gummi som har åldrats i förtid som har hållit båda reaktorerna stängda i flera månader. Fynden gjordes först i Ringhals 3, och sedan fick även Ringhals 4 stängas för gummisanering – för att inte riskera anläggningen eller säkerheten, förklarar produktionschefen Sven-Anders Andersson. Han säger till P4 Halland att han ser fram emot att båda reaktorerna levererar el igen i november.",
+          "Ringhals 4 har dessutom haft problem med en av sina två huvudgeneratorer. Runt lunchtid den 23 maj kom ett larm om att fukthalten i generatorn steg, och efter en inspektion togs den ur drift. En kylledning med vatten i en av generatorns 60 statorhärvor hade börjat läcka, och eftersom läckan inte gick att laga byts hela härvan ut. Arbetet görs sedan mitten av augusti av generatorns tillverkare Arabelle Solutions och beräknas vara klart i början av november.",
+          "Att det inte tar längre tid beror på att Ringhals hade extra statorhärvor i lager. ”Hade vi både behövt beställa en ny statorhärva och hitta en entreprenör att installera den så hade arbetet kunnat ta sex till tolv månader längre”, säger Martin Holmberg, underhållsansvarig för huvudgeneratorerna på Ringhals 4, i Vattenfalls nyhet om reparationen. Den läckande härvan ska skickas till ett laboratorium för att ta reda på varför den började läcka.",
+        ],
+      },
+      {
+        h2: "Forsmark 1 återstart: 17 november – men på knappt halv effekt",
+        body: [
+          "Forsmark 1 stängdes för årlig revision den 6 september. Att revisionen skulle pågå till den 17 november är känt sedan december 2025, då den förlängdes på grund av ändrad omfattning. Nytt sedan den 15 oktober är att underhållet av en av reaktorns turbiner fortsätter även efter att reaktorn har kopplats till nätet.",
+          "Därför är bara 520 av Forsmark 1:s 1 098 megawatt tillgängliga från den 17 november till och med den 12 december, enligt meddelandet till Nord Pool. Därefter finns inget nytt avbrott anmält för i år.",
+        ],
+      },
+      {
+        h2: "Kärnkraft och elpris: vad betyder återstarterna?",
+        body: [
+          "Kärnkraften är en av fyra faktorer som Vattenfall lyfter inför vinterns elpriser, tillsammans med vädret, vattenkraften och världsläget. ”Vi har haft ovanligt mycket kärnkraft ur drift i Sverige under hösten. Men situationen bör förbättras när reaktorerna kommer tillbaka i drift”, säger Vanja Dillén Savcic, rådgivare och senior portföljförvaltare på Vattenfall. Sker återstarterna utan nya förseningar kan de enligt Vattenfall bidra till att stabilisera elpriserna inför vintern.",
+          "De andra faktorerna drar åt olika håll. Den hydrologiska balansen i Norden – tillgången på vatten och snö för vattenkraften – ligger enligt Vattenfall omkring 13–14 terawattimmar under det normala i slutet av oktober, främst efter ett torrt år i Norge. Konflikterna i Mellanöstern skapar osäkerhet kring leveranserna av flytande naturgas till Europa, vilket kan driva upp gaspriset och därmed elpriset även här. Samtidigt pekar de långsiktiga väderprognoserna just nu mot en mildare, blötare och blåsigare inledning på vintern, vilket skulle kunna hålla nere priserna.",
+          "Hittills i oktober har skillnaderna mellan elområdena varit stora. Enligt Nord Pool är spotpriset för den 1–24 oktober i snitt 1,49 kronor per kilowattimme i elområde 4 och 81 öre i elområde 3, mot 41 öre i elområde 2 och 34 öre i elområde 1. Priset svänger också snabbt från dag till dag: i elområde 4 kostade den 23 oktober 1,65 kronor i dygnssnitt och den 24 oktober 28 öre.",
+        ],
+      },
+      {
+        h2: "Vad betyder det för din kalkyl?",
+        body: [
+          "Räkna inte med att elpriset faller den 20 november. Återstarterna ökar tillgången på el i elområde 3, men priset avgörs också av väder, vattenläge och gasmarknad – och Ringhals 3 har redan försenats fem gånger sedan juni. Nya datum publiceras som meddelanden hos Nord Pool, så där kan du själv följa om planerna håller.",
+          "Vattenfall pekar på två sätt att hantera osäkerheten: ett fast elpris över vintern för den som oroar sig för höga priser, eller att med kvartspris flytta förbrukning till de billigare timmarna. Det viktigaste man själv kan göra är enligt Vanja Dillén Savcic ”att se över sin totala elförbrukning”. Varje kilowattimme som du sparar in eller producerar själv behöver du inte köpa, oavsett när reaktorerna startar.",
+        ],
+        bullets: [
+          "Ur drift den 24 oktober: Ringhals 3 (1 081 MW), Ringhals 4 (1 134 MW) och Forsmark 1 (1 098 MW) – tre av Sveriges sex reaktorer.",
+          "Planerad återstart: Forsmark 1 den 17 november (520 MW till och med 12 december), Ringhals 3 den 18 november och Ringhals 4 den 20 november.",
+          "Ringhals 3:s återstart har skjutits upp fem gånger sedan juni – från 23 juli till 18 november.",
+          "Spotpris 1–24 oktober: 1,49 kr/kWh i elområde 4 och 81 öre i elområde 3.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "När startar Ringhals 4 igen?",
+        a: "Enligt Vattenfall beräknas Ringhals 4 vara tillbaka på nätet den 20 november 2026, tio dagar tidigare än det förra beskedet. Reaktorns årliga revision började den 2 september och skulle ursprungligen ha varit klar den 15 oktober, men förlängdes på grund av oförutsett underhåll. Parallellt byts en läckande statorhärva i en av reaktorns två generatorer, ett arbete som beräknas vara klart i början av november.",
+      },
+      {
+        q: "När startar Ringhals 3 igen?",
+        a: "Vattenfall räknar med att Ringhals 3 startar den 18 november 2026. Reaktorn har stått still sedan den årliga revisionen började den 4 maj, och enligt planen skulle den ha varit tillbaka den 23 juli. Återstarten har skjutits upp fem gånger sedan juni, senast den 23 oktober, eftersom planerade åtgärder tar längre tid än väntat.",
+      },
+      {
+        q: "Vilka kärnkraftverk står stilla, och hur många reaktorer är i drift i Sverige?",
+        a: "Den 24 oktober är tre av Sveriges sex reaktorer i drift: Forsmark 2, Forsmark 3 och Oskarshamn 3. Ringhals 3, Ringhals 4 och Forsmark 1 står stilla för revision och reparationer, med en sammanlagd installerad effekt på 3 313 megawatt. Håller planerna är alla sex igång igen efter den 20 november, men Forsmark 1 går på knappt halv effekt till och med den 12 december.",
+      },
+      {
+        q: "Varför står Ringhals still?",
+        a: "Enligt Sveriges Radio P4 Halland har svart gummi som åldrats i förtid hållit båda reaktorerna stängda i flera månader. Fynden gjordes först i Ringhals 3, och sedan fick även Ringhals 4 stängas för gummisanering. Ringhals 4 har dessutom haft en läcka i en av sina två huvudgeneratorer sedan i maj. Vattenfall beskriver förseningarna som en lång underhållsperiod med flera tillkommande arbeten.",
+      },
+      {
+        q: "När startar kärnkraften igen – och sänker det elpriset?",
+        a: "Enligt de senaste beskeden kommer Forsmark 1 tillbaka den 17 november, Ringhals 3 den 18 november och Ringhals 4 den 20 november. Vattenfall bedömer att återstarterna kan bidra till att stabilisera elpriserna inför vintern om de sker utan nya förseningar, men vattenbristen i Norge, gasmarknaden och vädret påverkar också. Hur mycket elpriset påverkas går inte att säga i förväg.",
+      },
+    ],
+  },
   "solcellsforetag-konkurs-garanti-forskott-2026": {
     tldr: [
       "Rätten att reklamera mot företaget upphör vid konkursen. Garantier från tillverkaren av paneler, växelriktare eller batteri gäller däremot som vanligt.",
