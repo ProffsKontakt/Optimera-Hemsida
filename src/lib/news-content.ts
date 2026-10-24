@@ -38,6 +38,170 @@ export type NewsContent = {
 };
 
 const CONTENT: Record<string, NewsContent> = {
+  "nar-startar-ringhals-4-igen-karnkraft-ur-drift-november-2026": {
+    tldr: [
+      "Ringhals 3 har stått still sedan 4 maj och skulle enligt planen ha varit tillbaka i juli. Sedan juni har återstarten skjutits upp fem gånger, senast den 23 oktober.",
+      "Forsmark 1 kopplas in den 17 november men ger bara 520 av 1 098 megawatt till och med 12 december, eftersom arbetet på en av turbinerna fortsätter.",
+      "Enligt Vattenfall kan återstarterna bidra till att stabilisera priserna, om inga nya förseningar kommer. Vattenbristen i Norge och gasmarknaden kan dra åt andra hållet.",
+    ],
+    sections: [
+      {
+        h2: "Vilka kärnkraftverk står stilla just nu?",
+        body: [
+          "Sverige har sex kärnkraftsreaktorer: tre i Forsmark, två i Ringhals och en i Oskarshamn. Den 24 oktober producerar hälften av dem ingen el. Ringhals 3, Ringhals 4 och Forsmark 1 står på 0 megawatt enligt Vattenfalls driftdata, medan Forsmark 2 och Forsmark 3 går. Oskarshamn 3 är också i drift enligt OKG, som driver reaktorn.",
+          "De tre avställda reaktorerna har tillsammans en installerad effekt på 3 313 megawatt: 1 081 megawatt i Ringhals 3, 1 134 i Ringhals 4 och 1 098 i Forsmark 1. Det framgår av bolagens meddelanden till elbörsen Nord Pool, där alla tre är registrerade i elområde 3.",
+        ],
+      },
+      {
+        h2: "När startar Ringhals 3 och 4 igen?",
+        body: [
+          "Den 20 oktober meddelade Vattenfall nya datum för båda reaktorerna. Ringhals 4 tidigareläggs tio dagar och beräknas vara tillbaka på nätet den 20 november. Ringhals 3 gick åt andra hållet. Enligt meddelandena till Nord Pool flyttades återstarten samma dag från 31 oktober till 7 november, och den 23 oktober en gång till, till 18 november. I meddelandena till Nord Pool anges Ringhals 3 och 4 som otillgängliga till och med 18 respektive 20 november.",
+          "För Ringhals 3 är det den femte förseningen sedan juni. Reaktorn stängdes för årlig revision den 4 maj, och enligt planen från mars skulle revisionen vara klar den 23 juli. I juni flyttades återstarten först till 10 augusti och sedan till 30 augusti, i juli till 31 oktober och i oktober alltså två gånger till. Startar reaktorn den 18 november har den stått still i sex och en halv månad. ”Det har varit en lång underhållsperiod med flera tillkommande arbeten som lett till oförutsedda förlängningar”, säger Ringhals produktionschef Sven-Anders Andersson i Vattenfalls besked.",
+          "Ringhals 4:s årliga revision började den 2 september och skulle enligt den ursprungliga planen vara klar den 15 oktober. I september sköts återstarten upp till 30 november på grund av oförutsett underhåll. Att den nu har tidigarelagts till 20 november beror enligt meddelandet till Nord Pool på att arbetet ligger före tidplan.",
+        ],
+      },
+      {
+        h2: "Varför står Ringhals still?",
+        body: [
+          "Enligt Sveriges Radio P4 Halland är det svart gummi som har åldrats i förtid som har hållit båda reaktorerna stängda i flera månader. Fynden gjordes först i Ringhals 3, och sedan fick även Ringhals 4 stängas för gummisanering – för att inte riskera anläggningen eller säkerheten, förklarar produktionschefen Sven-Anders Andersson. Han säger till P4 Halland att han ser fram emot att båda reaktorerna levererar el igen i november.",
+          "Ringhals 4 har dessutom haft problem med en av sina två huvudgeneratorer. Runt lunchtid den 23 maj kom ett larm om att fukthalten i generatorn steg, och efter en inspektion togs den ur drift. En kylledning med vatten i en av generatorns 60 statorhärvor hade börjat läcka, och eftersom läckan inte gick att laga byts hela härvan ut. Arbetet görs sedan mitten av augusti av generatorns tillverkare Arabelle Solutions och beräknas vara klart i början av november.",
+          "Att det inte tar längre tid beror på att Ringhals hade extra statorhärvor i lager. ”Hade vi både behövt beställa en ny statorhärva och hitta en entreprenör att installera den så hade arbetet kunnat ta sex till tolv månader längre”, säger Martin Holmberg, underhållsansvarig för huvudgeneratorerna på Ringhals 4, i Vattenfalls nyhet om reparationen. Den läckande härvan ska skickas till ett laboratorium för att ta reda på varför den började läcka.",
+        ],
+      },
+      {
+        h2: "Forsmark 1 återstart: 17 november – men på knappt halv effekt",
+        body: [
+          "Forsmark 1 stängdes för årlig revision den 6 september. Att revisionen skulle pågå till den 17 november är känt sedan december 2025, då den förlängdes på grund av ändrad omfattning. Nytt sedan den 15 oktober är att underhållet av en av reaktorns turbiner fortsätter även efter att reaktorn har kopplats till nätet.",
+          "Därför är bara 520 av Forsmark 1:s 1 098 megawatt tillgängliga från den 17 november till och med den 12 december, enligt meddelandet till Nord Pool. Därefter finns inget nytt avbrott anmält för i år.",
+        ],
+      },
+      {
+        h2: "Kärnkraft och elpris: vad betyder återstarterna?",
+        body: [
+          "Kärnkraften är en av fyra faktorer som Vattenfall lyfter inför vinterns elpriser, tillsammans med vädret, vattenkraften och världsläget. ”Vi har haft ovanligt mycket kärnkraft ur drift i Sverige under hösten. Men situationen bör förbättras när reaktorerna kommer tillbaka i drift”, säger Vanja Dillén Savcic, rådgivare och senior portföljförvaltare på Vattenfall. Sker återstarterna utan nya förseningar kan de enligt Vattenfall bidra till att stabilisera elpriserna inför vintern.",
+          "De andra faktorerna drar åt olika håll. Den hydrologiska balansen i Norden – tillgången på vatten och snö för vattenkraften – ligger enligt Vattenfall omkring 13–14 terawattimmar under det normala i slutet av oktober, främst efter ett torrt år i Norge. Konflikterna i Mellanöstern skapar osäkerhet kring leveranserna av flytande naturgas till Europa, vilket kan driva upp gaspriset och därmed elpriset även här. Samtidigt pekar de långsiktiga väderprognoserna just nu mot en mildare, blötare och blåsigare inledning på vintern, vilket skulle kunna hålla nere priserna.",
+          "Hittills i oktober har skillnaderna mellan elområdena varit stora. Enligt Nord Pool är spotpriset för den 1–24 oktober i snitt 1,49 kronor per kilowattimme i elområde 4 och 81 öre i elområde 3, mot 41 öre i elområde 2 och 34 öre i elområde 1. Priset svänger också snabbt från dag till dag: i elområde 4 kostade den 23 oktober 1,65 kronor i dygnssnitt och den 24 oktober 28 öre.",
+        ],
+      },
+      {
+        h2: "Vad betyder det för din kalkyl?",
+        body: [
+          "Räkna inte med att elpriset faller den 20 november. Återstarterna ökar tillgången på el i elområde 3, men priset avgörs också av väder, vattenläge och gasmarknad – och Ringhals 3 har redan försenats fem gånger sedan juni. Nya datum publiceras som meddelanden hos Nord Pool, så där kan du själv följa om planerna håller.",
+          "Vattenfall pekar på två sätt att hantera osäkerheten: ett fast elpris över vintern för den som oroar sig för höga priser, eller att med kvartspris flytta förbrukning till de billigare timmarna. Det viktigaste man själv kan göra är enligt Vanja Dillén Savcic ”att se över sin totala elförbrukning”. Varje kilowattimme som du sparar in eller producerar själv behöver du inte köpa, oavsett när reaktorerna startar.",
+        ],
+        bullets: [
+          "Ur drift den 24 oktober: Ringhals 3 (1 081 MW), Ringhals 4 (1 134 MW) och Forsmark 1 (1 098 MW) – tre av Sveriges sex reaktorer.",
+          "Planerad återstart: Forsmark 1 den 17 november (520 MW till och med 12 december), Ringhals 3 den 18 november och Ringhals 4 den 20 november.",
+          "Ringhals 3:s återstart har skjutits upp fem gånger sedan juni – från 23 juli till 18 november.",
+          "Spotpris 1–24 oktober: 1,49 kr/kWh i elområde 4 och 81 öre i elområde 3.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "När startar Ringhals 4 igen?",
+        a: "Enligt Vattenfall beräknas Ringhals 4 vara tillbaka på nätet den 20 november 2026, tio dagar tidigare än det förra beskedet. Reaktorns årliga revision började den 2 september och skulle ursprungligen ha varit klar den 15 oktober, men förlängdes på grund av oförutsett underhåll. Parallellt byts en läckande statorhärva i en av reaktorns två generatorer, ett arbete som beräknas vara klart i början av november.",
+      },
+      {
+        q: "När startar Ringhals 3 igen?",
+        a: "Vattenfall räknar med att Ringhals 3 startar den 18 november 2026. Reaktorn har stått still sedan den årliga revisionen började den 4 maj, och enligt planen skulle den ha varit tillbaka den 23 juli. Återstarten har skjutits upp fem gånger sedan juni, senast den 23 oktober, eftersom planerade åtgärder tar längre tid än väntat.",
+      },
+      {
+        q: "Vilka kärnkraftverk står stilla, och hur många reaktorer är i drift i Sverige?",
+        a: "Den 24 oktober är tre av Sveriges sex reaktorer i drift: Forsmark 2, Forsmark 3 och Oskarshamn 3. Ringhals 3, Ringhals 4 och Forsmark 1 står stilla för revision och reparationer, med en sammanlagd installerad effekt på 3 313 megawatt. Håller planerna är alla sex igång igen efter den 20 november, men Forsmark 1 går på knappt halv effekt till och med den 12 december.",
+      },
+      {
+        q: "Varför står Ringhals still?",
+        a: "Enligt Sveriges Radio P4 Halland har svart gummi som åldrats i förtid hållit båda reaktorerna stängda i flera månader. Fynden gjordes först i Ringhals 3, och sedan fick även Ringhals 4 stängas för gummisanering. Ringhals 4 har dessutom haft en läcka i en av sina två huvudgeneratorer sedan i maj. Vattenfall beskriver förseningarna som en lång underhållsperiod med flera tillkommande arbeten.",
+      },
+      {
+        q: "När startar kärnkraften igen – och sänker det elpriset?",
+        a: "Enligt de senaste beskeden kommer Forsmark 1 tillbaka den 17 november, Ringhals 3 den 18 november och Ringhals 4 den 20 november. Vattenfall bedömer att återstarterna kan bidra till att stabilisera elpriserna inför vintern om de sker utan nya förseningar, men vattenbristen i Norge, gasmarknaden och vädret påverkar också. Hur mycket elpriset påverkas går inte att säga i förväg.",
+      },
+    ],
+  },
+  "solcellsforetag-konkurs-garanti-forskott-2026": {
+    tldr: [
+      "Rätten att reklamera mot företaget upphör vid konkursen. Garantier från tillverkaren av paneler, växelriktare eller batteri gäller däremot som vanligt.",
+      "Har du inte betalat för det som återstår får du hålla inne lika mycket som det kostar att låta någon annan göra klart. Ett förskott blir oftast en oprioriterad fordran.",
+      "Betalade du med kreditkort eller faktura via ett faktureringsbolag kan du rikta samma krav mot kreditgivaren. Det kallas invändningsrätt enligt konsumentkreditlagen.",
+    ],
+    sections: [
+      {
+        h2: "Varför går så många solcellsföretag i konkurs 2026?",
+        body: [
+          "Den 28 september beslutade Stockholms tingsrätt om konkurs i solcellsföretaget Raymond Solar AB. Ett 80-tal projekt var igång, och alla kommer inte att kunna slutföras. ”Vissa kommer att behöva avbrytas”, säger konkursförvaltaren Lars Lundberg på 7wise advokatbyrå till Elinstallatören. Bland kunderna fanns privatpersoner, bostadsrättsföreningar och fastighetsägare. Kreditupplysningsföretaget Creditsafe räknar bolaget till septembers större konkurser.",
+          "I början av oktober rapporterade Elinstallatören att Solortus AB i Västervik hade gått i konkurs. Företaget hade tagit emot förskott från 27 kunder och beställt varor från sin leverantör, men varorna skickades aldrig eftersom leverantören inte fick betalt, berättar konkursförvaltaren Dan Bengtsson. I våras gick solcellsföretaget Sesol i konkurs, och Konsumentverket har sedan dess besvarat en rad frågor från dess kunder.",
+          "Hur många solcellsföretag som har gått i konkurs skiljer sig mellan sammanställningarna. Realtid rapporterade i augusti att 196 svenska solcellsinstallatörer gick i konkurs 2025, en ökning med 33 procent. Sajten Laddtorsk, som för en lista över konkurserna, anger i dag 186 företag för 2025, 147 för 2024 och drygt hundra under årets nio första månader.",
+          "En förklaring är prisfallet. Enligt Realtid har priset på solpaneler fallit med omkring 90 procent sedan 2010. Kinesiska paneler säljs i Europa under de europeiska tillverkarnas produktionskostnad, säger Johan Lindahl, generalsekreterare i branschorganisationen ESMC, enligt tidningen. Samma prisfall som gör solel billigare för kunderna gör det nästan omöjligt att tjäna pengar på att bygga anläggningarna, skriver Realtid.",
+        ],
+      },
+      {
+        h2: "Vad händer med garantin om företaget går i konkurs?",
+        body: [
+          "När företaget går i konkurs försvinner din rätt att reklamera, alltså att klaga på fel enligt konsumentlagstiftningen. Du kan inte längre kräva att företaget åtgärdar fel kostnadsfritt, skriver Konsumentverket.",
+          "Garantier som någon annan har lämnat gäller däremot som vanligt. Det kan vara tillverkarens garanti på solpanelerna, på växelriktaren eller på batteriet. Läs garantivillkoren för att se hur länge garantin gäller och vad som krävs, och vänd dig direkt till tillverkaren. I många fall kan du också reklamera en felaktig vara direkt till leverantören eller tillverkaren och ställa samma krav som på företaget: att felet lagas, att varan byts ut, prisavdrag eller att köpet hävs.",
+          "Hur är det då med garantin på installationen av solceller? En installationsgaranti lämnas av installatören själv och försvinner därför i regel med företaget. Fel i själva monteringen får du alltså oftast bekosta själv efter en konkurs, om inte någon som tar över verksamheten åtar sig ansvaret. Har installatören orsakat en skada, till exempel en vattenskada, kan du däremot anmäla den till företagets ansvarsförsäkring. Försäkringen ersätter aldrig kostnaden för att rätta till ett felaktigt utfört arbete.",
+        ],
+      },
+      {
+        h2: "Får jag tillbaka förskottet om solcellsföretaget går i konkurs?",
+        body: [
+          "Oftast inte. Har du betalat direkt till företaget, till exempel med Swish, banköverföring eller kontant, blir pengarna en del av konkursboet. Ditt krav blir en oprioriterad fordran, och eftersom vissa skulder betalas först är chansen att få tillbaka pengarna liten, enligt Konsumentverket. Kraven skickar du till konkursförvaltaren tillsammans med kvitton och annan dokumentation.",
+          "Har du betalat med kreditkort eller med faktura via ett faktureringsbolag skyddas du av konsumentkreditlagen. Då kan du ställa samma krav på kreditgivaren eller banken som du annars hade ställt på konkursboet. Det kallas invändningsrätt, och den gäller även vid konkurs. Kontakta kreditgivaren och säg att du vill använda invändningsrätten. Säger kreditgivaren nej kan du anmäla tvisten till Allmänna reklamationsnämnden (ARN). Det kostar 150 kronor.",
+          "Har du betalat för material som redan levererats till dig får du i regel behålla det. Material som enligt avtalet är ditt men som fortfarande finns hos företaget kan du ibland få ut med så kallad separationsrätt, om du kan visa att det är ditt och peka ut det bland de andra varorna.",
+          "En förskottsbetalning vid konkurs är alltså en risk som kunden själv bär. Fallet Solortus, där 27 kunder hade betalat förskott för varor som aldrig skickades, visar hur det kan gå.",
+        ],
+      },
+      {
+        h2: "Hur mycket får du hålla inne om installationen inte är klar?",
+        body: [
+          "Har du ännu inte betalat för arbetet får du hålla inne så mycket som motsvarar det som inte är klart eller som är felaktigt. Beloppet ska motsvara vad det kostar att låta ett annat företag göra färdigt anläggningen, och den summan kan du använda till just det. Det är samma regler som när du vill hålla inne betalning till hantverkare som går i konkurs, enligt Konsumentverket.",
+          "Konkursboet har rätt att ta betalt för det arbete som företaget faktiskt har utfört på ett fackmässigt sätt. Får du en faktura för arbete eller material som inte levererats ska du skriftligt, till exempel med mejl, meddela konkursboet att du håller inne betalningen, hur mycket och varför.",
+          "Har arbetet inte påbörjats kan du kontakta konkursboet och argumentera för att få häva avtalet, eftersom arbetet troligen inte kommer att utföras i tid. Konkursförvaltaren hittar du genom tingsrätten i den stad där företaget hade sitt huvudkontor.",
+        ],
+      },
+      {
+        h2: "Vad gäller om företaget rekonstrueras eller tas över?",
+        body: [
+          "Är företaget i rekonstruktion i stället för konkurs beror din rätt att reklamera och använda garantier på vad rekonstruktören har beslutat. Ofta får företaget inte betala ut några pengar under en rekonstruktion, så ekonomiska krav får vänta. Fråga företaget vad som gäller.",
+          "Köps verksamheten upp kan den nya ägaren ibland ta över skulder och krav, men inte alltid. Erbjuder ett nytt bolag att ta över ditt avtal krävs att avtalsvillkoren tillåter det. Annars bör du ha rätt att frånträda avtalet, och det meddelar du skriftligt till det nya bolaget och konkursboet.",
+          "Leasar du anläggningen eller batteriet gäller inte konsumentlagstiftningen, utan då är det leasingavtalet som styr. Slutar en övervakningsapp att fungera efter konkursen kan du ha krav mot appens leverantör, om den är någon annan än installatören.",
+        ],
+      },
+      {
+        h2: "Vad betyder det för din kalkyl?",
+        body: [
+          "Konkursen påverkar inte hur mycket el anläggningen producerar, men den flyttar risken till dig: fel som inte täcks av tillverkarens garanti får du i regel betala själv, och pengar du betalat i förskott kan vara förlorade. Så minskar du risken:",
+        ],
+        bullets: [
+          "Betala i takt med leveransen. Ett förskott blir en oprioriterad fordran om företaget går i konkurs, så betala helst inte för material och arbete innan det är levererat.",
+          "Välj betalsätt med invändningsrätt. Kreditkort eller faktura via ett faktureringsbolag ger dig rätt att rikta samma krav mot kreditgivaren.",
+          "Spara dokumentationen. Avtal, fakturor, kvitton, serienummer och tillverkarnas garantibevis behövs både för garantianspråk och för krav mot ett konkursbo.",
+          "Kontrollera vem som lämnar garantin. Tillverkarnas garantier på paneler, växelriktare och batteri gäller även om installatören försvinner, men installatörens egen garanti gör det i regel inte.",
+          "Är du redan drabbad? Kontakta konkursförvaltaren. Kommunens konsumentvägledning kan hjälpa dig, och tvister med en kreditgivare kan prövas av ARN.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Vad händer med garantin om företaget går i konkurs?",
+        a: "Rätten att reklamera mot företaget upphör, så det kan inte längre åtgärda fel kostnadsfritt. Garantier som tillverkaren eller leverantören har lämnat gäller som vanligt, till exempel på solpaneler, växelriktare och batteri. Följ garantivillkoren och vänd dig direkt till den som har lämnat garantin.",
+      },
+      {
+        q: "Vad händer om solcellsföretaget går i konkurs innan installationen är klar?",
+        a: "Det är inte säkert att installationen blir klar: vissa projekt kan drivas vidare av konkursboet, andra avbryts. Har du betalat för levererat material och utfört arbete behöver du inte betala mer i nuläget, och materialet får du i regel behålla. För det som återstår får du hålla inne lika mycket som det kostar att låta ett annat företag göra klart. Meddela konkursboet skriftligt.",
+      },
+      {
+        q: "Får man tillbaka förskottsbetalning vid konkurs?",
+        a: "Sällan. Ett förskott som betalats direkt till företaget blir en oprioriterad fordran i konkursboet, och vissa skulder betalas före. Har du betalat med kreditkort eller faktura via ett faktureringsbolag kan du i stället använda invändningsrätten och kräva pengarna av kreditgivaren.",
+      },
+      {
+        q: "Vem kontaktar man när solcellsföretaget har gått i konkurs?",
+        a: "Konkursförvaltaren, som du hittar genom tingsrätten där företaget hade sitt huvudkontor. Garantianspråk skickar du till tillverkaren. Kommunens konsumentvägledning kan hjälpa till, och en tvist med en kreditgivare kan prövas av ARN för 150 kronor.",
+      },
+    ],
+  },
   "blir-det-extra-val-andersson-nedrostad-budget-elskatt-elstod": {
     tldr: [
       "Förslaget föll med 248 röster mot 99, och bara Socialdemokraterna röstade ja. Talmannen har tre försök kvar, och först om alla faller hålls extra val inom tre månader.",

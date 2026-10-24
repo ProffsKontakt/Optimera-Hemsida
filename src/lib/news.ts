@@ -74,6 +74,168 @@ export type NewsArticle = {
 
 export const NEWS: NewsArticle[] = [
   {
+    slug: "nar-startar-ringhals-4-igen-karnkraft-ur-drift-november-2026",
+    status: "published",
+    title:
+      "När startar Ringhals 4 igen? Tre av sex reaktorer står still – Ringhals tillbaka först 18–20 november",
+    excerpt:
+      "När startar Ringhals 4 igen, och varför står Ringhals still? Just nu är tre av Sveriges sex kärnkraftsreaktorer ur drift: Ringhals 3, Ringhals 4 och Forsmark 1. Enligt Vattenfalls senaste besked startar Ringhals 3 den 18 november och Ringhals 4 den 20 november, medan Forsmark 1 kommer tillbaka på knappt halv effekt den 17 november. Vi går igenom läget reaktor för reaktor och vad återstarterna kan betyda för elpriset i vinter.",
+    category: "Elpriser",
+    publishedAt: "2026-10-24",
+    updatedAt: "2026-10-24",
+    readTimeMin: 7,
+    image: {
+      src: "/news/nar-startar-ringhals-4-igen-karnkraft-ur-drift-november-2026.jpg",
+      alt: "Ringhals kärnkraftverk sett över vattnet: tre runda reaktorbyggnader med kupoltak, en hög skorsten och en mast, med mörka buskar i förgrunden",
+      credit: "Foto: Pernilla Lagerquist/Vattenfall",
+      creditUrl: "https://group.vattenfall.com/se/nyheter-och-press/mediebank/kraftverk-och-kontor",
+    },
+    searchPhrases: [
+      "när startar ringhals 4 igen",
+      "när startar ringhals 3 igen",
+      "ringhals 4 återstart",
+      "forsmark 1 återstart",
+      "vilka kärnkraftverk står stilla",
+      "hur många reaktorer är i drift i sverige",
+      "varför står ringhals still",
+      "när startar kärnkraften igen",
+      "kärnkraft elpris",
+    ],
+    sources: [
+      {
+        title: "Nya tider för återstart av Ringhals 3 och 4 (20 oktober 2026)",
+        publisher: "Vattenfall",
+        url: "https://group.vattenfall.com/se/nyheter-och-press/nyheter/2026/uppdaterade-umm-for-ringhals-3-och-4",
+      },
+      {
+        title: "Reparationen av generator på Ringhals 4 snart i hamn (21 oktober 2026)",
+        publisher: "Vattenfall",
+        url: "https://group.vattenfall.com/se/nyheter-och-press/nyheter/2026/reparationen-av-generator-pa-ringhals-4-ar-nu-klar",
+      },
+      {
+        title: "Gummit gick sönder – har släckt ner Ringhals i månader (23 oktober 2026)",
+        publisher: "Sveriges Radio P4 Halland",
+        url: "https://www.sverigesradio.se/artikel/har-ar-gummit-som-slackt-ner-ringhals-i-flera-manader",
+      },
+      {
+        title: "Marknadsmeddelande: Ringhals block 3, försenad återstart efter årlig revision (version 11, 23 oktober 2026)",
+        publisher: "Nord Pool",
+        url: "https://umm.nordpoolgroup.com/#/messages/b6cc4473-3c10-4421-88f8-3545a0f94b64/11",
+      },
+      {
+        title: "Marknadsmeddelande: Ringhals block 4, försenad återstart efter årlig revision (version 3, 20 oktober 2026)",
+        publisher: "Nord Pool",
+        url: "https://umm.nordpoolgroup.com/#/messages/d0dc895b-1054-40f8-9309-67c602b78ce5/3",
+      },
+      {
+        title: "Marknadsmeddelande: Forsmark block 1, årlig revision följd av turbinunderhåll (version 7, 15 oktober 2026)",
+        publisher: "Nord Pool",
+        url: "https://umm.nordpoolgroup.com/#/messages/f1364ca9-a7df-4d03-8215-b0af76077737/7",
+      },
+      {
+        title: "Aktuell kärnkraftsproduktion i Forsmark och Ringhals",
+        publisher: "Vattenfall",
+        url: "https://group.vattenfall.com/se/var-verksamhet/vara-energislag/karnkraft/aktuell-karnkraftsproduktion",
+      },
+      {
+        title: "Kontrollrummet: produktionsstatus för Oskarshamn 3",
+        publisher: "OKG",
+        url: "https://okg.se/var-verksamhet/kontrollrummet/",
+      },
+      {
+        title: "Vinterns elpriser – fyra faktorer att hålla koll på (22 oktober 2026)",
+        publisher: "Vattenfall",
+        url: "https://www.vattenfall.se/fokus/tips-rad/vinterns-elpriser/",
+      },
+      {
+        title: "Day-ahead-priser per elområde, dygnssnitt oktober 2026",
+        publisher: "Nord Pool",
+        url: "https://data.nordpoolgroup.com/auction/day-ahead/prices?deliveryDate=2026-10-24&currency=SEK&aggregation=Daily&deliveryAreas=SE1,SE2,SE3,SE4",
+      },
+    ],
+  },
+  {
+    slug: "solcellsforetag-konkurs-garanti-forskott-2026",
+    status: "published",
+    title:
+      "Vad händer om solcellsföretaget går i konkurs? Så gäller garantin, förskottet och fakturan",
+    excerpt:
+      "Konkurserna bland solcellsföretag fortsätter, och i slutet av september hamnade ett 80-tal pågående solcellsprojekt i ett konkursbo. Vad händer om solcellsföretaget går i konkurs – före, under eller efter installationen? Vi reder ut vad som gäller för garantin, förskottet och fakturan enligt Konsumentverket, och hur du skyddar dig.",
+    category: "Marknad",
+    publishedAt: "2026-10-21",
+    updatedAt: "2026-10-21",
+    readTimeMin: 7,
+    image: {
+      src: "/news/solcellsforetag-konkurs-garanti-forskott-2026.jpg",
+      alt: "Tre montörer monterar svarta solpaneler på ett rött tegeltak, med en byggnadsställning längs husets fasad",
+      credit: "Foto: W.carter, CC0, via Wikimedia Commons (beskuren)",
+      creditUrl: "https://commons.wikimedia.org/wiki/File:Three_men_installing_solar_panels_on_a_house.jpg",
+    },
+    searchPhrases: [
+      "vad händer om solcellsföretag går i konkurs",
+      "solcellsföretag konkurs 2026",
+      "solcellsinstallatör konkurs",
+      "solceller konkurs",
+      "vad händer med garanti om företag går i konkurs",
+      "garanti installation solceller",
+      "förskottsbetalning konkurs",
+      "invändningsrätt konkurs",
+      "hålla inne betalning till hantverkare",
+    ],
+    sources: [
+      {
+        title: "När hantverkaren eller husbyggaren går i konkurs",
+        publisher: "Konsumentverket",
+        url: "https://www.konsumentverket.se/varor-och-tjanster/hantverkare-eller-husbyggare-i-konkurs/",
+      },
+      {
+        title: "Solcellsföretaget Sesol i konkurs. Vad händer nu? (frågor och svar, uppdaterad 2026)",
+        publisher: "Konsumentverket",
+        url: "https://www.konsumentverket.se/fragor-och-svar/3225929/solcellsforetaget-sesol-i-konkurs-vad-hander-nu/",
+      },
+      {
+        title: "Företaget har gått i konkurs – vad gäller?",
+        publisher: "Konsumentverket",
+        url: "https://www.konsumentverket.se/konsumentratt/foretag-i-konkurs/",
+      },
+      {
+        title: "Garanti – vad är garanti och när gäller den?",
+        publisher: "Konsumentverket",
+        url: "https://www.konsumentverket.se/konsumentratt/garanti/",
+      },
+      {
+        title: "Solcellsleverantören kan inte leverera (frågor och svar, uppdaterad 3 september 2026)",
+        publisher: "Konsumentverket",
+        url: "https://www.konsumentverket.se/fragor-och-svar/2655982/solcellsleverantoren-kan-inte-leverera/",
+      },
+      {
+        title: "Storförluster knäckte solcellsföretag – 80 projekt drabbas (29 september 2026)",
+        publisher: "Elinstallatören",
+        url: "https://www.elinstallatoren.se/storforluster-knackte-solcellsforetag-80-projekt-drabbas/",
+      },
+      {
+        title: "Stark finansiär räckte inte när miljonförlusterna radades upp (7 oktober 2026)",
+        publisher: "Elinstallatören",
+        url: "https://www.elinstallatoren.se/stark-finansiar-rackte-inte-nar-miljonforlusterna-radades-upp/",
+      },
+      {
+        title: "Hack i konkurskurvan – högsta septembernivån på över 30 år (1 oktober 2026)",
+        publisher: "Creditsafe",
+        url: "https://www.mynewsdesk.com/se/creditsafe/pressreleases/hack-i-konkurskurvan-hoegsta-septembernivaan-paa-oever-30-aar-3469900",
+      },
+      {
+        title: "Solpaneler har aldrig varit billigare – det är därför branschen blöder (21 augusti 2026)",
+        publisher: "Realtid",
+        url: "https://www.realtid.se/it-tech/solpaneler-har-aldrig-varit-billigare-det-ar-darfor-branschen-bloder/",
+      },
+      {
+        title: "Solcellsföretag i konkurs – lista 2024–2026 (uppdaterad oktober 2026)",
+        publisher: "Laddtorsk",
+        url: "https://laddtorsk.se/solcellsforetag-i-konkurs-2025/",
+      },
+    ],
+  },
+  {
     slug: "blir-det-extra-val-andersson-nedrostad-budget-elskatt-elstod",
     status: "published",
     title:
