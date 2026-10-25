@@ -33,8 +33,9 @@ export default function AdminReviewsPage() {
             Recensioner.
           </h1>
           <p className="mt-4 text-ink/65 max-w-2xl leading-relaxed">
-            Kuratera vilka Reco-recensioner som visas på startsidan: klistra in
-            text + namn från er Reco-profil, växla Visas/Dold, ändra ordning.
+            Kuratera vilka Reco-recensioner som visas på startsidan: hämta nya
+            direkt från Reco, växla Visas/Dold, ändra ordning. Antalet omdömen
+            och snittbetyget på sajten uppdateras automatiskt från Reco.
             Ändringar committas och är live efter deploy (1–2 min).
           </p>
           <ReviewsManager initial={getAllReviews()} />

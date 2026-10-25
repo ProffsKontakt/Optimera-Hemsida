@@ -5,10 +5,12 @@ import {
   ArrowDown,
   ArrowUp,
   Check,
+  Download,
   Eye,
   EyeOff,
   Loader2,
   Plus,
+  RefreshCw,
   Save,
   Trash2,
 } from "lucide-react";
@@ -21,6 +23,14 @@ type Review = {
   rating?: number;
   visible: boolean;
 };
+
+type RecoReview = Review & { date: string; url?: string };
+
+/** Samma omdöme? Namnet + början av texten (texterna kan vara lätt rättade). */
+function sameReview(a: { author: string; text: string }, b: { author: string; text: string }) {
+  const norm = (t: string) => t.toLowerCase().replace(/[^a-zåäö0-9]/g, "").slice(0, 32);
+  return a.author.trim() === b.author.trim() && norm(a.text) === norm(b.text);
+}
 
 function slugify(author: string): string {
   return (
@@ -41,6 +51,54 @@ export function ReviewsManager({ initial }: { initial: Review[] }) {
   const [busy, setBusy] = useState(false);
   const [msg, setMsg] = useState<string | null>(null);
   const [ok, setOk] = useState(false);
+  // Import från Reco: de senaste omdömena som inte redan finns i listan.
+  const [reco, setReco] = useState<RecoReview[] | null>(null);
+  const [recoBusy, setRecoBusy] = useState(false);
+  const [recoMsg, setRecoMsg] = useState<string | null>(null);
+
+  const isAdded = (r: RecoReview) =>
+    reviews.some((x) => x.id === r.id || sameReview(x, r));
+  const newFromReco = (reco ?? []).filter((r) => !isAdded(r));
+
+  async function fetchReco() {
+    setRecoBusy(true);
+    setRecoMsg(null);
+    try {
+      const res = await fetch("/api/admin/reviews/reco", { cache: "no-store" });
+      const data = await res.json();
+      if (!res.ok) {
+        setRecoMsg(data.error ?? "Kunde inte hämta från Reco.");
+        setReco(null);
+      } else {
+        setReco(data.reviews);
+        setRecoMsg(
+          data.count
+            ? `Reco: ${data.average} av 5 från ${data.count} omdömen. Antalet och betyget på sajten uppdateras automatiskt.`
+            : null,
+        );
+      }
+    } catch {
+      setRecoMsg("Nätverksfel.");
+    } finally {
+      setRecoBusy(false);
+    }
+  }
+
+  function importReco(list: RecoReview[]) {
+    setOk(false);
+    setReviews((cur) => {
+      const used = new Set(cur.map((r) => r.id));
+      const added = list.map(({ date: _date, url: _url, ...r }) => {
+        let id = r.id;
+        let n = 2;
+        while (used.has(id)) id = `${r.id}-${n++}`;
+        used.add(id);
+        return { ...r, id, visible: true };
+      });
+      // Nyaste först – de hamnar överst i karusellen.
+      return [...added, ...cur];
+    });
+  }
 
   function update(i: number, patch: Partial<Review>) {
     setOk(false);
@@ -108,7 +166,73 @@ export function ReviewsManager({ initial }: { initial: Review[] }) {
 
   return (
     <div className="mt-10">
-      <p className="text-[13.5px] text-ink/60">
+      <section className="rounded-3xl border border-indigo/20 bg-indigo/[0.04] p-5 md:p-6">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <h2 className="font-display text-xl tracking-display-tight">Nya omdömen på Reco</h2>
+            <p className="mt-1 text-[13px] text-ink/60">
+              Hämtar de fem senaste från er Reco-profil och visar dem som inte finns här än.
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={fetchReco}
+            disabled={recoBusy}
+            className="inline-flex items-center gap-2 rounded-full border border-ink/15 bg-bone px-4 py-2.5 text-[13.5px] text-ink/80 hover:text-ink hover:border-ink/40 transition disabled:opacity-40"
+          >
+            {recoBusy ? <Loader2 size={14} className="animate-spin" /> : <RefreshCw size={14} />}
+            Hämta från Reco
+          </button>
+        </div>
+        {recoMsg && <p className="mt-3 text-[13px] text-ink/60">{recoMsg}</p>}
+        {reco && newFromReco.length === 0 && (
+          <p className="mt-3 text-[13.5px] text-moss">
+            <Check size={14} className="inline -mt-0.5 mr-1" />
+            Alla de senaste omdömena på Reco finns redan i listan.
+          </p>
+        )}
+        {newFromReco.length > 0 && (
+          <div className="mt-4 space-y-3">
+            {newFromReco.map((r) => (
+              <div key={r.id + r.date} className="rounded-2xl border border-ink/10 bg-bone p-4">
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <div className="text-[14px]">
+                    <span className="font-medium">{r.author}</span>
+                    <span className="text-ink/50">
+                      {" · "}
+                      {r.date.slice(0, 10)}
+                      {r.rating ? ` · ${"★".repeat(r.rating)}${"☆".repeat(5 - r.rating)}` : ""}
+                    </span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => importReco([r])}
+                    className="inline-flex items-center gap-1.5 rounded-full bg-ink text-bone px-3.5 py-1.5 text-[12.5px]"
+                  >
+                    <Download size={13} /> Lägg till
+                  </button>
+                </div>
+                <p className="mt-2 text-[13.5px] leading-relaxed text-ink/75 line-clamp-4">{r.text}</p>
+              </div>
+            ))}
+            {newFromReco.length > 1 && (
+              <button
+                type="button"
+                onClick={() => importReco(newFromReco)}
+                className="inline-flex items-center gap-2 rounded-full border border-ink/15 px-4 py-2 text-[13px] text-ink/75 hover:text-ink hover:border-ink/40 transition"
+              >
+                <Download size={13} /> Lägg till alla {newFromReco.length}
+              </button>
+            )}
+            <p className="text-[12.5px] text-ink/50">
+              Tillagda omdömen hamnar överst i listan nedan och visas på sajten först när du sparat.
+              Läs igenom texten och rätta ev. stavfel innan du sparar.
+            </p>
+          </div>
+        )}
+      </section>
+
+      <p className="mt-8 text-[13.5px] text-ink/60">
         {visibleCount} av {reviews.length} visas på sajten just nu.
       </p>
       <div className="mt-4 space-y-5">
