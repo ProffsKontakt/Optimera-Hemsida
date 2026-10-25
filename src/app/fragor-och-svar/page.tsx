@@ -77,7 +77,7 @@ const CATEGORIES: { heading: string; eyebrow: string; items: { q: string; a: str
       },
       {
         q: "Vad kostar solpaneler i Stockholm?",
-        a: "Baspriset (resor, ställning, montage, kabel, driftsättning) trappas efter antal paneler, och en JA Solar-panel ligger på 2 500 kr styck. En typisk villa med 14 paneler landar runt 50 000 kr efter grönt avdrag på 14,55 %. Priset på offerten är priset på fakturan.",
+        a: "Priset beror på hur många paneler taket rymmer och inkluderar resor, ställning, montage, kabel och driftsättning. En typisk villa med 14 paneler landar runt 50 000 kr efter grönt avdrag på 14,55 %. Priset på offerten är priset på fakturan.",
       },
     ],
   },

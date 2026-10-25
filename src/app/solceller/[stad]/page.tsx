@@ -40,7 +40,7 @@ function cityFaq(city: ReturnType<typeof findCity>) {
   return [
     {
       q: `Vad kostar solpaneler ${city.preposition} ${city.name}?`,
-      a: `Prisbilden ${city.preposition} ${city.name} följer samma modell som resten av Stockholm: 10 000–22 500 kr i baspris beroende på antal paneler, plus 2 500 kr per JA Solar-panel. En typisk villa med 14 paneler landar runt 50 000 kr efter grönt avdrag (14,55 %). Räkna på din specifika installation i vår kalkylator innan hembesöket.`,
+      a: `Prisbilden ${city.preposition} ${city.name} följer samma modell som resten av Stockholm: priset beror på hur många paneler taket rymmer, och en typisk villa med 14 paneler landar runt 50 000 kr efter grönt avdrag (14,55 %). Räkna på din specifika installation i vår kalkylator innan hembesöket.`,
     },
     {
       q: `Behöver jag bygglov för solpaneler ${city.preposition} ${city.name}?`,
