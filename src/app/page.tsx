@@ -13,7 +13,7 @@ import { DemoManifesto } from "@/components/demo/DemoManifesto";
 import { Testimonials } from "@/components/home/Testimonials";
 import { CtaPanel } from "@/components/home/CtaPanel";
 import { RecoBadge } from "@/components/site/RecoBadge";
-import { RECO } from "@/lib/reco";
+import { getRecoStats } from "@/lib/reco-live";
 import {
   JsonLd,
   faqPageSchema,
@@ -50,7 +50,12 @@ const HOME_FAQ = [
   },
 ];
 
-export default function HomePage() {
+// Reco-betyget hämtas live (lib/reco-live.ts) – sidan byggs om i bakgrunden
+// högst en gång i timmen så att antalet omdömen följer Reco.
+export const revalidate = 3600;
+
+export default async function HomePage() {
+  const reco = await getRecoStats();
   // Banderoll bara på landningssidan. Läses server-side, dismissal
   // sker client-side via localStorage i komponenten.
   const featured = getFeaturedPressRelease();
@@ -69,6 +74,7 @@ export default function HomePage() {
         heroImageUrl={heroBg?.url}
         heroImageAlt={heroBg?.alt}
         heroFrost={heroBg?.frost}
+        recoAverage={reco.average}
       />
 
       {/* Social proof DIREKT under hero. Kureras i /admin/recensioner,
@@ -82,19 +88,23 @@ export default function HomePage() {
         aside={<RecoBadge size={116} tilt className="hidden md:block" />}
       >
         <Testimonials reviews={getVisibleReviews()} />
-        {/* Betyg + länk till källan. Snittbetyget uppdateras i lib/reco.ts
-            (kontrollera på reco.se/optimera-energi). */}
+        {/* Betyg + länk till källan. Antal och snittbetyg hämtas live från
+            Reco (lib/reco-live.ts); data-reco-source visar om siffrorna är
+            live eller reservsiffrorna i lib/reco.ts. */}
         <div className="mt-8 flex items-center gap-4">
           <RecoBadge size={66} tilt className="md:hidden" />
-          <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[14px] text-ink/60">
+          <p
+            className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[14px] text-ink/60"
+            data-reco-source={reco.live ? "live" : "fallback"}
+          >
             <span className="text-amber-deep">★</span>
-            <span>{RECO.average} av 5 i betyg ({RECO.count} omdömen) på</span>
+            <span>{reco.average} av 5 i betyg ({reco.count} omdömen) på</span>
             {/* Officiella Reco-loggan (hämtad från reco.se). */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/reco.svg" alt="Reco" className="h-[18px] w-auto" />
             <span>–</span>
             <a
-              href={RECO.url}
+              href={reco.url}
               target="_blank"
               rel="noopener noreferrer"
               className="underline underline-offset-4 decoration-ink/30 hover:text-ink hover:decoration-ink/60 transition"

@@ -28,7 +28,7 @@ import {
 import { getVisibleTeam, type TeamMember } from "@/lib/team";
 import { getMedia, getInstallationPhotos } from "@/lib/media";
 import { CONTACT_ROUTES } from "@/lib/contact-routes";
-import { RECO } from "@/lib/reco";
+import { getRecoStats } from "@/lib/reco-live";
 import { VISIBLE_SERVICES, visibleServiceText } from "@/lib/services";
 import {
   JsonLd,
@@ -149,7 +149,11 @@ function teamLocalBusinessSchema(team: TeamMember[]) {
   };
 }
 
-export default function AboutPage() {
+// Reco-betyget hämtas live – sidan byggs om högst en gång i timmen.
+export const revalidate = 3600;
+
+export default async function AboutPage() {
+  const reco = await getRecoStats();
   // Dolda personer filtreras bort SERVER-SIDE – de renderas aldrig, så
   // varken korten, kontaktvägarna, siffrorna eller JSON-LD:n röjer dem.
   const team = getVisibleTeam();
@@ -231,7 +235,7 @@ export default function AboutPage() {
                 </span>
               </a>
               <a
-                href={RECO.url}
+                href={reco.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex flex-col gap-0.5 whitespace-nowrap text-[13.5px] leading-tight text-ink/70 hover:text-ink transition"
@@ -240,8 +244,8 @@ export default function AboutPage() {
                   ★★★★★
                 </span>
                 <span>
-                  <span className="font-medium text-ink">{RECO.average} av 5</span> på
-                  Reco · {RECO.count} omdömen
+                  <span className="font-medium text-ink">{reco.average} av 5</span> på
+                  Reco · {reco.count} omdömen
                 </span>
               </a>
             </div>

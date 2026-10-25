@@ -35,11 +35,14 @@ export function DemoHero({
   heroImageUrl,
   heroImageAlt,
   heroFrost,
+  recoAverage = RECO.average,
 }: {
   heroImageUrl?: string;
   heroImageAlt?: string;
   /** 0–100 från admin. 0 = skarp bild, 100 = kraftigt frostad. Endast mobil. */
   heroFrost?: number;
+  /** Snittbetyget från Reco, hämtat live på servern (lib/reco-live.ts). */
+  recoAverage?: string;
 } = {}) {
   // Ortsanpassad rubrik – ENDAST vid verifierad träff på en svensk kommun vi
   // installerar i (vitlista via /api/geo). Utland/VPN/okänd ort → fallback
@@ -100,7 +103,7 @@ export function DemoHero({
               className="hidden md:inline-flex w-fit items-center gap-2 rounded-full border border-ink/12 bg-cream/80 px-4 py-2 mb-7 text-[13px] text-ink/75 hover:border-ink/35 hover:text-ink transition"
             >
               <span className="text-amber-deep tracking-[0.08em]">★★★★★</span>
-              <span className="font-medium">{RECO.average} av 5</span>
+              <span className="font-medium">{recoAverage} av 5</span>
               <span className="text-ink/50">på</span>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/reco.svg" alt="Reco" className="h-[15px] w-auto" />
@@ -169,7 +172,7 @@ export function DemoHero({
                   ★★★★★
                 </span>
                 <span className="flex items-center gap-1.5">
-                  <span><span className="font-medium">{RECO.average} av 5</span> på</span>
+                  <span><span className="font-medium">{recoAverage} av 5</span> på</span>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src="/reco.svg" alt="Reco" className="h-[14px] w-auto [text-shadow:none]" />
                 </span>

@@ -5,7 +5,7 @@ import { publishedGuides } from "@/lib/guides";
 import { getGuideContent } from "@/lib/guide-content";
 import { publishedNews } from "@/lib/news";
 import { VISIBLE_SERVICES, type ServiceSlug } from "@/lib/services";
-import { RECO } from "@/lib/reco";
+import { getRecoStats } from "@/lib/reco-live";
 
 /**
  * /llms.txt – sajten sammanfattad för AI-assistenter (llmstxt.org).
@@ -20,6 +20,8 @@ import { RECO } from "@/lib/reco";
  * med sina förutsättningar.
  */
 export const dynamic = "force-static";
+// Reco-betyget hämtas live; filen byggs om högst en gång i timmen.
+export const revalidate = 3600;
 
 const BASE = "https://optimeraenergi.se";
 
@@ -34,7 +36,8 @@ const SERVICE_LINES: Record<ServiceSlug, string> = {
 const item = (title: string, href: string, answer: string, updated?: string) =>
   `- [${title}](${BASE}${href}): ${answer.replace(/\s+/g, " ").trim()}${updated ? ` (Uppdaterad ${updated}.)` : ""}`;
 
-export function GET() {
+export async function GET() {
+  const reco = await getRecoStats();
   const org = organizationSchema;
   const questions = allQuestions();
   const concepts = allConcepts();
@@ -55,7 +58,7 @@ export function GET() {
     "- Telefon: 076 305 37 32",
     `- E-post: ${org.email}`,
     "- Tjänsteområde: Stockholms län (elområde SE3)",
-    `- Omdömen: ${RECO.average} av 5 på Reco (${RECO.count} omdömen): ${RECO.url}`,
+    `- Omdömen: ${reco.average} av 5 på Reco (${reco.count} omdömen): ${reco.url}`,
     ...org.sameAs.map((u) => `- ${u}`),
     "",
     "## Tjänster",

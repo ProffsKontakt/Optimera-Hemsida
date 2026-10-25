@@ -8,6 +8,30 @@
     "visible": true
   },
   {
+    "id": "ingela-n-reco",
+    "author": "Ingela N",
+    "place": "Reco · oktober 2026",
+    "text": "Vi lät installera ytterligare ett batteri. Installatören var trevlig och kom på utsatt tid (t.o.m. lite innan). Allt fungerade utmärkt.",
+    "rating": 5,
+    "visible": true
+  },
+  {
+    "id": "pelle-l-reco",
+    "author": "Pelle L",
+    "place": "Reco · oktober 2026",
+    "text": "Installationen av batterimodulen gick som förväntat snabbt och enkelt.",
+    "rating": 5,
+    "visible": true
+  },
+  {
+    "id": "svante-n-reco",
+    "author": "Svante N",
+    "place": "Reco · oktober 2026",
+    "text": "Kom i tid och gjorde sitt jobb.",
+    "rating": 5,
+    "visible": true
+  },
+  {
     "id": "peter-l-reco",
     "author": "Peter L",
     "place": "Reco · september 2026",
