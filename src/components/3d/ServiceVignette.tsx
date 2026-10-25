@@ -99,10 +99,12 @@ function BatteryScene() {
   const h = ewayStackHeight(ewayModules(BATTERY_KWH));
   return (
     <group position={[0, -h / 2, 0]}>
-      <Sway amplitude={0.35} baseYaw={-0.5}>
+      {/* Fronten (logga, ON/OFF) mot kameran och högra kortsidan med
+          handtag och anslutningspanel synlig – som på produktbilden. */}
+      <Sway amplitude={0.25} baseYaw={-0.2}>
         <EwayBattery capacityKWh={BATTERY_KWH} />
       </Sway>
-      <SceneLabel parts={["Easyway", "53,76 kWh", "7 moduler"]} position={[0.45, 0.05, 0.25]} />
+      <SceneLabel parts={["Easyway", "53,76 kWh", "7 moduler"]} position={[0.5, 0.05, 0.25]} />
     </group>
   );
 }

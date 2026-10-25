@@ -5,7 +5,7 @@
  *
  *   Pylontech Force H3   – grå topp-modul med logobalk + 1–5 vita
  *                          batterimoduler under (max 30,72 kWh / stapel).
- *   Easyway              – vit stapel av kvadratiska moduler, max 8 / stapel.
+ *   Easyway (Eway)       – breda vita moduler med handtag på kortsidorna, max 8 / stapel (products/EwayBattery).
  *                          Större kapaciteter spawn:ar fler stackar bredvid.
  *   SAJ HS3              – tunn vit batteristack med integrerad sleek vit
  *                          växelriktare ovanpå med en grön ring-indikator.
