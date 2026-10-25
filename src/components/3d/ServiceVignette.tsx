@@ -1,174 +1,193 @@
 "use client";
 
-import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
-import { useRef } from "react";
-import * as THREE from "three";
+import { Canvas } from "@react-three/fiber";
+import { Bounds, PresentationControls, RoundedBox } from "@react-three/drei";
 import type { ServiceSlug } from "@/lib/services";
-import { Easyway } from "@/components/3d/BatteryModels";
+import { SceneLabel } from "./SceneLabel";
+import { ZaptecGo2 } from "./products/ZaptecGo2";
+import { EwayBattery, ewayModules, ewayStackHeight } from "./products/EwayBattery";
+import { SolarPanel, PANEL_W } from "./products/SolarPanel";
+import { HeatPump } from "./products/HeatPump";
+import { StudioFloor, StudioLights, Sway } from "./products/Studio";
+import { makeCanvasTexture } from "./products/textures";
+import { useMemo } from "react";
+
+/**
+ * Produktscenen på tjänstekorten och tjänstesidorna. Visar de produkter vi
+ * faktiskt installerar, modellerade efter produktbilderna (se ./products),
+ * i ett ljust produktfotoljus. Kameran anpassas automatiskt till kortets
+ * format (Bounds) så samma scen fungerar i 4:5 och 16:10.
+ */
+const BATTERY_KWH = 53.76; // 7 Easyway-moduler, som på produktbilden
 
 export function ServiceVignette({ kind }: { kind: ServiceSlug }) {
-  // Solpaneler får högre kameravinkel så panelens framsida syns istället för
-  // bara kanten. Batterier zoomas ut lite så hela Easyway-stacken syns
-  // bekvämt utan att kännas inträngd.
-  const camera =
-    kind === "solpaneler"
-      ? { position: [2.4, 2.4, 2.8] as [number, number, number], fov: 40 }
-      : kind === "batterier"
-      ? { position: [3.0, 1.9, 3.2] as [number, number, number], fov: 40 }
-      : kind === "laddboxar"
-      ? { position: [2.4, 1.6, 2.6] as [number, number, number], fov: 40 }
-      : { position: [2.4, 1.8, 2.8] as [number, number, number], fov: 40 };
-
   return (
     <Canvas
-      camera={camera}
+      shadows
+      camera={{ position: [2.4, 1.3, 3.6], fov: 30 }}
       dpr={[1, 2]}
       className="!absolute inset-0"
       gl={{ antialias: true, alpha: true }}
     >
       <color attach="background" args={[backgroundFor(kind)]} />
-      <ambientLight intensity={0.6} />
-      <directionalLight position={[3, 4, 2]} intensity={1.05} />
-      <directionalLight position={[-2, 2, -2]} intensity={0.25} color="#E9B949" />
-      <gridHelper
-        args={[20, 40, "#3F5236", "#9aa590"]}
-        position={[0, -0.85, 0]}
-      />
-      {kind === "solpaneler" && <PanelArray />}
-      {kind === "batterier" && (
-        <group position={[0, -0.55, 0]}>
-          <Easyway capacityKWh={30.72} />
-        </group>
-      )}
-      {kind === "laddboxar" && <ChargerUnit />}
-      {kind === "vaermepumpar" && <HeatPumpUnit />}
-      <OrbitControls
-        enablePan={false}
-        enableZoom={false}
-        enableRotate
-        minPolarAngle={Math.PI / 4}
-        maxPolarAngle={Math.PI / 2.05}
-        autoRotate
-        autoRotateSpeed={0.6}
-      />
+      <StudioLights />
+      <PresentationControls
+        global={false}
+        cursor
+        snap
+        speed={1.4}
+        polar={[-0.12, 0.2]}
+        azimuth={[-0.7, 0.7]}
+      >
+        <Bounds fit clip observe margin={kind === "solpaneler" ? 1.02 : 1.08}>
+          {kind === "laddboxar" && <ChargerScene />}
+          {kind === "batterier" && <BatteryScene />}
+          {kind === "solpaneler" && <SolarScene />}
+          {kind === "vaermepumpar" && <HeatPumpScene />}
+        </Bounds>
+      </PresentationControls>
+      {/* Golvskuggan ligger utanför Bounds så att den inte räknas in när
+          kameran anpassas till produkten. */}
+      <StudioFloor {...FLOOR[kind]} />
     </Canvas>
   );
 }
 
+const FLOOR: Record<ServiceSlug, { y: number; scale: number; opacity: number }> = {
+  laddboxar: { y: -0.9, scale: 3.2, opacity: 0.35 },
+  batterier: { y: -0.775, scale: 3, opacity: 0.5 },
+  solpaneler: { y: -0.6, scale: 4, opacity: 0.3 },
+  vaermepumpar: { y: -0.45, scale: 3.2, opacity: 0.45 },
+};
+
 function backgroundFor(kind: ServiceSlug) {
-  // Subtila varma cream-varianter (Aesop/Byredo). Matchar logo-kortet.
+  // Varma cream-toner som matchar korten på sajten.
   switch (kind) {
     case "solpaneler":
-      return "#EFE3C7";
+      return "#EFE6CF";
     case "batterier":
-      return "#EAE3D2";
+      return "#ECE6D8";
     case "vaermepumpar":
-      return "#E3DED1";
+      return "#E6E1D5";
     case "laddboxar":
-      return "#E9E3D3";
+      return "#EBE5D7";
   }
 }
 
-function PanelArray() {
-  // Tre paneler i en rad, tiltade ~30° framåt mot kameran så glasytan syns
-  // i stället för att bara visa kanterna. Lite Y-rotation ger djup.
-  // Cellrutnät ovanpå glaset gör det tydligt att det är solceller.
-  const tiltX = Math.PI / 6; // 30° framåt-tilt
-  const yawY = -0.35;
+/** Zaptec Go 2 på en väggskiva – laddboxen som den sitter hemma. */
+function ChargerScene() {
+  const s = 4.2;
+  const wallW = 1.25;
+  const wallH = 1.7;
+  const chargerY = 0.12;
   return (
-    <group rotation={[tiltX, yawY, 0]} position={[0, 0.1, 0]}>
-      {[-0.92, 0, 0.92].map((x, i) => (
-        <group key={i} position={[x, 0, 0]}>
-          {/* Aluminiumram (svart) */}
-          <mesh castShadow>
-            <boxGeometry args={[0.85, 0.05, 1.4]} />
-            <meshStandardMaterial color="#0E0E0C" metalness={0.4} roughness={0.5} />
-          </mesh>
-          {/* Glasyta med solceller */}
-          <mesh position={[0, 0.026, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-            <planeGeometry args={[0.78, 1.32]} />
-            <meshStandardMaterial
-              color="#0a2a44"
-              emissive="#0a2a44"
-              emissiveIntensity={0.18}
-              metalness={0.85}
-              roughness={0.18}
-            />
-          </mesh>
-          {/* Cellrutnät – fina ljusa linjer som visar att det är celler */}
-          {[-0.5, -0.25, 0, 0.25, 0.5].map((z) => (
-            <mesh
-              key={`h${z}`}
-              position={[0, 0.027, z]}
-              rotation={[-Math.PI / 2, 0, 0]}
-            >
-              <planeGeometry args={[0.78, 0.005]} />
-              <meshStandardMaterial color="#1f3a55" />
-            </mesh>
-          ))}
-          {[-0.26, 0, 0.26].map((xc) => (
-            <mesh
-              key={`v${xc}`}
-              position={[xc, 0.027, 0]}
-              rotation={[-Math.PI / 2, 0, 0]}
-            >
-              <planeGeometry args={[0.005, 1.32]} />
-              <meshStandardMaterial color="#1f3a55" />
-            </mesh>
-          ))}
+    <Sway amplitude={0.3} baseYaw={-0.42}>
+      <group position={[0, -0.05, 0]}>
+        <RoundedBox args={[wallW, wallH, 0.08]} radius={0.02} smoothness={3} position={[0, 0, -0.04]} receiveShadow castShadow>
+          <meshStandardMaterial color="#E3DCCD" roughness={0.92} />
+        </RoundedBox>
+        <group position={[0, chargerY, 0]} scale={s}>
+          <ZaptecGo2 />
         </group>
-      ))}
+      </group>
+    </Sway>
+  );
+}
+
+/** Easyway 53,76 kWh, fristående på golvet. */
+function BatteryScene() {
+  const h = ewayStackHeight(ewayModules(BATTERY_KWH));
+  return (
+    <group position={[0, -h / 2, 0]}>
+      <Sway amplitude={0.35} baseYaw={-0.5}>
+        <EwayBattery capacityKWh={BATTERY_KWH} />
+      </Sway>
+      <SceneLabel parts={["Easyway", "53,76 kWh", "7 moduler"]} position={[0.45, 0.05, 0.25]} />
     </group>
   );
 }
 
-function HeatPumpUnit() {
-  const fan = useRef<THREE.Group>(null);
-  useFrame((_, d) => {
-    if (fan.current) fan.current.rotation.z += d * 4;
-  });
+/** Tre helsvarta JA Solar-paneler på ett tegeltak. */
+function SolarScene() {
+  const tiles = useMemo(
+    () =>
+      makeCanvasTexture(256, 256, (ctx, w, h) => {
+        ctx.fillStyle = "#2c2f33";
+        ctx.fillRect(0, 0, w, h);
+        const rows = 6;
+        const cols = 4;
+        for (let r = 0; r < rows; r++) {
+          for (let c = 0; c < cols; c++) {
+            const x = (c + (r % 2) * 0.5) * (w / cols);
+            const y = r * (h / rows);
+            const g = ctx.createLinearGradient(0, y, 0, y + h / rows);
+            g.addColorStop(0, "#41454a");
+            g.addColorStop(0.7, "#33363a");
+            g.addColorStop(1, "#1d1f22");
+            ctx.fillStyle = g;
+            ctx.fillRect(x + 1, y + 1, w / cols - 2, h / rows - 2);
+            ctx.fillRect(x + 1 - w, y + 1, w / cols - 2, h / rows - 2);
+          }
+        }
+      }, { repeat: [5, 4] }),
+    [],
+  );
+  const roofW = 4.6;
+  const roofD = 2.9;
+  const pitch = 0.47; // ~27°
+  const gap = 0.025;
   return (
-    <group>
-      <mesh castShadow>
-        <boxGeometry args={[1.4, 0.95, 0.6]} />
-        <meshStandardMaterial color="#2A2A26" />
-      </mesh>
-      <mesh position={[0, 0, 0.31]}>
-        <ringGeometry args={[0.22, 0.42, 32]} />
-        <meshStandardMaterial color="#0E0E0C" />
-      </mesh>
-      <group ref={fan} position={[0, 0, 0.33]}>
-        {Array.from({ length: 5 }).map((_, i) => (
-          <mesh key={i} rotation={[0, 0, (i / 5) * Math.PI * 2]}>
-            <boxGeometry args={[0.05, 0.38, 0.025]} />
-            <meshStandardMaterial color="#F4F1EA" />
+    <Sway amplitude={0.22} baseYaw={-0.3} speed={0.25}>
+      <group rotation={[pitch, 0, 0]} scale={0.62}>
+        {/* Takyta */}
+        <mesh receiveShadow castShadow position={[0, -0.06, 0]}>
+          <boxGeometry args={[roofW, 0.1, roofD]} />
+          <meshStandardMaterial color="#2c2f32" roughness={0.85} />
+        </mesh>
+        <mesh position={[0, -0.009, 0]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
+          <planeGeometry args={[roofW, roofD]} />
+          <meshStandardMaterial map={tiles} roughness={0.8} />
+        </mesh>
+        {/* Skenor */}
+        {[-0.55, 0.55].map((z) => (
+          <mesh key={z} position={[0, 0.03, z]} castShadow>
+            <boxGeometry args={[PANEL_W * 3 + 0.16, 0.04, 0.045]} />
+            <meshStandardMaterial color="#9aa0a6" metalness={0.8} roughness={0.35} />
           </mesh>
         ))}
+        {/* Paneler */}
+        {[-1, 0, 1].map((i) => (
+          <group key={i} position={[i * (PANEL_W + gap), 0.085, 0]}>
+            <SolarPanel />
+          </group>
+        ))}
+        {/* Klämmor mellan panelerna */}
+        {[-1.5, -0.5, 0.5, 1.5].map((i) =>
+          [-0.55, 0.55].map((z) => (
+            <mesh key={`${i}${z}`} position={[i * (PANEL_W + gap), 0.11, z]} castShadow>
+              <boxGeometry args={[0.04, 0.025, 0.07]} />
+              <meshStandardMaterial color="#121314" metalness={0.5} roughness={0.4} />
+            </mesh>
+          )),
+        )}
       </group>
-    </group>
+    </Sway>
   );
 }
 
-function ChargerUnit() {
+/** Luft-vattenvärmepump på betongplintar. */
+function HeatPumpScene() {
   return (
-    <group>
-      <mesh castShadow>
-        <boxGeometry args={[0.5, 1.05, 0.18]} />
-        <meshStandardMaterial color="#E9B949" />
-      </mesh>
-      <mesh position={[0, 0.15, 0.1]}>
-        <planeGeometry args={[0.32, 0.32]} />
-        <meshStandardMaterial
-          color="#0E0E0C"
-          emissive="#3F5236"
-          emissiveIntensity={0.5}
-        />
-      </mesh>
-      <mesh position={[0.42, -0.4, 0]}>
-        <torusKnotGeometry args={[0.18, 0.04, 80, 12]} />
-        <meshStandardMaterial color="#0E0E0C" />
-      </mesh>
+    <group position={[0, -0.45, 0]}>
+      <Sway amplitude={0.32} baseYaw={-0.45}>
+        <mesh position={[0, 0.03, 0]} receiveShadow castShadow>
+          <boxGeometry args={[1.35, 0.06, 0.62]} />
+          <meshStandardMaterial color="#bdb9b0" roughness={0.95} />
+        </mesh>
+        <group position={[0, 0.06, 0]}>
+          <HeatPump />
+        </group>
+      </Sway>
     </group>
   );
 }

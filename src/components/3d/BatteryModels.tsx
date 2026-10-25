@@ -16,8 +16,10 @@
 
 import { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
+import { RoundedBox } from "@react-three/drei";
 import { SceneLabel } from "./SceneLabel";
 import * as THREE from "three";
+import { EwayBattery, ewayModules } from "./products/EwayBattery";
 
 const ANCHOR: [number, number, number] = [0, 0, 0];
 
@@ -68,20 +70,18 @@ export function PylontechH3({ capacityKWh }: { capacityKWh: number }) {
   return (
     <group position={ANCHOR}>
       {/* Bottenchassi */}
-      <mesh position={[0, bottomH / 2, 0]} castShadow>
-        <boxGeometry args={[w, bottomH, d]} />
-        <meshStandardMaterial color="#5b6a82" roughness={0.5} />
-      </mesh>
+      <RoundedBox position={[0, bottomH / 2, 0]} args={[w, bottomH, d]} radius={0.01} smoothness={3} castShadow receiveShadow>
+          <meshPhysicalMaterial color="#5b6a82" roughness={0.5} clearcoat={0.3} clearcoatRoughness={0.45} />
+        </RoundedBox>
       {/* Vita batterimoduler */}
       {Array.from({ length: modules }).map((_, i) => (
         <group
           key={i}
           position={[0, bottomH + moduleH / 2 + i * moduleH, 0]}
         >
-          <mesh castShadow>
-            <boxGeometry args={[w, moduleH * 0.96, d]} />
-            <meshStandardMaterial color="#F4F1EA" roughness={0.55} />
-          </mesh>
+          <RoundedBox args={[w, moduleH * 0.96, d]} radius={0.01} smoothness={3} castShadow receiveShadow>
+          <meshPhysicalMaterial color="#F4F1EA" roughness={0.55} clearcoat={0.3} clearcoatRoughness={0.45} />
+        </RoundedBox>
           {/* Tunt mörkt streck mellan modulerna */}
           <mesh position={[0, -moduleH / 2 + 0.005, d / 2 + 0.001]}>
             <planeGeometry args={[w, 0.012]} />
@@ -97,10 +97,9 @@ export function PylontechH3({ capacityKWh }: { capacityKWh: number }) {
           0,
         ]}
       >
-        <mesh castShadow>
-          <boxGeometry args={[w, headH, d]} />
-          <meshStandardMaterial color="#5b6a82" roughness={0.5} />
-        </mesh>
+        <RoundedBox args={[w, headH, d]} radius={0.01} smoothness={3} castShadow receiveShadow>
+          <meshPhysicalMaterial color="#5b6a82" roughness={0.5} clearcoat={0.3} clearcoatRoughness={0.45} />
+        </RoundedBox>
         {/* Litet display-fönster */}
         <mesh position={[-w / 2 + 0.08, 0, d / 2 + 0.001]}>
           <planeGeometry args={[0.1, 0.1]} />
@@ -121,60 +120,15 @@ export function PylontechH3({ capacityKWh }: { capacityKWh: number }) {
 }
 
 // === Easyway =================================================================
-// 7,68 kWh per modul. En enda stack rymmer max 8 moduler = 61,44 kWh.
-// Vit modul med svart handle på sidan (matchar Easyway-fotot).
+// Produkttrogen modell i ./products/EwayBattery (7,68 kWh per modul, max 8
+// per stapel). Skalas ner något så att stapeln står i proportion till huset.
 export function Easyway({ capacityKWh }: { capacityKWh: number }) {
-  const modules = Math.max(2, Math.round(capacityKWh / 7.68));
-  const moduleH = 0.18;
-  const w = 0.5;
-  const d = 0.42;
-  const baseH = 0.1;
-
+  const modules = ewayModules(capacityKWh);
   return (
     <group position={ANCHOR}>
-      {/* Bottenchassi (med "fötter") */}
-      <mesh position={[0, baseH / 2, 0]} castShadow>
-        <boxGeometry args={[w + 0.06, baseH, d + 0.06]} />
-        <meshStandardMaterial color="#dde2ec" roughness={0.6} />
-      </mesh>
-      {/* Topp-modul (BMS / kommunikation) – något smalare, svart panel */}
-      <group position={[0, baseH + modules * moduleH + 0.07, 0]}>
-        <mesh castShadow>
-          <boxGeometry args={[w, 0.14, d]} />
-          <meshStandardMaterial color="#F4F1EA" roughness={0.55} />
-        </mesh>
-        {/* Svart kontroll-yta uppe till höger */}
-        <mesh position={[w / 4, 0, d / 2 + 0.003]}>
-          <planeGeometry args={[w * 0.4, 0.08]} />
-          <meshStandardMaterial color="#0E0E0C" />
-        </mesh>
-        <StatusLED
-          position={[-w / 3, 0.005, d / 2 + 0.005]}
-          color="#3F5236"
-          size={[0.035, 0.035, 0.005]}
-        />
+      <group scale={0.75}>
+        <EwayBattery capacityKWh={capacityKWh} />
       </group>
-      {/* Batterimoduler */}
-      {Array.from({ length: modules }).map((_, i) => (
-        <group key={i} position={[0, baseH + moduleH / 2 + i * moduleH, 0]}>
-          <mesh castShadow>
-            <boxGeometry args={[w, moduleH * 0.94, d]} />
-            <meshStandardMaterial color="#F4F1EA" roughness={0.6} />
-          </mesh>
-          {/* Svart handle nedåt höger på varannan modul */}
-          {i % 2 === 0 && (
-            <mesh position={[w / 4, -moduleH / 6, d / 2 + 0.003]}>
-              <boxGeometry args={[w * 0.28, 0.04, 0.02]} />
-              <meshStandardMaterial color="#1A1A17" />
-            </mesh>
-          )}
-          {/* Tunt streck mellan moduler */}
-          <mesh position={[0, -moduleH / 2 + 0.003, d / 2 + 0.001]}>
-            <planeGeometry args={[w, 0.008]} />
-            <meshStandardMaterial color="#cdd3df" />
-          </mesh>
-        </group>
-      ))}
       <Label
         text={`Easyway · ${capacityKWh.toFixed(2).replace(".", ",")} kWh · ${modules} moduler`}
         y={-0.05}
@@ -197,17 +151,15 @@ export function SajHS3({ capacityKWh }: { capacityKWh: number }) {
   return (
     <group position={ANCHOR}>
       {/* Bas */}
-      <mesh position={[0, baseH / 2, 0]} castShadow>
-        <boxGeometry args={[w + 0.04, baseH, d + 0.04]} />
-        <meshStandardMaterial color="#cdd3df" roughness={0.6} />
-      </mesh>
+      <RoundedBox position={[0, baseH / 2, 0]} args={[w + 0.04, baseH, d + 0.04]} radius={0.01} smoothness={3} castShadow receiveShadow>
+          <meshPhysicalMaterial color="#cdd3df" roughness={0.6} clearcoat={0.3} clearcoatRoughness={0.45} />
+        </RoundedBox>
       {/* Batterimoduler (tunna, vita, separerade med tunt streck) */}
       {Array.from({ length: modules }).map((_, i) => (
         <group key={i} position={[0, baseH + moduleH / 2 + i * moduleH, 0]}>
-          <mesh castShadow>
-            <boxGeometry args={[w, moduleH * 0.94, d]} />
-            <meshStandardMaterial color="#F4F1EA" roughness={0.55} />
-          </mesh>
+          <RoundedBox args={[w, moduleH * 0.94, d]} radius={0.01} smoothness={3} castShadow receiveShadow>
+          <meshPhysicalMaterial color="#F4F1EA" roughness={0.55} clearcoat={0.3} clearcoatRoughness={0.45} />
+        </RoundedBox>
           <mesh position={[0, -moduleH / 2 + 0.003, d / 2 + 0.001]}>
             <planeGeometry args={[w, 0.008]} />
             <meshStandardMaterial color="#cdd3df" />
@@ -218,10 +170,9 @@ export function SajHS3({ capacityKWh }: { capacityKWh: number }) {
       <group
         position={[0, baseH + modules * moduleH + inverterH / 2, 0]}
       >
-        <mesh castShadow>
-          <boxGeometry args={[w * 1.05, inverterH, d * 1.02]} />
-          <meshStandardMaterial color="#FFFFFF" roughness={0.4} />
-        </mesh>
+        <RoundedBox args={[w * 1.05, inverterH, d * 1.02]} radius={0.03} smoothness={3} castShadow receiveShadow>
+          <meshPhysicalMaterial color="#FFFFFF" roughness={0.4} clearcoat={0.3} clearcoatRoughness={0.45} />
+        </RoundedBox>
         {/* Grön ring-indikator */}
         <RingIndicator position={[0, 0.04, d / 2 + 0.005]} />
         {/* Tunn rand under inverter */}
@@ -289,20 +240,17 @@ export function EnershareCore({ capacityKWh }: { capacityKWh: number }) {
         return (
           <group key={s} position={[xOffset, 0, 0]}>
             {/* Bas */}
-            <mesh position={[0, baseH / 2, 0]} castShadow>
-              <boxGeometry args={[w + 0.04, baseH, d + 0.04]} />
-              <meshStandardMaterial color="#dde2ec" roughness={0.6} />
-            </mesh>
+            <RoundedBox position={[0, baseH / 2, 0]} args={[w + 0.04, baseH, d + 0.04]} radius={0.01} smoothness={3} castShadow receiveShadow>
+          <meshPhysicalMaterial color="#dde2ec" roughness={0.6} clearcoat={0.3} clearcoatRoughness={0.45} />
+        </RoundedBox>
             {/* Batteri-moduler */}
             {Array.from({ length: modulesInThisStack }).map((_, i) => (
-              <mesh
+              <RoundedBox
                 key={i}
-                castShadow
                 position={[0, baseH + moduleH / 2 + i * moduleH, 0]}
-              >
-                <boxGeometry args={[w, moduleH * 0.95, d]} />
-                <meshStandardMaterial color="#EFEFEC" roughness={0.55} />
-              </mesh>
+               args={[w, moduleH * 0.95, d]} radius={0.01} smoothness={3} castShadow receiveShadow>
+          <meshPhysicalMaterial color="#EFEFEC" roughness={0.55} clearcoat={0.3} clearcoatRoughness={0.45} />
+        </RoundedBox>
             ))}
             {/* Topp-modul med display */}
             <group
@@ -312,10 +260,9 @@ export function EnershareCore({ capacityKWh }: { capacityKWh: number }) {
                 0,
               ]}
             >
-              <mesh castShadow>
-                <boxGeometry args={[w, headH, d]} />
-                <meshStandardMaterial color="#F4F1EA" roughness={0.55} />
-              </mesh>
+              <RoundedBox args={[w, headH, d]} radius={0.01} smoothness={3} castShadow receiveShadow>
+          <meshPhysicalMaterial color="#F4F1EA" roughness={0.55} clearcoat={0.3} clearcoatRoughness={0.45} />
+        </RoundedBox>
               {/* Liten display */}
               <mesh position={[0, 0.02, d / 2 + 0.002]}>
                 <planeGeometry args={[0.14, 0.08]} />
@@ -356,14 +303,11 @@ export function EmaldoPowerStore({ capacityKWh }: { capacityKWh: number }) {
         return (
           <group key={s} position={[xOffset, 0, 0]}>
             {/* Huvudkropp – glansvit, slät */}
-            <mesh castShadow position={[0, stackH / 2, 0]}>
-              <boxGeometry args={[w, stackH, d]} />
-              <meshStandardMaterial
-                color="#FFFFFF"
+            <RoundedBox position={[0, stackH / 2, 0]} args={[w, stackH, d]} radius={0.035} smoothness={3} castShadow receiveShadow>
+          <meshPhysicalMaterial color="#FFFFFF"
                 roughness={0.35}
-                metalness={0.05}
-              />
-            </mesh>
+                metalness={0.05} clearcoat={0.3} clearcoatRoughness={0.45} />
+        </RoundedBox>
             {/* Inbyggd växelriktare-yta upptill höger */}
             <mesh
               position={[w / 4, stackH * 0.78, d / 2 + 0.003]}

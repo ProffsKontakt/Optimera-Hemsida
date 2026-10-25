@@ -4,6 +4,12 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { Grid, OrbitControls } from "@react-three/drei";
 import { useRef } from "react";
 import * as THREE from "three";
+import { SolarPanel } from "./products/SolarPanel";
+import { EwayBattery } from "./products/EwayBattery";
+import { ZaptecGo2 } from "./products/ZaptecGo2";
+import { HeatPump as HeatPumpModel } from "./products/HeatPump";
+import { HybridInverter } from "./products/HybridInverter";
+import { StudioLights } from "./products/Studio";
 
 /**
  * HeroLab
@@ -37,7 +43,6 @@ const GROUND_Y = -HOUSE.wallH / 2;
 
 const WALL_COLOR = "#F4F1EA";
 const ROOF_COLOR = "#3F5236";
-const TRIM_COLOR = "#cdd3df";
 
 export function HeroLab() {
   return (
@@ -49,15 +54,7 @@ export function HeroLab() {
       className="!absolute inset-0"
     >
       <color attach="background" args={["#EFE9DC"]} />
-      <ambientLight intensity={0.55} />
-      <directionalLight
-        position={[5, 6, 3]}
-        intensity={1.1}
-        castShadow
-        shadow-mapSize-width={1024}
-        shadow-mapSize-height={1024}
-      />
-      <directionalLight position={[-3, 2, -3]} intensity={0.25} color="#E9B949" />
+      <StudioLights envIntensity={0.45} keyIntensity={1.35} />
 
       <Grid
         position={[0, GROUND_Y, 0]}
@@ -203,45 +200,20 @@ function Window({ position }: { position: [number, number, number] }) {
 // ============= SOLPANELER =============
 
 function RoofPanels() {
-  // 3 rader x 4 kolumner = 12 paneler på södra takfallet (+z).
+  // 3 rader x 4 kolumner = 12 helsvarta JA Solar-paneler på södra takfallet (+z).
   const cols = 4;
   const rows = 3;
   const panelW = (HOUSE.width - 0.6) / cols;
   const panelD = panelW * (1134 / 1953); // standard panel-aspect
   return (
-    <group
-      position={[0, SLOPE_Y, HOUSE.depth / 4]}
-      rotation={[SLOPE_ANGLE, 0, 0]}
-    >
+    <group position={[0, SLOPE_Y, HOUSE.depth / 4]} rotation={[SLOPE_ANGLE, 0, 0]}>
       {Array.from({ length: rows }).map((_, r) =>
         Array.from({ length: cols }).map((__, c) => {
           const x = (c - (cols - 1) / 2) * panelW;
           const z = (r - (rows - 1) / 2) * panelD;
           return (
-            <group key={`${r}-${c}`} position={[x, 0.04, z]}>
-              <mesh castShadow>
-                <boxGeometry args={[panelW * 0.92, 0.04, panelD * 0.92]} />
-                <meshStandardMaterial color="#0E0E0C" />
-              </mesh>
-              <mesh position={[0, 0.026, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-                <planeGeometry args={[panelW * 0.85, panelD * 0.85]} />
-                <meshStandardMaterial
-                  color="#0a2a44"
-                  emissive="#0a3a4e"
-                  emissiveIntensity={0.16}
-                  metalness={0.85}
-                  roughness={0.18}
-                />
-              </mesh>
-              {/* Cellrutnät */}
-              <mesh position={[0, 0.027, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-                <planeGeometry args={[panelW * 0.85, 0.005]} />
-                <meshStandardMaterial color="#1f3a55" />
-              </mesh>
-              <mesh position={[0, 0.027, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-                <planeGeometry args={[0.005, panelD * 0.85]} />
-                <meshStandardMaterial color="#1f3a55" />
-              </mesh>
+            <group key={`${r}-${c}`} position={[x, 0.04, z]} rotation={[0, Math.PI / 2, 0]}>
+              <SolarPanel width={panelD * 0.95} length={panelW * 0.96} thickness={0.04} />
             </group>
           );
         }),
@@ -250,171 +222,46 @@ function RoofPanels() {
   );
 }
 
-// ============= BATTERI (Easyway-stack mot östra gaveln) =============
-
+/** Easyway-batteriet mot gaveln, fronten utåt. */
 function BatteryStack() {
-  const modules = 3;
-  const moduleH = 0.16;
-  const w = 0.42;
-  const d = 0.34;
-  const baseH = 0.07;
   return (
-    <group position={[GABLE_X + 0.16, GROUND_Y + 0.02, -0.4]}>
-      {/* Bottenchassi */}
-      <mesh position={[0, baseH / 2, 0]} castShadow receiveShadow>
-        <boxGeometry args={[w + 0.06, baseH, d + 0.06]} />
-        <meshStandardMaterial color={TRIM_COLOR} roughness={0.6} />
-      </mesh>
-      {/* 3 batterimoduler */}
-      {Array.from({ length: modules }).map((_, i) => (
-        <group key={i} position={[0, baseH + moduleH / 2 + i * moduleH, 0]}>
-          <mesh castShadow>
-            <boxGeometry args={[w, moduleH * 0.94, d]} />
-            <meshStandardMaterial color="#F4F1EA" roughness={0.6} />
-          </mesh>
-          {i % 2 === 0 && (
-            <mesh position={[w / 4, -moduleH / 6, d / 2 + 0.003]}>
-              <boxGeometry args={[w * 0.28, 0.035, 0.02]} />
-              <meshStandardMaterial color="#1A1A17" />
-            </mesh>
-          )}
-        </group>
-      ))}
-      {/* Topp-modul (BMS) */}
-      <group position={[0, baseH + modules * moduleH + 0.06, 0]}>
-        <mesh castShadow>
-          <boxGeometry args={[w, 0.12, d]} />
-          <meshStandardMaterial color="#F4F1EA" roughness={0.55} />
-        </mesh>
-        <mesh position={[0, 0, d / 2 + 0.003]}>
-          <planeGeometry args={[w * 0.55, 0.07]} />
-          <meshStandardMaterial color="#0E0E0C" />
-        </mesh>
-        <StatusLED />
+    <group position={[HOUSE.width / 2 + 0.12, GROUND_Y, -0.4]} rotation={[0, Math.PI / 2, 0]}>
+      <group scale={0.5}>
+        <EwayBattery capacityKWh={23.04} />
       </group>
     </group>
   );
 }
 
-function StatusLED() {
-  const ref = useRef<THREE.MeshStandardMaterial>(null);
-  useFrame(({ clock }) => {
-    if (ref.current) {
-      ref.current.emissiveIntensity =
-        0.5 + Math.sin(clock.elapsedTime * 1.6) * 0.3;
-    }
-  });
-  return (
-    <mesh position={[-0.12, 0.012, 0.18]}>
-      <boxGeometry args={[0.025, 0.025, 0.005]} />
-      <meshStandardMaterial
-        ref={ref}
-        color="#3F5236"
-        emissive="#3F5236"
-        emissiveIntensity={0.5}
-      />
-    </mesh>
-  );
-}
-
-// ============= LADDBOX (Easee-stil på östra gaveln) =============
-
+/** Zaptec Go 2 på gaveln. */
 function Charger() {
   return (
-    <group position={[GABLE_X - 0.04, 0.18, 0.45]}>
-      <mesh castShadow>
-        <boxGeometry args={[0.04, 0.36, 0.22]} />
-        <meshStandardMaterial color={WALL_COLOR} roughness={0.5} />
-      </mesh>
-      <mesh position={[0.022, 0, 0]} rotation={[0, Math.PI / 2, 0]}>
-        <planeGeometry args={[0.18, 0.32]} />
-        <meshStandardMaterial color="#0E0E0C" />
-      </mesh>
-      <ChargerLED />
-      {/* Kabel-spiral */}
-      <mesh position={[0.05, -0.22, 0]} rotation={[0, 0, 0.4]} castShadow>
-        <torusGeometry args={[0.06, 0.012, 8, 24]} />
-        <meshStandardMaterial color="#1A1A17" roughness={0.5} />
-      </mesh>
-    </group>
-  );
-}
-
-function ChargerLED() {
-  const ref = useRef<THREE.MeshStandardMaterial>(null);
-  useFrame(({ clock }) => {
-    if (ref.current) {
-      ref.current.emissiveIntensity =
-        0.6 + Math.sin(clock.elapsedTime * 2.2) * 0.25;
-    }
-  });
-  return (
-    <mesh position={[0.024, 0.08, 0]} rotation={[0, Math.PI / 2, 0]}>
-      <circleGeometry args={[0.018, 16]} />
-      <meshStandardMaterial
-        ref={ref}
-        color="#3648C3"
-        emissive="#3648C3"
-        emissiveIntensity={0.6}
-      />
-    </mesh>
-  );
-}
-
-// ============= VÄRMEPUMP (utomhusdel bredvid huset) =============
-
-function HeatPump() {
-  const fan = useRef<THREE.Group>(null);
-  useFrame((_, delta) => {
-    if (fan.current) fan.current.rotation.z += delta * 3.5;
-  });
-  return (
-    <group position={[GABLE_X + 0.55, GROUND_Y + 0.32, 0.55]}>
-      <mesh position={[0, -0.3, 0]} castShadow>
-        <boxGeometry args={[0.5, 0.04, 0.32]} />
-        <meshStandardMaterial color="#1A1A17" />
-      </mesh>
-      <mesh castShadow>
-        <boxGeometry args={[0.62, 0.46, 0.36]} />
-        <meshStandardMaterial color="#2A2A26" roughness={0.5} metalness={0.3} />
-      </mesh>
-      <mesh position={[0, 0, 0.181]}>
-        <ringGeometry args={[0.13, 0.21, 32]} />
-        <meshStandardMaterial color="#0E0E0C" />
-      </mesh>
-      <group ref={fan} position={[0, 0, 0.19]}>
-        {Array.from({ length: 5 }).map((_, i) => (
-          <mesh key={i} rotation={[0, 0, (i / 5) * Math.PI * 2]}>
-            <boxGeometry args={[0.04, 0.2, 0.018]} />
-            <meshStandardMaterial color="#F4F1EA" />
-          </mesh>
-        ))}
-        <mesh>
-          <cylinderGeometry args={[0.035, 0.035, 0.04, 24]} />
-          <meshStandardMaterial color="#E9B949" />
-        </mesh>
+    <group position={[HOUSE.width / 2, GROUND_Y + 0.5, 0.5]} rotation={[0, Math.PI / 2, 0]}>
+      <group scale={1.3}>
+        <ZaptecGo2 />
       </group>
     </group>
   );
 }
 
-// ============= VÄXELRIKTARE (Solis-stil på gavelväggen) =============
+/** Luft-vattenvärmepumpens utedel vid gaveln. */
+function HeatPump() {
+  return (
+    <group position={[GABLE_X + 0.55, GROUND_Y, 0.55]}>
+      <group scale={0.55}>
+        <HeatPumpModel />
+      </group>
+    </group>
+  );
+}
 
+/** Hybridväxelriktaren på gaveln. */
 function Inverter() {
   return (
-    <group position={[GABLE_X - 0.02, 0.32, -0.05]}>
-      <mesh castShadow>
-        <boxGeometry args={[0.04, 0.28, 0.22]} />
-        <meshStandardMaterial color="#1A1A17" roughness={0.5} />
-      </mesh>
-      <mesh position={[0.022, 0, 0]} rotation={[0, Math.PI / 2, 0]}>
-        <planeGeometry args={[0.16, 0.04]} />
-        <meshStandardMaterial color="#0E0E0C" />
-      </mesh>
-      <mesh position={[0.022, -0.06, 0]} rotation={[0, Math.PI / 2, 0]}>
-        <planeGeometry args={[0.16, 0.04]} />
-        <meshStandardMaterial color="#0E0E0C" />
-      </mesh>
+    <group position={[HOUSE.width / 2, GROUND_Y + 0.62, -0.05]} rotation={[0, Math.PI / 2, 0]}>
+      <group scale={0.45}>
+        <HybridInverter />
+      </group>
     </group>
   );
 }

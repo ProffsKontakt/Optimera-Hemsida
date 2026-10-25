@@ -6,8 +6,13 @@ import { SceneLabel } from "./SceneLabel";
 import { useMemo, useRef } from "react";
 import * as THREE from "three";
 import { computeCalc, type CalcInput, type CalcResult } from "@/lib/calc";
-import { PANELS, type RoofType } from "@/lib/catalog";
+import { type RoofType } from "@/lib/catalog";
 import { BatteryByBrand } from "./BatteryModels";
+import { SolarPanel } from "./products/SolarPanel";
+import { HybridInverter } from "./products/HybridInverter";
+import { HeatPump, HEAT_PUMP_SIZE } from "./products/HeatPump";
+import { ZaptecGo2 } from "./products/ZaptecGo2";
+import { StudioLights } from "./products/Studio";
 
 // ----- Hus-mått (metaforisk skala). Allt 3D-arbete utgår från dessa.
 const HOUSE = {
@@ -163,15 +168,9 @@ export function CalcScene({ input }: { input: CalcInput }) {
       className="!absolute inset-0"
     >
       <color attach="background" args={["#EFE9DC"]} />
-      <ambientLight intensity={0.55} />
-      <directionalLight
-        position={[6, 8, 4]}
-        intensity={1.15}
-        castShadow
-        shadow-mapSize-width={2048}
-        shadow-mapSize-height={2048}
-      />
-      <directionalLight position={[-4, 3, -3]} intensity={0.3} color="#E9B949" />
+      {/* Samma produktljus som tjänstescenerna: skuggor + ljusbanker som
+          speglas i panelglas, lack och krom. */}
+      <StudioLights shadowSize={2048} envIntensity={0.45} keyIntensity={1.35} />
 
       <Grid
         position={[0, HOUSE.wallY - HOUSE.wallH / 2, 0]}
@@ -190,13 +189,7 @@ export function CalcScene({ input }: { input: CalcInput }) {
       <House roofType={input.roofType} />
 
       {en.sol && (
-        <PanelArray
-          count={input.panelCount}
-          roofType={input.roofType}
-          glow={
-            PANELS.find((p) => p.id === input.panelId)?.efficiency ?? 22
-          }
-        />
+        <PanelArray count={input.panelCount} roofType={input.roofType} />
       )}
       {/* Växelriktare visas bara som separat enhet om den är extern – inbyggda
           växelriktare (t.ex. SAJ HS3, Emaldo Power Store) ritas in i batteriet. */}
@@ -576,11 +569,9 @@ function Window({
 function PanelArray({
   count,
   roofType,
-  glow,
 }: {
   count: number;
   roofType: RoofType;
-  glow: number;
 }) {
   const surfaces = useMemo(() => getSolarSurfaces(roofType), [roofType]);
   // Distribuera paneler i prio-ordning över ytorna. Södra prio över norra.
@@ -592,12 +583,7 @@ function PanelArray({
         if (c <= 0) return null;
         remaining -= c;
         return (
-          <SurfacePanels
-            key={i}
-            surface={surface}
-            count={c}
-            glow={glow}
-          />
+          <SurfacePanels key={i} surface={surface} count={c} />
         );
       })}
     </>
@@ -607,11 +593,9 @@ function PanelArray({
 function SurfacePanels({
   surface,
   count,
-  glow,
 }: {
   surface: SolarSurface;
   count: number;
-  glow: number;
 }) {
   // Bestäm grid (cols × rows) som ger högst paneltäckning på ytan utan att
   // gå utanför kanterna. Standardpanel är ~1953×1134 mm = ratio 0,58.
@@ -633,21 +617,10 @@ function SurfacePanels({
           const x = (c - (cols - 1) / 2) * panelW;
           const z = dirZ * (r - (rowsFit - 1) / 2) * panelD;
           return (
-            <group key={`${r}-${c}`} position={[x, 0.035, z]}>
-              <mesh castShadow>
-                <boxGeometry args={[panelW * 0.92, 0.04, panelD * 0.92]} />
-                <meshStandardMaterial color="#0E0E0C" />
-              </mesh>
-              <mesh position={[0, 0.025, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-                <planeGeometry args={[panelW * 0.85, panelD * 0.85]} />
-                <meshStandardMaterial
-                  color="#0a3a4e"
-                  emissive="#0a3a4e"
-                  emissiveIntensity={0.15 + (glow - 22) * 0.08}
-                  metalness={0.85}
-                  roughness={0.15}
-                />
-              </mesh>
+            // Liggande panel: långsidan längs x. SolarPanel ritas stående
+            // (långsidan längs z) och vrids därför 90°.
+            <group key={`${r}-${c}`} position={[x, 0.035, z]} rotation={[0, Math.PI / 2, 0]}>
+              <SolarPanel width={panelD * 0.95} length={panelW * 0.96} thickness={0.04} />
             </group>
           );
         }),
@@ -667,29 +640,13 @@ function Inverter({
 }: {
   assignment: Extract<CalcResult["inverter"], { kind: "external" }>;
 }) {
-  const ref = useRef<THREE.MeshStandardMaterial>(null);
-  useFrame(({ clock }) => {
-    if (ref.current) {
-      ref.current.emissiveIntensity =
-        0.3 + Math.sin(clock.elapsedTime * 2) * 0.2;
-    }
-  });
+  // Väggmonterad på gaveln med fronten utåt (+x).
   return (
-    <group position={[GABLE_X, GABLE_GROUND_Y + 0.55, -0.95]}>
-      <mesh castShadow>
-        <boxGeometry args={[0.18, 0.5, 0.4]} />
-        <meshStandardMaterial color="#1A1A17" />
-      </mesh>
-      <mesh position={[0.095, 0.05, 0]} rotation={[0, Math.PI / 2, 0]}>
-        <planeGeometry args={[0.22, 0.14]} />
-        <meshStandardMaterial
-          ref={ref}
-          color="#3F5236"
-          emissive="#3F5236"
-          emissiveIntensity={0.4}
-        />
-      </mesh>
-      <SceneLabel parts={[assignment.brand, `${assignment.kw} kW`]} position={[0.4, -0.25, 0]} />
+    <group position={[HOUSE.width / 2, GABLE_GROUND_Y + 0.62, -0.95]} rotation={[0, Math.PI / 2, 0]}>
+      <group scale={0.75}>
+        <HybridInverter />
+      </group>
+      <SceneLabel parts={[assignment.brand, `${assignment.kw} kW`]} position={[0.4, -0.3, 0.2]} />
     </group>
   );
 }
@@ -701,13 +658,12 @@ function BatteryModel({
   brandId: string;
   capacityKWh: number;
 }) {
-  // Vi placerar batteriet vid gavelns nedre kant och roterar -90° runt y så
-  // att fronten av modellen pekar UTÅT från fasaden (mot betraktaren) istället
-  // för att stå vänd mot väggen.
+  // Batteriet står mot gaveln, vridet +90° runt y så att fronten (handtag,
+  // logga, kontaktpanel) pekar UTÅT från fasaden.
   return (
     <group
-      position={[GABLE_X + 0.05, GABLE_GROUND_Y, -0.15]}
-      rotation={[0, -Math.PI / 2, 0]}
+      position={[HOUSE.width / 2 + 0.2, GABLE_GROUND_Y, -0.15]}
+      rotation={[0, Math.PI / 2, 0]}
     >
       <BatteryByBrand brandId={brandId} capacityKWh={capacityKWh} />
     </group>
@@ -715,51 +671,29 @@ function BatteryModel({
 }
 
 function HeatPumpUnit() {
-  const fan = useRef<THREE.Group>(null);
-  useFrame((_, d) => {
-    if (fan.current) fan.current.rotation.x += d * 4.5;
-  });
+  // Utedelen står vid gaveln med fläkten utåt (+x).
+  const scale = 0.62;
   return (
-    <group position={[GABLE_X + 0.05, GABLE_GROUND_Y + 0.45, 0.7]}>
-      <mesh castShadow>
-        <boxGeometry args={[0.4, 0.65, 0.95]} />
-        <meshStandardMaterial color="#2A2A26" />
-      </mesh>
-      {/* Fläkten sitter på gavelsidan (lokal +x) och pekar utåt */}
-      <mesh position={[0.205, 0, 0]} rotation={[0, Math.PI / 2, 0]}>
-        <ringGeometry args={[0.13, 0.27, 32]} />
-        <meshStandardMaterial color="#0E0E0C" />
-      </mesh>
-      <group ref={fan} position={[0.215, 0, 0]} rotation={[0, Math.PI / 2, 0]}>
-        {Array.from({ length: 5 }).map((_, i) => (
-          <mesh key={i} rotation={[0, 0, (i / 5) * Math.PI * 2]}>
-            <boxGeometry args={[0.04, 0.24, 0.02]} />
-            <meshStandardMaterial color="#F4F1EA" />
-          </mesh>
-        ))}
+    <group
+      position={[HOUSE.width / 2 + (HEAT_PUMP_SIZE.depth / 2) * scale + 0.14, GABLE_GROUND_Y, 0.75]}
+      rotation={[0, Math.PI / 2, 0]}
+    >
+      <group scale={scale}>
+        <HeatPump />
       </group>
-      <SceneLabel parts={["Värmepump"]} position={[0.5, -0.4, 0]} />
+      <SceneLabel parts={["Värmepump"]} position={[0, -0.12, 0.45]} />
     </group>
   );
 }
 
 function ChargerUnit() {
-  // Laddbox sätts på framsidan (z+) men nära höger gavel
+  // Zaptec Go 2 på husets framsida, mellan dörren och högra fönstret.
   return (
-    <group position={[HOUSE.width / 2 - 0.15, GABLE_GROUND_Y + 0.45, HOUSE.depth / 2 + 0.07]}>
-      <mesh castShadow>
-        <boxGeometry args={[0.22, 0.5, 0.1]} />
-        <meshStandardMaterial color="#E9B949" />
-      </mesh>
-      <mesh position={[0, 0.1, 0.06]}>
-        <planeGeometry args={[0.12, 0.16]} />
-        <meshStandardMaterial
-          color="#0E0E0C"
-          emissive="#3F5236"
-          emissiveIntensity={0.5}
-        />
-      </mesh>
-      <SceneLabel parts={["Laddbox"]} position={[0, -0.4, 0]} center />
+    <group position={[0.55, GABLE_GROUND_Y + 0.5, HOUSE.depth / 2]}>
+      <group scale={1.65}>
+        <ZaptecGo2 />
+      </group>
+      <SceneLabel parts={["Laddbox"]} position={[0, -0.36, 0.1]} center />
     </group>
   );
 }
