@@ -436,7 +436,7 @@ export function computeCalc(input: CalcInput): CalcResult {
     emsPriceKr;
 
   // -------- Avdrag (grön teknik + ROT) --------
-  // Cap per fastighetsägare = 50 000 kr/år. Procenter:
+  // Tak per person = 50 000 kr/år. Procenter:
   //   Sol            14,55 %  (grön teknik)
   //   Batteri        48,5 %   (grön teknik) – kräver att huset har sol
   //                            (befintlig eller ny)

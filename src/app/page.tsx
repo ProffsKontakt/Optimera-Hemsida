@@ -38,7 +38,7 @@ const HOME_FAQ = [
   },
   {
     q: "Hur stort är det gröna avdraget 2026?",
-    a: "Solpaneler ger 14,55 procent, batterier och laddboxar 48,5 procent. Avdragstaket är 50 000 kr per fastighetsägare och år. Vi drar av summan direkt på fakturan.",
+    a: "Solpaneler ger 14,55 procent, batterier och laddboxar 48,5 procent. Avdragstaket är 50 000 kr per person och år. Vi drar av summan direkt på fakturan.",
   },
   {
     q: "Hur lång är återbetalningstiden?",

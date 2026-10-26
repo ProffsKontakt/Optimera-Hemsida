@@ -61,11 +61,11 @@ const FAQ = [
   },
   {
     q: "Hur stort är grönt avdrag för solcellsbatteri?",
-    a: "Det gröna avdraget (skattereduktion för grön teknik) är 48,5 % av arbets- och materialkostnaden för batterilagring, förutsatt att huset har en solanläggning. Taket är 50 000 kr per fastighetsägare och år. Avdraget dras direkt på fakturan – du behöver inte ansöka i efterhand. Solpaneler ger 14,55 % och laddbox 48,5 % inom samma tak.",
+    a: "Det gröna avdraget (skattereduktion för grön teknik) är 48,5 % av arbets- och materialkostnaden för batterilagring, förutsatt att huset har en solanläggning. Taket är 50 000 kr per person och år. Avdraget dras direkt på fakturan – du behöver inte ansöka i efterhand. Solpaneler ger 14,55 % och laddbox 48,5 % inom samma tak.",
   },
   {
     q: "Lönar sig ett solcellsbatteri?",
-    a: "För de flesta villor med solceller, elvärme eller hög förbrukning: ja. Batteriet höjer självförbrukningen av din solel från typiska 30–40 % till 70–80 %, kapar dina dyraste effekttimmar och kan aktiveras för stödtjänster (FCR-D / aFRR) där Svenska kraftnät betalar för att batteriet stabiliserar nätet. Att lägga ett batteri till befintliga solceller är ofta den snabbaste affären – typiskt runt 2–5 års återbetalning; en helt ny sol- och batterilösning oftast 4–7,5 år.",
+    a: "Det kan göra det, men marginalerna är mindre än för några år sedan. Batteriet sparar solöverskottet till kvällen, kan prisstyra och kapa effekttoppar och kan säljas som stödtjänst via en aggregator. I vårt räkneexempel (SE3, 2026) tar ett 10 kWh-batteri till befintliga solceller cirka 6,5–9 år med stödtjänster på de nivåer Mölndal Energi betalat ut 2025–2026, och cirka 15 år utan. Effektavgift, hög kvällsförbrukning och större prisskillnader förbättrar kalkylen – vi räknar på ditt hus.",
   },
   {
     q: "Behöver jag solceller för att ha ett solcellsbatteri?",
@@ -210,11 +210,10 @@ export default function SolcellsbatteriPage() {
                 för 10 kWh och 130 000–200 000 kr för 20–30 kWh, före grönt
                 avdrag på 48,5 %.
               </strong>{" "}
-              Det lönar sig för de flesta villor med solceller, elvärme eller
-              hög förbrukning: batteriet höjer självförbrukningen av solelen
-              från 30–40 % till 70–80 %, kapar effekttoppar och kan aktiveras
-              för stödtjänster mot Svenska kraftnät. Att lägga ett batteri till
-              befintliga solceller ger ofta 2–5 års återbetalning.
+              Om det lönar sig beror mest på vad stödtjänsterna betalar, ditt
+              nätbolag och hur mycket solel du kan flytta till kvällen. I vårt
+              räkneexempel (SE3, 2026) tar ett 10 kWh-batteri till befintliga
+              solceller cirka 6,5–9 år med stödtjänster och cirka 15 år utan.
             </p>
           </AnswerBox>
           <KeyTakeaways
@@ -224,17 +223,18 @@ export default function SolcellsbatteriPage() {
                 före 48,5 % grönt avdrag.
               </>,
               <>
-                <strong>Storlek:</strong> tumregeln är årsförbrukning ÷ 200–275
-                kalla dygn – 15 000 kWh/år ger ca 55–75 kWh. Vi mäter din
-                förbrukning först.
+                <strong>Storlek:</strong> vår tumregel är årsförbrukning ÷ 200–275
+                – 15 000 kWh/år ger ca 55–75 kWh. Vi mäter din förbrukning
+                först.
               </>,
               <>
-                <strong>Grönt avdrag:</strong> 48,5 % på batteri, tak 50 000 kr
-                per fastighetsägare och år.
+                <strong>Grönt avdrag:</strong> 48,5 % på batteri vid fast pris,
+                tak 50 000 kr per person och år.
               </>,
               <>
-                <strong>Återbetalning:</strong> 2–5 år som tillägg till befintlig
-                sol, 4–7,5 år för en helt ny sol- och batterilösning.
+                <strong>Återbetalning:</strong> 6,5–15 år som tillägg till
+                befintlig sol och 7,5–11 år för ny sol och batteri i vårt
+                räkneexempel – kortast med stödtjänster.
               </>,
               <>
                 <strong>Kemi:</strong> vi installerar LFP-celler (järnfosfat) som
@@ -357,7 +357,7 @@ export default function SolcellsbatteriPage() {
               cells: ["48,5 %", "Av arbets- och materialkostnad."],
             },
           ]}
-          footnote="Taket är 50 000 kr per fastighetsägare och år, gemensamt för grön teknik. Bor ni två ägare i huset kan ni dela på två tak. Kontrollera aktuella nivåer hos Skatteverket inför beslut."
+          footnote="Taket är 50 000 kr per person och år, gemensamt för grön teknik. Bor ni två ägare i huset kan ni dela på två tak. Kontrollera aktuella nivåer hos Skatteverket inför beslut."
         />
       </Section>
 
@@ -524,18 +524,21 @@ export default function SolcellsbatteriPage() {
       {/* Stödtjänster */}
       <Section
         eyebrow="Extra intäkt"
-        title={<>Stödtjänster gör batteriet betalt.</>}
+        title={<>Stödtjänster kan ge extra intäkt.</>}
         className="!py-16 md:!py-20"
       >
         <div className="max-w-2xl space-y-5 text-[16px] leading-relaxed text-ink/75">
           <p>
-            Ett batteri som står stilla kan ändå tjäna pengar. Via stödtjänsterna{" "}
-            <strong>FCR-D</strong> och <strong>aFRR</strong> betalar Svenska
-            kraftnät för att ditt batteri hjälper till att hålla elnätets
-            frekvens stabil. Ersättningen ligger runt{" "}
-            <strong>65 kr per kW växelriktare och månad</strong> – en anläggning
-            med en 10 kW-växelriktare ger i storleksordningen 7 800 kr per år,
-            utöver det du sparar på egen förbrukning.
+            Ett batteri kan få betalt för att stå redo att hjälpa elnätet.
+            Svenska kraftnät köper stödtjänster som <strong>FCR-D</strong> för
+            att hålla frekvensen stabil, och ett hembatteri deltar via en
+            aggregator. Ersättningen sätts på en marknad och har fallit med
+            över 90 % från toppåren 2022–2023. Mölndal Energi betalade sina
+            kunder i snitt <strong>52 kr per kW och månad 2025</strong> och
+            cirka 33 kr under januari–juni 2026, exklusive moms – för en
+            10 kW-växelriktare cirka 4 000–6 200 kr per år. Under de timmar
+            batteriet är sålt kan det inte användas till annat, så vi räknar
+            alltid både med och utan stödtjänster.
           </p>
           <p>
             Stödtjänster kräver en styrning (EMS) som kan köra batteriet mot

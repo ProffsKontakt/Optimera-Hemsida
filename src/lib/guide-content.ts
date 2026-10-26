@@ -707,7 +707,7 @@ export const GUIDE_CONTENT: Record<string, GuideContent> = {
           "Utan stödtjänster: batteriet ensamt ger cirka 3 000 kr per år och tar cirka 15 år. Sol och batteri kostar 96 400 kr netto, ger cirka 8 900 kr per år och tar knappt 11 år.",
           "Med FCR-D på 10 kW till Mölndal Energis utbetalningsnivåer, i snitt 52 kr per kW och månad 2025 och cirka 33 kr januari–juni 2026, exklusive moms: 4 000–6 200 kr per år. Sol och batteri tar då cirka 7,5–9 år.",
           "Med Optimera Energis kalkylatorschablon (65 kr per kW växelriktareffekt och månad): 7 800 kr per år och cirka 6,5 år för sol och batteri. Faktiska ersättningar har varierat och legat lägre. Hos Mölndal Energi gav juni 2026 bara 17 kr per kW, exklusive moms.",
-          "Optimera Energi anger att ett batteri typiskt höjer självförbrukningen från 30–40 % till 70–80 % och att en helt ny sol- och batterilösning oftast tar 4–7,5 år. Vårt exempel ger lägre egenanvändning och längre tid. Skillnaden beror främst på batteriets storlek, när du använder el och vad stödtjänsterna betalar, och ingen kan lova en viss ersättning.",
+          "Hur mycket egenanvändningen stiger beror främst på batteriets storlek, när du använder el och hur stort solöverskottet är. Hur snabbt sol och batteri betalar sig beror mest på vad stödtjänsterna betalar, och ingen kan lova en viss ersättning.",
           "De flesta batterier har 10 års garanti, enligt Energimyndigheten. Jämför återbetalningstiden med den.",
         ],
       },

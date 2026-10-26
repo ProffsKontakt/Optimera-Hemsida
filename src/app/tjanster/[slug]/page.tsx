@@ -130,12 +130,12 @@ export default function ServicePage({
               </Link>
             </div>
 
-            {/* Batteri: ekonomin direkt i heron. Siffrorna speglar sajtens
-                befintliga FAQ/kalkylator-copy – inga nya löften. */}
+            {/* Batteri: ekonomin direkt i heron. Återbetalningen följer
+                kunskapsbankens räkneexempel (med och utan stödtjänster). */}
             {s.slug === "batterier" && (
               <>
                 <div className="mt-10 grid grid-cols-3 gap-2 max-w-md">
-                  <HeroStat n="2–5 år" label="återbetalning med befintlig sol" />
+                  <HeroStat n="6,5–15 år" label="återbetalning med befintlig sol" />
                   <HeroStat
                     n="48,5 %"
                     label={<><Term id="gront-avdrag">grönt avdrag</Term>, dras på fakturan</>}
@@ -229,13 +229,14 @@ export default function ServicePage({
               <h2 className="font-display text-2xl md:text-3xl tracking-display-tight leading-snug">
                 Har du redan solceller?{" "}
                 <span className="italic font-serif text-sun">
-                  Då är batteriet bästa affären.
+                  Då flyttar batteriet solelen till kvällen.
                 </span>
               </h2>
               <p className="mt-2 text-bone/70 text-[14.5px] leading-relaxed max-w-xl">
-                Lagra din egen el, köp billigt och sälj dyrt, och låt{" "}
-                <Term id="stodtjanster">stödtjänsterna</Term> jobba – typisk
-                återbetalning 2–5 år.
+                Använd din egen el när den är dyr i stället för att sälja den
+                billigt, och låt <Term id="stodtjanster">stödtjänster</Term> ge
+                extra intäkt där det lönar sig. I vårt räkneexempel tar ett
+                10 kWh-batteri 6,5–9 år med stödtjänster och cirka 15 år utan.
               </p>
             </div>
             <Link
@@ -381,10 +382,10 @@ export default function ServicePage({
               </div>
               <div className="flex items-baseline justify-between gap-4 py-3">
                 <dt className="text-[14.5px] text-ink/70">
-                  Typisk återbetalning med befintlig sol
+                  Återbetalning med befintlig sol, med och utan stödtjänster
                 </dt>
                 <dd className="font-display text-xl tracking-display-tight whitespace-nowrap">
-                  2–5 år
+                  6,5–15 år
                 </dd>
               </div>
             </dl>

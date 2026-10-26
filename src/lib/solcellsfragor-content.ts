@@ -349,7 +349,7 @@ export const QUESTIONS: SolarQuestion[] = [
       {
         h2: "Med batteri",
         paragraphs: [
-          "Optimera Energi anger 4–7,5 år för en helt ny sol- och batterianläggning och 2–5 år för ett batteri till befintliga solceller. Grossisten Senergia beskriver 7–9 år för solceller med batteri som en rimlig arbetskalkyl i ett typfall, men betonar att det är en kalkyl och inte ett löfte."
+          "Grossisten Senergia beskriver 7–9 år för solceller med batteri som en rimlig arbetskalkyl i ett typfall, men betonar att det är en kalkyl och inte ett löfte."
         ]
       },
       {
@@ -417,7 +417,7 @@ export const QUESTIONS: SolarQuestion[] = [
         label: "Räkna på ditt hus i kalkylatorn"
       }
     ],
-    updatedAt: "2026-10-03"
+    updatedAt: "2026-10-26"
   },
   {
     slug: "lonar-sig-solceller",

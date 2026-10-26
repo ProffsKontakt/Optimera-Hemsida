@@ -46,7 +46,7 @@ const PRINCIPLES = [
     n: "03",
     title: "Rätt storlek, dimensionerad ur din förbrukning",
     body:
-      "Vi dimensionerar batteriet efter husets faktiska förbrukning, inte efter en broschyr. Tumregeln: årsförbrukningen i kWh delad med 200–275 kalla dygn – en villa med 15 000 kWh per år landar på cirka 55–75 kWh batterikapacitet. Kapaciteten ska räcka för ett helt dygns förbrukning när elen är som dyrast. Vi loggar din timförbrukning innan vi låser storleken.",
+      "Vi dimensionerar batteriet efter husets faktiska förbrukning, inte efter en broschyr. Tumregeln: årsförbrukningen i kWh delad med 200–275, ungefär så många dygn per år som elen är dyr och batteriet gör full nytta – en villa med 15 000 kWh per år landar på cirka 55–75 kWh batterikapacitet. Kapaciteten ska räcka för ett helt dygns förbrukning när elen är som dyrast. Vi loggar din timförbrukning innan vi låser storleken.",
   },
   {
     n: "04",
@@ -172,8 +172,8 @@ export default function MetodikPage() {
                 förbrukning.
               </>,
               <>
-                <strong>Rätt storlek</strong> – årsförbrukning ÷ 200–275 kalla
-                dygn, verifierad mot loggad timförbrukning.
+                <strong>Rätt storlek</strong> – årsförbrukning ÷ 200–275,
+                verifierad mot loggad timförbrukning.
               </>,
               <>
                 <strong>Fast pris</strong> – inga dolda påslag, avdrag dras på

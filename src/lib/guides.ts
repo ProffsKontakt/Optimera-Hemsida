@@ -338,7 +338,7 @@ export const GUIDES: Guide[] = [
     excerpt: "Nettopris delat med årlig nytta. Räkneexempel 2026 steg för steg: egenanvändning, SE3 mot SE4, med och utan batteri och vad slopade 60-öringen betydde.",
     category: "Ekonomi",
     publishedAt: "2026-05-24",
-    updatedAt: "2026-10-05",
+    updatedAt: "2026-10-26",
     readTimeMin: 9,
     searchPhrases: [
       "hur räknar man ut återbetalningstid på solceller",

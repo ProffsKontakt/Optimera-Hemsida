@@ -48,7 +48,7 @@ const CONTENT: BatteryCityContent[] = [
       {
         title: "Rätt storlek, dimensionerad ur förbrukningen",
         body:
-          "Vi dimensionerar batteriet efter din faktiska förbrukning, inte efter en broschyr. Tumregeln: årsförbrukningen i kWh delad med 200–275 kalla dygn – en villa med 15 000 kWh per år landar på cirka 55–75 kWh (Easyway byggs ut modulärt, SAJ HS3 i kaskad). Vi mäter ditt dygnsmönster innan vi rekommenderar kapacitet, så att batteriet täcker ett helt dygns förbrukning utan att du betalar för kWh du aldrig använder.",
+          "Vi dimensionerar batteriet efter din faktiska förbrukning, inte efter en broschyr. Tumregeln: årsförbrukningen i kWh delad med 200–275, ungefär så många dygn per år som elen är dyr – en villa med 15 000 kWh per år landar på cirka 55–75 kWh (Easyway byggs ut modulärt, SAJ HS3 i kaskad). Vi mäter ditt dygnsmönster innan vi rekommenderar kapacitet, så att batteriet täcker ett helt dygns förbrukning utan att du betalar för kWh du aldrig använder.",
       },
     ],
   },
@@ -93,12 +93,12 @@ const CONTENT: BatteryCityContent[] = [
       {
         title: "Kompakta lager för små utrymmen",
         body:
-          "I Sundbyberg är platsen för batteriet ofta den begränsande faktorn, inte ekonomin. Väggmonterade och modulära enheter får plats i garage, tvättstuga eller förråd, och storleken dimensionerar vi ur din årsförbrukning (tumregel: årsförbrukning delad med 200–275 kalla dygn) så att kapaciteten täcker ett dygns förbrukning. Vi tar med oss allt material från lagret i Solna och drar kabeln dolt där det går.",
+          "I Sundbyberg är platsen för batteriet ofta den begränsande faktorn, inte ekonomin. Väggmonterade och modulära enheter får plats i garage, tvättstuga eller förråd, och storleken dimensionerar vi ur din årsförbrukning (tumregel: årsförbrukning delad med 200–275) så att kapaciteten täcker ett dygns förbrukning. Vi tar med oss allt material från lagret i Solna och drar kabeln dolt där det går.",
       },
       {
         title: "Maximera självförbrukningen",
         body:
-          "När takytan är liten blir varje producerad kilowattimme dyrbar. Ett batteri höjer din självförbrukning från typiska 30–40 % till 70–80 %, vilket betyder att du köper mindre el från nätet och säljer mindre överskott till lågt pris. Det är där batteriet tjänar in sig snabbast för ett Sundbyberg-hus.",
+          "När takytan är liten blir varje producerad kilowattimme dyrbar. Ett batteri sparar dagens överskott till kvällen – i vårt räkneexempel höjer ett 10 kWh-batteri egenanvändningen från cirka 35 till drygt 50 %. Du köper mindre el från nätet och säljer mindre överskott till lågt pris, och varje kWh du använder själv är värd ungefär 2,5 gånger mer än en såld.",
       },
     ],
   },

@@ -1831,7 +1831,7 @@ export const CONCEPTS: BatteryConcept[] = [
         h2: "Skillnaden mot batteri med solceller",
         paragraphs: [
           "Med solceller ger batteriet grönt avdrag på 50 procent av arbete och material, i praktiken 48,5 procent av totalpriset vid fast pris. Det kan också lagra egen solel, som är värd mer än såld el. Utan solceller saknas båda delarna, något Optimera Energi också påpekar på sin sida om solcellsbatteri.",
-          "Bedömningarna varierar. Optimera Energi skriver att ett batteri lönar sig även utan solpaneler genom prisarbitrage och stödtjänster. Vårt räkneexempel nedan, med 2025–2026 års priser och faktiska utbetalningar från en aggregator, ger en längre återbetalningstid. Avgörande är vad stödtjänsterna betalar framöver, och det vet ingen."
+          "Bedömningarna varierar. Vårt räkneexempel nedan, med 2025–2026 års priser och faktiska utbetalningar från en aggregator, ger en lång återbetalningstid. Avgörande är vad stödtjänsterna betalar framöver, och det vet ingen."
         ]
       }
     ],
@@ -1941,7 +1941,7 @@ export const CONCEPTS: BatteryConcept[] = [
         label: "Räkna på batteriet i kalkylatorn"
       }
     ],
-    updatedAt: "2026-10-03"
+    updatedAt: "2026-10-26"
   },
   {
     slug: "batteriets-intaktskallor",
@@ -1985,7 +1985,7 @@ export const CONCEPTS: BatteryConcept[] = [
       {
         h2: "Bedömningarna varierar",
         paragraphs: [
-          "Optimera Energi anger 2–5 års återbetalning för batteri till befintliga solceller och 4–7,5 år för helt ny sol och batteri. Senergia bedömer cirka 7–9 år för solceller med batteri i ett väl dimensionerat typfall. Vårt exempel nedan ger en återbetalningstid på cirka 5–15 år, där den kortaste förutsätter kalkylatorns stödtjänstschablon. Skillnaderna beror nästan helt på antagandena om stödtjänster, prisskillnader och batteristorlek.",
+          "Bedömningarna varierar. Senergia bedömer cirka 7–9 år för solceller med batteri i ett väl dimensionerat typfall. Vårt exempel nedan ger en återbetalningstid på cirka 5–15 år, där den kortaste förutsätter kalkylatorns stödtjänstschablon. Skillnaderna beror nästan helt på antagandena om stödtjänster, prisskillnader och batteristorlek.",
           "Räkna därför på ditt eget hus i kalkylatorn, och be alltid om antagandena bakom en kalkyl."
         ]
       }
@@ -2103,7 +2103,7 @@ export const CONCEPTS: BatteryConcept[] = [
         label: "Guide: Återbetalningstid för solceller"
       }
     ],
-    updatedAt: "2026-10-03"
+    updatedAt: "2026-10-26"
   },
   {
     slug: "stodtjanster",

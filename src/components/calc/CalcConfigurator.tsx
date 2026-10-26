@@ -63,86 +63,45 @@ const BATTERY_LABEL: Record<string, string> = {
 /** 15,36 → "15,4", 9,6 → "9,6", 20 → "20". */
 const kWhLabel = (c: number) => String(Math.round(c * 10) / 10).replace(".", ",");
 
-// Batteristorlek -> steg (0 = minst, 7 = störst). Trösklarna ligger mellan
-// Easyways kapaciteter så VARJE klick på storleken flyttar återbetalningen.
-function capTier(cap: number): number {
-  if (cap < 13) return 0;
-  if (cap < 16) return 1;
-  if (cap < 24) return 2;
-  if (cap < 32) return 3;
-  if (cap < 40) return 4;
-  if (cap < 48) return 5;
-  if (cap < 56) return 6;
-  return 7;
-}
-
-// Fast övre gräns, bara den nedre rör sig. Batteri-caset toppar alltid på 5 år,
-// sol+batteri alltid på 7,5 år. Högre index (större batteri/fler paneler) =
-// lägre nedre gräns = snabbare möjlig återbetalning.
-const EXISTING_BATTERY_YEARS = [
-  "≈ 4–5 år",
-  "≈ 3,5–5 år",
-  "≈ 3–5 år",
-  "≈ 2,5–5 år",
-  "≈ 2,5–5 år",
-  "≈ 2–5 år",
-  "≈ 2–5 år",
-  "≈ 2–5 år",
-];
-const SOL_BATTERY_YEARS = [
-  "≈ 6–7,5 år",
-  "≈ 5,5–7,5 år",
-  "≈ 5–7,5 år",
-  "≈ 4,5–7,5 år",
-  "≈ 4–7,5 år",
-  "≈ 3,5–7,5 år",
-  "≈ 3–7,5 år",
-  "≈ 3–7,5 år",
-];
-
+// Återbetalningen följer kunskapsbankens räkneexempel (Guider –
+// Återbetalningstid för solceller, Batteriskolan – Intäktskällor och Batteri
+// utan solceller): SE3, priser 2026, 10 kWh-batteri, 10 kW växelriktare.
+// Kortaste tiden förutsätter stödtjänster på de nivåer Mölndal Energi betalat
+// ut 2025–2026, längsta tiden är utan stödtjänster. Ändras exemplen i
+// kunskapsbanken ska siffrorna här ändras med dem.
 function scenario(o: {
   existingSolar: boolean;
   addSolar: boolean;
   addBattery: boolean;
-  batteryKWh: number;
-  panelCount: number;
 }) {
-  const { existingSolar, addSolar, addBattery, batteryKWh, panelCount } = o;
+  const { existingSolar, addSolar, addBattery } = o;
   if (existingSolar && addBattery)
     return {
-      // Beror bara på batteristorlek (solen finns redan).
-      range: EXISTING_BATTERY_YEARS[capTier(batteryKWh)],
-      tag: "Bästa affären vi ser",
+      range: "≈ 6,5–15 år",
+      tag: "Batteri till befintliga solceller",
       lead:
-        "Att komplettera befintliga solceller med batteri är ofta den snabbaste affären – och ett större batteri kortar tiden ytterligare. Med rätt förutsättningar landar den på ett par år.",
+        "I vårt räkneexempel (10 kWh, SE3, 2026) tar batteriet cirka 6,5–9 år med stödtjänster på de nivåer Mölndal Energi betalat ut 2025–2026, och cirka 15 år utan. Effektavgift, en lägre säkring eller större prisskillnader kortar tiden.",
     };
-  if (addSolar && addBattery) {
-    // Batteristorlek + antal paneler knuffar ner återbetalningen steg för steg.
-    const panelBump = Math.min(3, Math.max(0, Math.floor((panelCount - 10) / 10)));
-    const idx = Math.min(
-      SOL_BATTERY_YEARS.length - 1,
-      capTier(batteryKWh) + panelBump,
-    );
+  if (addSolar && addBattery)
     return {
-      range: SOL_BATTERY_YEARS[idx],
-      tag: "Komplett lösning",
+      range: "≈ 7,5–11 år",
+      tag: "Sol och batteri",
       lead:
-        "En komplett sol- och batterilösning tar längre tid i en enkel installation – men kortas rejält ju fler paneler och ju större batteri du väljer.",
+        "I vårt räkneexempel (10 kWp och 10 kWh, SE3, 2026) tar sol och batteri tillsammans cirka 7,5–9 år med stödtjänster och knappt 11 år utan. Batteriet kortar tiden jämfört med bara solceller först när det också säljer stödtjänster.",
     };
-  }
   if (addSolar && !addBattery)
     return {
-      tag: "Trygg grund",
+      tag: "Solceller",
       range: "≈ 8–11 år",
       lead:
-        "Solceller ensamt är en trygg långsiktig investering – men ett batteri kortar återbetalningen rejält och gör mer av din egen el användbar.",
+        "I vårt räkneexempel tar 7 kWp i Stockholm för cirka 50 000 kr efter grönt avdrag ungefär 8,5 år. Taket, väderstrecket och hur mycket solel du använder själv avgör var i spannet du hamnar.",
     };
   if (addBattery && !existingSolar && !addSolar)
     return {
-      tag: "Fristående batteri",
-      range: "Vi räknar på det",
+      tag: "Batteri utan solceller",
+      range: "≈ 13–20 år",
       lead:
-        "Ett batteri utan solceller lönar sig via prisarbitrage och stödtjänster. Grönt avdrag (48,5 %) kräver dock en solanläggning – vi går igenom vad som passar dig.",
+        "Utan egen solel blir det inget grönt avdrag, och intäkterna måste komma från spotprisstyrning och stödtjänster. I vårt räkneexempel tar ett 10 kWh-batteri cirka 13–20 år – vi räknar ärligt på ditt hus och säger nej om det inte går ihop.",
     };
   return {
     tag: "",
@@ -199,8 +158,6 @@ export function CalcConfigurator() {
     existingSolar: input.hasExistingSolar,
     addSolar: input.enabled.sol,
     addBattery: input.enabled.batteri,
-    batteryKWh: input.batteryCapacityKWh,
-    panelCount: input.panelCount,
   });
 
   return (
@@ -222,14 +179,14 @@ export function CalcConfigurator() {
           <div className="mt-4 grid grid-cols-1 sm:grid-cols-[auto,1fr] sm:gap-6 items-start">
             <div>
               <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink/50">
-                Typisk återbetalning
+                Återbetalning i vårt räkneexempel
               </div>
               <div className="mt-1 font-display text-[40px] md:text-[52px] leading-none tracking-display-tight text-indigo whitespace-nowrap">
                 {s.range}
               </div>
               {input.enabled.batteri && (
                 <div className="mt-1.5 text-[12px] text-ink/45">
-                  Större batteri → kortare återbetalning
+                  Med och utan stödtjänster
                 </div>
               )}
             </div>
@@ -242,7 +199,7 @@ export function CalcConfigurator() {
             {input.enabled.batteri && (
               <li className="flex items-start gap-2">
                 <Check size={15} className="mt-0.5 text-moss shrink-0" />
-                Med batteri använder du 60–80 % av din egen el i stället för ~30 %.
+                Ett 10 kWh-batteri höjer egenanvändningen av solelen från cirka 35 till drygt 50 % i vårt räkneexempel.
               </li>
             )}
             {input.enabled.batteri && (
