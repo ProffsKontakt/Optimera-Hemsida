@@ -37,7 +37,7 @@ const FAQ = [
   },
   {
     q: "Vilka batterimärken installerar Optimera Energi?",
-    a: "Vi installerar Easyway (7,68 kWh per modul, LFP-kemi), SAJ HS3 (10/15/20 kWh-SKUer med inbyggd 12 kW växelriktare), och Emaldo Power Store (5,12 kWh per powerbox).",
+    a: "Vi installerar Eway, tidigare Easyway (7,68 kWh per modul, LFP-kemi), SAJ HS3 (10/15/20 kWh med inbyggd 12 kW växelriktare), Enershare Energy Core (3,2 kWh per modul, upp till 25,6 kWh per torn) och Sigenergy SigenStor (9 kWh per modul, upp till 54 kWh per stack, inbyggd växelriktare). Alla med LFP-celler.",
   },
   {
     q: "Vad tjänar ett batteri på smarta funktioner?",

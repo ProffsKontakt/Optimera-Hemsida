@@ -73,7 +73,7 @@ const FAQ = [
   },
   {
     q: "Vilka batterimärken installerar Optimera Energi?",
-    a: "Vi är märkesoberoende och säljer alla batterier på marknaden. Vårt hand-plockade kärnsortiment är Easyway (LFP, moduler à 7,68 kWh), SAJ HS3 (10/15/20 kWh med inbyggd 12 kW växelriktare) och Emaldo Power Store (5,12 kWh per powerbox). Vi väljer LFP-celler (järnfosfat) som standard för brandsäkerhet och livslängd och dimensionerar märke och storlek efter ditt hus, inte efter vad vi råkar ha på lager.",
+    a: "Vi är märkesoberoende och säljer alla batterier på marknaden. Vårt hand-plockade kärnsortiment är Easyway (LFP, moduler à 7,68 kWh), SAJ HS3 (10/15/20 kWh med inbyggd 12 kW växelriktare), Enershare Energy Core (3,2 kWh per modul, upp till 25,6 kWh per torn) och Sigenergy SigenStor (9 kWh per modul, upp till 54 kWh per stack). Vi väljer LFP-celler (järnfosfat) som standard för brandsäkerhet och livslängd och dimensionerar märke och storlek efter ditt hus, inte efter vad vi råkar ha på lager.",
   },
   {
     q: "Vad är skillnaden på solcellsbatteri, hemmabatteri och batterilager?",
@@ -399,18 +399,28 @@ export default function SolcellsbatteriPage() {
               ],
             },
             {
-              label: "Emaldo Power Store",
+              label: "Enershare Energy Core",
               cells: [
-                "5–15 kWh (powerbox à 5,12 kWh)",
+                "9,6–25,6 kWh per torn (moduler à 3,2 kWh)",
                 "LFP",
-                "≈ 6 500",
-                "Inbyggd 10,8 kW",
-                "Grid Rewards i elområde SE3/SE4.",
+                "Anges inte i databladet",
+                "Extern hybridväxelriktare",
+                "Högspänningstorn som byggs ut modul för modul.",
+              ],
+            },
+            {
+              label: "Sigenergy SigenStor",
+              cells: [
+                "9–54 kWh per stack (moduler à 9 kWh)",
+                "LFP",
+                "≈ 10 000",
+                "Inbyggd (Energy Controller)",
+                "Allt-i-ett med växelriktaren överst i stacken.",
               ],
             },
           ]}
           caption="Jämförelse av batterimärken som Optimera Energi installerar: kapacitet, cellkemi, cykellivslängd och växelriktare."
-          footnote="Utöver kärnsortimentet säljer vi bland annat Enershare, Sigenergy, Sungrow och Growatt. LFP (litium-järnfosfat) är vårt standardval för brandsäkerhet och livslängd. Läs mer om varför vi ofta landar i Easyway."
+          footnote="Utöver kärnsortimentet säljer vi bland annat Sungrow och Growatt. Cykeltalen är tillverkarnas uppgifter. LFP (litium-järnfosfat) är vårt standardval för brandsäkerhet och livslängd. Läs mer om varför vi ofta landar i Easyway."
         />
         <div className="mt-6">
           <Link

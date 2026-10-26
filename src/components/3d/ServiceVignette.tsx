@@ -104,7 +104,7 @@ function BatteryScene() {
       <Sway amplitude={0.25} baseYaw={-0.2}>
         <EwayBattery capacityKWh={BATTERY_KWH} />
       </Sway>
-      <SceneLabel parts={["Easyway", "53,76 kWh", "7 moduler"]} position={[0.5, 0.05, 0.25]} />
+      <SceneLabel parts={["Eway", "53,76 kWh", "7 moduler"]} position={[0.5, 0.05, 0.25]} />
     </group>
   );
 }

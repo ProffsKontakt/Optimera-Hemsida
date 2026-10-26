@@ -20,18 +20,20 @@ import { FONT, useCanvasTexture } from "./textures";
  *   - Sockel med fötter i hörnen och snedskurna urtag mellan dem.
  *
  * 53,76 kWh = 7 moduler. Max 8 per stapel – större batterier ritas som
- * flera staplar bredvid varandra. Mått i meter. Origo = golvet mitt under
- * stapeln, fronten (långsidan) mot +z.
+ * flera staplar bredvid varandra. Mått i meter, uppmätta på produktbilden
+ * och kalibrerade mot att en full stapel (61,44 kWh, 8 moduler) är 140,5 cm
+ * hög: modul 142 mm, toppmodul 169 mm, sockel 102 mm, bredd 650 mm.
+ * Origo = golvet mitt under stapeln, fronten (långsidan) mot +z.
  */
 export const EWAY_MODULE_KWH = 7.68;
 const MAX_PER_STACK = 8;
 
 const W = 0.65; // långsidan (front)
-const D = 0.42; // kortsidan
-const MODULE_H = 0.15;
-const TOP_H = 0.175;
-const BAND_H = 0.055;
-const FOOT_H = 0.095;
+const D = 0.4; // kortsidan
+const MODULE_H = 0.142;
+const TOP_H = 0.169;
+const BAND_H = 0.04;
+const FOOT_H = 0.062;
 const BASE_H = BAND_H + FOOT_H;
 const GAP = 0.005;
 
@@ -48,6 +50,7 @@ export function ewayStackHeight(modules: number) {
 }
 
 export const EWAY_SIZE = { width: W, depth: D };
+export const EWAY_MAX_PER_STACK = MAX_PER_STACK;
 
 export function EwayBattery({ capacityKWh }: { capacityKWh: number }) {
   const total = ewayModules(capacityKWh);

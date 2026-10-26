@@ -571,7 +571,7 @@ export const GUIDES: Guide[] = [
   {
     slug: "solcellsbatteri-pris",
     status: "draft",
-    title: "Solcellsbatteri pris 2026: Easyway, SAJ HS3 och Emaldo jämförda",
+    title: "Solcellsbatteri pris 2026: Easyway, SAJ HS3, Enershare och SigenStor jämförda",
     excerpt:
       "Vad ett batteri faktiskt kostar inklusive moms, hårdvara, växelriktare, installation och vår marginal. Inga dolda påslag.",
     category: "Batteri",

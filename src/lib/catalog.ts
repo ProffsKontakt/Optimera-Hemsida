@@ -23,7 +23,8 @@ export type Inverter = {
 export type Battery = {
   id: string;
   brand: string;
-  cycles: number;
+  /** Cykellivslängd enligt datablad. Utelämnas när databladet inte anger den. */
+  cycles?: number;
   capacities: number[]; // tillgängliga storlekar i kWh
   chemistry: "LFP" | "NMC";
   /**
@@ -43,6 +44,12 @@ export type Battery = {
    *  - annars: baseHardwareKr + n × perModuleHardwareKr
    *    där n = round(kWh / kWhPerModule)
    */
+  /**
+   * true = inköpspriserna är inte inlagda än (baseHardwareKr/perModuleHardwareKr
+   * är 0). Kalkylatorn visar inga kronor publikt, men fyll i innan priserna
+   * används till något.
+   */
+  pricePending?: boolean;
   baseHardwareKr: number;       // ex moms BMS + bas (eller wall unit)
   perModuleHardwareKr: number;  // ex moms per tilläggsmodul
   kWhPerModule: number;
@@ -81,6 +88,17 @@ const SOLIS = {
   10: { kind: "external" as const, brand: "Solis S6", kw: 10, priceKr: 10_294 },
   15: { kind: "external" as const, brand: "Solis S6", kw: 15, priceKr: 15_990 },
 };
+
+/**
+ * Extern hybridväxelriktare utan bestämt märke (t.ex. till Enershare, där
+ * valet görs i offerten). Priset är Solis-nivån som platshållare.
+ */
+const hybridInverter = (kw: 10 | 15) => ({
+  kind: "external" as const,
+  brand: "Hybridväxelriktare",
+  kw,
+  priceKr: SOLIS[kw].priceKr,
+});
 
 export type HeatPump = {
   id: string;
@@ -209,30 +227,43 @@ export const BATTERIES: Battery[] = [
     }),
   },
 
-  // -------- Emaldo Power Store (Viktor 2026-05-09) --------
-  // Wall unit (5,12 kWh + inbyggd växelriktare) = 38 850 kr ex moms.
-  // Varje extra Powerbox (5,12 kWh) = 12 468 kr.
-  // 1 500 kr marginal per modul (alla moduler, inkl modul 1).
-  // 20 000 kr projekt-marginal som baslager.
-  // Grid rewards (zon 3 & 4) hanteras separat i calc.ts.
+  // -------- Enershare Energy Core (ersätter Emaldo 2026-10-26) --------
+  // Högspänningstorn: 3,2 kWh per modul, 3–8 moduler per torn (9,6–25,6 kWh),
+  // fler torn parallellt. LFP. Kräver extern hybridväxelriktare.
   {
-    id: "emaldo-store",
-    brand: "Emaldo Power Store",
-    cycles: 6500,
-    capacities: [5.12, 10.24, 15.36],
+    id: "enershare-core",
+    brand: "Enershare Energy Core",
+    capacities: [9.6, 12.8, 16, 19.2, 22.4, 25.6, 38.4, 51.2],
     chemistry: "LFP",
-    // Wall unit utan första powerboxen: 38 850 − 12 468 = 26 382
-    // Sen läggs n × 12 468 ovanpå (n = antal powerboxar inkl första).
-    baseHardwareKr: 26_382,
-    perModuleHardwareKr: 12_468,
-    kWhPerModule: 5.12,
-    projectMarginKr: 20_000,
-    perExtraModuleMarginKr: 1_500,
-    extraMarginStartIdx: 1,       // 1 500 från modul 1, inte modul 3
+    // Inköpspriserna saknas – se pricePending.
+    pricePending: true,
+    baseHardwareKr: 0,
+    perModuleHardwareKr: 0,
+    kWhPerModule: 3.2,
+    inverterFor: (kWh) => hybridInverter(kWh <= 16 ? 10 : 15),
+  },
+
+  // -------- Sigenergy SigenStor (2026-10-26) --------
+  // 9 kWh per batterimodul (9,04 kWh enligt databladet), 1–6 moduler per
+  // stack (upp till 54 kWh). Energy Controller med inbyggd hybridväxel-
+  // riktare överst. LFP, 10 000 cykler enligt Sigenergys datablad.
+  {
+    id: "sigenstor",
+    brand: "Sigenergy SigenStor",
+    cycles: 10_000,
+    capacities: [9, 18, 27, 36, 45, 54],
+    chemistry: "LFP",
+    // Inköpspriserna saknas – se pricePending.
+    pricePending: true,
+    baseHardwareKr: 0,
+    perModuleHardwareKr: 0,
+    kWhPerModule: 9,
     inverterFor: () => ({
       kind: "builtIn",
-      kw: 10.8,
-      label: "Inbyggd 10,8 kW växelriktare",
+      // Antagen storlek – Energy Controller finns i flera storlekar. Visas
+      // inte publikt (kalkylatorn visar inga kronor eller kW för inbyggda).
+      kw: 10,
+      label: "Inbyggd hybridväxelriktare (Energy Controller)",
     }),
   },
 ];
@@ -361,7 +392,7 @@ export const PANEL_AREA_M2 = 1.95; // ungefärlig panelyta
 // ungefärligt SE3-snitt 2025. Används som anker för att beräkna en realistisk
 // övre gräns på sol/batteri-besparingen.
 //   savingCap = baseConsumptionKWh × EL_PRICE_PER_KWH_KR × SAVING_CAP_FRACTION
-// Stödtjänster och Emaldo grid rewards adderas UTANFÖR taket.
+// Stödtjänster adderas UTANFÖR taket.
 export const EL_PRICE_PER_KWH_KR = 2.1;
 export const SAVING_CAP_FRACTION = 0.6;
 
@@ -369,20 +400,6 @@ export const SAVING_CAP_FRACTION = 0.6;
 // FCR-D / aFRR via Enequi Core eller Energy IQ.
 // Viktor 2026-05-09: 65 kr per kW växelriktare per månad.
 export const SUPPORT_KR_PER_KW_PER_MONTH = 65;
-
-// =============================== EMALDO GRID REWARDS =======================
-// Emaldo Power Store kan delta i grid services i SE3 / SE4 och får då en
-// garanterad månadsersättning från Emaldo. Villkor:
-// https://emaldo.com/pages/grid-rewards-calculator
-// Vi arbetar inte i SE1 / SE2 (för få kunder + Emaldo täcker ej).
-export const EMALDO_GRID_REWARDS_KR_PER_MONTH: Record<Elzon, number | null> = {
-  1: null,
-  2: null,
-  3: 1_110,
-  4: 1_370,
-};
-export const EMALDO_TERMS_URL =
-  "https://emaldo.com/pages/grid-rewards-calculator";
 
 // Praktisk hjälpare för UI: gruppera värmepumpar per varumärke
 export const HEAT_PUMP_BRANDS = Array.from(

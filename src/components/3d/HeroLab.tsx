@@ -222,11 +222,15 @@ function RoofPanels() {
   );
 }
 
-/** Easyway-batteriet mot gaveln, fronten utåt. */
+// Produkterna är modellerade i meter. Väggen (0,95 enheter) motsvarar ca
+// 2,4 m, så 1 m = 0,4 enheter – samma skala som i kalkylatorn.
+const REAL_SCALE = 0.4;
+
+/** Eway-batteriet (23,04 kWh) mot gaveln, fronten utåt. */
 function BatteryStack() {
   return (
-    <group position={[HOUSE.width / 2 + 0.12, GROUND_Y, -0.4]} rotation={[0, Math.PI / 2, 0]}>
-      <group scale={0.5}>
+    <group position={[HOUSE.width / 2 + 0.1, GROUND_Y, -0.4]} rotation={[0, Math.PI / 2, 0]}>
+      <group scale={REAL_SCALE}>
         <EwayBattery capacityKWh={23.04} />
       </group>
     </group>
@@ -236,8 +240,8 @@ function BatteryStack() {
 /** Zaptec Go 2 på gaveln. */
 function Charger() {
   return (
-    <group position={[HOUSE.width / 2, GROUND_Y + 0.5, 0.5]} rotation={[0, Math.PI / 2, 0]}>
-      <group scale={1.3}>
+    <group position={[HOUSE.width / 2, GROUND_Y + 0.48, 0.5]} rotation={[0, Math.PI / 2, 0]}>
+      <group scale={REAL_SCALE}>
         <ZaptecGo2 />
       </group>
     </group>
@@ -247,8 +251,8 @@ function Charger() {
 /** Luft-vattenvärmepumpens utedel vid gaveln. */
 function HeatPump() {
   return (
-    <group position={[GABLE_X + 0.55, GROUND_Y, 0.55]}>
-      <group scale={0.55}>
+    <group position={[GABLE_X + 0.35, GROUND_Y, 0.55]} rotation={[0, Math.PI / 2, 0]}>
+      <group scale={REAL_SCALE}>
         <HeatPumpModel />
       </group>
     </group>
@@ -258,8 +262,8 @@ function HeatPump() {
 /** Hybridväxelriktaren på gaveln. */
 function Inverter() {
   return (
-    <group position={[HOUSE.width / 2, GROUND_Y + 0.62, -0.05]} rotation={[0, Math.PI / 2, 0]}>
-      <group scale={0.45}>
+    <group position={[HOUSE.width / 2, GROUND_Y + 0.43, -0.05]} rotation={[0, Math.PI / 2, 0]}>
+      <group scale={REAL_SCALE}>
         <HybridInverter />
       </group>
     </group>

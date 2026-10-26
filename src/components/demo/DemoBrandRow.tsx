@@ -9,7 +9,7 @@ const BRANDS = [
   "Easee",
   "Solis",
   "Bosch",
-  "Emaldo",
+  "Enershare",
   "Zaptec",
   "Enequi",
   "Mitsubishi",

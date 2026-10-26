@@ -16,7 +16,6 @@ import {
   BATTERY_INSTALLATION_FIXED_KR,
   CHARGER_INSTALL_KR,
   SUPPORT_KR_PER_KW_PER_MONTH,
-  EMALDO_GRID_REWARDS_KR_PER_MONTH,
   EL_PRICE_PER_KWH_KR,
   SAVING_CAP_FRACTION,
   type Battery,
@@ -32,7 +31,7 @@ export type CalcInput = {
     värmepump: boolean;
     laddbox: boolean;
   };
-  // Elområde – styr spotpris, säljpris och Emaldo grid rewards
+  // Elområde – styr spotpris och säljpris
   elzon: Elzon;
   // Tak
   roofType: RoofType;
@@ -99,10 +98,8 @@ export type CalcResult = {
   // Intäkter / besparingar
   yearlySavingKr: number;            // sol + arbitrage + värme (utan stödtjänster/EMS/grid)
   yearlySupportRevenueKr: number;    // FCR-D / aFRR via Enequi/Energy IQ
-  yearlyEmaldoRewardsKr: number;     // Emaldo grid rewards (zon 3 eller 4 + Emaldo-batteri)
-  emaldoZoneSupported: boolean;      // false om Emaldo valt + zon 1 eller 2
   yearlyEmsCostKr: number;
-  yearlyNetKr: number;               // yearlySavingKr + support + emaldo − EMS
+  yearlyNetKr: number;               // yearlySavingKr + support − EMS
   paybackYears: number;              // netCostKr / yearlyNetKr
   yearly20YearKr: number;            // yearlyNetKr × 20 − netCostKr
   co2KgPerYear: number;
@@ -143,26 +140,6 @@ export function supportServiceRevenueKr(
 ): number {
   if (!hasSupportEms || inverterKw <= 0) return 0;
   return Math.round(inverterKw * SUPPORT_KR_PER_KW_PER_MONTH * 12);
-}
-
-/**
- * Emaldo grid rewards – garanterad månadsersättning från Emaldo om
- * Emaldo Power Store är installerat och kunden bor i SE3 eller SE4.
- * I SE1 / SE2 erbjuder Optimera inte Emaldo-installation.
- */
-export function emaldoGridRewardsKr(
-  batteryId: string | null,
-  zone: Elzon,
-): { yearlyKr: number; supported: boolean } {
-  if (batteryId !== "emaldo-store") {
-    return { yearlyKr: 0, supported: true };
-  }
-  const monthly = EMALDO_GRID_REWARDS_KR_PER_MONTH[zone];
-  if (monthly == null) {
-    // Zon 1 eller 2 – inte stött
-    return { yearlyKr: 0, supported: false };
-  }
-  return { yearlyKr: monthly * 12, supported: true };
 }
 
 // =============================== VÄXELRIKTARE ===============================
@@ -394,8 +371,8 @@ export function computeCalc(input: CalcInput): CalcResult {
   );
 
   // Tak på besparingen: en realistisk gräns på 60 % av kundens totala
-  // elkostnad (årsförbrukning × snittpris). Stödtjänster + Emaldo grid
-  // rewards adderas utanför taket.
+  // elkostnad (årsförbrukning × snittpris). Stödtjänster adderas utanför
+  // taket.
   const savingCapKr = Math.round(
     input.baseConsumptionKWh * EL_PRICE_PER_KWH_KR * SAVING_CAP_FRACTION,
   );
@@ -409,15 +386,6 @@ export function computeCalc(input: CalcInput): CalcResult {
     inverter.kw,
     hasSupportEms,
   );
-
-  // -------- Emaldo grid rewards --------
-  // Garanterad månadsersättning från Emaldo om Emaldo Power Store + zon 3/4.
-  const emaldoRewards = emaldoGridRewardsKr(
-    batteryBrand?.id ?? null,
-    input.elzon,
-  );
-  const yearlyEmaldoRewardsKr = emaldoRewards.yearlyKr;
-  const emaldoZoneSupported = emaldoRewards.supported;
 
   // -------- Hårdvarukostnader --------
   // Sol: solarPriceKr är legacy "ink moms efter avdrag" – gränsar mot
@@ -531,8 +499,7 @@ export function computeCalc(input: CalcInput): CalcResult {
   const yearlyEmsCostKr = ems ? ems.monthlyKr * 12 : 0;
   const yearlyNetKr =
     yearlySavingKr +
-    yearlySupportRevenueKr +
-    yearlyEmaldoRewardsKr -
+    yearlySupportRevenueKr -
     yearlyEmsCostKr;
   const paybackYears = yearlyNetKr > 0 ? netCostKr / yearlyNetKr : 0;
   const yearly20YearKr = yearlyNetKr * 20 - netCostKr;
@@ -567,8 +534,6 @@ export function computeCalc(input: CalcInput): CalcResult {
     netCostKr,
     yearlySavingKr,
     yearlySupportRevenueKr,
-    yearlyEmaldoRewardsKr,
-    emaldoZoneSupported,
     yearlyEmsCostKr,
     yearlyNetKr,
     paybackYears,

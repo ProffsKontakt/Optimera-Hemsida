@@ -54,10 +54,14 @@ const initial: CalcInput = {
 };
 
 const BATTERY_LABEL: Record<string, string> = {
-  "easyway-univ7600": "Easyway",
+  "easyway-univ7600": "Eway",
   "saj-hs3": "SAJ HS3",
-  "emaldo-store": "Emaldo",
+  "enershare-core": "Enershare",
+  sigenstor: "SigenStor",
 };
+
+/** 15,36 → "15,4", 9,6 → "9,6", 20 → "20". */
+const kWhLabel = (c: number) => String(Math.round(c * 10) / 10).replace(".", ",");
 
 // Batteristorlek -> steg (0 = minst, 7 = störst). Trösklarna ligger mellan
 // Easyways kapaciteter så VARJE klick på storleken flyttar återbetalningen.
@@ -340,7 +344,7 @@ export function CalcConfigurator() {
         {input.enabled.batteri && (
           <div className="rounded-3xl border border-ink/10 bg-bone p-6 space-y-5">
             <Field label="Batterimärke">
-              <div className="grid grid-cols-3 gap-2">
+              <div className="grid grid-cols-2 gap-2">
                 {BATTERIES.map((b) => (
                   <Chip
                     key={b.id}
@@ -360,7 +364,7 @@ export function CalcConfigurator() {
                     active={Math.abs(input.batteryCapacityKWh - c) < 0.01}
                     onClick={() => patch({ batteryCapacityKWh: c })}
                   >
-                    {Math.round(c)} kWh
+                    {kWhLabel(c)} kWh
                   </Chip>
                 ))}
               </div>

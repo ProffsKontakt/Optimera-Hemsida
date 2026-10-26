@@ -10,7 +10,7 @@ import { type RoofType } from "@/lib/catalog";
 import { BatteryByBrand } from "./BatteryModels";
 import { SolarPanel } from "./products/SolarPanel";
 import { HybridInverter } from "./products/HybridInverter";
-import { HeatPump, HEAT_PUMP_SIZE } from "./products/HeatPump";
+import { HeatPump } from "./products/HeatPump";
 import { ZaptecGo2 } from "./products/ZaptecGo2";
 import { StudioLights } from "./products/Studio";
 
@@ -192,7 +192,7 @@ export function CalcScene({ input }: { input: CalcInput }) {
         <PanelArray count={input.panelCount} roofType={input.roofType} />
       )}
       {/* Växelriktare visas bara som separat enhet om den är extern – inbyggda
-          växelriktare (t.ex. SAJ HS3, Emaldo Power Store) ritas in i batteriet. */}
+          växelriktare (SAJ HS3, Sigenergy SigenStor) ritas in i batteriet. */}
       {(en.sol || en.batteri) && result.inverter.kind === "external" && (
         <Inverter assignment={result.inverter} />
       )}
@@ -630,10 +630,24 @@ function SurfacePanels({
 }
 
 // ============= GAVEL-SIDAN: alla utomhusenheter ligger på samma sida =============
-// Vi använder höger gavel (x = +HOUSE.width/2). Batteriet sätts inomhus mot
-// väggen och visas till höger om huset. Värmepumpen står utanpå höger gavel.
-const GABLE_X = HOUSE.width / 2 + 0.3;
+// Höger gavel (x = +HOUSE.width/2). Produkterna är modellerade i meter och
+// skalas med REAL_SCALE så att de står i rätt proportion till huset:
+// väggen är 1,0 enhet ≈ 2,5 m, alltså 1 m = 0,4 enheter. En full Eway-stapel
+// (140,5 cm) når då drygt halvvägs upp på fasaden, som i verkligheten.
+const REAL_SCALE = 0.4;
+const GABLE_X = HOUSE.width / 2;
 const GABLE_GROUND_Y = HOUSE.wallY - HOUSE.wallH / 2;
+/** Meter → scenenheter. */
+const m = (meters: number) => meters * REAL_SCALE;
+
+// Var på/vid gaveln varje produkt sitter (scenenheter).
+const SPOT = {
+  inverter: new THREE.Vector3(GABLE_X, GABLE_GROUND_Y + m(1.4), -0.85),
+  battery: new THREE.Vector3(GABLE_X + m(0.24), GABLE_GROUND_Y, -0.2),
+  heatPump: new THREE.Vector3(GABLE_X + m(0.21 + 0.45), GABLE_GROUND_Y, 0.72),
+  // Laddboxen sitter på framsidan mellan högra fönstret och hörnet.
+  charger: new THREE.Vector3(1.47, GABLE_GROUND_Y + m(1.2), HOUSE.depth / 2),
+};
 
 function Inverter({
   assignment,
@@ -642,11 +656,11 @@ function Inverter({
 }) {
   // Väggmonterad på gaveln med fronten utåt (+x).
   return (
-    <group position={[HOUSE.width / 2, GABLE_GROUND_Y + 0.62, -0.95]} rotation={[0, Math.PI / 2, 0]}>
-      <group scale={0.75}>
+    <group position={SPOT.inverter} rotation={[0, Math.PI / 2, 0]}>
+      <group position={[0, -m(0.31), 0]} scale={REAL_SCALE}>
         <HybridInverter />
       </group>
-      <SceneLabel parts={[assignment.brand, `${assignment.kw} kW`]} position={[0.4, -0.3, 0.2]} />
+      <SceneLabel parts={[assignment.brand, `${assignment.kw} kW`]} position={[0.3, -0.2, 0.15]} />
     </group>
   );
 }
@@ -658,42 +672,37 @@ function BatteryModel({
   brandId: string;
   capacityKWh: number;
 }) {
-  // Batteriet står mot gaveln, vridet +90° runt y så att fronten (handtag,
-  // logga, kontaktpanel) pekar UTÅT från fasaden.
+  // Batteriet står på marken mot gaveln, vridet +90° runt y så att fronten
+  // (logga, display, handtag) pekar UTÅT från fasaden.
   return (
-    <group
-      position={[HOUSE.width / 2 + 0.2, GABLE_GROUND_Y, -0.15]}
-      rotation={[0, Math.PI / 2, 0]}
-    >
-      <BatteryByBrand brandId={brandId} capacityKWh={capacityKWh} />
+    <group position={SPOT.battery} rotation={[0, Math.PI / 2, 0]}>
+      <group scale={REAL_SCALE}>
+        <BatteryByBrand brandId={brandId} capacityKWh={capacityKWh} />
+      </group>
     </group>
   );
 }
 
 function HeatPumpUnit() {
-  // Utedelen står vid gaveln med fläkten utåt (+x).
-  const scale = 0.62;
+  // Utedelen står en bit ut från gaveln med fläkten utåt (+x).
   return (
-    <group
-      position={[HOUSE.width / 2 + (HEAT_PUMP_SIZE.depth / 2) * scale + 0.14, GABLE_GROUND_Y, 0.75]}
-      rotation={[0, Math.PI / 2, 0]}
-    >
-      <group scale={scale}>
+    <group position={SPOT.heatPump} rotation={[0, Math.PI / 2, 0]}>
+      <group scale={REAL_SCALE}>
         <HeatPump />
       </group>
-      <SceneLabel parts={["Värmepump"]} position={[0, -0.12, 0.45]} />
+      <SceneLabel parts={["Värmepump"]} position={[0, -0.08, 0.3]} />
     </group>
   );
 }
 
 function ChargerUnit() {
-  // Zaptec Go 2 på husets framsida, mellan dörren och högra fönstret.
+  // Zaptec Go 2 på husets framsida, ca 1,2 m upp på väggen.
   return (
-    <group position={[0.55, GABLE_GROUND_Y + 0.5, HOUSE.depth / 2]}>
-      <group scale={1.65}>
+    <group position={SPOT.charger}>
+      <group scale={REAL_SCALE}>
         <ZaptecGo2 />
       </group>
-      <SceneLabel parts={["Laddbox"]} position={[0, -0.36, 0.1]} center />
+      <SceneLabel parts={["Laddbox"]} position={[0, -0.16, 0.05]} center />
     </group>
   );
 }
@@ -706,14 +715,11 @@ function FlowLines({ input }: { input: CalcInput }) {
     const list: { from: THREE.Vector3; to: THREE.Vector3; color: string }[] =
       [];
 
-    const inverterPos = new THREE.Vector3(GABLE_X, GABLE_GROUND_Y + 0.55, -0.7);
-    const batteryPos = new THREE.Vector3(GABLE_X, GABLE_GROUND_Y + 0.45, -0.05);
-    const heatPos = new THREE.Vector3(GABLE_X + 0.05, GABLE_GROUND_Y + 0.45, 0.7);
-    const chargerPos = new THREE.Vector3(
-      HOUSE.width / 2 - 0.15,
-      GABLE_GROUND_Y + 0.45,
-      HOUSE.depth / 2 + 0.07,
-    );
+    // Ankarpunkter strax utanför produkterna så att linjerna syns.
+    const inverterPos = SPOT.inverter.clone().add(new THREE.Vector3(0.12, -m(0.31), 0));
+    const batteryPos = SPOT.battery.clone().add(new THREE.Vector3(0.12, m(0.5), 0));
+    const heatPos = SPOT.heatPump.clone().add(new THREE.Vector3(0.1, m(0.45), 0));
+    const chargerPos = SPOT.charger.clone().add(new THREE.Vector3(0, 0, 0.06));
 
     const roofCenter = new THREE.Vector3(
       0,

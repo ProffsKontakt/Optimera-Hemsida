@@ -288,7 +288,7 @@ export default function ServicePage({
                 Batterier vi säljer
               </span>
               <span className="text-[14px] text-ink/70">
-                Easyway, Enershare, SAJ, Sigenergy, Emaldo, Sungrow, Growatt
+                Easyway, Enershare, SAJ, Sigenergy, Sungrow, Growatt
                 och många fler.
               </span>
             </div>

@@ -51,7 +51,7 @@ const CATEGORIES: { heading: string; eyebrow: string; items: { q: string; a: str
       },
       {
         q: "Vilka batterimärken installerar Optimera Energi?",
-        a: "Vi är märkesoberoende och säljer alla batterier på marknaden. Vårt hand-plockade kärnsortiment är Easyway, SAJ HS3 och Emaldo Power Store. Vi väljer LFP-celler (järnfosfat) som standard för brandsäkerhet och livslängd och dimensionerar märke och storlek efter ditt hus.",
+        a: "Vi är märkesoberoende och säljer alla batterier på marknaden. Vårt hand-plockade kärnsortiment är Easyway, SAJ HS3, Enershare och Sigenergy SigenStor. Vi väljer LFP-celler (järnfosfat) som standard för brandsäkerhet och livslängd och dimensionerar märke och storlek efter ditt hus.",
       },
       {
         q: "Är ett batteri säkert i hemmet?",

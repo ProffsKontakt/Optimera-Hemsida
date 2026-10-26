@@ -131,7 +131,7 @@ function Marquee() {
     "Easee",
     "Solis",
     "Bosch",
-    "Emaldo",
+    "Enershare",
     "Zaptec",
     "Enequi",
     "Mitsubishi",
