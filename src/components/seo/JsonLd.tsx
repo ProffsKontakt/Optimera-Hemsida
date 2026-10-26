@@ -68,6 +68,10 @@ export const organizationSchema = {
     "https://www.linkedin.com/company/optimera-energi-sverige-ab/",
     "https://www.facebook.com/people/Optimera-Energi-Sverige/61589319586638/",
     "https://www.allabolag.se/foretag/solpanelsgruppen-i-sverige-ab/oskarstr%C3%B6m/byggm%C3%A4stare/2KIDITQI5YDDT",
+    // Omdömesprofilen och företagskatalogen som AI-sökmotorerna citerar när
+    // de beskriver Optimera Energi – länkas så att de förstår att det är samma bolag.
+    "https://www.reco.se/optimera-energi",
+    "https://www.hitta.se/verksamhet/optimera-energi-hiigrrxfh",
   ],
 };
 
