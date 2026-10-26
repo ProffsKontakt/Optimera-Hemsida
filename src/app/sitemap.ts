@@ -1,3 +1,4 @@
+import { FAQ_REVIEWED_AT } from "@/lib/faq-review";
 import type { MetadataRoute } from "next";
 import { VISIBLE_SERVICES } from "@/lib/services";
 import { CITIES } from "@/lib/cities";
@@ -27,7 +28,7 @@ const LAST_MOD = {
   // dimensioneringsmetodiken (årsförbrukning ÷ 200–275) skrevs in.
   solcellsbatteri: "2026-07-08",
   metodik: "2026-07-08",
-  faq: "2026-07-08",
+  faq: FAQ_REVIEWED_AT,
   // Nyhetshubben (valbevakning + energinyheter) lanserad 2026-09-06.
   nyheterHub: "2026-09-06",
   // Kunskapsbankens samlingssida (nyheter + Solcellsfrågor + Batteriskolan).

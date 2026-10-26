@@ -7,9 +7,11 @@ import {
   LastUpdated,
   CtaBlock,
 } from "@/components/seo/aeo";
+import { FAQ_REVIEWED_AT } from "@/lib/faq-review";
 
 const PATH = "/fragor-och-svar";
-const UPDATED = "2026-07-08";
+// Faktagranskas varje vecka av kunskapsbankens rutin – se lib/faq-review.ts.
+const UPDATED = FAQ_REVIEWED_AT;
 
 export const metadata = {
   title: "Frågor och svar om solceller, batteri och grönt avdrag",
@@ -43,11 +45,11 @@ const CATEGORIES: { heading: string; eyebrow: string; items: { q: string; a: str
       },
       {
         q: "Hur stort solcellsbatteri behöver jag?",
-        a: "Dimensionera efter din förbrukning, inte efter en schablon. Tumregeln: husets årsförbrukning i kWh delad med 200–275 kalla dygn. En villa med 15 000 kWh per år landar då på cirka 55–75 kWh batterikapacitet – ett litet 10 kWh-batteri gör ingen verklig skillnad i ett hus som drar 70 kWh per dygn. Vi loggar din timförbrukning innan vi rekommenderar exakt storlek.",
+        a: "Det beror på hur mycket el du vill flytta per dygn, vilken effekt batteriet ska klara och vad det ska användas till. Vår tumregel är årsförbrukningen i kWh delad med 200–275 – ungefär så många dygn per år som elen är dyr och batteriet gör full nytta. En villa med 15 000 kWh per år landar då på cirka 55–75 kWh. Andra bedömare varnar för att överdimensionera, så vi loggar din timförbrukning innan vi rekommenderar exakt storlek.",
       },
       {
         q: "Behöver jag solceller för att ha ett batteri?",
-        a: "Nej. Ett batteri lönar sig även utan solpaneler genom prisarbitrage – du laddar när elen är billig och använder den när den är dyr – plus intäkt från stödtjänster. Har du redan solceller adderar batteriet självförbrukning ovanpå det. Just det gröna avdraget på 48,5 % för batteri förutsätter dock att huset har en solanläggning.",
+        a: "Nej, ett batteri kan installeras utan solceller och laddas från elnätet. Men ekonomin blir svagare: utan egen solel får du inget grönt avdrag, och intäkterna måste komma från spotprisstyrning, stödtjänster och i vissa nät en lägre effekt- eller säkringskostnad. I Batteriskolans räkneexempel tar ett 10 kWh-batteri utan solceller i SE3 cirka 13–20 år att betala med de stödtjänstnivåer Mölndal Energi redovisat för 2025–2026. Vi räknar ärligt på ditt hus – och säger nej om det inte går ihop.",
       },
       {
         q: "Vilka batterimärken installerar Optimera Energi?",
@@ -55,7 +57,7 @@ const CATEGORIES: { heading: string; eyebrow: string; items: { q: string; a: str
       },
       {
         q: "Är ett batteri säkert i hemmet?",
-        a: "Ja. Vi installerar LFP-batterier (litium-järnfosfat) som standard – de brinner inte på samma sätt som NMC-kemi. Installationen följer gällande standard (SS-EN-IEC 62619) med rätt avstånd och brandklassning, och görs av noggrant utvalda, certifierade installatörer.",
+        a: "Ja. Ett hembatteri som uppfyller regelverket och är rätt installerat anses säkert och börjar sällan brinna. Vi installerar LFP (litium-järnfosfat) som standard, med lägre brandrisk än många andra litiumkemier – men samma placeringsregler gäller: batterier på sammanlagt mer än 20 kWh i samma utrymme ska som utgångspunkt stå i en egen brandcell. Installationen följer SS-EN-IEC 62619 med rätt avstånd och brandklassning och görs av noggrant utvalda, certifierade installatörer.",
       },
     ],
   },
@@ -69,11 +71,7 @@ const CATEGORIES: { heading: string; eyebrow: string; items: { q: string; a: str
       },
       {
         q: "Behöver jag bygglov för solceller?",
-        a: "I de flesta fall nej. Sedan 1 december 2025 krävs inget bygglov för solceller på tak eller fasad på villor, radhus och andra en- och tvåbostadshus. Undantag finns bland annat för kulturhistoriskt värdefulla hus och där detaljplanen kräver lov. Vi kollar din kommun innan vi börjar.",
-      },
-      {
-        q: "Kan jag ladda batteriet från elnätet när det är billigt?",
-        a: "Absolut. Styrningen köper el när priset dippar och använder den när priset är högt – automatiskt, varje dygn.",
+        a: "Sedan 1 december 2025 krävs normalt inget bygglov för solceller på tak eller fasad på villor, radhus och andra en- och tvåbostadshus. Men i Stockholms stad krävs lov i stora delar av staden, bland annat på grund av riksintresset för väderradarn i Håtuna, och lov kan också krävas för kulturhistoriskt värdefulla hus och där detaljplanen har skyddsbestämmelser. Vi kollar med din kommun innan du beställer.",
       },
       {
         q: "Vad kostar solpaneler i Stockholm?",
@@ -87,11 +85,11 @@ const CATEGORIES: { heading: string; eyebrow: string; items: { q: string; a: str
     items: [
       {
         q: "Hur stort grönt avdrag får jag på solceller och batteri?",
-        a: "Solpaneler ger 14,55 % grönt avdrag, batterier 48,5 % (förutsatt att huset har en solanläggning), laddboxar 48,5 % och värmepumpar ROT-avdrag på 30 % av arbetskostnaden. Avdragstaket är 50 000 kr per fastighetsägare och år och dras direkt på fakturan.",
+        a: "Grönt avdrag 2026 är 15 % av arbete och material för solceller och 50 % för batteri och laddbox – vid fast pris 14,55 % respektive 48,5 % av totalpriset. Batteriet ska lagra egen solel för att ge avdrag. Värmepumpar ger i stället ROT-avdrag på 30 % av arbetskostnaden. Taket för grönt avdrag är 50 000 kr per person och år, så två ägare kan dela på två tak. Avdraget dras direkt på fakturan.",
       },
       {
         q: "Hur lång är återbetalningstiden för sol och batteri?",
-        a: "Det beror på om du redan har solceller, batteristorlek, elområde och förbrukning. Att lägga ett batteri till befintliga solceller är ofta den snabbaste affären – typiskt runt 2–5 år. En helt ny sol- och batterilösning tar oftast 4–7,5 år, solceller ensamt längre. Exakt siffra räknar vi fram vid hembesöket.",
+        a: "Det beror mest på priset efter grönt avdrag, hur mycket solel du använder själv, ditt nätbolag och vad stödtjänsterna betalar. I kunskapsbankens räkneexempel för Stockholm (SE3, 2026) tar 7 kWp solceller för cirka 50 000 kr efter avdrag ungefär 8,5 år. Ett 10 kWh-batteri till befintliga solceller tar cirka 15 år utan stödtjänster och cirka 6,5–9 år med stödtjänster på de nivåer Mölndal Energi betalat ut 2025–2026. Sol och batteri tillsammans tar knappt 11 år utan stödtjänster. Exakt siffra för din bostad räknar vi fram vid hembesöket.",
       },
       {
         q: "Kan jag få exakta siffror direkt i kalkylatorn?",
@@ -105,15 +103,15 @@ const CATEGORIES: { heading: string; eyebrow: string; items: { q: string; a: str
     items: [
       {
         q: "Hur mycket tjänar jag på stödtjänster?",
-        a: "Via FCR-D och aFRR betalar Svenska kraftnät runt 65 kr per kW växelriktare och månad för att batteriet stabiliserar nätet. En anläggning med en 10 kW-växelriktare ger i storleksordningen 7 800 kr per år, och större banker mer – utöver det du sparar på egen förbrukning. Det kräver en styrning (Energy IQ eller Enequi Core) som kör batteriet mot Svenska kraftnät.",
+        a: "Det varierar. Ett hembatteri säljer oftast FCR-D via en aggregator – Svenska kraftnät betalar aggregatorn, inte villaägaren direkt – och ersättningen sätts på en marknad. Den har fallit med över 90 % från toppåren 2022–2023. Mölndal Energi betalade sina kunder i snitt 52 kr per kW och månad 2025 och cirka 33 kr under januari–juni 2026, exklusive moms. Med en 10 kW-växelriktare blir det cirka 4 000–6 200 kr per år, och under de timmar batteriet är sålt kan det inte användas till annat. Det kräver en styrning som kör stödtjänster, till exempel Energy IQ eller Enequi Core. Vi räknar alltid både med och utan stödtjänster.",
       },
       {
         q: "Kan jag ladda batteriet från elnätet när det är billigt?",
-        a: "Ja. Vår styrning köper el när priset dippar och använder eller säljer den på topparna – automatiskt. Kombinerat med solel och stödtjänster är det så batteriet tjänar in sig.",
+        a: "Ja, med ett elavtal som följer spotpriset – i dag i praktiken kvartspris. Styrningen laddar batteriet när elen är billig och använder elen när den är dyr, automatiskt. Hur mycket det ger beror på prisskillnaderna, som varierar mycket mellan dygnen: i kunskapsbankens exempel för SE3 ger prisstyrning vintertid uppskattningsvis 1 000 kr per år.",
       },
       {
         q: "Höjer ett batteri min självförbrukning av solel?",
-        a: "Ja, markant. Ett batteri höjer typiskt självförbrukningen från 30–40 % till 70–80 %, vilket betyder att du köper mindre el från nätet och säljer mindre överskott till lågt pris.",
+        a: "Ja. En vanlig villa använder 20–50 % av solelen själv enligt Energimyndigheten. Ett batteri sparar dagens överskott till kvällen – i kunskapsbankens exempel höjer ett 10 kWh-batteri egenanvändningen från cirka 35 till drygt 50 %. Hur mycket beror på batteriets storlek och när du använder el. Det lönar sig eftersom en egenanvänd kWh är värd ungefär 2,5 gånger mer än en såld.",
       },
     ],
   },
@@ -205,7 +203,7 @@ export default function FaqHubPage() {
             svar? Ring oss på 076 305 37 32.
           </p>
           <div className="mt-8">
-            <LastUpdated date={UPDATED} />
+            <LastUpdated date={UPDATED} label="Faktagranskad" />
           </div>
         </div>
       </section>

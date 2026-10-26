@@ -89,16 +89,6 @@ const SOLIS = {
   15: { kind: "external" as const, brand: "Solis S6", kw: 15, priceKr: 15_990 },
 };
 
-/**
- * Extern hybridväxelriktare utan bestämt märke (t.ex. till Enershare, där
- * valet görs i offerten). Priset är Solis-nivån som platshållare.
- */
-const hybridInverter = (kw: 10 | 15) => ({
-  kind: "external" as const,
-  brand: "Hybridväxelriktare",
-  kw,
-  priceKr: SOLIS[kw].priceKr,
-});
 
 export type HeatPump = {
   id: string;
@@ -229,7 +219,8 @@ export const BATTERIES: Battery[] = [
 
   // -------- Enershare Energy Core (ersätter Emaldo 2026-10-26) --------
   // Högspänningstorn: 3,2 kWh per modul, 3–8 moduler per torn (9,6–25,6 kWh),
-  // fler torn parallellt. LFP. Kräver extern hybridväxelriktare.
+  // fler torn parallellt. LFP. Extern hybridväxelriktare – Solis eller
+  // Solinteg, precis som till Eway. Kalkylatorn räknar med Solis S6.
   {
     id: "enershare-core",
     brand: "Enershare Energy Core",
@@ -240,7 +231,7 @@ export const BATTERIES: Battery[] = [
     baseHardwareKr: 0,
     perModuleHardwareKr: 0,
     kWhPerModule: 3.2,
-    inverterFor: (kWh) => hybridInverter(kWh <= 16 ? 10 : 15),
+    inverterFor: (kWh) => (kWh <= 23.04 ? SOLIS[10] : SOLIS[15]),
   },
 
   // -------- Sigenergy SigenStor (2026-10-26) --------

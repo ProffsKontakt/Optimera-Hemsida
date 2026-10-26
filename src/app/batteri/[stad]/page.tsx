@@ -47,7 +47,7 @@ function batteryFaq(city: ReturnType<typeof findBatteryCity>) {
     },
     {
       q: `Behöver jag solceller för att ha batteri ${city.preposition} ${city.name}?`,
-      a: `Nej. Ett batteri lönar sig även utan solpaneler genom prisarbitrage, du laddar när elen är billig och använder den när den är dyr, plus intäkt från stödtjänster. Har du redan solceller adderar batteriet självförbrukning ovanpå det. Vi installerar både till befintliga solanläggningar och som fristående lager.`,
+      a: `Nej, ett batteri kan installeras utan solceller och laddas från elnätet. Men ekonomin blir svagare: utan egen solel får du inget grönt avdrag, och intäkterna måste komma från spotprisstyrning, stödtjänster och i vissa nät en lägre effekt- eller säkringskostnad. Med 2026 års priser blir återbetalningstiden ofta lång, så vi räknar ärligt på ditt hus och säger nej om det inte går ihop.`,
     },
     {
       q: `Vilka batterimärken installerar Optimera Energi?`,

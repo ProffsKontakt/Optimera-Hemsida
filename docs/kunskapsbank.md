@@ -78,6 +78,8 @@ En schemalagd agent kör varje måndag morgon. Den tar fram två nya sidor utifr
    2. Därefter de sidor vars `updatedAt` ligger längst tillbaka.
 
    Läs varje källa på nytt, rätta det som ändrats och sätt nytt `updatedAt` även om inget behövde ändras.
+
+   **Varje vecka dessutom: `/fragor-och-svar`.** Gå igenom alla svar i `src/app/fragor-och-svar/page.tsx` mot kunskapsbanken. Rätta svar som säger emot kunskapsbanken (siffror, regler, återbetalningstider, stödtjänstersättning) och sätt sedan `FAQ_REVIEWED_AT` i `src/lib/faq-review.ts` till dagens datum. Datumet visas som "Faktagranskad …" på sidan och är sitemapens lastmod. Sätt det bara när svaren faktiskt har granskats. `kb-check` varnar när det är mer än tio dagar gammalt.
 8. **Ämnen utanför sol och batteri**, alltså värmepump, laddbox, elpris och avdrag, blir guider. Laddbox- och värmepumpsfrågor är välkomna där.
 
 Nyhetsrutinen var tredje dag skriver bara nyheter. Den ska inte ta en huvudfråga som en sida i kunskapsbanken redan besvarar.

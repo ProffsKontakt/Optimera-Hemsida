@@ -152,6 +152,16 @@ for (const x of [...questions, ...concepts, ...newGuides.map((g) => ({ slug: g.s
 for (const h of [...read("src/components/site/Term.tsx").matchAll(/href: "(\/(?:solcellsfragor|batteriskolan)\/[^"]+)"/g)].map((m) => m[1]))
   if (!validHref(h)) problem("Term.tsx", `länkar till saknad sida ${h}`);
 
+// /fragor-och-svar faktagranskas varje vecka (docs/kunskapsbank.md, steg 7).
+{
+  const reviewed = read("src/lib/faq-review.ts").match(/FAQ_REVIEWED_AT = "(\d{4}-\d{2}-\d{2})"/)?.[1];
+  if (!reviewed) problem("fragor-och-svar", "FAQ_REVIEWED_AT saknas i src/lib/faq-review.ts");
+  else {
+    const days = Math.floor((Date.now() - new Date(`${reviewed}T12:00:00Z`).getTime()) / 86_400_000);
+    if (days > 10) warn("fragor-och-svar", `senast faktagranskad ${reviewed} (${days} dagar sedan) – granska svaren och sätt nytt datum`);
+  }
+}
+
 if (checkUrls) {
   const entries = [...questions, ...concepts, ...newGuides.map((g) => ({ slug: g.slug, sources: g.sources ?? [] }))]
     .filter((x) => !only || only.has(x.slug));

@@ -33,7 +33,7 @@ const FAQ = [
   },
   {
     q: "Hur lång är återbetalningstiden för sol och batteri?",
-    a: "Det beror på om du redan har solceller, batteristorlek, elområde och förbrukning. Att lägga ett batteri till befintliga solceller är ofta den snabbaste affären – typiskt runt 2–5 år. En helt ny sol- och batterilösning tar oftast 4–7,5 år, solceller ensamt längre. Exakt siffra för just din bostad räknar vi fram vid hembesöket.",
+    a: "Det beror mest på priset efter grönt avdrag, hur mycket solel du använder själv, ditt nätbolag och vad stödtjänsterna betalar. I kunskapsbankens räkneexempel för Stockholm (SE3, 2026) tar 7 kWp solceller för cirka 50 000 kr efter avdrag ungefär 8,5 år. Ett 10 kWh-batteri till befintliga solceller tar cirka 15 år utan stödtjänster och cirka 6,5–9 år med stödtjänster på de nivåer Mölndal Energi betalat ut 2025–2026. Sol och batteri tillsammans tar knappt 11 år utan stödtjänster. Exakt siffra för just din bostad räknar vi fram vid hembesöket.",
   },
   {
     q: "Vilka batterimärken installerar Optimera Energi?",

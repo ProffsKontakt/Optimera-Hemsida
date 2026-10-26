@@ -69,7 +69,7 @@ const FAQ = [
   },
   {
     q: "Behöver jag solceller för att ha ett solcellsbatteri?",
-    a: "Nej. Ett batteri lönar sig även utan solpaneler genom prisarbitrage – du laddar när elen är billig och använder den när den är dyr – plus intäkt från stödtjänster. Har du redan solceller adderar batteriet självförbrukning ovanpå det. Observera att just det gröna avdraget på 48,5 % för batteri förutsätter att huset har en solanläggning.",
+    a: "Nej, ett batteri kan installeras utan solceller och laddas från elnätet. Men ekonomin blir svagare: utan egen solel får du inget grönt avdrag, och intäkterna måste komma från spotprisstyrning, stödtjänster och i vissa nät en lägre effekt- eller säkringskostnad. I Batteriskolans räkneexempel tar ett 10 kWh-batteri utan solceller i SE3 cirka 13–20 år att betala med de stödtjänstnivåer Mölndal Energi redovisat för 2025–2026. Vi räknar ärligt på ditt hus – och säger nej om det inte går ihop.",
   },
   {
     q: "Vilka batterimärken installerar Optimera Energi?",
@@ -384,7 +384,7 @@ export default function SolcellsbatteriPage() {
                 "15–61 kWh (moduler à 7,68 kWh)",
                 "LFP",
                 "≈ 6 500",
-                "Extern (t.ex. Solis S6 10/15 kW)",
+                "Extern (Solis S6 eller Solinteg)",
                 "Mest kWh för pengarna och fri styrning.",
               ],
             },
@@ -404,7 +404,7 @@ export default function SolcellsbatteriPage() {
                 "9,6–25,6 kWh per torn (moduler à 3,2 kWh)",
                 "LFP",
                 "Anges inte i databladet",
-                "Extern hybridväxelriktare",
+                "Extern (Solis S6 eller Solinteg)",
                 "Högspänningstorn som byggs ut modul för modul.",
               ],
             },
