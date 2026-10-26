@@ -44,6 +44,69 @@ export type Guide = {
 
 export const GUIDES: Guide[] = [
   {
+    slug: "franluftsvarmepump",
+    status: "published",
+    title: "Hur fungerar en frånluftsvärmepump, och vad kostar den?",
+    excerpt: "En frånluftsvärmepump kostar cirka 80 000–140 000 kr installerad (2023). Så fungerar den, nackdelarna, jämförelsen med bergvärme och FTX och vad som gäller vid byte.",
+    category: "Värmepump",
+    publishedAt: "2026-10-26",
+    updatedAt: "2026-10-26",
+    readTimeMin: 7,
+    searchPhrases: [
+      "frånluftsvärmepump pris",
+      "frånluftsvärmepump hur fungerar",
+      "frånluftsvärmepump nackdelar",
+      "frånluftsvärmepump eller bergvärme",
+      "frånluftsvärmepump eller ftx",
+      "byta frånluftsvärmepump",
+    ],
+    services: [
+      "vaermepumpar",
+    ],
+    sources: [
+      {
+        title: "Frånluftsvärmepump",
+        publisher: "Energi- och klimatrådgivningen",
+        url: "https://energiochklimatradgivningen.se/hushall/uppvarmning/olikavarmesystem/varmepumpar/franluftsvarmepump.856.html",
+      },
+      {
+        title: "Välj rätt värmepump (Husguiden)",
+        publisher: "Energimyndigheten",
+        url: "https://www.energimyndigheten.se/effektiv-energianvandning/guider/husguiden-for-dig-som-vill-energieffektivisera-ditt-hus/se-over-husets-uppvarmningssystem/valj-ratt-varmepump/",
+      },
+      {
+        title: "Värmepumpar – en guide från energi- och klimatrådgivningen (ET 2025:05)",
+        publisher: "Energimyndigheten",
+        url: "https://energiochklimatradgivningen.se/download/18.5e9a579b195c021e865e6618/1742900645694/V%C3%A4rmepumpar_en%20guide%20fr%C3%A5n%20energi-%20och%20klimatr%C3%A5dgivningen%202025.pdf.pdf",
+      },
+      {
+        title: "Berg-, jord-, eller sjövärmepump",
+        publisher: "Energi- och klimatrådgivningen",
+        url: "https://energiochklimatradgivningen.se/hushall/uppvarmning/olikavarmesystem/varmepumpar/bergjordellersjovarmepump.845.html",
+      },
+      {
+        title: "Luftvärmepump – Energiguiden (frånluftsventilation och FTX)",
+        publisher: "Boverket",
+        url: "https://www.boverket.se/sv/energiguiden/energirenovera-smahus/5.valja_atgarder/luftvarmepump/",
+      },
+      {
+        title: "Bidrag för energieffektivisering i småhus",
+        publisher: "Boverket",
+        url: "https://www.boverket.se/sv/bidrag--garantier/bidrag-for-energieffektivisering-i-smahus/",
+      },
+      {
+        title: "Möjliga åtgärder vid ansökan om bidrag för energieffektivisering i småhus",
+        publisher: "Boverket",
+        url: "https://www.boverket.se/sv/bidrag--garantier/bidrag-for-energieffektivisering-i-smahus/mojliga-energieffektiviseringsatgarder/",
+      },
+      {
+        title: "Ger arbetet rätt till rotavdrag? (schablon för arbetskostnad vid installation av värmepump)",
+        publisher: "Skatteverket",
+        url: "https://www.skatteverket.se/foretag/skatterochavdrag/rotochrut/gerarbetetratttillrotavdrag.4.5c1163881590be297b5173bf.html",
+      },
+    ],
+  },
+  {
     slug: "borra-bergvarme",
     status: "published",
     title: "Hur djupt borrar man för bergvärme – och vad kostar borrningen?",

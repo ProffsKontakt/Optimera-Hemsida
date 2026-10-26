@@ -34,6 +34,103 @@ export type GuideContent = {
 };
 
 export const GUIDE_CONTENT: Record<string, GuideContent> = {
+  "franluftsvarmepump": {
+    answer: "En frånluftsvärmepump kostar cirka 80 000–140 000 kr med installation för en normalstor villa, enligt Energi- och klimatrådgivningen (2023). Den tar vara på värmen i inomhusluften som ventileras ut och värmer varmvattnet och husets vattenburna värmesystem. Den kräver mekanisk frånluftsventilation, ger bara så mycket värme som ventilationsluften räcker till och har lägre årsvärmefaktor än bergvärme: SCOP 2,5–4,0 mot 4,0–5,5.",
+    keyFacts: [
+      {
+        label: "Pris med installation (2023)",
+        value: "Cirka 80 000–140 000 kr för en normalstor villa, enligt Energi- och klimatrådgivningen",
+      },
+      {
+        label: "Årsvärmefaktor (SCOP)",
+        value: "2,5–4,0 för frånluftsvärmepump, 4,0–5,5 för bergvärme (Energimyndighetens värmepumpsguide 2025)",
+      },
+      {
+        label: "Krav på huset",
+        value: "Mekanisk frånluftsventilation, och vattenburet värmesystem om pumpen ska värma rummen",
+      },
+      {
+        label: "Rotavdrag vid fast pris",
+        value: "30 % av totalpriset räknas som arbete, så avdraget blir cirka 9 % av totalpriset",
+      },
+      {
+        label: "Villaeffekten 2026",
+        value: "30 % av materialet, högst 60 000 kr – gäller styrbar frånluftsvärmepump i hus med värdeår före 1990",
+      },
+    ],
+    sections: [
+      {
+        h2: "Hur fungerar en frånluftsvärmepump?",
+        body: [
+          "En frånluftsvärmepump tar vara på värmen i den uppvärmda inomhusluften innan luften lämnar huset. Uteluft kommer in genom uteluftsdon, och luften sugs ut genom frånluftsdon i till exempel kök, badrum och tvättrum. Frånluftsdonen är kopplade till kanaler som leder luften till värmepumpen.",
+          "Värmen används till varmvattnet och till husets vattenburna värmesystem. En vanlig frånluftsvärmepump kyler frånluften från cirka +20 °C till +5 °C, och nyare modeller kan sänka den ända till −15 °C för att utvinna mer energi. En fördel är att inomhusluften har jämn temperatur hela året. Pumpen har ofta en inbyggd elpanna som tar över när värmepumpen inte räcker till.",
+        ],
+      },
+      {
+        h2: "Vad kostar en frånluftsvärmepump, och vad ger avdrag och bidrag?",
+        body: [
+          "En frånluftsvärmepump för en normalstor villa kostar cirka 80 000–140 000 kr med installation, enligt Energi- och klimatrådgivningen (2023). Som jämförelse är en vanlig kostnad för berg-, jord- eller sjövärme till en villa omkring 120 000–250 000 kr (2023).",
+          "Installationen ger rotavdrag på 30 % av arbetskostnaden. Vid ett fast pris för hela installationen räknar Skatteverket 30 % av totalpriset som arbetskostnad för en frånluftsvärmepump, så avdraget blir cirka 9 % av totalpriset. Exempel: en installation för 110 000 kr, mitt i prisspannet, ger cirka 9 900 kr i rotavdrag.",
+          "Installation av en styrbar frånluftsvärmepump är också en av åtgärderna i Villaeffekten, Boverkets bidrag för energieffektivisering i småhus: högst 30 % av materialkostnaden och högst 60 000 kr per hus. Huset ska ha värdeår före 1990 och inte vara anslutet till fjärrvärme, och du ska äga och bo i det. Eftersom bidraget bara gäller materialet kan du få rotavdrag för arbetet. Länsstyrelsen handlägger ansökan och kan svara på om just ditt fall uppfyller villkoren.",
+        ],
+      },
+      {
+        h2: "Vilka är nackdelarna med en frånluftsvärmepump?",
+        body: [
+          "Den största nackdelen är att frånluftsvärmepumpen inte ger mer värme än ventilationsflödet kan leverera. Inomhusluften räcker inte alltid till hela behovet av värme och varmvatten, så någon form av tillskott brukar behövas.",
+        ],
+        bullets: [
+          "Tillskott behövs: en vanlig lösning är att frånluftsvärmepumpen främst värmer varmvattnet medan en luft-luftvärmepump hjälper till att värma huset.",
+          "Lägre verkningsgrad än bergvärme: årsvärmefaktorn (SCOP) är 2,5–4,0, mot 4,0–5,5 för bergvärme. SCOP 3 betyder att pumpen ger 3 kWh värme för varje kWh el över året.",
+          "Spetsvärme med el: värmepumpar dimensioneras sällan för hela värmebehovet, och i villor är det vanligt att spetsa med el de kallaste dagarna.",
+          "Kräver rätt hus: mekanisk frånluftsventilation och ett relativt lågt energibehov.",
+        ],
+      },
+      {
+        h2: "Frånluftsvärmepump eller bergvärme – vilken passar?",
+        body: [
+          "Bergvärme passar ofta större hus med många boende och har högst årsvärmefaktor, men kostar mer och kräver ett borrhål. En frånluftsvärmepump passar hus som redan har mekanisk frånluftsventilation och ett relativt lågt energibehov, och kan kompletteras med en luft-luftvärmepump. Energimyndigheten pekar på att frånluftsvärmepumpen kan användas till varmvattnet, eftersom det behovet är ungefär lika stort hela året.",
+          "Hur borrningen går till och vad den kostar går vi igenom i guiden om att borra för bergvärme.",
+        ],
+      },
+      {
+        h2: "Frånluftsvärmepump eller FTX – vad är skillnaden?",
+        body: [
+          "Båda tar vara på värmen i frånluften, men på olika sätt. FTX är mekanisk till- och frånluftsventilation med värmeåtervinning: en värmeväxlare låter den varma frånluften förvärma den kalla tilluften. En frånluftsvärmepump använder i stället värmen till varmvatten och radiatorer.",
+          "Enligt Boverket ger FTX bättre luftomsättning och långsiktig besparing, men för att FTX ska fungera bra behöver spaltventiler i fönster och väggar tätas. Med frånluftsventilation och frånluftsvärmepump behövs tvärtom spaltventiler eller väggventiler för tilluften. Installation av både FTX och styrbara frånluftsvärmepumpar finns med bland åtgärderna i Villaeffekten.",
+        ],
+      },
+      {
+        h2: "Vad ska man tänka på när man byter frånluftsvärmepump?",
+        body: [
+          "Ett byte går inte alltid att göra rakt av. Nyare frånluftsvärmepumpar kyler frånluften mer, och då behöver de gamla frånluftskanalerna ofta tilläggsisoleras för att undvika kondens och fuktproblem.",
+        ],
+        bullets: [
+          "Köldmedium: äldre värmepumpar har ofta R410A, R407C eller R134a, som gradvis ersätts av bland annat R32 när reglerna för köldmedier skärps. Välj ett köldmedium som håller över tid.",
+          "Energimärkning: frånluftsvärmepumpar har en skala från A+++ till D för rumsvärme och från A+ till F för varmvatten, så du kan jämföra modeller.",
+          "Offerter: Energi- och klimatrådgivningen har en checklista för offerter på värmepumpar, och den kommunala energi- och klimatrådgivningen är kostnadsfri.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Behöver man tillskottsvärme till en frånluftsvärmepump?",
+        a: "Oftast ja. En frånluftsvärmepump ger inte mer värme än ventilationsflödet kan leverera, så någon form av tillskott brukar behövas. Pumpen har ofta en inbyggd elpanna, och en vanlig lösning är att låta frånluftsvärmepumpen främst värma varmvattnet medan en luft-luftvärmepump hjälper till att värma huset.",
+      },
+      {
+        q: "Får man rotavdrag för frånluftsvärmepump?",
+        a: "Ja, rotavdraget är 30 % av arbetskostnaden. Vid fast pris för hela installationen räknar Skatteverket 30 % av totalpriset som arbete för en frånluftsvärmepump, så avdraget blir cirka 9 % av totalpriset. Du kan dessutom få Villaeffekten för materialet om pumpen är styrbar och huset uppfyller villkoren.",
+      },
+      {
+        q: "Får man Villaeffekten för en frånluftsvärmepump?",
+        a: "Ja, installation av en styrbar frånluftsvärmepump finns med bland åtgärderna, alltså en pump som kan styras automatiskt efter till exempel temperatur eller elpris. Bidraget är högst 30 % av materialkostnaden och högst 60 000 kr per hus. Huset ska vara ett en- eller tvåbostadshus med värdeår före 1990 som inte är anslutet till fjärrvärme, och du ska äga och bo i det.",
+      },
+      {
+        q: "Kan man byta frånluftsvärmepump till luft-vattenvärmepump eller bergvärme?",
+        a: "Ja. Både en luft-vattenvärmepump och en bergvärmepump kan värma ett vattenburet värmesystem och varmvattnet, och installation av en styrbar luft-vatten- eller bergvärmepump finns också med bland åtgärderna i Villaeffekten. Tänk på ventilationen: med frånluftsventilation behövs fortfarande spaltventiler eller väggventiler för tilluften, och väljer du FTX ska de i stället tätas.",
+      },
+    ],
+  },
   "borra-bergvarme": {
     answer: "Ett borrhål för bergvärme är vanligen 100–300 meter djupt, och medianen i SGU:s brunnsarkiv var cirka 175 meter (2016). Djupet beror på husets värmebehov, berget och grundvattennivån. Borrningen ingår oftast i totalpriset för bergvärme, omkring 120 000–250 000 kr för en villa enligt Energi- och klimatrådgivningen (2023). Innan du borrar ska du alltid anmäla bergvärmen till kommunen, och vissa kommuner kräver tillstånd.",
     keyFacts: [

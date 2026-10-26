@@ -1285,6 +1285,14 @@ export const CONCEPTS: BatteryConcept[] = [
       {
         q: "När infördes kvartspris på el?",
         a: "Elbörserna började handla per kvart på dagen före-marknaden den 30 september 2025, med första leveransdag 1 oktober 2025."
+      },
+      {
+        q: "Är kvartspris på el bra?",
+        a: "Det beror på om du kan styra din förbrukning. Enligt Konsumenternas Energimarknadsbyrå är kvartsprisavtal inte lönsamt för alla: du behöver flytta en så stor del av elanvändningen som möjligt till de billigaste tiderna, och de stora förbrukarna är oftast värmepumpen, golvvärmen och elbilsladdningen. Kan du inte minska förbrukningen när priset är högt riskerar kostnaden att bli högre än med ett rörligt månadspris. Byrån avråder också från kvartspris om du inte aktivt kan följa upp förbrukningen och kostnaden över tid."
+      },
+      {
+        q: "Hur räknas kvartspriset ut?",
+        a: "Elbörsen sätter ett spotpris för varje kvart, och priserna för nästa dygns 96 kvartar publiceras klockan 13.00 dagen före. Elnätsföretaget mäter hur mycket el du använder varje kvart. Du betalar sedan för vad elen kostar under varje enskild kvart, plus elhandlarens påslag och 25 procent moms. Exakt hur din elhandlare tillämpar prissättningen ska framgå av avtalsvillkoren."
       }
     ],
     searchPhrases: [
@@ -1293,7 +1301,10 @@ export const CONCEPTS: BatteryConcept[] = [
       "kvartspris eller månadspris",
       "15 minuters pris el",
       "kvartspris eller timpris",
-      "kvartspris på el"
+      "kvartspris på el",
+      "är kvartspris på el bra",
+      "är kvartspris bra",
+      "hur räknas kvartspris ut"
     ],
     sources: [
       {
@@ -1356,7 +1367,7 @@ export const CONCEPTS: BatteryConcept[] = [
         label: "Guide: Så jämför du elavtal"
       }
     ],
-    updatedAt: "2026-10-03"
+    updatedAt: "2026-10-26"
   },
   {
     slug: "effektavgift",
