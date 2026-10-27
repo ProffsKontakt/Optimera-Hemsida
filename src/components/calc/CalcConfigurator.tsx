@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { roofPanelCapacity } from "@/lib/roof-geometry";
 import dynamic from "next/dynamic";
 import { useState } from "react";
 import { ArrowRight, Check, Sun, BatteryCharging, Zap } from "lucide-react";
@@ -14,7 +15,8 @@ import {
   ELZONER,
   MAX_PANELS_PER_HOUSE,
 } from "@/lib/catalog";
-import type { CalcInput } from "@/lib/calc";
+import { formatNumber, type CalcInput } from "@/lib/calc";
+import { estimatePayback, formatPayback } from "@/lib/payback";
 import { CanvasErrorBoundary } from "@/components/3d/CanvasErrorBoundary";
 import { SceneFallback } from "@/components/3d/SceneFallback";
 
@@ -51,6 +53,7 @@ const initial: CalcInput = {
   houseAreaM2: 145,
   evKmPerYear: 18000,
   baseConsumptionKWh: 4500,
+  annualConsumptionKWh: 15000,
 };
 
 const BATTERY_LABEL: Record<string, string> = {
@@ -60,53 +63,65 @@ const BATTERY_LABEL: Record<string, string> = {
   sigenstor: "SigenStor",
 };
 
+/** Så många paneler som ryms på kalkylatorns hus med den taktypen. */
+const maxPanelsFor = (roof: CalcInput["roofType"]) =>
+  Math.min(MAX_PANELS_PER_HOUSE, roofPanelCapacity(roof));
+
 /** 15,36 → "15,4", 9,6 → "9,6", 20 → "20". */
 const kWhLabel = (c: number) => String(Math.round(c * 10) / 10).replace(".", ",");
 
-// Återbetalningen följer kunskapsbankens räkneexempel (Guider –
-// Återbetalningstid för solceller, Batteriskolan – Intäktskällor och Batteri
-// utan solceller): SE3, priser 2026, 10 kWh-batteri, 10 kW växelriktare.
-// Kortaste tiden förutsätter stödtjänster på de nivåer Mölndal Energi betalat
-// ut 2025–2026, längsta tiden är utan stödtjänster. Ändras exemplen i
-// kunskapsbanken ska siffrorna här ändras med dem.
-function scenario(o: {
-  existingSolar: boolean;
-  addSolar: boolean;
-  addBattery: boolean;
-}) {
-  const { existingSolar, addSolar, addBattery } = o;
+// Återbetalningen räknas i lib/payback.ts: besparingen ur ett års
+// simulerade elkostnader med verkliga kvartspriser i det valda elområdet
+// (lib/battery-sim-data.ts) och investeringen ur katalogens priser för det
+// valda märket och storleken. Därför ändras siffran med elområde, märke,
+// batteristorlek, solcellseffekt och förbrukning.
+const BATTERY_NOTE = "Kortast med bästa möjliga styrning, längst med 80 % av den";
+
+function scenario(input: CalcInput) {
+  const existingSolar = input.hasExistingSolar;
+  const addSolar = input.enabled.sol;
+  const addBattery = input.enabled.batteri;
+  const estimate = estimatePayback(input);
+  const range = formatPayback(estimate);
+  const zone = `SE${input.elzon}`;
+  const use = `${formatNumber(input.annualConsumptionKWh)} kWh per år`;
+  const estimatedPrice =
+    estimate.kind === "years" && estimate.priceEstimated
+      ? " Priset för det här märket är uppskattat – exakt pris tar vi fram i offerten."
+      : "";
   if (existingSolar && addBattery)
     return {
-      range: "≈ 6,5–15 år",
+      range,
       tag: "Batteri till befintliga solceller",
-      lead:
-        "I vårt räkneexempel (10 kWh, SE3, 2026) tar batteriet cirka 6,5–9 år med stödtjänster på de nivåer Mölndal Energi betalat ut 2025–2026, och cirka 15 år utan. Effektavgift, en lägre säkring eller större prisskillnader kortar tiden.",
+      lead: `${kWhLabel(input.batteryCapacityKWh)} kWh till dina ${String(input.existingSolarKWp).replace(".", ",")} kWp i ${zone}, med en förbrukning på ${use}. Batteriet tjänar på prisstyrning och på att solelen används själv i stället för att säljas. Har ditt nätbolag effektavgift blir tiden kortare, eftersom batteriet också kapar effekttopparna.${estimatedPrice}`,
+      note: BATTERY_NOTE,
     };
   if (addSolar && addBattery)
     return {
-      range: "≈ 7,5–11 år",
+      range,
       tag: "Sol och batteri",
-      lead:
-        "I vårt räkneexempel (10 kWp och 10 kWh, SE3, 2026) tar sol och batteri tillsammans cirka 7,5–9 år med stödtjänster och knappt 11 år utan. Batteriet kortar tiden jämfört med bara solceller först när det också säljer stödtjänster.",
+      lead: `${input.panelCount} paneler och ${kWhLabel(input.batteryCapacityKWh)} kWh i ${zone}, med en förbrukning på ${use}. Solcellerna står för det mesta av besparingen, och batteriet flyttar solel till kvällen och prisstyr resten av året.${estimatedPrice}`,
+      note: BATTERY_NOTE,
     };
   if (addSolar && !addBattery)
     return {
       tag: "Solceller",
-      range: "≈ 8–11 år",
-      lead:
-        "I vårt räkneexempel tar 7 kWp i Stockholm för cirka 50 000 kr efter grönt avdrag ungefär 8,5 år. Taket, väderstrecket och hur mycket solel du använder själv avgör var i spannet du hamnar.",
+      range,
+      lead: `${input.panelCount} paneler i ${zone}, med en förbrukning på ${use}. Taket, väderstrecket och hur mycket solel du använder själv avgör var i spannet du hamnar.`,
+      note: "Längst om panelerna ger 20 % mindre än normalt – till exempel av skugga eller sämre väderstreck",
     };
   if (addBattery && !existingSolar && !addSolar)
     return {
       tag: "Batteri utan solceller",
-      range: "≈ 13–20 år",
-      lead:
-        "Utan egen solel blir det inget grönt avdrag, och intäkterna måste komma från spotprisstyrning och stödtjänster. I vårt räkneexempel tar ett 10 kWh-batteri cirka 13–20 år – vi räknar ärligt på ditt hus och säger nej om det inte går ihop.",
+      range,
+      lead: `Utan egen solel blir det inget grönt avdrag, och besparingen kommer bara från prisstyrning. Det lönar sig bäst där priset svänger mest – i ${zone} med ${use} blir det så här. Vi räknar ärligt på ditt hus och säger nej om det inte går ihop.${estimatedPrice}`,
+      note: BATTERY_NOTE,
     };
   return {
     tag: "",
     range: "Välj ovan",
     lead: "Kryssa i vad du vill ha, så visar vi vad det brukar innebära.",
+    note: "",
   };
 }
 
@@ -154,11 +169,7 @@ export function CalcConfigurator() {
     setInput((cur) => ({ ...cur, enabled: { ...cur.enabled, [k]: !cur.enabled[k] } }));
 
   const battery = BATTERIES.find((b) => b.id === input.batteryId) ?? BATTERIES[0];
-  const s = scenario({
-    existingSolar: input.hasExistingSolar,
-    addSolar: input.enabled.sol,
-    addBattery: input.enabled.batteri,
-  });
+  const s = scenario(input);
 
   return (
     <div className="grid grid-cols-1 xl:grid-cols-12 gap-6 xl:gap-8">
@@ -179,16 +190,12 @@ export function CalcConfigurator() {
           <div className="mt-4 grid grid-cols-1 sm:grid-cols-[auto,1fr] sm:gap-6 items-start">
             <div>
               <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink/50">
-                Återbetalning i vårt räkneexempel
+                Uppskattad återbetalning
               </div>
               <div className="mt-1 font-display text-[40px] md:text-[52px] leading-none tracking-display-tight text-indigo whitespace-nowrap">
                 {s.range}
               </div>
-              {input.enabled.batteri && (
-                <div className="mt-1.5 text-[12px] text-ink/45">
-                  Med och utan stödtjänster
-                </div>
-              )}
+              {s.note && <div className="mt-1.5 text-[12px] text-ink/45 max-w-[260px]">{s.note}</div>}
             </div>
             <p className="mt-4 sm:mt-0 text-ink/75 text-[14.5px] leading-relaxed">
               {s.lead}
@@ -199,7 +206,7 @@ export function CalcConfigurator() {
             {input.enabled.batteri && (
               <li className="flex items-start gap-2">
                 <Check size={15} className="mt-0.5 text-moss shrink-0" />
-                Ett 10 kWh-batteri höjer egenanvändningen av solelen från cirka 35 till drygt 50 % i vårt räkneexempel.
+                Räknat på verkliga kvartspriser i {`SE${input.elzon}`} under ett år (okt 2025–okt 2026), utan stödtjänster.
               </li>
             )}
             {input.enabled.batteri && (
@@ -218,8 +225,8 @@ export function CalcConfigurator() {
 
           <div className="mt-6 rounded-2xl border border-ink/10 bg-bone/70 p-4 text-[13px] text-ink/70 leading-relaxed">
             Vi ger medvetet inga exakta kronor här – en kalkylator känner inte
-            ditt tak, din förbrukning eller ditt elområde fullt ut. Vill du ha
-            riktiga siffror och ett pris för just din bostad?
+            ditt tak, ditt elnät eller hur ni använder el timme för timme. Vill
+            du ha riktiga siffror och ett pris för just din bostad?
           </div>
           <Link href="/offert" className="mt-4 btn-primary w-full justify-center text-base">
             Begär offert – vi räknar på det <ArrowRight size={16} />
@@ -248,6 +255,24 @@ export function CalcConfigurator() {
                 Nej, inte än
               </Chip>
             </div>
+            {input.hasExistingSolar && (
+              <div className="mt-4">
+                <div className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-ink/50 mb-2">
+                  Installerad effekt: {String(input.existingSolarKWp).replace(".", ",")} kWp
+                </div>
+                <input
+                  type="range"
+                  min={2}
+                  max={20}
+                  step={0.5}
+                  value={input.existingSolarKWp}
+                  onChange={(e) => patch({ existingSolarKWp: Number(e.target.value) })}
+                  className="w-full accent-indigo"
+                  aria-label="Installerad effekt på befintliga solceller i kWp"
+                />
+                <div className="mt-1 text-[12px] text-ink/45">Står på växelriktaren eller i appen – ofta 5–12 kWp på en villa.</div>
+              </div>
+            )}
           </Field>
 
           <Field label="Vad vill du ha?">
@@ -270,17 +295,25 @@ export function CalcConfigurator() {
             <Field label="Taktyp">
               <div className="grid grid-cols-2 gap-2">
                 {ROOF_TYPES.map((r) => (
-                  <Chip key={r.key} active={input.roofType === r.key} onClick={() => patch({ roofType: r.key })}>
+                  <Chip
+                    key={r.key}
+                    active={input.roofType === r.key}
+                    onClick={() =>
+                      // Taken rymmer olika många paneler – kapa antalet så att
+                      // alla valda paneler syns på det nya taket.
+                      patch({ roofType: r.key, panelCount: Math.min(input.panelCount, maxPanelsFor(r.key)) })
+                    }
+                  >
                     {r.label}
                   </Chip>
                 ))}
               </div>
             </Field>
-            <Field label={`Antal paneler: ${input.panelCount}`}>
+            <Field label={`Antal paneler: ${input.panelCount} av max ${maxPanelsFor(input.roofType)} på taket`}>
               <input
                 type="range"
                 min={4}
-                max={MAX_PANELS_PER_HOUSE}
+                max={maxPanelsFor(input.roofType)}
                 value={input.panelCount}
                 onChange={(e) => patch({ panelCount: Number(e.target.value) })}
                 className="w-full accent-indigo"
@@ -329,7 +362,20 @@ export function CalcConfigurator() {
           </div>
         )}
 
-        <div className="rounded-3xl border border-ink/10 bg-bone p-6">
+        <div className="rounded-3xl border border-ink/10 bg-bone p-6 space-y-5">
+          <Field label={`Elförbrukning per år: ${formatNumber(input.annualConsumptionKWh)} kWh`}>
+            <input
+              type="range"
+              min={7500}
+              max={30000}
+              step={500}
+              value={input.annualConsumptionKWh}
+              onChange={(e) => patch({ annualConsumptionKWh: Number(e.target.value) })}
+              className="w-full accent-indigo"
+              aria-label="Husets elförbrukning per år i kWh"
+            />
+            <div className="mt-1 text-[12px] text-ink/45">Står på elnätsfakturan. En villa med värmepump ligger ofta runt 15 000 kWh.</div>
+          </Field>
           <Field label="Elområde">
             <div className="grid grid-cols-4 gap-2">
               {ELZONER.map((z) => (

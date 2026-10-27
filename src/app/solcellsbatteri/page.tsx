@@ -383,7 +383,7 @@ export default function SolcellsbatteriPage() {
               cells: [
                 "15–61 kWh (moduler à 7,68 kWh)",
                 "LFP",
-                "≈ 6 500",
+                "≥ 8 000",
                 "Extern (Solis S6 eller Solinteg)",
                 "Mest kWh för pengarna och fri styrning.",
               ],
@@ -393,7 +393,7 @@ export default function SolcellsbatteriPage() {
               cells: [
                 "10 / 15 / 20 kWh",
                 "LFP",
-                "≈ 6 000",
+                "Anges inte i produktbladet",
                 "Inbyggd 12 kW",
                 "Kompakt allt-i-ett med växelriktaren i.",
               ],
@@ -403,7 +403,7 @@ export default function SolcellsbatteriPage() {
               cells: [
                 "9,6–25,6 kWh per torn (moduler à 3,2 kWh)",
                 "LFP",
-                "Anges inte i databladet",
+                "Anges inte i produktbladet",
                 "Extern (Solis S6 eller Solinteg)",
                 "Högspänningstorn som byggs ut modul för modul.",
               ],

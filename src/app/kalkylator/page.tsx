@@ -33,7 +33,7 @@ const FAQ = [
   },
   {
     q: "Hur lång är återbetalningstiden för sol och batteri?",
-    a: "Det beror mest på priset efter grönt avdrag, hur mycket solel du använder själv, ditt nätbolag och vad stödtjänsterna betalar. I kunskapsbankens räkneexempel för Stockholm (SE3, 2026) tar 7 kWp solceller för cirka 50 000 kr efter avdrag ungefär 8,5 år. Ett 10 kWh-batteri till befintliga solceller tar cirka 15 år utan stödtjänster och cirka 6,5–9 år med stödtjänster på de nivåer Mölndal Energi betalat ut 2025–2026. Sol och batteri tillsammans tar knappt 11 år utan stödtjänster. Exakt siffra för just din bostad räknar vi fram vid hembesöket.",
+    a: "Kalkylatorn ovan räknar på ett års verkliga kvartspriser i ditt elområde (oktober 2025–oktober 2026), din elförbrukning och priset efter grönt avdrag. Med 15 000 kWh om året tar 7 kWp nya solceller ungefär 7–8,5 år i SE3 och 6–7,5 år i SE4. Ett Eway-batteri på 15,36 kWh till 10 kWp befintliga solceller tar ungefär 10,5–13 år i SE3 och 7,5–9 år i SE4. I SE1 och SE2 svänger elpriset mindre, så där tar samma batteri över 18 år. Batteriet tjänar mest på prisstyrning och på att solelen används hemma i stället för att säljas, och har ditt nätbolag effektavgift blir tiden kortare. Exakt siffra för just din bostad räknar vi fram vid hembesöket.",
   },
   {
     q: "Vilka batterimärken installerar Optimera Energi?",

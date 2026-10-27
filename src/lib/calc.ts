@@ -58,6 +58,8 @@ export type CalcInput = {
   houseAreaM2: number;
   evKmPerYear: number;
   baseConsumptionKWh: number;
+  /** Husets totala elförbrukning per år – styr återbetalningen i kalkylatorn. */
+  annualConsumptionKWh: number;
 };
 
 export type CalcResult = {

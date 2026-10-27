@@ -16,8 +16,8 @@ import { StudioFloor, StudioLights } from "./products/Studio";
  * i en vanlig HTML-rad under scenen (LINEUP), inte som etiketter i 3D.
  */
 export const LINEUP = [
-  { id: "eway", name: "Eway", kWh: 23.04, modules: ewayModules(23.04), height: ewayStackHeight(ewayModules(23.04)), width: 0.65, Model: EwayBattery },
-  { id: "saj", name: "SAJ HS3", kWh: 20, modules: sajModules(20), height: sajHeight(sajModules(20)), width: 0.695, Model: SajHS3 },
+  { id: "eway", name: "Eway", kWh: 23.04, modules: ewayModules(23.04), height: ewayStackHeight(ewayModules(23.04)), width: 0.66, Model: EwayBattery },
+  { id: "saj", name: "SAJ HS3", kWh: 20, modules: sajModules(20), height: sajHeight(sajModules(20)), width: 0.695 * 2 + 0.08 /* 3 + 1 moduler i två stackar */, Model: SajHS3 },
   { id: "enershare", name: "Enershare", kWh: 19.2, modules: enershareModules(19.2), height: enershareTowerHeight(enershareModules(19.2)), width: 0.65, Model: EnershareCore },
   { id: "sigen", name: "SigenStor", kWh: 18, modules: sigenModules(18), height: sigenStackHeight(sigenModules(18)), width: 0.767, Model: SigenStor },
 ] as const;

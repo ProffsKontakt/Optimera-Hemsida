@@ -11,9 +11,10 @@ import { FONT, useCanvasTexture } from "./textures";
  * vänster sida. Ett torn rymmer 3–8 moduler (9,6–25,6 kWh); större batterier
  * ritas som flera torn bredvid varandra.
  *
- * Mått i meter: 650 × 260 mm i fotavtryck och 175 mm per modul enligt
- * återförsäljarnas datablad (5 moduler = 1 150 mm). Origo = golvet mitt
- * under tornet, fronten mot +z.
+ * Mått enligt Enershares produktblad: moduler och BMS är 175 × 650 × 260 mm
+ * (H × B × D), och ett torn med 3 / 5 / 8 moduler är 800 / 1 150 / 1 675 mm
+ * högt – alltså 100 mm sockel med fötter. Origo = golvet mitt under tornet,
+ * fronten mot +z.
  */
 export const ENERSHARE_MODULE_KWH = 3.2;
 export const ENERSHARE_MAX_PER_TOWER = 8;
@@ -21,8 +22,8 @@ export const ENERSHARE_MAX_PER_TOWER = 8;
 const W = 0.65;
 const D = 0.26;
 const MODULE_H = 0.175;
-const BMS_H = 0.17;
-const PLINTH_H = 0.065;
+const BMS_H = 0.175;
+const PLINTH_H = 0.075;
 const FEET_H = 0.025;
 const BASE_H = PLINTH_H + FEET_H;
 const GAP = 0.004;

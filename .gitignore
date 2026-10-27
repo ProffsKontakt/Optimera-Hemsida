@@ -35,3 +35,6 @@ next-env.d.ts
 
 # Python
 __pycache__/
+
+# Prisdata till scripts/battery-sim.py
+.cache/

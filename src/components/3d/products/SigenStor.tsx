@@ -12,8 +12,9 @@ import { FONT, roundedRectShape, useCanvasTexture } from "./textures";
  * stack, upp till 54 kWh) med en liten indikator på den översta modulen,
  * och en låg sockel.
  *
- * Mått i meter: modul 767 × 270 × 265 mm (B × H × D) enligt Sigenergys
- * datablad, Energy Controller och sockel efter produktbildens proportioner.
+ * Mått enligt Sigenergys produktblad: batterimodul (BAT 10.0, 9,04 kWh)
+ * 767 × 270 × 265 mm och Energy Controller 700 × 300 × 260 mm (B × H × D).
+ * Sockeln efter produktbildens proportioner.
  * Origo = golvet mitt under stacken, fronten mot +z.
  */
 export const SIGEN_MODULE_KWH = 9;
@@ -22,7 +23,7 @@ export const SIGEN_MAX_PER_STACK = 6;
 const W = 0.767;
 const D = 0.265;
 const MODULE_H = 0.27;
-const EC_H = 0.31;
+const EC_H = 0.3;
 const BASE_H = 0.047;
 const GAP = 0.004;
 const SIDE = 0.04; // sidopanelernas tjocklek

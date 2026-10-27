@@ -20,18 +20,19 @@ import { FONT, useCanvasTexture } from "./textures";
  *   - Sockel med fötter i hörnen och snedskurna urtag mellan dem.
  *
  * 53,76 kWh = 7 moduler. Max 8 per stapel – större batterier ritas som
- * flera staplar bredvid varandra. Mått i meter, uppmätta på produktbilden
- * och kalibrerade mot att en full stapel (61,44 kWh, 8 moduler) är 140,5 cm
- * hög: modul 142 mm, toppmodul 169 mm, sockel 102 mm, bredd 650 mm.
+ * flera staplar bredvid varandra. Mått enligt produktbladet (UNIV7600 H):
+ * B × H × D = 660 × (250 + 142·N) × 450 mm, där N är antalet moduler – en
+ * full stapel med 8 moduler är alltså 1 386 mm. De 250 mm fördelas på
+ * toppmodulen (148 mm) och sockeln (102 mm) efter produktbilden.
  * Origo = golvet mitt under stapeln, fronten (långsidan) mot +z.
  */
 export const EWAY_MODULE_KWH = 7.68;
 const MAX_PER_STACK = 8;
 
-const W = 0.65; // långsidan (front)
-const D = 0.4; // kortsidan
+const W = 0.66; // långsidan (front)
+const D = 0.45; // kortsidan
 const MODULE_H = 0.142;
-const TOP_H = 0.169;
+const TOP_H = 0.148;
 const BAND_H = 0.04;
 const FOOT_H = 0.062;
 const BASE_H = BAND_H + FOOT_H;
@@ -97,7 +98,7 @@ function EwayStack({ modules }: { modules: number }) {
       <group position={[0, topY + TOP_H / 2, 0]}>
         <Module height={TOP_H} />
         <TopFront />
-        <group position={[W / 2, 0, 0]} rotation={[0, Math.PI / 2, 0]}>
+        <group position={[W / 2, 0, 0]} rotation={[0, Math.PI / 2, 0]} scale={0.85}>
           <ConnectorPanel />
         </group>
       </group>

@@ -34,10 +34,11 @@ export const metadata = {
 };
 
 const SOURCES = [
-  { title: "SigenStor BAT 9.0 – datablad (mått, kapacitet)", publisher: "Sigenergy", url: "https://www.solarelectricsupply.com/media/sparsh/product_attachment/6-9KWH_Sigenergy_Battery.pdf" },
-  { title: "SigenStor BAT 5.0/8.0 – datablad (cykellivslängd)", publisher: "Sigenergy", url: "https://www.wagner-renewables.com/wp-content/uploads/2024/11/Sigen-Battery-Datasheet-1730358404585682.pdf" },
-  { title: "HS3 – datablad", publisher: "SAJ", url: "https://www.saj-electric.com/hubfs/Europe%20Region%204%20document/Datasheet/Residential/HS3-5K-S2-datasheet-EN-BEU.pdf" },
-  { title: "Enershare High Voltage Stack Battery, 5 moduler", publisher: "sun.store", url: "https://sun.store/en/product/enershare-high-voltage-stack-battery-9.6kwh-25.6kwh-5-modules-50242" },
+  { title: "UNIV7600 (H) – produktblad", publisher: "Eway Energy", url: "https://azlloxmrudplfsfajlqq.supabase.co/storage/v1/object/public/product-images/documents/1f8c6dd3-95b8-4607-b02b-8ee1cf47045a.pdf" },
+  { title: "HS3 Three Phase All-in-One (HS3-5-12K-T2) – datablad", publisher: "SAJ", url: "https://azlloxmrudplfsfajlqq.supabase.co/storage/v1/object/public/product-images/docs/wp-migrering/2026/03/HS3-5-12K-T2_datasheet_en_North_EU-1.pdf" },
+  { title: "Battery Core – High Voltage Stack Battery", publisher: "Enershare", url: "https://azlloxmrudplfsfajlqq.supabase.co/storage/v1/object/public/product-images/docs/wp-migrering/2025/08/Enershare-Battery-core-2508.pdf" },
+  { title: "SigenStor BAT 6.0/10.0 – datablad", publisher: "Sigenergy", url: "https://b2b.aprilice.com/se_sv/mpattachment/file/download/id/916/" },
+  { title: "SigenStor EC (Energy Controller) – datablad", publisher: "Sigenergy", url: "https://b2b.aprilice.com/se_sv/mpattachment/file/download/id/604/" },
   { title: "Brandcellsindelning – PBL kunskapsbanken", publisher: "Boverket", url: "https://www.boverket.se/sv/PBL-kunskapsbanken/regler-om-byggande/brandskydd/spridning-inom-byggnad/brandcellsindelning/" },
 ];
 
@@ -52,7 +53,7 @@ const FAQ = [
   },
   {
     q: "Kan jag bygga ut batteriet senare?",
-    a: "Ja, alla fyra är modulära. Eway byggs ut med moduler på 7,68 kWh upp till åtta per stapel, Enershare med moduler på 3,2 kWh upp till åtta per torn och SigenStor med moduler på 9 kWh upp till sex per stack. SAJ HS3 tar två till fyra moduler på 5 kWh per stack, och större batterier byggs som en separat stack. Fråga oss om hur länge tillverkaren säljer kompatibla moduler innan du räknar med en utbyggnad långt fram.",
+    a: "Ja, alla fyra är modulära. Eway byggs ut med moduler på 7,68 kWh upp till åtta per stapel, Enershare med moduler på 3,2 kWh upp till åtta per torn och SigenStor med moduler på 9 kWh upp till sex per stack. SAJ HS3 tar en till tre moduler på 5 kWh per stack, och 20 kWh byggs med en separat stack för den fjärde modulen. Fråga oss om hur länge tillverkaren säljer kompatibla moduler innan du räknar med en utbyggnad långt fram.",
   },
   {
     q: "Behöver batteriet stå i en egen brandcell?",
@@ -147,7 +148,7 @@ export default function BatteryComparisonPage() {
         <ul className="mt-4 grid grid-cols-2 md:grid-cols-4 gap-3">
           {[
             ["Eway", "23,04 kWh", "3 moduler"],
-            ["SAJ HS3", "20 kWh", "4 moduler"],
+            ["SAJ HS3", "20 kWh", "3 + 1 moduler"],
             ["Enershare", "19,2 kWh", "6 moduler"],
             ["SigenStor", "18 kWh", "2 moduler"],
           ].map(([n, k, m]) => (
@@ -175,19 +176,19 @@ export default function BatteryComparisonPage() {
                 "7,68 kWh, 2–8 per stapel",
                 "Extern: Solis S6 eller Solinteg",
                 "LFP",
-                "≈ 6 500",
-                "650 mm bred; 8 moduler 140,5 cm hög",
+                "≥ 8 000",
+                "660 × 450 mm; 25 cm + 14,2 cm per modul (8 moduler: 138,6 cm)",
               ],
             },
             {
               label: "SAJ HS3",
               cells: [
-                "10, 15 eller 20 kWh per stack",
-                "5 kWh, 2–4 per stack",
+                "10, 15 eller 20 kWh",
+                "5 kWh, 1–3 per stack – 20 kWh blir två stackar",
                 "Inbyggd, 12 kW",
                 "LFP",
-                "≈ 6 000",
-                "695 mm bred, 170 mm djup",
+                "Anges inte i produktbladet",
+                "695 × 170 mm; 10 kWh 140 cm, 15 kWh 177 cm",
               ],
             },
             {
@@ -197,8 +198,8 @@ export default function BatteryComparisonPage() {
                 "3,2 kWh, 3–8 per torn",
                 "Extern: Solis S6 eller Solinteg",
                 "LFP, högspänning",
-                "Anges inte i databladet",
-                "650 × 260 mm, 175 mm per modul",
+                "Anges inte i produktbladet",
+                "650 × 260 mm; 3 moduler 80 cm, 8 moduler 167,5 cm",
               ],
             },
             {
@@ -208,13 +209,13 @@ export default function BatteryComparisonPage() {
                 "9 kWh, 1–6 per stack",
                 "Inbyggd (Energy Controller)",
                 "LFP",
-                "10 000 enligt Sigenergys datablad",
-                "Modul 767 × 270 × 265 mm",
+                "10 000",
+                "Modul 767 × 270 × 265 mm, Energy Controller 700 × 300 × 260 mm",
               ],
             },
           ]}
           caption="Jämförelse av fyra hembatterier: kapacitet, modulstorlek, växelriktare, cellkemi, cykellivslängd och mått."
-          footnote="Cykeltalen är tillverkarnas uppgifter och gäller under deras testvillkor. Måtten för Enershare kommer från återförsäljarnas datablad. Garantivillkoren för varje batteri står i offerten."
+          footnote="Mått och cykeltal enligt tillverkarnas produktblad (B × D, och höjd för hela stacken). Cykeltalen gäller under tillverkarnas testvillkor. Garantivillkoren för varje batteri står i offerten."
         />
       </Section>
 
@@ -224,14 +225,14 @@ export default function BatteryComparisonPage() {
             {
               t: "Eway",
               k: "Mycket kapacitet, fri styrning",
-              b: "Välj Eway om du vill ha mycket kWh per modul och vill kunna välja växelriktare och styrsystem själv. Moduler på 7,68 kWh gör att även stora batterier ryms i en stapel – upp till 61,44 kWh.",
+              b: "Välj Eway om du vill ha mycket kWh per modul och vill kunna välja växelriktare och styrsystem själv – Solis, GoodWe, Growatt och Solinteg fungerar enligt tillverkaren. Moduler på 7,68 kWh gör att även stora batterier ryms i en stapel, upp till 61,44 kWh, och modulerna har inbyggt brandsläckningssystem.",
               href: "/tjanster/batterier/easyway",
               link: "Därför rekommenderar vi ofta Eway",
             },
             {
               t: "SAJ HS3",
               k: "Tunt allt-i-ett",
-              b: "Välj SAJ HS3 om du vill ha växelriktare och batteri i en enhet och behöver 10–20 kWh. Bara 170 mm djup, så den passar mot en vägg där utrymmet är trångt.",
+              b: "Välj SAJ HS3 om du vill ha växelriktare och batteri i en enhet och behöver 10–20 kWh. Bara 170 mm djup, så den passar mot en vägg där utrymmet är trångt. SAJ anger också en inbyggd laddmodul för elbil på 11 kW.",
             },
             {
               t: "Enershare",
@@ -241,7 +242,7 @@ export default function BatteryComparisonPage() {
             {
               t: "SigenStor",
               k: "Allt-i-ett upp till 54 kWh",
-              b: "Välj SigenStor om du vill ha ett system med inbyggd växelriktare och stor kapacitet i en stack. Modulerna är på 9 kWh, och tillverkaren anger 10 000 laddcykler.",
+              b: "Välj SigenStor om du vill ha ett system med inbyggd växelriktare och stor kapacitet i en stack. Modulerna är på 9 kWh, och Sigenergy anger 10 000 laddcykler och 100 % urladdningsdjup.",
             },
           ].map((c) => (
             <li key={c.t} className="rounded-3xl border border-ink/10 bg-bone p-7">
@@ -276,7 +277,6 @@ export default function BatteryComparisonPage() {
               – {s.publisher}
             </li>
           ))}
-          <li>Eways mått och modulantal: Optimera Energi efter tillverkarens uppgifter.</li>
         </ul>
       </Section>
 

@@ -180,7 +180,7 @@ export const BATTERIES: Battery[] = [
   {
     id: "easyway-univ7600",
     brand: "Easyway",
-    cycles: 6500,
+    cycles: 8000, // ≥ 8 000 enligt produktbladet (UNIV7600 H)
     capacities: [15.36, 23.04, 30.72, 38.4, 46.08, 53.76, 61.44],
     chemistry: "LFP",
     baseHardwareKr: 7_218,        // BMS + bas
@@ -197,7 +197,6 @@ export const BATTERIES: Battery[] = [
   {
     id: "saj-hs3",
     brand: "SAJ HS3",
-    cycles: 6000,
     capacities: [10, 15, 20],
     chemistry: "LFP",
     baseHardwareKr: 0,            // ej använd – hardware via tabell

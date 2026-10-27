@@ -51,7 +51,7 @@ function batteryFaq(city: ReturnType<typeof findBatteryCity>) {
     },
     {
       q: `Vilka batterimärken installerar Optimera Energi?`,
-      a: `Vi arbetar med ett hand-plockat sortiment: Easyway (46–61 kWh), SAJ HS3, Enershare, Sigenergy SigenStor och Pixii. Vi väljer LFP-celler (järnfosfat) som standard för brandsäkerhet och livslängd, och dimensionerar märke och storlek efter ditt hus, inte efter vad vi råkar ha på lager.`,
+      a: `Vi arbetar med ett hand-plockat sortiment: Easyway (15–61 kWh), SAJ HS3, Enershare, Sigenergy SigenStor och Pixii. Vi väljer LFP-celler (järnfosfat) som standard för brandsäkerhet och livslängd, och dimensionerar märke och storlek efter ditt hus, inte efter vad vi råkar ha på lager.`,
     },
   ];
 }

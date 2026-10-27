@@ -14,147 +14,16 @@ import { HeatPump } from "./products/HeatPump";
 import { ZaptecGo2 } from "./products/ZaptecGo2";
 import { StudioLights } from "./products/Studio";
 
-// ----- Hus-mått (metaforisk skala). Allt 3D-arbete utgår från dessa.
-const HOUSE = {
-  width: 3.4, // x-led (gavel-till-gavel = nockens längd)
-  depth: 2.6, // z-led (takfot-till-takfot)
-  wallH: 1.0,
-  ridgeH: 0.95, // höjd från vägg-toppen upp till nocken
-  wallY: 0, // mittpunkt på väggen (centrum y)
-};
-const wallTopY = HOUSE.wallY + HOUSE.wallH / 2; // y där taket börjar
-const ridgeY = wallTopY + HOUSE.ridgeH; // y för nocken (sadeltak/mansard/valmat)
-const slopeRun = HOUSE.depth / 2;
-const slopeAngle = Math.atan2(HOUSE.ridgeH, slopeRun); // sadel-taklutning
-
-// Valmat-takets nocklängd (kortare än husets bredd, men längre än ren pyramid).
-// 0,7 × bredden ger realistiskt hip-utseende: trapezerna dominerar, hip-end-
-// trianglarna är små. Påverkar både roof-meshen och solpanelernas widthM.
-const HIP_RIDGE_LEN = HOUSE.width * 0.7;
-
-// =============== SOLPANEL-SURFACES per taktyp ===============
-// En SolarSurface beskriver ett rektangulärt område där paneler kan placeras.
-// Panelens grid byggs i lokal XY-plan med (0,0) i centrum, sedan flyttas
-// gruppen via position och roteras via rotation.
-type SolarSurface = {
-  position: [number, number, number];
-  rotation: [number, number, number];
-  /** Bredd (lokal X) och djup (lokal Z) i meter. */
-  widthM: number;
-  depthM: number;
-  /** Hur många paneler får plats max på denna yta. */
-  capacity: number;
-  /**
-   * True om lokal +Z går mot toppen av taket (norra slope-konvention med
-   * rotation [-α, 0, 0]). Default false: lokal +Z går mot eave (södra
-   * slope, rotation [+α, 0, 0]). Styr panelplaceringen så att rad 0 alltid
-   * landar i toppen av taket – paneler byggs uppifrån-ner.
-   */
-  topAtPositiveZ?: boolean;
-};
-
-function getSolarSurfaces(roofType: RoofType): SolarSurface[] {
-  const w = HOUSE.width;
-  const d = HOUSE.depth;
-  const ridge = HOUSE.ridgeH;
-
-  switch (roofType) {
-    case "sadeltak": {
-      // Två symmetriska takfall, södra (+z) prioriteras.
-      const slopeY = wallTopY + ridge / 2;
-      const slopeLen = Math.hypot(slopeRun, ridge);
-      return [
-        {
-          position: [0, slopeY, d / 4],
-          rotation: [slopeAngle, 0, 0],
-          widthM: w - 0.2,
-          depthM: slopeLen - 0.15,
-          capacity: 24,
-        },
-        {
-          position: [0, slopeY, -d / 4],
-          rotation: [-slopeAngle, 0, 0],
-          widthM: w - 0.2,
-          depthM: slopeLen - 0.15,
-          capacity: 24,
-          topAtPositiveZ: true,
-        },
-      ];
-    }
-
-    case "pulpettak": {
-      // Ett enda takfall över hela djupet. Lågpunkt vid +z, högpunkt vid -z.
-      const angle = Math.atan2(ridge, d);
-      const slopeLen = Math.hypot(d, ridge);
-      const cy = wallTopY + ridge / 2;
-      return [
-        {
-          position: [0, cy, 0],
-          rotation: [angle, 0, 0],
-          widthM: w - 0.2,
-          depthM: slopeLen - 0.15,
-          capacity: 36,
-        },
-      ];
-    }
-
-    case "mansardtak": {
-      // Mansardtak: lägre brant del + övre flackare del. Paneler placeras
-      // alltid på den övre flackare delen (södra + norra).
-      const inset = slopeRun * 0.36; // hur långt in brytpunkten ligger
-      const breakY = ridge * 0.5;
-      const upperRun = slopeRun - inset;
-      const upperRise = ridge - breakY;
-      const upperAngle = Math.atan2(upperRise, upperRun);
-      const upperLen = Math.hypot(upperRun, upperRise);
-      const cyUpper = wallTopY + breakY + upperRise / 2;
-      const czUpper = (slopeRun - inset) / 2; // mittpunkt i z
-      return [
-        {
-          position: [0, cyUpper, czUpper],
-          rotation: [upperAngle, 0, 0],
-          widthM: w - 0.2,
-          depthM: upperLen - 0.1,
-          capacity: 18,
-        },
-        {
-          position: [0, cyUpper, -czUpper],
-          rotation: [-upperAngle, 0, 0],
-          widthM: w - 0.2,
-          depthM: upperLen - 0.1,
-          capacity: 18,
-          topAtPositiveZ: true,
-        },
-      ];
-    }
-
-    case "valmat": {
-      // Hipped roof: 4 takfall, södra långsida (+z) är en trapez. Vi placerar
-      // paneler i en rektangel som ryms inom trapezet (begränsad av nockens
-      // längd så panelerna inte sticker ut över hip-kanterna).
-      const ridgeLen = HIP_RIDGE_LEN;
-      const slopeY = wallTopY + ridge / 2;
-      const slopeLen = Math.hypot(slopeRun, ridge);
-      return [
-        {
-          position: [0, slopeY, d / 4],
-          rotation: [slopeAngle, 0, 0],
-          widthM: ridgeLen,
-          depthM: slopeLen - 0.2,
-          capacity: 24,
-        },
-        {
-          position: [0, slopeY, -d / 4],
-          rotation: [-slopeAngle, 0, 0],
-          widthM: ridgeLen,
-          depthM: slopeLen - 0.2,
-          capacity: 24,
-          topAtPositiveZ: true,
-        },
-      ];
-    }
-  }
-}
+import {
+  HOUSE,
+  HIP_RIDGE_LEN,
+  getSolarSurfaces,
+  slopeAngle,
+  slopeRun,
+  surfaceGrid,
+  wallTopY,
+  type SolarSurface,
+} from "@/lib/roof-geometry";
 
 export function CalcScene({ input }: { input: CalcInput }) {
   const en = input.enabled;
@@ -579,7 +448,7 @@ function PanelArray({
   return (
     <>
       {surfaces.map((surface, i) => {
-        const c = Math.min(remaining, surface.capacity);
+        const c = Math.min(remaining, surfaceGrid(surface).capacity);
         if (c <= 0) return null;
         remaining -= c;
         return (
@@ -597,14 +466,7 @@ function SurfacePanels({
   surface: SolarSurface;
   count: number;
 }) {
-  // Bestäm grid (cols × rows) som ger högst paneltäckning på ytan utan att
-  // gå utanför kanterna. Standardpanel är ~1953×1134 mm = ratio 0,58.
-  const aspect = 1134 / 1953;
-  const cols = surface.widthM > surface.depthM ? 6 : 4;
-  // Beräkna panelbredd och se om grid-djup passar; annars öka rows.
-  const panelW = surface.widthM / cols;
-  const panelD = panelW * aspect;
-  const rowsFit = Math.max(1, Math.floor(surface.depthM / panelD));
+  const { cols, rows: rowsFit, panelW, panelD } = surfaceGrid(surface);
   // För surfaces där lokal +Z går mot toppen (norra slope-konvention) flippar
   // vi z-tecknet så att rad 0 alltid landar i toppen av taket.
   const dirZ = surface.topAtPositiveZ ? -1 : 1;
