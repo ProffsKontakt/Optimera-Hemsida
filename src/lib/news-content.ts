@@ -38,6 +38,103 @@ export type NewsContent = {
 };
 
 const CONTENT: Record<string, NewsContent> = {
+  "elpris-november-2026-terminer-prognos": {
+    tldr: [
+      "Novemberterminen för det nordiska systempriset steg från 108,75 till 131,46 euro per megawattimme mellan 19 och 26 oktober, 21 procent. Nästan 15 euro av uppgången kom på måndagen.",
+      "Elområde 4 har kostat 1,38 kronor i snitt den 1–27 oktober. För att oktober ska passera 1,50 behöver resten av månaden kosta omkring 2,30 kronor, i nivå med månadens dyraste dygn.",
+      "Terminerna ligger högt till och med februari och vänder nedåt först i mars. Med energiskatt och moms motsvarar novemberterminen cirka 2,83 kronor per kWh i elområde 4, före påslag och nätavgift.",
+    ],
+    sections: [
+      {
+        h2: "Vad blir elpriset i november 2026?",
+        body: [
+          "Ingen vet säkert, men terminsmarknaden ger en fingervisning. På börsen Euronext handlas kontrakt för el som levereras i november. Den 26 oktober stängde novemberkontraktet för det nordiska systempriset på 131,46 euro per megawattimme. Prisskillnaden mot varje elområde handlas i egna kontrakt: plus 39,15 euro för elområde 4 och minus 19,00 euro för elområde 3. Det ger 170,61 euro i elområde 4 och 112,46 euro i elområde 3.",
+          "Omräknat med Riksbankens eurokurs samma dag, 11,14 kronor, motsvarar det cirka 1,90 kronor per kilowattimme i elområde 4 och 1,25 kronor i elområde 3, exklusive moms och skatter. Systempriset, ett gemensamt nordiskt referenspris, ligger på 1,46 kronor.",
+          "Uppgången har gått fort. Den 19 oktober stod systemprisets novemberkontrakt på 108,75 euro, och på en vecka steg det 21 procent. Nästan 15 euro av ökningen kom på måndagen den 26 oktober. Räknat per elområde steg novemberterminen med 23 procent i elområde 4 och med 20 procent i elområde 3.",
+          "Terminspriset är inget facit. Det är vad köpare och säljare i dag är beredda att betala för el i november, och det ändras varje handelsdag. Kontrakten räknas till slut av mot Nord Pools spotpriser under november. Områdeskontrakten handlas dessutom mer sällan än systempriset: den 26 oktober gjordes inga affärer i novemberkontrakten för elområde 3 och 4, så stängningskursen bygger inte på avslut den dagen.",
+          "Norra Sverige ligger betydligt lägre. I elområde 1 och 2 har oktober hittills kostat 31 respektive 37 öre per kilowattimme i snitt, enligt Nord Pool. Elbolaget Bixia räknar med 68–69 öre i båda områdena för oktober–december.",
+        ],
+      },
+      {
+        h2: "Elpris november 2025: vad kostade elen förra året?",
+        body: [
+          "Med terminspriset blir november 2026 mer än dubbelt så dyr som november 2025 i elområde 4 och cirka 80 procent dyrare i elområde 3. Oktober har redan dragit iväg i söder: den 1–27 oktober kostade elen 1,38 kronor per kilowattimme i elområde 4 och 73 öre i elområde 3, mot 37 öre i elområde 2 och 31 öre i elområde 1.",
+          "Så här mycket kostade elen i november de två senaste åren, enligt Nord Pools månadssnitt för spotpriset, exklusive moms och skatter:",
+        ],
+        bullets: [
+          "Elområde 1 (Luleå): 25 öre per kWh i november 2024 och 37 öre i november 2025.",
+          "Elområde 2 (Sundsvall): 18 öre 2024 och 34 öre 2025.",
+          "Elområde 3 (Stockholm): 67 öre 2024 och 70 öre 2025.",
+          "Elområde 4 (Malmö): 85 öre 2024 och 81 öre 2025.",
+        ],
+      },
+      {
+        h2: "Elpris prognos november: terminen ligger över Bixias höstprognos",
+        body: [
+          "Elbolaget Bixia gjorde i september en prognos för oktober–december 2026: 1,38 kronor per kilowattimme i elområde 4, 1,14 kronor i elområde 3 och 68–69 öre i elområde 1 och 2. Systempriset väntades landa på 1,25 kronor, mer än dubbelt så högt som hösten 2025, då det låg på 56 öre.",
+          "Hittills går utfallet isär med prognosen. I elområde 4 ligger oktober på 1,38 kronor, samma nivå som Bixias prognos för hela kvartalet. I elområde 3 har oktober i stället kostat 73 öre, långt under prognosen, och i norr 31–37 öre. Novemberterminen för elområde 4, 1,90 kronor, ligger däremot över Bixias snitt för kvartalet.",
+          "Bixia pekar också på vad som kan pressa priset: milt väder och mycket nederbörd. Enligt bolaget kan elförbrukningen i Sverige skilja upp mot 15 procent mellan en kall och en mild vinter, och en pågående super-El Niño bidrar sannolikt till mildare temperaturer än normalt fram till februari 2027. ”Vid mycket regn och snö tidigt på säsongen kommer vattenkraftsproducenterna släppa lite på kranarna redan i december eller januari för att undvika överfulla magasin och dumpade priser framåt sommaren. Då blir det pyspunka på de höga elpriserna”, säger Johan Sigvardsson, elmarknadsanalytiker på Bixia, i prognosen.",
+        ],
+      },
+      {
+        h2: "Fyllnadsgrad i vattenmagasinen 2026: sex procentenheter under det normala",
+        body: [
+          "Vecka 42, den 12–18 oktober, var de svenska vattenmagasinen fyllda till 74,7 procent, enligt Energiföretagens veckorapport Kraftläget. Det normala för veckan, snittet för 1960–2025, är 80,7 procent. Tillrinningen, alltså det vatten som rann till under veckan, var 91 procent av medianen för samma period.",
+          "Läget skiljer sig mellan elområdena. Magasinen var fyllda till 82,0 procent i elområde 2, 70,0 procent i elområde 1 och 63,5 procent i elområde 3. Elområde 4 har mycket små magasin: där fanns 42 gigawattimmar lagrat, av landets totalt 25 062.",
+          "Bixia beskrev i september ett underskott i den hydrologiska balansen i Norden på 17 terawattimmar, efter en snöfattig vinter och en vår och sommar utan extra nederbörd. ”I vanliga fall är vattenkraften vår krockkudde mot höga priser på kontinenten men i år räcker den inte till”, sa Johan Sigvardsson.",
+          "Kärnkraften har också gett mindre. Under vecka 42 producerade de svenska reaktorerna 608 gigawattimmar, 16 procent mindre än samma vecka i fjol, och sedan årsskiftet 11 procent mindre. När de avställda reaktorerna väntas tillbaka gick vi igenom i artikeln den 24 oktober.",
+          "Den tredje faktorn är gasen. Enligt Bixia har konflikten i Hormuzsundet pressat Europas gaslager till den lägsta nivån sedan 2013, och när prognosen gjordes hade gaspriserna på kontinenten fördubblats sedan den 1 juli. Energiekonomen Claes Hemberg ser krisen i Hormuzsundet som den främsta orsaken till årets prisuppgång, före bristen på svensk vattenkraft och kärnkraft.",
+        ],
+      },
+      {
+        h2: "Elpris december 2026 – och när sjunker elpriset?",
+        body: [
+          "Terminerna pekar på fortsatt höga priser hela vintern. För december låg terminen den 26 oktober på cirka 1,63 kronor per kilowattimme i elområde 4 och 1,18 kronor i elområde 3. Januari 2027 är dyrare: 1,74 kronor i elområde 4 och 1,43 kronor i elområde 3.",
+          "För elområdena finns månadskontrakt bara till och med januari, men systempriset ger en bild av resten av vintern: 1,63 kronor för februari, 1,21 kronor för mars och 1,00 krona för april. Enligt terminerna vänder priset alltså nedåt först i mars.",
+          "Claes Hemberg gör en liknande bedömning. Han skriver att ”januari kan bli den högsta och sista pristoppen på flera år. Den blir dyr, kanske 180 öre i södra delarna, men sedan blir det billigare”. Enligt Hemberg dämpas effekterna av Hormuzkrisen de närmaste kvartalen, men det syns på elnotan först på vårkanten.",
+          "Både terminer och bedömningar kan ändras snabbt. Novemberterminen för elområde 4 motsvarade omkring 1,54 kronor den 19 oktober och 1,90 kronor en vecka senare.",
+        ],
+      },
+      {
+        h2: "Vad betyder det för din kalkyl?",
+        body: [
+          "Räkna med att november blir dyrare än i fjol, framför allt i söder. Med terminspriset, energiskatten på 36,0 öre och 25 procent moms kostar en kilowattimme cirka 2,83 kronor i elområde 4 och 2,02 kronor i elområde 3, före elhandlarens påslag och elnätsavgiften. I november 2025 var motsvarande pris 1,56 respektive 1,42 kronor, då med en energiskatt på 43,9 öre.",
+          "Blir utfallet som terminen kostar det alltså cirka 1 270 kronor mer per 1 000 kilowattimmar i elområde 4 och cirka 600 kronor mer i elområde 3 än i november 2025. För helåret räknar Claes Hemberg med att ett vanligt villahushåll betalar 4 700–6 400 kronor mer för el och elnät 2026 än 2025.",
+          "Högkostnadsskyddet kan bli aktuellt i elområde 4. Enligt regeringen gäller det om det genomsnittliga spotpriset under en kalendermånad överstiger 1,50 kronor per kilowattimme i ett elområde. Oktober når dit bara om de fyra sista dagarna kostar omkring 2,30 kronor i snitt. Novemberterminen, 1,90 kronor, ligger däremot över gränsen. Av regeringens frågor och svar framgår inte hur stor ersättningen blir eller när den skulle betalas ut. Det som är känt gick vi igenom den 12 oktober.",
+          "Det du själv kan påverka är när du använder el. Spotpriset svänger kraftigt: i oktober har dygnssnittet i elområde 4 legat mellan 9 öre den 25 oktober och 2,31 kronor den 19 oktober. Med ett avtal som följer spotpriset lönar det sig att flytta förbrukning från dyra till billiga timmar och dagar.",
+        ],
+        bullets: [
+          "Terminspris november 2026 (26 oktober): cirka 1,90 kr/kWh i elområde 4 och 1,25 kr/kWh i elområde 3, exklusive moms och skatt.",
+          "Elpris november 2025: 81 öre i elområde 4, 70 öre i elområde 3, 34 öre i elområde 2 och 37 öre i elområde 1.",
+          "Oktober 2026 (1–27 oktober): 1,38 kr/kWh i elområde 4. Gränsen för högkostnadsskyddet är 1,50 kr/kWh i månadssnitt.",
+          "December 2026 enligt terminerna: cirka 1,63 kr/kWh i elområde 4 och 1,18 kr/kWh i elområde 3.",
+          "Vattenmagasinen: 74,7 procent fyllda vecka 42, mot normalt 80,7 procent.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Vad blir elpriset i november 2026?",
+        a: "Det avgörs av spotpriset under november, men terminerna ger en fingervisning. Den 26 oktober motsvarade de cirka 1,90 kronor per kilowattimme i elområde 4 och 1,25 kronor i elområde 3, exklusive moms och skatter. Med energiskatt och moms blir det cirka 2,83 respektive 2,02 kronor, före påslag och nätavgift.",
+      },
+      {
+        q: "Vad var elpriset i november 2025?",
+        a: "Enligt Nord Pools månadssnitt kostade elen i november 2025 i snitt 37 öre per kilowattimme i elområde 1, 34 öre i elområde 2, 70 öre i elområde 3 och 81 öre i elområde 4, exklusive moms och skatter.",
+      },
+      {
+        q: "När sjunker elpriset?",
+        a: "Enligt terminerna den 26 oktober ligger priset högt till och med februari 2027 och sjunker i mars och april, då systempriset handlas till 1,21 respektive 1,00 krona per kilowattimme. Energiekonomen Claes Hemberg bedömer att januari kan bli den sista pristoppen på flera år. Det är förväntningar, inga löften.",
+      },
+      {
+        q: "Vad är ett terminspris på el?",
+        a: "Ett terminspris är priset på ett kontrakt för el som levereras under en viss period framåt i tiden, till exempel november. Nordiska elterminer handlas på Euronext i euro per megawattimme och räknas av mot Nord Pools systempris. Skillnaden mot ett enskilt elområde handlas i separata kontrakt, så kallade EPAD.",
+      },
+      {
+        q: "Hur fulla är vattenmagasinen 2026?",
+        a: "Vecka 42 (12–18 oktober) var de svenska vattenmagasinen fyllda till 74,7 procent, enligt Energiföretagen. Det normala för veckan, snittet för 1960–2025, är 80,7 procent. Fyllnadsgraden var 63,5 procent i elområde 3 och 82,0 procent i elområde 2.",
+      },
+    ],
+  },
   "nar-startar-ringhals-4-igen-karnkraft-ur-drift-november-2026": {
     tldr: [
       "Ringhals 3 har stått still sedan 4 maj och skulle enligt planen ha varit tillbaka i juli. Sedan juni har återstarten skjutits upp fem gånger, senast den 23 oktober.",

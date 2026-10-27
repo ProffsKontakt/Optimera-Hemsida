@@ -74,6 +74,86 @@ export type NewsArticle = {
 
 export const NEWS: NewsArticle[] = [
   {
+    slug: "elpris-november-2026-terminer-prognos",
+    status: "published",
+    title:
+      "Vad blir elpriset i november 2026? Terminerna pekar på 1,90 kronor i elområde 4 och 1,25 i elområde 3",
+    excerpt:
+      "Vad blir elpriset i november 2026? Terminsmarknaden ger en fingervisning: den 26 oktober motsvarade novemberkontrakten cirka 1,90 kronor per kilowattimme i elområde 4 och 1,25 kronor i elområde 3, exklusive moms och skatter. Det är mer än dubbelt så mycket som elpriset i november 2025 i elområde 4 och över gränsen för regeringens högkostnadsskydd. Här är terminerna, elbolagens prognos, vattenmagasinen och vad det kan betyda för din elräkning.",
+    category: "Elpriser",
+    publishedAt: "2026-10-27",
+    updatedAt: "2026-10-27",
+    readTimeMin: 7,
+    image: {
+      src: "/news/elpris-november-2026-terminer-prognos.jpg",
+      alt: "Stapeldiagram över spotpriset i november: i elområde 3 0,67 kronor per kWh 2024, 0,70 kronor 2025 och 1,25 kronor i terminspris för 2026, i elområde 4 0,85, 0,81 och 1,90 kronor. Oktober 2026 ligger på 0,73 respektive 1,38 kronor, och en streckad linje markerar 1,50 kronor, gränsen för högkostnadsskyddet",
+      credit: "Grafik: Optimera Energi · Källa: Nord Pool och Euronext",
+      creditUrl: "https://live.euronext.com/en/product/commodities-futures/NSBM-DAMS/market-information",
+    },
+    searchPhrases: [
+      "elpris november 2026",
+      "vad blir elpriset i november",
+      "elpris prognos november",
+      "elpris november 2025",
+      "elpris december 2026",
+      "när sjunker elpriset",
+      "fyllnadsgrad vattenmagasin 2026",
+      "terminspris el",
+    ],
+    sources: [
+      {
+        title: "Nordic System Price Electricity Base Load Month Future: stängningskurser för november 2026–april 2027 (19 och 26 oktober 2026)",
+        publisher: "Euronext",
+        url: "https://live.euronext.com/en/product/commodities-futures/NSBM-DAMS/market-information",
+      },
+      {
+        title: "Nordic EPAD Electricity Base Load Month Future, Malmö (elområde 4): stängningskurser 19 och 26 oktober 2026",
+        publisher: "Euronext",
+        url: "https://live.euronext.com/en/product/commodities-futures/MABM-DAMS/market-information",
+      },
+      {
+        title: "Nordic EPAD Electricity Base Load Month Future, Stockholm (elområde 3): stängningskurser 19 och 26 oktober 2026",
+        publisher: "Euronext",
+        url: "https://live.euronext.com/en/product/commodities-futures/STBM-DAMS/market-information",
+      },
+      {
+        title: "Sök räntor och valutakurser: euro (EUR/SEK) 19 och 26 oktober 2026",
+        publisher: "Sveriges riksbank",
+        url: "https://www.riksbank.se/sv/statistik/rantor-och-valutakurser/sok-rantor-och-valutakurser/",
+      },
+      {
+        title: "Day-ahead-priser per elområde, månads- och dygnssnitt 2024–2026",
+        publisher: "Nord Pool",
+        url: "https://data.nordpoolgroup.com/auction/day-ahead/prices?deliveryDate=2026-10-27&currency=SEK&aggregation=Monthly&deliveryAreas=SE1,SE2,SE3,SE4",
+      },
+      {
+        title: "Kraftläget i Sverige, vecka 42 (12–18 oktober 2026)",
+        publisher: "Energiföretagen",
+        url: "https://www.energiforetagen.se/statistik/kraftlaget/",
+      },
+      {
+        title: "Bixias höstprognos 2026: Elpriset över en krona när gaspriset fortsätter stiga",
+        publisher: "Bixia",
+        url: "https://bixia.se/press-nyheter/hostprognos-2026",
+      },
+      {
+        title: "Dyrast el på flera år (26 oktober 2026)",
+        publisher: "Claes Hemberg",
+        url: "https://claeshemberg.se/dyrast-el-pa-manga-ar/",
+      },
+      {
+        title: "Frågor och svar om det tillfälliga el- och gasstödet (om högkostnadsskyddet för el)",
+        publisher: "Regeringskansliet",
+        url: "https://www.regeringen.se/regeringens-politik/energi/fragor-och-svar-om-det-tillfalliga-el--och-gasstodet/",
+      },
+      {
+        title: "Sänkt skatt på el 1 januari 2026",
+        publisher: "Skatteverket",
+        url: "https://www.skatteverket.se/foretag/skatterochavdrag/punktskatter/nyheterinompunktskatter/2025/nyheterinompunktskatter/sanktskattpael1januari2026.5.1522bf3f19aea8075ba96f.html",
+      },
+    ],
+  },
+  {
     slug: "nar-startar-ringhals-4-igen-karnkraft-ur-drift-november-2026",
     status: "published",
     title:
