@@ -258,7 +258,7 @@ export const CITIES: City[] = [
       {
         title: "Större batterier än snittet",
         body:
-          "Danderyd-villor har ofta hög elförbrukning och bra plats för batterilager. Easyway 46–61 kWh och SAJ HS3 20 kWh är vanliga val. Stödtjänster (FCR-D) gör att batteriets återbetalningstid kommer ner under tre år i många fall.",
+          "Danderyd-villor har ofta hög elförbrukning och bra plats för batterilager. Eway 46–61 kWh och SAJ HS3 20 kWh är vanliga val. Med solceller betalar sig ett batteri på ungefär 3–7 år, och snabbast i hus med hög förbrukning.",
       },
     ],
     neighbors: ["solna", "taby", "stockholm"],

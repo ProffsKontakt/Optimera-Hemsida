@@ -42,7 +42,7 @@ const HOME_FAQ = [
   },
   {
     q: "Hur lång är återbetalningstiden?",
-    a: "Att lägga batteri till befintliga solceller är ofta snabbast – typiskt 2 till 5 år. En ny sol- och batterilösning tar oftast 4 till 7,5 år. Exakt siffra beror på tak, förbrukning och elområde och räknar vi fram vid hembesöket.",
+    a: "Att lägga batteri till befintliga solceller är ofta snabbast – typiskt 3 till 7 år. En ny sol- och batterilösning tar oftast 4 till 7 år, och ett batteri utan solceller 5 till 9 år. Exakt siffra beror på tak, förbrukning och elområde och räknar vi fram vid hembesöket.",
   },
   {
     q: "Vad gäller efter husförsäljning?",

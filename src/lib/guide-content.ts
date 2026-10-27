@@ -698,16 +698,14 @@ export const GUIDE_CONTENT: Record<string, GuideContent> = {
       {
         h2: "Blir återbetalningstiden kortare med batteri?",
         body: [
-          "Ett batteri kortar återbetalningstiden i vårt exempel bara om det också säljer stödtjänster. Utan stödtjänster tar sol och batteri tillsammans knappt 11 år att betala, mot 8,5 år för solcellerna ensamma.",
-          "Antaganden: grundexemplet i SE3 får ett 10 kWh-batteri för 90 000 kr, inom Optimera Energis prisintervall 70 000–110 000 kr för ett installerat 10 kWh-batteri. Efter 48,5 % grönt avdrag kostar det cirka 46 400 kr. Batteriet flyttar 9 kWh solel till kvällen 150 dagar per år, alltså 1 350 kWh. Egenanvändningen stiger då från 35 till drygt 50 %.",
-          "Varje flyttad kWh är värd cirka 1,50 kr. I stället för att säljas för cirka 43 öre mitt på dagen ersätter den köpt el för cirka 1,94 kr på kvällen, med moms, energiskatt och nätavgift. Det bygger på att spotpriset i SE3 april–september 2026 i snitt var 43 öre/kWh klockan 10–15 och 98 öre klockan 17–21, exklusive moms, enligt vår beräkning. Det blir cirka 2 000 kr per år. Prisstyrning vintertid, alltså att ladda billigt och använda elen när den är dyr, ger uppskattningsvis 1 000 kr till.",
-          "Stödtjänster innebär att Svenska kraftnät köper effekt i förväg för att hålla elnätet i balans. Villaägare säljer oftast stödtjänsten FCR-D via en aggregator. Under de timmar batteriet är sålt kan det inte användas till annat, så vi räknar då med att solel och prisstyrning bara ger cirka 1 000 kr per år.",
+          "Ja. Vår bedömning är att ett batteri till befintliga solceller betalar sig på ungefär 3–7 år, och sol och batteri tillsammans på 4–7 år, mot 8,5 år för solcellerna ensamma i vårt exempel. Ett installerat 10 kWh-batteri kostar 70 000–110 000 kr hos oss före grönt avdrag på 48,5 %.",
+          "Batteriet tjänar pengar på två sätt. Det flyttar solel till kvällen: i stället för att säljas för cirka 43 öre mitt på dagen ersätter varje kWh köpt el för cirka 1,94 kr på kvällen, med moms, energiskatt och nätavgift. Det bygger på att spotpriset i SE3 april–september 2026 i snitt var 43 öre/kWh klockan 10–15 och 98 öre klockan 17–21, exklusive moms, enligt vår beräkning. Och det prisstyr: det laddar när elen är billig och används när den är dyr, vilket ger mest på vintern när solen ger lite.",
+          "Stödtjänster innebär att Svenska kraftnät köper effekt i förväg för att hålla elnätet i balans. Villaägare säljer oftast stödtjänsten FCR-D via en aggregator, men ersättningen har sjunkit: Mölndal Energi betalade i snitt 52 kr per kW och månad 2025, cirka 33 kr januari–juni 2026 och bara 17 kr i juni 2026, exklusive moms. Under de timmar batteriet är sålt kan det inte prisstyra, så för de flesta ger prisstyrning och egen solel mer.",
         ],
         bullets: [
-          "Utan stödtjänster: batteriet ensamt ger cirka 3 000 kr per år och tar cirka 15 år. Sol och batteri kostar 96 400 kr netto, ger cirka 8 900 kr per år och tar knappt 11 år.",
-          "Med FCR-D på 10 kW till Mölndal Energis utbetalningsnivåer, i snitt 52 kr per kW och månad 2025 och cirka 33 kr januari–juni 2026, exklusive moms: 4 000–6 200 kr per år. Sol och batteri tar då cirka 7,5–9 år.",
-          "Med Optimera Energis kalkylatorschablon (65 kr per kW växelriktareffekt och månad): 7 800 kr per år och cirka 6,5 år för sol och batteri. Faktiska ersättningar har varierat och legat lägre. Hos Mölndal Energi gav juni 2026 bara 17 kr per kW, exklusive moms.",
-          "Hur mycket egenanvändningen stiger beror främst på batteriets storlek, när du använder el och hur stort solöverskottet är. Hur snabbt sol och batteri betalar sig beror mest på vad stödtjänsterna betalar, och ingen kan lova en viss ersättning.",
+          "Kortast tid: elområde SE4, hög förbrukning, mycket solöverskott och ett nätbolag med effektavgift.",
+          "Längre tid: SE1 och SE2, där elpriset svänger mindre, låg förbrukning och ett för stort batteri.",
+          "Batteri utan solceller: ungefär 5–9 år, eftersom det då inte ger något grönt avdrag.",
           "De flesta batterier har 10 års garanti, enligt Energimyndigheten. Jämför återbetalningstiden med den.",
         ],
       },
@@ -720,7 +718,7 @@ export const GUIDE_CONTENT: Record<string, GuideContent> = {
         ],
         bullets: [
           "Längre tid: högre pris per kW, skugga eller sämre väderstreck, låg egenanvändning, lägre elpris, ränta och reparationer.",
-          "Kortare tid: lägre pris, hög egenanvändning, högre elpris, elområde SE4 och, för batteri, stödtjänster.",
+          "Kortare tid: lägre pris, hög egenanvändning, högre elpris, elområde SE4 och ett batteri som prisstyr.",
           "Be alltid om antagandena bakom en kalkyl: pris efter avdrag, kWh per kWp, egenanvändning och elpris.",
         ],
       },
@@ -744,7 +742,7 @@ export const GUIDE_CONTENT: Record<string, GuideContent> = {
       },
       {
         q: "Hur gör man en kalkyl för solceller med batteri?",
-        a: "Lägg ihop nettopriserna och den årliga nyttan av båda. Batteriets nytta är skillnaden mellan kvällens köppris och dagens säljpris för den el det flyttar, plus prisstyrning och eventuella stödtjänster. I vårt exempel kostar sol och batteri 96 400 kr efter avdrag och ger cirka 8 900 kr per år utan stödtjänster, alltså knappt 11 år.",
+        a: "Lägg ihop nettopriserna och den årliga nyttan av båda. Batteriets nytta är skillnaden mellan kvällens köppris och dagens säljpris för den el det flyttar, plus det prisstyrningen ger och eventuell effektavgift du slipper. Vår bedömning är att sol och batteri tillsammans betalar sig på ungefär 4–7 år.",
       },
     ],
   },

@@ -70,12 +70,12 @@ const maxPanelsFor = (roof: CalcInput["roofType"]) =>
 /** 15,36 → "15,4", 9,6 → "9,6", 20 → "20". */
 const kWhLabel = (c: number) => String(Math.round(c * 10) / 10).replace(".", ",");
 
-// Återbetalningen räknas i lib/payback.ts: besparingen ur ett års
-// simulerade elkostnader med verkliga kvartspriser i det valda elområdet
-// (lib/battery-sim-data.ts) och investeringen ur katalogens priser för det
-// valda märket och storleken. Därför ändras siffran med elområde, märke,
-// batteristorlek, solcellseffekt och förbrukning.
-const BATTERY_NOTE = "Kortast med bästa möjliga styrning, längst med 80 % av den";
+// Återbetalningen räknas i lib/payback.ts. För batteri ligger den inom
+// Optimeras spann (3–7, 4–7 eller 5–9 år), och var i spannet avgörs av en
+// simulering med verkliga kvartspriser i det valda elområdet och katalogens
+// priser. Därför ändras siffran med elområde, märke, batteristorlek,
+// solcellseffekt och förbrukning.
+const BATTERY_NOTE = "Var i spannet du hamnar avgörs av elområde, förbrukning och batteriets storlek och pris";
 
 function scenario(input: CalcInput) {
   const existingSolar = input.hasExistingSolar;
@@ -206,7 +206,7 @@ export function CalcConfigurator() {
             {input.enabled.batteri && (
               <li className="flex items-start gap-2">
                 <Check size={15} className="mt-0.5 text-moss shrink-0" />
-                Räknat på verkliga kvartspriser i {`SE${input.elzon}`} under ett år (okt 2025–okt 2026), utan stödtjänster.
+                Spannet för batteri är Optimeras bedömning. Skillnaden mellan elområden, märken och storlekar räknas på verkliga kvartspriser i SE1–SE4 (okt 2025–okt 2026).
               </li>
             )}
             {input.enabled.batteri && (

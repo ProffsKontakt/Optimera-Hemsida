@@ -130,12 +130,12 @@ export default function ServicePage({
               </Link>
             </div>
 
-            {/* Batteri: ekonomin direkt i heron. Återbetalningen följer
-                kunskapsbankens räkneexempel (med och utan stödtjänster). */}
+            {/* Batteri: ekonomin direkt i heron. Återbetalningen är
+                Optimeras spann för batteri med solceller (se lib/payback.ts). */}
             {s.slug === "batterier" && (
               <>
                 <div className="mt-10 grid grid-cols-3 gap-2 max-w-md">
-                  <HeroStat n="6,5–15 år" label="återbetalning med befintlig sol" />
+                  <HeroStat n="3–7 år" label="återbetalning med solceller" />
                   <HeroStat
                     n="48,5 %"
                     label={<><Term id="gront-avdrag">grönt avdrag</Term>, dras på fakturan</>}
@@ -234,9 +234,8 @@ export default function ServicePage({
               </h2>
               <p className="mt-2 text-bone/70 text-[14.5px] leading-relaxed max-w-xl">
                 Använd din egen el när den är dyr i stället för att sälja den
-                billigt, och låt <Term id="stodtjanster">stödtjänster</Term> ge
-                extra intäkt där det lönar sig. I vårt räkneexempel tar ett
-                10 kWh-batteri 6,5–9 år med stödtjänster och cirka 15 år utan.
+                billigt, och låt batteriet ladda när elen är billig. Med
+                solceller betalar sig ett batteri på ungefär 3–7 år.
               </p>
             </div>
             <Link
@@ -385,17 +384,18 @@ export default function ServicePage({
               </div>
               <div className="flex items-baseline justify-between gap-4 py-3">
                 <dt className="text-[14.5px] text-ink/70">
-                  Återbetalning med befintlig sol, med och utan stödtjänster
+                  Återbetalning med solceller
                 </dt>
                 <dd className="font-display text-xl tracking-display-tight whitespace-nowrap">
-                  6,5–15 år
+                  3–7 år
                 </dd>
               </div>
             </dl>
             <p className="mt-5 text-[13.5px] text-ink/55 leading-relaxed">
-              <Term id="stodtjanster">Stödtjänster</Term> kan ge extraintäkter ovanpå
-              besparingen – nivåerna varierar med marknaden, så vi räknar på
-              aktuella siffror vid hembesöket i stället för att lova i förväg.
+              Det mesta av lönsamheten kommer från prisstyrning och egen
+              användning av solelen. <Term id="stodtjanster">Stödtjänster</Term>{" "}
+              kan ge lite extra, men nivåerna har sjunkit och varierar med
+              marknaden.
               Exakt investering beror på förbrukning,{" "}
               <Term id="elomrade">elområde</Term> och batteristorlek.{" "}
               <Link href="/kalkylator" className="underline underline-offset-2 hover:text-ink">

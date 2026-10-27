@@ -33,7 +33,7 @@ const FAQ = [
   },
   {
     q: "Hur lång är återbetalningstiden för sol och batteri?",
-    a: "Kalkylatorn ovan räknar på ett års verkliga kvartspriser i ditt elområde (oktober 2025–oktober 2026), din elförbrukning och priset efter grönt avdrag. Med 15 000 kWh om året tar 7 kWp nya solceller ungefär 7–8,5 år i SE3 och 6–7,5 år i SE4. Ett Eway-batteri på 15,36 kWh till 10 kWp befintliga solceller tar ungefär 10,5–13 år i SE3 och 7,5–9 år i SE4. I SE1 och SE2 svänger elpriset mindre, så där tar samma batteri över 18 år. Batteriet tjänar mest på prisstyrning och på att solelen används hemma i stället för att säljas, och har ditt nätbolag effektavgift blir tiden kortare. Exakt siffra för just din bostad räknar vi fram vid hembesöket.",
+    a: "Med solceller betalar sig ett batteri på ungefär 3–7 år, och sol och batteri tillsammans på 4–7 år. Ett batteri utan solceller tar 5–9 år, eftersom det då inte ger något grönt avdrag. Lönsamheten kommer främst från prisstyrning – batteriet laddas när elen är billig och används när den är dyr – och från att solelen används hemma i stället för att säljas. Kortast blir tiden i SE4 och i hus med hög förbrukning. Bara solceller tar ungefär 7–8,5 år i SE3. Kalkylatorn ovan visar var i spannet ditt val hamnar, och exakt siffra för just din bostad räknar vi fram vid hembesöket.",
   },
   {
     q: "Vilka batterimärken installerar Optimera Energi?",

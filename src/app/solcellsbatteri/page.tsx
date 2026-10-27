@@ -65,11 +65,11 @@ const FAQ = [
   },
   {
     q: "Lönar sig ett solcellsbatteri?",
-    a: "Det kan göra det, men marginalerna är mindre än för några år sedan. Batteriet sparar solöverskottet till kvällen, kan prisstyra och kapa effekttoppar och kan säljas som stödtjänst via en aggregator. I vårt räkneexempel (SE3, 2026) tar ett 10 kWh-batteri till befintliga solceller cirka 6,5–9 år med stödtjänster på de nivåer Mölndal Energi betalat ut 2025–2026, och cirka 15 år utan. Effektavgift, hög kvällsförbrukning och större prisskillnader förbättrar kalkylen – vi räknar på ditt hus.",
+    a: "Ja, med solceller betalar sig ett batteri på ungefär 3–7 år. Batteriet sparar solöverskottet till kvällen, laddar när elen är billig och används när den är dyr, och kan kapa effekttoppar. Det mesta av lönsamheten kommer från prisstyrning och egen användning av solelen – stödtjänster ger mindre. Effektavgift, hög kvällsförbrukning och elområde SE4 ger kortast tid – vi räknar på ditt hus.",
   },
   {
     q: "Behöver jag solceller för att ha ett solcellsbatteri?",
-    a: "Nej, ett batteri kan installeras utan solceller och laddas från elnätet. Men ekonomin blir svagare: utan egen solel får du inget grönt avdrag, och intäkterna måste komma från spotprisstyrning, stödtjänster och i vissa nät en lägre effekt- eller säkringskostnad. I Batteriskolans räkneexempel tar ett 10 kWh-batteri utan solceller i SE3 cirka 13–20 år att betala med de stödtjänstnivåer Mölndal Energi redovisat för 2025–2026. Vi räknar ärligt på ditt hus – och säger nej om det inte går ihop.",
+    a: "Nej, ett batteri kan installeras utan solceller och laddas från elnätet. Men ekonomin blir svagare: utan egen solel får du inget grönt avdrag, och besparingen kommer från prisstyrning och i vissa nät en lägre effekt- eller säkringskostnad. Ett batteri utan solceller tar ungefär 5–9 år att betala, mot 3–7 år med solceller. Vi räknar ärligt på ditt hus – och säger nej om det inte går ihop.",
   },
   {
     q: "Vilka batterimärken installerar Optimera Energi?",
@@ -210,10 +210,10 @@ export default function SolcellsbatteriPage() {
                 för 10 kWh och 130 000–200 000 kr för 20–30 kWh, före grönt
                 avdrag på 48,5 %.
               </strong>{" "}
-              Om det lönar sig beror mest på vad stödtjänsterna betalar, ditt
-              nätbolag och hur mycket solel du kan flytta till kvällen. I vårt
-              räkneexempel (SE3, 2026) tar ett 10 kWh-batteri till befintliga
-              solceller cirka 6,5–9 år med stödtjänster och cirka 15 år utan.
+              Med solceller betalar sig batteriet på ungefär 3–7 år. Lönsamheten
+              kommer främst från prisstyrning och från att solelen används hemma
+              i stället för att säljas, och hur snabbt det går beror på
+              elområde, förbrukning och batteriets storlek.
             </p>
           </AnswerBox>
           <KeyTakeaways
@@ -232,9 +232,9 @@ export default function SolcellsbatteriPage() {
                 tak 50 000 kr per person och år.
               </>,
               <>
-                <strong>Återbetalning:</strong> 6,5–15 år som tillägg till
-                befintlig sol och 7,5–11 år för ny sol och batteri i vårt
-                räkneexempel – kortast med stödtjänster.
+                <strong>Återbetalning:</strong> 3–7 år som tillägg till
+                befintlig sol, 4–7 år för ny sol och batteri och 5–9 år utan
+                solceller.
               </>,
               <>
                 <strong>Kemi:</strong> vi installerar LFP-celler (järnfosfat) som

@@ -49,7 +49,7 @@ const CATEGORIES: { heading: string; eyebrow: string; items: { q: string; a: str
       },
       {
         q: "Behöver jag solceller för att ha ett batteri?",
-        a: "Nej, ett batteri kan installeras utan solceller och laddas från elnätet. Men ekonomin blir svagare: utan egen solel får du inget grönt avdrag, och intäkterna måste komma från spotprisstyrning, stödtjänster och i vissa nät en lägre effekt- eller säkringskostnad. I Batteriskolans räkneexempel tar ett 10 kWh-batteri utan solceller i SE3 cirka 13–20 år att betala med de stödtjänstnivåer Mölndal Energi redovisat för 2025–2026. Vi räknar ärligt på ditt hus – och säger nej om det inte går ihop.",
+        a: "Nej, ett batteri kan installeras utan solceller och laddas från elnätet. Men ekonomin blir svagare: utan egen solel får du inget grönt avdrag, och besparingen kommer från prisstyrning och i vissa nät en lägre effekt- eller säkringskostnad. Ett batteri utan solceller tar ungefär 5–9 år att betala, mot 3–7 år med solceller. Vi räknar ärligt på ditt hus – och säger nej om det inte går ihop.",
       },
       {
         q: "Vilka batterimärken installerar Optimera Energi?",
@@ -89,7 +89,7 @@ const CATEGORIES: { heading: string; eyebrow: string; items: { q: string; a: str
       },
       {
         q: "Hur lång är återbetalningstiden för sol och batteri?",
-        a: "Det beror mest på priset efter grönt avdrag, hur mycket solel du använder själv, ditt nätbolag och vad stödtjänsterna betalar. I kunskapsbankens räkneexempel för Stockholm (SE3, 2026) tar 7 kWp solceller för cirka 50 000 kr efter avdrag ungefär 8,5 år. Ett 10 kWh-batteri till befintliga solceller tar cirka 15 år utan stödtjänster och cirka 6,5–9 år med stödtjänster på de nivåer Mölndal Energi betalat ut 2025–2026. Sol och batteri tillsammans tar knappt 11 år utan stödtjänster. Exakt siffra för din bostad räknar vi fram vid hembesöket.",
+        a: "Med solceller betalar sig ett batteri på ungefär 3–7 år, och sol och batteri tillsammans på 4–7 år. Ett batteri utan solceller tar 5–9 år, eftersom det då inte ger något grönt avdrag. Lönsamheten kommer främst från prisstyrning – batteriet laddas när elen är billig och används när den är dyr – och från att solelen används hemma i stället för att säljas. Kortast blir tiden i SE4 och i hus med hög förbrukning. Bara solceller tar ungefär 7–8,5 år i SE3. Exakt siffra för din bostad räknar vi fram vid hembesöket.",
       },
       {
         q: "Kan jag få exakta siffror direkt i kalkylatorn?",

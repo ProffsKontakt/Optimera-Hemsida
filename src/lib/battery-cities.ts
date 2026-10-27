@@ -73,7 +73,7 @@ const CONTENT: BatteryCityContent[] = [
       {
         title: "Batteri utan solceller fungerar också",
         body:
-          "Du behöver inte ha solpaneler för att ett batteri ska löna sig i Stockholm. Med dagens spotprisspridning laddar du batteriet på natten när elen är billig och använder den på dagen, så kallad prisarbitrage. Kombinerat med stödtjänster (FCR-D) blir återbetalningstiden för ett rent lager ofta 4–6 år.",
+          "Du behöver inte ha solpaneler för att ett batteri ska löna sig i Stockholm. Med dagens spotprisspridning laddar du batteriet på natten när elen är billig och använder den på dagen, så kallad prisarbitrage. Ett batteri utan solceller betalar sig på ungefär 5–9 år, och med solceller på 3–7 år.",
       },
     ],
   },
@@ -207,7 +207,7 @@ const CONTENT: BatteryCityContent[] = [
     oneLiner:
       "Batterilager installerat i Danderyd av elektriker som tar premiuminstallationer på allvar.",
     intro:
-      "Danderyd-villor har ofta hög elförbrukning, gott om plats och ägare som vill ha en genomtänkt lösning, vilket gör kommunen till en av de bästa för större batterilager i Stockholm. I Stocksund, Djursholm och Enebyberg installerar vi batteribanker på 20–60 kWh som både kapar de dyra effekttopparna och genererar stödtjänstintäkt. Med FCR-D aktiverat kommer återbetalningstiden för batteriet ofta under tre år för de hus som har förbrukningen att matcha.",
+      "Danderyd-villor har ofta hög elförbrukning, gott om plats och ägare som vill ha en genomtänkt lösning, vilket gör kommunen till en av de bästa för större batterilager i Stockholm. I Stocksund, Djursholm och Enebyberg installerar vi batteribanker på 20–60 kWh som prisstyr och flyttar solelen till kvällen. Med solceller betalar sig ett batteri på ungefär 3–7 år.",
     facts: [
       { k: "Nätägare", v: "Ellevio" },
       { k: "Elområde", v: "SE3" },
@@ -216,9 +216,9 @@ const CONTENT: BatteryCityContent[] = [
     ],
     localContext: [
       {
-        title: "Stödtjänster ger snabb återbetalning",
+        title: "Stora batterier i hus med hög förbrukning",
         body:
-          "Easyway 46–61 kWh och SAJ HS3 i kaskad är vanliga val i Danderyd. Med en batteribank av den storleken aktiverad för FCR-D ser vi stödtjänstintäkter på 20 000–35 000 kr per år, vilket tillsammans med kapade effekttoppar och egen solel pressar ner återbetalningstiden under tre år för hus med hög förbrukning.",
+          "Eway 46–61 kWh och SAJ HS3 i flera stackar är vanliga val i Danderyd. Ett stort batteri lönar sig bäst i hus med hög förbrukning, där mer av kapaciteten används varje dag. Med solceller betalar sig batteriet på ungefär 3–7 år.",
       },
       {
         title: "Diskret installation",

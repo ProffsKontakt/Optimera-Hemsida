@@ -1,14 +1,15 @@
 // Återbetalningstid i kalkylatorn.
 //
-// Besparingen kommer från simuleringen i lib/battery-sim-data.ts: ett års
-// verkliga kvartspriser i kundens elområde, kundens årsförbrukning och ett
-// batteri som styrs mot priserna (prisstyrning och egenanvändning av solel,
-// utan stödtjänster). Investeringen kommer från
-// katalogens priser för det valda märket och storleken, efter grönt avdrag.
+// Batteri: spannen 3–7 år (batteri till befintliga solceller), 4–7 år (sol
+// och batteri) och 5–9 år (batteri utan solceller) är Optimeras bedömning
+// (PAYBACK_BANDS). Var i spannet ett val hamnar avgörs av simuleringen i
+// lib/battery-sim-data.ts: ett års verkliga kvartspriser i kundens elområde,
+// kundens årsförbrukning och solcellseffekt, och katalogens pris för valt
+// märke och storlek efter grönt avdrag. Ett val med kortare simulerad
+// återbetalning hamnar längre ner i spannet.
 //
-// Simuleringen styr batteriet optimalt, så den kortaste tiden i spannet är
-// en övre gräns för vad styrningen kan ge. Den längsta tiden räknar med att
-// en verklig styrning når REALISTIC_SHARE av det.
+// Bara solceller: tiden räknas direkt ur simuleringen. Den kortaste tiden är
+// med normal solproduktion, den längsta med REALISTIC_SHARE av den.
 import { SIM_COST, SIM_KWH, SIM_KWP, SIM_LOAD } from "./battery-sim-data";
 import { BATTERIES, PANELS, type Elzon } from "./catalog";
 import { batteryCustomerPriceKr, pickInverter, solarPriceKr, type CalcInput } from "./calc";
@@ -41,7 +42,6 @@ export function simCost(zone: Elzon, loadKWh: number, kwp: number, kwh: number):
 export type PaybackEstimate =
   | {
       kind: "years";
-      /** Kortast (optimal styrning) och längst (REALISTIC_SHARE av den). */
       min: number;
       max: number;
       /** Batteripriset är uppskattat (märket saknar inlagt pris). */
@@ -59,7 +59,36 @@ function batteryPrice(input: CalcInput, kWh: number, kWp: number) {
   return { total: (total * kWh) / nearest, estimated: priced.id !== battery.id };
 }
 
-export function estimatePayback(input: CalcInput): PaybackEstimate {
+type Scenario = keyof typeof PAYBACK_BANDS;
+
+/** Optimeras spann per fall, i år. width = hur brett spannet för ett enskilt val är. */
+export const PAYBACK_BANDS = {
+  existingSolarBattery: { lo: 3, hi: 7, width: 1.5 },
+  solarAndBattery: { lo: 4, hi: 7, width: 1 },
+  batteryOnly: { lo: 5, hi: 9, width: 1.5 },
+} as const;
+
+// Simulerad återbetalning (år) vid 5:e och 95:e percentilen av alla val i
+// kalkylatorn för respektive fall – kortare än den första hamnar längst ner
+// i spannet, längre än den andra längst upp. Räknat med scripts/payback-span.ts.
+const SIM_SPAN: Record<Scenario, readonly [number, number]> = {
+  existingSolarBattery: [6, 32],
+  solarAndBattery: [6, 16.5],
+  batteryOnly: [14, 90],
+};
+
+function scenarioOf(input: CalcInput): Scenario | "solar" | null {
+  const battery = input.enabled.batteri;
+  const newSolar = input.enabled.sol;
+  if (battery && newSolar) return "solarAndBattery";
+  if (battery && input.hasExistingSolar) return "existingSolarBattery";
+  if (battery) return "batteryOnly";
+  if (newSolar) return "solar";
+  return null;
+}
+
+/** Simulerad återbetalning: investering efter avdrag delat med årlig besparing (perfekt styrning). */
+export function simulatedPayback(input: CalcInput): { years: number; priceEstimated: boolean } | null {
   const zone = input.elzon;
   const kWh = input.enabled.batteri ? input.batteryCapacityKWh : 0;
   const owners = input.numOwners ?? 2;
@@ -82,19 +111,33 @@ export function estimatePayback(input: CalcInput): PaybackEstimate {
     if (newKWp > 0 || existingKWp > 0) deduction = Math.min(bp.total * GREEN_BATTERY, cap);
   }
   invest -= deduction;
-  if (invest <= 0) return { kind: "none" };
+  if (invest <= 0) return null;
 
   // Årlig besparing
-  const kWp = newKWp + existingKWp;
   const load = input.annualConsumptionKWh;
   const before = simCost(zone, load, existingKWp, 0); // det kunden har i dag
-  const after = simCost(zone, load, kWp, kWh);
+  const after = simCost(zone, load, newKWp + existingKWp, kWh);
   const saving = before - after;
-  if (saving <= 0) return { kind: "none" };
+  return { years: saving > 0 ? invest / saving : Infinity, priceEstimated };
+}
 
-  const min = invest / saving;
-  const max = invest / (saving * REALISTIC_SHARE);
-  return { kind: "years", min, max, priceEstimated };
+export function estimatePayback(input: CalcInput): PaybackEstimate {
+  const scenario = scenarioOf(input);
+  const sim = scenario ? simulatedPayback(input) : null;
+  if (!scenario || !sim) return { kind: "none" };
+
+  if (scenario === "solar") {
+    if (!Number.isFinite(sim.years)) return { kind: "none" };
+    return { kind: "years", min: sim.years, max: sim.years / REALISTIC_SHARE, priceEstimated: false };
+  }
+
+  const band = PAYBACK_BANDS[scenario];
+  const [a, b] = SIM_SPAN[scenario];
+  const t = Number.isFinite(sim.years)
+    ? Math.max(0, Math.min(1, Math.log(sim.years / a) / Math.log(b / a)))
+    : 1;
+  const min = band.lo + t * (band.hi - band.lo - band.width);
+  return { kind: "years", min, max: min + band.width, priceEstimated: sim.priceEstimated };
 }
 
 /** "≈ 10,5–13 år" – avrundat till halvår, långa tider kapas. */

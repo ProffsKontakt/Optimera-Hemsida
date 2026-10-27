@@ -48,7 +48,7 @@ function cityFaq(city: ReturnType<typeof findCity>) {
     },
     {
       q: `Hur lång är återbetalningstiden ${city.preposition} ${city.name}?`,
-      a: `Med elområde SE3 (Stockholm) och nuvarande spotpris-snitt landar återbetalningstiden för en ren solanläggning på 8–11 år. Med batterilager och stödtjänster (FCR-D / aFRR via Energy IQ eller Enequi Core) kan tiden komma ner mot 3–5 år för hus med högre förbrukning.`,
+      a: `Med elområde SE3 (Stockholm) och nuvarande spotpris-snitt landar återbetalningstiden för en ren solanläggning på 8–11 år. Med ett batteri som prisstyr och flyttar solelen till kvällen betalar sig sol och batteri tillsammans på ungefär 4–7 år.`,
     },
     {
       q: `Vilka områden ${city.preposition} ${city.name} installerar Optimera Energi i?`,

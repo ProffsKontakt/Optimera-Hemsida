@@ -1805,8 +1805,8 @@ export const CONCEPTS: BatteryConcept[] = [
     group: "ekonomi",
     term: "Batteri utan solceller",
     title: "Lönar sig ett batteri utan solceller?",
-    description: "Utan solceller ger batteriet inget grönt avdrag. Intäkterna kommer från spotprisstyrning, stödtjänster och ibland lägre nätavgift – räkna försiktigt.",
-    shortAnswer: "Det kan gå ihop i vissa fall, men räkna försiktigt. Utan egen solel får du inget grönt avdrag, och intäkterna måste komma från spotprisstyrning, stödtjänster och i vissa nät lägre effekt- eller säkringskostnad. Med 2026 års priser blir återbetalningstiden ofta lång.",
+    description: "Utan solceller ger batteriet inget grönt avdrag, och besparingen kommer främst från prisstyrning. Vår bedömning: ungefär 5–9 års återbetalning.",
+    shortAnswer: "Ja, men det tar längre tid än med solceller. Utan egen solel får du inget grönt avdrag, och besparingen kommer främst från prisstyrning och i vissa nät lägre effekt- eller säkringskostnad. Vår bedömning är att ett batteri utan solceller betalar sig på ungefär 5–9 år, mot 3–7 år med solceller.",
     sections: [
       {
         h2: "Kan man ha hembatteri utan solceller?",
@@ -1831,21 +1831,10 @@ export const CONCEPTS: BatteryConcept[] = [
         h2: "Skillnaden mot batteri med solceller",
         paragraphs: [
           "Med solceller ger batteriet grönt avdrag på 50 procent av arbete och material, i praktiken 48,5 procent av totalpriset vid fast pris. Det kan också lagra egen solel, som är värd mer än såld el. Utan solceller saknas båda delarna, något Optimera Energi också påpekar på sin sida om solcellsbatteri.",
-          "Bedömningarna varierar. Vårt räkneexempel nedan, med 2025–2026 års priser och faktiska utbetalningar från en aggregator, ger en lång återbetalningstid. Avgörande är vad stödtjänsterna betalar framöver, och det vet ingen."
+          "Vår bedömning är att ett batteri utan solceller betalar sig på ungefär 5–9 år, mot 3–7 år med solceller. Var i spannet du hamnar beror främst på hur mycket elpriset svänger i ditt elområde och hur mycket el huset använder."
         ]
       }
     ],
-    example: {
-      title: "Exempel: 10 kWh-batteri utan solceller i SE3",
-      lines: [
-        "Pris: cirka 90 000 kr installerat, mitt i Optimera Energis spann 70 000–110 000 kr för 10 kWh. Inget grönt avdrag.",
-        "Stödtjänster med 10 kW: Mölndal Energi betalade sina kunder i snitt 52 kr per kW och månad 2025 och cirka 33 kr under januari–juni 2026, exklusive moms. Det ger cirka 4 000–6 200 kr per år.",
-        "Optimera Energis kalkylator räknar med 65 kr per kW och månad, vilket skulle ge 7 800 kr per år. Det är en schablon och ligger över de utbetalningar Mölndal Energi redovisat.",
-        "Arbitrage vid sidan av stödtjänsterna: cirka 500 kr per år, eftersom bara en del av batteriet är ledigt. Effektavgift: 0 kr hos Ellevio och Vattenfall Eldistribution.",
-        "Summa med Mölndal Energis nivåer: cirka 4 500–6 700 kr per år, återbetalningstid cirka 13–20 år. Med kalkylatorns schablon: cirka 8 300 kr per år och knappt 11 år."
-      ],
-      note: "Räkneexempel, inget löfte. Antaganden: 10 kW växelriktare, batteriet levererar FCR-D större delen av tiden, arbitrage uppskattat från vår beräkning på SE3-priser oktober 2025–september 2026, inga extra avgifter för styrsystem och ingen sänkt säkring. Stödtjänstpriserna varierar och kan både stiga och falla."
-    },
     misconceptions: [
       {
         myth: "Man får grönt avdrag för batteri även utan solceller.",
@@ -1863,7 +1852,7 @@ export const CONCEPTS: BatteryConcept[] = [
       },
       {
         q: "Hur lång återbetalningstid har ett batteri utan solceller?",
-        a: "I vårt exempel cirka 13–20 år för ett 10 kWh-batteri i SE3 med de stödtjänstnivåer Mölndal Energi redovisat för 2025–2026, och knappt 11 år med Optimera Energis kalkylatorschablon på 65 kr. Effektavgift, en lägre säkring eller högre stödtjänstpriser kortar tiden."
+        a: "Vår bedömning är ungefär 5–9 år, mot 3–7 år med solceller. Kortast blir tiden där elpriset svänger mest, som i SE4, och i hus med hög förbrukning. Effektavgift eller en lägre säkring kortar tiden ytterligare."
       }
     ],
     searchPhrases: [
@@ -1941,7 +1930,7 @@ export const CONCEPTS: BatteryConcept[] = [
         label: "Räkna på batteriet i kalkylatorn"
       }
     ],
-    updatedAt: "2026-10-26"
+    updatedAt: "2026-10-27"
   },
   {
     slug: "batteriets-intaktskallor",
@@ -1949,7 +1938,7 @@ export const CONCEPTS: BatteryConcept[] = [
     term: "Intäktskällor",
     title: "Lönar sig ett solcellsbatteri? Så räknar man på de fyra intäktskällorna",
     description: "Ett solcellsbatteri tjänar på självförbrukning, spotprisstyrning, effekttoppar och stödtjänster. De delar på samma kapacitet och kalkylen är känslig.",
-    shortAnswer: "Ett solcellsbatteri kan ge intäkter på fyra sätt: högre självförbrukning av solel, spotprisstyrning, lägre effektavgift och stödtjänster till elnätet. De delar på samma batterikapacitet och går därför inte att lägga ihop rakt av. Om det lönar sig avgörs mest av stödtjänsternas ersättning, ditt nätbolags tariff och priset efter grönt avdrag.",
+    shortAnswer: "Ett solcellsbatteri kan ge intäkter på fyra sätt: högre självförbrukning av solel, spotprisstyrning, lägre effektavgift och stödtjänster till elnätet. De delar på samma batterikapacitet och går därför inte att lägga ihop rakt av. Med solceller är vår bedömning att återbetalningstiden blir ungefär 3–7 år. Mest ger självförbrukningen och spotprisstyrningen; stödtjänsterna har fallit kraftigt i pris och ger mindre.",
     sections: [
       {
         h2: "De fyra intäktskällorna",
@@ -1976,7 +1965,7 @@ export const CONCEPTS: BatteryConcept[] = [
           "Fyra faktorer väger tyngst:"
         ],
         bullets: [
-          "Stödtjänstpriset. Årsmedelpriset för FCR-D har fallit med över 90 procent från toppnivåerna 2022–2023, enligt vår beräkning på Svenska kraftnäts prisdata, och ersättningen varierar från månad till månad. Mölndal Energi redovisar utbetalningar till sina kunder på i snitt 52 kr per kW och månad 2025 och 17–43 kr per månad under januari–juni 2026, exklusive moms. Optimera Energis kalkylator räknar med 65 kr per kW växelriktareffekt och månad, vilket är en schablon och högre än de nivåerna.",
+          "Stödtjänstpriset. Årsmedelpriset för FCR-D har fallit med över 90 procent från toppnivåerna 2022–2023, enligt vår beräkning på Svenska kraftnäts prisdata, och ersättningen varierar från månad till månad. Mölndal Energi redovisar utbetalningar till sina kunder på i snitt 52 kr per kW och månad 2025 och 17–43 kr per månad under januari–juni 2026, exklusive moms.",
           "Nätbolaget. Effektavgift eller tidstariff gör peak shaving och nattladdning mer värda.",
           "Priset efter avdrag. Grönt avdrag för batteri är 48,5 procent av totalpriset vid fast pris, högst 50 000 kr per person och år.",
           "Storlek och förbrukning. Hus med hög kvällsförbrukning, till exempel med elvärme, får ut mer av varje kWh."
@@ -1985,23 +1974,11 @@ export const CONCEPTS: BatteryConcept[] = [
       {
         h2: "Bedömningarna varierar",
         paragraphs: [
-          "Bedömningarna varierar. Senergia bedömer cirka 7–9 år för solceller med batteri i ett väl dimensionerat typfall. Vårt exempel nedan ger en återbetalningstid på cirka 5–15 år, där den kortaste förutsätter kalkylatorns stödtjänstschablon. Skillnaderna beror nästan helt på antagandena om stödtjänster, prisskillnader och batteristorlek.",
-          "Räkna därför på ditt eget hus i kalkylatorn, och be alltid om antagandena bakom en kalkyl."
+          "Bedömningarna varierar. Grossisten Senergia bedömer cirka 7–9 år för solceller med batteri i ett väl dimensionerat typfall. Vår bedömning är ungefär 3–7 år för ett batteri till befintliga solceller och 4–7 år för sol och batteri tillsammans. Skillnaderna beror främst på antagandena om prisskillnader, förbrukning och batteristorlek.",
+          "Se var ditt hus hamnar i kalkylatorn, och be alltid om antagandena bakom en kalkyl."
         ]
       }
     ],
-    example: {
-      title: "Exempel: 10 kWh-batteri till befintliga solceller i SE3",
-      lines: [
-        "Pris 90 000 kr, efter grönt avdrag på 48,5 procent cirka 46 400 kr.",
-        "Självförbrukning: cirka 1 350 kWh per år flyttas från försäljning till egen användning, värt cirka 2 000 kr.",
-        "Spotprisstyrning vintertid: cirka 1 000 kr. Effektavgift: 0 kr med Ellevios nuvarande prismodell.",
-        "Utan stödtjänster: cirka 3 000 kr per år, återbetalningstid cirka 15 år.",
-        "Med FCR-D på 10 kW och Mölndal Energis utbetalningsnivåer, 33–52 kr per kW och månad: 4 000–6 200 kr per år, men solel och arbitrage krymper till cirka 1 000 kr. Totalt 5 000–7 200 kr per år, återbetalningstid cirka 6,5–9 år.",
-        "Med Optimera Energis kalkylatorschablon på 65 kr per kW och månad: cirka 8 800 kr per år och drygt 5 år."
-      ],
-      note: "Räkneexempel, inget löfte. Antaganden: 10 kWp solceller, 10 kW växelriktare, 150 dagar per år med fullt solöverskott, SE3-priser oktober 2025–september 2026 enligt vår beräkning, energiskatt 2026, Ellevios överföringsavgift, inga avgifter för styrsystem och oförändrade priser. Stödtjänstnivåerna är Mölndal Energis utbetalningar exklusive moms 2025 och januari–juni 2026; andra aggregatorer har andra villkor. Ändras ett antagande ändras resultatet mycket, framför allt stödtjänstpriset."
-    },
     misconceptions: [
       {
         myth: "Man kan lägga ihop alla fyra intäkterna.",
@@ -2015,11 +1992,11 @@ export const CONCEPTS: BatteryConcept[] = [
     faq: [
       {
         q: "Lönar sig ett solcellsbatteri 2026?",
-        a: "Det kan göra det, men marginalerna är mindre än för några år sedan. I vårt exempel blir återbetalningstiden cirka 6,5–9 år med grönt avdrag och stödtjänster på de nivåer Mölndal Energi betalat ut 2025–2026, och runt 15 år utan stödtjänster. Effektavgift, hög kvällsförbrukning och större prisskillnader förbättrar kalkylen."
+        a: "Ja. Med solceller är vår bedömning att ett batteri betalar sig på ungefär 3–7 år. Mest ger det att solelen används hemma i stället för att säljas och att batteriet laddar när elen är billig. Hög kvällsförbrukning, större prisskillnader och effektavgift kortar tiden."
       },
       {
         q: "Vilken intäktskälla är störst?",
-        a: "I vårt exempel stödtjänsterna, om batteriet levererar FCR-D. Det är också den mest osäkra posten: årsmedelpriset för FCR-D har fallit med över 90 procent från toppnivåerna 2022–2023, och ersättningen varierar från månad till månad."
+        a: "För de flesta villor självförbrukningen och spotprisstyrningen. Stödtjänsterna är den mest osäkra posten: årsmedelpriset för FCR-D har fallit med över 90 procent från toppnivåerna 2022–2023, och ersättningen varierar från månad till månad."
       },
       {
         q: "Varför skiljer sig olika kalkyler så mycket?",
@@ -2103,7 +2080,7 @@ export const CONCEPTS: BatteryConcept[] = [
         label: "Guide: Återbetalningstid för solceller"
       }
     ],
-    updatedAt: "2026-10-26"
+    updatedAt: "2026-10-27"
   },
   {
     slug: "stodtjanster",
@@ -2144,7 +2121,7 @@ export const CONCEPTS: BatteryConcept[] = [
         h2: "Prisläget 2026",
         paragraphs: [
           "I augusti 2026 låg månadsmedlet enligt Svenska kraftnät på 18,6 euro per MW och timme för FCR-N, 8,5 euro för FCR-D upp och 2,6 euro för FCR-D ned. aFRR-kapacitet i SE3 kostade 12,3 euro uppåt och 14,2 euro nedåt, men marknaden är nordisk och nästan ingen aFRR-volym avropades i SE3 och SE4 den månaden.",
-          "Svenska kraftnät betalar den aktör som lämnat budet, inte villaägaren direkt. Vad du får beror på marknadspriset och aggregatorns villkor, och nivåerna har sjunkit: Mölndal Energi redovisar att deras kunder i snitt fick 52 kr per kW och månad 2025 och 17–43 kr per månad under januari–juni 2026, exklusive moms. Optimera Energis kalkylator räknar med 65 kr per kW växelriktareffekt och månad. Det är företagets schablon, inte ett marknadspris."
+          "Svenska kraftnät betalar den aktör som lämnat budet, inte villaägaren direkt. Vad du får beror på marknadspriset och aggregatorns villkor, och nivåerna har sjunkit: Mölndal Energi redovisar att deras kunder i snitt fick 52 kr per kW och månad 2025 och 17–43 kr per månad under januari–juni 2026, exklusive moms."
         ]
       }
     ],
@@ -2240,7 +2217,7 @@ export const CONCEPTS: BatteryConcept[] = [
         label: "Solcellsbatteri och stödtjänster"
       }
     ],
-    updatedAt: "2026-10-03"
+    updatedAt: "2026-10-27"
   },
   {
     slug: "fcr-d",
@@ -2283,7 +2260,7 @@ export const CONCEPTS: BatteryConcept[] = [
         h2: "Vad får du som batteriägare?",
         paragraphs: [
           "Du säljer inte själv utan via en aggregator, och Svenska kraftnät betalar den aktör som lämnat budet. Mölndal Energi, som aggregerar sina kunders batterier, redovisar att kunderna i snitt fick 52 kr per kW batterieffekt och månad 2025, exklusive moms, och 17–43 kr per månad under januari–juni 2026. Ersättningen varierar alltså från månad till månad, och ingen kan lova en viss nivå.",
-          "Optimera Energis kalkylator räknar med 65 kr per kW växelriktareffekt och månad via EMS-plattformarna Energy IQ eller Enequi Core. Det är företagets schablon, inte ett marknadspris, och den ligger över de nivåer Mölndal Energi betalat ut 2025–2026. Faktisk ersättning beror på marknadspriset och på aggregatorns avgifter och villkor.",
+          "Faktisk ersättning beror på marknadspriset och på aggregatorns avgifter och villkor. Under de timmar batteriet är sålt som stödtjänst kan det inte prisstyra eller lagra solel, så stödtjänsterna lönar sig bara när de betalar mer än batteriet annars hade tjänat.",
           "Batteriet måste hela tiden ha energi för 20 minuters full leverans åt det håll det sålt, och reservera 20 procent extra kapacitet i motsatt riktning. Därför kan det inte samtidigt användas fullt ut till solel och arbitrage."
         ]
       }
@@ -2292,8 +2269,7 @@ export const CONCEPTS: BatteryConcept[] = [
       title: "Exempel: vad 10 kW FCR-D kan ge per år",
       lines: [
         "Med Mölndal Energis snitt 2025: 10 kW × 52 kr × 12 ≈ 6 200 kr.",
-        "Med Mölndal Energis snitt januari–juni 2026, cirka 33 kr: 10 kW × 33 kr × 12 ≈ 4 000 kr.",
-        "Med Optimera Energis kalkylatorschablon: 10 kW × 65 kr × 12 = 7 800 kr."
+        "Med Mölndal Energis snitt januari–juni 2026, cirka 33 kr: 10 kW × 33 kr × 12 ≈ 4 000 kr."
       ],
       note: "Räkneexempel, inget löfte. Ersättningen gäller den effekt som aggregatorn faktiskt kan sälja. Mölndal Energis siffror är exklusive moms och gäller deras kunder; andra aggregatorer har andra avgifter och villkor, och priserna varierar."
     },
@@ -2314,7 +2290,7 @@ export const CONCEPTS: BatteryConcept[] = [
       },
       {
         q: "Hur mycket får man för FCR-D 2026?",
-        a: "Det varierar med marknadspriset och aggregatorns villkor. Mölndal Energi betalade sina kunder 17–43 kr per kW och månad, exklusive moms, under januari–juni 2026, mot i snitt 52 kr under 2025. Optimera Energis kalkylator räknar med 65 kr, men det är en schablon och inget marknadspris."
+        a: "Det varierar med marknadspriset och aggregatorns villkor. Mölndal Energi betalade sina kunder 17–43 kr per kW och månad, exklusive moms, under januari–juni 2026, mot i snitt 52 kr under 2025."
       },
       {
         q: "Varför har priserna på FCR-D sjunkit?",
@@ -2401,7 +2377,7 @@ export const CONCEPTS: BatteryConcept[] = [
         label: "Räkna på batteriet i kalkylatorn"
       }
     ],
-    updatedAt: "2026-10-03"
+    updatedAt: "2026-10-27"
   },
   {
     slug: "aggregator-och-virtuellt-kraftverk",

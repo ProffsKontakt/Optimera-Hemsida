@@ -27,6 +27,9 @@ const BASE =
  * pekar på samma bolag. Allabolag-URLen i sameAs kan peka på ett äldre
  * slug under övergångsperioden – det är samma entity.
  */
+/** Google-företagsprofilen på Maps (place ID ChIJ3eSzrD6n84YRXYo7n-xk9O0). */
+const GOOGLE_BUSINESS_PROFILE = "https://maps.google.com/?cid=17146440648752859741";
+
 export const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -72,6 +75,8 @@ export const organizationSchema = {
     // de beskriver Optimera Energi – länkas så att de förstår att det är samma bolag.
     "https://www.reco.se/optimera-energi",
     "https://www.hitta.se/verksamhet/optimera-energi-hiigrrxfh",
+    // Google-företagsprofilen (Optimera Energi, Vallgatan 9, Solna).
+    GOOGLE_BUSINESS_PROFILE,
   ],
 };
 
@@ -109,7 +114,7 @@ export const localBusinessSchema = {
     latitude: 59.36374,
     longitude: 17.99858,
   },
-  hasMap: "https://www.google.com/maps/search/?api=1&query=Vallgatan+9%2C+170+67+Solna",
+  hasMap: GOOGLE_BUSINESS_PROFILE,
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",

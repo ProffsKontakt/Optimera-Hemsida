@@ -53,7 +53,7 @@ const FAQ = [
   },
   {
     q: "Passar Easyway om jag redan har solceller?",
-    a: "Ja. Batteriet sparar solöverskottet till kvällen, och varje kWh du använder själv är värd ungefär 2,5 gånger mer än en såld. Hur snabbt det betalar sig beror mest på vad stödtjänsterna ger: i vårt räkneexempel tar ett 10 kWh-batteri till befintliga solceller 6,5–9 år med stödtjänster och cirka 15 år utan. Vi dimensionerar utifrån din förbrukning och ditt elavtal, inte utifrån ett datablad.",
+    a: "Ja. Batteriet sparar solöverskottet till kvällen, och varje kWh du använder själv är värd ungefär 2,5 gånger mer än en såld. Det mesta av lönsamheten kommer från prisstyrning och egen användning av solelen, och med solceller betalar sig batteriet på ungefär 3–7 år. Vi dimensionerar utifrån din förbrukning och ditt elavtal, inte utifrån ett datablad.",
   },
 ];
 

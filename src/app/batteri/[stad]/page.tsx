@@ -43,11 +43,11 @@ function batteryFaq(city: ReturnType<typeof findBatteryCity>) {
     },
     {
       q: `Lönar sig ett batteri ${city.preposition} ${city.name}?`,
-      a: `Ja, för de flesta villor med elvärme eller solceller. Batteriet kapar dina dyraste effekttimmar, höjer självförbrukningen av solel och kan aktiveras för stödtjänster (FCR-D / aFRR) där Svenska kraftnät betalar för att batteriet stabiliserar nätet. I ${city.name} ser vi återbetalningstider på 3–6 år beroende på storlek och förbrukning.`,
+      a: `Ja, för de flesta villor med elvärme eller solceller. Batteriet laddar när elen är billig och används när den är dyr, höjer självförbrukningen av solel och kapar dina dyraste effekttimmar. Med solceller betalar sig ett batteri ${city.preposition} ${city.name} på ungefär 3–7 år beroende på storlek och förbrukning, och utan solceller på 5–9 år.`,
     },
     {
       q: `Behöver jag solceller för att ha batteri ${city.preposition} ${city.name}?`,
-      a: `Nej, ett batteri kan installeras utan solceller och laddas från elnätet. Men ekonomin blir svagare: utan egen solel får du inget grönt avdrag, och intäkterna måste komma från spotprisstyrning, stödtjänster och i vissa nät en lägre effekt- eller säkringskostnad. Med 2026 års priser blir återbetalningstiden ofta lång, så vi räknar ärligt på ditt hus och säger nej om det inte går ihop.`,
+      a: `Nej, ett batteri kan installeras utan solceller och laddas från elnätet. Men ekonomin blir svagare: utan egen solel får du inget grönt avdrag, och besparingen kommer från prisstyrning och i vissa nät en lägre effekt- eller säkringskostnad. Utan solceller tar ett batteri ungefär 5–9 år att betala, mot 3–7 år med solceller, så vi räknar ärligt på ditt hus och säger nej om det inte går ihop.`,
     },
     {
       q: `Vilka batterimärken installerar Optimera Energi?`,

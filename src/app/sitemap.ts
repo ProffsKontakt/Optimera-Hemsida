@@ -13,21 +13,21 @@ import { allConcepts, batteryUpdatedAt } from "@/lib/batteriskolan";
 // "everything updated" till crawlers och devalverar lastmod-värdet.
 // Bumpa endast när innehållet faktiskt ändras.
 const LAST_MOD = {
-  home: "2026-10-26",
-  kalkylator: "2026-10-26",
+  home: "2026-10-27",
+  kalkylator: "2026-10-27",
   offert: "2026-05-19",
   omOss: "2026-10-25",
   kontakt: "2026-05-09",
-  tjanster: "2026-10-26",
+  tjanster: "2026-10-27",
   legal: "2026-10-14",
-  cities: "2026-10-26",
+  cities: "2026-10-27",
   guiderHub: "2026-05-24",
   press: "2026-05-24",
   easyway: "2026-10-27",
   batteryComparison: "2026-10-27",
   // AI-search-pelarsidor. Bumpade 10-26 när återbetalning, stödtjänster
   // och batterisortimentet anpassades till kunskapsbanken.
-  solcellsbatteri: "2026-10-26",
+  solcellsbatteri: "2026-10-27",
   metodik: "2026-10-26",
   faq: FAQ_REVIEWED_AT,
   // Nyhetshubben (valbevakning + energinyheter) lanserad 2026-09-06.
