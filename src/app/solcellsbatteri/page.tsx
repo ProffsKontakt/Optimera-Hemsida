@@ -422,7 +422,13 @@ export default function SolcellsbatteriPage() {
           caption="Jämförelse av batterimärken som Optimera Energi installerar: kapacitet, cellkemi, cykellivslängd och växelriktare."
           footnote="Utöver kärnsortimentet säljer vi bland annat Sungrow och Growatt. Cykeltalen är tillverkarnas uppgifter. LFP (litium-järnfosfat) är vårt standardval för brandsäkerhet och livslängd. Läs mer om varför vi ofta landar i Easyway."
         />
-        <div className="mt-6">
+        <div className="mt-6 flex flex-wrap gap-x-8 gap-y-3">
+          <Link
+            href="/tjanster/batterier/jamforelse"
+            className="inline-flex items-center gap-2 text-[14.5px] text-indigo hover:underline underline-offset-2"
+          >
+            Jämför batterierna i detalj <ArrowRight size={15} />
+          </Link>
           <Link
             href="/tjanster/batterier/easyway"
             className="inline-flex items-center gap-2 text-[14.5px] text-indigo hover:underline underline-offset-2"

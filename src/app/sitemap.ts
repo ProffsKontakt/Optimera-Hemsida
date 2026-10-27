@@ -23,7 +23,8 @@ const LAST_MOD = {
   cities: "2026-10-26",
   guiderHub: "2026-05-24",
   press: "2026-05-24",
-  easyway: "2026-10-26",
+  easyway: "2026-10-27",
+  batteryComparison: "2026-10-27",
   // AI-search-pelarsidor. Bumpade 10-26 när återbetalning, stödtjänster
   // och batterisortimentet anpassades till kunskapsbanken.
   solcellsbatteri: "2026-10-26",
@@ -79,6 +80,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${base}/tjanster/batterier/easyway`,
       lastModified: LAST_MOD.easyway,
+    },
+    // Jämförelse av batterierna i kärnsortimentet.
+    {
+      url: `${base}/tjanster/batterier/jamforelse`,
+      lastModified: LAST_MOD.batteryComparison,
     },
     // City-landingssidor för Stockholm-områdets kommuner.
     ...CITIES.map((c) => ({

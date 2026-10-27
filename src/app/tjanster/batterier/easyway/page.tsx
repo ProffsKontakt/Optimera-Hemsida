@@ -235,7 +235,11 @@ export default function EasywayPage() {
         <p className="mt-8 max-w-2xl text-[13.5px] leading-relaxed text-ink/55">
           Easyway är vår rekommendation, inte ett tvång. Passar ett annat
           fabrikat ditt hus bättre säger vi det. Vi säljer bland annat även
-          Enershare, SAJ, Sigenergy, Sungrow och Growatt.
+          Enershare, SAJ, Sigenergy, Sungrow och Growatt –{" "}
+          <Link href="/tjanster/batterier/jamforelse" className="text-indigo underline underline-offset-2">
+            jämför batterierna här
+          </Link>
+          .
         </p>
       </Section>
 
