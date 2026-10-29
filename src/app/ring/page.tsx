@@ -39,7 +39,7 @@ export default function RingPage() {
 
         <p className="mt-5 flex items-center justify-center gap-2 text-[13.5px] text-ink/55">
           <Clock size={14} />
-          Vardagar 08–17. Övrig tid – lämna ett meddelande så ringer vi upp.
+          Vardagar 08–20. Övrig tid – lämna ett meddelande så ringer vi upp.
         </p>
 
         <div className="mt-12 rounded-3xl border border-ink/10 bg-cream/50 p-6 text-left">

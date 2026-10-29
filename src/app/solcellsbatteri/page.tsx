@@ -73,7 +73,7 @@ const FAQ = [
   },
   {
     q: "Vilka batterimärken installerar Optimera Energi?",
-    a: "Vi är märkesoberoende och säljer alla batterier på marknaden. Vårt hand-plockade kärnsortiment är Easyway (LFP, moduler à 7,68 kWh), SAJ HS3 (10/15/20 kWh med inbyggd 12 kW växelriktare), Enershare Energy Core (3,2 kWh per modul, upp till 25,6 kWh per torn) och Sigenergy SigenStor (9 kWh per modul, upp till 54 kWh per stack). Vi väljer LFP-celler (järnfosfat) som standard för brandsäkerhet och livslängd och dimensionerar märke och storlek efter ditt hus, inte efter vad vi råkar ha på lager.",
+    a: "Vi är märkesoberoende och säljer alla batterier på marknaden. Vårt hand-plockade kärnsortiment är Easyway (LFP, moduler à 7,68 kWh), SAJ HS3 (10/15/20 kWh med inbyggd 12 kW växelriktare), Enershare Energy Core (3,2 kWh per modul, upp till 25,6 kWh per torn), Sigenergy SigenStor (9 kWh per modul, upp till 54 kWh per stack) och Fox ESS CQ7 (7,02 kWh per modul, upp till 98,28 kWh i en stack, premium). Vi väljer LFP-celler (järnfosfat) som standard för brandsäkerhet och livslängd och dimensionerar märke och storlek efter ditt hus, inte efter vad vi råkar ha på lager.",
   },
   {
     q: "Vad är skillnaden på solcellsbatteri, hemmabatteri och batterilager?",
@@ -416,6 +416,16 @@ export default function SolcellsbatteriPage() {
                 "≈ 10 000",
                 "Inbyggd (Energy Controller)",
                 "Allt-i-ett med växelriktaren överst i stacken.",
+              ],
+            },
+            {
+              label: "Fox ESS CQ7",
+              cells: [
+                "14–98 kWh i en stack (moduler à 7,02 kWh)",
+                "LFP",
+                "Anges inte i produktbladet",
+                "Extern (Fox ESS H3 Smart eller H3 Pro)",
+                "Premium, stor kapacitet och kan stå utomhus (IP65).",
               ],
             },
           ]}

@@ -61,6 +61,7 @@ const BATTERY_LABEL: Record<string, string> = {
   "saj-hs3": "SAJ HS3",
   "enershare-core": "Enershare",
   sigenstor: "SigenStor",
+  "fox-cq7": "Fox ESS CQ7",
 };
 
 /** Så många paneler som ryms på kalkylatorns hus med den taktypen. */

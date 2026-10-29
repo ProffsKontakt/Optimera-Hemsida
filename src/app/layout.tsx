@@ -77,6 +77,7 @@ export const metadata: Metadata = {
     "Easyway",
     "Enershare",
     "Sigenergy SigenStor",
+    "Fox ESS CQ7",
     "grön teknik avdrag",
     "stödtjänster",
     "Optimera Energi",

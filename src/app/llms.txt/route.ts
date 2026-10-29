@@ -64,7 +64,7 @@ export async function GET() {
     "## Tjänster",
     "",
     ...VISIBLE_SERVICES.map((s) => `- [${s.name}](${BASE}/tjanster/${s.slug}): ${SERVICE_LINES[s.slug]}.`),
-    `- [Jämförelse av hembatterier: Eway, SAJ HS3, Enershare och SigenStor](${BASE}/tjanster/batterier/jamforelse): kapacitet, modulstorlek, växelriktare, cellkemi, cykellivslängd och mått för de fyra batterier vi installerar oftast, och vem varje batteri passar för.`,
+    `- [Jämförelse av hembatterier: Eway, SAJ HS3, Enershare, SigenStor och Fox ESS CQ7](${BASE}/tjanster/batterier/jamforelse): kapacitet, modulstorlek, växelriktare, cellkemi, cykellivslängd och mått för de fem batterier vi installerar oftast, och vem varje batteri passar för.`,
     "",
     "## Kunskapsbank",
     "",

@@ -256,6 +256,30 @@ export const BATTERIES: Battery[] = [
       label: "Inbyggd hybridväxelriktare (Energy Controller)",
     }),
   },
+
+  // -------- Fox ESS CQ7 (2026-10-29) --------
+  // Premiumbatteri. Högspänning, 7,02 kWh per modul enligt Fox ESS
+  // produktblad (EU): en master (CQ7-M, med BMS) och 1–13 slavar (CQ7-S),
+  // 2–14 moduler i en stack (14,04–98,28 kWh). LFP. Extern hybridväxel-
+  // riktare från Fox ESS – H3 Smart (5–15 kW) eller H3 Pro enligt Fox ESS
+  // kompatibilitetslista. Cykeltal anges inte i produktbladet.
+  {
+    id: "fox-cq7",
+    brand: "Fox ESS CQ7",
+    capacities: [14.04, 21.06, 28.08, 35.1, 42.12, 56.16, 70.2, 98.28],
+    chemistry: "LFP",
+    // Inköpspriserna saknas – se pricePending.
+    pricePending: true,
+    baseHardwareKr: 0,
+    perModuleHardwareKr: 0,
+    kWhPerModule: 7.02,
+    inverterFor: (kWh) => ({
+      kind: "external",
+      brand: "Fox ESS H3 Smart",
+      kw: kWh <= 21.06 ? 10 : 15,
+      priceKr: 0, // saknas – se pricePending
+    }),
+  },
 ];
 
 export const HEAT_PUMPS: HeatPump[] = [

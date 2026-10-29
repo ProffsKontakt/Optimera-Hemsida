@@ -288,7 +288,7 @@ export default function ServicePage({
                 Batterier vi säljer
               </span>
               <span className="text-[14px] text-ink/70">
-                Easyway, Enershare, SAJ, Sigenergy, Sungrow, Growatt
+                Eway, Enershare, SAJ, Sigenergy, Fox ESS, Sungrow, Growatt
                 och många fler.{" "}
                 <Link href="/tjanster/batterier/jamforelse" className="text-indigo underline underline-offset-2">
                   Jämför batterierna

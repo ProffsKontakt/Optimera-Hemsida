@@ -37,7 +37,7 @@ const FAQ = [
   },
   {
     q: "Vilka batterimärken installerar Optimera Energi?",
-    a: "Vi installerar Eway, tidigare Easyway (7,68 kWh per modul, LFP-kemi), SAJ HS3 (10/15/20 kWh med inbyggd 12 kW växelriktare), Enershare Energy Core (3,2 kWh per modul, upp till 25,6 kWh per torn) och Sigenergy SigenStor (9 kWh per modul, upp till 54 kWh per stack, inbyggd växelriktare). Alla med LFP-celler.",
+    a: "Vi installerar Eway, tidigare Easyway (7,68 kWh per modul, LFP-kemi), SAJ HS3 (10/15/20 kWh med inbyggd 12 kW växelriktare), Enershare Energy Core (3,2 kWh per modul, upp till 25,6 kWh per torn) Sigenergy SigenStor (9 kWh per modul, upp till 54 kWh per stack, inbyggd växelriktare) och Fox ESS CQ7 (7,02 kWh per modul, upp till 98,28 kWh i en stack, premium). Alla med LFP-celler.",
   },
   {
     q: "Vad tjänar ett batteri på smarta funktioner?",

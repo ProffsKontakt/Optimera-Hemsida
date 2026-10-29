@@ -139,6 +139,7 @@ function Marquee() {
     "Charge Amps",
     "KEEP AI",
     "IVT",
+    "Fox ESS",
   ];
   return (
     <div className="relative border-y border-ink/10 bg-cream/60 ticker-mask overflow-hidden">

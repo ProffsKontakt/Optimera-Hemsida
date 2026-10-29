@@ -1,3 +1,15 @@
+// Produktblad och andra dokument ligger i Supabase-lagringen. De visas
+// under sajtens egen domän i stället för azlloxmrudplfsfajlqq.supabase.co:
+// /produktblad/<namn>.pdf för produktbladen vi länkar till, och
+// /storage/<sökväg> för allt annat i samma bucket.
+const STORAGE =
+  "https://azlloxmrudplfsfajlqq.supabase.co/storage/v1/object/public/product-images";
+const DATASHEETS = {
+  "eway-univ7600": "documents/1f8c6dd3-95b8-4607-b02b-8ee1cf47045a.pdf",
+  "saj-hs3": "docs/wp-migrering/2026/03/HS3-5-12K-T2_datasheet_en_North_EU-1.pdf",
+  "enershare-battery-core": "docs/wp-migrering/2025/08/Enershare-Battery-core-2508.pdf",
+};
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -20,7 +32,14 @@ const nextConfig = {
   // (PNG genererad av src/app/icon.tsx) så det alltid finns en korrekt
   // märkesfavicon på den routen.
   async rewrites() {
-    return [{ source: "/favicon.ico", destination: "/icon" }];
+    return [
+      { source: "/favicon.ico", destination: "/icon" },
+      ...Object.entries(DATASHEETS).map(([name, path]) => ({
+        source: `/produktblad/${name}.pdf`,
+        destination: `${STORAGE}/${path}`,
+      })),
+      { source: "/storage/:path*", destination: `${STORAGE}/:path*` },
+    ];
   },
   // Host-konsolidering: www -> apex med permanent 308.
   //
@@ -52,6 +71,11 @@ const nextConfig = {
   // saknas. HSTS-värdet följer preload-listans rekommendation (2 år).
   async headers() {
     return [
+      // Lagringens råa filer ska inte indexeras som egna sidor.
+      {
+        source: "/storage/:path*",
+        headers: [{ key: "X-Robots-Tag", value: "noindex" }],
+      },
       {
         source: "/:path*",
         headers: [
