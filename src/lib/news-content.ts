@@ -38,6 +38,93 @@ export type NewsContent = {
 };
 
 const CONTENT: Record<string, NewsContent> = {
+  "elstod-oktober-2026-elomrade-4-hogkostnadsskydd": {
+    tldr: [
+      "Avgörandet kom sista veckan: dygnspriserna 28–31 oktober låg mellan 2,44 och 3,32 kr/kWh, och enskilda kvartar kostade 5,88 kr. Marginalen mot gränsen blev 7 öre.",
+      "Hur stödet räknas och betalas ut är inte bestämt. Enligt Ebba Busch kan övergångsregeringen besluta om en stödförordning för utformning och utbetalning.",
+      "Skyddet gäller året ut, och terminerna pekar på över 1,50 kronor i elområde 4 även i november och december. I en övergångsbudget förlängs inte tillfälliga satsningar som upphör vid årsskiftet.",
+    ],
+    sections: [
+      {
+        h2: "Blir det elstöd för oktober 2026?",
+        body: [
+          "Gränsen för högkostnadsskyddet är passerad i elområde 4, men hur mycket det ger och när det betalas ut är ännu inte bestämt. Spotpriset i södra Sverige landade på 1,57 kronor per kilowattimme i snitt för oktober, enligt Nord Pools månadssnitt. Regeringens högkostnadsskydd gäller när det genomsnittliga spotpriset under en kalendermånad överstiger 1,50 kronor per kilowattimme inom ett elområde.",
+          "Det är första gången i år som något elområde når dit. Dyrast före oktober var september, med 1,20 kronor, och januari och februari, med 1,13 kronor vardera i elområde 4.",
+          "Det avgjordes den sista veckan. Efter den 27 oktober låg elområde 4 på 1,38 kronor i snitt. Sedan kostade elen 2,44 kronor den 28 oktober, 3,32 kronor den 29 oktober, 2,79 kronor den 30 oktober och 2,72 kronor den 31 oktober i dygnssnitt. Den 29 oktober kostade enskilda kvartar 5,88 kronor. Enligt TT drev skenande gaspriser upp elpriset på kontinenten, särskilt i Tyskland, samtidigt som vinden avtog efter helgens blåsväder. Det tidigare dygnsrekordet i år i elområde 4 var strax över 3 kronor, den 14 september.",
+          "Bedömningarna gick isär in i det sista. Den 28 oktober räknade energiekonomen Claes Hemberg med 1,39 kronor för oktober och skrev att elstödet skulle missas med 11 öre. Då var bara det första av de fyra dyra dygnen känt.",
+        ],
+      },
+      {
+        h2: "Elstöd i elområde 4: hur ska det betalas ut?",
+        body: [
+          "Det är inte bestämt. Regeringens frågor och svar säger när skyddet gäller, men inte hur stor ersättningen blir eller hur den betalas ut. Energi- och näringsminister Ebba Busch (KD) sa den 22 oktober, enligt TT: ”Övergångsregeringen kan fatta beslut om en stödförordning som reglerar detaljer för utformning och utbetalning.”",
+          "Om ersättningen motsvarar den del av spotpriset som ligger över gränsen blir det små belopp: 7 öre per kilowattimme, alltså 70 kronor per 1 000 kilowattimmar, exklusive moms. Det är en räkneillustration, inte ett besked om hur stödet blir.",
+          "Gränsen räknas per elområde. I oktober passerades den bara i elområde 4, alltså södra Götaland. Elområde 3 landade på 0,82 kronor, elområde 2 på 0,37 kronor och elområde 1 på 0,30 kronor.",
+        ],
+      },
+      {
+        h2: "Får man elstöd varje månad?",
+        body: [
+          "Nej, bara de månader då snittpriset i ditt elområde överstiger 1,50 kronor per kilowattimme. Skyddet gäller under hela 2026, så även november och december kan komma i fråga.",
+          "Marknaden räknar med att elområde 4 hamnar över gränsen även då. Den 29 oktober motsvarade terminerna på börsen Euronext cirka 2,03 kronor per kilowattimme för november och 1,62 kronor för december i elområde 4, omräknat med Riksbankens eurokurs samma dag, 11,00 kronor. Terminer är marknadens förväntningar, inte ett facit, och de ändras varje handelsdag.",
+          "Bedömningarna går isär här också. Claes Hemberg räknade den 28 oktober med cirka 1,30 kronor i södra Sverige i november och december, alltså under gränsen.",
+        ],
+      },
+      {
+        h2: "Högkostnadsskydd el 2027 – försvinner skyddet vid årsskiftet?",
+        body: [
+          "Enligt regeringen gäller skyddet under hela 2026. Om riksdagen får en övergångsbudget för 2027 följer den principen att uppenbart tillfälliga satsningar som skulle upphöra vid årets utgång inte förlängs.",
+          "Det spelar roll, eftersom januari ser dyr ut. Den 29 oktober motsvarade terminen för januari 2027 cirka 1,74 kronor per kilowattimme i elområde 4. Systempriset, ett gemensamt nordiskt referenspris, handlades för februari till 1,64 kronor och för mars till 1,26 kronor.",
+          "En övergångsbudget gäller tills en ny regering har tillträtt och riksdagen har beslutat om den nya regeringens ändringsbudget. En ny regering kan alltså ändra budgeten senare.",
+        ],
+      },
+      {
+        h2: "Vad innebär en övergångsbudget?",
+        body: [
+          "En övergångsbudget är den budget en övergångsregering lämnar när ingen ny regering har tillträtt. Budgetpropositionen för 2027 ska lämnas till riksdagen senast den 12 november. Har en ny regering inte tillträtt då lämnar övergångsregeringen en övergångsbudget, enligt Finansdepartementet.",
+          "Huvudprincipen är att 2026 års anslagsnivåer gäller även 2027. Undantag görs bland annat för pris- och löneomräkning, för regelstyrda system som justeras efter ändrade volymer och för beslutade lagar och avtal. Politiskt okontroversiella lagförslag tas med om det råder samsyn om dem. Principerna är avstämda med samtliga riksdagspartier och utgår från dem som användes vid övergångsbudgeten för 2019.",
+          "Om det blir en ny regering före den 12 november avgörs bland annat den 3 november. Då prövar riksdagen klockan 13.00 talmannens förslag att Elisabeth Thand Ringqvist (C) blir statsminister för en regering med Centerpartiet, Socialdemokraterna, Kristdemokraterna, Miljöpartiet och Liberalerna.",
+        ],
+      },
+      {
+        h2: "Vad betyder det för din kalkyl?",
+        body: [
+          "Ett eventuellt stöd för oktober blir litet jämfört med räkningen. Spotpriset i elområde 4 var 1,57 kronor i oktober, mot 0,71 kronor i oktober 2025. Med 25 procent moms är det 1,08 kronor mer per kilowattimme än i fjol, före energiskatt, påslag och nätavgift. Per 1 000 kilowattimmar blir det cirka 1 080 kronor.",
+          "Räkna inte med stödet framåt. Det gäller bara månader över gränsen, beloppen blir små nära gränsen, och skyddet gäller enligt regeringen bara 2026.",
+          "Det du själv kan påverka är när du använder el. I oktober varierade dygnssnittet i elområde 4 mellan 9 öre den 25 oktober och 3,32 kronor den 29 oktober. Med ett avtal som följer spotpriset lönar det sig att flytta tvätt, elbilsladdning och uppvärmning till billigare timmar och dagar.",
+        ],
+        bullets: [
+          "Elområde 4, oktober 2026: 1,57 kr/kWh i snitt. Gränsen för högkostnadsskyddet är 1,50 kr/kWh i månadssnitt.",
+          "Elområde 3: 0,82 kr/kWh, elområde 2: 0,37 kr/kWh, elområde 1: 0,30 kr/kWh.",
+          "Terminer 29 oktober, elområde 4: november 2,03, december 1,62 och januari 2027 1,74 kr/kWh.",
+          "Utformning och utbetalning: inte bestämt. Enligt Ebba Busch kan övergångsregeringen besluta om en stödförordning.",
+          "2027: en övergångsbudget förlänger inte tillfälliga satsningar som upphör vid årsskiftet.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Blir det elstöd för oktober 2026?",
+        a: "I elområde 4 har gränsen passerats: spotpriset blev 1,57 kronor per kilowattimme i snitt, enligt Nord Pool. Högkostnadsskyddet gäller när månadssnittet i ett elområde överstiger 1,50 kronor. Hur stor ersättningen blir och när den betalas ut är inte bestämt.",
+      },
+      {
+        q: "Gäller elstödet i hela Sverige?",
+        a: "Nej. Gränsen räknas per elområde, och i oktober passerades den bara i elområde 4. Elområde 3 landade på 0,82 kronor, elområde 2 på 0,37 kronor och elområde 1 på 0,30 kronor.",
+      },
+      {
+        q: "Får man elstöd varje månad?",
+        a: "Nej, bara de månader då snittpriset i ditt elområde överstiger 1,50 kronor per kilowattimme. Skyddet gäller till och med december 2026. Terminerna pekar på över 1,50 kronor i elområde 4 även i november och december, men det är förväntningar.",
+      },
+      {
+        q: "Vad innebär en övergångsbudget?",
+        a: "Det är den budget en övergångsregering lämnar om ingen ny regering har tillträtt när budgeten ska läggas, senast den 12 november. Huvudprincipen är att 2026 års anslag gäller även 2027, och uppenbart tillfälliga satsningar som upphör vid årsskiftet förlängs inte.",
+      },
+      {
+        q: "Finns högkostnadsskyddet för el kvar 2027?",
+        a: "Enligt regeringen gäller skyddet under hela 2026, och i en övergångsbudget förlängs inte tillfälliga satsningar som upphör vid årsskiftet. En ny regering kan ändra budgeten senare i en ändringsbudget.",
+      },
+    ],
+  },
   "elpris-november-2026-terminer-prognos": {
     tldr: [
       "Novemberterminen för det nordiska systempriset steg från 108,75 till 131,46 euro per megawattimme mellan 19 och 26 oktober, 21 procent. Nästan 15 euro av uppgången kom på måndagen.",

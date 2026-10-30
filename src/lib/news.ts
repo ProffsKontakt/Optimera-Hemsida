@@ -74,6 +74,85 @@ export type NewsArticle = {
 
 export const NEWS: NewsArticle[] = [
   {
+    slug: "elstod-oktober-2026-elomrade-4-hogkostnadsskydd",
+    status: "published",
+    title:
+      "Blir det elstöd för oktober 2026? Elområde 4 landade på 1,57 kronor – över gränsen för första gången",
+    excerpt:
+      "Blir det elstöd för oktober 2026? I elområde 4 landade spotpriset på 1,57 kronor per kilowattimme i snitt, enligt Nord Pool. Det är första gången i år som ett elområde passerar gränsen 1,50 kronor för regeringens högkostnadsskydd, och fyra dyra dygn i slutet av månaden avgjorde. Här är vad som är bestämt om elstöd i elområde 4, om man får elstöd varje månad, vad en övergångsbudget innebär och varför skyddet ser ut att upphöra vid årsskiftet.",
+    category: "Stöd & avdrag",
+    publishedAt: "2026-10-30",
+    updatedAt: "2026-10-30",
+    readTimeMin: 6,
+    image: {
+      src: "/news/elstod-oktober-2026-elomrade-4-hogkostnadsskydd.jpg",
+      alt: "Stapeldiagram över spotpriset per månad i elområde 4 2026: från 0,67 till 1,20 kronor per kWh januari–september, 1,57 kronor i oktober över en streckad linje vid 1,50 kronor, och terminspris på 2,03 kronor för november, 1,62 för december och 1,74 för januari 2027, efter en markering att skyddet gäller till och med 31 december",
+      credit: "Grafik: Optimera Energi · Källa: Nord Pool och Euronext",
+      creditUrl: "https://data.nordpoolgroup.com/auction/day-ahead/prices?deliveryDate=2026-10-31&currency=SEK&aggregation=Monthly&deliveryAreas=SE1,SE2,SE3,SE4",
+    },
+    searchPhrases: [
+      "elstöd oktober 2026",
+      "elstöd elområde 4",
+      "elstöd 2026 elområde 4",
+      "får man elstöd varje månad",
+      "högkostnadsskydd el 2027",
+      "vad innebär en övergångsbudget",
+      "övergångsbudget",
+    ],
+    sources: [
+      {
+        title: "Day-ahead-priser per elområde, månads- och dygnssnitt 2025–2026",
+        publisher: "Nord Pool",
+        url: "https://data.nordpoolgroup.com/auction/day-ahead/prices?deliveryDate=2026-10-31&currency=SEK&aggregation=Monthly&deliveryAreas=SE1,SE2,SE3,SE4",
+      },
+      {
+        title: "Frågor och svar om det tillfälliga el- och gasstödet (om högkostnadsskyddet för el)",
+        publisher: "Regeringskansliet",
+        url: "https://www.regeringen.se/regeringens-politik/energi/fragor-och-svar-om-det-tillfalliga-el--och-gasstodet/",
+      },
+      {
+        title: "Principer för en övergångsbudget (27 oktober 2026)",
+        publisher: "Regeringskansliet",
+        url: "https://www.regeringen.se/pressmeddelanden/2026/10/principer-for-en-overgangsbudget/",
+      },
+      {
+        title: "Dyrare el hotar – elstöd kan bli aktuellt (TT, 22 oktober 2026)",
+        publisher: "Dagens industri",
+        url: "https://www.di.se/nyheter/dyrare-el-hotar-elstod-kan-bli-aktuellt/",
+      },
+      {
+        title: "Elpriset på årshögsta i Sydsverige (TT, 28 oktober 2026)",
+        publisher: "Svenska Dagbladet",
+        url: "https://www.svd.se/a/lKPqnL/elpriset-pa-arshogsta-i-sydsverige",
+      },
+      {
+        title: "Missar elstöd med 11 öre (28 oktober 2026)",
+        publisher: "Claes Hemberg",
+        url: "https://claeshemberg.se/missar-elstod-med-4-ore/",
+      },
+      {
+        title: "Nordic System Price Electricity Base Load Month Future: stängningskurser 29 oktober 2026",
+        publisher: "Euronext",
+        url: "https://live.euronext.com/en/product/commodities-futures/NSBM-DAMS/market-information",
+      },
+      {
+        title: "Nordic EPAD Electricity Base Load Month Future, Malmö (elområde 4): stängningskurser 29 oktober 2026",
+        publisher: "Euronext",
+        url: "https://live.euronext.com/en/product/commodities-futures/MABM-DAMS/market-information",
+      },
+      {
+        title: "Sök räntor och valutakurser: euro (EUR/SEK) 29 oktober 2026",
+        publisher: "Sveriges riksbank",
+        url: "https://www.riksbank.se/sv/statistik/rantor-och-valutakurser/sok-rantor-och-valutakurser/",
+      },
+      {
+        title: "Talmannen lägger fram Elisabeth Thand Ringqvist (C) som förslag till statsminister (29 oktober 2026)",
+        publisher: "Sveriges riksdag",
+        url: "https://www.riksdagen.se/sv/aktuellt/aktuelltnotiser/2026/okt/29/talmannen-lagger-fram-elisabeth-thand-ringqvist_cmsde7b2cc3-ca41-472b-b946-7715715b2f5fsv/",
+      },
+    ],
+  },
+  {
     slug: "elpris-november-2026-terminer-prognos",
     status: "published",
     title:
