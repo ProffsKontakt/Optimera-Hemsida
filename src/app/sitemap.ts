@@ -26,6 +26,7 @@ const LAST_MOD = {
   easyway: "2026-10-27",
   batteryComparison: "2026-10-31",
   chargerComparison: "2026-10-31",
+  technicalComparison: "2026-10-31",
   tjanster: "2026-10-31",
   // AI-search-pelarsidor. Bumpade 10-26 när återbetalning, stödtjänster
   // och batterisortimentet anpassades till kunskapsbanken.
@@ -92,6 +93,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${base}/tjanster/batterier/jamforelse`,
       lastModified: LAST_MOD.batteryComparison,
+    },
+    // Teknisk jämförelse: våra batterier mot konkurrenternas, uppbyggnad och kemi.
+    {
+      url: `${base}/tjanster/batterier/teknisk-jamforelse`,
+      lastModified: LAST_MOD.technicalComparison,
     },
     // Jämförelse av laddboxarna (Zaptec Go 2, Easee Up, Charge Amps Halo).
     {

@@ -329,6 +329,9 @@ export default function BatteryComparisonPage() {
             <Link href="/batteriskolan/lfp-nmc-och-natriumjon" className="text-indigo underline underline-offset-2">LFP eller NMC</Link>, och om
             förlusterna i{" "}
             <Link href="/batteriskolan/verkningsgrad" className="text-indigo underline underline-offset-2">verkningsgrad</Link>.
+            Hur våra batterier står sig mot Homevolt, Tesla Powerwall 3, Huawei,
+            BYD och de andra i tekniken finns i{" "}
+            <Link href="/tjanster/batterier/teknisk-jamforelse" className="text-indigo underline underline-offset-2">den tekniska jämförelsen</Link>.
           </p>
         </div>
       </Section>
@@ -404,7 +407,7 @@ export default function BatteryComparisonPage() {
           links={[
             { href: "/solcellsbatteri", label: "Solcellsbatteri – pris, storlek och lönsamhet", desc: "Allt om batteri till solceller på en sida." },
             { href: "/tjanster/batterier/easyway", label: "Varför vi ofta rekommenderar Eway", desc: "Hårdvara och styrning, var för sig." },
-            { href: "/batteriskolan", label: "Batteriskolan", desc: "Hembatteriets koncept förklarade ett i taget." },
+            { href: "/tjanster/batterier/teknisk-jamforelse", label: "Så är hembatterierna byggda", desc: "Våra fem mot Homevolt, Powerwall 3, Huawei, BYD med flera." },
             { href: "/kalkylator", label: "Kalkylatorn", desc: "Bygg sol, batteri och laddbox i 3D." },
           ]}
         />

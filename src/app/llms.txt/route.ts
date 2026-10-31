@@ -65,6 +65,7 @@ export async function GET() {
     "",
     ...VISIBLE_SERVICES.map((s) => `- [${s.name}](${BASE}/tjanster/${s.slug}): ${SERVICE_LINES[s.slug]}.`),
     `- [Jämförelse av hembatterier: Eway, SAJ HS3, Enershare, SigenStor och Fox ESS CQ7](${BASE}/tjanster/batterier/jamforelse): kapacitet, modulstorlek, växelriktare, cellkemi, cykellivslängd och mått för de fem batterier vi installerar oftast, och vem varje batteri passar för.`,
+    `- [Hembatterier 2026: så är de byggda – teknisk jämförelse](${BASE}/tjanster/batterier/teknisk-jamforelse): cellkemi (LFP eller NMC), högspänning i serie eller lågspänningsmoduler med DC/DC-optimerare, spänning, verkningsgrad, garanti och säkerhet för Eway, SAJ HS3, Enershare, SigenStor och Fox ESS CQ7 mot Homevolt, Tesla Powerwall 3, Huawei LUNA2000, BYD, Sungrow, Growatt, Pixii, SolarEdge och sonnen, med källor.`,
     `- [Bästa laddboxen 2026 – åtta laddboxar jämförda](${BASE}/tjanster/laddboxar/jamforelse): effekt, IT-nät, jordfelsskydd, MID-mätare, solladdning, OCPP, mått och garanti för Zaptec Go 2, Easee Up, Max och Core, DEFA Power, Fox ESS A022K, Charge Amps Halo och SAJ HS3:s laddmodul, med Elsäkerhetsverkets och Skatteverkets regler.`,
     "",
     "## Kunskapsbank",
