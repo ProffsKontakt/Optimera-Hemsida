@@ -24,7 +24,7 @@ const LAST_MOD = {
   guiderHub: "2026-05-24",
   press: "2026-05-24",
   easyway: "2026-10-27",
-  batteryComparison: "2026-10-29",
+  batteryComparison: "2026-10-31",
   chargerComparison: "2026-10-31",
   tjanster: "2026-10-31",
   // AI-search-pelarsidor. Bumpade 10-26 när återbetalning, stödtjänster

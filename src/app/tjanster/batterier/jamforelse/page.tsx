@@ -20,7 +20,7 @@ import { BatteryLineupLazy } from "@/components/3d/BatteryLineupLazy";
  * offerten utifrån huset.
  */
 const PATH = "/tjanster/batterier/jamforelse";
-const UPDATED = "2026-10-29";
+const UPDATED = "2026-10-31";
 const TITLE = "Bästa hembatteri 2026: Eway, SAJ HS3, Enershare, SigenStor och Fox ESS jämförda";
 const DESCRIPTION =
   "Vi jämför de fem hembatterier vi installerar – kapacitet, modulstorlek, växelriktare, cellkemi, mått och vem varje batteri passar för.";
@@ -39,7 +39,15 @@ const SOURCES = [
   { title: "Battery Core – High Voltage Stack Battery", publisher: "Enershare", url: "https://optimeraenergi.se/produktblad/enershare-battery-core.pdf" },
   { title: "SigenStor BAT 6.0/10.0 – datablad", publisher: "Sigenergy", url: "https://b2b.aprilice.com/se_sv/mpattachment/file/download/id/916/" },
   { title: "SigenStor EC (Energy Controller) – datablad", publisher: "Sigenergy", url: "https://b2b.aprilice.com/se_sv/mpattachment/file/download/id/604/" },
+  { title: "UNIV7600(HP) – installations- och användarmanual B4", publisher: "Eway Energy Technology (Wuhan)", url: "https://api.energygroup.se/wp-content/uploads/2026/02/Eway-UNIV7600HP-Installations-Anvandarmanual.pdf" },
+  { title: "BU3-5.0-TV2-PRO – batterimodul, datablad V2.1", publisher: "SAJ", url: "https://www.saj-electric.com/hubfs/EU%20Doc/HS3%20Battery%20Module%20-EN-04.pdf" },
+  { title: "HS3 – användarmanual (EU)", publisher: "SAJ", url: "https://sp.saj-electric.com/hubfs/Guides%20and%20Manuals/HS3/HS3-S/HS3-(3K-6K)-S2-(W%2cG)-(B%2cP)X_User_Manual_en_EU.pdf" },
+  { title: "Limited Warranty for HS3 residential product (EU)", publisher: "SAJ", url: "https://saj-electric.com/hubfs/crm-properties-file-values/SAJ_Limited_Warranty_for_HS3_residential_product_EU.pdf" },
+  { title: "CORE Series Battery Operating Manual V1.4", publisher: "Enershare", url: "https://api.energygroup.se/wp-content/uploads/2025/08/241214_CORE_Series_Battery_Operating_Manual_V1.4_EN.pdf" },
+  { title: "Factory Limited Warranty for SigenStor (Europa)", publisher: "Sigenergy", url: "https://portal.segen.co.uk/reseller/docs/Sigenergy%20Sigenstor.pdf" },
   { title: "CQ7 Hochvolt-Batterie – Datenblatt (EU, V1.1)", publisher: "Fox ESS", url: "https://de.fox-ess.com/Public/Uploads/uploadfile/files/20260602/DECQ7DatasheetV1.120260602.pdf" },
+  { title: "CQ Series User Manual V1.0.5", publisher: "Fox ESS", url: "https://www.fox-ess.com/Public/Uploads/uploadfile/files/20260828/ENCQ6CQ7ManualV1.0.5.pdf" },
+  { title: "CQ Batterij Garantiebeleid V3.1", publisher: "Fox ESS", url: "https://nl.fox-ess.com/Public/Uploads/uploadfile/files/20260902/NLCQBATTERYWARRANTY20260818.pdf" },
   { title: "CQ7 Inverter Compatibility List", publisher: "Fox ESS", url: "https://au.fox-ess.com/Public/Uploads/uploadfile/files/20260721/CQ7InverterCompatibilityList20260528.pdf" },
   { title: "Brandcellsindelning – PBL kunskapsbanken", publisher: "Boverket", url: "https://www.boverket.se/sv/PBL-kunskapsbanken/regler-om-byggande/brandskydd/spridning-inom-byggnad/brandcellsindelning/" },
 ];
@@ -64,6 +72,14 @@ const FAQ = [
   {
     q: "Hur stort batteri behöver jag?",
     a: "Vår tumregel är årsförbrukningen i kWh delad med 200–275, ungefär så många dygn per år som elen är dyr och batteriet gör full nytta. En villa som använder 15 000 kWh per år landar då på cirka 55–75 kWh. Andra bedömare varnar för att överdimensionera, så vi loggar din timförbrukning innan vi föreslår storlek.",
+  },
+  {
+    q: "Vilken garanti har batterierna?",
+    a: "Alla fem har 10 års garanti från tillverkaren, men villkoren skiljer sig. Fox ESS och Sigenergy garanterar minst 70 % av kapaciteten eller en viss genomströmning i kWh, SAJ garanterar 60 % eller 3,06 MWh per kWh, och Eway och Enershare anger 10 år utan att publicera kapacitetsvillkor i de dokument vi hittat. SAJ kortar garantin till 5,5 år om batteriet inte är uppkopplat, och Sigenergy till 5 år om systemet är offline mer än ett år. Exakta villkor står i offerten.",
+  },
+  {
+    q: "Vad är skillnaden mellan högspänningsbatteri och batteri med optimerare?",
+    a: "Eway, Enershare och Fox ESS kopplar modulerna i serie så att stacken ger flera hundra volt direkt till växelriktaren. SAJ HS3 och SigenStor använder lågspänningsmoduler som var och en har en DC/DC-omvandlare som lyfter spänningen, och modulerna parallellkopplas. Serielösningen har färre omvandlingssteg, optimerarna gör att moduler kan blandas och styras var för sig.",
   },
   {
     q: "Vilken cellkemi har batterierna?",
@@ -235,13 +251,95 @@ export default function BatteryComparisonPage() {
         />
       </Section>
 
+      <Section
+        eyebrow="Så är de byggda"
+        title={<>Högspänning i serie – eller lågspänning med optimerare.</>}
+        intro="Alla fem har LFP-celler, men de är kopplade på två olika sätt. Eway, Enershare och Fox ESS kopplar modulerna i serie till en hög likspänning som växelriktaren använder direkt. SAJ och SigenStor bygger på lågspänningsmoduler som var och en har en DC/DC-omvandlare (optimerare) som lyfter spänningen; modulerna parallellkopplas och kan blandas i ålder och storlek. Uppgifterna kommer från tillverkarnas manualer och garantivillkor."
+      >
+        <ComparisonTable
+          columns={["Batteri", "Modul", "Stack", "DC/DC-omvandlare", "Verkningsgrad (batteri)", "Garanti"]}
+          rows={[
+            {
+              label: "Eway (Easyway)",
+              cells: [
+                "24 celler i serie, 76,8 V, 7,68 kWh",
+                "2–8 moduler i serie: 153,6–614,4 V nominellt, styrbox 120–750 V",
+                "Nej – äkta högspänning i serie",
+                "Anges inte",
+                "10 år enligt manualen. ≥ 8 000 cykler (0,3C, 25 °C, 30–90 % laddning, till 70 %)",
+              ],
+            },
+            {
+              label: "SAJ HS3 (BU3-5.0)",
+              cells: [
+                "16 prismatiska celler i serie (≈ 51 V), 5,0 kWh varav 4,8 användbart",
+                "Modulerna parallellkopplas; optimeraren ger 380–500 V (450 V nominellt)",
+                "Ja – en optimerare i varje modul",
+                "Anges inte (växelriktaren max 98,0 %)",
+                "10 år, 60 % av nominell energi eller 3,06 MWh per kWh. Utan internet bara 5,5 år",
+              ],
+            },
+            {
+              label: "Enershare Energy Core",
+              cells: [
+                "64 V, 3,2 kWh",
+                "3–8 moduler i serie: 192–512 V nominellt, BMS 120–600 V",
+                "Nej – tillverkaren anger \"No DC/DC\"",
+                "≥ 96 %",
+                "10 år enligt databladet",
+              ],
+            },
+            {
+              label: "Sigenergy SigenStor (BAT 10.0)",
+              cells: [
+                "Lågspänningsmodul med 314 Ah-celler, 9 kWh; garantivillkorens testspänningar ligger på 22,5–32,85 V",
+                "Modulerna parallellkopplas; optimeraren ger 300–600 V (enfas) eller 600–900 V (trefas)",
+                "Ja – \"battery optimizer inside\" i varje modul",
+                "Anges inte (växelriktaren max 98,0–98,4 %)",
+                "10 år, ≥ 70 % eller 26,68 MWh genomströmning. 5 år om systemet är offline mer än ett år",
+              ],
+            },
+            {
+              label: "Fox ESS CQ7",
+              cells: [
+                "18 prismatiska celler i serie, 57,6 V, 7,02 kWh",
+                "2–14 moduler i serie: 115–806 V nominellt (104–920 V)",
+                "Nej – äkta högspänning i serie",
+                "> 95 % (25 °C, 0,3C)",
+                "10 år, ≥ 70 % eller 26,9 MWh per modul. Kräver registrering. ≥ 6 000 cykler till 70 %",
+              ],
+            },
+          ]}
+          caption="Uppbyggnad av fem hembatterier: celler per modul, stackspänning, DC/DC-omvandlare, verkningsgrad och tillverkarens garanti."
+          footnote="Enligt tillverkarnas manualer, datablad och garantivillkor, kontrollerat 31 oktober 2026. Där tillverkaren inte anger batteriets egen verkningsgrad står det så – siffran för växelriktaren säger inget om förlusterna i batteriet."
+        />
+        <div className="mt-6 max-w-3xl space-y-3 text-[14.5px] leading-relaxed text-ink/70">
+          <p>
+            <strong>Vad skillnaden betyder.</strong> Varje DC/DC-omvandling är ett
+            steg till där energi går förlorad som värme, både vid laddning och
+            urladdning. Enershare marknadsför sin serielösning just med
+            &quot;No DC/DC, high efficiency&quot;, och Fox ESS anger över 95 %
+            verkningsgrad för batteriet. SAJ och Sigenergy anger ingen
+            verkningsgrad för själva batteriet, så där går det inte att jämföra
+            med siffror. Fördelen med optimerarna är att moduler kan blandas i
+            ålder och storlek och styras var för sig.
+          </p>
+          <p>
+            Mer om cellkemin i{" "}
+            <Link href="/batteriskolan/lfp-nmc-och-natriumjon" className="text-indigo underline underline-offset-2">LFP eller NMC</Link>, och om
+            förlusterna i{" "}
+            <Link href="/batteriskolan/verkningsgrad" className="text-indigo underline underline-offset-2">verkningsgrad</Link>.
+          </p>
+        </div>
+      </Section>
+
       <Section eyebrow="Vilket passar dig?" title={<>Fem batterier, fem olika styrkor.</>}>
         <ul className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {[
             {
               t: "Eway",
               k: "Mycket kapacitet, fri styrning",
-              b: "Välj Eway om du vill ha mycket kWh per modul och vill kunna välja växelriktare och styrsystem själv – Solis, GoodWe, Growatt och Solinteg fungerar enligt tillverkaren. Moduler på 7,68 kWh gör att även stora batterier ryms i en stapel, upp till 61,44 kWh, och modulerna har inbyggt brandsläckningssystem.",
+              b: "Välj Eway om du vill ha mycket kWh per modul och vill kunna välja växelriktare och styrsystem själv – Solis, GoodWe, Growatt och Solinteg fungerar enligt tillverkaren. Moduler på 7,68 kWh gör att även stora batterier ryms i en stapel, upp till 61,44 kWh, och produktbladet anger inbyggt brandsläckningssystem (aerosol).",
               href: "/tjanster/batterier/easyway",
               link: "Därför rekommenderar vi ofta Eway",
             },

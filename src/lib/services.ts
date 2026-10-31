@@ -268,7 +268,7 @@ export const SERVICES: Service[] = [
         step: "02",
         title: "Val av box",
         body:
-          "Zaptec Go 2, Easee Up eller Charge Amps Halo – vi förklarar skillnaderna i stället för att sälja en.",
+          "Zaptec Go 2, Easee, DEFA Power, Fox ESS eller Charge Amps Halo – vi förklarar skillnaderna i stället för att sälja en.",
       },
       {
         step: "03",
@@ -297,7 +297,7 @@ export const SERVICES: Service[] = [
       },
       {
         q: "Vilken laddbox ska jag välja?",
-        a: "Zaptec Go 2 har MID-certifierad energimätare och 4G, Easee Up har jordfelsbrytaren inbyggd och laddar trefas även på IT-nät, och Charge Amps Halo har fast kabel. Vi har jämfört dem på sidan Zaptec Go 2 eller Easee Up.",
+        a: "Zaptec Go 2, Easee Max och DEFA Power har MID-godkänd energimätare, Easee Up och Max har jordfelsbrytaren inbyggd, DEFA Power och Charge Amps Halo har fast kabel, och Fox ESS A022K och SAJ:s laddmodul hör ihop med respektive batterisystem. Vi har jämfört åtta laddboxar på en egen sida.",
       },
       {
         q: "Kan jag dela laddbox med grannen?",

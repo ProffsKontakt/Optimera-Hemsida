@@ -285,9 +285,9 @@ export default function ServicePage({
               Laddboxar vi installerar
             </span>
             <span className="text-[14px] text-ink/70">
-              Zaptec Go 2, Easee Up och Charge Amps Halo.{" "}
+              Zaptec Go 2, Easee Up, Max och Core, DEFA Power, Fox ESS A022K, Charge Amps Halo och SAJ:s laddmodul.{" "}
               <Link href="/tjanster/laddboxar/jamforelse" className="text-indigo underline underline-offset-2">
-                Zaptec Go 2 eller Easee Up? Jämför laddboxarna
+                Jämför åtta laddboxar
               </Link>
             </span>
           </div>
