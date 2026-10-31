@@ -584,6 +584,7 @@ export default function TechnicalBatteryComparisonPage() {
         <RelatedPages
           links={[
             { href: "/tjanster/batterier/jamforelse", label: "Jämför våra fem batterier", desc: "Kapacitet, moduler, mått och vem varje batteri passar för." },
+            { href: "/guider/sigenergy-sigenstor-granskning", label: "Kungen utan krona? Sigenergy SigenStor granskat", desc: "Optimerare, AI-löften, låst system och pris – mot ett öppet system." },
             { href: "/batteriskolan/lfp-nmc-och-natriumjon", label: "LFP eller NMC", desc: "Batterikemin förklarad." },
             { href: "/batteriskolan/verkningsgrad", label: "Verkningsgrad", desc: "Var förlusterna uppstår." },
             { href: "/batteriskolan/vaxelriktare-hybrid-ac-dc", label: "Hybridväxelriktare, AC eller DC", desc: "Så kopplas batteriet till huset." },

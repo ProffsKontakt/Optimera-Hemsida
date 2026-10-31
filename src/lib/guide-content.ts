@@ -34,6 +34,116 @@ export type GuideContent = {
 };
 
 export const GUIDE_CONTENT: Record<string, GuideContent> = {
+  "sigenergy-sigenstor-granskning": {
+    answer: "Sigenergy SigenStor är ett välbyggt allt-i-ett som går snabbt att installera, men hyllningarna vilar på Sigenergys egna påståenden. Batteriet är lågspänningsmoduler med en DC/DC-optimerare i varje modul, Sigenergy publicerar ingen verkningsgrad för batteriet, AI-besparingarna kommer från bolagets egna fallstudier, och extern styrning kräver att installatören låser upp Modbus. Vår recension landar i att ett öppet system med högspänningsbatteri i serie, hybridväxelriktare och fristående spotprisstyrning ger färre omvandlingssteg och fri styrning.",
+    keyFacts: [
+      { label: "Uppbyggnad", value: "Lågspänningsmoduler med inbyggd optimerare; 300–600 V (enfas) eller 600–900 V (trefas) till Energy Controller" },
+      { label: "Verkningsgrad batteri", value: "Anges inte av Sigenergy. Växelriktaren: max 98,1–98,4 %, europeisk 96,1–98,0 %" },
+      { label: "AI-besparing enligt Sigenergy", value: "22 % (bolagets CTO), upp till 44,56 % vissa dagar och över 20 % på längre sikt (bolagets egen fallstudie). Ingen oberoende mätning" },
+      { label: "Garanti", value: "10 år, minst 70 % eller en genomströmning i kWh. 5 år om systemet är offline mer än ett år" },
+      { label: "Återkallelse", value: "Australien/Nya Zeeland, november 2025: enfasiga Energy Controller 8/10/12 kW med snabbkopplade AC-kontakter" },
+      { label: "Pris i Sverige (installatörers listpriser)", value: "Från 46 500–49 900 kr för 9 kWh inkl. installation efter grönt avdrag; 16 kWh för 67 000 kr efter avdrag (2025)" },
+    ],
+    sections: [
+      {
+        h2: "Varför pratar alla om SigenStor?",
+        body: [
+          "Sigenergy marknadsför SigenStor som ett 5-i-1-system: solcellsväxelriktare, likströmsladdare för elbil, batteriomvandlare, batterimoduler och energistyrning i en stack. Sonepar har exklusiv försäljningsrätt i Sverige sedan 2025, Sigenergy är medlem i Svensk Solenergi, och installatörer gillar att stacken kräver färre kopplingar – en elektriker på Moveco säger till Elinstallatören att installationen går snabbare av just det skälet.",
+          "Det är verkliga fördelar. Men i marknadsföringen har de vuxit till att SigenStor skulle vara det bästa batteriet som finns. Den här granskningen går igenom vad det påståendet vilar på, med Sigenergys egna dokument och oberoende källor. Där vi gör en egen bedömning säger vi det.",
+        ],
+      },
+      {
+        h2: "Hur är SigenStor-batteriet byggt?",
+        body: [
+          "SigenStors batterimoduler är lågspänningspaket. Sigenergy beskriver dem som \"low voltage\" och skriver \"battery optimizer inside\": varje modul har en DC/DC-omvandlare som lyfter spänningen till 300–600 volt på enfas eller 600–900 volt på trefas innan elen når Energy Controller. Garantivillkorens testspänningar för modulerna ligger på 15–33 volt. Fördelen är att moduler kan blandas i ålder och storlek. Nackdelen är ett omvandlingssteg till i varje modul, både vid laddning och urladdning.",
+          "Hur mycket det kostar i energi säger Sigenergy inte. Databladen anger växelriktarens verkningsgrad, max 98,1–98,4 procent och europeisk 96,1–98,0 procent, men ingen verkningsgrad för batteriet eller systemet. HTW Berlin, som mäter hembatterier varje år, fann i sin test 2025 ett system med 87,9 procents batteriverkningsgrad mot snittet 95,7, och förklarar det bland annat med DC/DC-omvandlare inbyggda i batteriet. Sigenergy finns inte med namngivet i HTW:s tester 2025 eller 2026, så vi vet inte var SigenStor hamnar.",
+        ],
+        bullets: [
+          "Celler: LFP, 280–314 Ah beroende på modul.",
+          "10 000 cykler enligt databladet – med fotnoten att siffran kommer från celltillverkaren och gäller till 60 procents hälsa.",
+          "100 procents urladdningsdjup för modulen, 97 procent för systemet.",
+          "Energy Controller är enligt databladet kompatibel med SigenStor BAT-moduler; inget annat batteri anges.",
+        ],
+      },
+      {
+        h2: "Vad vilar AI-löftet på?",
+        body: [
+          "Sigenergys starkaste säljargument är den inbyggda AI-styrningen. De siffror som cirkulerar kommer från bolaget självt. Sigenergys teknikchef sade till pv magazine 2024 att AI-läget i brittiska jämförelser sparade 22 procent av elförbrukningen, utan att ange jämförelseperiod eller utgångsläge. En fallstudie skriven av Sigenergy och publicerad som branschannons hos PV Tech beskriver ett brittiskt hus med 10 kW solceller och 19,3 kWh batteri där AI-läget gav \"upp till 44,56 procent extra besparing vissa dagar\" och \"över 20 procent\" på längre sikt.",
+          "Vi har inte hittat någon oberoende mätning av vad Sigenergys AI ger jämfört med vanlig spotprisstyrning. Det betyder inte att den inte fungerar, men det betyder att den som väljer SigenStor för AI:n gör det på tillverkarens ord.",
+        ],
+      },
+      {
+        h2: "Hur låst är systemet?",
+        body: [
+          "SigenStor styrs av Sigenergys egen EMS genom appen mySigen. Vill du styra batteriet med något annat – ett svenskt styrsystem som optimerar mot Nord Pool, eller ditt eget smarta hem – finns Modbus TCP, men det måste aktiveras av installatören i mySigen. Utan det är Sigenergys EMS den enda som bestämmer; openHAB-integrationen beskrivs som enbart övervakning av det skälet, och Home Assistant-integrationen kräver att installatören slagit på Modbus och att systemet sätts i läget Remote EMS.",
+          "Batteriet går bara ihop med Sigenergys egna omvandlare, och omvandlaren bara med Sigenergys batteri. Du köper alltså inte ett batteri utan ett ekosystem, och framtida utbyggnad, byte av växelriktare och val av styrning sker på Sigenergys villkor. OCPP finns bara för Sigenergys elbilsladdare.",
+        ],
+      },
+      {
+        h2: "Vad gäller för garanti, återkallelse och vinterdrift?",
+        body: [
+          "Garantin är 10 år med minst 70 procent kvar av kapaciteten eller en viss genomströmning, till exempel 26,68 MWh för en modul på 9 kWh. Är systemet offline mer än ett år kortas garantin till 5 år – batteriet måste alltså vara uppkopplat mot Sigenergy för full garanti.",
+          "I november 2025 återkallade Sigenergy frivilligt enfasiga Energy Controllers på 8, 10 och 12 kW med snabbkopplade AC-kontakter i Australien och Nya Zeeland. Enligt den australiska konsumentmyndigheten ACCC kunde kontakterna överhettas och skadas med brandrisk; incidenter hade inträffat men inga skador på egendom eller personer rapporterats. Åtgärden var byte till skruvanslutning, två års extra garanti och en programvara som tillfälligt sänker effekten vid full last. Sigenergy pekade på att enheterna inte installerats enligt anvisningarna. Återkallelsen gäller cirka 100 enheter enligt Clean Energy Regulator, inte batterimodulerna och inte de trefasenheter som installeras i Sverige. Vi tar upp den för att den säger något om hur snabbkopplingar som gör installationen snabb också ställer krav på utförandet.",
+          "En svensk ägare i Norrland berättar för Elinstallatören att SigenStors uppvärmning drar minst 5 kWh per dygn när batteriet står i ett ouppvärmt förråd på vintern – och att egenanvändningen av solel samtidigt ökat till 85 procent. Uppvärmningen behövs för att LFP-celler inte ska laddas i minusgrader, men den energin betalar du.",
+        ],
+      },
+      {
+        h2: "Vad kostar SigenStor i Sverige?",
+        body: [
+          "Svenska installatörer anger listpriser från 46 500 kr (Järfälla Energi) respektive 49 900 kr (Gosol) för det minsta systemet på 9 kWh, inklusive installation och efter grönt avdrag. Järfälla Energi skriver att de flesta villor i Stockholm landar på 18 kWh. Elinstallatören beskriver ett system på 16 kWh installerat i juni 2025 för 67 000 kr efter grönt avdrag. Priserna är installatörernas egna uppgifter vid de datum vi läste dem och kan ha ändrats.",
+          "För ett batteri som ska göra nytta i en villa med elvärme är 9 kWh litet. Vår tumregel är årsförbrukningen i kWh delad med 200–275, och vi loggar förbrukningen innan vi föreslår storlek. Jämför därför alltid pris per användbar kilowattimme och vad som ingår, inte frånpriset.",
+        ],
+      },
+      {
+        h2: "Hur ser det öppna alternativet ut?",
+        body: [
+          "Det vi oftast installerar i stället är ett öppet system i tre delar. Batteriet är Eway UNIV7600: 24 LFP-celler i serie per modul på 7,68 kWh, 76,8 volt per modul och 153,6–614,4 volt i stacken med 2–8 moduler, utan omvandlare i batteriet, 10 års garanti och minst 8 000 cykler enligt produktbladet. Växelriktaren är en hybridväxelriktare från Solis eller Solinteg. Styrningen kan vara tillverkarens egen, vår Energy IQ, eller en fristående tjänst som Keep AI.",
+          "Solintegs trefasiga hybridväxelriktare MHT 4–12 kW anger max 98,2 procent och europeisk 97,4 procent i verkningsgrad, batterispänning 135–750 volt, omkoppling till reservkraft under 10 millisekunder och tomgångsförbrukning under 15 watt. Batteriströmmen är högst 25 ampere, så effekten mot batteriet följer stackens spänning: räknat ur databladen ger två Eway-moduler cirka 3,8 kW, fyra cirka 7,7 kW och åtta moduler växelriktarens fulla 10–12 kW. Vill du ha hög batterieffekt med få moduler är Solis S6 ett alternativ – Easyway UNIV finns på Solis kompatibilitetslista.",
+          "Keep AI är en svensk molntjänst från El Plus Plus AB som planerar batteriets laddning mot spotpriset, inklusive försäljning när priset är högt, prioriterar egen solel och kapar effekttoppar. Den kräver tim- eller kvartspris, kostar 79 kr i månaden utan bindningstid och stödjer bland annat Solis, Solinteg, Fox ESS, Huawei och Sungrow – alltså batteriet via växelriktaren, oavsett batterimärke. Keep AI kör inte stödtjänster, och bolagets publicerade besparingar är utvalda kundexempel som enligt bolaget självt inte stämts av mot fakturor.",
+          "Också det öppna systemet har svagheter som ska sägas. Eway publicerar inte heller någon verkningsgrad för batteriet. Solintegs egen lista över godkända batterier (version 2.03, juli 2025) tar inte upp Eway, medan Eways produktblad anger Solinteg som kompatibel – vi säkerställer kombinationen med båda tillverkarna i varje projekt. Och ett system i tre delar har fler komponenter och en installation till än ett allt-i-ett.",
+        ],
+        bullets: [
+          "Färre omvandlingssteg: serien ger växelriktarens spänning direkt, ingen optimerare per modul.",
+          "Dokumenterad verkningsgrad för växelriktaren och fritt val av styrning – byt EMS utan att byta batteri.",
+          "Batteri, växelriktare och styrning kan bytas eller byggas ut var för sig.",
+          "Garanti 10 år på batteriet från Eway; Solinteg anges med 10 år av återförsäljare.",
+        ],
+      },
+      {
+        h2: "Vad är vår bedömning?",
+        body: [
+          "SigenStor är inte dåligt. Det är ett genomtänkt allt-i-ett som går snabbt att sätta upp, ser bra ut på väggen och sköter sig självt för den som inte vill röra några inställningar. Men kronan sitter löst. Verkningsgraden för batteriet är inte publicerad, AI-besparingen är tillverkarens egen siffra, styrningen är låst om inte installatören låser upp den, garantin kräver uppkoppling, och arkitekturen med en optimerare i varje modul är den som HTW Berlin pekar ut som orsak till de sämsta uppmätta verkningsgraderna i klassen.",
+          "Vill du ha högst verkningsgrad och frihet att välja styrning rekommenderar vi ett högspänningsbatteri i serie med en hybridväxelriktare och en spotprisstyrning du själv väljer. Vill du ha ett allt-i-ett på liten yta och kunna blanda moduler är SigenStor ett bra val – och då säger vi också vad som inte är dokumenterat. Vi säljer båda.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Är Sigenergy SigenStor ett bra batteri?",
+        a: "Ja, som allt-i-ett med snabb installation och inbyggd styrning. Men flera av de starkaste påståendena saknar oberoende belägg: Sigenergy publicerar ingen verkningsgrad för batteriet, AI-besparingarna kommer från bolagets egna fallstudier, och batteriet bygger på lågspänningsmoduler med en optimerare i varje modul, en arkitektur som HTW Berlin kopplar till lägre verkningsgrad.",
+      },
+      {
+        q: "Vilka nackdelar har Sigenergy SigenStor?",
+        a: "Ingen publicerad verkningsgrad för batteriet, en DC/DC-optimerare i varje modul, låst ekosystem där Energy Controller bara fungerar med Sigenergys moduler och extern styrning kräver att installatören aktiverar Modbus, garanti som kortas till 5 år om systemet är offline mer än ett år, en återkallelse av enfasiga styrenheter i Australien 2025, och uppvärmning som enligt en svensk ägare drar minst 5 kWh per dygn i ett kallt förråd.",
+      },
+      {
+        q: "Hur mycket sparar Sigenergys AI?",
+        a: "Enligt Sigenergy 22 procent av elförbrukningen i brittiska jämförelser, och i en egen fallstudie upp till 44,56 procent vissa dagar och över 20 procent på längre sikt. Vi har inte hittat någon oberoende mätning, och Sigenergy finns inte namngivet i HTW Berlins tester 2025 eller 2026.",
+      },
+      {
+        q: "Kan SigenStor styras av ett annat system, till exempel mot spotpriset?",
+        a: "Ja, via Modbus TCP i läget Remote EMS, men det måste installatören aktivera i appen mySigen. Utan det är Sigenergys egen EMS den enda som styr batteriet. Batteriet kan inte kopplas till en annan tillverkares växelriktare.",
+      },
+      {
+        q: "Vad kostar Sigenergy SigenStor i Sverige?",
+        a: "Installatörers listpriser hösten 2026: från 46 500 kr (Järfälla Energi) och 49 900 kr (Gosol) för 9 kWh inklusive installation efter grönt avdrag. Elinstallatören beskriver 16 kWh installerat 2025 för 67 000 kr efter avdrag. Jämför pris per användbar kilowattimme, och räkna på vilken storlek ditt hus behöver.",
+      },
+      {
+        q: "Vad är skillnaden mot Eway med hybridväxelriktare och Keep AI?",
+        a: "Eway kopplar modulerna i serie till 153,6–614,4 volt utan omvandlare i batteriet, växelriktaren (Solis eller Solinteg) har publicerad verkningsgrad, och styrningen är fri: Keep AI kostar 79 kr i månaden utan bindningstid och fungerar via växelriktaren oavsett batterimärke. Nackdelarna är fler komponenter, att Eway inte heller publicerar batteriets verkningsgrad, och att Solintegs lista över godkända batterier inte tar upp Eway trots att Eway anger Solinteg som kompatibel.",
+      },
+    ],
+  },
   "installera-laddbox-hemma": {
     answer: "En laddbox kostar cirka 5 000–12 000 kr plus installation, enligt Energi- och klimatrådgivningen (prisnivå 2024). Installationen kostar mer om kabeln från elcentralen blir lång, om elcentralen måste byggas ut eller om huvudsäkringen behöver höjas. Arbetet ska göras av ett elinstallationsföretag som är registrerat hos Elsäkerhetsverket. Grönt avdrag sänker 2026 priset med 50 % av arbete och material, alltså 48,5 % av totalpriset vid fast pris.",
     keyFacts: [
