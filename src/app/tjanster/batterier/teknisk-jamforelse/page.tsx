@@ -72,6 +72,7 @@ const SOURCES = [
   { title: "SMILE-G3-BAT-10.1P – datasheet", publisher: "Alpha ESS", url: "https://solarproof.com.au/datasheets/battery_datasheet_Datasheet_EN_SMILE-G3-BAT-10.1P_V01.08022023.pdf" },
   { title: "Force H1/H2 – datasheet", publisher: "Pylontech", url: "https://solarics.de/cdn/shop/files/Force-H1_Force-H2_DS_EN.pdf" },
   // Säkerhet och återkallelser
+  { title: "Polarium Energy Solutions AB hanterar brister i batterisystem (26EV5995, 2026-08-31)", publisher: "Elsäkerhetsverket", url: "https://elsakerhetsverket.se/lag-och-ratt/forsaljningsforbud-och-andra-atgarder/forsaljningsforbud/2026/2026-08-31-polarium-energy-solutions-ab-hanterar-brister-i-batterisystem" },
   { title: "Sigenergy Energy Controllers – voluntary recall notice", publisher: "Clean Energy Council (Australien)", url: "https://cleanenergycouncil.org.au/getmedia/5184a1e4-1492-4303-85ef-8be3034ce1dc/sigenergy-energy-controllers-voluntary-recall-cec-approved-models.pdf" },
   { title: "Sigenergy points to installation practices for product recall (2025-11-24)", publisher: "pv magazine Australia", url: "https://www.pv-magazine-australia.com/2025/11/24/sigenergy-points-to-installation-practices-for-product-recall/" },
   // Kemi och verkningsgrad
@@ -101,7 +102,7 @@ const FAQ = [
   },
   {
     q: "Är Homevolt säkert, och har det brunnit?",
-    a: "Vi hittade inga rapporter från MSB, Elsäkerhetsverket, räddningstjänster eller svensk och norsk press som namnger Homevolt i en brand, och ingen återkallelse. Homevolt beskrivs som NMC i press, och Tibber rekommenderar placering utomhus; inomhus bara under 20 kWh i ett ventilerat utrymme som inte är bostadsrum. Tibbers \"batteriblad\" är namnet på utbyggnadsmodulen, inte en uppgift om cellformat.",
+    a: "Enligt Elsäkerhetsverket (ärende 26EV5995, augusti 2026) har termisk rusning inträffat i tre Homevolt- och Polarium-batterier ur en cellbatch tillverkad i april 2025. Tillverkaren Polarium har satt batterierna i batchen i viloläge tills de kontrollerats, och uppger att inget tyder på att andra batterier är berörda; det är ingen återkallelse eller försäljningsförbud. Homevolt beskrivs som NMC i press, och Tibber rekommenderar placering utomhus; inomhus bara under 20 kWh i ett ventilerat utrymme som inte är bostadsrum. Tibbers \"batteriblad\" är namnet på utbyggnadsmodulen, inte en uppgift om cellformat.",
   },
   {
     q: "Varför skiljer sig verkningsgraden mellan batterierna?",
@@ -315,7 +316,7 @@ export default function TechnicalBatteryComparisonPage() {
                 "76,8 V per modul; 2–8 moduler ger 153,6–614,4 V nominellt",
                 "Anges inte",
                 "10 år. ≥ 8 000 cykler (0,3C, 25 °C, 30–90 %, till 70 %). Kapacitetsvillkor publiceras inte",
-                "IP65 enligt produktbladet; manualen anger inomhus",
+                "IP65. Ingen inbyggd uppvärmning, därför inomhus enligt manualen. Aerosolsläckning i modulerna enligt produktbladet",
               ],
             },
             {
@@ -364,7 +365,7 @@ export default function TechnicalBatteryComparisonPage() {
             },
           ]}
           caption="Teknisk jämförelse av Eway, SAJ HS3, Enershare, SigenStor och Fox ESS CQ7: cellkemi, uppbyggnad, spänning, verkningsgrad, garanti och placering."
-          footnote="Enligt tillverkarnas datablad, manualer och garantivillkor, kontrollerat 31 oktober 2026. Eway: produktbladet anger IP65 och inbyggd aerosolsläckning, medan manualen anger inomhusplacering och inte nämner släckning – vi har bett Eway om besked."
+          footnote="Enligt tillverkarnas datablad, manualer och garantivillkor, kontrollerat 31 oktober 2026."
         />
       </Section>
 
@@ -380,7 +381,7 @@ export default function TechnicalBatteryComparisonPage() {
                 "Anges inte",
                 "> 97 % \"utfallseffektivitet\" enligt Tibber",
                 "10 år, 6 000 cykler. Kvarvarande kapacitet anges inte av Tibber",
-                "IP65. Tibber rekommenderar utomhus; inomhus bara under 20 kWh i ventilerat utrymme som inte är bostadsrum",
+                "IP65. Tibber rekommenderar utomhus; inomhus bara under 20 kWh i ventilerat utrymme som inte är bostadsrum. Elsäkerhetsverket: tre termiska rusningar 2026 i en cellbatch från april 2025, batterierna satta i viloläge tills de kontrollerats",
               ],
             },
             {
@@ -515,10 +516,17 @@ export default function TechnicalBatteryComparisonPage() {
             omfattas inte enligt listan från Clean Energy Council.
           </p>
           <p>
-            <strong>Homevolt.</strong> Vi hittade inga rapporter från MSB,
-            Elsäkerhetsverket, räddningstjänster eller svensk och norsk press
-            som namnger Homevolt i en brand, och ingen återkallelse. De
-            batteribränder som rapporterats i svensk press anger inte märke.
+            <strong>Homevolt och Polarium.</strong> Homevolt tillverkas av
+            Polarium Energy Solutions AB, som också säljer samma system under
+            eget namn. Enligt Elsäkerhetsverkets notis från den 31 augusti 2026
+            (ärende 26EV5995) har termisk rusning inträffat i tre batterier vid
+            tre tillfällen. Det gäller Homevolt Battery System och Polarium
+            Battery System, modellerna HES-06-00-06-310 (6 kWh) och
+            HES-13-00-06-310 (13 kWh), tillverkade 7–11 april 2025 med
+            cellbatch Z493-A04. Tillverkaren har på eget initiativ satt alla
+            batterier i batchen i viloläge tills en tekniker kontrollerat dem
+            på plats, och uppger att inget tyder på att andra batterier är
+            berörda. Det är ingen återkallelse och inget försäljningsförbud.
           </p>
           <p>
             <strong>Placering.</strong> Boverkets regler om brandcellsindelning
@@ -526,7 +534,7 @@ export default function TechnicalBatteryComparisonPage() {
             utgångspunkt stå i en egen brandcell. Tibber går längre för
             Homevolt och rekommenderar utomhusplacering. Fox ESS CQ7 har
             aerosolsläckare i varje modul, SAJ HS3 ett brandskyddssystem i
-            batteriet, och Eways produktblad anger aerosolsläckning. Mer i{" "}
+            batteriet, och Eway har aerosolsläckning i modulerna. Mer i{" "}
             <Link href="/batteriskolan/brandsakerhet-och-placering" className="text-indigo underline underline-offset-2">brandsäkerhet och placering</Link>.
           </p>
         </div>
