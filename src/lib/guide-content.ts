@@ -34,8 +34,579 @@ export type GuideContent = {
 };
 
 export const GUIDE_CONTENT: Record<string, GuideContent> = {
+  "franluftsvarmepump": {
+    answer: "En frånluftsvärmepump kostar cirka 80 000–140 000 kr med installation för en normalstor villa, enligt Energi- och klimatrådgivningen (2023). Den tar vara på värmen i inomhusluften som ventileras ut och värmer varmvattnet och husets vattenburna värmesystem. Den kräver mekanisk frånluftsventilation, ger bara så mycket värme som ventilationsluften räcker till och har lägre årsvärmefaktor än bergvärme: SCOP 2,5–4,0 mot 4,0–5,5.",
+    keyFacts: [
+      {
+        label: "Pris med installation (2023)",
+        value: "Cirka 80 000–140 000 kr för en normalstor villa, enligt Energi- och klimatrådgivningen",
+      },
+      {
+        label: "Årsvärmefaktor (SCOP)",
+        value: "2,5–4,0 för frånluftsvärmepump, 4,0–5,5 för bergvärme (Energimyndighetens värmepumpsguide 2025)",
+      },
+      {
+        label: "Krav på huset",
+        value: "Mekanisk frånluftsventilation, och vattenburet värmesystem om pumpen ska värma rummen",
+      },
+      {
+        label: "Rotavdrag vid fast pris",
+        value: "30 % av totalpriset räknas som arbete, så avdraget blir cirka 9 % av totalpriset",
+      },
+      {
+        label: "Villaeffekten 2026",
+        value: "30 % av materialet, högst 60 000 kr – gäller styrbar frånluftsvärmepump i hus med värdeår före 1990",
+      },
+    ],
+    sections: [
+      {
+        h2: "Hur fungerar en frånluftsvärmepump?",
+        body: [
+          "En frånluftsvärmepump tar vara på värmen i den uppvärmda inomhusluften innan luften lämnar huset. Uteluft kommer in genom uteluftsdon, och luften sugs ut genom frånluftsdon i till exempel kök, badrum och tvättrum. Frånluftsdonen är kopplade till kanaler som leder luften till värmepumpen.",
+          "Värmen används till varmvattnet och till husets vattenburna värmesystem. En vanlig frånluftsvärmepump kyler frånluften från cirka +20 °C till +5 °C, och nyare modeller kan sänka den ända till −15 °C för att utvinna mer energi. En fördel är att inomhusluften har jämn temperatur hela året. Pumpen har ofta en inbyggd elpanna som tar över när värmepumpen inte räcker till.",
+        ],
+      },
+      {
+        h2: "Vad kostar en frånluftsvärmepump, och vad ger avdrag och bidrag?",
+        body: [
+          "En frånluftsvärmepump för en normalstor villa kostar cirka 80 000–140 000 kr med installation, enligt Energi- och klimatrådgivningen (2023). Som jämförelse är en vanlig kostnad för berg-, jord- eller sjövärme till en villa omkring 120 000–250 000 kr (2023).",
+          "Installationen ger rotavdrag på 30 % av arbetskostnaden. Vid ett fast pris för hela installationen räknar Skatteverket 30 % av totalpriset som arbetskostnad för en frånluftsvärmepump, så avdraget blir cirka 9 % av totalpriset. Exempel: en installation för 110 000 kr, mitt i prisspannet, ger cirka 9 900 kr i rotavdrag.",
+          "Installation av en styrbar frånluftsvärmepump är också en av åtgärderna i Villaeffekten, Boverkets bidrag för energieffektivisering i småhus: högst 30 % av materialkostnaden och högst 60 000 kr per hus. Huset ska ha värdeår före 1990 och inte vara anslutet till fjärrvärme, och du ska äga och bo i det. Eftersom bidraget bara gäller materialet kan du få rotavdrag för arbetet. Länsstyrelsen handlägger ansökan och kan svara på om just ditt fall uppfyller villkoren.",
+        ],
+      },
+      {
+        h2: "Vilka är nackdelarna med en frånluftsvärmepump?",
+        body: [
+          "Den största nackdelen är att frånluftsvärmepumpen inte ger mer värme än ventilationsflödet kan leverera. Inomhusluften räcker inte alltid till hela behovet av värme och varmvatten, så någon form av tillskott brukar behövas.",
+        ],
+        bullets: [
+          "Tillskott behövs: en vanlig lösning är att frånluftsvärmepumpen främst värmer varmvattnet medan en luft-luftvärmepump hjälper till att värma huset.",
+          "Lägre verkningsgrad än bergvärme: årsvärmefaktorn (SCOP) är 2,5–4,0, mot 4,0–5,5 för bergvärme. SCOP 3 betyder att pumpen ger 3 kWh värme för varje kWh el över året.",
+          "Spetsvärme med el: värmepumpar dimensioneras sällan för hela värmebehovet, och i villor är det vanligt att spetsa med el de kallaste dagarna.",
+          "Kräver rätt hus: mekanisk frånluftsventilation och ett relativt lågt energibehov.",
+        ],
+      },
+      {
+        h2: "Frånluftsvärmepump eller bergvärme – vilken passar?",
+        body: [
+          "Bergvärme passar ofta större hus med många boende och har högst årsvärmefaktor, men kostar mer och kräver ett borrhål. En frånluftsvärmepump passar hus som redan har mekanisk frånluftsventilation och ett relativt lågt energibehov, och kan kompletteras med en luft-luftvärmepump. Energimyndigheten pekar på att frånluftsvärmepumpen kan användas till varmvattnet, eftersom det behovet är ungefär lika stort hela året.",
+          "Hur borrningen går till och vad den kostar går vi igenom i guiden om att borra för bergvärme.",
+        ],
+      },
+      {
+        h2: "Frånluftsvärmepump eller FTX – vad är skillnaden?",
+        body: [
+          "Båda tar vara på värmen i frånluften, men på olika sätt. FTX är mekanisk till- och frånluftsventilation med värmeåtervinning: en värmeväxlare låter den varma frånluften förvärma den kalla tilluften. En frånluftsvärmepump använder i stället värmen till varmvatten och radiatorer.",
+          "Enligt Boverket ger FTX bättre luftomsättning och långsiktig besparing, men för att FTX ska fungera bra behöver spaltventiler i fönster och väggar tätas. Med frånluftsventilation och frånluftsvärmepump behövs tvärtom spaltventiler eller väggventiler för tilluften. Installation av både FTX och styrbara frånluftsvärmepumpar finns med bland åtgärderna i Villaeffekten.",
+        ],
+      },
+      {
+        h2: "Vad ska man tänka på när man byter frånluftsvärmepump?",
+        body: [
+          "Ett byte går inte alltid att göra rakt av. Nyare frånluftsvärmepumpar kyler frånluften mer, och då behöver de gamla frånluftskanalerna ofta tilläggsisoleras för att undvika kondens och fuktproblem.",
+        ],
+        bullets: [
+          "Köldmedium: äldre värmepumpar har ofta R410A, R407C eller R134a, som gradvis ersätts av bland annat R32 när reglerna för köldmedier skärps. Välj ett köldmedium som håller över tid.",
+          "Energimärkning: frånluftsvärmepumpar har en skala från A+++ till D för rumsvärme och från A+ till F för varmvatten, så du kan jämföra modeller.",
+          "Offerter: Energi- och klimatrådgivningen har en checklista för offerter på värmepumpar, och den kommunala energi- och klimatrådgivningen är kostnadsfri.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Behöver man tillskottsvärme till en frånluftsvärmepump?",
+        a: "Oftast ja. En frånluftsvärmepump ger inte mer värme än ventilationsflödet kan leverera, så någon form av tillskott brukar behövas. Pumpen har ofta en inbyggd elpanna, och en vanlig lösning är att låta frånluftsvärmepumpen främst värma varmvattnet medan en luft-luftvärmepump hjälper till att värma huset.",
+      },
+      {
+        q: "Får man rotavdrag för frånluftsvärmepump?",
+        a: "Ja, rotavdraget är 30 % av arbetskostnaden. Vid fast pris för hela installationen räknar Skatteverket 30 % av totalpriset som arbete för en frånluftsvärmepump, så avdraget blir cirka 9 % av totalpriset. Du kan dessutom få Villaeffekten för materialet om pumpen är styrbar och huset uppfyller villkoren.",
+      },
+      {
+        q: "Får man Villaeffekten för en frånluftsvärmepump?",
+        a: "Ja, installation av en styrbar frånluftsvärmepump finns med bland åtgärderna, alltså en pump som kan styras automatiskt efter till exempel temperatur eller elpris. Bidraget är högst 30 % av materialkostnaden och högst 60 000 kr per hus. Huset ska vara ett en- eller tvåbostadshus med värdeår före 1990 som inte är anslutet till fjärrvärme, och du ska äga och bo i det.",
+      },
+      {
+        q: "Kan man byta frånluftsvärmepump till luft-vattenvärmepump eller bergvärme?",
+        a: "Ja. Både en luft-vattenvärmepump och en bergvärmepump kan värma ett vattenburet värmesystem och varmvattnet, och installation av en styrbar luft-vatten- eller bergvärmepump finns också med bland åtgärderna i Villaeffekten. Tänk på ventilationen: med frånluftsventilation behövs fortfarande spaltventiler eller väggventiler för tilluften, och väljer du FTX ska de i stället tätas.",
+      },
+    ],
+  },
+  "borra-bergvarme": {
+    answer: "Ett borrhål för bergvärme är vanligen 100–300 meter djupt, och medianen i SGU:s brunnsarkiv var cirka 175 meter (2016). Djupet beror på husets värmebehov, berget och grundvattennivån. Borrningen ingår oftast i totalpriset för bergvärme, omkring 120 000–250 000 kr för en villa enligt Energi- och klimatrådgivningen (2023). Innan du borrar ska du alltid anmäla bergvärmen till kommunen, och vissa kommuner kräver tillstånd.",
+    keyFacts: [
+      {
+        label: "Borrdjup för bergvärme",
+        value: "Vanligen 100–300 m, median cirka 175 m i SGU:s brunnsarkiv (SGU 2016)",
+      },
+      {
+        label: "Värme ur borrhålet",
+        value: "Cirka 145 kWh per meter borrhål och år, enligt Energi- och klimatrådgivningen",
+      },
+      {
+        label: "Bergvärme med borrning, villa (2023)",
+        value: "Omkring 120 000–250 000 kr installerat, enligt Energi- och klimatrådgivningen",
+      },
+      {
+        label: "Avstånd enligt SGU",
+        value: "Minst 20 m mellan energibrunnar och minst 10 m innanför tomtgränsen",
+      },
+      {
+        label: "Före borrning",
+        value: "Anmälan till kommunen, i vissa områden tillstånd – annars miljösanktionsavgift på 1 000 kr",
+      },
+      {
+        label: "Rotavdrag 2026 vid fast pris",
+        value: "30 % av arbetet, som räknas som 35 % av totalpriset – alltså 10,5 % av totalen",
+      },
+    ],
+    sections: [
+      {
+        h2: "Hur djupt borrar man för bergvärme?",
+        body: [
+          "Ett borrhål för bergvärme, en så kallad energibrunn, är vanligen 100–300 meter djupt. Det skriver Sveriges geologiska undersökning (SGU) i en översikt från 2016, där medianen bland energibrunnarna i SGU:s brunnsarkiv var cirka 175 meter. SGU noterar också en tendens mot ännu djupare hål.",
+          "Hur djupt just ditt hål behöver vara avgör installatören utifrån husets värmebehov, berget och grundvattennivån. Det är delen under grundvattenytan, det aktiva borrhålsdjupet, som ger värme. Ligger grundvattnet djupt kan det därför krävas ett djupare hål för samma värme, enligt Energimyndighetens värmepumpsguide.",
+          "Ett grovt räkneexempel: Energi- och klimatrådgivningen räknar med att ett borrhål ger ungefär 145 kWh värme per meter och år. Ett hus som behöver 20 000 kWh värme och varmvatten om året, med en värmepump som ger 3 kWh värme per kWh el, hämtar cirka 13 300 kWh ur berget. Det motsvarar drygt 90 meter aktivt borrhål, plus den del av hålet som ligger ovanför grundvattenytan. Exemplet ersätter inte installatörens dimensionering.",
+          "Ligger andra energibrunnar nära kan hålet behöva borras djupare eller luta bort från dem, så att brunnarna inte konkurrerar om värmen.",
+        ],
+      },
+      {
+        h2: "Vad kostar det att borra för bergvärme?",
+        body: [
+          "Borrningen ingår oftast i ett totalpris. Energi- och klimatrådgivningen anger att berg-, jord- eller sjövärme för en villa vanligen kostar omkring 120 000–250 000 kr installerat (prisnivå 2023). Det finns ingen officiell prisuppgift per borrad meter, så be om offerter där borrdjup och foderrör står för sig.",
+          "Det här påverkar vad borrningen kostar:",
+        ],
+        bullets: [
+          "Djupet. Fler meter borrhål kostar mer, och djupet styrs av värmebehovet, berget och grundvattennivån.",
+          "Jorddjupet. Genom jordlagret ner till berget sätts ett foderrör. I höglänt terräng och i moränområden är jorddjupet oftast mindre än 10 meter enligt SGU, medan det i dalgångar och låglänta områden kan vara längre ner till berget.",
+          "Diametern. De flesta energibrunnar borras med 115 mm. SGU skriver att borrkostnaden vanligen stiger med större diameter, medan värmeöverföringen bara påverkas marginellt.",
+          "Antalet hål. Ett stort värmebehov kan kräva flera hål, och de ska helst ligga minst 20 meter från varandra.",
+          "Borrkax och vatten. Slammet från borrningen ska tas om hand, till exempel i en container där partiklarna sjunker till botten, innan vattnet släpps ut.",
+        ],
+      },
+      {
+        h2: "Vilka avdrag och bidrag finns för bergvärme 2026?",
+        body: [
+          "Rotavdraget 2026 är 30 % av arbetskostnaden. Vid fast pris räknar Skatteverket 35 % av totalpriset som arbete, både för borrning och för installation av en bergvärmepump. Avdraget blir då 10,5 % av totalen. För en bergvärmeinstallation till fast pris på 180 000 kr blir det 180 000 × 0,35 × 0,30 = 18 900 kr.",
+          "Villaeffekten kan dessutom ge 30 % av materialkostnaden, högst 60 000 kr per hus, för en styrbar bergvärmepump. Huset ska ha värdeår före 1990 och får inte vara anslutet till fjärrvärme. Bidraget gäller bara material, till exempel själva värmepumpen, inte arbete.",
+        ],
+      },
+      {
+        h2: "Vad är foderrör vid bergvärme?",
+        body: [
+          "Foderrör, eller infodringsrör, är röret som borraren driver ner genom jordlagret till fast berg i början av borrningen. Enligt SGU ska foderröret gå minst 2 meter ner i fast berg och gjutas fast, så att ytligt grundvatten, jord och sten inte tränger in i borrhålet.",
+          "Ju längre det är ner till berget, desto längre foderrör behövs. Kontrollera därför hur många meter foderrör som ingår i priset. Det är en av punkterna i Energi- och klimatrådgivningens checklista för offerter, tillsammans med aktivt borrhålsdjup och avståndet mellan borrhålen.",
+          "Hur långt det är till berget på din tomt får du en uppfattning om i SGU:s kartvisare Jorddjup och i uppgifterna om grannarnas brunnar i kartvisaren Brunnar.",
+        ],
+      },
+      {
+        h2: "Var får man borra – och hur långt från tomtgränsen?",
+        body: [
+          "Det finns inga nationella regler om avståndet mellan energibrunnar, men SGU rekommenderar minst 20 meter mellan två brunnar och att de borras minst 10 meter innanför tomtgränsen. Då hamnar ditt hål alltid minst 20 meter från grannens. Står brunnarna för tätt kan de påverka varandra så att värmepumpen ger mindre än väntat.",
+          "Energi- och klimatrådgivningen rekommenderar också minst 4 meter till huset. Har du eller grannen egen dricksvattenbrunn eller eget avlopp gäller längre avstånd. Härnösands kommun anger till exempel minst 20 meter till en grävd brunn och 30 meter till en borrad brunn eller en egen avloppsanläggning.",
+          "Kommunen kan också vilja höra grannarna, eftersom ditt borrhål kan påverka deras möjligheter att borra. Solna stad ger till exempel alla angränsande fastigheter och alla fastigheter inom 20 meter från borrhålet möjlighet att yttra sig.",
+          "I SGU:s kartvisare Brunnar ser du var grannarnas vatten- och energibrunnar ligger och hur djupa de är, med uppgifter om jorddjup och foderrörslängd. Uppgifterna kommer från brunnsborrarna, som enligt lag ska skicka in sina brunnsprotokoll till SGU – för energibrunnar sedan 1985.",
+        ],
+      },
+      {
+        h2: "Vilken anmälan eller vilket tillstånd krävs innan du borrar?",
+        body: [
+          "Du måste alltid göra en anmälan till kommunen innan du borrar för bergvärme. Det följer av 17 § förordningen om miljöfarlig verksamhet och hälsoskydd. Kommunen får också kräva tillstånd i hela kommunen eller i vissa områden, om det behövs för att skydda hälsa eller miljö. I till exempel vattenskyddsområden kan bergvärme vara helt förbjuden, enligt Energimyndighetens värmepumpsguide.",
+          "Gör anmälan i god tid. Solna stad vill till exempel ha den senast sex veckor innan installationen, och arbetet får inte börja innan anmälan är gjord eller tillståndet har vunnit laga kraft. Ett tillstånd gäller i fem år men förfaller om arbetet inte har påbörjats inom två år.",
+          "Borrar du utan anmälan ska kommunen ta ut en miljösanktionsavgift på 1 000 kr, och 3 000 kr om kommunen kräver tillstånd och du saknar det. Bygglov krävs enligt Solna stad inte för själva bergvärmepumpen, men Energimyndighetens värmepumpsguide påpekar att en del kommuner kräver bygglov eller tillstånd för att borra. Fråga därför din kommun.",
+          "Kontrollera också att det inte går ledningar eller tunnlar under tomten där du vill borra, till exempel via Ledningskollen.",
+        ],
+      },
+      {
+        h2: "Hur går det till att installera bergvärme?",
+        body: [
+          "Så brukar det gå till att installera bergvärme, från offert till drift:",
+        ],
+        bullets: [
+          "Offerter. Ta in minst tre offerter på samma underlag: husets energianvändning per år, nuvarande uppvärmning, varmvattenbehov och huvudsäkringens storlek. Jämför aktivt borrhålsdjup, foderrörslängd och borrhålsavstånd.",
+          "Anmälan. Du eller installatören anmäler bergvärmen till kommunen med en karta över borrhålets läge. Borra inte innan anmälan är gjord, och i tillståndsområden inte förrän tillståndet har vunnit laga kraft.",
+          "Borrning. Anlita en certifierad brunnsborrare – certifieringen sköts av RISE. Energibrunnen ska utformas enligt SGU:s norm Normbrunn-16.",
+          "Kollektorslang och värmepump. En kollektorslang med köldbärarvätska, oftast etanol och vatten, sänks ned i hålet och kopplas till värmepumpen. Elarbetet ska göras av ett registrerat elinstallationsföretag.",
+          "Protokoll. Brunnsborraren skickar brunnsprotokollet till SGU, och en del kommuner vill också ha en kopia.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Hur djupt ska man borra för bergvärme?",
+        a: "Vanligen 100–300 meter enligt SGU, och medianen i brunnsarkivet var cirka 175 meter 2016. Installatören dimensionerar hålet efter husets värmebehov, berget och grundvattennivån. Ett borrhål ger ungefär 145 kWh värme per meter och år, enligt Energi- och klimatrådgivningen.",
+      },
+      {
+        q: "Kan man se på en karta var grannarna har borrat för bergvärme?",
+        a: "Ja. I SGU:s kartvisare Brunnar finns läge, djup, jorddjup och foderrörslängd för många vatten- och energibrunnar. Energibrunnar som borrats efter 1985 finns där med stor sannolikhet, eftersom brunnsborrarna sedan dess ska lämna uppgifterna till SGU.",
+      },
+      {
+        q: "Vad händer om man borrar för bergvärme utan anmälan?",
+        a: "Då ska kommunen besluta om en miljösanktionsavgift: 1 000 kr om anläggningen bara krävde anmälan och 3 000 kr om kommunen kräver tillstånd. Anmäl därför alltid innan borrningen börjar.",
+      },
+      {
+        q: "Hur nära tomtgränsen får man borra för bergvärme?",
+        a: "Det finns ingen nationell regel om avståndet, men SGU rekommenderar minst 10 meter till tomtgränsen och 20 meter till andra energibrunnar. Borrar du närmare kan ditt hål påverka grannens möjlighet att borra, och kommunen kan vilja höra grannen innan den tar ställning.",
+      },
+    ],
+  },
+  "jordvarme-eller-bergvarme": {
+    answer: "Jordvärme är i regel 20 000–30 000 kr billigare att installera än bergvärme, enligt Energi- och klimatrådgivningen, men kräver en stor tomt där kollektorslangen grävs ner på cirka 1 meters djup. Bergvärme hämtar värmen ur ett 100–300 meter djupt borrhål, tar lite plats och påverkas inte av utetemperaturen. Båda kräver vattenburen värme och en anmälan till kommunen, och båda kan ge rotavdrag och bidrag från Villaeffekten 2026.",
+    keyFacts: [
+      {
+        label: "Prisskillnad (2023)",
+        value: "Jordvärme är i regel 20 000–30 000 kr billigare än bergvärme, enligt Energi- och klimatrådgivningen",
+      },
+      {
+        label: "Totalpris för en villa (2023)",
+        value: "Omkring 120 000–250 000 kr för berg-, jord- eller sjövärme",
+      },
+      {
+        label: "Djup",
+        value: "Jordvärmeslangen cirka 1 m, bergvärmens borrhål vanligen 100–300 m (SGU)",
+      },
+      {
+        label: "Anmälan",
+        value: "Krävs till kommunen för både jord- och bergvärme",
+      },
+      {
+        label: "Villaeffekten 2026",
+        value: "30 % av materialet, högst 60 000 kr – gäller styrbar jord- och bergvärmepump",
+      },
+      {
+        label: "Frikyla",
+        value: "Borrhålet håller cirka 10 °C på sommaren och kan kyla huset, enligt Boverket",
+      },
+    ],
+    sections: [
+      {
+        h2: "Vad är skillnaden mellan jordvärme och bergvärme?",
+        body: [
+          "Skillnaden är var värmen hämtas. Bergvärme hämtar värme ur ett borrhål i berget, vanligen 100–300 meter djupt. Jordvärme, även kallad ytjordvärme, hämtar värme ur jorden via en kollektorslang som grävs ner vågrätt, enligt SGU oftast på cirka 1 meters djup.",
+          "I båda fallen cirkulerar en köldbärarvätska i slangen och tar upp värmen, som värmepumpen sedan höjer till en temperatur som räcker för radiatorer och varmvatten. Båda kräver att huset har vattenburen värme, alltså radiatorer eller golvvärme.",
+          "Värmen i jorden fylls på av solen under sommaren. Bergvärmen påverkas däremot inte av utetemperaturen, enligt Energimyndighetens värmepumpsguide.",
+        ],
+      },
+      {
+        h2: "Vad kostar jordvärme jämfört med bergvärme?",
+        body: [
+          "Jordvärme är i regel 20 000–30 000 kr billigare än bergvärme, enligt Energi- och klimatrådgivningen. För en villa kostar berg-, jord- eller sjövärme vanligen omkring 120 000–250 000 kr installerat (prisnivå 2023).",
+          "Grävningen och återställningen av gräsmattan ska stå med i offerten för jordvärme, liksom slangens längd, enligt Energi- och klimatrådgivningens checklista för offerter. För bergvärme gäller i stället borrdjup och foderrör.",
+          "Rotavdraget 2026 är 30 % av arbetskostnaden, och grävning för värmeförsörjning räknas som markarbete som ger rotavdrag. Vid fast pris för en bergvärmeinstallation räknar Skatteverket 35 % av totalpriset som arbete, så avdraget blir 10,5 % av totalen.",
+          "Villaeffekten ger 30 % av materialkostnaden, högst 60 000 kr per hus, för en styrbar jord- eller bergvärmepump. Huset ska ha värdeår före 1990, inte vara anslutet till fjärrvärme, och du ska äga och bo i det. Bidraget betalas bara ut om det blir minst 10 000 kr, alltså vid materialkostnader på minst 33 334 kr.",
+        ],
+      },
+      {
+        h2: "Hur djupt ska slangen ligga för jordvärme?",
+        body: [
+          "Slangen för jordvärme ska ligga på frostfritt djup, alltså så djupt att marken inte fryser. Hur djupt det är varierar med var i landet du bor, enligt Energi- och klimatrådgivningen. SGU anger att slangen oftast grävs ner på cirka 1 meters djup och att den ibland läggs i flera lager ned till 5–10 meter.",
+          "Ligger slangen för grunt kan den frysa, spricka och gå sönder. Hur lång slangen behöver vara beror på husets värmebehov och på jorden, så den ska dimensioneras av installatören och stå i offerten.",
+          "Bergvärmens borrhål är i stället vanligen 100–300 meter djupt. Hur djupt det blir och vad borrningen kostar går vi igenom i guiden om att borra för bergvärme.",
+        ],
+      },
+      {
+        h2: "Vilka nackdelar har jordvärme?",
+        body: [
+          "Jordvärme är billigare men har några nackdelar jämfört med bergvärme:",
+        ],
+        bullets: [
+          "Den kräver en stor yta. SGU skriver att ytjordvärme används när en större markyta kan utnyttjas eller där det är långt ner till berget.",
+          "Växtligheten kan påverkas. Marken ovanför slangen blir kallare, och det kan märkas i trädgården, enligt SGU.",
+          "Marken runt slangen kan frysa på vintern. Det frigör extra värme när vattnet blir is, men verkningsgraden kan samtidigt bli sämre när temperaturen är låg.",
+          "Trädgården grävs upp. Slangen grävs ner över en stor yta, och gräsmattan behöver återställas.",
+          "Kylan är begränsad. SGU skriver att jorden är för varm på sommaren för att ytjordvärme ska kunna användas för kylning, men Boverket ser det annorlunda (se nedan).",
+        ],
+      },
+      {
+        h2: "Kan man få kyla från bergvärme eller jordvärme?",
+        body: [
+          "Ja, med bergvärme. Borrhålet håller cirka 10 °C på sommaren, och den svalkan kan användas som så kallad frikyla, enligt Boverket. Frikyla med bergvärme kyler hela eller delar av huset med el bara till cirkulationspumpar och fläktkonvektorer, så det behövs ingen el för att producera kylan.",
+          "För jordvärme går källorna isär. Boverket skriver att frikyla är mest effektivt med bergvärme men att det också går med mark- och jordvärme. SGU skriver att marken är för varm på sommaren för att ytjordvärme ska kunna användas för kylning. Är kyla viktigt för dig talar det alltså för bergvärme.",
+        ],
+      },
+      {
+        h2: "När passar jordvärme bättre än bergvärme?",
+        body: [
+          "Jordvärme passar när tomten är stor, marken går att gräva i och det är långt ner till berget. SGU skriver att ytjordvärme används i stället för bergvärme i områden med stora jorddjup eller när en större markyta kan utnyttjas. Ett borrhål behöver nämligen foderrör genom hela jordlagret ner till berget.",
+          "Bergvärme passar när tomten är liten eller trädgården inte ska grävas upp, när du vill ha frikyla och när värmebehovet är stort. Energi- och klimatrådgivningen beskriver bergvärme som ett lönsamt alternativ för hus som behöver 15 000–25 000 kWh värme och varmvatten om året eller mer. Borrhålet ska ligga minst 20 meter från andra energibrunnar och 10 meter från tomtgränsen, enligt SGU.",
+          "Har du en sjö intill tomten finns också sjövärme, där slangen läggs på sjöbotten. Det kräver tillstånd från kommunen.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Är jordvärme billigare än bergvärme?",
+        a: "Ja, att installera. Energi- och klimatrådgivningen anger att jordvärme i regel är 20 000–30 000 kr billigare än bergvärme. Driftkostnaden beror på husets värmebehov och elpriset, och SGU påpekar att verkningsgraden kan bli sämre när marken runt jordvärmeslangen fryser.",
+      },
+      {
+        q: "Behöver man anmäla jordvärme till kommunen?",
+        a: "Ja. Enligt förordningen om miljöfarlig verksamhet och hälsoskydd krävs en anmälan till kommunen innan du inrättar en värmepump som tar värme ur mark, ytvatten eller grundvatten. Det gäller jord-, berg- och sjövärme. Kommunen kan kräva tillstånd i vissa områden.",
+      },
+      {
+        q: "Kan man ha jordvärme utan vattenburen värme?",
+        a: "Nej. Berg-, jord- och sjövärmepumpar används i hus med vattenburet värmesystem, alltså radiatorer eller golvvärme. Saknar huset det behöver ett vattenburet system installeras först, och Villaeffekten kan ge bidrag även för det.",
+      },
+      {
+        q: "Ger jordvärme bidrag från Villaeffekten?",
+        a: "Ja, en styrbar jordvärmepump ingår i Villaeffekten 2026: 30 % av materialkostnaden, högst 60 000 kr per hus. Huset ska ha värdeår före 1990 och får inte vara anslutet till fjärrvärme, och produkten ska ligga i någon av de två högsta energiklasser som används i betydande grad.",
+      },
+    ],
+  },
+  "luft-luftvarmepump": {
+    answer: "En luft-luftvärmepump kostar vanligtvis 18 000–30 000 kr inklusive installation, enligt Energi- och klimatrådgivningen (2025). Rotavdraget 2026 motsvarar 9 % av totalpriset vid fast pris. Energimyndigheten anger att pumpen ger 3,5–5 kWh värme per kWh el över ett år, så den värmen kräver cirka 70–80 % mindre el än direktverkande el. Hur mycket du sparar beror på hur stor del av huset den värmer. Den värmer inte tappvarmvattnet och ger varken Villaeffekten eller grönt avdrag.",
+    keyFacts: [
+      {
+        label: "Pris inklusive installation (2025)",
+        value: "Vanligtvis 18 000–30 000 kr, enligt Energi- och klimatrådgivningen",
+      },
+      {
+        label: "Årsvärmefaktor, SCOP (2025)",
+        value: "3,5–5,0 kWh värme per kWh el, enligt Energimyndighetens värmepumpsguide",
+      },
+      {
+        label: "Rotavdrag 2026 vid fast pris",
+        value: "30 % av arbetet, som räknas som 30 % av totalpriset – alltså 9 % av totalen",
+      },
+      {
+        label: "Villaeffekten och grönt avdrag 2026",
+        value: "Gäller inte luft-luftvärmepumpar",
+      },
+      {
+        label: "Vem får installera",
+        value: "Certifierad personal för köldmediet och ett registrerat elinstallationsföretag för elen",
+      },
+      {
+        label: "Fritidshus med luft-luftvärmepump (2023)",
+        value: "192 000 av Sveriges 544 000 fritidshus",
+      },
+    ],
+    sections: [
+      {
+        h2: "Vad är en luft-luftvärmepump, och vad värmer den inte?",
+        body: [
+          "En luft-luftvärmepump hämtar värme ur uteluften och blåser ut den som varm luft i huset, men den värmer varken tappvarmvattnet, alltså vattnet i kranar och dusch, eller vattenburna radiatorer. Den består av en utedel och en innedel. Mellan dem cirkulerar ett köldmedium, en vätska med mycket låg kokpunkt som tar upp värme ur luften även när det är kallt ute.",
+          "Innedelen är ett fläktaggregat som ofta sitter ovanför en dörr eller nära taket. Eftersom den värmer med luft fungerar den bäst när luften kan spridas fritt, till exempel i ett hus med öppen planlösning.",
+          "Luftvärmepump är ett vidare begrepp. Boverket räknar både luft-luft och luft-vatten som luftvärmepumpar, eftersom båda hämtar värmen ur uteluften. En luft-vattenvärmepump värmer i stället radiatorerna och varmvattnet, och passar bäst om huset redan har vattenburen värme. Den jämförs med bergvärme i guiden Luft-vatten eller bergvärme.",
+          "Hur effektiv pumpen är mäts med årsvärmefaktorn, SCOP: hur många kWh värme den ger per kWh el i snitt över ett år. Energimyndighetens värmepumpsguide från 2025 anger SCOP 3,5–5,0 för luft-luft, men värdet varierar mycket med teknisk lösning och var huset ligger.",
+        ],
+      },
+      {
+        h2: "Vad kostar en luft-luftvärmepump, och vad ger rotavdraget?",
+        body: [
+          "En luft-luftvärmepump kostar vanligtvis 18 000–30 000 kr inklusive installation, och rotavdraget 2026 motsvarar 9 % av totalpriset vid fast pris. Prisuppgiften kommer från Energi- och klimatrådgivningen, som är ett samarbete mellan Energimyndigheten och kommunerna. Sidan uppdaterades senast i december 2025 och anger inte om priset gäller före eller efter rotavdrag. Där finns också en checklista för dig som ska ta in offerter på värmepumpar, och kommunens energi- och klimatrådgivare hjälper dig kostnadsfritt.",
+          "Rotavdraget är 30 % av arbetskostnaden. Vid totalentreprenad till fast pris, där arbete, material och resor ingår i ett överenskommet pris, får arbetet räknas fram med en schablon. För luftvärmepumpar, alltså luft-luft, luft-vatten och frånluft, är Skatteverkets schablon 30 % av totalpriset. Rotavdraget blir då 9 % av totalen.",
+          "Skatteverkets exempel: en luftvärmepump för 20 000 kr till fast pris ger 6 000 kr i arbetskostnad och 1 800 kr i rotavdrag. Är totalpriset före avdrag 18 000–30 000 kr blir rotavdraget på samma sätt 1 620–2 700 kr.",
+          "I en bostadsrätt ger bara den del av arbetet som görs inne i bostaden rotavdrag, och schablonen får inte användas. Är huset yngre än fem år ger bara arbete som återställer VVS-utrustningen till ursprungligt skick rotavdrag.",
+          "Det här gäller inte för luft-luftvärmepumpar:",
+        ],
+        bullets: [
+          "Grönt avdrag, skattereduktionen för grön teknik. Det gäller bara solceller, batterier som lagrar egen el och laddningspunkter för elbilar, inte värmepumpar.",
+          "Villaeffekten, Boverkets bidrag för energieffektivisering i småhus. Bidrag lämnas för vissa styrbara värmepumpar, till exempel luft-vatten och bergvärme, men inte för luft-luftvärmepumpar.",
+          "Rotavdrag för service och kontroll av pumpen. Felsökning ger däremot rotavdrag.",
+        ],
+      },
+      {
+        h2: "Hur mycket sparar en luft-luftvärmepump?",
+        body: [
+          "För den värme som pumpen levererar går det åt cirka 70–80 % mindre el än med direktverkande el, om årsvärmefaktorn ligger på 3,5–5,0. Med direktverkande el, alltså elelement, blir 1 kWh el 1 kWh värme, medan pumpen ger 3,5–5 kWh. Hur mycket du sparar per år beror på hur stor del av husets värme pumpen står för.",
+          "Boverket skriver att en luftvärmepump normalt är lönsam, men att besparingen beror på hur ditt nuvarande värmesystem fungerar, hur välisolerat huset är och var i landet det ligger. Räkna också med att rum långt från innedelen blir 1–2 °C kallare. Där kan elementen behövas som komplement.",
+          "Räkneexempel med antaganden: pumpen står för 7 000 kWh av husets värme under ett år, och årsvärmefaktorn blir 3,5. Då drar pumpen 2 000 kWh el, i stället för 7 000 kWh med elementen. Du köper alltså 5 000 kWh mindre el. Anta att du betalar 2 kr per kWh för elhandel, elnät, energiskatt och moms tillsammans. Det är ett antaget exempelpris, och besparingen blir då 10 000 kr per år. Täcker pumpen mindre av värmen, eller blir årsvärmefaktorn lägre, blir besparingen mindre.",
+          "Kyler du huset med pumpen på sommaren äter kylan upp en del av besparingen, enligt både Energimyndigheten och Boverket. Boverket råder dig att notera husets energianvändning före installationen och följa upp den under första året. Då ser du vad pumpen faktiskt ger, och om något behöver åtgärdas.",
+        ],
+      },
+      {
+        h2: "När passar en luft-luftvärmepump, och när räcker den inte?",
+        body: [
+          "En luft-luftvärmepump passar bäst i ett hus utan vattenburen värme, till exempel med direktverkande el, och med öppen planlösning, men den fungerar som ett komplement till elementen och värmer inte tappvarmvattnet. Enligt Energimyndigheten är den ett av få enkla alternativ för att sänka elkostnaden för uppvärmning i hus med direktverkande el. Bergvärme och luft-vatten förutsätter att huset har radiatorer med rör.",
+          "I fritidshus är luft-luft den vanligaste värmepumpen. Enligt Energimyndighetens undersökning för 2023 fanns den i 192 000 av Sveriges 544 000 fritidshus, och 84 000 fritidshus installerade en mellan 2018 och 2023. Den vanligaste uppvärmningen i fritidshus var luft-luftvärmepump tillsammans med direktverkande el och/eller biobränsle, i 27 % av husen.",
+          "De kallaste dagarna kan huset behöva värme från en annan källa, och luftburen värme kan ha svårt att nå ut till alla delar av huset. Boverket råder dig att låta elementen sitta kvar. Har huset vattenburen värme, eller vill du även värma varmvattnet, är luft-vatten eller bergvärme mer aktuellt. De kan dessutom ge Villaeffekten.",
+          "Så får du ut mest av pumpen:",
+        ],
+        bullets: [
+          "Placera innedelen centralt, så att värmen sprids i huset.",
+          "Håll innerdörrarna öppna.",
+          "Ställ elementens termostater 2 °C lägre än pumpens, så att elementen bara går in när pumpen inte räcker.",
+          "Vill du nå fler rum kan utedelen kopplas till två eller flera innedelar, så kallad multisplit.",
+          "Stäng av pumpens autoläge när du eldar i braskaminen, annars kan den börja kyla.",
+        ],
+      },
+      {
+        h2: "Hur klarar en luft-luftvärmepump vintern?",
+        body: [
+          "En luft-luftvärmepump ger värme även när det är kallt ute, men verkningsgraden och värmeeffekten sjunker när utetemperaturen faller. Köldmediet kan ta upp värme även ur mycket kall uteluft, till exempel −25 °C, enligt Elsäkerhetsverket, som samtidigt påpekar att luft-luftpumpens prestanda påverkas i hög grad av utetemperaturen.",
+          "När det är riktigt kallt finns det begränsat med värme att hämta. Därför fungerar pumpen inte lika effektivt i norra Sverige med långa, kalla vintrar, enligt Energimyndigheten. Energi- och klimatrådgivningen skriver att uteluftvärmepumpar passar särskilt bra i södra och mellersta Sverige.",
+          "Tänk på det här inför vintern:",
+        ],
+        bullets: [
+          "Jämför effektiviteten vid uppvärmning i nordiskt klimat på energimärkningen. Det motsvarar klimatet i Helsingfors, enligt Energimyndigheten.",
+          "Se till att pumpen är gjord för uppvärmning i kallt klimat. I andra delar av världen används samma typ av maskin främst för kylning och är då optimerad för det.",
+          "Välj gärna en pump med varvtalsstyrd kompressor, det vill säga en kompressor som kan gå i olika hastigheter, och hellre en större modell än en för liten. Det ger effektivare uppvärmning och lägre ljudnivå, enligt Energi- och klimatrådgivningen.",
+          "Led bort smältvattnet från utedelen, så att det inte bildas is under pumpen eller en isgata vid entrén.",
+          "Håll utedelen fri från löv, snö och is. Bygger isen ända upp till pumpens underdel kan den sluta fungera.",
+        ],
+      },
+      {
+        h2: "Vem får installera en luft-luftvärmepump, och hur sköter du den?",
+        body: [
+          "En luft-luftvärmepump ska installeras av certifierad personal och anslutas av ett registrerat elinstallationsföretag, men filtren rengör du själv. Enligt Naturvårdsverket får du som privatperson inte själv installera, serva, läckagekontrollera eller demontera en värmepump med f-gaser, det vill säga fluorerade växthusgaser som används som köldmedium. Att koppla ihop delar som innehåller köldmedium, som ute- och innedelen, räknas som installation. Kontrollera att installatören har giltiga certifikat.",
+          "Elsäkerhetsverket skriver att installation av värmepump ska utföras av ett registrerat elföretag. Om företaget är registrerat, och för vilka arbeten, ser du i Elsäkerhetsverkets register på Kollaelföretaget.se. Pumpen ska också vara CE-märkt.",
+          "Kontakta kommunen innan du beställer. I vissa kommuner krävs bygglov eller bygganmälan för en luftvärmepump, och detaljplanen kan ha egna regler. Placera utedelen där ljudet inte stör grannar eller din egen sömn. I Naturvårdsverkets vägledning räknas ljud från värmepumpar som buller från industrier. Jämför också ljudnivån på energimärkningen, eftersom innedelar ofta kan låta ganska mycket, enligt Boverket.",
+          "Så sköter du pumpen:",
+        ],
+        bullets: [
+          "Rengör filtren i innedelen ungefär var tredje vecka, enligt Boverket. Vissa filter kan sköljas, andra dammsugas.",
+          "Håll utedelen fri från löv, snö och is.",
+          "Låt en certifierad tekniker serva pumpen varje år eller vartannat år, helst före uppvärmningssäsongen, som Energimyndigheten rekommenderar. Servicen ger inget rotavdrag.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Kan en luft värmepump med AC kyla huset på sommaren?",
+        a: "Ja. De flesta luft-luftvärmepumpar har en kylfunktion (AC), och energimärkningen visar hur effektivt pumpen både kyler och värmer. Kylan kostar el och minskar en del av besparingen. I autoläge börjar pumpen kyla när det blir för varmt inne, så stäng av autoläget om du vill slippa aktiv kyla. Kylning kan också ge drag och fuktrisker.",
+      },
+      {
+        q: "Kan en luft-luftvärmepump ha 2 innedelar?",
+        a: "Ja. Utedelen kan kopplas till två eller flera innedelar så att värmen sprids bättre i huset, vilket kallas multisplit. Med en enda innedel får du räkna med att rum långt bort blir 1–2 °C kallare, enligt Boverket.",
+      },
+      {
+        q: "Får man installera en luft-luftvärmepump själv?",
+        a: "Nej. Enligt Naturvårdsverket får privatpersoner inte själva installera, serva eller demontera värmepumpar med f-gaser, utan det ska göras av certifierad personal. Elinstallationen ska dessutom göras av ett elföretag som är registrerat hos Elsäkerhetsverket.",
+      },
+      {
+        q: "Hur ofta ska man rengöra filtret i en luft-luftvärmepump?",
+        a: "Boverket råder dig att rengöra filtren i innedelen ungefär var tredje vecka, så att pumpen behåller en god effektivitet. Hur du gör står i manualen: vissa filter kan sköljas, andra dammsugas.",
+      },
+      {
+        q: "Vilka bidrag och avdrag finns för luft-luftvärmepump 2026?",
+        a: "Rotavdraget gäller: 30 % av arbetskostnaden, vilket vid fast pris blir 9 % av totalpriset. Luft-luftvärmepumpar ger däremot varken grönt avdrag eller Villaeffekten, Boverkets bidrag för energieffektivisering i småhus.",
+      },
+    ],
+  },
+  "jamfora-elavtal": {
+    answer: "Jämför elavtal på jämförpriset i öre/kWh, som enligt Energimarknadsinspektionen (Ei) inkluderar påslag, fasta avgifter och moms, och inte bara på spotpriset. Ei:s Elpriskollen är Sveriges enda oberoende jämförelsetjänst för elavtal. Ska villan styra värmepump, elbil eller batteri mot elpriset krävs ett kvartsprisavtal för att det ska sänka elhandelskostnaden. Fast pris ger förutsägbarhet men blir enligt Ei ofta dyrare över tid. Ett byte är gratis och ska kunna ske inom tre veckor enligt ellagen 2026.",
+    keyFacts: [
+      {
+        label: "Oberoende jämförelse",
+        value: "Ei:s Elpriskollen – alla elhandlare måste rapportera sina priser till Ei",
+      },
+      {
+        label: "Byte av elhandlare (ellagen 2026)",
+        value: "Kostnadsfritt, inom 3 veckor från att du begärt bytet",
+      },
+      {
+        label: "Ångerrätt",
+        value: "14 dagar för avtal på webben, i app, per telefon eller vid hembesök",
+      },
+      {
+        label: "Brytavgift vid fast pris",
+        value: "Högst elhandlarens direkta förlust – inget schablonbelopp, ingen utebliven vinst",
+      },
+      {
+        label: "Längsta uppsägningstid",
+        value: "Månadspris 3 månader, anvisat avtal 14 dagar",
+      },
+      {
+        label: "Besked innan tidsbestämt avtal löper ut",
+        value: "Tidigast 90 och senast 60 dagar före",
+      },
+    ],
+    sections: [
+      {
+        h2: "Hur jämför man elavtal så att jämförelsen blir rätt?",
+        body: [
+          "Jämför elavtal på jämförpriset, alltså totalkostnaden per kWh, och inte bara på spotpriset, elbörsens pris, eller påslaget. Enligt Energimarknadsinspektionen (Ei) anges jämförpriset i öre/kWh och inkluderar alla rörliga och fasta kostnader samt moms. Påslaget är det elhandlaren tar utöver elbörsens pris. En del elhandlare tar i stället, eller dessutom, en fast avgift per månad eller år.",
+          "Enklast är Ei:s jämförelsetjänst Elpriskollen, där du jämför de vanligaste elavtalen från samtliga elhandlare. Alla elhandlare måste rapportera sina avtal och priser till Ei. Myndigheten får ingen provision, och ingen elhandlare kan köpa sig en bättre placering.",
+          "Tänk på det här när du jämför:",
+        ],
+        bullets: [
+          "Samma avtalstyp. Jämförpriset tar inte hänsyn till när på dygnet du använder el. Ei råder dig därför att vara försiktig när du jämför kvartspris, där priset ändras varje kvart, med andra avtalstyper.",
+          "Din egen förbrukning. En fast avgift väger tyngre ju mindre el du använder: samma månadsavgift blir fyra gånger så dyr per kWh vid 5 000 kWh om året som vid 20 000 kWh. Förbrukningen står på elfakturan.",
+          "Rörligt månadspris. Jämförelsen bygger på vad elhandlarna fakturerade förra månaden, så du vet inte i förväg vad nästa månad kostar.",
+          "Rabatter. Som nyinflyttad får du ofta erbjudanden med extrapriser, men avtalet kan övergå i ett betydligt sämre avtal när rabattperioden tar slut, varnar Ei.",
+          "Villkor och klagomål. Kontrollera bindningstid, uppsägningstid, brytavgift, alltså avgiften om du bryter avtalet i förtid, och vad som händer när avtalet löper ut. Konsumenternas Energimarknadsbyrå listar elhandlare med många klagomål och uppdaterar listan varje kvartal.",
+        ],
+      },
+      {
+        h2: "Vilket elavtal passar bäst för en villa?",
+        body: [
+          "Vilket elavtal som passar bäst beror på om villan kan flytta elanvändningen till billiga tider och hur stora prissvängningar hushållets ekonomi tål.",
+          "Med kvartspris betalar du spotpriset för varje kvart plus påslag och moms. Enligt Ei krävs kvartspris för att styrning av elanvändningen ska sänka elhandelskostnaden. Kvartsprisavtal har dessutom ofta lägre påslag, så många sparar pengar även utan att ändra sina vanor. Men använder du regelbundet mycket el när priset är högt kan kostnaden bli högre än med andra avtal.",
+          "Med månadspris, som ofta kallas rörligt pris, betalar du ett medelpris för månaden som vägs efter hur alla elhandlarens kunder med samma avtal använder el. Använder du redan mycket el när spotpriset är lågt, ofta på natten, betalar du då mer per kWh än med kvartspris, enligt Ei.",
+          "Har ditt nätbolag effektavgift påverkas även elnätskostnaden av när du använder el, och då behöver du styra efter både effektavgiften och spotpriset.",
+          "Ei:s råd är att välja avtalstyp efter din ekonomi:",
+        ],
+        bullets: [
+          "Kan flytta förbrukningen, till exempel med styrbar värmepump, elbil eller batteri: kvartspris.",
+          "Har råd med tillfälliga prisuppgångar: rörligt månadspris, som också ger dig prisnedgångarna.",
+          "Vill veta vad varje kWh kostar: fast pris.",
+          "Stor elanvändning på vintern: ett mixavtal, en blandning av fast och rörligt pris, kan minska risken för höga vinterkostnader, enligt Energimarknadsbyrån. Väg den lägre risken mot den extra kostnad som mixavtalet kan innebära.",
+        ],
+      },
+      {
+        h2: "Fast elavtal eller rörligt – vad har lönat sig?",
+        body: [
+          "Rörligt pris har historiskt ofta blivit billigare, medan fast pris fungerar som en försäkring mot prisökningar under avtalstiden. Sedan januari 2012 har det rörliga priset varit lägre än medelpriset för ettåriga fastprisavtal vid ungefär 60 procent av tillfällena, enligt Konsumenternas Energimarknadsbyrå.",
+          "Ei förklarar varför fast pris ofta blir dyrare: elhandlaren måste ta höjd för att inköpen kan bli dyrare än det pris ni har avtalat. Du betalar alltså för tryggheten. Enligt Energimarknadsbyrån finns heller inget tydligt mönster för vilken årstid det lönar sig att teckna fast pris.",
+          "Fast pris tecknas oftast på 1, 2 eller 3 år. Elhandlaren ska meddela dig tidigast 90 och senast 60 dagar innan ett tidsbestämt avtal löper ut. Väljer du inget nytt avtal inom uppsägningstiden tecknar elhandlaren dig på det avtal som villkoren anger, till priset i beskedet.",
+        ],
+      },
+      {
+        h2: "Vilket elavtal är bäst för en villa med solceller?",
+        body: [
+          "Det bästa elavtalet för en villa med solceller ger bra villkor både för el du köper och för el du säljer. Enligt Ei kräver de flesta elhandlare som köper överskottsel att du också köper din el av dem. Eftersom en stor del av elanvändningen sker när solcellerna inte producerar ska du jämföra båda priserna.",
+          "Ersättningen för såld el är hos många elhandlare spotpriset minus ett litet avdrag, enligt Energimyndigheten. En del erbjuder högre ersättning det första året, så kontrollera vad som gäller sedan. Nätbolaget betalar dessutom nätnytta, vanligen några öre/kWh, bland annat för att din el minskar förlusterna i elnätet.",
+          "Har du inget säljavtal är elhandlaren du köper el av ändå skyldig att ta emot överskottet och ge dig en skälig ersättning, enligt ellagen. För att få så bra betalt som möjligt råder Ei dig att jämföra erbjudanden och teckna ett säljavtal.",
+          "Har du batteri och vill ladda när elen är billig och använda den när den är dyr behöver du kvartspris.",
+        ],
+      },
+      {
+        h2: "Hur byter man elavtal och hur lång tid tar det?",
+        body: [
+          "Du tecknar avtal med den nya elhandlaren, som anmäler bytet till ditt nätbolag, och enligt ellagen ska du kunna byta inom tre veckor från att du begärt det. Nätbolaget läser av elmätaren och skickar mätarställningen till både den gamla och den nya elhandlaren. Bytet är gratis, och elen stängs inte av under tiden.",
+          "Enligt Energimarknadsbyrån kan ett byte registreras vilken dag i månaden som helst, men elhandlarna behöver ofta en månad på sig. Hör därför av dig i god tid. Säg också själv upp det gamla avtalet skriftligt, till exempel med mejl, även om det nya bolaget erbjuder sig att göra det. Då kan du visa när du sa upp det. Den gamla elhandlaren ska skicka slutfaktura inom sex veckor.",
+          "Bara den som står på elnätsavtalet kan teckna elhandelsavtal för bostaden. Innan du tecknar eller förlänger ett avtal ska elhandlaren ge dig en kortfattad sammanfattning av de viktigaste villkoren.",
+        ],
+        bullets: [
+          "Ångerrätt: tecknar du avtalet på webben, i en app, per telefon eller vid ett hembesök har du 14 dagars ångerrätt. Saknas information om den kan den förlängas med upp till ett år, enligt Konsumentverket.",
+          "Telefonförsäljning: blir du uppringd räcker inte ett muntligt ja. Avtalet blir giltigt först när du har godkänt det skriftligt, till exempel med sms, mejl eller bank-id. Ringer du själv till elhandlaren gäller inte det kravet.",
+          "Fast pris: byter du innan bindningstiden är slut kan du få betala brytavgift. Planera därför bytet till när avtalet löper ut.",
+        ],
+      },
+      {
+        h2: "Hur säger man upp elavtal, och vad gäller vid flytt?",
+        body: [
+          "Du säger upp elavtalet hos din elhandlare med den uppsägningstid som står i villkoren. Uppsägningstiden är tiden från att du säger upp avtalet tills det slutar gälla, medan bindningstiden är hur länge du är bunden till avtalet. Kvartsprisavtal har oftast en månads eller 14 dagars uppsägningstid. Månadspris får ha högst tre månaders bindnings- eller uppsägningstid. Ett anvisat avtal, som du får om du inte själv väljer elhandlare, får ha högst 14 dagars uppsägningstid.",
+          "Bryter du ett tidsbestämt avtal med fast pris i förtid får elhandlaren ta ut en brytavgift, men bara om villkoren tydligt säger det. Avgiften får inte vara högre än elhandlarens direkta ekonomiska förlust. Den får inte vara ett i förväg bestämt belopp och inte innehålla kvarvarande månadsavgifter eller utebliven vinst. Det är elhandlaren som ska visa att avgiften är skälig, och ingen brytavgift får tas ut bara för att du avbryter en uppsägningstid.",
+          "Vid flytt ska du säga upp elnätsavtalet senast en månad före utflyttningen, om inget annat avtalats, och meddela elhandlaren att du flyttar. En del elhandelsavtal kan avslutas vid flytt, andra följer med till den nya adressen. Avslutar du inte avtalen fortsätter du att betala för elen i den gamla bostaden.",
+          "Teckna elavtal innan flytten. Kontakta nätbolaget där du flyttar in för ett elnätsabonnemang, även om elen redan är påslagen, och teckna elhandelsavtal med den elhandlare du valt. Väljer du ingen får du ett anvisat avtal hos en elhandlare som nätbolaget samarbetar med, och det är enligt Ei ofta dyrare. Den 1 januari 2027 ersätts ellagen av en ny elmarknadslag, och den 1 juli 2027 ersätts de anvisade avtalen av en leveransskyldig sistahandsleverantör, enligt riksdagens beslut.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Vilket elavtal är billigast?",
+        a: "Det beror på när du använder el, så jämför jämförpriset för din egen förbrukning i Ei:s Elpriskollen. Rörligt pris har historiskt oftast blivit billigare än fast: sedan januari 2012 har det varit lägre än medelpriset för ettåriga fastprisavtal vid ungefär 60 procent av tillfällena, enligt Energimarknadsbyrån. Kan du flytta förbrukningen till billiga tider krävs kvartspris för att det ska sänka kostnaden, enligt Ei.",
+      },
+      {
+        q: "Kostar det något att byta elavtal?",
+        a: "Nej. Enligt ellagen är ett byte av elhandlare kostnadsfritt för konsumenter, och ingen av elhandlarna får ta ut en administrativ avgift. Undantaget är brytavgift när ett tidsbestämt avtal med fast pris sägs upp i förtid.",
+      },
+      {
+        q: "Kan man säga upp ett fast elavtal i förtid?",
+        a: "Ja, men elhandlaren får ta ut en brytavgift om villkoren tydligt säger det. Ei beskriver en metod som ger en bra uppskattning av förlusten: skillnaden mellan ditt fasta pris och det fastpris som erbjuds när du säger upp, gånger din beräknade återstående förbrukning. Har elhandlaren inga faktiska kostnader, till exempel för att den inte har prissäkrat din leverans, får ingen avgift tas ut.",
+      },
+      {
+        q: "Kan man ångra ett elavtal?",
+        a: "Ja. Tecknar du elavtalet på webben, i en app, per telefon eller vid ett hembesök har du 14 dagars ångerrätt. Meddela elhandlaren via ångerfunktionen eller skriftligt, till exempel med mejl, och spara en kopia.",
+      },
+      {
+        q: "Vad händer om man inte väljer något elavtal?",
+        a: "Då får du ett anvisat avtal hos den elhandlare som nätbolaget samarbetar med. Det är enligt Ei ofta dyrare än ett avtal du väljer själv, men har högst 14 dagars uppsägningstid. Den 1 juli 2027 ersätts anvisningen av en leveransskyldig sistahandsleverantör.",
+      },
+    ],
+  },
   "installera-laddbox-hemma": {
-    answer: "En laddbox kostar cirka 5 000–12 000 kr plus installation, enligt Energi- och klimatrådgivningen (prisnivå 2024). Installationen kostar mer om kabeln från elcentralen blir lång, om elcentralen måste byggas ut eller om huvudsäkringen behöver höjas. Arbetet ska göras av ett elinstallationsföretag som är registrerat hos Elsäkerhetsverket. Grönt avdrag sänker 2026 priset med 50 % av arbete och material, alltså 48,5 % av totalpriset vid fast pris.",
+    answer: "En laddbox hemma för elbilen kostar cirka 5 000–12 000 kr plus installation, enligt Energi- och klimatrådgivningen (prisnivå 2024). Installationen kostar mer om kabeln från elcentralen blir lång, om elcentralen måste byggas ut eller om huvudsäkringen behöver höjas. Arbetet ska göras av ett elinstallationsföretag som är registrerat hos Elsäkerhetsverket. Grönt avdrag sänker 2026 priset med 50 % av arbete och material, alltså 48,5 % av totalpriset vid fast pris.",
     keyFacts: [
       {
         label: "Laddbox, pris (2024)",

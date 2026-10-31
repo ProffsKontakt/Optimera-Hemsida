@@ -38,6 +38,354 @@ export type NewsContent = {
 };
 
 const CONTENT: Record<string, NewsContent> = {
+  "elstod-oktober-2026-elomrade-4-hogkostnadsskydd": {
+    tldr: [
+      "Avgörandet kom sista veckan: dygnspriserna 28–31 oktober låg mellan 2,44 och 3,32 kr/kWh, och enskilda kvartar kostade 5,88 kr. Marginalen mot gränsen blev 7 öre.",
+      "Hur stödet räknas och betalas ut är inte bestämt. Enligt Ebba Busch kan övergångsregeringen besluta om en stödförordning för utformning och utbetalning.",
+      "Skyddet gäller året ut, och terminerna pekar på över 1,50 kronor i elområde 4 även i november och december. I en övergångsbudget förlängs inte tillfälliga satsningar som upphör vid årsskiftet.",
+    ],
+    sections: [
+      {
+        h2: "Blir det elstöd för oktober 2026?",
+        body: [
+          "Gränsen för högkostnadsskyddet är passerad i elområde 4, men hur mycket det ger och när det betalas ut är ännu inte bestämt. Spotpriset i södra Sverige landade på 1,57 kronor per kilowattimme i snitt för oktober, enligt Nord Pools månadssnitt. Regeringens högkostnadsskydd gäller när det genomsnittliga spotpriset under en kalendermånad överstiger 1,50 kronor per kilowattimme inom ett elområde.",
+          "Det är första gången i år som något elområde når dit. Dyrast före oktober var september, med 1,20 kronor, och januari och februari, med 1,13 kronor vardera i elområde 4.",
+          "Det avgjordes den sista veckan. Efter den 27 oktober låg elområde 4 på 1,38 kronor i snitt. Sedan kostade elen 2,44 kronor den 28 oktober, 3,32 kronor den 29 oktober, 2,79 kronor den 30 oktober och 2,72 kronor den 31 oktober i dygnssnitt. Den 29 oktober kostade enskilda kvartar 5,88 kronor. Enligt TT drev skenande gaspriser upp elpriset på kontinenten, särskilt i Tyskland, samtidigt som vinden avtog efter helgens blåsväder. Det tidigare dygnsrekordet i år i elområde 4 var strax över 3 kronor, den 14 september.",
+          "Bedömningarna gick isär in i det sista. Den 28 oktober räknade energiekonomen Claes Hemberg med 1,39 kronor för oktober och skrev att elstödet skulle missas med 11 öre. Då var bara det första av de fyra dyra dygnen känt.",
+        ],
+      },
+      {
+        h2: "Elstöd i elområde 4: hur ska det betalas ut?",
+        body: [
+          "Det är inte bestämt. Regeringens frågor och svar säger när skyddet gäller, men inte hur stor ersättningen blir eller hur den betalas ut. Energi- och näringsminister Ebba Busch (KD) sa den 22 oktober, enligt TT: ”Övergångsregeringen kan fatta beslut om en stödförordning som reglerar detaljer för utformning och utbetalning.”",
+          "Om ersättningen motsvarar den del av spotpriset som ligger över gränsen blir det små belopp: 7 öre per kilowattimme, alltså 70 kronor per 1 000 kilowattimmar, exklusive moms. Det är en räkneillustration, inte ett besked om hur stödet blir.",
+          "Gränsen räknas per elområde. I oktober passerades den bara i elområde 4, alltså södra Götaland. Elområde 3 landade på 0,82 kronor, elområde 2 på 0,37 kronor och elområde 1 på 0,30 kronor.",
+        ],
+      },
+      {
+        h2: "Får man elstöd varje månad?",
+        body: [
+          "Nej, bara de månader då snittpriset i ditt elområde överstiger 1,50 kronor per kilowattimme. Skyddet gäller under hela 2026, så även november och december kan komma i fråga.",
+          "Marknaden räknar med att elområde 4 hamnar över gränsen även då. Den 29 oktober motsvarade terminerna på börsen Euronext cirka 2,03 kronor per kilowattimme för november och 1,62 kronor för december i elområde 4, omräknat med Riksbankens eurokurs samma dag, 11,00 kronor. Terminer är marknadens förväntningar, inte ett facit, och de ändras varje handelsdag.",
+          "Bedömningarna går isär här också. Claes Hemberg räknade den 28 oktober med cirka 1,30 kronor i södra Sverige i november och december, alltså under gränsen.",
+        ],
+      },
+      {
+        h2: "Högkostnadsskydd el 2027 – försvinner skyddet vid årsskiftet?",
+        body: [
+          "Enligt regeringen gäller skyddet under hela 2026. Om riksdagen får en övergångsbudget för 2027 följer den principen att uppenbart tillfälliga satsningar som skulle upphöra vid årets utgång inte förlängs.",
+          "Det spelar roll, eftersom januari ser dyr ut. Den 29 oktober motsvarade terminen för januari 2027 cirka 1,74 kronor per kilowattimme i elområde 4. Systempriset, ett gemensamt nordiskt referenspris, handlades för februari till 1,64 kronor och för mars till 1,26 kronor.",
+          "En övergångsbudget gäller tills en ny regering har tillträtt och riksdagen har beslutat om den nya regeringens ändringsbudget. En ny regering kan alltså ändra budgeten senare.",
+        ],
+      },
+      {
+        h2: "Vad innebär en övergångsbudget?",
+        body: [
+          "En övergångsbudget är den budget en övergångsregering lämnar när ingen ny regering har tillträtt. Budgetpropositionen för 2027 ska lämnas till riksdagen senast den 12 november. Har en ny regering inte tillträtt då lämnar övergångsregeringen en övergångsbudget, enligt Finansdepartementet.",
+          "Huvudprincipen är att 2026 års anslagsnivåer gäller även 2027. Undantag görs bland annat för pris- och löneomräkning, för regelstyrda system som justeras efter ändrade volymer och för beslutade lagar och avtal. Politiskt okontroversiella lagförslag tas med om det råder samsyn om dem. Principerna är avstämda med samtliga riksdagspartier och utgår från dem som användes vid övergångsbudgeten för 2019.",
+          "Om det blir en ny regering före den 12 november avgörs bland annat den 3 november. Då prövar riksdagen klockan 13.00 talmannens förslag att Elisabeth Thand Ringqvist (C) blir statsminister för en regering med Centerpartiet, Socialdemokraterna, Kristdemokraterna, Miljöpartiet och Liberalerna.",
+        ],
+      },
+      {
+        h2: "Vad betyder det för din kalkyl?",
+        body: [
+          "Ett eventuellt stöd för oktober blir litet jämfört med räkningen. Spotpriset i elområde 4 var 1,57 kronor i oktober, mot 0,71 kronor i oktober 2025. Med 25 procent moms är det 1,08 kronor mer per kilowattimme än i fjol, före energiskatt, påslag och nätavgift. Per 1 000 kilowattimmar blir det cirka 1 080 kronor.",
+          "Räkna inte med stödet framåt. Det gäller bara månader över gränsen, beloppen blir små nära gränsen, och skyddet gäller enligt regeringen bara 2026.",
+          "Det du själv kan påverka är när du använder el. I oktober varierade dygnssnittet i elområde 4 mellan 9 öre den 25 oktober och 3,32 kronor den 29 oktober. Med ett avtal som följer spotpriset lönar det sig att flytta tvätt, elbilsladdning och uppvärmning till billigare timmar och dagar.",
+        ],
+        bullets: [
+          "Elområde 4, oktober 2026: 1,57 kr/kWh i snitt. Gränsen för högkostnadsskyddet är 1,50 kr/kWh i månadssnitt.",
+          "Elområde 3: 0,82 kr/kWh, elområde 2: 0,37 kr/kWh, elområde 1: 0,30 kr/kWh.",
+          "Terminer 29 oktober, elområde 4: november 2,03, december 1,62 och januari 2027 1,74 kr/kWh.",
+          "Utformning och utbetalning: inte bestämt. Enligt Ebba Busch kan övergångsregeringen besluta om en stödförordning.",
+          "2027: en övergångsbudget förlänger inte tillfälliga satsningar som upphör vid årsskiftet.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Blir det elstöd för oktober 2026?",
+        a: "I elområde 4 har gränsen passerats: spotpriset blev 1,57 kronor per kilowattimme i snitt, enligt Nord Pool. Högkostnadsskyddet gäller när månadssnittet i ett elområde överstiger 1,50 kronor. Hur stor ersättningen blir och när den betalas ut är inte bestämt.",
+      },
+      {
+        q: "Gäller elstödet i hela Sverige?",
+        a: "Nej. Gränsen räknas per elområde, och i oktober passerades den bara i elområde 4. Elområde 3 landade på 0,82 kronor, elområde 2 på 0,37 kronor och elområde 1 på 0,30 kronor.",
+      },
+      {
+        q: "Får man elstöd varje månad?",
+        a: "Nej, bara de månader då snittpriset i ditt elområde överstiger 1,50 kronor per kilowattimme. Skyddet gäller till och med december 2026. Terminerna pekar på över 1,50 kronor i elområde 4 även i november och december, men det är förväntningar.",
+      },
+      {
+        q: "Vad innebär en övergångsbudget?",
+        a: "Det är den budget en övergångsregering lämnar om ingen ny regering har tillträtt när budgeten ska läggas, senast den 12 november. Huvudprincipen är att 2026 års anslag gäller även 2027, och uppenbart tillfälliga satsningar som upphör vid årsskiftet förlängs inte.",
+      },
+      {
+        q: "Finns högkostnadsskyddet för el kvar 2027?",
+        a: "Enligt regeringen gäller skyddet under hela 2026, och i en övergångsbudget förlängs inte tillfälliga satsningar som upphör vid årsskiftet. En ny regering kan ändra budgeten senare i en ändringsbudget.",
+      },
+    ],
+  },
+  "elpris-november-2026-terminer-prognos": {
+    tldr: [
+      "Novemberterminen för det nordiska systempriset steg från 108,75 till 131,46 euro per megawattimme mellan 19 och 26 oktober, 21 procent. Nästan 15 euro av uppgången kom på måndagen.",
+      "Elområde 4 har kostat 1,38 kronor i snitt den 1–27 oktober. För att oktober ska passera 1,50 behöver resten av månaden kosta omkring 2,30 kronor, i nivå med månadens dyraste dygn.",
+      "Terminerna ligger högt till och med februari och vänder nedåt först i mars. Med energiskatt och moms motsvarar novemberterminen cirka 2,83 kronor per kWh i elområde 4, före påslag och nätavgift.",
+    ],
+    sections: [
+      {
+        h2: "Vad blir elpriset i november 2026?",
+        body: [
+          "Ingen vet säkert, men terminsmarknaden ger en fingervisning. På börsen Euronext handlas kontrakt för el som levereras i november. Den 26 oktober stängde novemberkontraktet för det nordiska systempriset på 131,46 euro per megawattimme. Prisskillnaden mot varje elområde handlas i egna kontrakt: plus 39,15 euro för elområde 4 och minus 19,00 euro för elområde 3. Det ger 170,61 euro i elområde 4 och 112,46 euro i elområde 3.",
+          "Omräknat med Riksbankens eurokurs samma dag, 11,14 kronor, motsvarar det cirka 1,90 kronor per kilowattimme i elområde 4 och 1,25 kronor i elområde 3, exklusive moms och skatter. Systempriset, ett gemensamt nordiskt referenspris, ligger på 1,46 kronor.",
+          "Uppgången har gått fort. Den 19 oktober stod systemprisets novemberkontrakt på 108,75 euro, och på en vecka steg det 21 procent. Nästan 15 euro av ökningen kom på måndagen den 26 oktober. Räknat per elområde steg novemberterminen med 23 procent i elområde 4 och med 20 procent i elområde 3.",
+          "Terminspriset är inget facit. Det är vad köpare och säljare i dag är beredda att betala för el i november, och det ändras varje handelsdag. Kontrakten räknas till slut av mot Nord Pools spotpriser under november. Områdeskontrakten handlas dessutom mer sällan än systempriset: den 26 oktober gjordes inga affärer i novemberkontrakten för elområde 3 och 4, så stängningskursen bygger inte på avslut den dagen.",
+          "Norra Sverige ligger betydligt lägre. I elområde 1 och 2 har oktober hittills kostat 31 respektive 37 öre per kilowattimme i snitt, enligt Nord Pool. Elbolaget Bixia räknar med 68–69 öre i båda områdena för oktober–december.",
+        ],
+      },
+      {
+        h2: "Elpris november 2025: vad kostade elen förra året?",
+        body: [
+          "Med terminspriset blir november 2026 mer än dubbelt så dyr som november 2025 i elområde 4 och cirka 80 procent dyrare i elområde 3. Oktober har redan dragit iväg i söder: den 1–27 oktober kostade elen 1,38 kronor per kilowattimme i elområde 4 och 73 öre i elområde 3, mot 37 öre i elområde 2 och 31 öre i elområde 1.",
+          "Så här mycket kostade elen i november de två senaste åren, enligt Nord Pools månadssnitt för spotpriset, exklusive moms och skatter:",
+        ],
+        bullets: [
+          "Elområde 1 (Luleå): 25 öre per kWh i november 2024 och 37 öre i november 2025.",
+          "Elområde 2 (Sundsvall): 18 öre 2024 och 34 öre 2025.",
+          "Elområde 3 (Stockholm): 67 öre 2024 och 70 öre 2025.",
+          "Elområde 4 (Malmö): 85 öre 2024 och 81 öre 2025.",
+        ],
+      },
+      {
+        h2: "Elpris prognos november: terminen ligger över Bixias höstprognos",
+        body: [
+          "Elbolaget Bixia gjorde i september en prognos för oktober–december 2026: 1,38 kronor per kilowattimme i elområde 4, 1,14 kronor i elområde 3 och 68–69 öre i elområde 1 och 2. Systempriset väntades landa på 1,25 kronor, mer än dubbelt så högt som hösten 2025, då det låg på 56 öre.",
+          "Hittills går utfallet isär med prognosen. I elområde 4 ligger oktober på 1,38 kronor, samma nivå som Bixias prognos för hela kvartalet. I elområde 3 har oktober i stället kostat 73 öre, långt under prognosen, och i norr 31–37 öre. Novemberterminen för elområde 4, 1,90 kronor, ligger däremot över Bixias snitt för kvartalet.",
+          "Bixia pekar också på vad som kan pressa priset: milt väder och mycket nederbörd. Enligt bolaget kan elförbrukningen i Sverige skilja upp mot 15 procent mellan en kall och en mild vinter, och en pågående super-El Niño bidrar sannolikt till mildare temperaturer än normalt fram till februari 2027. ”Vid mycket regn och snö tidigt på säsongen kommer vattenkraftsproducenterna släppa lite på kranarna redan i december eller januari för att undvika överfulla magasin och dumpade priser framåt sommaren. Då blir det pyspunka på de höga elpriserna”, säger Johan Sigvardsson, elmarknadsanalytiker på Bixia, i prognosen.",
+        ],
+      },
+      {
+        h2: "Fyllnadsgrad i vattenmagasinen 2026: sex procentenheter under det normala",
+        body: [
+          "Vecka 42, den 12–18 oktober, var de svenska vattenmagasinen fyllda till 74,7 procent, enligt Energiföretagens veckorapport Kraftläget. Det normala för veckan, snittet för 1960–2025, är 80,7 procent. Tillrinningen, alltså det vatten som rann till under veckan, var 91 procent av medianen för samma period.",
+          "Läget skiljer sig mellan elområdena. Magasinen var fyllda till 82,0 procent i elområde 2, 70,0 procent i elområde 1 och 63,5 procent i elområde 3. Elområde 4 har mycket små magasin: där fanns 42 gigawattimmar lagrat, av landets totalt 25 062.",
+          "Bixia beskrev i september ett underskott i den hydrologiska balansen i Norden på 17 terawattimmar, efter en snöfattig vinter och en vår och sommar utan extra nederbörd. ”I vanliga fall är vattenkraften vår krockkudde mot höga priser på kontinenten men i år räcker den inte till”, sa Johan Sigvardsson.",
+          "Kärnkraften har också gett mindre. Under vecka 42 producerade de svenska reaktorerna 608 gigawattimmar, 16 procent mindre än samma vecka i fjol, och sedan årsskiftet 11 procent mindre. När de avställda reaktorerna väntas tillbaka gick vi igenom i artikeln den 24 oktober.",
+          "Den tredje faktorn är gasen. Enligt Bixia har konflikten i Hormuzsundet pressat Europas gaslager till den lägsta nivån sedan 2013, och när prognosen gjordes hade gaspriserna på kontinenten fördubblats sedan den 1 juli. Energiekonomen Claes Hemberg ser krisen i Hormuzsundet som den främsta orsaken till årets prisuppgång, före bristen på svensk vattenkraft och kärnkraft.",
+        ],
+      },
+      {
+        h2: "Elpris december 2026 – och när sjunker elpriset?",
+        body: [
+          "Terminerna pekar på fortsatt höga priser hela vintern. För december låg terminen den 26 oktober på cirka 1,63 kronor per kilowattimme i elområde 4 och 1,18 kronor i elområde 3. Januari 2027 är dyrare: 1,74 kronor i elområde 4 och 1,43 kronor i elområde 3.",
+          "För elområdena finns månadskontrakt bara till och med januari, men systempriset ger en bild av resten av vintern: 1,63 kronor för februari, 1,21 kronor för mars och 1,00 krona för april. Enligt terminerna vänder priset alltså nedåt först i mars.",
+          "Claes Hemberg gör en liknande bedömning. Han skriver att ”januari kan bli den högsta och sista pristoppen på flera år. Den blir dyr, kanske 180 öre i södra delarna, men sedan blir det billigare”. Enligt Hemberg dämpas effekterna av Hormuzkrisen de närmaste kvartalen, men det syns på elnotan först på vårkanten.",
+          "Både terminer och bedömningar kan ändras snabbt. Novemberterminen för elområde 4 motsvarade omkring 1,54 kronor den 19 oktober och 1,90 kronor en vecka senare.",
+        ],
+      },
+      {
+        h2: "Vad betyder det för din kalkyl?",
+        body: [
+          "Räkna med att november blir dyrare än i fjol, framför allt i söder. Med terminspriset, energiskatten på 36,0 öre och 25 procent moms kostar en kilowattimme cirka 2,83 kronor i elområde 4 och 2,02 kronor i elområde 3, före elhandlarens påslag och elnätsavgiften. I november 2025 var motsvarande pris 1,56 respektive 1,42 kronor, då med en energiskatt på 43,9 öre.",
+          "Blir utfallet som terminen kostar det alltså cirka 1 270 kronor mer per 1 000 kilowattimmar i elområde 4 och cirka 600 kronor mer i elområde 3 än i november 2025. För helåret räknar Claes Hemberg med att ett vanligt villahushåll betalar 4 700–6 400 kronor mer för el och elnät 2026 än 2025.",
+          "Högkostnadsskyddet kan bli aktuellt i elområde 4. Enligt regeringen gäller det om det genomsnittliga spotpriset under en kalendermånad överstiger 1,50 kronor per kilowattimme i ett elområde. Oktober når dit bara om de fyra sista dagarna kostar omkring 2,30 kronor i snitt. Novemberterminen, 1,90 kronor, ligger däremot över gränsen. Av regeringens frågor och svar framgår inte hur stor ersättningen blir eller när den skulle betalas ut. Det som är känt gick vi igenom den 12 oktober.",
+          "Det du själv kan påverka är när du använder el. Spotpriset svänger kraftigt: i oktober har dygnssnittet i elområde 4 legat mellan 9 öre den 25 oktober och 2,31 kronor den 19 oktober. Med ett avtal som följer spotpriset lönar det sig att flytta förbrukning från dyra till billiga timmar och dagar.",
+        ],
+        bullets: [
+          "Terminspris november 2026 (26 oktober): cirka 1,90 kr/kWh i elområde 4 och 1,25 kr/kWh i elområde 3, exklusive moms och skatt.",
+          "Elpris november 2025: 81 öre i elområde 4, 70 öre i elområde 3, 34 öre i elområde 2 och 37 öre i elområde 1.",
+          "Oktober 2026 (1–27 oktober): 1,38 kr/kWh i elområde 4. Gränsen för högkostnadsskyddet är 1,50 kr/kWh i månadssnitt.",
+          "December 2026 enligt terminerna: cirka 1,63 kr/kWh i elområde 4 och 1,18 kr/kWh i elområde 3.",
+          "Vattenmagasinen: 74,7 procent fyllda vecka 42, mot normalt 80,7 procent.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Vad blir elpriset i november 2026?",
+        a: "Det avgörs av spotpriset under november, men terminerna ger en fingervisning. Den 26 oktober motsvarade de cirka 1,90 kronor per kilowattimme i elområde 4 och 1,25 kronor i elområde 3, exklusive moms och skatter. Med energiskatt och moms blir det cirka 2,83 respektive 2,02 kronor, före påslag och nätavgift.",
+      },
+      {
+        q: "Vad var elpriset i november 2025?",
+        a: "Enligt Nord Pools månadssnitt kostade elen i november 2025 i snitt 37 öre per kilowattimme i elområde 1, 34 öre i elområde 2, 70 öre i elområde 3 och 81 öre i elområde 4, exklusive moms och skatter.",
+      },
+      {
+        q: "När sjunker elpriset?",
+        a: "Enligt terminerna den 26 oktober ligger priset högt till och med februari 2027 och sjunker i mars och april, då systempriset handlas till 1,21 respektive 1,00 krona per kilowattimme. Energiekonomen Claes Hemberg bedömer att januari kan bli den sista pristoppen på flera år. Det är förväntningar, inga löften.",
+      },
+      {
+        q: "Vad är ett terminspris på el?",
+        a: "Ett terminspris är priset på ett kontrakt för el som levereras under en viss period framåt i tiden, till exempel november. Nordiska elterminer handlas på Euronext i euro per megawattimme och räknas av mot Nord Pools systempris. Skillnaden mot ett enskilt elområde handlas i separata kontrakt, så kallade EPAD.",
+      },
+      {
+        q: "Hur fulla är vattenmagasinen 2026?",
+        a: "Vecka 42 (12–18 oktober) var de svenska vattenmagasinen fyllda till 74,7 procent, enligt Energiföretagen. Det normala för veckan, snittet för 1960–2025, är 80,7 procent. Fyllnadsgraden var 63,5 procent i elområde 3 och 82,0 procent i elområde 2.",
+      },
+    ],
+  },
+  "nar-startar-ringhals-4-igen-karnkraft-ur-drift-november-2026": {
+    tldr: [
+      "Ringhals 3 har stått still sedan 4 maj och skulle enligt planen ha varit tillbaka i juli. Sedan juni har återstarten skjutits upp fem gånger, senast den 23 oktober.",
+      "Forsmark 1 kopplas in den 17 november men ger bara 520 av 1 098 megawatt till och med 12 december, eftersom arbetet på en av turbinerna fortsätter.",
+      "Enligt Vattenfall kan återstarterna bidra till att stabilisera priserna, om inga nya förseningar kommer. Vattenbristen i Norge och gasmarknaden kan dra åt andra hållet.",
+    ],
+    sections: [
+      {
+        h2: "Vilka kärnkraftverk står stilla just nu?",
+        body: [
+          "Sverige har sex kärnkraftsreaktorer: tre i Forsmark, två i Ringhals och en i Oskarshamn. Den 24 oktober producerar hälften av dem ingen el. Ringhals 3, Ringhals 4 och Forsmark 1 står på 0 megawatt enligt Vattenfalls driftdata, medan Forsmark 2 och Forsmark 3 går. Oskarshamn 3 är också i drift enligt OKG, som driver reaktorn.",
+          "De tre avställda reaktorerna har tillsammans en installerad effekt på 3 313 megawatt: 1 081 megawatt i Ringhals 3, 1 134 i Ringhals 4 och 1 098 i Forsmark 1. Det framgår av bolagens meddelanden till elbörsen Nord Pool, där alla tre är registrerade i elområde 3.",
+        ],
+      },
+      {
+        h2: "När startar Ringhals 3 och 4 igen?",
+        body: [
+          "Den 20 oktober meddelade Vattenfall nya datum för båda reaktorerna. Ringhals 4 tidigareläggs tio dagar och beräknas vara tillbaka på nätet den 20 november. Ringhals 3 gick åt andra hållet. Enligt meddelandena till Nord Pool flyttades återstarten samma dag från 31 oktober till 7 november, och den 23 oktober en gång till, till 18 november. I meddelandena till Nord Pool anges Ringhals 3 och 4 som otillgängliga till och med 18 respektive 20 november.",
+          "För Ringhals 3 är det den femte förseningen sedan juni. Reaktorn stängdes för årlig revision den 4 maj, och enligt planen från mars skulle revisionen vara klar den 23 juli. I juni flyttades återstarten först till 10 augusti och sedan till 30 augusti, i juli till 31 oktober och i oktober alltså två gånger till. Startar reaktorn den 18 november har den stått still i sex och en halv månad. ”Det har varit en lång underhållsperiod med flera tillkommande arbeten som lett till oförutsedda förlängningar”, säger Ringhals produktionschef Sven-Anders Andersson i Vattenfalls besked.",
+          "Ringhals 4:s årliga revision började den 2 september och skulle enligt den ursprungliga planen vara klar den 15 oktober. I september sköts återstarten upp till 30 november på grund av oförutsett underhåll. Att den nu har tidigarelagts till 20 november beror enligt meddelandet till Nord Pool på att arbetet ligger före tidplan.",
+        ],
+      },
+      {
+        h2: "Varför står Ringhals still?",
+        body: [
+          "Enligt Sveriges Radio P4 Halland är det svart gummi som har åldrats i förtid som har hållit båda reaktorerna stängda i flera månader. Fynden gjordes först i Ringhals 3, och sedan fick även Ringhals 4 stängas för gummisanering – för att inte riskera anläggningen eller säkerheten, förklarar produktionschefen Sven-Anders Andersson. Han säger till P4 Halland att han ser fram emot att båda reaktorerna levererar el igen i november.",
+          "Ringhals 4 har dessutom haft problem med en av sina två huvudgeneratorer. Runt lunchtid den 23 maj kom ett larm om att fukthalten i generatorn steg, och efter en inspektion togs den ur drift. En kylledning med vatten i en av generatorns 60 statorhärvor hade börjat läcka, och eftersom läckan inte gick att laga byts hela härvan ut. Arbetet görs sedan mitten av augusti av generatorns tillverkare Arabelle Solutions och beräknas vara klart i början av november.",
+          "Att det inte tar längre tid beror på att Ringhals hade extra statorhärvor i lager. ”Hade vi både behövt beställa en ny statorhärva och hitta en entreprenör att installera den så hade arbetet kunnat ta sex till tolv månader längre”, säger Martin Holmberg, underhållsansvarig för huvudgeneratorerna på Ringhals 4, i Vattenfalls nyhet om reparationen. Den läckande härvan ska skickas till ett laboratorium för att ta reda på varför den började läcka.",
+        ],
+      },
+      {
+        h2: "Forsmark 1 återstart: 17 november – men på knappt halv effekt",
+        body: [
+          "Forsmark 1 stängdes för årlig revision den 6 september. Att revisionen skulle pågå till den 17 november är känt sedan december 2025, då den förlängdes på grund av ändrad omfattning. Nytt sedan den 15 oktober är att underhållet av en av reaktorns turbiner fortsätter även efter att reaktorn har kopplats till nätet.",
+          "Därför är bara 520 av Forsmark 1:s 1 098 megawatt tillgängliga från den 17 november till och med den 12 december, enligt meddelandet till Nord Pool. Därefter finns inget nytt avbrott anmält för i år.",
+        ],
+      },
+      {
+        h2: "Kärnkraft och elpris: vad betyder återstarterna?",
+        body: [
+          "Kärnkraften är en av fyra faktorer som Vattenfall lyfter inför vinterns elpriser, tillsammans med vädret, vattenkraften och världsläget. ”Vi har haft ovanligt mycket kärnkraft ur drift i Sverige under hösten. Men situationen bör förbättras när reaktorerna kommer tillbaka i drift”, säger Vanja Dillén Savcic, rådgivare och senior portföljförvaltare på Vattenfall. Sker återstarterna utan nya förseningar kan de enligt Vattenfall bidra till att stabilisera elpriserna inför vintern.",
+          "De andra faktorerna drar åt olika håll. Den hydrologiska balansen i Norden – tillgången på vatten och snö för vattenkraften – ligger enligt Vattenfall omkring 13–14 terawattimmar under det normala i slutet av oktober, främst efter ett torrt år i Norge. Konflikterna i Mellanöstern skapar osäkerhet kring leveranserna av flytande naturgas till Europa, vilket kan driva upp gaspriset och därmed elpriset även här. Samtidigt pekar de långsiktiga väderprognoserna just nu mot en mildare, blötare och blåsigare inledning på vintern, vilket skulle kunna hålla nere priserna.",
+          "Hittills i oktober har skillnaderna mellan elområdena varit stora. Enligt Nord Pool är spotpriset för den 1–24 oktober i snitt 1,49 kronor per kilowattimme i elområde 4 och 81 öre i elområde 3, mot 41 öre i elområde 2 och 34 öre i elområde 1. Priset svänger också snabbt från dag till dag: i elområde 4 kostade den 23 oktober 1,65 kronor i dygnssnitt och den 24 oktober 28 öre.",
+        ],
+      },
+      {
+        h2: "Vad betyder det för din kalkyl?",
+        body: [
+          "Räkna inte med att elpriset faller den 20 november. Återstarterna ökar tillgången på el i elområde 3, men priset avgörs också av väder, vattenläge och gasmarknad – och Ringhals 3 har redan försenats fem gånger sedan juni. Nya datum publiceras som meddelanden hos Nord Pool, så där kan du själv följa om planerna håller.",
+          "Vattenfall pekar på två sätt att hantera osäkerheten: ett fast elpris över vintern för den som oroar sig för höga priser, eller att med kvartspris flytta förbrukning till de billigare timmarna. Det viktigaste man själv kan göra är enligt Vanja Dillén Savcic ”att se över sin totala elförbrukning”. Varje kilowattimme som du sparar in eller producerar själv behöver du inte köpa, oavsett när reaktorerna startar.",
+        ],
+        bullets: [
+          "Ur drift den 24 oktober: Ringhals 3 (1 081 MW), Ringhals 4 (1 134 MW) och Forsmark 1 (1 098 MW) – tre av Sveriges sex reaktorer.",
+          "Planerad återstart: Forsmark 1 den 17 november (520 MW till och med 12 december), Ringhals 3 den 18 november och Ringhals 4 den 20 november.",
+          "Ringhals 3:s återstart har skjutits upp fem gånger sedan juni – från 23 juli till 18 november.",
+          "Spotpris 1–24 oktober: 1,49 kr/kWh i elområde 4 och 81 öre i elområde 3.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "När startar Ringhals 4 igen?",
+        a: "Enligt Vattenfall beräknas Ringhals 4 vara tillbaka på nätet den 20 november 2026, tio dagar tidigare än det förra beskedet. Reaktorns årliga revision började den 2 september och skulle ursprungligen ha varit klar den 15 oktober, men förlängdes på grund av oförutsett underhåll. Parallellt byts en läckande statorhärva i en av reaktorns två generatorer, ett arbete som beräknas vara klart i början av november.",
+      },
+      {
+        q: "När startar Ringhals 3 igen?",
+        a: "Vattenfall räknar med att Ringhals 3 startar den 18 november 2026. Reaktorn har stått still sedan den årliga revisionen började den 4 maj, och enligt planen skulle den ha varit tillbaka den 23 juli. Återstarten har skjutits upp fem gånger sedan juni, senast den 23 oktober, eftersom planerade åtgärder tar längre tid än väntat.",
+      },
+      {
+        q: "Vilka kärnkraftverk står stilla, och hur många reaktorer är i drift i Sverige?",
+        a: "Den 24 oktober är tre av Sveriges sex reaktorer i drift: Forsmark 2, Forsmark 3 och Oskarshamn 3. Ringhals 3, Ringhals 4 och Forsmark 1 står stilla för revision och reparationer, med en sammanlagd installerad effekt på 3 313 megawatt. Håller planerna är alla sex igång igen efter den 20 november, men Forsmark 1 går på knappt halv effekt till och med den 12 december.",
+      },
+      {
+        q: "Varför står Ringhals still?",
+        a: "Enligt Sveriges Radio P4 Halland har svart gummi som åldrats i förtid hållit båda reaktorerna stängda i flera månader. Fynden gjordes först i Ringhals 3, och sedan fick även Ringhals 4 stängas för gummisanering. Ringhals 4 har dessutom haft en läcka i en av sina två huvudgeneratorer sedan i maj. Vattenfall beskriver förseningarna som en lång underhållsperiod med flera tillkommande arbeten.",
+      },
+      {
+        q: "När startar kärnkraften igen – och sänker det elpriset?",
+        a: "Enligt de senaste beskeden kommer Forsmark 1 tillbaka den 17 november, Ringhals 3 den 18 november och Ringhals 4 den 20 november. Vattenfall bedömer att återstarterna kan bidra till att stabilisera elpriserna inför vintern om de sker utan nya förseningar, men vattenbristen i Norge, gasmarknaden och vädret påverkar också. Hur mycket elpriset påverkas går inte att säga i förväg.",
+      },
+    ],
+  },
+  "solcellsforetag-konkurs-garanti-forskott-2026": {
+    tldr: [
+      "Rätten att reklamera mot företaget upphör vid konkursen. Garantier från tillverkaren av paneler, växelriktare eller batteri gäller däremot som vanligt.",
+      "Har du inte betalat för det som återstår får du hålla inne lika mycket som det kostar att låta någon annan göra klart. Ett förskott blir oftast en oprioriterad fordran.",
+      "Betalade du med kreditkort eller faktura via ett faktureringsbolag kan du rikta samma krav mot kreditgivaren. Det kallas invändningsrätt enligt konsumentkreditlagen.",
+    ],
+    sections: [
+      {
+        h2: "Varför går så många solcellsföretag i konkurs 2026?",
+        body: [
+          "Den 28 september beslutade Stockholms tingsrätt om konkurs i solcellsföretaget Raymond Solar AB. Ett 80-tal projekt var igång, och alla kommer inte att kunna slutföras. ”Vissa kommer att behöva avbrytas”, säger konkursförvaltaren Lars Lundberg på 7wise advokatbyrå till Elinstallatören. Bland kunderna fanns privatpersoner, bostadsrättsföreningar och fastighetsägare. Kreditupplysningsföretaget Creditsafe räknar bolaget till septembers större konkurser.",
+          "I början av oktober rapporterade Elinstallatören att Solortus AB i Västervik hade gått i konkurs. Företaget hade tagit emot förskott från 27 kunder och beställt varor från sin leverantör, men varorna skickades aldrig eftersom leverantören inte fick betalt, berättar konkursförvaltaren Dan Bengtsson. I våras gick solcellsföretaget Sesol i konkurs, och Konsumentverket har sedan dess besvarat en rad frågor från dess kunder.",
+          "Hur många solcellsföretag som har gått i konkurs skiljer sig mellan sammanställningarna. Realtid rapporterade i augusti att 196 svenska solcellsinstallatörer gick i konkurs 2025, en ökning med 33 procent. Sajten Laddtorsk, som för en lista över konkurserna, anger i dag 186 företag för 2025, 147 för 2024 och drygt hundra under årets nio första månader.",
+          "En förklaring är prisfallet. Enligt Realtid har priset på solpaneler fallit med omkring 90 procent sedan 2010. Kinesiska paneler säljs i Europa under de europeiska tillverkarnas produktionskostnad, säger Johan Lindahl, generalsekreterare i branschorganisationen ESMC, enligt tidningen. Samma prisfall som gör solel billigare för kunderna gör det nästan omöjligt att tjäna pengar på att bygga anläggningarna, skriver Realtid.",
+        ],
+      },
+      {
+        h2: "Vad händer med garantin om företaget går i konkurs?",
+        body: [
+          "När företaget går i konkurs försvinner din rätt att reklamera, alltså att klaga på fel enligt konsumentlagstiftningen. Du kan inte längre kräva att företaget åtgärdar fel kostnadsfritt, skriver Konsumentverket.",
+          "Garantier som någon annan har lämnat gäller däremot som vanligt. Det kan vara tillverkarens garanti på solpanelerna, på växelriktaren eller på batteriet. Läs garantivillkoren för att se hur länge garantin gäller och vad som krävs, och vänd dig direkt till tillverkaren. I många fall kan du också reklamera en felaktig vara direkt till leverantören eller tillverkaren och ställa samma krav som på företaget: att felet lagas, att varan byts ut, prisavdrag eller att köpet hävs.",
+          "Hur är det då med garantin på installationen av solceller? En installationsgaranti lämnas av installatören själv och försvinner därför i regel med företaget. Fel i själva monteringen får du alltså oftast bekosta själv efter en konkurs, om inte någon som tar över verksamheten åtar sig ansvaret. Har installatören orsakat en skada, till exempel en vattenskada, kan du däremot anmäla den till företagets ansvarsförsäkring. Försäkringen ersätter aldrig kostnaden för att rätta till ett felaktigt utfört arbete.",
+        ],
+      },
+      {
+        h2: "Får jag tillbaka förskottet om solcellsföretaget går i konkurs?",
+        body: [
+          "Oftast inte. Har du betalat direkt till företaget, till exempel med Swish, banköverföring eller kontant, blir pengarna en del av konkursboet. Ditt krav blir en oprioriterad fordran, och eftersom vissa skulder betalas först är chansen att få tillbaka pengarna liten, enligt Konsumentverket. Kraven skickar du till konkursförvaltaren tillsammans med kvitton och annan dokumentation.",
+          "Har du betalat med kreditkort eller med faktura via ett faktureringsbolag skyddas du av konsumentkreditlagen. Då kan du ställa samma krav på kreditgivaren eller banken som du annars hade ställt på konkursboet. Det kallas invändningsrätt, och den gäller även vid konkurs. Kontakta kreditgivaren och säg att du vill använda invändningsrätten. Säger kreditgivaren nej kan du anmäla tvisten till Allmänna reklamationsnämnden (ARN). Det kostar 150 kronor.",
+          "Har du betalat för material som redan levererats till dig får du i regel behålla det. Material som enligt avtalet är ditt men som fortfarande finns hos företaget kan du ibland få ut med så kallad separationsrätt, om du kan visa att det är ditt och peka ut det bland de andra varorna.",
+          "En förskottsbetalning vid konkurs är alltså en risk som kunden själv bär. Fallet Solortus, där 27 kunder hade betalat förskott för varor som aldrig skickades, visar hur det kan gå.",
+        ],
+      },
+      {
+        h2: "Hur mycket får du hålla inne om installationen inte är klar?",
+        body: [
+          "Har du ännu inte betalat för arbetet får du hålla inne så mycket som motsvarar det som inte är klart eller som är felaktigt. Beloppet ska motsvara vad det kostar att låta ett annat företag göra färdigt anläggningen, och den summan kan du använda till just det. Det är samma regler som när du vill hålla inne betalning till hantverkare som går i konkurs, enligt Konsumentverket.",
+          "Konkursboet har rätt att ta betalt för det arbete som företaget faktiskt har utfört på ett fackmässigt sätt. Får du en faktura för arbete eller material som inte levererats ska du skriftligt, till exempel med mejl, meddela konkursboet att du håller inne betalningen, hur mycket och varför.",
+          "Har arbetet inte påbörjats kan du kontakta konkursboet och argumentera för att få häva avtalet, eftersom arbetet troligen inte kommer att utföras i tid. Konkursförvaltaren hittar du genom tingsrätten i den stad där företaget hade sitt huvudkontor.",
+        ],
+      },
+      {
+        h2: "Vad gäller om företaget rekonstrueras eller tas över?",
+        body: [
+          "Är företaget i rekonstruktion i stället för konkurs beror din rätt att reklamera och använda garantier på vad rekonstruktören har beslutat. Ofta får företaget inte betala ut några pengar under en rekonstruktion, så ekonomiska krav får vänta. Fråga företaget vad som gäller.",
+          "Köps verksamheten upp kan den nya ägaren ibland ta över skulder och krav, men inte alltid. Erbjuder ett nytt bolag att ta över ditt avtal krävs att avtalsvillkoren tillåter det. Annars bör du ha rätt att frånträda avtalet, och det meddelar du skriftligt till det nya bolaget och konkursboet.",
+          "Leasar du anläggningen eller batteriet gäller inte konsumentlagstiftningen, utan då är det leasingavtalet som styr. Slutar en övervakningsapp att fungera efter konkursen kan du ha krav mot appens leverantör, om den är någon annan än installatören.",
+        ],
+      },
+      {
+        h2: "Vad betyder det för din kalkyl?",
+        body: [
+          "Konkursen påverkar inte hur mycket el anläggningen producerar, men den flyttar risken till dig: fel som inte täcks av tillverkarens garanti får du i regel betala själv, och pengar du betalat i förskott kan vara förlorade. Så minskar du risken:",
+        ],
+        bullets: [
+          "Betala i takt med leveransen. Ett förskott blir en oprioriterad fordran om företaget går i konkurs, så betala helst inte för material och arbete innan det är levererat.",
+          "Välj betalsätt med invändningsrätt. Kreditkort eller faktura via ett faktureringsbolag ger dig rätt att rikta samma krav mot kreditgivaren.",
+          "Spara dokumentationen. Avtal, fakturor, kvitton, serienummer och tillverkarnas garantibevis behövs både för garantianspråk och för krav mot ett konkursbo.",
+          "Kontrollera vem som lämnar garantin. Tillverkarnas garantier på paneler, växelriktare och batteri gäller även om installatören försvinner, men installatörens egen garanti gör det i regel inte.",
+          "Är du redan drabbad? Kontakta konkursförvaltaren. Kommunens konsumentvägledning kan hjälpa dig, och tvister med en kreditgivare kan prövas av ARN.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Vad händer med garantin om företaget går i konkurs?",
+        a: "Rätten att reklamera mot företaget upphör, så det kan inte längre åtgärda fel kostnadsfritt. Garantier som tillverkaren eller leverantören har lämnat gäller som vanligt, till exempel på solpaneler, växelriktare och batteri. Följ garantivillkoren och vänd dig direkt till den som har lämnat garantin.",
+      },
+      {
+        q: "Vad händer om solcellsföretaget går i konkurs innan installationen är klar?",
+        a: "Det är inte säkert att installationen blir klar: vissa projekt kan drivas vidare av konkursboet, andra avbryts. Har du betalat för levererat material och utfört arbete behöver du inte betala mer i nuläget, och materialet får du i regel behålla. För det som återstår får du hålla inne lika mycket som det kostar att låta ett annat företag göra klart. Meddela konkursboet skriftligt.",
+      },
+      {
+        q: "Får man tillbaka förskottsbetalning vid konkurs?",
+        a: "Sällan. Ett förskott som betalats direkt till företaget blir en oprioriterad fordran i konkursboet, och vissa skulder betalas före. Har du betalat med kreditkort eller faktura via ett faktureringsbolag kan du i stället använda invändningsrätten och kräva pengarna av kreditgivaren.",
+      },
+      {
+        q: "Vem kontaktar man när solcellsföretaget har gått i konkurs?",
+        a: "Konkursförvaltaren, som du hittar genom tingsrätten där företaget hade sitt huvudkontor. Garantianspråk skickar du till tillverkaren. Kommunens konsumentvägledning kan hjälpa till, och en tvist med en kreditgivare kan prövas av ARN för 150 kronor.",
+      },
+    ],
+  },
   "blir-det-extra-val-andersson-nedrostad-budget-elskatt-elstod": {
     tldr: [
       "Förslaget föll med 248 röster mot 99, och bara Socialdemokraterna röstade ja. Talmannen har tre försök kvar, och först om alla faller hålls extra val inom tre månader.",
