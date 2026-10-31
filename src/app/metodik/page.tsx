@@ -10,13 +10,14 @@ import {
   Breadcrumbs,
   CtaBlock,
 } from "@/components/seo/aeo";
+import { seoTitle } from "@/lib/seo-title";
 
 const PATH = "/metodik";
 const UPDATED = "2026-07-08";
 const PUBLISHED = "2026-07-07";
 
 export const metadata = {
-  title: "Vår metodik – så väljer, dimensionerar och prissätter vi",
+  title: seoTitle("Vår metodik – så väljer, dimensionerar och prissätter vi"),
   description:
     "Optimera Energis metodik: hand-plockat sortiment, transparent pris (priset på offerten är priset på fakturan), dimensionering efter din förbrukning och när vi säger nej. Så här bör du också utvärdera en installatör.",
   alternates: { canonical: PATH },

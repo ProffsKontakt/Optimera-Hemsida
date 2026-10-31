@@ -16,13 +16,14 @@ import { KbHubImage, KbTiles } from "@/components/kb/KbVisuals";
 import { KB_HUB_IMAGE, solarCategoryImageKey } from "@/lib/kb-visuals";
 import { kbImage } from "@/lib/media";
 import { allConcepts } from "@/lib/batteriskolan";
+import { seoTitle } from "@/lib/seo-title";
 
 const PATH = "/solcellsfragor";
 
 export function generateMetadata() {
   const count = allQuestions().length;
   return {
-    title: "Solcellsfrågor: svar på det svenskar söker om solceller",
+    title: seoTitle("Solcellsfrågor: svar på det svenskar söker om solceller"),
     description: `${count} frågor som svenskar söker på om solceller – pris, lönsamhet, produktion, bygglov, skatt och säkerhet – besvarade en och en, med källor. Uppdateras löpande.`,
     alternates: { canonical: PATH },
     openGraph: {

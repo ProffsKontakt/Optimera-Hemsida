@@ -8,13 +8,14 @@ import {
   CtaBlock,
 } from "@/components/seo/aeo";
 import { FAQ_REVIEWED_AT } from "@/lib/faq-review";
+import { seoTitle } from "@/lib/seo-title";
 
 const PATH = "/fragor-och-svar";
 // Faktagranskas varje vecka av kunskapsbankens rutin – se lib/faq-review.ts.
 const UPDATED = FAQ_REVIEWED_AT;
 
 export const metadata = {
-  title: "Frågor och svar om solceller, batteri och grönt avdrag",
+  title: seoTitle("Frågor och svar om solceller, batteri och grönt avdrag"),
   description:
     "Vanliga frågor och raka svar om solcellsbatteri, solceller, pris, grönt avdrag, stödtjänster och hur Optimera Energi arbetar. Samlade svar för villaägare i Stockholm.",
   alternates: { canonical: PATH },

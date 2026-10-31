@@ -21,6 +21,7 @@ import { findQuestion } from "@/lib/solcellsfragor";
 import { KbHeroImage } from "@/components/kb/KbVisuals";
 import { batteryGroupImageKey } from "@/lib/kb-visuals";
 import { kbImage } from "@/lib/media";
+import { seoTitle } from "@/lib/seo-title";
 
 const BASE = "https://optimeraenergi.se";
 
@@ -33,7 +34,7 @@ export function generateMetadata({ params }: { params: { slug: string } }) {
   if (!c) return {};
   const path = `/batteriskolan/${c.slug}`;
   return {
-    title: c.title,
+    title: seoTitle(c.title),
     description: c.description,
     alternates: { canonical: path },
     openGraph: {

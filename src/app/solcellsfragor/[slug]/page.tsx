@@ -16,6 +16,7 @@ import { findConcept } from "@/lib/batteriskolan";
 import { KbHeroImage } from "@/components/kb/KbVisuals";
 import { solarCategoryImageKey } from "@/lib/kb-visuals";
 import { kbImage } from "@/lib/media";
+import { seoTitle } from "@/lib/seo-title";
 
 export function generateStaticParams() {
   return allQuestions().map((q) => ({ slug: q.slug }));
@@ -26,7 +27,7 @@ export function generateMetadata({ params }: { params: { slug: string } }) {
   if (!q) return {};
   const path = `/solcellsfragor/${q.slug}`;
   return {
-    title: q.question,
+    title: seoTitle(q.question),
     description: q.description,
     alternates: { canonical: path },
     openGraph: {

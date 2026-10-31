@@ -66,7 +66,7 @@ export function generateMetadata(): Metadata {
   const n = getVisibleTeam().length;
   const word = countWord(n).toLowerCase();
   return {
-    title: "Om oss · Optimera Energi – elfirman som tar hand om dig",
+    title: "Om oss – elfirman som tar hand om dig",
     description: `Möt de ${word} personerna bakom Optimera Energilösningar i Mälardalen AB – med namn, roll och direktnummer, och se direkt vem du ska kontakta. Vi installerar ${visibleServiceText("plural")}.`,
     alternates: { canonical: "/om-oss" },
     openGraph: {

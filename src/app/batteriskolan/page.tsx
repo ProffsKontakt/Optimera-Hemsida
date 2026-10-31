@@ -15,12 +15,13 @@ import { allQuestions } from "@/lib/solcellsfragor";
 import { KbHubImage, KbTiles } from "@/components/kb/KbVisuals";
 import { KB_HUB_IMAGE, batteryGroupImageKey } from "@/lib/kb-visuals";
 import { kbImage } from "@/lib/media";
+import { seoTitle } from "@/lib/seo-title";
 
 const PATH = "/batteriskolan";
 const BASE = "https://optimeraenergi.se";
 
 export const metadata = {
-  title: "Batteriskolan: så fungerar hembatterier, koncept för koncept",
+  title: seoTitle("Batteriskolan: så fungerar hembatterier, koncept för koncept"),
   description:
     "FCR-D, stödtjänster, effektavgift, kvartspris, spotprisstyrning, dimensionering och brandsäkerhet – hembatteriets alla koncept förklarade enkelt, med källor.",
   alternates: { canonical: PATH },

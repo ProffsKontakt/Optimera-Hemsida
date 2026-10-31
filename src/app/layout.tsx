@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Fraunces, Poppins, JetBrains_Mono } from "next/font/google";
 import Script from "next/script";
+import { PromptwatchVisitors } from "@/components/analytics/PromptwatchVisitors";
 import "./globals.css";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
@@ -57,7 +58,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default:
-      "Optimera Energi – Solceller, batteri, värmepump och laddbox i Stockholm",
+      "Optimera Energi – solceller, batteri, värmepump, laddbox i Stockholm",
     template: "%s · Optimera Energi",
   },
   description:
@@ -171,6 +172,8 @@ export default function RootLayout({
         <GoogleTagManager />
         {/* Meta Pixel (1378950624383966) – consent-gated via Cookiebot. */}
         <MetaPixel />
+        {/* Promptwatch: besök från AI-sök – laddas efter statistik-samtycke. */}
+        <PromptwatchVisitors />
       </head>
       <body className="min-h-screen bg-bone text-ink antialiased">
         {/* GTM noscript måste ligga direkt efter <body>. */}

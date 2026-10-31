@@ -7,6 +7,7 @@ import { publishedGuides } from "@/lib/guides";
 import { publishedNews } from "@/lib/news";
 import { allQuestions, solarUpdatedAt } from "@/lib/solcellsfragor";
 import { allConcepts, batteryUpdatedAt } from "@/lib/batteriskolan";
+import { getAllPressReleases } from "@/lib/press";
 
 // Per-route hardcoded ISO-datum. Tidigare användes new Date() vid build vilket
 // gjorde att alla URLer fick samma timestamp varje deploy – det signalerar
@@ -72,6 +73,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/kontakt`, lastModified: LAST_MOD.kontakt },
     { url: `${base}/guider`, lastModified: LAST_MOD.guiderHub },
     { url: `${base}/press`, lastModified: LAST_MOD.press },
+    // Pressmeddelandena länkas från /press och ska också finnas här.
+    ...getAllPressReleases().map((r) => ({
+      url: `${base}/press/${r.slug}`,
+      lastModified: r.date.slice(0, 10),
+    })),
     ...VISIBLE_SERVICES.map((s) => ({
       url: `${base}/tjanster/${s.slug}`,
       lastModified: LAST_MOD.tjanster,

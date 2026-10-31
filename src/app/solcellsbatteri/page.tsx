@@ -19,13 +19,14 @@ import {
   CtaBlock,
   MethodologyCallout,
 } from "@/components/seo/aeo";
+import { seoTitle } from "@/lib/seo-title";
 
 const PATH = "/solcellsbatteri";
 const UPDATED = "2026-07-08";
 const PUBLISHED = "2026-07-07";
 
 export const metadata = {
-  title: "Solcellsbatteri till villa – pris, storlek och grönt avdrag",
+  title: seoTitle("Solcellsbatteri till villa – pris, storlek och grönt avdrag"),
   description:
     "Allt om solcellsbatteri för villa: vad det kostar, hur du dimensionerar storleken, 48,5 % grönt avdrag, återbetalningstid och vilka batterimärken vi installerar. Boka ett kostnadsfritt hembesök i Stockholm.",
   alternates: { canonical: PATH },

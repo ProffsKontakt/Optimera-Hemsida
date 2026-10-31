@@ -11,6 +11,7 @@ import { JsonLd, articleSchema } from "@/components/seo/JsonLd";
 import { AnswerBox, Breadcrumbs, CtaBlock, FaqBlock, LastUpdated } from "@/components/seo/aeo";
 import { KbSources } from "@/components/kb/KbParts";
 import { keepNumbersTogether as nb } from "@/lib/hyphenate";
+import { seoTitle } from "@/lib/seo-title";
 
 export function generateStaticParams() {
   return GUIDES.map((g) => ({ slug: g.slug }));
@@ -20,7 +21,7 @@ export function generateMetadata({ params }: { params: { slug: string } }) {
   const guide = findGuide(params.slug);
   if (!guide) return {};
   return {
-    title: guide.title,
+    title: seoTitle(guide.title),
     description: guide.excerpt,
     alternates: { canonical: `/guider/${guide.slug}` },
     openGraph: {

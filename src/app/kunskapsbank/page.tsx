@@ -13,11 +13,12 @@ import { publishedNews, formatNewsDate } from "@/lib/news";
 import { allQuestions } from "@/lib/solcellsfragor";
 import { allConcepts } from "@/lib/batteriskolan";
 import { publishedGuides } from "@/lib/guides";
+import { seoTitle } from "@/lib/seo-title";
 
 const PATH = "/kunskapsbank";
 
 export const metadata = {
-  title: "Kunskapsbank: nyheter, solcellsfrågor, Batteriskolan och guider",
+  title: seoTitle("Kunskapsbank: nyheter, solcellsfrågor, Batteriskolan och guider"),
   description:
     "Allt om sol, batteri och el på ett ställe: energinyheterna som påverkar din elräkning, svar på det svenskar söker om solceller och hembatteriets koncept förklarade – alltid med källor.",
   alternates: { canonical: PATH },

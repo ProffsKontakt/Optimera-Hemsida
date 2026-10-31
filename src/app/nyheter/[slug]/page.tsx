@@ -20,6 +20,7 @@ import {
 } from "@/components/seo/JsonLd";
 import { getNewsContent } from "@/lib/news-content";
 import { newsTldrReport } from "@/lib/news-quality";
+import { seoTitle } from "@/lib/seo-title";
 
 export function generateStaticParams() {
   // Redaktionsregel 6: varna i byggloggen om "Läget i korthet" upprepar
@@ -52,7 +53,7 @@ export function generateMetadata({ params }: { params: { slug: string } }) {
   if (!article) return {};
   const img = resolveHeroImage(article);
   const baseMeta = {
-    title: article.title,
+    title: seoTitle(article.title),
     description: article.excerpt,
     alternates: { canonical: `/nyheter/${article.slug}` },
     openGraph: {
