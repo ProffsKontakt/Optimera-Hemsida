@@ -457,6 +457,7 @@ export const GUIDE_CONTENT: Record<string, GuideContent> = {
           "Elnät: avgift till nätbolaget, oftast en fast del efter huvudsäkringens storlek och en rörlig överföringsavgift per kWh.",
           "Energiskatt 2026: 36,0 öre/kWh exklusive moms, 45 öre/kWh inklusive moms.",
           "Moms läggs på både elhandel, elnät och energiskatt.",
+          "Räkneexempel SE3 2026: spotpriset var i snitt 77 öre/kWh januari–september 2026 enligt Nord Pool. Med 5 öre i påslag blir elhandeln 82 öre, med moms 1,03 kr. Lägg till energiskatt 45 öre och Ellevios rörliga överföringsavgift 26 öre, båda inklusive moms, så kostar en kilowattimme cirka 1,74 kr. Under dygnets dyraste kvartar är spotpriset ofta det dubbla, och då hamnar totalen över 2,50 kr/kWh. Fasta avgifter för elnät och elhandel tillkommer per månad.",
         ],
       },
       {
@@ -489,6 +490,10 @@ export const GUIDE_CONTENT: Record<string, GuideContent> = {
       {
         q: "När infördes kvartspris på el?",
         a: "Elbörsen gick över till 15-minuterspriser för leveransdygnet 1 oktober 2025, med handel dagen före, 30 september 2025. Sedan dess sätts spotpriset per kvart i alla europeiska budområden, även i SE1–SE4.",
+      },
+      {
+        q: "Vad kostar en kilowattimme el totalt 2026, med skatt och nätavgift?",
+        a: "I elområde SE3 cirka 1,74 kr/kWh i rörlig kostnad vid snittspotpris: spotpriset låg i snitt på 77 öre/kWh januari–september 2026 enligt Nord Pool, plus 5 öre i påslag och moms blir 1,03 kr, plus energiskatt 45 öre och Ellevios rörliga överföringsavgift 26 öre inklusive moms. Med Vattenfall Eldistributions tidstariff är överföringen 76,5 öre/kWh på höglasttid vintertid, så totalen kan bli över 2,20 kr/kWh även vid snittspotpris. Fasta månadsavgifter för elnät och elhandel tillkommer, och i norra Sverige är spotpriset lägre.",
       },
       {
         q: "Hur mycket är energiskatten på el 2026?",

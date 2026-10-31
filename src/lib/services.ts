@@ -300,6 +300,10 @@ export const SERVICES: Service[] = [
         a: "Zaptec Go 2, Easee Max och DEFA Power har MID-godkänd energimätare, Easee Up och Max har jordfelsbrytaren inbyggd, DEFA Power och Charge Amps Halo har fast kabel, och Fox ESS A022K och SAJ:s laddmodul hör ihop med respektive batterisystem. Vi har jämfört åtta laddboxar på en egen sida.",
       },
       {
+        q: "Kan laddboxen ladda bilen på överskottet från solcellerna?",
+        a: "Ja, men hur beror på boxen. Easee laddar på solöverskott med tillbehöret Equalizer, Charge Amps Halo med Green Charging, DEFA Power via DEFA Balancer och Fox ESS A022K i Green-läge när den sitter ihop med Fox ESS elmätare och växelriktare. Zaptec Go 2 styrs mot solöverskott via ett externt styrsystem, eftersom Zaptecs egen solladdning inte erbjuds i Sverige. Har du batteri kan laddningen också styras så att batteriet inte töms i bilen när elen är dyr. Vi kopplar ihop laddbox, solceller och batteri vid installationen.",
+      },
+      {
         q: "Kan jag dela laddbox med grannen?",
         a: "Ja, vi installerar OCPP-baserade boxar med användare och fakturaunderlag per förare.",
       },

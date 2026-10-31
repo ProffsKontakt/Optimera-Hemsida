@@ -230,7 +230,7 @@ export const GUIDES: Guide[] = [
     excerpt: "Spotpriset är elbörsens pris i ditt elområde, satt per kvart sedan 1 oktober 2025. Så funkar SE1–SE4, varför söder ofta är dyrare och vad mer du betalar.",
     category: "Elpris",
     publishedAt: "2026-10-04",
-    updatedAt: "2026-10-04",
+    updatedAt: "2026-10-31",
     readTimeMin: 6,
     searchPhrases: [
       "vad är spotpris",
@@ -269,6 +269,21 @@ export const GUIDES: Guide[] = [
         title: "Energiskatt",
         publisher: "Energimarknadsinspektionen",
         url: "https://ei.se/konsument/el/elmarknaden/energiskatt",
+      },
+      {
+        title: "Dagen före-priser, års- och dagsmedel för SE1–SE4 i SEK",
+        publisher: "Nord Pool",
+        url: "https://data.nordpoolgroup.com/auction/day-ahead/prices?deliveryDate=latest&currency=SEK&aggregation=Yearly&deliveryAreas=SE1,SE2,SE3,SE4",
+      },
+      {
+        title: "Elnätspriser för hus",
+        publisher: "Ellevio",
+        url: "https://www.ellevio.se/abonnemang/elnatspriser/hus/",
+      },
+      {
+        title: "Tidstariff – avgifter för elnät",
+        publisher: "Vattenfall Eldistribution",
+        url: "https://www.vattenfalleldistribution.se/abonnemang-och-avgifter/avtal-och-avgifter/energiskatt/",
       },
       {
         title: "Olika avtalstyper",
