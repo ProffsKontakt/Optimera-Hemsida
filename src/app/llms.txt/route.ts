@@ -65,6 +65,7 @@ export async function GET() {
     "",
     ...VISIBLE_SERVICES.map((s) => `- [${s.name}](${BASE}/tjanster/${s.slug}): ${SERVICE_LINES[s.slug]}.`),
     `- [Jämförelse av hembatterier: Eway, SAJ HS3, Enershare, SigenStor och Fox ESS CQ7](${BASE}/tjanster/batterier/jamforelse): kapacitet, modulstorlek, växelriktare, cellkemi, cykellivslängd och mått för de fem batterier vi installerar oftast, och vem varje batteri passar för.`,
+    `- [Zaptec Go 2 eller Easee Up – jämförelse av laddboxar](${BASE}/tjanster/laddboxar/jamforelse): effekt, IT-nät, jordfelsskydd, MID-mätare, solladdning, mått och garanti för Zaptec Go 2, Easee Up och Charge Amps Halo, med Elsäkerhetsverkets och Skatteverkets regler.`,
     "",
     "## Kunskapsbank",
     "",

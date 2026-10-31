@@ -19,13 +19,14 @@ const LAST_MOD = {
   offert: "2026-05-19",
   omOss: "2026-10-25",
   kontakt: "2026-05-09",
-  tjanster: "2026-10-27",
   legal: "2026-10-14",
   cities: "2026-10-27",
   guiderHub: "2026-05-24",
   press: "2026-05-24",
   easyway: "2026-10-27",
   batteryComparison: "2026-10-29",
+  chargerComparison: "2026-10-31",
+  tjanster: "2026-10-31",
   // AI-search-pelarsidor. Bumpade 10-26 när återbetalning, stödtjänster
   // och batterisortimentet anpassades till kunskapsbanken.
   solcellsbatteri: "2026-10-29",
@@ -91,6 +92,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${base}/tjanster/batterier/jamforelse`,
       lastModified: LAST_MOD.batteryComparison,
+    },
+    // Jämförelse av laddboxarna (Zaptec Go 2, Easee Up, Charge Amps Halo).
+    {
+      url: `${base}/tjanster/laddboxar/jamforelse`,
+      lastModified: LAST_MOD.chargerComparison,
     },
     // City-landingssidor för Stockholm-områdets kommuner.
     ...CITIES.map((c) => ({

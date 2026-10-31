@@ -268,13 +268,13 @@ export const SERVICES: Service[] = [
         step: "02",
         title: "Val av box",
         body:
-          "Easee, Zaptec, Wallbox, Garo – vi förklarar skillnaderna istället för att sälja en.",
+          "Zaptec Go 2, Easee Up eller Charge Amps Halo – vi förklarar skillnaderna i stället för att sälja en.",
       },
       {
         step: "03",
         title: "Installation",
         body:
-          "Snygga kabelvägar, ny grupp, jordfelsbrytare typ B – gjort på en halvdag.",
+          "Snygga kabelvägar, ny grupp och en egen jordfelsbrytare för laddboxen – gjort på en halvdag.",
       },
       {
         step: "04",
@@ -289,7 +289,15 @@ export const SERVICES: Service[] = [
       },
       {
         q: "Får jag ROT-avdrag?",
-        a: "Inte på laddbox direkt, men det gröna avdraget täcker 48,5 % av arbets- och materialkostnaden upp till 50 000 kr.",
+        a: "Inte ROT, men grönt avdrag: 50 % av arbete och material, vid fast pris 48,5 % av totalpriset, högst 50 000 kr per person och år. Laddboxen ska bara användas av hushållet och ha typ 2-uttag. Arbete i elcentralen ger inte avdrag.",
+      },
+      {
+        q: "Behöver laddboxen en egen jordfelsbrytare?",
+        a: "Ja. Elsäkerhetsverket anger att varje laddningspunkt ska ha en egen jordfelsbrytare och inte sitta under husets gemensamma. Vilken typ som krävs beror på laddboxen – Zaptec Go 2 kräver till exempel en separat typ A, medan Easee Up har en inbyggd.",
+      },
+      {
+        q: "Vilken laddbox ska jag välja?",
+        a: "Zaptec Go 2 har MID-certifierad energimätare och 4G, Easee Up har jordfelsbrytaren inbyggd och laddar trefas även på IT-nät, och Charge Amps Halo har fast kabel. Vi har jämfört dem på sidan Zaptec Go 2 eller Easee Up.",
       },
       {
         q: "Kan jag dela laddbox med grannen?",

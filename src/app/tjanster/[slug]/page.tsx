@@ -277,6 +277,23 @@ export default function ServicePage({
         </div>
       )}
 
+      {/* Laddboxar vi installerar, med länk till jämförelsen. */}
+      {s.slug === "laddboxar" && (
+        <div className="container-edge">
+          <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 border-t border-ink/10 py-5">
+            <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink/50">
+              Laddboxar vi installerar
+            </span>
+            <span className="text-[14px] text-ink/70">
+              Zaptec Go 2, Easee Up och Charge Amps Halo.{" "}
+              <Link href="/tjanster/laddboxar/jamforelse" className="text-indigo underline underline-offset-2">
+                Zaptec Go 2 eller Easee Up? Jämför laddboxarna
+              </Link>
+            </span>
+          </div>
+        </div>
+      )}
+
       {/* Batteri-sortiment + Easyway-utmärkelse. Bara på batteri-tjänsten.
           Mellan-raden listar hela sortimentet vi säljer; segmentet under
           lyfter fram Easyway med länk till förklaringssidan. */}
