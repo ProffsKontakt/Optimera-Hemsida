@@ -48,7 +48,7 @@ export const GUIDES: Guide[] = [
     status: "published",
     title: "Kungen utan krona? Så står sig Sigenergy SigenStor mot ett öppet batterisystem",
     excerpt:
-      "Recension av Sigenergy SigenStor: optimerare i varje modul, ingen publicerad verkningsgrad, AI-löften utan oberoende belägg, låst system – mot ett öppet högspänningssystem.",
+      "Recension av Sigenergy SigenStor: optimerare i varje modul, ingen publicerad verkningsgrad, AI-löften utan oberoende belägg och låst system – mot ett öppet system.",
     category: "Batteri",
     publishedAt: "2026-10-31",
     updatedAt: "2026-10-31",
