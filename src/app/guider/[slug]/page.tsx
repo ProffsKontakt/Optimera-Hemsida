@@ -51,10 +51,10 @@ export default function GuidePage({ params }: { params: { slug: string } }) {
   if (!guide) notFound();
   const content = getGuideContent(guide.slug);
   const heroImage = getMedia(`guide:${guide.slug}`);
-  // Guidens egen bild om en laddats upp, annars kategorins foto.
+  // Uppladdad bild först, sedan guidens egen bild i koden, annars kategorins foto.
   const hero = heroImage
     ? { src: heroImage.url, alt: heroImage.alt || guide.title }
-    : kbImage(guideCategoryImageKey(guide.category));
+    : guide.heroImage ?? kbImage(guideCategoryImageKey(guide.category));
   const path = `/guider/${guide.slug}`;
 
   if (guide.status === "draft") {

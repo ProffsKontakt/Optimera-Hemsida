@@ -40,12 +40,18 @@ export type Guide = {
   services?: ServiceSlug[];
   /** Källorna guiden bygger på – visas under texten och blir citation i schemat. */
   sources?: KbSource[];
+  /** Egen hjältebild (annars kategorins foto eller en uppladdad bild). */
+  heroImage?: { src: string; alt: string };
 };
 
 export const GUIDES: Guide[] = [
   {
     slug: "sigenergy-sigenstor-granskning",
     status: "published",
+    heroImage: {
+      src: "/kb/guider-sigenergy-sigenstor-granskning.webp",
+      alt: "Tre hembatterier sida vid sida: Sigenergy SigenStor med tre batterimoduler och Energy Controller, Eway UNIV7600 med fyra moduler (30,72 kWh) och Fox ESS CQ7 med fem moduler (35,1 kWh)",
+    },
     title: "Kungen utan krona? Så står sig Sigenergy SigenStor mot ett öppet batterisystem",
     excerpt:
       "Recension av Sigenergy SigenStor: optimerare i varje modul, ingen publicerad verkningsgrad, AI-löften utan oberoende belägg och låst system – mot ett öppet system.",
