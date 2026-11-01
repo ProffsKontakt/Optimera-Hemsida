@@ -171,5 +171,5 @@ export const KB_HUB_IMAGE = {
   kunskapsbank: "sol-batteri-elbil-och-varmepump",
   solcellsfragor: "sol-produktion-och-teknik",
   batteriskolan: "bat-grunder",
-  guider: "guide-varmepump",
+  guider: "sol-planering-tak-och-bygglov",
 } as const satisfies Record<string, KbImageKey>;

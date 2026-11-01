@@ -50,7 +50,7 @@ export const GUIDES: Guide[] = [
     status: "published",
     heroImage: {
       wide: true,
-      src: "/kb/guider-sigenergy-sigenstor-granskning-v2.webp",
+      src: "/kb/guider-sigenergy-sigenstor-granskning-v3.webp",
       alt: "Tre installerade hembatterier: Sigenergy SigenStor 27 kWh med Energy Controller mot mörk träpanel, Fox ESS CQ7 35 kWh mot putsad fasad och Eway 30,72 kWh med Solinteg hybridväxelriktare i ett garage",
     },
     title: "Kungen utan krona? Så står sig Sigenergy SigenStor mot ett öppet batterisystem",
