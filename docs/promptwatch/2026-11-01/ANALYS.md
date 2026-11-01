@@ -1,0 +1,576 @@
+# Promptwatch – analysunderlag 2026-11-01
+
+Råsvaren (3 600 st) ligger komprimerade i `responses-all.json.gz`. Sida-för-sida-exporten togs bort för att hålla repot litet.
+
+Prompter: 127 · Svar exporterade: 3600 · Citerade domäner (icke-brandade): 100 · Citat totalt: 18498
+
+## Andel svar som nämner Optimera Energi, per AI-modell (alla prompter)
+- microsoft-copilot: 63/437 (14 %)
+- google-ai-mode: 59/436 (14 %)
+- gemini: 56/435 (13 %)
+- google-ai-overview: 54/394 (14 %)
+- sonar-pro: 73/387 (19 %)
+- gpt-search: 62/384 (16 %)
+- claude-sonnet-4-6-20260326: 30/277 (11 %)
+- meta-ai: 24/211 (11 %)
+- amazon-alexa: 23/209 (11 %)
+- deepseek-chat: 14/130 (11 %)
+- mistral-large-latest: 5/118 (4 %)
+- gpt-5.6-luna: 8/101 (8 %)
+- grok-4.5: 10/81 (12 %)
+
+## Synlighet per prompt (brand-rank, medel %)
+-    95 | BRAN | är Optimera Energi seriösa | topp: 
+-    95 | COMP | Optimera Energi eller Hemsol | topp: HemSol 60.29
+-    95 | BRAN | Optimera Energi Solna recensioner | topp: Sesol 2.86
+-    90 | COMP | Optimera Energi eller Greenely batteri | topp: Greenely 71.43, Svea Solar 8.57, Laddboxbolaget 5
+-    90 | BRAN | Optimera Energi omdömen och betyg, är de ett bra val för solpaneler i Stockholm | topp: HemSol 4.43, Svea Solar 4.29, Svea Solar 3.99
+- 89.19 | BRAN | vad skiljer Optimera Energi från andra solcellsinstallatörer i Stockholm | topp: Svea Solar 13.41, Otovo 12.46, Sesol 10.14
+-  87.3 | BRAN | vad tycker kunderna om Optimera Energi på Reco | topp: 
+-    85 | BRAN | Optimera Energi Eway | topp: Energy Group 5.71
+- 84.28 | BRAN | Optimera Energi Solna | topp: Solproffset 0.57
+- 83.82 | COMP | Optimera Energi eller 1KOMMA5 för batteri i Stockholm | topp: 1KOMMA5° 65.88, Smart Solar 6.06, HemSol 6.06
+- 78.33 | COMP | Optimera Energi eller Otovo för solceller | topp: Otovo 75.17, HemSol 8.27, Svea Solar 5.5
+- 77.41 | COMP | Optimera Energi eller Svea Solar för solceller och batteri | topp: Svea Solar 43.62, Svea Solar 38.76, Otovo 2.02
+- 73.78 | BRAN | Optimera Energi laddbox installation | topp: Greenely 5.48, 1KOMMA5° 4.83, Laddboxbolaget 1.25
+- 64.44 | COMP | bästa alternativet till Optimera Energi för att installera batteri och solpaneler i S | topp: 1KOMMA5° 34.94, Svea Solar 34.21, Svea Solar 29.31
+- 35.03 | BRAN | Optimera Energi Fox ESS | topp: Smart Solar 3.13, Greenely 3.13
+- 31.23 | ORGA | vem installerar Easyway-batteri i Stockholm | topp: Laddboxbolaget 24.36, Energy Group 12.41, Moveco 7.96
+- 16.56 | ORGA | installatör för solceller och batteri i Solna | topp: Electric Solar 15.26, Chargebuddy 12.84, Svea Solar 10.94
+-  9.09 | ORGA | hemmabatteri stockholm | topp: Greenely 24.73, Evify 16.09, 1KOMMA5° 10.28
+-  8.94 | ORGA | hembatteri Sollentuna installation | topp: Solproffset 10.71, Greenely 7.15, Stockholm Solenergi 5.22
+-  8.21 | ORGA | vilket företag i Stockholm installerar solpaneler och batteri tillsammans till villa | topp: Svea Solar 29.49, Svea Solar 24.7, Moveco 24.33
+-  6.99 | ORGA | hur lång är återbetalningstiden för solceller i Sverige | topp: HemSol 19.78, 1KOMMA5° 12.64, Svea Solar 2.65
+-  5.86 | ORGA | finns det något företag som sköter allt från offert till installation av solceller oc | topp: Svea Solar 25.59, Svea Solar 20.37, Moveco 17.04
+-  5.79 | ORGA | vilket är bästa sättet att sänka elkostnaden i en villa med solpaneler, batteri och v | topp: Greenely 11.53, Smart Solar 9.76, Evify 5.31
+-  5.39 | ORGA | jag vill ha laddbox hemma och funderar på att kombinera den med solpaneler, vilket St | topp: Svea Solar 31.27, Svea Solar 26.08, 1KOMMA5° 21.34
+-  5.03 | ORGA | vad gäller för grönt avdrag 2027 | topp: 1KOMMA5° 5.2, Svea Solar 4.41, Eon 4.24
+-  1.21 | ORGA | hur funkar AI-styrning av hemmaenergi med solceller och batteri, finns det lösningar  | topp: Greenely 32.73, 1KOMMA5° 20.92, Evify 11.1
+-  0.71 | ORGA | får man grönt avdrag för laddbox i bostadsrätt | topp: Laddboxbolaget 6.32, 1KOMMA5° 5.65, Evify 4.04
+-     0 | ORGA | hur mycket el producerar solceller per år i Stockholm | topp: Otovo 10.34, HemSol 9.19, 1KOMMA5° 5.47
+-     0 | ORGA | prisstyrning av batteri utan stödtjänster, lönar det sig | topp: Greenely 29.86, Smart Solar 8.29
+-     0 | ORGA | hur mycket el drar ett hembatteri i standby | topp: Smart Solar 11.25
+-     0 | ORGA | laddbox med MID-godkänd elmätare för tjänstebil | topp: Evify 3.57, Elbilsvaruhuset 2.5, Laddboxbolaget 2.29
+-     0 | ORGA | kan jag blanda gamla och nya batterimoduler | topp: 
+-     0 | ORGA | solceller Danderyd installatör | topp: Stockholm Solenergi 12.57, GOSOL Energi AB 12.57, HemSol 6.86
+-     0 | ORGA | hur lång tid tar det att installera solceller och batteri | topp: HemSol 22.5, Laddboxbolaget 10.83, Smart Solar 4.17
+-     0 | ORGA | är Homevolt batteri säkert, har Homevolt brunnit | topp: Svea Solar 4.18, HemSol 1.54
+-     0 | ORGA | hur stort batteri till 15000 kWh per år | topp: HemSol 8.13, Elbilsvaruhuset 7.5
+-     0 | ORGA | luft-vatten eller bergvärme, vad ska jag välja till min villa | topp: Smart Solar 3.08, 1KOMMA5° 2.39, Nordic Solar 1.19
+-     0 | ORGA | Fox ESS laddbox A022K, är den bra | topp: 
+-     0 | ORGA | vilket hembatteri är bäst, Eway, SAJ HS3 eller Sigenergy SigenStor | topp: Evify 9.62, Laddboxbolaget 7.74, Greenely 4.35
+-     0 | ORGA | grönt avdrag 2026 batteri max belopp två ägare | topp: 1KOMMA5° 15.63, Eon 13.75, Elkontakten Sverige AB 8.75
+-     0 | ORGA | hembatteri som får stå utomhus i Sverige | topp: Laddboxbolaget 17.55, 1KOMMA5° 15.12, Svea Solar 9.56
+-     0 | ORGA | hur mycket grönt avdrag får man på solceller och batteri 2026 | topp: Eon 11.5, 1KOMMA5° 9.92, Laddboxbolaget 3.28
+-     0 | ORGA | Easee Up pris installerad | topp: Evify 33.86, Elbilsvaruhuset 25.43, Laddboxbolaget 20
+-     0 | ORGA | Enershare batteri erfarenheter | topp: Laddboxbolaget 32.63, Energy Group 32.5, MBS Energi 18.75
+-     0 | ORGA | hur mycket kostar en kilowattimme el inklusive skatt och nätavgift 2026 | topp: Eon 1.84, 1KOMMA5° 1.11
+-     0 | ORGA | batteri med inbyggd växelriktare eller separat hybridväxelriktare, vad är bäst | topp: Elkontakten Sverige AB 9.97, Smart Solar 6.98, HemSol 4.29
+-     0 | ORGA | behöver man bygglov för solceller i Stockholm | topp: Smart Solar 4.17, Grönkraft 1.59, HemSol 1.57
+-     0 | ORGA | solceller installatör Täby | topp: Svea Solar 3.51, Otovo 2.46, HemSol 2.04
+-     0 | ORGA | vad kostar en laddbox installerad i Stockholm 2026 | topp: Evify 8.13, 1KOMMA5° 5
+-     0 | ORGA | jag vill komplettera mina befintliga solceller med ett batterilager, vem kan hjälpa m | topp: Stockholm Solenergi 28.3, Svea Solar 22.78, Moveco 17.52
+-     0 | ORGA | Defa Power eller Zaptec Go 2 | topp: Evify 4.38, Elbilsvaruhuset 2.5, Laddboxbolaget 2.5
+-     0 | ORGA | vad händer med hembatteriet vid strömavbrott, får jag el i huset | topp: Svea Solar 11.88, Smart Solar 11.25, Grönkraft 8.75
+-     0 | ORGA | Fox ESS CQ7 eller Sigenergy SigenStor | topp: Laddboxbolaget 4.81, Energy Group 2.5
+-     0 | ORGA | Solinteg hybridväxelriktare recension | topp: 
+-     0 | ORGA | spotpris SE3 snitt 2026 | topp: 
+-     0 | ORGA | Zaptec Go 2 eller Easee Max, vilken laddbox är bäst | topp: Laddboxbolaget 3.75, Elbilsvaruhuset 2.5, Evify 0.58
+-     0 | ORGA | vad kostar solceller till en villa 2026 | topp: 1KOMMA5° 11.31, Grönkraft 8.02, Smart Solar 6.03
+-     0 | ORGA | behöver ett hembatteri över 20 kWh stå i en brandcell | topp: Energy Group 12.22, Laddboxbolaget 6.16, HemSol 1.12
+-     0 | ORGA | Sigenergy SigenStor nackdelar | topp: HemSol 6.2
+-     0 | ORGA | vilka celler sitter i Eway batteri | topp: Laddboxbolaget 2.88
+-     0 | ORGA | vad kostar ett 20 kWh batteri till villa efter grönt avdrag | topp: Grönkraft 17.13, HemSol 7.5, Otovo 4
+-     0 | ORGA | bästa laddbox 22 kW till villa 2026 | topp: Evify 7.74, Laddboxkillarna 5.67, Elbilsvaruhuset 2.31
+-     0 | ORGA | Solis S6 hybridväxelriktare med batteri, bra val | topp: 
+-     0 | ORGA | lönar sig solceller 2026 i Stockholm | topp: HemSol 6.54, Elkontakten Sverige AB 3.22, 1KOMMA5° 2.74
+-     0 | ORGA | vilket hembatteri har bäst verkningsgrad | topp: Evify 3.75, HemSol 3.38
+-     0 | ORGA | företag som installerar värmepump i Stockholm | topp: 1KOMMA5° 1.43, Svea Solar 0.65
+-     0 | ORGA | vad kostar det att installera en laddbox hemma 2026 | topp: Grönkraft 14.37, Laddboxbolaget 8.52, Evify 6.17
+-     0 | ORGA | högspänningsbatteri eller lågspänningsbatteri till villa, vad är skillnaden | topp: Greenely 5.63
+-     0 | ORGA | LFP eller NMC i hembatteri, vilket är säkrast | topp: 
+-     0 | ORGA | måste hembatteriet vara uppkopplat för garantin | topp: Greenely 23.13, Smart Solar 9, HemSol 7.5
+-     0 | ORGA | Eway batteri garanti och cykler | topp: Laddboxbolaget 16.88, Energy Group 7.5
+-     0 | ORGA | får man el vid strömavbrott om man har solceller och batteri | topp: Smart Solar 7.09, 1KOMMA5° 6.24, HemSol 5.68
+-     0 | ORGA | hembatteri Täby installation | topp: Svea Solar 11.88, Svea Solar 11.88, Evify 11.25
+-     0 | ORGA | SAJ HS3 garanti 10 år villkor | topp: Evify 12.5
+-     0 | ORGA | solceller utan batteri eller med batteri 2026, vad lönar sig | topp: Laddboxbolaget 19.38, Grönkraft 16.25, Smart Solar 11.5
+-     0 | ORGA | Huawei LUNA2000 eller Eway batteri | topp: Energy Group 14.02, Laddboxbolaget 8.22, Smart Solar 4.06
+-     0 | ORGA | Homevolt eller Eway, vilket hembatteri är bäst | topp: Laddboxbolaget 10.4, Energy Group 3.44, Greenely 3.27
+-     0 | ORGA | hur många solpaneler får plats på ett villatak | topp: HemSol 15, Svea Solar 12.86, Svea Solar 12.86
+-     0 | ORGA | BYD Battery-Box eller SAJ HS3 | topp: Evify 8.71, Svea Solar 7.84, HemSol 5.85
+-     0 | ORGA | Zaptec Go 2 pris installerad | topp: Evify 31.43, Laddboxbolaget 22.86, Elbilsvaruhuset 10
+-     0 | ORGA | behöver laddboxen en egen jordfelsbrytare och vilken typ | topp: 1KOMMA5° 8.58, Laddboxbolaget 6.56, Smart Solar 6.35
+-     0 | ORGA | bergvärme eller luft-vatten med solceller, vad lönar sig | topp: HemSol 6.25, Smart Solar 3.75
+-     0 | ORGA | vad betyder kvartspris för elavtal och hembatteri | topp: Greenely 27.66, 1KOMMA5° 2.62, Eon 1.33
+-     0 | ORGA | laddbox med inbyggd jordfelsbrytare, vilka finns | topp: Smart Solar 9.5, Laddboxbolaget 3.15, Elkontakten Sverige AB 3.13
+-     0 | ORGA | vem installerar Zaptec Go 2 i Stockholm | topp: Laddboxbolaget 23.48, Elbilsvaruhuset 11.61, Laddboxkillarna 7.24
+-     0 | ORGA | bästa appen för att styra hembatteri mot spotpris | topp: Greenely 51.25, Smart Solar 5
+-     0 | ORGA | laddbox och hembatteri i samma system, vilka lösningar finns | topp: Greenely 21, 1KOMMA5° 12.69, Evify 8.13
+-     0 | ORGA | hur fungerar grönt avdrag om två personer äger huset | topp: Eon 4.87, 1KOMMA5° 1.63, HemSol 1.25
+-     0 | ORGA | Zaptec Go 2 eller Easee, vilken laddbox ska jag välja | topp: Laddboxbolaget 3.26, Elbilsvaruhuset 2.99, Evify 2.84
+-     0 | ORGA | hur stort batteri behöver jag till min villa | topp: Smart Solar 9.46, Svea Solar 6.52, HemSol 5.48
+-     0 | ORGA | effektavgift Stockholm 2026 batteri kapa effekttoppar | topp: Eon 11.88, Smart Solar 10.63, Grönkraft 5
+-     0 | ORGA | vilken luft-vattenvärmepump är bäst 2026 för villa i Stockholm | topp: 
+-     0 | ORGA | Fox ESS CQ7 batteri recension | topp: Energy Group 3.75
+-     0 | ORGA | solceller och batteri Lidingö företag | topp: Solproffset 8.75, Greenely 7.25, Svea Solar 6.5
+-     0 | ORGA | Tesla Powerwall 3 eller ett högspänningsbatteri med separat växelriktare | topp: Greenely 8.94, Solproffset 1.85, HemSol 0.96
+-     0 | ORGA | Charge Amps Halo eller Zaptec Go 2, vilken ska jag välja | topp: Elbilsvaruhuset 8.1, Evify 4.71
+-     0 | ORGA | vad är FCR-D och hur mycket tjänar man på stödtjänster med hembatteri | topp: Grönkraft 13, Greenely 10.02, Smart Solar 7.62
+-     0 | ORGA | lönar sig hembatteri utan stödtjänster | topp: Greenely 18.15, Grönkraft 14.07, HemSol 13.87
+-     0 | ORGA | solceller på mansardtak, går det | topp: HemSol 19.75, 1KOMMA5° 10, Svea Solar 9.38
+-     0 | ORGA | lönar sig hembatteri 2026 | topp: Greenely 22.08, HemSol 4.05, 1KOMMA5° 4
+-     0 | ORGA | Villaeffekten 2026 hur mycket bidrag och vem får | topp: 
+-     0 | ORGA | hur snabbt betalar sig ett batteri till befintliga solceller | topp: Greenely 11.13, Smart Solar 8.7, HemSol 8.27
+-     0 | ORGA | vad kostar 10 kWh hembatteri installerat 2026 | topp: Grönkraft 12.75, 1KOMMA5° 7.5, Smart Solar 7.5
+-     0 | ORGA | JA Solar 500 W paneler, bra val till villa | topp: Smart Solar 7.14, Solproffset 3.57
+-     0 | ORGA | vilket företag är bäst på att installera solceller på villa i Stockholm | topp: Svea Solar 33.87, 1KOMMA5° 24.87, Svea Solar 24.68
+-     0 | ORGA | solcellsbatteri | topp: HemSol 12.79, 1KOMMA5° 12.41, Svea Solar 8.69
+-     0 | ORGA | Keep AI batteristyrning erfarenheter | topp: 1KOMMA5° 12.86, Smart Solar 10, Solproffset 10
+-     0 | ORGA | hembatteri i kallt garage på vintern, fungerar det | topp: Smart Solar 9.38
+-     0 | ORGA | vad kostar bergvärme 2026 efter rotavdrag | topp: 
+-     0 | ORGA | vad är skillnaden mellan Easee Core och Easee Max | topp: Evify 2.13
+-     0 | ORGA | laddbox med fast kabel eller uttag, vad ska jag välja | topp: Svea Solar 5.71, Evify 1.71
+-     0 | ORGA | vilken installatör av hembatteri i Stockholm har bäst omdömen | topp: Stockholm Solenergi 40.88, Svea Solar 33.13, Moveco 22
+-     0 | ORGA | laddbox och solceller i samma installation, vem gör det i Stockholm | topp: Soltech Energy 22.88, Svea Solar 20.88, 1KOMMA5° 20
+-     0 | ORGA | hembatteri Nacka installatör | topp: Solproffset 22.75, Laddboxkillarna 21.25, Electric Solar 10.63
+-     0 | ORGA | har Ellevio effektavgift för villor 2026 | topp: 
+-     0 | ORGA | kan man ha ett hembatteri utan solceller | topp: Greenely 20.37, Grönkraft 14.42, HemSol 9.95
+-     0 | ORGA | solceller Sundbyberg installatör | topp: Svea Solar 27.78, Stockholm Solenergi 15.56, HemSol 7.78
+-     0 | ORGA | vad kostar en kWh el i Stockholm 2026 inklusive allt | topp: 
+-     0 | ORGA | SAJ HS3 med inbyggd laddbox, hur fungerar det | topp: Laddboxbolaget 15.94, Elbilsvaruhuset 12.93, Evify 9.71
+-     0 | ORGA | vad kostar det att installera ett batterilager hemma och hur lång är återbetalningsti | topp: Greenely 15.3, HemSol 6.45, Laddboxbolaget 4.37
+-     0 | ORGA | vilken laddbox kan ladda på överskottet från solceller | topp: Evify 18.37, HemSol 8.17, Smart Solar 1.92
+-     0 | ORGA | solcellsbatteri stockholm | topp: Stockholm Solenergi 15.87, Solproffset 15.37, Evify 10.99
+-     0 | ORGA | bästa hembatteri 2026 i Sverige | topp: Greenely 40.88, Evify 10.19, Laddboxbolaget 5.29
+-     0 | ORGA | Vattenfall tidstariff batteri lönsamt | topp: Greenely 12.5, 1KOMMA5° 9, Smart Solar 8.75
+-     0 | ORGA | vilken laddbox fungerar bäst på IT-nät | topp: Elbilsvaruhuset 7.46, Laddboxbolaget 3.46, Laddboxkillarna 2.5
+-     0 | ORGA | hur länge håller ett hembatteri med LFP-celler | topp: Svea Solar 7.5
+-     0 | ORGA | hur söker man Villaeffekten bidrag för värmepump | topp: Eon 1.43
+
+Prompter utan synlighet: 100 av 127
+
+## Konkurrenter som nämns oftast
+- Svea Solar: 71 (14 %)
+- HemSol: 61 (12 %)
+- 1KOMMA5°: 55 (11 %)
+- Greenely: 53 (10 %)
+- Laddboxbolaget: 39 (8 %)
+- Evify: 36 (7 %)
+- Otovo: 27 (5 %)
+- Smart Solar: 18 (4 %)
+- Grönkraft: 17 (3 %)
+- Elbilsvaruhuset: 16 (3 %)
+- Elkontakten Sverige AB: 15 (3 %)
+- Energy Group: 13 (3 %)
+- Moveco: 11 (2 %)
+- Stockholm Solenergi: 11 (2 %)
+- MBS Energi: 10 (2 %)
+- Solproffset: 10 (2 %)
+- Laddboxkillarna: 9 (2 %)
+- GOSOL Energi AB: 8 (2 %)
+- Sesol: 7 (1 %)
+- Soltech Energy: 5 (1 %)
+
+## Mest citerade domäner i icke-brandade prompter
+- skatteverket.se: 512
+- hemsol.se: 477
+- energimyndigheten.se: 344
+- tibber.com: 341
+- laddboxbolaget.se: 325
+- vattenfall.se: 308
+- 1komma5.com: 268
+- energify.se: 257
+- greenely.com: 238
+- evify.se: 219
+- sveasolar.se: 219
+- ellevio.se: 211
+- www4.skatteverket.se: 201
+- elinstallation.nu: 189
+- reco.se: 182
+- smart-solar.se: 181
+- nordiskaenergilosningar.se: 172
+- boverket.se: 170
+- facebook.com: 162
+- jarfallaenergi.se: 143
+- kopernicus.se: 141
+- ei.se: 135
+- elbilsvaruhuset.se: 131
+- renergi.nu: 130
+- gronkraftab.se: 129
+- stockholm.enwell.se: 128
+- solguide.se: 117
+- selectra.se: 112
+- solproffset.se: 110
+- hemstandard.se: 109
+
+## Mest citerade sidor i icke-brandade prompter
+- https://greenely.com/artiklar/batteri-lonsamhet: 130
+- https://skatteverket.se/privat/fastigheterochbostad/gronteknik.4.676f4884175c97df4192860.html: 91
+- https://maps.google.com: 85
+- https://stockholm.enwell.se: 73
+- https://energimyndigheten.se/effektiv-energianvandning/guider/solelportalen/vilka-stod-och-intakter-kan-jag-fa/skattereduktion-for-gron-teknik: 70
+- https://elinstallation.nu/tjanster/solceller-batteri: 64
+- https://sveasolar.se/sv-se/solceller/stockholm: 56
+- https://skatteverket.se/privat/fastigheterochbostad/gronteknik/safungerarskattereduktionenforgronteknik: 55
+- https://sunkraft.se/solceller/stockholm: 47
+- https://solartotal.se/solceller-stockholm: 47
+- https://gosol.se: 46
+- https://stockholmsolenergi.se: 43
+- https://energimyndigheten.se/effektiv-energianvandning/guider/solelportalen/hur-stor-anlaggning-passar-mig/batterier-kopplat-till-solceller: 42
+- https://greenely.com/artiklar/basta-hembatterier: 40
+- https://eon.se/artiklar/gron-teknik-avdrag: 39
+- https://ewayenergy.se: 39
+- https://moveco.se: 39
+- https://hemsol.se/solceller/aterbetalningstid: 37
+- https://ellevio.se/nyheter/pressmeddelanden/ellevio-aterinfor-en-prismodell-utan-effektavgift: 37
+- https://energify.se/artiklar/stodtjanster-batteri-fcr-d-ersattning-2026: 37
+
+## Våra mest citerade sidor (alla prompter)
+- https://optimeraenergi.se: 270 (snittposition 3.8)
+- https://optimeraenergi.se/metodik: 38 (snittposition 6.5)
+- https://optimeraenergi.se/fragor-och-svar: 32 (snittposition 7)
+- https://optimeraenergi.se/om-oss: 31 (snittposition 4.3)
+- https://optimeraenergi.se/solcellsbatteri: 31 (snittposition 7)
+- https://optimeraenergi.se/batteri/stockholm: 23 (snittposition 4.7)
+- https://optimeraenergi.se/solceller/sollentuna: 19 (snittposition 5.4)
+- https://optimeraenergi.se/solceller/lidingo: 19 (snittposition 5.7)
+- https://optimeraenergi.se/offert: 18 (snittposition 7.1)
+- https://optimeraenergi.se/guider/aterbetalningstid-solceller: 15 (snittposition 6.5)
+- http://optimeraenergi.se: 13 (snittposition 3)
+- https://optimeraenergi.se/guider/gront-avdrag-2026: 10 (snittposition 3.4)
+- https://optimeraenergi.se/kontakt: 5 (snittposition 3.8)
+- https://optimeraenergi.se/solceller/solna: 4 (snittposition 5.5)
+- https://optimeraenergi.se/solceller/nacka: 4 (snittposition 8.3)
+- https://optimeraenergi.se/nyheter/regeringsbildningen-last-budgeten-12-november-elstoden: 4 (snittposition 8.8)
+- https://optimeraenergi.se/guider/solceller-pris-2026-stockholm: 4 (snittposition 7.5)
+- https://optimeraenergi.se/tjanster/batterier: 4 (snittposition 7.3)
+- https://optimeraenergi.se/guider/installera-laddbox-hemma: 3 (snittposition 9.3)
+- https://optimeraenergi.se/tjanster/batterier/jamforelse: 3 (snittposition 5.7)
+- https://optimeraenergi.se/tjanster/vaermepumpar: 2 (snittposition 6)
+- https://optimeraenergi.se/guider/ladda-elbil-hemma-kostnad: 2 (snittposition 4.5)
+- https://optimeraenergi.se/guider/villaeffekten-bidrag: 2 (snittposition 9)
+- https://optimeraenergi.se/batteriskolan: 2 (snittposition 14.5)
+- https://optimeraenergi.se/nyheter: 2 (snittposition 4)
+- https://optimeraenergi.se/kunskapsbank: 2 (snittposition 7.5)
+- https://optimeraenergi.se/kalkylator: 1 (snittposition 14)
+- https://optimeraenergi.se/guider: 1 (snittposition 20)
+- https://optimeraenergi.se/solcellsfragor: 1 (snittposition 8)
+- https://optimeraenergi.se/tjanster/batterier/easyway: 1 (snittposition 12)
+
+## AI-crawlers sedan loggarna kopplades 31 okt
+Händelser: 75 · per crawler: {'openai-searchbot': 15, 'openai-chatgpt-user': 4, 'meta-web-indexer': 47, 'perplexity-bot': 8, 'meta-external-agent': 1}
+Toppsidor: / (13), /robots.txt (10), /om-oss (4), /batteriskolan (3), /guider (3), /solcellsfragor (3), /kunskapsbank (3), /nyheter (3), /tjanster/vaermepumpar (3), /fd3da3c691825cc1/view (3), /kalkylator (3), /tjanster/laddboxar (3), /tjanster/batterier (3), /tjanster/solpaneler (3), /offert (2)
+
+## Vanligaste orden i AI-motorernas egna sökningar (fanouts)
+2026 627, solceller 547, stockholm 529, sverige 493, batteri 359, hembatteri 256, installation 252, laddbox 238, energi 237, optimera 234, villa 195, företag 169, avdrag 140, grönt 116, battery 108, solpaneler 103, pris 92, skatteverket 92, zaptec 91, installatör 86, värmepump 82, till 79, easee 78, jämförelse 76, skattereduktion 76, solar 73, teknik 73, eway 73, batterilager 72, grön 70, bergvärme 69, omdömen 66, solcellsbatteri 64, bästa 61, kostnad 60, installera 59, eller 55, hemma 54, sigenergy 54, svea 53, garanti 53, regler 53, energimyndigheten 52, lönsamhet 51, sigenstor 51, home 50, återbetalningstid 50, procent 50, stödtjänster 47, kostar 46, solna 45, elpris 43, installerar 43, specifikationer 41, sweden 40, bäst 39, luft 38, batterilagring 37, bidrag 36, 2027 36, utan 36, charge 35, reco 35, vilket 34, homevolt 34, brandcell 34, vatten 33, efter 32, recensioner 31, inbyggd 31
+
+## Promptwatchs innehållsrekommendationer per prompt
+- täckning 70 | hur söker man Villaeffekten bidrag för värmepump
+    - Refresh: Steg-för-steg ansökningsguide för Villaeffekten [HIGH/MODERATE]
+    - Refresh: Mall och exempel på fakturaspecifikation [HIGH/QUICK_WIN]
+    - CREATE: Praktisk FAQ om handläggning och kompletteringar [MEDIUM/MODERATE]
+- täckning 75 | vilken laddbox fungerar bäst på IT-nät
+    - Refresh: Förklara varför Easee Up är bättre för IT‑nät [HIGH/QUICK_WIN]
+    - Refresh: Lägg in en installatörschecklista för IT‑nät [MEDIUM/MODERATE]
+    - Refresh: Tillägg om kostnadskonsekvenser för installation på IT‑nät [MEDIUM/QUICK_WIN]
+- täckning 75 | vilket företag i Stockholm installerar solpaneler och batteri tillsammans till v
+    - Refresh: Landningssida för solpaneler + batteri i Stockholm [HIGH/MODERATE]
+    - Create: Paketpris-exempel för solpanel + batteri till villa [HIGH/MODERATE]
+    - Refresh: Lokala case och tydlig kontaktpunkt för Stockholm [MEDIUM/QUICK_WIN]
+- täckning 75 | bästa hembatteri 2026 i Sverige
+    - Refresh: Consolidated "Bästa hembatteri 2026" buyer's guide [HIGH/MODERATE]
+    - CREATE: Price & total-installed-cost comparison article [HIGH/SIGNIFICANT]
+    - Refresh: Spec sheet table on the technical comparison page [MEDIUM/QUICK_WIN]
+- täckning 78 | solcellsbatteri stockholm
+    - Refresh: Add Stockholm pricing examples and installed cost ranges [HIGH/MODERATE]
+    - Create: Worked payback calculator example for a Stockholm villa [HIGH/SIGNIFICANT]
+    - Refresh: Sizing guidance and warranty details for core battery brands [MEDIUM/MODERATE]
+- täckning 75 | vilket är bästa sättet att sänka elkostnaden i en villa med solpaneler, batteri 
+    - Refresh: Step-by-step guide — "Så sänker du elkostnaden i din villa" [HIGH/MODERATE]
+    - Create: Practical battery & control sizing and ROI comparison [HIGH/SIGNIFICANT]
+    - Refresh: Practical control strategies for heat pump, EV and battery [MEDIUM/QUICK_WIN]
+- täckning 70 | vilken laddbox kan ladda på överskottet från solceller
+    - Refresh: Förklara hur Easee Up hanterar solladdning [HIGH/QUICK_WIN]
+    - Refresh: Beskriv hur Zaptec Go 2 kan styras för solladdning [HIGH/MODERATE]
+    - Create: Praktisk kundguide för överskottsladdning (checklista och kostnadsuppskattning) [MEDIUM/SIGNIFICANT]
+- täckning 78 | vad kostar det att installera ett batterilager hemma och hur lång är återbetalni
+    - Create an interactive battery payback calculator [HIGH/SIGNIFICANT]
+    - Refresh: add detailed payback examples with clear assumptions [MEDIUM/MODERATE]
+    - Create regional case studies showing local payback ranges [MEDIUM/MODERATE]
+- täckning 70 | vad tycker kunderna om Optimera Energi på Reco
+    - Refresh: Add full Reco review feed and link [HIGH/QUICK_WIN]
+    - Refresh: Show ratings breakdown and review metrics [MEDIUM/QUICK_WIN]
+    - Create: Publish responses to negative or mixed reviews [MEDIUM/MODERATE]
+- täckning 50 | SAJ HS3 med inbyggd laddbox, hur fungerar det
+    - Refresh: Produkt-/integrationssida för SAJ HS3 och EV-laddning [HIGH/MODERATE]
+    - Refresh: Installationsguide — batteri + laddbox i samma system [HIGH/QUICK_WIN]
+    - Create: Jämförelseavsnitt för hybridinverters med EV-funktion [MEDIUM/SIGNIFICANT]
+- täckning 75 | kan man ha ett hembatteri utan solceller
+    - Refresh: Add a clear "Batteri utan solceller" decision guide [HIGH/QUICK_WIN]
+    - Create: Include concrete cost examples and payback calculators [HIGH/SIGNIFICANT]
+    - Refresh: Add detailed info on stödtjänster and practical constraints [MEDIUM/MODERATE]
+- täckning 85 | har Ellevio effektavgift för villor 2026
+    - Refresh: Add step-by-step guide to check if you pay effect fee [HIGH/QUICK_WIN]
+    - Refresh: Add publication date and verification note [MEDIUM/QUICK_WIN]
+    - Create: Add FAQ and concrete examples of bill impact [MEDIUM/MODERATE]
+- täckning 75 | hembatteri Sollentuna installation
+    - Refresh Sollentuna battery landing page with step-by-step installation timeline [HIGH/QUICK_WIN]
+    - Create sample combined-project cost examples for Sollentuna homes [HIGH/MODERATE]
+    - Refresh product/technical pages with model-specific installation specs [MEDIUM/MODERATE]
+- täckning 80 | hur lång är återbetalningstiden för solceller i Sverige
+    - Refresh: Add a regional payback summary (SE1–SE4) [HIGH/MODERATE]
+    - Create: Interactive payback calculator embed or guided example [HIGH/SIGNIFICANT]
+    - Refresh: Consolidate calculation assumptions and inverter replacement effects [MEDIUM/QUICK_WIN]
+- täckning 10 | vad är skillnaden mellan Easee Core och Easee Max
+    - Create a direct comparison page: Easee Core vs Easee Max [HIGH/SIGNIFICANT]
+    - Refresh comparison page to include Easee Core/Max [HIGH/MODERATE]
+    - Create product spec pages for Easee Core and Easee Max [MEDIUM/MODERATE]
+- täckning 65 | vad kostar bergvärme 2026 efter rotavdrag
+    - Refresh: Add a clear 2026 bergvärme price guide with net costs [HIGH/MODERATE]
+    - Create an interactive post-ROT price calculator [HIGH/SIGNIFICANT]
+    - Refresh: Add multiple concrete price examples and eligibility notes [MEDIUM/QUICK_WIN]
+- täckning 78 | solcellsbatteri
+    - Refresh: Grönt avdrag för batteri [HIGH/QUICK_WIN]
+    - Create: Praktisk dimensioneringsguide för solcellsbatteri [HIGH/SIGNIFICANT]
+    - Refresh: Produktjämförelse och prispaket för batterier [MEDIUM/MODERATE]
+- täckning 60 | vilket företag är bäst på att installera solceller på villa i Stockholm
+    - Refresh: jämförande guide — "Välj bästa solcellsinstallatören i Stockholm" [HIGH/MODERATE]
+    - Create: kundcase med mätbara resultat och omdömen från Stockholmsvillor [HIGH/SIGNIFICANT]
+    - Refresh: visa social proof och oberoende verifieringar tydligt på landningssidor [MEDIUM/QUICK_WIN]
+- täckning 75 | finns det något företag som sköter allt från offert till installation av solcell
+    - Refresh: Helhetslösning för sol, laddbox och batteri — tydlig landningssektion [HIGH/QUICK_WIN]
+    - Create: Paketexempel och prisintervall för kombinerade leveranser [HIGH/MODERATE]
+    - Refresh: Detaljerad process och efterservice för kombinationsprojekt [MEDIUM/MODERATE]
+- täckning 70 | jag vill ha laddbox hemma och funderar på att kombinera den med solpaneler, vilk
+    - Refresh: Make a dedicated 'Combine EV charger + solar in Stockholm' landing page [HIGH/MODERATE]
+    - Create bundled pricing examples for combined systems [HIGH/MODERATE]
+    - Refresh: Add 1–2 Stockholm case studies of combined installs [MEDIUM/SIGNIFICANT]
+- täckning 75 | hur snabbt betalar sig ett batteri till befintliga solceller
+    - Refresh: Add interactive payback calculator and example outputs [HIGH/MODERATE]
+    - Refresh: Update battery revenue assumptions and show recent FCR‑D data [HIGH/QUICK_WIN]
+    - Create: Step‑by‑step worked examples for common PV+battery pairings [MEDIUM/MODERATE]
+- täckning 78 | installatör för solceller och batteri i Solna
+    - Refresh Solna service page with clear local headline and CTA [HIGH/QUICK_WIN]
+    - Create a Solna project case study with images [MEDIUM/MODERATE]
+    - Refresh solcellsbatteri FAQ with guarantees and booking steps [MEDIUM/QUICK_WIN]
+- täckning 20 | bästa alternativet till Optimera Energi för att installera batteri och solpanele
+    - Refresh: Add a competitor comparison page for Stockholm [HIGH/MODERATE]
+    - Refresh: Add a buyer's checklist and comparison guide to product pages [MEDIUM/QUICK_WIN]
+    - Create: Local market overview article for Stockholm installers [MEDIUM/SIGNIFICANT]
+- täckning 78 | lönar sig hembatteri 2026
+    - Refresh: Add typical battery price examples for 2026 [HIGH/MODERATE]
+    - Refresh: Build a simple personalised payback worksheet/guide [HIGH/SIGNIFICANT]
+    - Create: Short explainer on aggregator/stödtjänster revenues and scenarios [MEDIUM/MODERATE]
+- täckning 80 | får man grönt avdrag för laddbox i bostadsrätt
+    - Refresh: Klar guide för bostadsrätt — hur få grönt avdrag för laddbox [HIGH/MODERATE]
+    - Create: Faktura- och avtalsexempel för grönt avdrag i bostadsrätt [HIGH/SIGNIFICANT]
+    - Refresh: FAQ för installation via bostadsrättsförening [MEDIUM/QUICK_WIN]
+- täckning 72 | lönar sig hembatteri utan stödtjänster
+    - Refresh: Add an explicit FAQ "Lönar sig ett hembatteri utan stödtjänster?" [HIGH/QUICK_WIN]
+    - Create regional payback examples (SE1–SE4) for "utan stödtjänster" [HIGH/MODERATE]
+    - Refresh: Decision checklist and short guide for households [MEDIUM/QUICK_WIN]
+- täckning 78 | vad är FCR-D och hur mycket tjänar man på stödtjänster med hembatteri
+    - Refresh: Add worked conversion from €/MW·h to kr/kW/month [HIGH/QUICK_WIN]
+    - Refresh: Publish typical aggregator fee structures and example contracts [HIGH/MODERATE]
+    - Create: Aggregator payout comparison and interactive calculator [MEDIUM/SIGNIFICANT]
+- täckning 65 | Charge Amps Halo eller Zaptec Go 2, vilken ska jag välja
+    - Refresh comparison page to include Charge Amps Halo vs Zaptec Go 2 [HIGH/MODERATE]
+    - CREATE a Halo technical factsheet [HIGH/QUICK_WIN]
+    - Refresh FAQ with pricing and installation guidance [MEDIUM/QUICK_WIN]
+- täckning 70 | Tesla Powerwall 3 eller ett högspänningsbatteri med separat växelriktare
+    - Refresh: teknisk jämförelse — Powerwall 3 vs högspänningsbatteri [HIGH/MODERATE]
+    - Refresh: integration & installationschecklista för AC vs DC [MEDIUM/QUICK_WIN]
+    - Create: kostnads- och lönsamhetskalkyl för arkitekturval [HIGH/SIGNIFICANT]
+- täckning 65 | Fox ESS CQ7 batteri recension
+    - Refresh: Fox ESS CQ7 — homeowner-friendly review [HIGH/QUICK_WIN]
+    - Create: Pricing & payback guidance for battery models [MEDIUM/MODERATE]
+    - Refresh: Add field experience and datasheet links [MEDIUM/MODERATE]
+- täckning 78 | Optimera Energi omdömen och betyg, är de ett bra val för solpaneler i Stockholm
+    - Refresh: Show representative Reco reviews and excerpts [HIGH/QUICK_WIN]
+    - Refresh: Publish clear warranty & guarantee details [HIGH/QUICK_WIN]
+    - Create: Stockholm case studies with timelines and measured outcomes [MEDIUM/SIGNIFICANT]
+- täckning 40 | Optimera Energi Fox ESS
+    - Create a Fox ESS product page with specs and datasheets [HIGH/SIGNIFICANT]
+    - Optimize existing technical comparison to include Fox ESS configuration notes [MEDIUM/MODERATE]
+    - Create a Fox ESS commissioning & settings how-to article [HIGH/SIGNIFICANT]
+- täckning 70 | hur stort batteri behöver jag till min villa
+    - Refresh: Add a worked example page showing the tumregel calculation [HIGH/QUICK_WIN]
+    - Create: Interactive battery size calculator and typical-house presets [HIGH/SIGNIFICANT]
+    - Refresh: Add a comparative guide for common villa scenarios [MEDIUM/MODERATE]
+- täckning 45 | Zaptec Go 2 eller Easee, vilken laddbox ska jag välja
+    - Create a Zaptec Go 2 vs Easee comparison guide [HIGH/SIGNIFICANT]
+    - Refresh Laddboxar service page with decision checklist and brand notes [MEDIUM/MODERATE]
+    - Refresh installation guide to include model-specific installation implications [MEDIUM/MODERATE]
+- täckning 78 | hur fungerar grönt avdrag om två personer äger huset
+    - Refresh: Add bill/faktura example showing split for two owners [HIGH/QUICK_WIN]
+    - Refresh: FAQ with edge cases for shared ownership [HIGH/MODERATE]
+    - Create: Step-by-step deklarationsguide för delat grönt avdrag [MEDIUM/SIGNIFICANT]
+- täckning 40 | Optimera Energi eller Svea Solar för solceller och batteri
+    - Create a competitor comparison page vs Svea Solar [HIGH/SIGNIFICANT]
+    - Refresh product pages with comparative decision guidance [MEDIUM/MODERATE]
+    - Add case study or testimonial comparing local service outcomes [MEDIUM/MODERATE]
+- täckning 66 | laddbox och hembatteri i samma system, vilka lösningar finns
+    - Refresh: Guide comparing AC‑coupled vs DC‑coupled systems for EV charging [HIGH/MODERATE]
+    - Create: End‑to‑end system example pages with diagrams [HIGH/SIGNIFICANT]
+    - Refresh: Laddbox service page with compatibility checklist and cost impacts [MEDIUM/QUICK_WIN]
+- täckning 70 | vem installerar Zaptec Go 2 i Stockholm
+    - Refresh: Tydlig landningssektion för Zaptec Go 2-installationer [HIGH/QUICK_WIN]
+    - Refresh: Prisexempel för Zaptec Go 2-installation [MEDIUM/MODERATE]
+    - Refresh: Lokal referens och certifieringar [MEDIUM/MODERATE]
+- täckning 75 | vad skiljer Optimera Energi från andra solcellsinstallatörer i Stockholm
+    - Refresh: skapa en jämförelsesida 'Varför välja Optimera Energi?' [HIGH/MODERATE]
+    - Refresh: publicera detaljerade garantier och serviceavtal [HIGH/QUICK_WIN]
+    - Create: publicera 2–3 detaljerade kundcase med mätbara resultat [MEDIUM/SIGNIFICANT]
+- täckning 60 | laddbox med inbyggd jordfelsbrytare, vilka finns
+    - Refresh comparison page with full 'inbyggd jordfelsbrytare' column [HIGH/MODERATE]
+    - Refresh installation guide with decision flow for RCD [HIGH/QUICK_WIN]
+    - Create product shortlist article: 'Laddboxar med inbyggd jordfelsbrytare' [MEDIUM/SIGNIFICANT]
+- täckning 75 | vad betyder kvartspris för elavtal och hembatteri
+    - Refresh: Add concrete savings calculator and worked examples [HIGH/MODERATE]
+    - Refresh: Practical battery configuration guide for kvartspris [HIGH/MODERATE]
+    - Create: Visual comparison of intra-hour vs inter-hour price variation [MEDIUM/SIGNIFICANT]
+- täckning 85 | Optimera Energi Solna
+    - Refresh Contact page with practical Solna visit details [HIGH/QUICK_WIN]
+    - Refresh homepage or About page with a Solna local landing blurb [MEDIUM/QUICK_WIN]
+    - Refresh Press page with clear single-point contact and press map [LOW/QUICK_WIN]
+- täckning 75 | behöver laddboxen en egen jordfelsbrytare och vilken typ
+    - Refresh: Tydlig guide om vilken typ av jordfelsbrytare som krävs [HIGH/MODERATE]
+    - Refresh: Beslutschecklista för installatörer och villaägare [MEDIUM/QUICK_WIN]
+    - Create: Fördjupning med standard- och myndighetsreferenser [MEDIUM/SIGNIFICANT]
+- täckning 70 | BYD Battery-Box eller SAJ HS3
+    - Refresh: Direct BYD vs SAJ comparison page [HIGH/QUICK_WIN]
+    - Create: Efficiency and real-world performance notes for optimizer systems [MEDIUM/MODERATE]
+    - Refresh: Practical installer compatibility & use-case guide [HIGH/MODERATE]
+- täckning 60 | Homevolt eller Eway, vilket hembatteri är bäst
+    - Refresh: sida‑vid‑sida jämförelse för Homevolt vs Eway [HIGH/MODERATE]
+    - Create: pris‑ och ekonomi‑exempel för Homevolt och Eway [HIGH/SIGNIFICANT]
+    - Refresh: rekommendationer kopplade till hushållsprofiler [MEDIUM/QUICK_WIN]
+- täckning 70 | Huawei LUNA2000 eller Eway batteri
+    - Refresh: Direct Huawei LUNA2000 vs Eway comparison table [HIGH/MODERATE]
+    - Create: Short buyer guidance and pricing/installation notes [MEDIUM/QUICK_WIN]
+    - Refresh: Add real-world performance / field-test summary [MEDIUM/MODERATE]
+- täckning 78 | får man el vid strömavbrott om man har solceller och batteri
+    - Refresh: Add a practical backup/ö-drift upgrade guide [HIGH/MODERATE]
+    - Create cost and sizing examples for backup setups [HIGH/SIGNIFICANT]
+    - Refresh: Add network approval and safety requirements details [MEDIUM/QUICK_WIN]
+- täckning 80 | LFP eller NMC i hembatteri, vilket är säkrast
+    - Refresh: Add a practical safety guide for home battery installations [HIGH/QUICK_WIN]
+    - Refresh: Explain how battery system design affects safety (series vs parallel, BMS, modularkonfiguration) [MEDIUM/MODERATE]
+    - Create: Incident data and gas/evacuation implications summary [MEDIUM/SIGNIFICANT]
+- täckning 70 | högspänningsbatteri eller lågspänningsbatteri till villa, vad är skillnaden
+    - Refresh: Add a concise comparison page ‘Högspänning vs Lågspänning — kort för villaägare’ [HIGH/MODERATE]
+    - Refresh: Lägg till praktiska installations- och backupexempel [MEDIUM/MODERATE]
+    - Create: Kostnads- och prestandajämförelse för hög- vs lågspänning [MEDIUM/SIGNIFICANT]
+- täckning 72 | vad kostar det att installera en laddbox hemma 2026
+    - Refresh: Add installation cost examples and total-price scenarios [HIGH/MODERATE]
+    - Refresh: Add price ranges for common additions (elcentral, huvudsäkring, jordfelsbrytare, lastbalansering) [MEDIUM/QUICK_WIN]
+    - Create: Local Stockholm pricing and Optimera Energi offer breakdown [HIGH/SIGNIFICANT]
+- täckning 78 | företag som installerar värmepump i Stockholm
+    - Refresh: Add explicit Stockholm service area and contact CTA [HIGH/QUICK_WIN]
+    - Create: Price examples and typical installation packages [HIGH/MODERATE]
+    - Refresh: Add certifications, installatörskompetens and local case studies [MEDIUM/MODERATE]
+- täckning 75 | vilket hembatteri har bäst verkningsgrad
+    - Refresh: Add a ranked efficiency comparison table [HIGH/MODERATE]
+    - Refresh: Explain architecture impact on efficiency [MEDIUM/QUICK_WIN]
+    - Create: Customer guidance on prioritizing efficiency [MEDIUM/SIGNIFICANT]
+- täckning 78 | lönar sig solceller 2026 i Stockholm
+    - Refresh: Add concrete Stockholm price-and-payback examples (3–10 kWp) [HIGH/MODERATE]
+    - Create an interactive payback kalkylator for homeowners [HIGH/SIGNIFICANT]
+    - Refresh: Add a clear comparison of payback with vs without battery [MEDIUM/MODERATE]
+- täckning 60 | bästa laddbox 22 kW till villa 2026
+    - Create a 2026 guide: "Bästa 22 kW laddbox för villa" [HIGH/SIGNIFICANT]
+    - Refresh: Add a dedicated 22 kW section on the Laddboxar service page [HIGH/QUICK_WIN]
+    - Refresh: Add model-level pricing and decision guidance to installation guide [MEDIUM/MODERATE]
+- täckning 75 | vilka celler sitter i Eway batteri
+    - Refresh product page with explicit cell supplier and model [HIGH/QUICK_WIN]
+    - Create a downloadable fact sheet for each battery model [MEDIUM/MODERATE]
+    - Refresh FAQ entry to state what is known and unknown [MEDIUM/QUICK_WIN]
+- täckning 70 | Sigenergy SigenStor nackdelar
+    - Refresh battery comparison with explicit SigenStor drawbacks [HIGH/QUICK_WIN]
+    - Create an FAQ entry about the 2025 Sigenergy Energy Controller recall [MEDIUM/MODERATE]
+    - Refresh technical comparison to show missing efficiency and warranty specifics [MEDIUM/MODERATE]
+- täckning 80 | behöver ett hembatteri över 20 kWh stå i en brandcell
+    - Refresh: Add verbatim Boverket citation and link [HIGH/QUICK_WIN]
+    - Create practical application examples for villa installations [HIGH/MODERATE]
+    - Refresh: Add technical and administrative implementation details [MEDIUM/MODERATE]
+- täckning 78 | vad kostar solceller till en villa 2026
+    - Refresh: Add a clear price table for common villa system sizes [HIGH/QUICK_WIN]
+    - Refresh: Break down Optimera Energis riktpris components [MEDIUM/MODERATE]
+    - Create: Example price scenarios for solar + battery combos [HIGH/SIGNIFICANT]
+- täckning 70 | Zaptec Go 2 eller Easee Max, vilken laddbox är bäst
+    - Refresh comparison to include Easee Max explicitly [HIGH/MODERATE]
+    - Refresh with price and installation cost examples [MEDIUM/QUICK_WIN]
+    - Refresh with concrete user‑case recommendations [HIGH/MODERATE]
+- täckning 55 | Optimera Energi eller Otovo för solceller
+    - Refresh: Jämför Optimera Energi med Otovo (sida) [HIGH/MODERATE]
+    - Refresh: FAQ med "Optimera Energi eller Otovo?" [MEDIUM/QUICK_WIN]
+    - Create: Offertjämförelsetabell och guide för kunder [HIGH/MODERATE]
+- täckning 75 | Optimera Energi eller 1KOMMA5 för batteri i Stockholm
+    - Refresh: Add competitor comparison page vs 1KOMMA5 [HIGH/QUICK_WIN]
+    - Refresh: Add transparent pricing examples and payback calculators [HIGH/MODERATE]
+    - Refresh: Publish warranties, service and post‑installation support details [MEDIUM/QUICK_WIN]
+- täckning 78 | Fox ESS CQ7 eller Sigenergy SigenStor
+    - Refresh: Add pricing and payback examples for battery comparisons [HIGH/MODERATE]
+    - Refresh: Practical installation & compatibility guide [HIGH/MODERATE]
+    - Create: Warranty & safety practical FAQ [MEDIUM/QUICK_WIN]
+- täckning 75 | vem installerar Easyway-batteri i Stockholm
+    - Refresh: Add Stockholm-specific Easyway installer page/section [HIGH/QUICK_WIN]
+    - Refresh: Add local Stockholm contact and lead time details on city service pages [MEDIUM/QUICK_WIN]
+    - Create: Local Stockholm Easyway case study and gallery [MEDIUM/MODERATE]
+- täckning 40 | Defa Power eller Zaptec Go 2
+    - Create a Defa Power vs Zaptec/Easee comparison page [HIGH/SIGNIFICANT]
+    - Refresh Zaptec vs Easee comparison to mention other brands [MEDIUM/QUICK_WIN]
+    - Add Defa Power installation & pricing guidance [MEDIUM/MODERATE]
+- täckning 80 | jag vill komplettera mina befintliga solceller med ett batterilager, vem kan hjä
+    - Refresh: Local landing page for "Komplettera solceller med batteri i Stockholm" [HIGH/MODERATE]
+    - Refresh: Technical compatibility & integration guide for retrofits [MEDIUM/MODERATE]
+    - Create: Local Stockholm customer case studies for battery retrofits [MEDIUM/SIGNIFICANT]
+- täckning 75 | solceller installatör Täby
+    - Refresh: Add clear local contact and lead times on Täby page [HIGH/QUICK_WIN]
+    - Refresh: Add transparent pricing examples for Täby [HIGH/MODERATE]
+    - Create: Täby project case studies and local testimonials [MEDIUM/MODERATE]
+- täckning 78 | behöver man bygglov för solceller i Stockholm
+    - Refresh: Add step-by-step local checklist for Stockholm homeowners [HIGH/QUICK_WIN]
+    - Refresh: Add direct municipal links and latest update note [MEDIUM/QUICK_WIN]
+    - Create: Practical examples for 11 kW-gränsen and when larger anläggningar require lov [MEDIUM/MODERATE]
+- täckning 70 | batteri med inbyggd växelriktare eller separat hybridväxelriktare, vad är bäst
+    - Refresh: Guiden "Hybridväxelriktare, AC- eller DC-kopplat batteri" med praktiska rekommendationer [HIGH/QUICK_WIN]
+    - Create: Kvantitativ jämförelse av effektivitet och förluster mellan AC- och DC-system [MEDIUM/MODERATE]
+    - Refresh: Koppla produktjämförelse till AC/DC-val och backupfunktioner [HIGH/MODERATE]
+- täckning 65 | hur mycket kostar en kilowattimme el inklusive skatt och nätavgift 2026
+    - Refresh: Add explicit example calculating total cost per kWh (2026) [HIGH/QUICK_WIN]
+    - Refresh: Publish typical ranges for rörlig nätavgift and spotpris per elområde (2026) [MEDIUM/MODERATE]
+    - Create: Interactive per-kWh calculator for 2026 [HIGH/SIGNIFICANT]
+- täckning 90 | hur mycket grönt avdrag får man på solceller och batteri 2026
+    - Refresh: Add worked invoice examples for mixed installations [HIGH/MODERATE]
+    - Refresh: Invoice itemization & documentation guidance [MEDIUM/QUICK_WIN]
+    - Create: Update note after budget decisions for 2027 [HIGH/QUICK_WIN]
+- täckning 70 | hembatteri som får stå utomhus i Sverige
+    - Refresh: Practical guide "Hembatteri utomhus i Sverige" [HIGH/MODERATE]
+    - Refresh: Add frost protection & heating guidance [HIGH/MODERATE]
+    - Create: Outdoor installation checklist for homeowners [MEDIUM/SIGNIFICANT]
+- täckning 65 | vilket hembatteri är bäst, Eway, SAJ HS3 eller Sigenergy SigenStor
+    - Refresh product comparison with standardized specs for each model [HIGH/MODERATE]
+    - Create a decision guide mapping homeowner needs to recommended models [HIGH/SIGNIFICANT]
+    - Add short case studies showing real installations and outcomes [MEDIUM/MODERATE]
+- täckning 10 | Fox ESS laddbox A022K, är den bra
+    - Create product page and review for Fox ESS A022K [HIGH/SIGNIFICANT]
+    - Refresh comparison page to include Fox ESS A022K [HIGH/MODERATE]
+    - Refresh installation guide with Fox ESS compatibility notes [MEDIUM/QUICK_WIN]
+- täckning 80 | luft-vatten eller bergvärme, vad ska jag välja till min villa
+    - Create an interactive 'Which pump suits my house' calculator [HIGH/SIGNIFICANT]
+    - Refresh guide with worked payback and sizing examples [HIGH/MODERATE]
+    - Refresh service page with drilling feasibility and local permit guidance [MEDIUM/QUICK_WIN]
+- täckning 75 | vad gäller för grönt avdrag 2027
+    - Refresh: Post‑budget update confirming 2027 rules [HIGH/QUICK_WIN]
+    - Refresh: FAQ and examples for year‑skifte och betalningar [MEDIUM/MODERATE]
+    - Create: Practical checklist for late‑year installations [MEDIUM/MODERATE]
+- täckning 75 | är Homevolt batteri säkert, har Homevolt brunnit
+    - Refresh: Add explicit source citation for "no incident" claim [HIGH/QUICK_WIN]
+    - Refresh: Add Homevolt-specific safety and technical summary [HIGH/MODERATE]
+    - Create: Homevolt owner action checklist and support guide [MEDIUM/QUICK_WIN]
+- täckning 78 | hemmabatteri stockholm
+    - Refresh: Add Stockholm-specific payback examples and calculator [HIGH/MODERATE]
+    - Refresh: Add itemized pricing and install timeline [MEDIUM/QUICK_WIN]
+    - Create: Battery models comparison and technical FAQ [HIGH/SIGNIFICANT]
