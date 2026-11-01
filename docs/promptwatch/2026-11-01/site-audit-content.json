@@ -1,0 +1,1 @@
+{"error":"Bad Request","message":"querystring must have required property 'kind'","code":"FST_ERR_VALIDATION"}

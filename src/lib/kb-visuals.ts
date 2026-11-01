@@ -80,6 +80,10 @@ export const KB_IMAGES = {
     label: "Solcellsfrågor · Produktion och teknik",
     alt: "Närbild på blanka solpaneler som speglar vita moln och blå himmel",
   },
+  "guide-batterier-3d": {
+    label: "Guider",
+    alt: "Våra fem hembatterier i 3D sida vid sida: Eway, SAJ HS3, Enershare, SigenStor och Fox ESS CQ7",
+  },
   "sol-planering-tak-och-bygglov": {
     label: "Solcellsfrågor · Planering, tak och bygglov",
     alt: "Villatak med tre stående solpaneler och tomma monteringsskenor för fler paneler",
@@ -171,5 +175,5 @@ export const KB_HUB_IMAGE = {
   kunskapsbank: "sol-batteri-elbil-och-varmepump",
   solcellsfragor: "sol-produktion-och-teknik",
   batteriskolan: "bat-grunder",
-  guider: "sol-planering-tak-och-bygglov",
+  guider: "guide-batterier-3d",
 } as const satisfies Record<string, KbImageKey>;
