@@ -12,13 +12,20 @@ export function KbHeroImage({
   image,
   tone,
   label,
+  wide = false,
 }: {
   image: KbImage;
   tone: KbTone;
   label?: string;
+  /** Bilden är komponerad för 21:9 och ska inte beskäras på mobil. */
+  wide?: boolean;
 }) {
   return (
-    <figure className="relative overflow-hidden rounded-2xl md:rounded-3xl border border-ink/10 bg-cream aspect-[16/9] sm:aspect-[21/9]">
+    <figure
+      className={`relative overflow-hidden rounded-2xl md:rounded-3xl border border-ink/10 bg-cream ${
+        wide ? "aspect-[21/9]" : "aspect-[16/9] sm:aspect-[21/9]"
+      }`}
+    >
       <Image
         src={image.src}
         alt={image.alt}

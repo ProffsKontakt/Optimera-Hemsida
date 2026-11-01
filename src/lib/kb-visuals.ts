@@ -132,8 +132,12 @@ export const KB_IMAGES = {
 
 export type KbImageKey = keyof typeof KB_IMAGES;
 
+/** Versionssträng som byts när en bild i /public/kb ersätts – Vercel och
+ *  webbläsare cachar annars den gamla bilden på samma adress. */
+const KB_IMAGE_VERSION = "20261101";
+
 export function defaultKbImage(key: KbImageKey): KbImage {
-  return { src: `/kb/${key}.jpg`, alt: KB_IMAGES[key].alt };
+  return { src: `/kb/${key}.jpg?v=${KB_IMAGE_VERSION}`, alt: KB_IMAGES[key].alt };
 }
 
 /** Solcellsfrågornas kategori → foto. */

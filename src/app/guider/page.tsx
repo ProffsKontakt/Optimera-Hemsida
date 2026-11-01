@@ -72,7 +72,7 @@ export default function GuidesHubPage() {
             const isPublished = g.status === "published";
             // Guidens egen bild om en laddats upp, annars kategorins foto.
             const own = getMedia(`guide:${g.slug}`);
-            const cover = own ? { src: own.url, alt: own.alt || g.title } : kbImage(guideCategoryImageKey(g.category));
+            const cover = own ? { src: own.url, alt: own.alt || g.title } : g.heroImage ?? kbImage(guideCategoryImageKey(g.category));
             const body = (
               <article
                 className={[

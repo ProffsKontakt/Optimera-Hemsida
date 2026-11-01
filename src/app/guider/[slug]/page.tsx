@@ -52,7 +52,7 @@ export default function GuidePage({ params }: { params: { slug: string } }) {
   const content = getGuideContent(guide.slug);
   const heroImage = getMedia(`guide:${guide.slug}`);
   // Uppladdad bild först, sedan guidens egen bild i koden, annars kategorins foto.
-  const hero = heroImage
+  const hero: { src: string; alt: string; wide?: boolean } = heroImage
     ? { src: heroImage.url, alt: heroImage.alt || guide.title }
     : guide.heroImage ?? kbImage(guideCategoryImageKey(guide.category));
   const path = `/guider/${guide.slug}`;
@@ -116,7 +116,7 @@ export default function GuidePage({ params }: { params: { slug: string } }) {
           ]}
         />
         <div className="mt-6 md:mt-8 max-w-3xl">
-          <KbHeroImage image={hero} tone="moss" label={`Guider · ${guide.category}`} />
+          <KbHeroImage image={hero} tone="moss" label={`Guider · ${guide.category}`} wide={hero.wide} />
         </div>
         <div className="mt-8 max-w-3xl">
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
