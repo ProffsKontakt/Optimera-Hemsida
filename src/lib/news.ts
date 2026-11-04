@@ -74,6 +74,327 @@ export type NewsArticle = {
 
 export const NEWS: NewsArticle[] = [
   {
+    slug: "elstod-oktober-2026-elomrade-4-hogkostnadsskydd",
+    status: "published",
+    title:
+      "Blir det elstöd för oktober 2026? Elområde 4 landade på 1,57 kronor – över gränsen för första gången",
+    excerpt:
+      "Blir det elstöd för oktober 2026? I elområde 4 landade spotpriset på 1,57 kronor per kilowattimme i snitt, enligt Nord Pool. Det är första gången i år som ett elområde passerar gränsen 1,50 kronor för regeringens högkostnadsskydd, och fyra dyra dygn i slutet av månaden avgjorde. Här är vad som är bestämt om elstöd i elområde 4, om man får elstöd varje månad, vad en övergångsbudget innebär och varför skyddet ser ut att upphöra vid årsskiftet.",
+    category: "Stöd & avdrag",
+    publishedAt: "2026-10-30",
+    updatedAt: "2026-10-30",
+    readTimeMin: 6,
+    image: {
+      src: "/news/elstod-oktober-2026-elomrade-4-hogkostnadsskydd.jpg",
+      alt: "Stapeldiagram över spotpriset per månad i elområde 4 2026: från 0,67 till 1,20 kronor per kWh januari–september, 1,57 kronor i oktober över en streckad linje vid 1,50 kronor, och terminspris på 2,03 kronor för november, 1,62 för december och 1,74 för januari 2027, efter en markering att skyddet gäller till och med 31 december",
+      credit: "Grafik: Optimera Energi · Källa: Nord Pool och Euronext",
+      creditUrl: "https://data.nordpoolgroup.com/auction/day-ahead/prices?deliveryDate=2026-10-31&currency=SEK&aggregation=Monthly&deliveryAreas=SE1,SE2,SE3,SE4",
+    },
+    searchPhrases: [
+      "elstöd oktober 2026",
+      "elstöd elområde 4",
+      "elstöd 2026 elområde 4",
+      "får man elstöd varje månad",
+      "högkostnadsskydd el 2027",
+      "vad innebär en övergångsbudget",
+      "övergångsbudget",
+    ],
+    sources: [
+      {
+        title: "Day-ahead-priser per elområde, månads- och dygnssnitt 2025–2026",
+        publisher: "Nord Pool",
+        url: "https://data.nordpoolgroup.com/auction/day-ahead/prices?deliveryDate=2026-10-31&currency=SEK&aggregation=Monthly&deliveryAreas=SE1,SE2,SE3,SE4",
+      },
+      {
+        title: "Frågor och svar om det tillfälliga el- och gasstödet (om högkostnadsskyddet för el)",
+        publisher: "Regeringskansliet",
+        url: "https://www.regeringen.se/regeringens-politik/energi/fragor-och-svar-om-det-tillfalliga-el--och-gasstodet/",
+      },
+      {
+        title: "Principer för en övergångsbudget (27 oktober 2026)",
+        publisher: "Regeringskansliet",
+        url: "https://www.regeringen.se/pressmeddelanden/2026/10/principer-for-en-overgangsbudget/",
+      },
+      {
+        title: "Dyrare el hotar – elstöd kan bli aktuellt (TT, 22 oktober 2026)",
+        publisher: "Dagens industri",
+        url: "https://www.di.se/nyheter/dyrare-el-hotar-elstod-kan-bli-aktuellt/",
+      },
+      {
+        title: "Elpriset på årshögsta i Sydsverige (TT, 28 oktober 2026)",
+        publisher: "Svenska Dagbladet",
+        url: "https://www.svd.se/a/lKPqnL/elpriset-pa-arshogsta-i-sydsverige",
+      },
+      {
+        title: "Missar elstöd med 11 öre (28 oktober 2026)",
+        publisher: "Claes Hemberg",
+        url: "https://claeshemberg.se/missar-elstod-med-4-ore/",
+      },
+      {
+        title: "Nordic System Price Electricity Base Load Month Future: stängningskurser 29 oktober 2026",
+        publisher: "Euronext",
+        url: "https://live.euronext.com/en/product/commodities-futures/NSBM-DAMS/market-information",
+      },
+      {
+        title: "Nordic EPAD Electricity Base Load Month Future, Malmö (elområde 4): stängningskurser 29 oktober 2026",
+        publisher: "Euronext",
+        url: "https://live.euronext.com/en/product/commodities-futures/MABM-DAMS/market-information",
+      },
+      {
+        title: "Sök räntor och valutakurser: euro (EUR/SEK) 29 oktober 2026",
+        publisher: "Sveriges riksbank",
+        url: "https://www.riksbank.se/sv/statistik/rantor-och-valutakurser/sok-rantor-och-valutakurser/",
+      },
+      {
+        title: "Talmannen lägger fram Elisabeth Thand Ringqvist (C) som förslag till statsminister (29 oktober 2026)",
+        publisher: "Sveriges riksdag",
+        url: "https://www.riksdagen.se/sv/aktuellt/aktuelltnotiser/2026/okt/29/talmannen-lagger-fram-elisabeth-thand-ringqvist_cmsde7b2cc3-ca41-472b-b946-7715715b2f5fsv/",
+      },
+    ],
+  },
+  {
+    slug: "elpris-november-2026-terminer-prognos",
+    status: "published",
+    title:
+      "Vad blir elpriset i november 2026? Terminerna pekar på 1,90 kronor i elområde 4 och 1,25 i elområde 3",
+    excerpt:
+      "Vad blir elpriset i november 2026? Terminsmarknaden ger en fingervisning: den 26 oktober motsvarade novemberkontrakten cirka 1,90 kronor per kilowattimme i elområde 4 och 1,25 kronor i elområde 3, exklusive moms och skatter. Det är mer än dubbelt så mycket som elpriset i november 2025 i elområde 4 och över gränsen för regeringens högkostnadsskydd. Här är terminerna, elbolagens prognos, vattenmagasinen och vad det kan betyda för din elräkning.",
+    category: "Elpriser",
+    publishedAt: "2026-10-27",
+    updatedAt: "2026-10-27",
+    readTimeMin: 7,
+    image: {
+      src: "/news/elpris-november-2026-terminer-prognos.jpg",
+      alt: "Stapeldiagram över spotpriset i november: i elområde 3 0,67 kronor per kWh 2024, 0,70 kronor 2025 och 1,25 kronor i terminspris för 2026, i elområde 4 0,85, 0,81 och 1,90 kronor. Oktober 2026 ligger på 0,73 respektive 1,38 kronor, och en streckad linje markerar 1,50 kronor, gränsen för högkostnadsskyddet",
+      credit: "Grafik: Optimera Energi · Källa: Nord Pool och Euronext",
+      creditUrl: "https://live.euronext.com/en/product/commodities-futures/NSBM-DAMS/market-information",
+    },
+    searchPhrases: [
+      "elpris november 2026",
+      "vad blir elpriset i november",
+      "elpris prognos november",
+      "elpris november 2025",
+      "elpris december 2026",
+      "när sjunker elpriset",
+      "fyllnadsgrad vattenmagasin 2026",
+      "terminspris el",
+    ],
+    sources: [
+      {
+        title: "Nordic System Price Electricity Base Load Month Future: stängningskurser för november 2026–april 2027 (19 och 26 oktober 2026)",
+        publisher: "Euronext",
+        url: "https://live.euronext.com/en/product/commodities-futures/NSBM-DAMS/market-information",
+      },
+      {
+        title: "Nordic EPAD Electricity Base Load Month Future, Malmö (elområde 4): stängningskurser 19 och 26 oktober 2026",
+        publisher: "Euronext",
+        url: "https://live.euronext.com/en/product/commodities-futures/MABM-DAMS/market-information",
+      },
+      {
+        title: "Nordic EPAD Electricity Base Load Month Future, Stockholm (elområde 3): stängningskurser 19 och 26 oktober 2026",
+        publisher: "Euronext",
+        url: "https://live.euronext.com/en/product/commodities-futures/STBM-DAMS/market-information",
+      },
+      {
+        title: "Sök räntor och valutakurser: euro (EUR/SEK) 19 och 26 oktober 2026",
+        publisher: "Sveriges riksbank",
+        url: "https://www.riksbank.se/sv/statistik/rantor-och-valutakurser/sok-rantor-och-valutakurser/",
+      },
+      {
+        title: "Day-ahead-priser per elområde, månads- och dygnssnitt 2024–2026",
+        publisher: "Nord Pool",
+        url: "https://data.nordpoolgroup.com/auction/day-ahead/prices?deliveryDate=2026-10-27&currency=SEK&aggregation=Monthly&deliveryAreas=SE1,SE2,SE3,SE4",
+      },
+      {
+        title: "Kraftläget i Sverige, vecka 42 (12–18 oktober 2026)",
+        publisher: "Energiföretagen",
+        url: "https://www.energiforetagen.se/statistik/kraftlaget/",
+      },
+      {
+        title: "Bixias höstprognos 2026: Elpriset över en krona när gaspriset fortsätter stiga",
+        publisher: "Bixia",
+        url: "https://bixia.se/press-nyheter/hostprognos-2026",
+      },
+      {
+        title: "Dyrast el på flera år (26 oktober 2026)",
+        publisher: "Claes Hemberg",
+        url: "https://claeshemberg.se/dyrast-el-pa-manga-ar/",
+      },
+      {
+        title: "Frågor och svar om det tillfälliga el- och gasstödet (om högkostnadsskyddet för el)",
+        publisher: "Regeringskansliet",
+        url: "https://www.regeringen.se/regeringens-politik/energi/fragor-och-svar-om-det-tillfalliga-el--och-gasstodet/",
+      },
+      {
+        title: "Sänkt skatt på el 1 januari 2026",
+        publisher: "Skatteverket",
+        url: "https://www.skatteverket.se/foretag/skatterochavdrag/punktskatter/nyheterinompunktskatter/2025/nyheterinompunktskatter/sanktskattpael1januari2026.5.1522bf3f19aea8075ba96f.html",
+      },
+    ],
+  },
+  {
+    slug: "nar-startar-ringhals-4-igen-karnkraft-ur-drift-november-2026",
+    status: "published",
+    title:
+      "När startar Ringhals 4 igen? Tre av sex reaktorer står still – Ringhals tillbaka först 18–20 november",
+    excerpt:
+      "När startar Ringhals 4 igen, och varför står Ringhals still? Just nu är tre av Sveriges sex kärnkraftsreaktorer ur drift: Ringhals 3, Ringhals 4 och Forsmark 1. Enligt Vattenfalls senaste besked startar Ringhals 3 den 18 november och Ringhals 4 den 20 november, medan Forsmark 1 kommer tillbaka på knappt halv effekt den 17 november. Vi går igenom läget reaktor för reaktor och vad återstarterna kan betyda för elpriset i vinter.",
+    category: "Elpriser",
+    publishedAt: "2026-10-24",
+    updatedAt: "2026-10-24",
+    readTimeMin: 7,
+    image: {
+      src: "/news/nar-startar-ringhals-4-igen-karnkraft-ur-drift-november-2026.jpg",
+      alt: "Ringhals kärnkraftverk sett över vattnet: tre runda reaktorbyggnader med kupoltak, en hög skorsten och en mast, med mörka buskar i förgrunden",
+      credit: "Foto: Pernilla Lagerquist/Vattenfall",
+      creditUrl: "https://group.vattenfall.com/se/nyheter-och-press/mediebank/kraftverk-och-kontor",
+    },
+    searchPhrases: [
+      "när startar ringhals 4 igen",
+      "när startar ringhals 3 igen",
+      "ringhals 4 återstart",
+      "forsmark 1 återstart",
+      "vilka kärnkraftverk står stilla",
+      "hur många reaktorer är i drift i sverige",
+      "varför står ringhals still",
+      "när startar kärnkraften igen",
+      "kärnkraft elpris",
+    ],
+    sources: [
+      {
+        title: "Nya tider för återstart av Ringhals 3 och 4 (20 oktober 2026)",
+        publisher: "Vattenfall",
+        url: "https://group.vattenfall.com/se/nyheter-och-press/nyheter/2026/uppdaterade-umm-for-ringhals-3-och-4",
+      },
+      {
+        title: "Reparationen av generator på Ringhals 4 snart i hamn (21 oktober 2026)",
+        publisher: "Vattenfall",
+        url: "https://group.vattenfall.com/se/nyheter-och-press/nyheter/2026/reparationen-av-generator-pa-ringhals-4-ar-nu-klar",
+      },
+      {
+        title: "Gummit gick sönder – har släckt ner Ringhals i månader (23 oktober 2026)",
+        publisher: "Sveriges Radio P4 Halland",
+        url: "https://www.sverigesradio.se/artikel/har-ar-gummit-som-slackt-ner-ringhals-i-flera-manader",
+      },
+      {
+        title: "Marknadsmeddelande: Ringhals block 3, försenad återstart efter årlig revision (version 11, 23 oktober 2026)",
+        publisher: "Nord Pool",
+        url: "https://umm.nordpoolgroup.com/#/messages/b6cc4473-3c10-4421-88f8-3545a0f94b64/11",
+      },
+      {
+        title: "Marknadsmeddelande: Ringhals block 4, försenad återstart efter årlig revision (version 3, 20 oktober 2026)",
+        publisher: "Nord Pool",
+        url: "https://umm.nordpoolgroup.com/#/messages/d0dc895b-1054-40f8-9309-67c602b78ce5/3",
+      },
+      {
+        title: "Marknadsmeddelande: Forsmark block 1, årlig revision följd av turbinunderhåll (version 7, 15 oktober 2026)",
+        publisher: "Nord Pool",
+        url: "https://umm.nordpoolgroup.com/#/messages/f1364ca9-a7df-4d03-8215-b0af76077737/7",
+      },
+      {
+        title: "Aktuell kärnkraftsproduktion i Forsmark och Ringhals",
+        publisher: "Vattenfall",
+        url: "https://group.vattenfall.com/se/var-verksamhet/vara-energislag/karnkraft/aktuell-karnkraftsproduktion",
+      },
+      {
+        title: "Kontrollrummet: produktionsstatus för Oskarshamn 3",
+        publisher: "OKG",
+        url: "https://okg.se/var-verksamhet/kontrollrummet/",
+      },
+      {
+        title: "Vinterns elpriser – fyra faktorer att hålla koll på (22 oktober 2026)",
+        publisher: "Vattenfall",
+        url: "https://www.vattenfall.se/fokus/tips-rad/vinterns-elpriser/",
+      },
+      {
+        title: "Day-ahead-priser per elområde, dygnssnitt oktober 2026",
+        publisher: "Nord Pool",
+        url: "https://data.nordpoolgroup.com/auction/day-ahead/prices?deliveryDate=2026-10-24&currency=SEK&aggregation=Daily&deliveryAreas=SE1,SE2,SE3,SE4",
+      },
+    ],
+  },
+  {
+    slug: "solcellsforetag-konkurs-garanti-forskott-2026",
+    status: "published",
+    title:
+      "Vad händer om solcellsföretaget går i konkurs? Så gäller garantin, förskottet och fakturan",
+    excerpt:
+      "Konkurserna bland solcellsföretag fortsätter, och i slutet av september hamnade ett 80-tal pågående solcellsprojekt i ett konkursbo. Vad händer om solcellsföretaget går i konkurs – före, under eller efter installationen? Vi reder ut vad som gäller för garantin, förskottet och fakturan enligt Konsumentverket, och hur du skyddar dig.",
+    category: "Marknad",
+    publishedAt: "2026-10-21",
+    updatedAt: "2026-10-21",
+    readTimeMin: 7,
+    image: {
+      src: "/news/solcellsforetag-konkurs-garanti-forskott-2026.jpg",
+      alt: "Tre montörer monterar svarta solpaneler på ett rött tegeltak, med en byggnadsställning längs husets fasad",
+      credit: "Foto: W.carter, CC0, via Wikimedia Commons (beskuren)",
+      creditUrl: "https://commons.wikimedia.org/wiki/File:Three_men_installing_solar_panels_on_a_house.jpg",
+    },
+    searchPhrases: [
+      "vad händer om solcellsföretag går i konkurs",
+      "solcellsföretag konkurs 2026",
+      "solcellsinstallatör konkurs",
+      "solceller konkurs",
+      "vad händer med garanti om företag går i konkurs",
+      "garanti installation solceller",
+      "förskottsbetalning konkurs",
+      "invändningsrätt konkurs",
+      "hålla inne betalning till hantverkare",
+    ],
+    sources: [
+      {
+        title: "När hantverkaren eller husbyggaren går i konkurs",
+        publisher: "Konsumentverket",
+        url: "https://www.konsumentverket.se/varor-och-tjanster/hantverkare-eller-husbyggare-i-konkurs/",
+      },
+      {
+        title: "Solcellsföretaget Sesol i konkurs. Vad händer nu? (frågor och svar, uppdaterad 2026)",
+        publisher: "Konsumentverket",
+        url: "https://www.konsumentverket.se/fragor-och-svar/3225929/solcellsforetaget-sesol-i-konkurs-vad-hander-nu/",
+      },
+      {
+        title: "Företaget har gått i konkurs – vad gäller?",
+        publisher: "Konsumentverket",
+        url: "https://www.konsumentverket.se/konsumentratt/foretag-i-konkurs/",
+      },
+      {
+        title: "Garanti – vad är garanti och när gäller den?",
+        publisher: "Konsumentverket",
+        url: "https://www.konsumentverket.se/konsumentratt/garanti/",
+      },
+      {
+        title: "Solcellsleverantören kan inte leverera (frågor och svar, uppdaterad 3 september 2026)",
+        publisher: "Konsumentverket",
+        url: "https://www.konsumentverket.se/fragor-och-svar/2655982/solcellsleverantoren-kan-inte-leverera/",
+      },
+      {
+        title: "Storförluster knäckte solcellsföretag – 80 projekt drabbas (29 september 2026)",
+        publisher: "Elinstallatören",
+        url: "https://www.elinstallatoren.se/storforluster-knackte-solcellsforetag-80-projekt-drabbas/",
+      },
+      {
+        title: "Stark finansiär räckte inte när miljonförlusterna radades upp (7 oktober 2026)",
+        publisher: "Elinstallatören",
+        url: "https://www.elinstallatoren.se/stark-finansiar-rackte-inte-nar-miljonforlusterna-radades-upp/",
+      },
+      {
+        title: "Hack i konkurskurvan – högsta septembernivån på över 30 år (1 oktober 2026)",
+        publisher: "Creditsafe",
+        url: "https://www.mynewsdesk.com/se/creditsafe/pressreleases/hack-i-konkurskurvan-hoegsta-septembernivaan-paa-oever-30-aar-3469900",
+      },
+      {
+        title: "Solpaneler har aldrig varit billigare – det är därför branschen blöder (21 augusti 2026)",
+        publisher: "Realtid",
+        url: "https://www.realtid.se/it-tech/solpaneler-har-aldrig-varit-billigare-det-ar-darfor-branschen-bloder/",
+      },
+      {
+        title: "Solcellsföretag i konkurs – lista 2024–2026 (uppdaterad oktober 2026)",
+        publisher: "Laddtorsk",
+        url: "https://laddtorsk.se/solcellsforetag-i-konkurs-2025/",
+      },
+    ],
+  },
+  {
     slug: "blir-det-extra-val-andersson-nedrostad-budget-elskatt-elstod",
     status: "published",
     title:
