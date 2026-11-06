@@ -74,6 +74,87 @@ export type NewsArticle = {
 
 export const NEWS: NewsArticle[] = [
   {
+    slug: "behover-man-soka-elstod-forsakringskassan-utbetalning-2027",
+    status: "published",
+    title:
+      "Behöver man söka elstöd? Nej – Försäkringskassan betalar ut automatiskt, 48 kronor för en villa i oktober",
+    excerpt:
+      "Behöver man söka elstöd? Nej. Försäkringskassan betalar ut stödet automatiskt, samlat för oktober, november och december, under vårvintern 2027. Det beskedet gav regeringen den 3 november. För oktober blir det 48 kronor för en villa i elområde 4 som använder 10 000 kilowattimmar per år. Här är hur mycket elstöd man får tillbaka, hur det räknas per kWh och varför november kan ge mer – även i elområde 3.",
+    category: "Stöd & avdrag",
+    publishedAt: "2026-11-06",
+    updatedAt: "2026-11-06",
+    readTimeMin: 6,
+    image: {
+      src: "/news/behover-man-soka-elstod-forsakringskassan-utbetalning-2027.jpg",
+      alt: "Stapeldiagram över elstödet för oktober 2026 i elområde 4 enligt regeringens exempel: 12 kronor för en mindre lägenhet med 2 500 kWh per år, 24 kronor för en större lägenhet med 5 000 kWh, 48 kronor för en villa med 10 000 kWh och 96 kronor för en villa med direktverkande el och 20 000 kWh",
+      credit: "Grafik: Optimera Energi · Källa: Regeringskansliet",
+      creditUrl:
+        "https://www.regeringen.se/contentassets/47b2f5d87ff64cecb95afea2f98255dc/presentationsbilder-fran-presstraff-den-3-november-2026-om-hogkostnadsskyddets-utformning.pdf",
+    },
+    searchPhrases: [
+      "behöver man söka elstöd",
+      "elstöd försäkringskassan",
+      "hur mycket elstöd får man tillbaka",
+      "elstöd villa",
+      "elstöd per kwh",
+      "när betalas elstödet ut för privatpersoner",
+      "elstöd elområde 3",
+      "kommer elstödet automatiskt",
+    ],
+    sources: [
+      {
+        title: "Presentationsbilder från pressträff den 3 november 2026 om högkostnadsskyddets utformning",
+        publisher: "Regeringskansliet",
+        url: "https://www.regeringen.se/contentassets/47b2f5d87ff64cecb95afea2f98255dc/presentationsbilder-fran-presstraff-den-3-november-2026-om-hogkostnadsskyddets-utformning.pdf",
+      },
+      {
+        title: "Högkostnadsskyddet aktiveras för elområde 4 (30 oktober 2026)",
+        publisher: "Regeringskansliet",
+        url: "https://www.regeringen.se/pressmeddelanden/2026/10/hogkostnadsskyddet-aktiveras-for-elomrade-4/",
+      },
+      {
+        title: "Busch: Elstöd för oktober betalas ut nästa år (TT, 3 november 2026)",
+        publisher: "Svenska Dagbladet",
+        url: "https://www.svd.se/a/WgweEd/busch-elstod-for-oktober-betalas-ut-senare",
+      },
+      {
+        title: "Osäkert om det blir något högkostnadsskydd för el nästa år (3 november 2026)",
+        publisher: "Montel",
+        url: "https://montelnews.com/nordic/news/08f21c0f-02ff-400e-8ed1-f5ef550fdc96/osaekert-om-det-blir-nagot-hoegkostnadsskydd-foer-el-naesta-ar",
+      },
+      {
+        title: "Talmannen ger sonderingsuppdrag till Ulf Kristersson (3 november 2026)",
+        publisher: "Sveriges riksdag",
+        url: "https://www.riksdagen.se/sv/aktuellt/aktuelltnotiser/2026/nov/3/talmannen-ger-sonderingsuppdrag-till-ulf_cms54664e82-75f7-4a53-9b10-3b9fe6330da0sv/",
+      },
+      {
+        title: "Day-ahead-priser per elområde, oktober och 1–6 november 2026",
+        publisher: "Nord Pool",
+        url: "https://data.nordpoolgroup.com/auction/day-ahead/prices?deliveryDate=2026-11-06&currency=SEK&aggregation=Monthly&deliveryAreas=SE1,SE2,SE3,SE4",
+      },
+      {
+        title: "Nordic System Price Electricity Base Load Month Future: stängningskurser 5 november 2026",
+        publisher: "Euronext",
+        url: "https://live.euronext.com/en/product/commodities-futures/NSBM-DAMS/market-information",
+      },
+      {
+        title: "Nordic EPAD Electricity Base Load Month Future, Malmö (elområde 4): stängningskurser 5 november 2026",
+        publisher: "Euronext",
+        url: "https://live.euronext.com/en/product/commodities-futures/MABM-DAMS/market-information",
+      },
+      {
+        title: "Nordic EPAD Electricity Base Load Month Future, Stockholm (elområde 3): stängningskurser 5 november 2026",
+        publisher: "Euronext",
+        url: "https://live.euronext.com/en/product/commodities-futures/STBM-DAMS/market-information",
+      },
+      {
+        title: "Sök räntor och valutakurser: euro (EUR/SEK) 5 november 2026",
+        publisher: "Sveriges riksbank",
+        url: "https://www.riksbank.se/sv/statistik/rantor-och-valutakurser/sok-rantor-och-valutakurser/",
+      },
+    ],
+  },
+  {
     slug: "elstod-oktober-2026-elomrade-4-hogkostnadsskydd",
     status: "published",
     title:
