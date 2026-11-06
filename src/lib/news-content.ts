@@ -38,6 +38,93 @@ export type NewsContent = {
 };
 
 const CONTENT: Record<string, NewsContent> = {
+  "behover-man-soka-elstod-forsakringskassan-utbetalning-2027": {
+    tldr: [
+      "Elkunderna i elområde 4 delar på 30 miljoner kronor för oktober, enligt finansminister Elisabeth Svantesson. En villa med direktverkande el får ”runt hundra kronor”, sa Ebba Busch.",
+      "Stödet är 90 procent av förbrukningen gånger den del av månadssnittet som ligger över 1,50 kronor. I oktober var det 6,67 öre, alltså cirka 6 öre per använd kilowattimme.",
+      "De sex första dagarna i november kostade elen 2,98 kronor i elområde 4 och 1,70 i elområde 3. Terminerna pekar på över gränsen i båda för hela månaden.",
+    ],
+    sections: [
+      {
+        h2: "Behöver man söka elstöd?",
+        body: [
+          "Nej, elstödet kommer automatiskt. Försäkringskassan betalar ut det och elkunderna behöver inte söka, enligt regeringen. Beskedet kom den 3 november, när energi- och näringsminister Ebba Busch (KD) och finansminister Elisabeth Svantesson (M) presenterade hur högkostnadsskyddet ska utformas.",
+          "Pengarna dröjer. Regeringen vill göra en samlad utbetalning för oktober, november och december 2026, och den sker under vårvintern 2027. Enligt TT är skälet att den administrativa kostnaden inte ska bli orimlig i förhållande till pengarna som betalas ut.",
+          "När vi skrev om oktobers utfall den 30 oktober var det inte bestämt hur stödet skulle utformas eller betalas ut. Samma dag skrev regeringen att den behöver besluta om en stödförordning för att införa elstödet. På pressträffen sa Ebba Busch enligt TT: ”Vi aktiverar högkostnadsskyddet. Beslutad politik ligger fast, trots att vi har en övergångsregering.”",
+        ],
+      },
+      {
+        h2: "Hur mycket elstöd får man tillbaka?",
+        body: [
+          "För oktober blir det små belopp. Spotpriset i elområde 4 landade på 1,57 kronor per kilowattimme i snitt, och stödet gäller bara den del som ligger över gränsen 1,50 kronor. I regeringens exempel får en villa som använder 10 000 kilowattimmar per år 48 kronor för oktober.",
+          "En villa med direktverkande el som använder 20 000 kilowattimmar per år får 96 kronor. En större lägenhet med 5 000 kilowattimmar får 24 kronor och en mindre lägenhet med 2 500 kilowattimmar 12 kronor. Exemplen bygger på att oktober står för 8 procent av årsförbrukningen.",
+          "Uppgiften om ”runt hundra kronor” gäller alltså en villa med direktverkande el. ”En familj som bor i villa med direktverkande el, med en räkning på ett par tusenlappar per månad, kommer att få runt hundra kronor”, sa Ebba Busch enligt TT.",
+          "Totalt delar elkunderna i elområde 4 på 30 miljoner kronor för oktober. ”Det är vad oktober kommer att kosta”, sa Elisabeth Svantesson enligt TT.",
+        ],
+      },
+      {
+        h2: "Elstöd per kWh – hur räknas det?",
+        body: [
+          "Stödet räknas på månadens genomsnittliga spotpris i elområdet. Den del som överstiger 1,50 kronor per kilowattimme ersätts, för 90 procent av de kilowattimmar hushållet har använt under månaden.",
+          "I oktober låg månadsmedelpriset i elområde 4 6,67 öre över gränsen, och det är den stödnivå regeringen räknar med i sina exempel. Med 90 procent av förbrukningen blir det cirka 6 öre per använd kilowattimme. En villa som använder 800 kilowattimmar i oktober, alltså 8 procent av 10 000, får 48 kronor. Exemplen räknar inte med nätavgift, skatter eller moms.",
+        ],
+      },
+      {
+        h2: "Blir det elstöd för november – och i elområde 3?",
+        body: [
+          "Det avgörs av snittpriset för hela november. Hittills ligger både elområde 4 och elområde 3 över gränsen. De sex första dagarna kostade elen 2,98 kronor per kilowattimme i snitt i elområde 4 och 1,70 kronor i elområde 3, enligt Nord Pool. I norr låg snittet på 0,14 kronor i elområde 2 och 0,19 kronor i elområde 1.",
+          "Marknaden räknar med att det håller i sig. Den 5 november motsvarade terminerna på börsen Euronext 2,26 kronor per kilowattimme för november i elområde 4 och 1,69 kronor i elområde 3, omräknat med Riksbankens eurokurs samma dag, 10,98 kronor. Områdeskontrakten för november hade inga avslut den dagen, så kursen bygger inte på affärer. För december låg nivån på 1,68 kronor i elområde 4 och 1,31 kronor i elområde 3.",
+          "Elområde 3 nådde inte gränsen i oktober, då snittet blev 0,82 kronor. Christian Holtz, analytiker på Polite Energy, tror enligt TT att även elområde 3 kommer att omfattas av stödet framöver. Han bedömer att stödet för november och december ser ut att bli betydligt högre än de 30 miljonerna för oktober.",
+          "Räkneillustration: landar november på 2,26 kronor i elområde 4, som terminen pekar på, blir stödet cirka 680 kronor per 1 000 kilowattimmar som hushållet använder i november. I elområde 3 skulle 1,69 kronor ge cirka 170 kronor per 1 000 kilowattimmar. Terminer är marknadens förväntningar, inte ett facit, och de ändras varje handelsdag.",
+        ],
+      },
+      {
+        h2: "Finns högkostnadsskyddet kvar efter nyår?",
+        body: [
+          "Enligt regeringen gäller högkostnadsskyddet under 2026. I den budget för 2027 som övergångsregeringen är på väg att lägga fram kommer inget nytt stödsystem, enligt TT. Finansminister Elisabeth Svantesson sa enligt Montel den 3 november att det är osäkert om högkostnadsskyddet finns kvar efter årsskiftet.",
+          "Regeringsfrågan är fortfarande öppen. Den 3 november röstade riksdagen nej till talmannens förslag att göra Elisabeth Thand Ringqvist (C) till statsminister. Talmannen gav samma dag Ulf Kristersson (M) i uppdrag att sondera förutsättningarna för att bilda en regering, och han ska rapportera senast den 10 november.",
+          "Hur en övergångsbudget fungerar och vad den betyder för tillfälliga stöd beskrev vi i artikeln om oktobers utfall den 30 oktober.",
+        ],
+      },
+      {
+        h2: "Vad betyder det för din kalkyl?",
+        body: [
+          "Räkna inte med stödet som en lättnad i vinter. För en villa som använder 10 000 kilowattimmar per år blir elkostnaden för oktober 1 253 kronor i regeringens exempel, före nätavgift, skatter och moms. Stödet på 48 kronor motsvarar knappt 4 procent av det, och pengarna kommer först under vårvintern 2027.",
+          "November kan ge mer om priserna håller i sig, men räkningen kommer först. Med ett rörligt elavtal betalar du novembers el på nästa faktura, medan stödet för samma månad kommer i vår.",
+          "Det du själv kan påverka är när du använder el. Den 6 november kostade en kvart i elområde 4 mellan 2,20 och 4,59 kronor per kilowattimme. Med ett avtal som följer spotpriset lönar det sig att flytta tvätt, disk och elbilsladdning till de billigare timmarna.",
+        ],
+        bullets: [
+          "Ansökan: behövs inte. Försäkringskassan betalar ut automatiskt.",
+          "Utbetalning: samlad för oktober–december 2026, under vårvintern 2027.",
+          "Beräkning: 90 procent av förbrukade kWh gånger den del av månadssnittet som överstiger 1,50 kr/kWh.",
+          "Oktober, elområde 4: 6,67 öre över gränsen. Villa med 10 000 kWh per år: 48 kr. Villa med direktverkande el, 20 000 kWh: 96 kr.",
+          "November 1–6: elområde 4 2,98 kr/kWh och elområde 3 1,70 kr/kWh. Terminer 5 november: 2,26 respektive 1,69 kr/kWh.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Behöver man söka elstöd?",
+        a: "Nej. Försäkringskassan betalar ut elstödet automatiskt, utan ansökan, enligt regeringens besked den 3 november. Utbetalningen görs samlat för oktober, november och december 2026.",
+      },
+      {
+        q: "Hur mycket elstöd får man för en villa?",
+        a: "För oktober i elområde 4 får en villa som använder 10 000 kilowattimmar per år 48 kronor, och en villa med direktverkande el som använder 20 000 kilowattimmar 96 kronor, enligt regeringens exempel. November och december kan ge mer om priserna ligger kvar över gränsen.",
+      },
+      {
+        q: "När betalas elstödet ut för privatpersoner?",
+        a: "Under vårvintern 2027. Regeringen betalar ut stödet för oktober, november och december 2026 i en enda utbetalning, för att den administrativa kostnaden inte ska bli orimlig i förhållande till beloppen.",
+      },
+      {
+        q: "Får man elstöd i elområde 3?",
+        a: "Inte för oktober, då snittpriset i elområde 3 blev 0,82 kronor per kilowattimme. För november avgörs det av månadssnittet. De sex första dagarna låg elområde 3 på 1,70 kronor, och terminen för november motsvarade 1,69 kronor den 5 november.",
+      },
+      {
+        q: "Hur räknas elstödet per kWh?",
+        a: "Du får ersättning för den del av månadens genomsnittliga spotpris som ligger över 1,50 kronor per kilowattimme, för 90 procent av de kilowattimmar du använt. I oktober var det 6,67 öre över gränsen i elområde 4, alltså cirka 6 öre per använd kilowattimme.",
+      },
+    ],
+  },
   "elstod-oktober-2026-elomrade-4-hogkostnadsskydd": {
     tldr: [
       "Avgörandet kom sista veckan: dygnspriserna 28–31 oktober låg mellan 2,44 och 3,32 kr/kWh, och enskilda kvartar kostade 5,88 kr. Marginalen mot gränsen blev 7 öre.",
