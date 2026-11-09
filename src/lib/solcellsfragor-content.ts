@@ -28,7 +28,7 @@ export const QUESTIONS: SolarQuestion[] = [
       {
         h2: "Hur mycket el sparar man?",
         paragraphs: [
-          "I exemplet köper du 2 450 kWh mindre el per år, och resten matas ut på nätet. En vanlig villa använder 20–50 procent av solelen själv, enligt Energimyndigheten. Med batteri kan andelen enligt Optimera Energi bli 70–80 procent.",
+          "I exemplet köper du 2 450 kWh mindre el per år, och resten matas ut på nätet. Hur stor del du använder själv varierar mycket: elbehovet i en normal villa är ofta störst morgon och kväll, medan solcellerna producerar mest mitt på dagen, enligt Energimyndigheten. Energimyndighetens solelkalkyl utgår från 40 procents egenanvändning för en typisk villa. Ett batteri ger mer egenanvändning, och i Batteriskolans exempel höjer ett 10 kWh-batteri andelen från cirka 35 till drygt 50 procent.",
           "Ersättningen för såld el är inkomst av kapital, men i många fall blir den skattefri tack vare schablonavdraget på 40 000 kronor per år och privatbostad, räknat på alla inkomster från bostaden."
         ]
       }
@@ -68,6 +68,16 @@ export const QUESTIONS: SolarQuestion[] = [
         title: "Löpande intäkter efter installation",
         publisher: "Energimyndigheten (Solelportalen)",
         url: "https://www.energimyndigheten.se/effektiv-energianvandning/guider/solelportalen/vilka-stod-och-intakter-kan-jag-fa/lopande-intakter-efter-installation/"
+      },
+      {
+        title: "Bättre ekonomi med rätt anläggningsstorlek",
+        publisher: "Energimyndigheten (Solelportalen)",
+        url: "https://www.energimyndigheten.se/effektiv-energianvandning/guider/solelportalen/hur-stor-anlaggning-passar-mig/battre-ekonomi-med-ratt-anlaggningsstorlek/"
+      },
+      {
+        title: "Koppla batterier till solcellerna",
+        publisher: "Energimyndigheten (Solelportalen)",
+        url: "https://www.energimyndigheten.se/effektiv-energianvandning/guider/solelportalen/hur-stor-anlaggning-passar-mig/batterier-kopplat-till-solceller/"
       }
     ],
     related: [
@@ -87,7 +97,7 @@ export const QUESTIONS: SolarQuestion[] = [
         label: "Räkna på ditt hus i kalkylatorn"
       }
     ],
-    updatedAt: "2026-10-03"
+    updatedAt: "2026-11-09"
   },
   {
     slug: "nar-lonar-sig-solceller-inte",
@@ -344,7 +354,7 @@ export const QUESTIONS: SolarQuestion[] = [
       {
         h2: "Räkneexempel: 7 kWp i Stockholm",
         paragraphs: [
-          "Exempel med antagandena 7 000 kWh produktion per år, 35 procent egenanvändning (Optimera Energi räknar med 30–40 procent utan batteri) och ett spotpris (elbörsens pris) på 55 öre/kWh, samma nivå som Energimyndigheten antar för såld el. Varje egenanvänd kWh är då värd cirka 1,40 kronor (spotpris med moms, energiskatt 45 öre och Ellevios överföringsavgift 26 öre, båda inklusive moms) och varje såld kWh cirka 55 öre. Det ger cirka 5 900 kronor per år. Nettopriserna nedan är efter grönt avdrag."
+          "Exempel med antagandena 7 000 kWh produktion per år, 35 procent egenanvändning (Energimyndighetens solelkalkyl utgår från 40 procent för en typisk villa) och ett spotpris (elbörsens pris) på 55 öre/kWh, samma nivå som Energimyndigheten antar för såld el. Varje egenanvänd kWh är då värd cirka 1,40 kronor (spotpris med moms, energiskatt 45 öre och Ellevios överföringsavgift 26 öre, båda inklusive moms) och varje såld kWh cirka 55 öre. Det ger cirka 5 900 kronor per år. Nettopriserna nedan är efter grönt avdrag."
         ],
         bullets: [
           "Nettopris 50 000 kronor (Optimera Energis riktpris för 14 paneler): cirka 8,5 år.",
@@ -422,7 +432,7 @@ export const QUESTIONS: SolarQuestion[] = [
         label: "Räkna på ditt hus i kalkylatorn"
       }
     ],
-    updatedAt: "2026-10-26"
+    updatedAt: "2026-11-09"
   },
   {
     slug: "lonar-sig-solceller",
@@ -438,7 +448,7 @@ export const QUESTIONS: SolarQuestion[] = [
         ],
         bullets: [
           "Pris. Energimyndighetens solelkalkyl utgår från ett medelpris på 18 400 kronor per kW inklusive moms (2024), cirka 15 700 kronor efter grönt avdrag, och installatören Elkontakten anger cirka 15 400–21 400 kronor per kW efter avdrag för 2026. Priserna skiljer sig mellan leverantörer, och priset slår direkt på återbetalningstiden.",
-          "Egenanvändning, alltså den del av solelen du använder själv. Den ersätter elpris, energiskatt, nätavgift och moms, medan såld el ger ungefär spotpriset (elbörsens pris). En vanlig villa använder 20–50 procent av solelen själv, enligt Energimyndigheten.",
+          "Egenanvändning, alltså den del av solelen du använder själv. Den ersätter elpris, energiskatt, nätavgift och moms, medan såld el ger ungefär spotpriset (elbörsens pris). Energimyndighetens solelkalkyl utgår från att en typisk villa använder 40 procent av solelen själv.",
           "Elområde. Tibbers prognos från den 29 september för oktober–december 2026 är 100–110 öre/kWh i SE3 (Stockholm) och SE4 (Malmö) men 45–55 öre i SE1 (Luleå) och SE2 (Sundsvall). Ju lägre elpris, desto mindre är varje egenanvänd kWh värd.",
           "Regler. Skattereduktionen för såld el slopades den 1 januari 2026, så överskottet är mindre värt än förut."
         ]
@@ -511,7 +521,7 @@ export const QUESTIONS: SolarQuestion[] = [
         label: "Räkna på ditt hus i kalkylatorn"
       }
     ],
-    updatedAt: "2026-10-26"
+    updatedAt: "2026-11-09"
   },
   {
     slug: "solceller-och-direktverkande-el",
@@ -4535,6 +4545,14 @@ export const QUESTIONS: SolarQuestion[] = [
       {
         href: "/guider/franluftsvarmepump",
         label: "Guide: Så fungerar en frånluftsvärmepump"
+      },
+      {
+        href: "/guider/vad-ar-bergvarme",
+        label: "Guide: Vad är bergvärme och hur fungerar det?"
+      },
+      {
+        href: "/guider/varmepump-service",
+        label: "Guide: Hur ofta behöver en värmepump service?"
       }
     ],
     updatedAt: "2026-10-03"

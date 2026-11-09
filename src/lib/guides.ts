@@ -46,6 +46,106 @@ export type Guide = {
 
 export const GUIDES: Guide[] = [
   {
+    slug: "vad-ar-bergvarme",
+    status: "published",
+    title: "Vad är bergvärme och hur fungerar det?",
+    excerpt: "Bergvärme hämtar värme ur ett borrhål i berget. Så fungerar bergvärmepumpen, hur mycket värme den ger per kWh el och vad den kräver av huset.",
+    category: "Värmepump",
+    publishedAt: "2026-11-09",
+    updatedAt: "2026-11-09",
+    readTimeMin: 6,
+    searchPhrases: [
+      "vad är bergvärme",
+      "vad är en bergvärmepump",
+      "hur fungerar bergvärme",
+      "hur fungerar ett bergvärmesystem",
+      "vad är köldmedium i en bergvärmepump",
+    ],
+    services: [
+      "vaermepumpar",
+    ],
+    sources: [
+      {
+        title: "Berg-, jord- eller sjövärmepump",
+        publisher: "Energi- och klimatrådgivningen",
+        url: "https://energiochklimatradgivningen.se/hushall/uppvarmning/olikavarmesystem/varmepumpar/bergjordellersjovarmepump.845.html",
+      },
+      {
+        title: "Värmepumpar – en guide från energi- och klimatrådgivningen (ET 2025:05)",
+        publisher: "Energi- och klimatrådgivningen",
+        url: "https://energiochklimatradgivningen.se/download/18.5e9a579b195c021e865e6618/1742900645694/V%C3%A4rmepumpar_en%20guide%20fr%C3%A5n%20energi-%20och%20klimatr%C3%A5dgivningen%202025.pdf.pdf",
+      },
+      {
+        title: "Installation av berg-, sjö- och jordvärmepumpar med smart styrning (Energiguiden)",
+        publisher: "Boverket",
+        url: "https://www.boverket.se/sv/energiguiden/energirenovera-smahus/5.valja_atgarder/berg--sjo--och-jordvarme/",
+      },
+      {
+        title: "Ger arbetet rätt till rotavdrag? (schablon vid installation av värmesystem)",
+        publisher: "Skatteverket",
+        url: "https://www.skatteverket.se/foretag/skatterochavdrag/rotochrut/gerarbetetratttillrotavdrag.4.5c1163881590be297b5173bf.html",
+      },
+      {
+        title: "Privatpersoner måste anlita certifierad personal för installation av värmepump",
+        publisher: "Naturvårdsverket",
+        url: "https://www.naturvardsverket.se/vagledning-och-stod/kemikalier/fluorerade-vaxthusgaser/privatpersoner-maste-anlita-certifierad-personal-for-installation-av-varmepump/",
+      },
+      {
+        title: "Frågor och svar (energibrunnar)",
+        publisher: "SGU",
+        url: "https://www.sgu.se/om-sgu/fragor-och-svar/",
+      },
+    ],
+  },
+  {
+    slug: "varmepump-service",
+    status: "published",
+    title: "Hur ofta behöver en värmepump service – och vad ingår?",
+    excerpt: "En värmepump bör servas vart eller vartannat år, helst före eldningssäsongen. Vad som ingår, vad du gör själv, läckagekontroll och varför service inte ger rotavdrag.",
+    category: "Värmepump",
+    publishedAt: "2026-11-09",
+    updatedAt: "2026-11-09",
+    readTimeMin: 6,
+    searchPhrases: [
+      "värmepump service",
+      "värmepump service hur ofta",
+      "behöver man serva värmepump",
+      "serva värmepump själv",
+      "service värmepump rotavdrag",
+      "läckagekontroll värmepump",
+    ],
+    services: [
+      "vaermepumpar",
+    ],
+    sources: [
+      {
+        title: "Värmepumpar – en guide från energi- och klimatrådgivningen (ET 2025:05)",
+        publisher: "Energi- och klimatrådgivningen",
+        url: "https://energiochklimatradgivningen.se/download/18.5e9a579b195c021e865e6618/1742900645694/V%C3%A4rmepumpar_en%20guide%20fr%C3%A5n%20energi-%20och%20klimatr%C3%A5dgivningen%202025.pdf.pdf",
+      },
+      {
+        title: "Privatpersoner måste anlita certifierad personal för installation av värmepump",
+        publisher: "Naturvårdsverket",
+        url: "https://www.naturvardsverket.se/vagledning-och-stod/kemikalier/fluorerade-vaxthusgaser/privatpersoner-maste-anlita-certifierad-personal-for-installation-av-varmepump/",
+      },
+      {
+        title: "Läckagekontroll (fluorerade växthusgaser)",
+        publisher: "Naturvårdsverket",
+        url: "https://www.naturvardsverket.se/vagledning-och-stod/kemikalier/fluorerade-vaxthusgaser/lackagekontroll/",
+      },
+      {
+        title: "Ger arbetet rätt till rotavdrag?",
+        publisher: "Skatteverket",
+        url: "https://www.skatteverket.se/foretag/skatterochavdrag/rotochrut/gerarbetetratttillrotavdrag.4.5c1163881590be297b5173bf.html",
+      },
+      {
+        title: "Installation av berg-, sjö- och jordvärmepumpar med smart styrning (Energiguiden)",
+        publisher: "Boverket",
+        url: "https://www.boverket.se/sv/energiguiden/energirenovera-smahus/5.valja_atgarder/berg--sjo--och-jordvarme/",
+      },
+    ],
+  },
+  {
     slug: "sigenergy-sigenstor-granskning",
     status: "published",
     heroImage: {
@@ -402,10 +502,12 @@ export const GUIDES: Guide[] = [
     excerpt: "Jämför elavtal på jämförpriset i öre/kWh i Ei:s Elpriskollen. Så väljer du avtal till villan, byter gratis inom tre veckor och undviker brytavgift 2026.",
     category: "Elpris",
     publishedAt: "2026-10-12",
-    updatedAt: "2026-10-19",
+    updatedAt: "2026-11-09",
     readTimeMin: 8,
     searchPhrases: [
       "elavtal jämför",
+      "byta elavtal",
+      "binda elavtal",
       "fast elavtal",
       "rörligt elavtal",
       "teckna elavtal",
@@ -800,7 +902,7 @@ export const GUIDES: Guide[] = [
     excerpt: "Nettopris delat med årlig nytta. Räkneexempel 2026 steg för steg: egenanvändning, SE3 mot SE4, med och utan batteri och vad slopade 60-öringen betydde.",
     category: "Ekonomi",
     publishedAt: "2026-05-24",
-    updatedAt: "2026-10-27",
+    updatedAt: "2026-11-09",
     readTimeMin: 9,
     searchPhrases: [
       "hur räknar man ut återbetalningstid på solceller",

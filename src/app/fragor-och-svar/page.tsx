@@ -108,11 +108,11 @@ const CATEGORIES: { heading: string; eyebrow: string; items: { q: string; a: str
       },
       {
         q: "Kan jag ladda batteriet från elnätet när det är billigt?",
-        a: "Ja, med ett elavtal som följer spotpriset – i dag i praktiken kvartspris. Styrningen laddar batteriet när elen är billig och använder elen när den är dyr, automatiskt. Hur mycket det ger beror på prisskillnaderna, som varierar mycket mellan dygnen: i kunskapsbankens exempel för SE3 ger prisstyrning vintertid uppskattningsvis 1 000 kr per år.",
+        a: "Ja, med ett elavtal som följer spotpriset – i dag i praktiken kvartspris. Styrningen laddar batteriet när elen är billig och använder elen när den är dyr, automatiskt. Hur mycket det ger beror på prisskillnaderna, som varierar mycket mellan dygnen: i kunskapsbankens exempel för SE3 ger prisstyrning med ett 10 kWh-batteri cirka 1 800 kr per år netto.",
       },
       {
         q: "Höjer ett batteri min självförbrukning av solel?",
-        a: "Ja. En vanlig villa använder 20–50 % av solelen själv enligt Energimyndigheten. Ett batteri sparar dagens överskott till kvällen – i kunskapsbankens exempel höjer ett 10 kWh-batteri egenanvändningen från cirka 35 till drygt 50 %. Hur mycket beror på batteriets storlek och när du använder el. Det lönar sig eftersom en egenanvänd kWh är värd ungefär 2,5 gånger mer än en såld.",
+        a: "Ja. Energimyndighetens solelkalkyl utgår från att en typisk villa använder 40 % av solelen själv. Ett batteri sparar dagens överskott till kvällen – i kunskapsbankens exempel höjer ett 10 kWh-batteri egenanvändningen från cirka 35 till drygt 50 %. Hur mycket beror på batteriets storlek och när du använder el. Det lönar sig eftersom en egenanvänd kWh är värd ungefär 2,5 gånger mer än en såld.",
       },
     ],
   },
