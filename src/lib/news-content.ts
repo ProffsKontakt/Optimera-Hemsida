@@ -38,6 +38,100 @@ export type NewsContent = {
 };
 
 const CONTENT: Record<string, NewsContent> = {
+  "elpris-2022-vs-2026-november-dyrare-an-elkrisen": {
+    tldr: [
+      "Måndagen den 9 november blir årets dyraste dygn i söder: 4,30 kr/kWh i elområde 4 och 2,75 i elområde 3. Dyraste kvarten, 17.15–17.30, kostar 7,50 kronor.",
+      "Helårssnittet 2022 blev 1,62 kr/kWh i elområde 4 och 1,38 i elområde 3. Från januari till 9 november i år ligger motsvarande siffror på 1,08 och 0,81.",
+      "Håller novembersnittet blir elstödet cirka 1 470 kronor per 1 000 använda kWh i elområde 4 och 290 kronor i elområde 3. Utbetalningen sker vårvintern 2027.",
+    ],
+    sections: [
+      {
+        h2: "Elpris 2022 vs 2026 – är elen dyrare nu än under elkrisen?",
+        body: [
+          "I södra Sverige, ja – just nu. De nio första dagarna i november har elen kostat 3,13 kronor per kilowattimme i snitt i elområde 4, enligt Nord Pool. Det är mer än dubbelt så mycket som i november 2022, då snittet blev 1,35 kronor. Det är också mer än augusti 2022, som med 3,05 kronor är den dyraste hela månaden i elområde 4 sedan Sverige delades in i elområden i november 2011.",
+          "I elområde 3 ligger november hittills på 1,83 kronor. Det är 40 procent mer än i november 2022, då snittet var 1,31 kronor, men lägre än elkrisens dyraste månader: augusti 2022 med 2,23 kronor, september med 2,29 kronor och december med 2,69 kronor. I norr är bilden den omvända. Elområde 2 har legat på 11 öre och elområde 1 på 17 öre i november.",
+          "Månaden är inte slut. Snittet för hela november avgörs först den 30 november, och några blåsiga dagar kan dra ner det. Priserna för 8 och 9 november är dessutom preliminära hos Nord Pool. Alla priser i artikeln är spotpriser utan moms, energiskatt, nätavgift och elhandlarens påslag.",
+        ],
+      },
+      {
+        h2: "Elpris 2022 snitt – och var ligger 2026?",
+        body: [
+          "Hela 2022 kostade elen i snitt 1,62 kronor per kilowattimme i elområde 4 och 1,38 kronor i elområde 3. Från den 1 januari till den 9 november 2026 är snittet 1,08 kronor i elområde 4 och 0,81 kronor i elområde 3. Det är en tredjedel lägre respektive drygt 40 procent lägre än krisåret. Även i norr är 2026 billigare: 45 öre i elområde 1 och 47 öre i elområde 2, mot runt 60 euro per megawattimme 2022 enligt Energimarknadsinspektionen, vilket motsvarar 63–66 öre.",
+          "I elområde 4 har fyra månader i år varit dyrare än samma månad 2022: januari, februari, oktober och november hittills. Sommaren och september var däremot betydligt billigare i år. Augusti 2022 kostade 3,05 kronor per kilowattimme, augusti 2026 kostade 0,80 kronor.",
+          "Siffrorna för 2026 kommer från Nord Pool. Priserna för 2022 bygger på timpriser i euro från Energinets dataportal Energi Data Service, som vi har räknat om till kronor med Riksbankens dagliga eurokurs. Helårssnitten stämmer med Energimarknadsinspektionens årsrapport för 2022, som anger 152 euro per megawattimme i elområde 4 och 129 euro i elområde 3.",
+        ],
+        bullets: [
+          "Elpris augusti 2022: 3,05 kr/kWh i elområde 4 och 2,23 kr/kWh i elområde 3.",
+          "Elpris december 2022: 2,71 kr/kWh i elområde 4 och 2,69 kr/kWh i elområde 3.",
+          "November 2022: 1,35 kr/kWh i elområde 4 och 1,31 kr/kWh i elområde 3.",
+          "Oktober 2026: 1,57 kr/kWh i elområde 4 och 0,82 kr/kWh i elområde 3, mot 0,81 kr/kWh i båda elområdena i oktober 2022.",
+          "November 2026, dag 1–9: 3,13 kr/kWh i elområde 4 och 1,83 kr/kWh i elområde 3.",
+          "Helår 2022: 1,62 kr/kWh i elområde 4 och 1,38 kr/kWh i elområde 3. År 2026 till och med 9 november: 1,08 respektive 0,81 kr/kWh.",
+        ],
+      },
+      {
+        h2: "Högsta elpriset någonsin – 2022 eller 2026?",
+        body: [
+          "Det beror på hur man mäter. Den dyraste timmen hittills i elområde 3 och 4 är klockan 19–20 den 30 augusti 2022. Då kostade elen 800 euro per megawattimme i båda elområdena, vilket med Riksbankens eurokurs den dagen motsvarar cirka 8,53 kronor per kilowattimme. Energimarknadsinspektionen anger samma rekordnivå i sin årsrapport för 2022.",
+          "Sedan oktober 2025 sätts elpriset per kvart i stället för per timme. Den 14 september 2026 kostade kvarten 19.30–19.45 i elområde 4 8,98 kronor per kilowattimme, enligt Nord Pool. Räknat i kronor är det det högsta pris som har noterats i elområdet. Räknat i euro, 797 euro per megawattimme, låg det strax under rekordtimmen 2022. Skillnaden beror på kronan: en euro kostade 11,26 kronor den 14 september 2026 mot 10,66 kronor den 30 augusti 2022.",
+          "Jämförelsen haltar ändå. Ett timpris är ett snitt av fyra kvartar, så en enskild kvart kan sticka iväg mer. Räknat per dygn står rekorden från 2022 kvar: den 22 augusti 2022 kostade elen i snitt 5,77 kronor per kilowattimme i elområde 4, och den 23 augusti 5,17 kronor i elområde 3. Den dyraste månaden i elområde 3 är december 2022, med 2,69 kronor.",
+        ],
+        bullets: [
+          "Dyraste timmen i elområde 3 och 4: 19–20 den 30 augusti 2022, 800 euro/MWh, cirka 8,53 kr/kWh.",
+          "Högsta pris i kronor i elområde 4: 8,98 kr/kWh, kvarten 19.30–19.45 den 14 september 2026.",
+          "Dyraste dygnet: 22 augusti 2022, 5,77 kr/kWh i elområde 4. I elområde 3: 23 augusti 2022, 5,17 kr/kWh.",
+          "Dyraste månaden: augusti 2022 i elområde 4 (3,05 kr/kWh) och december 2022 i elområde 3 (2,69 kr/kWh). November 2026 ligger hittills över augusti 2022.",
+        ],
+      },
+      {
+        h2: "Högsta elpriset 2026 – vilka dagar har varit dyrast?",
+        body: [
+          "Måndagen den 9 november blir årets dyraste dygn i både elområde 4 och elområde 3, enligt Nord Pools preliminära priser. I elområde 4 kostar elen 4,30 kronor per kilowattimme i snitt, med 7,50 kronor som dyraste kvart klockan 17.15–17.30 och 2,62 kronor som billigaste. I elområde 3 är dygnssnittet 2,75 kronor och den dyraste kvarten 4,79 kronor.",
+          "Före november var den 29 oktober årets dyraste dygn i elområde 4, med 3,32 kronor. I november har sex av nio dagar passerat 3 kronor, och den billigaste novemberdagen hittills, den 5 november, kostade 2,67 kronor. I elområde 3 var den 10 februari dyrast före november, med 2,05 kronor.",
+          "Årets dyraste kvart i elområde 3 inföll den 19 februari, med 5,17 kronor. Samma dag kostade en kvart som mest 5,01 kronor i elområde 2 och 4,44 kronor i elområde 1.",
+        ],
+      },
+      {
+        h2: "Vad driver priset nu – och vad var annorlunda under elkrisen 2022?",
+        body: [
+          "Svenska kraftnät pekar på flera samverkande orsaker i sin driftinformation den 3 november: låga europeiska gaslager, ett osäkert omvärldsläge, ansträngda vattenmagasin i södra Norge och begränsad kärnkraftsproduktion. Fyllnadsgraden i svenska och norska vattenmagasin ligger under det normala, och underskottet är störst i de södra delarna. Omfattande arbeten i stamnätet begränsar dessutom hur mycket el som kan föras över.",
+          "Tre av Sveriges sex reaktorer står still. Ringhals 4 beräknas vara tillbaka den 20 november och Ringhals 3 den 27 november, enligt Svenska kraftnät. Forsmark 1, som har stått still sedan den 6 september, väntas komma tillbaka med den ena generatorn den 17 november och den andra den 12 december. När vi skrev om reaktorerna den 24 oktober var Vattenfalls besked att Ringhals 3 skulle starta den 18 november.",
+          "Elkrisen 2022 drevs främst av gaspriset. När Ryssland minskade gasleveranserna efter invasionen av Ukraina steg priset på naturgas i Europa, och det slog igenom på elpriserna, enligt Energimarknadsinspektionen. Gaspriset nådde rekordet 339 euro per megawattimme i augusti 2022, samma månad som elpriset toppade i södra Sverige. Även då var vattenmagasinen låga, och det blåste periodvis lite.",
+          "En skillnad syns i siffrorna. Under 2022 låg både elområde 3 och elområde 4 på krisnivå i flera månader. I november 2026 är det framför allt elområde 4 som har nått dit.",
+        ],
+      },
+      {
+        h2: "Vad betyder det för elstödet och elräkningen?",
+        body: [
+          "Högkostnadsskyddet gäller när månadens snittpris i ett elområde överstiger 1,50 kronor per kilowattimme. Stödet är den del av snittet som ligger över gränsen, för 90 procent av de kilowattimmar hushållet har använt under månaden. Försäkringskassan betalar ut stödet för oktober, november och december samlat under vårvintern 2027, utan ansökan.",
+          "Räkneillustration: landar november på 3,13 kronor i elområde 4 blir stödet cirka 1 470 kronor per 1 000 kilowattimmar som hushållet använder i november. I elområde 3 skulle 1,83 kronor ge cirka 290 kronor per 1 000 kilowattimmar. Det är räkneexempel utifrån snittet hittills, inte ett besked – stödet avgörs av snittet för hela månaden.",
+          "Räkningen kommer först. Med ett rörligt elavtal betalar du novembers el på nästa faktura, medan stödet kommer i vår. Det du själv kan påverka är när du använder el. Den 9 november kostar den dyraste kvarten i elområde 4 nästan tre gånger så mycket som den billigaste, så det lönar sig att flytta tvätt, disk och elbilsladdning från eftermiddagens och kvällens toppar.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Är elpriset högre nu än 2022?",
+        a: "I elområde 4 ja, för november. De nio första dagarna kostade elen 3,13 kronor per kilowattimme i snitt, mot 1,35 kronor i november 2022, och det är mer än augusti 2022 som är den dyraste månaden sedan 2011. Sett över hela året är 2026 billigare än 2022 i alla fyra elområden.",
+      },
+      {
+        q: "Vad var elpriset i snitt 2022?",
+        a: "1,62 kronor per kilowattimme i elområde 4 och 1,38 kronor i elområde 3, utan moms, skatt och nätavgift. I elområde 1 och 2 låg snittet runt 60 euro per megawattimme, cirka 63–66 öre, enligt Energimarknadsinspektionen.",
+      },
+      {
+        q: "Vad är det högsta elpriset någonsin i Sverige?",
+        a: "Räknat per timme är rekordet 800 euro per megawattimme, cirka 8,53 kronor per kilowattimme, i elområde 3 och 4 klockan 19–20 den 30 augusti 2022. Räknat i kronor är det högsta enskilda priset i elområde 4 en kvart den 14 september 2026: 8,98 kronor per kilowattimme.",
+      },
+      {
+        q: "Vilken dag har elpriset varit dyrast 2026?",
+        a: "Måndagen den 9 november, med 4,30 kronor per kilowattimme i snitt i elområde 4 och 2,75 kronor i elområde 3, enligt Nord Pools preliminära priser. Årets dyraste enskilda kvart kostade 8,98 kronor i elområde 4 den 14 september.",
+      },
+      {
+        q: "Vad orsakade elkrisen 2022?",
+        a: "Främst gaspriset. När Ryssland minskade gasleveranserna efter invasionen av Ukraina steg priset på naturgas i Europa, och det slog igenom på elpriserna, enligt Energimarknadsinspektionen. Låga vattenmagasin och perioder med lite vind bidrog också.",
+      },
+    ],
+  },
   "behover-man-soka-elstod-forsakringskassan-utbetalning-2027": {
     tldr: [
       "Elkunderna i elområde 4 delar på 30 miljoner kronor för oktober, enligt finansminister Elisabeth Svantesson. En villa med direktverkande el får ”runt hundra kronor”, sa Ebba Busch.",

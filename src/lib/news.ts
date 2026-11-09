@@ -74,6 +74,79 @@ export type NewsArticle = {
 
 export const NEWS: NewsArticle[] = [
   {
+    slug: "elpris-2022-vs-2026-november-dyrare-an-elkrisen",
+    status: "published",
+    title:
+      "Elpris 2022 vs 2026: November hittills dyrare än elkrisens värsta månad i söder – men året billigare",
+    excerpt:
+      "Elpris 2022 vs 2026 – är elen dyrare nu än under elkrisen? I elområde 4 har november hittills kostat 3,13 kronor per kilowattimme i snitt, enligt Nord Pool. Det är mer än augusti 2022, den dyraste månaden sedan Sverige delades in i elområden 2011. Sett över hela året är 2026 ändå betydligt billigare än krisåret. Här är jämförelsen månad för månad, de högsta elpriserna någonsin och vad november kan ge i elstöd.",
+    category: "Elpriser",
+    publishedAt: "2026-11-09",
+    updatedAt: "2026-11-09",
+    readTimeMin: 6,
+    image: {
+      src: "/news/elpris-2022-vs-2026-november-dyrare-an-elkrisen.jpg",
+      alt: "Stapeldiagram över spotpriset per månad i elområde 4, 2022 jämfört med 2026. Augusti 2022 är dyrast med 3,05 kronor per kWh, markerat med en streckad linje. November 2026, dag 1–9, ligger över linjen med 3,13 kronor, mot 1,35 kronor i november 2022. December 2022 kostade 2,71 kronor. Övriga månader 2026 ligger mellan 0,67 och 1,57 kronor",
+      credit: "Grafik: Optimera Energi · Källa: Nord Pool, Energinet (Energi Data Service) och Riksbanken",
+      creditUrl:
+        "https://data.nordpoolgroup.com/auction/day-ahead/prices?deliveryDate=2026-11-09&currency=SEK&aggregation=Monthly&deliveryAreas=SE1,SE2,SE3,SE4",
+    },
+    searchPhrases: [
+      "elpris 2022 vs 2026",
+      "elpris 2022 snitt",
+      "högsta elpriset någonsin",
+      "högsta elpriset i sverige någonsin",
+      "högsta elpriset 2026",
+      "dyraste elpriset 2026",
+      "elpris augusti 2022",
+      "elpris december 2022",
+      "elkrisen 2022",
+      "elpris rekord",
+    ],
+    sources: [
+      {
+        title: "Day-ahead-priser per elområde, månads- och dygnssnitt 2026 samt 8–9 november (preliminära)",
+        publisher: "Nord Pool",
+        url: "https://data.nordpoolgroup.com/auction/day-ahead/prices?deliveryDate=2026-11-09&currency=SEK&aggregation=Monthly&deliveryAreas=SE1,SE2,SE3,SE4",
+      },
+      {
+        title: "Day-ahead-priser per kvart i elområde 3 och 4, 14 september 2026",
+        publisher: "Nord Pool",
+        url: "https://data.nordpoolgroup.com/auction/day-ahead/prices?deliveryDate=2026-09-14&currency=SEK&aggregation=DeliveryPeriod&deliveryAreas=SE3,SE4",
+      },
+      {
+        title: "Elspotprices: timpriser per elområde 2011–2025 (Energi Data Service)",
+        publisher: "Energinet",
+        url: "https://www.energidataservice.dk/tso-electricity/Elspotprices",
+      },
+      {
+        title: "DayAheadPrices: kvartspriser per elområde från oktober 2025 (Energi Data Service)",
+        publisher: "Energinet",
+        url: "https://www.energidataservice.dk/tso-electricity/DayAheadPrices",
+      },
+      {
+        title: "Sök räntor och valutakurser: euro (EUR/SEK), dagliga kurser 2022",
+        publisher: "Sveriges riksbank",
+        url: "https://www.riksbank.se/sv/statistik/rantor-och-valutakurser/sok-rantor-och-valutakurser/",
+      },
+      {
+        title: "Sveriges el- och naturgasmarknad 2022 (Ei R2023:12)",
+        publisher: "Energimarknadsinspektionen",
+        url: "https://ei.se/download/18.5d5eb9e0188bdc5d1ebc480/1699453770432/Sveriges-el-och-naturgasmarknad-2022-Ei-R2023-12.pdf",
+      },
+      {
+        title: "Information från driften, vecka 45 (uppdaterad 3 november 2026)",
+        publisher: "Svenska kraftnät",
+        url: "https://www.svk.se/om-kraftsystemet/kraftsystemdata/information-fran-driften/",
+      },
+      {
+        title: "Presentationsbilder från pressträff den 3 november 2026 om högkostnadsskyddets utformning",
+        publisher: "Regeringskansliet",
+        url: "https://www.regeringen.se/contentassets/47b2f5d87ff64cecb95afea2f98255dc/presentationsbilder-fran-presstraff-den-3-november-2026-om-hogkostnadsskyddets-utformning.pdf",
+      },
+    ],
+  },
+  {
     slug: "behover-man-soka-elstod-forsakringskassan-utbetalning-2027",
     status: "published",
     title:
