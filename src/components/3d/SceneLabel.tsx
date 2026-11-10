@@ -70,7 +70,14 @@ export function SceneLabel({
   }
 
   return (
-    <Html position={position} center={center} calculatePosition={calculatePosition}>
+    <Html
+      position={position}
+      center={center}
+      calculatePosition={calculatePosition}
+      // drei ger annars etiketten ett z-index i miljonklassen, vilket lägger
+      // den ovanpå sajtens fasta element (meny, chattfönster).
+      zIndexRange={[20, 0]}
+    >
       <div
         ref={ref}
         className="font-mono text-[9.5px] uppercase tracking-[0.12em] sm:tracking-[0.18em] text-ink/65 bg-bone/85 backdrop-blur px-2 py-0.5 rounded-full border border-ink/10 whitespace-nowrap"

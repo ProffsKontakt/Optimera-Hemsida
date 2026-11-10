@@ -81,7 +81,7 @@ En schemalagd agent kör varje måndag morgon. Den tar fram två nya sidor utifr
 
    **Efter publicering: anmäl ändrade sidor till IndexNow.** När veckans ändringar är live, kör `node scripts/indexnow.mjs`. Skriptet skickar sidor med lastmod de senaste 8 dagarna till Bing, som ChatGPT Search och Copilot hämtar sina källor från.
 
-   **Varje vecka dessutom: `/fragor-och-svar`.** Gå igenom alla svar i `src/app/fragor-och-svar/page.tsx` mot kunskapsbanken. Rätta svar som säger emot kunskapsbanken (siffror, regler, återbetalningstider, stödtjänstersättning) och sätt sedan `FAQ_REVIEWED_AT` i `src/lib/faq-review.ts` till dagens datum. Datumet visas som "Faktagranskad …" på sidan och är sitemapens lastmod. Sätt det bara när svaren faktiskt har granskats. `kb-check` varnar när det är mer än tio dagar gammalt.
+   **Varje vecka dessutom: `/fragor-och-svar`.** Gå igenom alla svar i `src/lib/faq-content.ts` (visas på `/fragor-och-svar` och används som underlag av sajtens AI-chatt) mot kunskapsbanken. Rätta svar som säger emot kunskapsbanken (siffror, regler, återbetalningstider, stödtjänstersättning) och sätt sedan `FAQ_REVIEWED_AT` i `src/lib/faq-review.ts` till dagens datum. Datumet visas som "Faktagranskad …" på sidan och är sitemapens lastmod. Sätt det bara när svaren faktiskt har granskats. `kb-check` varnar när det är mer än tio dagar gammalt.
 8. **Ämnen utanför sol och batteri**, alltså värmepump, laddbox, elpris och avdrag, blir guider. Laddbox- och värmepumpsfrågor är välkomna där.
 
 Nyhetsrutinen var tredje dag skriver bara nyheter. Den ska inte ta en huvudfråga som en sida i kunskapsbanken redan besvarar.

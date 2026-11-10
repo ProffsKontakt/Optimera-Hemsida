@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Fraunces, Poppins, JetBrains_Mono } from "next/font/google";
 import Script from "next/script";
 import { PromptwatchVisitors } from "@/components/analytics/PromptwatchVisitors";
+import { ChatMount } from "@/components/chat/ChatMount";
 import "./globals.css";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
@@ -194,6 +195,8 @@ export default function RootLayout({
         <Navbar />
         <main id="main" className="pt-20">{children}</main>
         <Footer />
+        {/* AI-chatt. Renderas bara när en API-nyckel finns i miljön. */}
+        <ChatMount />
         {/* Vercel Analytics – cookieless besökar-/sidvisningsstatistik.
             Kräver ingen samtyckesgating (sätter inga cookies). */}
         <Analytics />
