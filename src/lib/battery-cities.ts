@@ -6,13 +6,17 @@
  *
  * Skiljt från solceller-sidorna (/solceller/[stad]): där handlar copyn om
  * takförutsättningar och panelinstallation, här om lagringsekonomi,
- * stödtjänster (FCR-D / aFRR) och effekttoppar. Det gör sidorna
+ * prisstyrning och nätbolagets effektavgift. Det gör sidorna
  * tematiskt unika, inte dubbletter.
+ *
+ * Regler för innehållet: inga intäktsbelopp för stödtjänster och inga
+ * "vanliga kapaciteter" eller installationsvolymer utan belägg. Nätägare
+ * och effektavgift hämtas från CITIES (`grid`), där källorna står.
  *
  * Strukturell data (namn, preposition, region, grannar) återanvänds från
  * CITIES så att en kommun bara underhålls på ett ställe.
  */
-import { CITIES, type CityFact } from "./cities";
+import { CITIES, type CityFact, type CityGrid, type CitySource } from "./cities";
 
 export type BatteryCityContent = {
   slug: string;
@@ -26,204 +30,194 @@ export type BatteryCityContent = {
   localContext: { title: string; body: string }[];
 };
 
+const SIZING =
+  "Tumregeln är årsförbrukningen i kWh delad med 200–275. En villa med 15 000 kWh per år landar då på cirka 55–75 kWh.";
+
+const NO_TARIFF_VALUE =
+  "Utan effektavgift ger kapade effekttoppar ingen besparing på nätfakturan. Batterikalkylen vilar därför på prisstyrning mot spotpriset och på att du använder mer av din egen solel.";
+
 const CONTENT: BatteryCityContent[] = [
   {
     slug: "solna",
-    oneLiner:
-      "Batterilager installerat i Solna av elektriker från Vallgatan 9.",
+    oneLiner: "Batterilager i Solna, installerat från vårt kontor på Vallgatan 9.",
     intro:
-      "Solna är vår hemmakommun, och batteri är ofta det som gör en solanläggning här lönsam. Takytorna i Råsunda, Huvudsta och Hagalund är sällan jättestora, så istället för att jaga fler paneler lagrar vi den el du redan producerar och kapar dina dyraste timmar. Med batteriet aktiverat för stödtjänster (FCR-D) tjänar det dessutom pengar när det står stilla. Vi sitter 0 minuter bort och följer upp driftsättning, mätning och justering av batteriet.",
+      "Solna är vår hemmakommun. Ett batteri sparar solelen till kvällen, laddar när elen är billig och används när den är dyr. Det mesta av lönsamheten kommer från prisstyrning och egen användning av solelen, och stödtjänster ger mindre. Kontoret ligger på Vallgatan 9, så vi är nära vid driftsättning och uppföljning.",
     facts: [
-      { k: "Nätägare", v: "Ellevio" },
+      { k: "Nätägare", v: "Vattenfall Eldistribution" },
       { k: "Elområde", v: "SE3" },
       { k: "Grönt avdrag batteri", v: "48,5 %" },
-      { k: "Vårt lager", v: "Vallgatan 9" },
+      { k: "Effektavgift", v: "Nej, införandet pausat" },
     ],
     localContext: [
       {
-        title: "Stödtjänster nära balansansvariga",
-        body:
-          "Solna ligger gynnsamt för FCR-D och aFRR, de frekvensreglerande stödtjänster där Svenska kraftnät betalar för att ditt batteri stabiliserar elnätet. Vi aktiverar dem via Energy IQ eller Enequi Core och ser i praktiken 8 000–20 000 kr per år tillbaka beroende på batteriets storlek, utöver det du sparar på egen förbrukning.",
+        title: "Ingen effektavgift hos Vattenfall",
+        body: `Vattenfall äger det lokala elnätet i hela Solna och har pausat det planerade införandet av effektavgift hösten 2026. ${NO_TARIFF_VALUE}`,
       },
       {
         title: "Rätt storlek, dimensionerad ur förbrukningen",
-        body:
-          "Vi dimensionerar batteriet efter din faktiska förbrukning, inte efter en broschyr. Tumregeln: årsförbrukningen i kWh delad med 200–275, ungefär så många dygn per år som elen är dyr – en villa med 15 000 kWh per år landar på cirka 55–75 kWh (Easyway byggs ut modulärt, SAJ HS3 i kaskad). Vi mäter ditt dygnsmönster innan vi rekommenderar kapacitet, så att batteriet täcker ett helt dygns förbrukning utan att du betalar för kWh du aldrig använder.",
+        body: `Vi dimensionerar batteriet efter din faktiska förbrukning, inte efter en broschyr. ${SIZING} Eway byggs ut modulärt och SAJ HS3 kopplas i kaskad. Vi mäter ditt dygnsmönster innan vi rekommenderar kapacitet, så att du inte betalar för kilowattimmar du aldrig använder.`,
       },
     ],
   },
   {
     slug: "stockholm",
-    oneLiner:
-      "Batterilager och hemmabatteri installerat i Stockholm av certifierade elektriker.",
+    oneLiner: "Batterilager och hemmabatteri i Stockholm, installerat av certifierade elektriker.",
     intro:
-      "I Stockholm är det sällan takytan som avgör om en investering lönar sig, det är hur du använder elen. Ett batteri lagrar dagens solel till kvällens topp och kapar de dyra effekttimmarna när hela staden förbrukar samtidigt. I villaområden som Bromma, Hägersten, Älvsjö, Enskede och Farsta installerar vi batterier både till nya solanläggningar och som fristående lager för hus utan paneler. Vi gör en lastanalys av ditt hus innan vi rekommenderar kapacitet, och vi aktiverar batteriet för stödtjänster så att det genererar intäkt, inte bara sparar.",
+      "I Stockholm avgör sällan takytan om ett batteri lönar sig, utan hur du använder elen. Batteriet lagrar dagens solel till kvällen och laddar när spotpriset är lågt. Vi installerar i hela kommunen, till exempel i Bromma, Hägersten, Älvsjö, Enskede och Farsta, både till nya solanläggningar och som fristående lager för hus utan paneler. Vi gör en lastanalys av huset innan vi rekommenderar kapacitet.",
     facts: [
-      { k: "Nätägare", v: "Ellevio + Stockholm Exergi" },
+      { k: "Nätägare", v: "Ellevio" },
       { k: "Elområde", v: "SE3" },
       { k: "Grönt avdrag batteri", v: "48,5 %" },
-      { k: "Vanlig kapacitet", v: "10–30 kWh" },
+      { k: "Effektavgift", v: "Nej, borttagen 1 juni 2026" },
     ],
     localContext: [
       {
-        title: "Effekttariffer gör batteriet lönsamt",
-        body:
-          "Ellevio i Stockholm har effektbaserad nättariff, du betalar för dina högsta effekttoppar, inte bara för antal kWh. Ett rätt dimensionerat batteri kapar de topparna automatiskt och sänker nätavgiften månad för månad. Vi programmerar batteriet att ladda ur exakt när din effekt skulle ha toppat, vilket de flesta installatörer hoppar över.",
+        title: "Ellevio har tagit bort effektavgiften",
+        body: `Ellevio äger elnätet i Stockholms stad och tog bort effektavgiften den 1 juni 2026 för villa, radhus och fritidshus. Nu gäller en fast avgift efter säkringsstorlek plus en överföringsavgift per kWh. ${NO_TARIFF_VALUE}`,
       },
       {
         title: "Batteri utan solceller fungerar också",
         body:
-          "Du behöver inte ha solpaneler för att ett batteri ska löna sig i Stockholm. Med dagens spotprisspridning laddar du batteriet på natten när elen är billig och använder den på dagen, så kallad prisarbitrage. Ett batteri utan solceller betalar sig på ungefär 5–9 år, och med solceller på 3–7 år.",
+          "Du behöver inte ha solpaneler för att ha batteri i Stockholm. Då laddar batteriet på natten när elen är billig och används när den är dyr, så kallad prisarbitrage. Ett batteri utan solceller betalar sig på ungefär 5–9 år, och med solceller på 3–7 år.",
       },
     ],
   },
   {
     slug: "sundbyberg",
-    oneLiner:
-      "Batterilager installerat i Sundbyberg av elektriker från grannkommunen Solna.",
+    oneLiner: "Batterilager i Sundbyberg, installerat från grannkommunen Solna.",
     intro:
-      "Sundbyberg är tätt och husen ofta små, vilket gör batteriet extra värt: när takytan inte räcker för en stor solanläggning får du istället ut maximal nytta av den el du producerar genom att lagra den. I Bromsten, Ör och centrala Sundbyberg installerar vi kompakta väggmonterade batterier (SAJ HS3, Pixii) som tar minimal plats i garaget eller förrådet. Vi mäter din förbrukning innan vi väljer storlek, så att batteriet matchar huset.",
+      "Sundbyberg är tätt bebyggt och många hus har små tak. När solanläggningen inte kan bli större får du ut mer av den genom att lagra överskottet. I radhus och småhus väljer vi kompakta batterier som får plats i garage, tvättstuga eller förråd, och vi mäter förbrukningen innan vi väljer storlek.",
     facts: [
-      { k: "Nätägare", v: "Ellevio" },
+      { k: "Nätägare", v: "Vattenfall Eldistribution" },
       { k: "Elområde", v: "SE3" },
       { k: "Grönt avdrag batteri", v: "48,5 %" },
-      { k: "Vanlig kapacitet", v: "8–15 kWh" },
+      { k: "Effektavgift", v: "Nej, införandet pausat" },
     ],
     localContext: [
       {
         title: "Kompakta lager för små utrymmen",
-        body:
-          "I Sundbyberg är platsen för batteriet ofta den begränsande faktorn, inte ekonomin. Väggmonterade och modulära enheter får plats i garage, tvättstuga eller förråd, och storleken dimensionerar vi ur din årsförbrukning (tumregel: årsförbrukning delad med 200–275) så att kapaciteten täcker ett dygns förbrukning. Vi tar med oss allt material från lagret i Solna och drar kabeln dolt där det går.",
+        body: `I ett radhus är platsen för batteriet ofta den begränsande faktorn. Väggmonterade och modulära enheter får plats i garage, tvättstuga eller förråd. Storleken dimensionerar vi ur din årsförbrukning. ${SIZING}`,
       },
       {
         title: "Maximera självförbrukningen",
-        body:
-          "När takytan är liten blir varje producerad kilowattimme dyrbar. Ett batteri sparar dagens överskott till kvällen – i vårt räkneexempel höjer ett 10 kWh-batteri egenanvändningen från cirka 35 till drygt 50 %. Du köper mindre el från nätet och säljer mindre överskott till lågt pris, och varje kWh du använder själv är värd ungefär 2,5 gånger mer än en såld.",
+        body: `När takytan är liten blir varje producerad kilowattimme dyrbar. Ett batteri sparar dagens överskott till kvällen. I kunskapsbankens räkneexempel höjer ett 10 kWh-batteri egenanvändningen från cirka 35 till drygt 50 %, och varje kWh du använder själv är värd ungefär 2,5 gånger mer än en såld. Vattenfall Eldistribution har lokalnätet i Sundbyberg och har ingen effektavgift i dag.`,
       },
     ],
   },
   {
     slug: "taby",
-    oneLiner:
-      "Batterilager installerat i Täby av elektriker som tar med drönaren själv.",
+    oneLiner: "Batterilager i Täby, dimensionerat efter husets förbrukning.",
     intro:
-      "Täby är villasverige med stora tak och hög elförbrukning, och det gör kommunen till en av de mest lönsamma för batterilager i hela Storstockholm. När solanläggningen ligger på 12–20 kW producerar den mer än huset hinner använda mitt på dagen, och då är batteriet skillnaden mellan att sälja överskott billigt och att använda det själv på kvällen. I Näsbypark, Viggbyholm och Gribbylund installerar vi ofta 20–40 kWh kombinerat med stödtjänster.",
+      "På ett stort villatak producerar solanläggningen ofta mer mitt på dagen än huset hinner använda. Då avgör batteriet om överskottet säljs billigt eller används på kvällen. Vi installerar i hela Täby, till exempel i Näsbypark, Viggbyholm och Gribbylund, och dimensionerar batteriet tillsammans med solceller, värmepump och laddbox.",
     facts: [
       { k: "Nätägare", v: "Ellevio" },
       { k: "Elområde", v: "SE3" },
       { k: "Grönt avdrag batteri", v: "48,5 %" },
-      { k: "Vanlig kapacitet", v: "20–40 kWh" },
+      { k: "Effektavgift", v: "Nej, borttagen 1 juni 2026" },
     ],
     localContext: [
       {
-        title: "Stödtjänster som ger riktig intäkt",
+        title: "Stödtjänster: räkna försiktigt",
         body:
-          "Med en större batteribank i Täby är stödtjänster inte en bonus utan en huvudintäkt. Ett batteri på 20–40 kWh aktiverat för FCR-D ger ofta 15 000–25 000 kr per år tillbaka, samtidigt som det kapar effekttoppar och lagrar solel. Vi aktiverar och övervakar tjänsterna via Energy IQ eller Enequi Core.",
+          "Ett hembatteri kan säljas som stödtjänst (FCR-D) via en aggregator, men ersättningen sätts på en marknad och har fallit med över 90 % från toppåren 2022–2023. Vi räknar därför alltid kalkylen både med och utan stödtjänster. Det mesta av lönsamheten kommer från prisstyrning och egen användning av solelen.",
       },
       {
         title: "Dimensionerat för helheten",
-        body:
-          "Täby-hus har ofta både solceller, värmepump och laddbox. Vi dimensionerar batteriet tillsammans med de andra lasterna så att kapaciteten räcker för kvällens topp när bilen laddar och värmepumpen går. Easyway 46–61 kWh och SAJ HS3 i kaskad är vanliga val för de större husen.",
+        body: `Har huset både solceller, värmepump och laddbox dimensionerar vi batteriet tillsammans med de andra lasterna, så att kapaciteten räcker för kvällens topp när bilen laddar och värmepumpen går. För större hus finns Eway upp till 61 kWh och SAJ HS3 i kaskad. Ellevio, som äger elnätet i Täby, tog bort effektavgiften den 1 juni 2026.`,
       },
     ],
   },
   {
     slug: "lidingo",
-    oneLiner:
-      "Batterilager installerat på Lidingö av elektriker som klarar både villa och fritidshus.",
+    oneLiner: "Batterilager på Lidingö, för villa och radhus.",
     intro:
-      "På Lidingö handlar batteri om att få ut mer av varje kilowattimme. I Skärsätra, Brevik och Bodal installerar vi batterier som kapar elkostnaden till vardags – laddar billigt på natten, använder lagrat på kvällen och låter smartstyrningen sköta resten. Vi dimensionerar efter husets faktiska förbrukning och elavtal, inte efter ett datablad.",
+      "På Lidingö handlar batteriet om att få ut mer av varje kilowattimme: det laddar när elen är billig, sparar solelen till kvällen och låter styrningen sköta resten. Vi installerar på hela ön och dimensionerar efter husets faktiska förbrukning och elavtal, inte efter ett datablad.",
     facts: [
       { k: "Nätägare", v: "Ellevio" },
       { k: "Elområde", v: "SE3" },
       { k: "Grönt avdrag batteri", v: "48,5 %" },
-      { k: "Vanlig kapacitet", v: "10–25 kWh" },
+      { k: "Effektavgift", v: "Nej, borttagen 1 juni 2026" },
     ],
     localContext: [
       {
-        title: "Rätt storlek för ön",
-        body:
-          "Villorna på Lidingö har ofta hög vinterförbrukning. Vi dimensionerar batteriet efter din faktiska timförbrukning så att det gör nytta året runt – rätt storlek slår alltid störst möjliga.",
+        title: "Rätt storlek för huset",
+        body: `Vi dimensionerar batteriet efter din timförbrukning så att det gör nytta året runt. Rätt storlek slår störst möjliga. ${SIZING}`,
       },
       {
-        title: "Fritidshus och villa",
-        body:
-          "Vi installerar batterilager både i åretruntbostäder och fritidshus på Lidingö. För hus som står tomma perioder programmerar vi batteriet att underhållsladda och prioritera egenförbrukning när någon är hemma. LFP-celler (järnfosfat) klarar svenska temperaturväxlingar bättre och är vårt standardval här.",
+        title: "Ingen effektavgift hos Ellevio",
+        body: `Lidingö ingår i Ellevios nätområde Stockholm, och Ellevio tog bort effektavgiften den 1 juni 2026 för villa, radhus och fritidshus. ${NO_TARIFF_VALUE}`,
       },
     ],
   },
   {
     slug: "sollentuna",
-    oneLiner:
-      "Batterilager installerat i Sollentuna av elektriker med eget lager i Solna.",
+    oneLiner: "Batterilager i Sollentuna, där effektavgiften ger batteriet en uppgift till.",
     intro:
-      "I Sollentuna ser vi oftast batteriet som en del av ett helhetsprojekt, sol, batteri och värmepump i samma installation. Edsberg, Helenelund, Häggvik och Rotebro har en mix av äldre 70-talsvillor och nybyggda hus, och i båda fallen är det kombinationen som ger ekonomi. Batteriet lagrar solelen, jämnar ut värmepumpens elbehov och kapar effekttopparna. Vi dimensionerar alla delar tillsammans så att de spelar med varandra istället för att slåss om samma kilowatt.",
+      "I Sollentuna äger Sollentuna Energi & Miljö elnätet, och nätavgiften har en effektavgift. Här kan ett batteri därför göra nytta på tre sätt: lagra solelen, flytta köp till billiga timmar och kapa effekttoppar. I Edsberg, Helenelund, Häggvik och Rotebro finns både äldre villor och nybyggda hus, och vi dimensionerar batteriet tillsammans med solceller och värmepump.",
     facts: [
-      { k: "Nätägare", v: "Ellevio" },
+      { k: "Nätägare", v: "Sollentuna Energi & Miljö" },
       { k: "Elområde", v: "SE3" },
       { k: "Grönt avdrag batteri", v: "48,5 %" },
-      { k: "Vanlig kapacitet", v: "15–30 kWh" },
+      { k: "Effektavgift", v: "Ja" },
     ],
     localContext: [
       {
-        title: "Batteri + värmepump i samklang",
+        title: "Effektavgift som går att kapa",
         body:
-          "En värmepump är husets största enskilda ellast på vintern. Ett batteri som är rätt dimensionerat lagrar billig el och driver pumpen under de dyraste timmarna. Vi räknar på elbehovet tillsammans, så att batterikapaciteten täcker kvällstoppen när både värme och hushåll går för fullt.",
+          "Sollentuna Energi & Miljö har haft effektavgift länge och har den kvar. Avgiften beror på hur mycket el du använder samtidigt och när på dygnet. Ett batteri med effektvakt laddar ur när husets effekt annars skulle toppa, och sänker på så sätt den delen av nätfakturan. I batteriskolan finns ett räkneexempel för Sollentuna.",
       },
       {
-        title: "Ett projekt, ett ansvar",
+        title: "Batteri och värmepump i samma projekt",
         body:
-          "Att ta sol, batteri och laddbox i samma installation är billigare än att dela upp i etapper, en föranmälan, en driftsättning, en kontakt. Vi sköter all kommunikation med Ellevio och kommunen och driftsätter hela systemet samtidigt så att delarna är optimerade mot varandra från dag ett.",
+          "En värmepump är husets största enskilda ellast på vintern. Vi räknar på elbehovet tillsammans, så att batterikapaciteten täcker kvällstoppen när både värme och hushåll går för fullt. Föranmälan och färdiganmälan gör vi till Sollentuna Energi & Miljö, och vi driftsätter hela systemet samtidigt.",
       },
     ],
   },
   {
     slug: "nacka",
-    oneLiner:
-      "Batterilager installerat i Nacka av elektriker med drönarbesiktning på varje tak.",
+    oneLiner: "Batterilager i Nacka, anpassat efter vilket nätbolag du har.",
     intro:
-      "Nacka är stort och varierat, från radhus i Sickla till stora villor i Saltsjöbaden och Boo, och batteribehovet varierar lika mycket. Här är Vattenfall nätägare (inte Ellevio), vilket påverkar både tariff och anmälan, och vi kan deras rutiner utan och innan. Ett batteri i Nacka lagrar solelen, kapar effekttoppar och kan aktiveras för stödtjänster. För de större husen i Saltsjöbaden installerar vi ofta batteribanker på 20–40 kWh.",
+      "Nacka är stort och varierat, från radhus i Sickla till villor i Saltsjöbaden, Älta och Boo. Elnätet är delat mellan Nacka Energi och Boo Energi, och det påverkar batterikalkylen: Nacka Energi har effektavgift, Boo Energi har det inte. Batteriet lagrar solelen, flyttar köp till billiga timmar och kan kapa effekttoppar där det finns en effektavgift.",
     facts: [
-      { k: "Nätägare", v: "Vattenfall Eldistribution" },
+      { k: "Nätägare", v: "Nacka Energi och Boo Energi" },
       { k: "Elområde", v: "SE3" },
       { k: "Grönt avdrag batteri", v: "48,5 %" },
-      { k: "Vanlig kapacitet", v: "15–40 kWh" },
+      { k: "Effektavgift", v: "Nacka Energi: ja · Boo Energi: nej" },
     ],
     localContext: [
       {
-        title: "Vattenfall som nätägare",
+        title: "Två nätbolag, två kalkyler",
         body:
-          "Nacka avviker från flertalet Storstockholm-kommuner genom att Vattenfall Eldistribution är nätägare. Vi har full erfarenhet av Vattenfalls installatörsportal och deras effekttariff, vilket avgör hur batteriet ska programmeras för att kapa rätt toppar. Kunden märker ingen skillnad, vi sköter all kommunikation.",
+          "Nacka Energi har elnätet från Henriksdal till Skurusundet samt i Älta och Saltsjöbaden, och har haft effektavgift sedan 2020. Där kan ett batteri med effektvakt sänka nätfakturan. Boo Energi har Saltsjö-Boo, har pausat sitt införande och tar ut en fast avgift efter säkringsstorlek. Vi gör föranmälan och färdiganmälan till rätt bolag och ställer in batteriet efter den prismodell som gäller dig.",
       },
       {
         title: "Smart styrning i SE3",
         body:
-          "Nacka ligger i elområde SE3 där prisskillnaderna över dygnet är stora. Batteriet laddar när elen är billig och används när den är dyr – smartstyrningen sköter det automatiskt, varje dag.",
+          "Nacka ligger i elområde SE3. Batteriet laddar när elen är billig och används när den är dyr, och styrningen sköter det automatiskt varje dag.",
       },
     ],
   },
   {
     slug: "danderyd",
-    oneLiner:
-      "Batterilager installerat i Danderyd av elektriker som tar premiuminstallationer på allvar.",
+    oneLiner: "Batterilager i Danderyd, prydligt installerat i teknikrum eller garage.",
     intro:
-      "Danderyd-villor har ofta hög elförbrukning, gott om plats och ägare som vill ha en genomtänkt lösning, vilket gör kommunen till en av de bästa för större batterilager i Stockholm. I Stocksund, Djursholm och Enebyberg installerar vi batteribanker på 20–60 kWh som prisstyr och flyttar solelen till kvällen. Med solceller betalar sig ett batteri på ungefär 3–7 år.",
+      "Har villan hög elförbrukning kan ett större batteri göra nytta varje dag. Vi installerar i Stocksund, Djursholm, Enebyberg och Danderyd, med batterier som prisstyr och flyttar solelen till kvällen. Med solceller betalar sig ett batteri på ungefär 3–7 år.",
     facts: [
-      { k: "Nätägare", v: "Ellevio" },
+      { k: "Nätägare", v: "E.ON Energidistribution" },
       { k: "Elområde", v: "SE3" },
       { k: "Grönt avdrag batteri", v: "48,5 %" },
-      { k: "Vanlig kapacitet", v: "20–60 kWh" },
+      { k: "Med solceller", v: "3–7 år" },
     ],
     localContext: [
       {
         title: "Stora batterier i hus med hög förbrukning",
         body:
-          "Eway 46–61 kWh och SAJ HS3 i flera stackar är vanliga val i Danderyd. Ett stort batteri lönar sig bäst i hus med hög förbrukning, där mer av kapaciteten används varje dag. Med solceller betalar sig batteriet på ungefär 3–7 år.",
+          "Ett stort batteri lönar sig bäst i hus med hög förbrukning, där mer av kapaciteten används varje dag. För sådana hus finns Eway upp till 61 kWh och SAJ HS3 i flera stackar. Med solceller betalar sig batteriet på ungefär 3–7 år.",
       },
       {
         title: "Diskret installation",
         body:
-          "Danderyd-kunder bryr sig om hur installationen ser ut. Vi placerar batterierna i teknikrum eller garage, drar kablage dolt och dokumenterar systemet så att det går att följa upp. En större batteribank ska vara lika prydlig som resten av huset, inte en rad lådor på en vägg.",
+          "Vi placerar batteriet i teknikrum eller garage, drar kablage dolt där det går och dokumenterar systemet så att det går att följa upp. E.ON ansvarar för elnätet i Danderyd, och dit gör vi föranmälan och färdiganmälan.",
       },
     ],
   },
@@ -235,6 +229,12 @@ export type BatteryCity = {
   preposition: "i" | "på";
   region: string;
   neighbors: string[];
+  /** Nätägare och effektavgift, från CITIES. */
+  grid: CityGrid;
+  /** Källor för uppgifterna på sidan, från CITIES. */
+  sources: CitySource[];
+  /** Datum då uppgifterna senast kontrollerades (ISO), från CITIES. */
+  checkedAt: string;
 } & BatteryCityContent;
 
 /** Slår ihop strukturell stadsdata med batteri-specifik copy. */
@@ -249,6 +249,9 @@ export const BATTERY_CITIES: BatteryCity[] = CONTENT.map((c) => {
     preposition: base.preposition,
     region: base.region,
     neighbors: base.neighbors,
+    grid: base.grid,
+    sources: base.sources.filter((s) => s.publisher !== "SCB" && s.publisher !== "Boverket"),
+    checkedAt: base.checkedAt,
   };
 });
 

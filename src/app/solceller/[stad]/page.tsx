@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, MapPin, Sun } from "lucide-react";
-import { CITIES, findCity } from "@/lib/cities";
+import { CITIES, findCity, formatCheckedAt } from "@/lib/cities";
 import { Section } from "@/components/site/Section";
 import { BrandPanel } from "@/components/site/BrandPanel";
 import {
@@ -44,7 +44,17 @@ function cityFaq(city: ReturnType<typeof findCity>) {
     },
     {
       q: `Behöver jag bygglov för solpaneler ${city.preposition} ${city.name}?`,
-      a: `Inom detaljplan i ${city.name} krävs oftast inget bygglov så länge panelerna följer takfallet och inte ändrar byggnadens utseende väsentligt. För kulturhistoriskt skyddade fastigheter eller fasadinstallation gäller andra regler. Vi tar dialogen med kommunen åt dig innan vi går vidare med projektering.`,
+      a: `Oftast inte. Sedan den 1 december 2025 krävs inget bygglov för solceller på tak eller fasad på villor, radhus och andra en- och tvåbostadshus, enligt Boverket. Undantag gäller för hus och områden som är särskilt värdefulla och där detaljplanen har utökad lovplikt. Vi hjälper dig att reda ut vad som gäller för ditt hus.`,
+    },
+    {
+      q: `Vilket nätbolag har ${city.name}?`,
+      a: [
+        city.grid.ownership,
+        "Vi gör föranmälan till nätbolaget innan arbetet börjar och färdiganmälan innan anläggningen tas i drift.",
+        city.grid.tariff ?? "",
+      ]
+        .filter(Boolean)
+        .join(" "),
     },
     {
       q: `Hur lång är återbetalningstiden ${city.preposition} ${city.name}?`,
@@ -171,6 +181,40 @@ export default function CityPage({ params }: { params: { stad: string } }) {
         </div>
       </Section>
 
+      {/* Källor */}
+      <Section className="!py-10 md:!py-12">
+        <div className="max-w-3xl">
+          <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink/55">
+            Källor
+          </div>
+          <ul className="mt-4 space-y-2 text-[13.5px] text-ink/70 leading-relaxed">
+            {city.sources.map((src) => (
+              <li key={src.url}>
+                <a
+                  href={src.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline decoration-ink/25 underline-offset-2 hover:decoration-ink/60 transition"
+                >
+                  {src.title}
+                </a>
+                , {src.publisher}
+              </li>
+            ))}
+          </ul>
+          <p className="mt-4 text-[12.5px] text-ink/50">
+            Uppgifterna om nätägare, nätavgift och bygglov kontrollerades mot
+            källorna den {formatCheckedAt(city.checkedAt)}.{" "}
+            <Link
+              href="/solcellsfragor/bygglov-for-solceller"
+              className="underline decoration-ink/25 underline-offset-2 hover:decoration-ink/60 transition"
+            >
+              Mer om bygglov för solceller
+            </Link>
+          </p>
+        </div>
+      </Section>
+
       {/* Närliggande kommuner */}
       <Section
         eyebrow="Vi installerar även"
@@ -206,7 +250,7 @@ export default function CityPage({ params }: { params: { stad: string } }) {
               </h3>
               <p className="mt-4 max-w-md text-ink/70 leading-relaxed">
                 Kostnadsfritt och utan förpliktelser. Vi ringer dagen innan
-                och stämmer av tiden. Vårt lager ligger på Vallgatan 9 i Solna.
+                och stämmer av tiden. Vårt kontor ligger på Vallgatan 9 i Solna.
               </p>
               <p className="mt-3 text-[15px] text-ink/80">
                 Ring direkt:{" "}

@@ -171,7 +171,7 @@ export const QUESTIONS: SolarQuestion[] = [
       {
         h2: "Priser för solceller och batteri till en villa",
         paragraphs: [
-          "Optimera Energis riktpris för en typisk villa med 14 paneler är cirka 50 000 kronor efter grönt avdrag. Ett batteri på 10 kWh kostar hos företaget cirka 70 000–110 000 kronor och ett på 20–30 kWh cirka 130 000–200 000 kronor, installerat och före avdrag. Installatören Elkontakten anger liknande batteripriser: 70 000–110 000 kronor för 10 kWh och 120 000–180 000 kronor för 20 kWh. Enligt Elkontakten beror spannet bland annat på om batteriet ska kunna ge reservkraft vid strömavbrott.",
+          "Optimera Energis riktpris för en typisk villa med 14 paneler är cirka 50 000 kronor efter grönt avdrag. Ett batteri på 10 kWh kostar hos företaget cirka 70 000–110 000 kronor och ett på 20–30 kWh cirka 130 000–200 000 kronor, installerat och före avdrag.",
           "Exemplet ovan bygger på 50 000 kronor för solcellerna efter avdrag, eller cirka 110 000 kronor med Energimyndighetens prisexempel (92 500 kronor för 5 kW före avdrag, omräknat till 7 kW, vilket motsvarar 14 paneler på 500 W). Vid fast pris ger batteriet 48,5 procent avdrag och solcellerna 14,55 procent av totalpriset."
         ]
       },
@@ -205,11 +205,6 @@ export const QUESTIONS: SolarQuestion[] = [
         url: "https://www.skatteverket.se/privat/fastigheterochbostad/gronteknik/godkandaarbetengronteknik.4.676f4884175c97df419290e.html"
       },
       {
-        title: "Batterilager villa kostnad 2026",
-        publisher: "Elkontakten (elinstallation.nu)",
-        url: "https://elinstallation.nu/kunskapsbank/batterilager-villa-kostnad"
-      },
-      {
         title: "Välj en anläggning som passar dina behov",
         publisher: "Energimyndigheten (Solelportalen)",
         url: "https://www.energimyndigheten.se/effektiv-energianvandning/guider/solelportalen/hur-stor-anlaggning-passar-mig/valj-en-anlaggning-som-passar-dina-behov/"
@@ -241,19 +236,19 @@ export const QUESTIONS: SolarQuestion[] = [
         label: "Guide: Vad kostar solceller i Stockholm 2026?"
       }
     ],
-    updatedAt: "2026-10-26"
+    updatedAt: "2026-11-10"
   },
   {
     slug: "vad-kostar-solceller",
     category: "kostnad-och-lonsamhet",
     question: "Vad kostar solceller till en villa 2026?",
-    description: "Cirka 79 000 kr för 5 kW efter grönt avdrag enligt Energimyndighetens exempel, cirka 15 000–21 000 kr per kW. Priset skiljer sig mycket mellan leverantörer.",
-    shortAnswer: "En villaanläggning på 5 kW kostar cirka 79 000 kronor efter grönt avdrag enligt Energimyndighetens prisexempel, och en installatör anger 15 400–21 400 kronor per kW för 2026. Priserna skiljer sig mycket mellan leverantörer: Optimera Energis riktpris för en typisk villa med 14 paneler är cirka 50 000 kronor efter avdrag.",
+    description: "Cirka 79 000 kr för 5 kW efter grönt avdrag enligt Energimyndighetens exempel, ungefär 15 800 kr per kW. Priset skiljer sig mycket mellan leverantörer.",
+    shortAnswer: "En villaanläggning på 5 kW kostar cirka 79 000 kronor efter grönt avdrag enligt Energimyndighetens prisexempel, ungefär 15 800 kronor per kW. Priserna skiljer sig mycket mellan leverantörer: Optimera Energis riktpris för en typisk villa med 14 paneler är cirka 50 000 kronor efter avdrag.",
     body: [
       {
         h2: "Därför skiljer sig priserna så mycket",
         paragraphs: [
-          "Energimyndigheten räknar med ungefär 92 500 kronor inklusive moms, före avdrag, för en anläggning på 5 kW, vilket myndigheten beskriver som rimligt för en vanlig villa. Efter grönt avdrag blir det cirka 79 000 kronor, ungefär 15 800 kronor per kW. I myndighetens solelkalkyl var medelpriset för en nyckelfärdig anläggning på ett småhus 18 400 kronor per kW inklusive moms 2024. Installatören Elkontakten anger 18 000–25 000 kronor per kW inklusive moms och före avdrag för 2026, cirka 15 400–21 400 kronor efter avdrag. Optimera Energis riktpris för en typisk villa med 14 paneler är cirka 50 000 kronor efter grönt avdrag. Det är företagets pris, inte ett marknadssnitt.",
+          "Energimyndigheten räknar med ungefär 92 500 kronor inklusive moms, före avdrag, för en anläggning på 5 kW, vilket myndigheten beskriver som rimligt för en vanlig villa. Efter grönt avdrag blir det cirka 79 000 kronor, ungefär 15 800 kronor per kW. I myndighetens solelkalkyl var medelpriset för en nyckelfärdig anläggning på ett småhus 18 400 kronor per kW inklusive moms 2024. Optimera Energis riktpris för en typisk villa med 14 paneler är cirka 50 000 kronor efter grönt avdrag. Det är företagets pris, inte ett marknadssnitt.",
           "Priset påverkas bland annat av anläggningens storlek, vilken leverantör du väljer, typen av solceller och hur svår installationen på taket är. Större anläggningar blir oftast billigare per kW."
         ]
       },
@@ -299,11 +294,6 @@ export const QUESTIONS: SolarQuestion[] = [
         url: "https://www.energimyndigheten.se/effektiv-energianvandning/guider/solelportalen/vad-ska-jag-tanka-pa-vid-inkop-och-val-av-leverantor/hjalp-vid-jamforelse-av-leverantorer-och-anbud/"
       },
       {
-        title: "Solceller villa 2026: så mycket producerar de och lönar det sig?",
-        publisher: "Elkontakten (elinstallation.nu)",
-        url: "https://elinstallation.nu/kunskapsbank/solceller-villa-guide-2026"
-      },
-      {
         title: "Vad händer med priset på solpaneler och batterier hösten 2026?",
         publisher: "Senergia",
         url: "https://senergia.se/teknikblogg/vad-hander-med-priset-pa-solpaneler-och-batterier-hosten-2026/"
@@ -332,14 +322,14 @@ export const QUESTIONS: SolarQuestion[] = [
         label: "Räkna på ditt hus i kalkylatorn"
       }
     ],
-    updatedAt: "2026-10-26"
+    updatedAt: "2026-11-10"
   },
   {
     slug: "aterbetalningstid-solceller",
     category: "kostnad-och-lonsamhet",
     question: "När lönar sig solceller – hur lång är återbetalningstiden?",
-    description: "Optimera Energi anger 8–11 år, Elkontakten 10–14 år. I ett räkneexempel tar 7 kWp cirka 8,5 år att betala med lågt pris och 19 år med högt.",
-    shortAnswer: "Bedömningarna går isär: Optimera Energi anger 8–11 år för en ren solanläggning i Stockholm och installatören Elkontakten 10–14 år. Priset avgör mycket – i exemplet nedan tar samma anläggning cirka 8,5 år att betala med ett lågt pris och cirka 19 år med ett högt.",
+    description: "Optimera Energi anger 8–11 år för en ren solanläggning i Stockholm. I ett räkneexempel tar 7 kWp cirka 8,5 år att betala med lågt pris och 19 år med högt.",
+    shortAnswer: "Optimera Energi anger 8–11 år för en ren solanläggning i Stockholm. Priset avgör mycket – i exemplet nedan tar samma anläggning cirka 8,5 år att betala med ett lågt pris och cirka 19 år med ett högt.",
     body: [
       {
         h2: "Räkneexempel: 7 kWp i Stockholm",
@@ -391,11 +381,6 @@ export const QUESTIONS: SolarQuestion[] = [
         url: "https://www.energimyndigheten.se/effektiv-energianvandning/guider/solelportalen/vad-kostar-det/solelkalkyl/"
       },
       {
-        title: "Solceller villa 2026: så mycket producerar de och lönar det sig?",
-        publisher: "Elkontakten (elinstallation.nu)",
-        url: "https://elinstallation.nu/kunskapsbank/solceller-villa-guide-2026"
-      },
-      {
         title: "Vad händer med priset på solpaneler och batterier hösten 2026?",
         publisher: "Senergia",
         url: "https://senergia.se/teknikblogg/vad-hander-med-priset-pa-solpaneler-och-batterier-hosten-2026/"
@@ -422,7 +407,7 @@ export const QUESTIONS: SolarQuestion[] = [
         label: "Räkna på ditt hus i kalkylatorn"
       }
     ],
-    updatedAt: "2026-10-26"
+    updatedAt: "2026-11-10"
   },
   {
     slug: "lonar-sig-solceller",
@@ -437,7 +422,7 @@ export const QUESTIONS: SolarQuestion[] = [
           "Fyra faktorer avgör kalkylen:"
         ],
         bullets: [
-          "Pris. Energimyndighetens solelkalkyl utgår från ett medelpris på 18 400 kronor per kW inklusive moms (2024), cirka 15 700 kronor efter grönt avdrag, och installatören Elkontakten anger cirka 15 400–21 400 kronor per kW efter avdrag för 2026. Priserna skiljer sig mellan leverantörer, och priset slår direkt på återbetalningstiden.",
+          "Pris. Energimyndighetens solelkalkyl utgår från ett medelpris på 18 400 kronor per kW inklusive moms (2024), cirka 15 700 kronor efter grönt avdrag. Priserna skiljer sig mellan leverantörer, och priset slår direkt på återbetalningstiden.",
           "Egenanvändning, alltså den del av solelen du använder själv. Den ersätter elpris, energiskatt, nätavgift och moms, medan såld el ger ungefär spotpriset (elbörsens pris). En vanlig villa använder 20–50 procent av solelen själv, enligt Energimyndigheten.",
           "Elområde. Tibbers prognos från den 29 september för oktober–december 2026 är 100–110 öre/kWh i SE3 (Stockholm) och SE4 (Malmö) men 45–55 öre i SE1 (Luleå) och SE2 (Sundsvall). Ju lägre elpris, desto mindre är varje egenanvänd kWh värd.",
           "Regler. Skattereduktionen för såld el slopades den 1 januari 2026, så överskottet är mindre värt än förut."
@@ -446,7 +431,7 @@ export const QUESTIONS: SolarQuestion[] = [
       {
         h2: "Bedömningarna skiljer sig",
         paragraphs: [
-          "Optimera Energi anger 8–11 års återbetalningstid för en ren solanläggning i Stockholm, medan installatören Elkontakten anger 10–14 år för villor 2026. Panelerna håller i regel 25–30 år. Som investering bör du jämföra med vad pengarna annars kunde ge: Energimyndigheten anger 1–4 procent som rimlig kalkylränta efter inflation för en privatperson.",
+          "Optimera Energi anger 8–11 års återbetalningstid för en ren solanläggning i Stockholm. Panelerna håller i regel 25–30 år. Som investering bör du jämföra med vad pengarna annars kunde ge: Energimyndigheten anger 1–4 procent som rimlig kalkylränta efter inflation för en privatperson.",
           "Sverige har mindre solinstrålning än länder närmare ekvatorn, men södra Sverige har ungefär lika mycket som norra Tyskland. Ett skuggfritt tak i söderläge ger normalt 800–1 100 kWh per kW och år."
         ]
       }
@@ -480,11 +465,6 @@ export const QUESTIONS: SolarQuestion[] = [
         url: "https://tibber.com/se/magazine/power-hacks/elpriser-host-vinter"
       },
       {
-        title: "Solceller villa 2026: så mycket producerar de och lönar det sig?",
-        publisher: "Elkontakten (elinstallation.nu)",
-        url: "https://elinstallation.nu/kunskapsbank/solceller-villa-guide-2026"
-      },
-      {
         title: "Så undersöker du förutsättningarna för solel",
         publisher: "Energimyndigheten (Solelportalen)",
         url: "https://www.energimyndigheten.se/effektiv-energianvandning/guider/solelportalen/har-mitt-hus-ratt-forutsattningar/sa-undersoker-du-forutsattningarna/"
@@ -511,7 +491,7 @@ export const QUESTIONS: SolarQuestion[] = [
         label: "Räkna på ditt hus i kalkylatorn"
       }
     ],
-    updatedAt: "2026-10-26"
+    updatedAt: "2026-11-10"
   },
   {
     slug: "solceller-och-direktverkande-el",
@@ -658,25 +638,25 @@ export const QUESTIONS: SolarQuestion[] = [
     slug: "solceller-pris-per-kwp-och-kvadratmeter",
     category: "kostnad-och-lonsamhet",
     question: "Vad kostar solceller per kWp, kvadratmeter och kWh?",
-    description: "Efter avdrag cirka 15 000–21 000 kr per kWp, 3 400–4 800 kr per m² med moderna paneler och 50–70 öre per producerad kWh. Jämför helst per kWp.",
-    shortAnswer: "Enligt Energimyndighetens prisexempel och en installatörs prisnivåer för 2026 kostar solceller cirka 15 000–21 000 kronor per kWp efter grönt avdrag. Med moderna paneler motsvarar det cirka 3 400–4 800 kronor per kvadratmeter, och fördelat på 30 års produktion ungefär 50–70 öre per producerad kWh.",
+    description: "Efter avdrag cirka 15 800 kr per kWp enligt Energimyndighetens exempel, cirka 3 600 kr per m² med moderna paneler och runt 53 öre per kWh. Jämför per kWp.",
+    shortAnswer: "Enligt Energimyndighetens prisexempel kostar solceller cirka 15 800 kronor per kWp efter grönt avdrag. Med moderna paneler motsvarar det cirka 3 600 kronor per kvadratmeter, och fördelat på 30 års produktion ungefär 53 öre per producerad kWh. Priserna skiljer sig mellan leverantörer.",
     body: [
       {
         h2: "Per kWp: så jämför du offerter",
         paragraphs: [
-          "kWp är anläggningens installerade toppeffekt. Energimyndigheten rekommenderar att du jämför offerter i kronor per installerad kW, eftersom panelernas verkningsgrad redan ingår i det måttet. Myndighetens prisexempel, 92 500 kronor för 5 kW före avdrag, motsvarar cirka 15 800 kronor per kW efter avdrag. I myndighetens solelkalkyl var medelpriset för en nyckelfärdig småhusanläggning 18 400 kronor per kW inklusive moms 2024, cirka 15 700 kronor efter avdrag. Installatören Elkontakten anger 18 000–25 000 kronor per kW före avdrag, cirka 15 400–21 400 kronor efter. Priserna skiljer sig mellan leverantörer, och större anläggningar blir oftast billigare per kW."
+          "kWp är anläggningens installerade toppeffekt. Energimyndigheten rekommenderar att du jämför offerter i kronor per installerad kW, eftersom panelernas verkningsgrad redan ingår i det måttet. Myndighetens prisexempel, 92 500 kronor för 5 kW före avdrag, motsvarar cirka 15 800 kronor per kW efter avdrag. I myndighetens solelkalkyl var medelpriset för en nyckelfärdig småhusanläggning 18 400 kronor per kW inklusive moms 2024, cirka 15 700 kronor efter avdrag. Priserna skiljer sig mellan leverantörer, och större anläggningar blir oftast billigare per kW."
         ]
       },
       {
         h2: "Per kvadratmeter",
         paragraphs: [
-          "En modern panel på 500 W mäter cirka 1,95 × 1,13 meter, alltså ungefär 2,2 m² per panel och 4,4 m² per kWp. Dela kWp-priset med 4,4 så får du ett ungefärligt pris per m²: 15 000–21 000 kronor per kWp blir cirka 3 400–4 800 kronor per m². Eftersom priset per m² beror på panelernas effekt är kWp ett säkrare jämförelsetal."
+          "En modern panel på 500 W mäter cirka 1,95 × 1,13 meter, alltså ungefär 2,2 m² per panel och 4,4 m² per kWp. Dela kWp-priset med 4,4 så får du ett ungefärligt pris per m²: 15 800 kronor per kWp blir cirka 3 600 kronor per m². Eftersom priset per m² beror på panelernas effekt är kWp ett säkrare jämförelsetal."
         ]
       },
       {
         h2: "Per producerad kWh",
         paragraphs: [
-          "Exempel, med antagandet att varje kWp ger 1 000 kWh per år i 30 år: 15 000 kronor per kWp ger cirka 50 öre per kWh och 21 000 kronor cirka 70 öre. Energimyndighetens prisexempel, cirka 79 000 kronor för 5 kW efter avdrag, ger cirka 53 öre. Ett lägre pris per kWp sänker kostnaden per kWh i samma takt. Energimyndigheten anger 800–1 100 kWh per kW och år och räknar med 30 års ekonomisk livslängd. Ränta och reparationer under anläggningens livstid höjer kostnaden något."
+          "Exempel, med antagandet att varje kWp ger 1 000 kWh per år i 30 år: Energimyndighetens prisexempel, cirka 79 000 kronor för 5 kW efter avdrag, ger cirka 53 öre per kWh. Ger anläggningen 800 kWh per kW och år blir det cirka 66 öre, och med 1 100 kWh cirka 48 öre. Ett lägre pris per kWp sänker kostnaden per kWh i samma takt. Energimyndigheten anger 800–1 100 kWh per kW och år och räknar med 30 års ekonomisk livslängd. Ränta och reparationer under anläggningens livstid höjer kostnaden något."
         ]
       }
     ],
@@ -704,11 +684,6 @@ export const QUESTIONS: SolarQuestion[] = [
         url: "https://www.energimyndigheten.se/effektiv-energianvandning/guider/solelportalen/hur-stor-anlaggning-passar-mig/valj-en-anlaggning-som-passar-dina-behov/"
       },
       {
-        title: "Solceller villa 2026: så mycket producerar de och lönar det sig?",
-        publisher: "Elkontakten (elinstallation.nu)",
-        url: "https://elinstallation.nu/kunskapsbank/solceller-villa-guide-2026"
-      },
-      {
         title: "JA Solar JAM60D41-500/LB – produktdata (1 953 × 1 134 mm, 27,3 kg)",
         publisher: "BayWa r.e. Solar Distribution",
         url: "https://solar-distribution.baywa-re.pl/en/pv-modules/ja-solar-jam60d41-500lb-fb-bifacial.html"
@@ -734,7 +709,7 @@ export const QUESTIONS: SolarQuestion[] = [
         label: "Guide: Vad kostar solceller i Stockholm 2026?"
       }
     ],
-    updatedAt: "2026-10-26"
+    updatedAt: "2026-11-10"
   },
   {
     slug: "solceller-med-fjarrvarme",

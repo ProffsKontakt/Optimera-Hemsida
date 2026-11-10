@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, MapPin, BatteryCharging } from "lucide-react";
 import { BATTERY_CITIES, findBatteryCity } from "@/lib/battery-cities";
+import { formatCheckedAt } from "@/lib/cities";
 import { Section } from "@/components/site/Section";
 import { BrandPanel } from "@/components/site/BrandPanel";
 import {
@@ -23,7 +24,7 @@ export function generateMetadata({ params }: { params: { stad: string } }) {
     // Title leder med "Batteri" + stad (det sökord vi vill ranka på), följt
     // av "batterilager" och pris-token för CTR och synonymtäckning.
     title: `Batteri ${city.preposition} ${city.name}, batterilager och pris`,
-    description: `Vi installerar batterilager och hemmabatteri ${city.preposition} ${city.name} från vårt kontor i Solna. Stödtjänster (FCR-D), effektkapning och 48,5 % grönt avdrag. Boka kostnadsfritt hembesök.`,
+    description: `Vi installerar batterilager och hemmabatteri ${city.preposition} ${city.name} från vårt kontor i Solna. Dimensionerat efter din förbrukning, prisstyrning mot spotpriset och 48,5 % grönt avdrag. Boka kostnadsfritt hembesök.`,
     alternates: { canonical: `/batteri/${city.slug}` },
     openGraph: {
       title: `Batteri ${city.preposition} ${city.name} · Optimera Energi`,
@@ -43,15 +44,24 @@ function batteryFaq(city: ReturnType<typeof findBatteryCity>) {
     },
     {
       q: `Lönar sig ett batteri ${city.preposition} ${city.name}?`,
-      a: `Ja, för de flesta villor med elvärme eller solceller. Batteriet laddar när elen är billig och används när den är dyr, höjer självförbrukningen av solel och kapar dina dyraste effekttimmar. Med solceller betalar sig ett batteri ${city.preposition} ${city.name} på ungefär 3–7 år beroende på storlek och förbrukning, och utan solceller på 5–9 år.`,
+      a: `Ja, för de flesta villor med elvärme eller solceller. Batteriet laddar när elen är billig och används när den är dyr, höjer självförbrukningen av solel och kan kapa effekttoppar där nätbolaget har effektavgift. Med solceller betalar sig ett batteri ${city.preposition} ${city.name} på ungefär 3–7 år beroende på storlek och förbrukning, och utan solceller på 5–9 år.`,
     },
     {
       q: `Behöver jag solceller för att ha batteri ${city.preposition} ${city.name}?`,
       a: `Nej, ett batteri kan installeras utan solceller och laddas från elnätet. Men ekonomin blir svagare: utan egen solel får du inget grönt avdrag, och besparingen kommer från prisstyrning och i vissa nät en lägre effekt- eller säkringskostnad. Utan solceller tar ett batteri ungefär 5–9 år att betala, mot 3–7 år med solceller, så vi räknar ärligt på ditt hus och säger nej om det inte går ihop.`,
     },
     {
+      q: `Har nätbolaget ${city.preposition} ${city.name} effektavgift?`,
+      a: [
+        city.grid.ownership,
+        city.grid.tariff ??
+          "Hur nätavgiften är uppbyggd framgår av nätbolagets prislista, och vi går igenom den med dig vid hembesöket.",
+        "Har du effektavgift kan ett batteri med effektvakt sänka den. Utan effektavgift kommer besparingen från prisstyrning och egen användning av solelen.",
+      ].join(" "),
+    },
+    {
       q: `Vilka batterimärken installerar Optimera Energi?`,
-      a: `Vi arbetar med ett hand-plockat sortiment: Eway (15–61 kWh), SAJ HS3, Enershare, Sigenergy SigenStor, Fox ESS CQ7 och Pixii. Vi väljer LFP-celler (järnfosfat) som standard för brandsäkerhet och livslängd, och dimensionerar märke och storlek efter ditt hus, inte efter vad vi råkar ha på lager.`,
+      a: `Vi arbetar med ett hand-plockat sortiment: Eway (15–61 kWh), SAJ HS3, Enershare, Sigenergy SigenStor och Fox ESS CQ7. Vi väljer LFP-celler (järnfosfat) som standard för brandsäkerhet och livslängd, och dimensionerar märke och storlek efter ditt hus, inte efter vad vi råkar ha på lager.`,
     },
   ];
 }
@@ -174,6 +184,40 @@ export default function BatteryCityPage({
         </div>
       </Section>
 
+      {/* Källor */}
+      <Section className="!py-10 md:!py-12">
+        <div className="max-w-3xl">
+          <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink/55">
+            Källor
+          </div>
+          <ul className="mt-4 space-y-2 text-[13.5px] text-ink/70 leading-relaxed">
+            {city.sources.map((src) => (
+              <li key={src.url}>
+                <a
+                  href={src.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline decoration-ink/25 underline-offset-2 hover:decoration-ink/60 transition"
+                >
+                  {src.title}
+                </a>
+                , {src.publisher}
+              </li>
+            ))}
+          </ul>
+          <p className="mt-4 text-[12.5px] text-ink/50">
+            Uppgifterna om nätägare och effektavgift kontrollerades mot
+            källorna den {formatCheckedAt(city.checkedAt)}.{" "}
+            <Link
+              href="/batteriskolan/effektavgift"
+              className="underline decoration-ink/25 underline-offset-2 hover:decoration-ink/60 transition"
+            >
+              Så fungerar effektavgiften, med räkneexempel
+            </Link>
+          </p>
+        </div>
+      </Section>
+
       {/* Närliggande kommuner */}
       <Section
         eyebrow="Vi installerar även"
@@ -223,7 +267,7 @@ export default function BatteryCityPage({
               <p className="mt-4 max-w-md text-ink/70 leading-relaxed">
                 Kostnadsfritt och utan förpliktelser. Vi gör en lastanalys av
                 ditt hus och dimensionerar batteriet efter hur du faktiskt
-                använder elen. Vårt lager ligger på Vallgatan 9 i Solna.
+                använder elen. Vårt kontor ligger på Vallgatan 9 i Solna.
               </p>
               <p className="mt-3 text-[15px] text-ink/80">
                 Ring direkt:{" "}

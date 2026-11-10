@@ -1,14 +1,38 @@
 /**
  * Stockholm-områdets kommuner där Optimera Energi installerar.
  *
- * Per kommun: unik intro-copy, lokal kontext (takorientering, bygglovsregler,
- * nätägare) och referenser till närliggande kommuner för intern länkning.
+ * Per kommun: unik intro-copy, lokal kontext (nätägare, effektavgift,
+ * bygglov) och referenser till närliggande kommuner för intern länkning.
  * Genererar /solceller/[stad]-sidor som rankar på "solceller {stad}".
+ *
+ * Regler för innehållet:
+ *  - Nätägare och effektavgift ska stå med källa i `sources` (kommunens
+ *    eller nätbolagets egen sida). Saknas primärkälla lämnas uppgiften ute.
+ *  - Inga påståenden om hur många eller vilka installationer vi gjort i en
+ *    kommun förrän de finns dokumenterade.
+ *  - Uppdatera `checkedAt` när uppgifterna kontrollerats mot källorna.
  */
 
 export type CityFact = {
   k: string;
   v: string;
+};
+
+export type CitySource = {
+  title: string;
+  publisher: string;
+  url: string;
+};
+
+export type CityGrid = {
+  /** Nätbolag(en) som de skrivs i löptext, t.ex. "Vattenfall Eldistribution". */
+  operator: string;
+  /** Vem som äger lokalnätet. Belagt i `sources`. */
+  ownership: string;
+  /** Vad som gäller för effektavgift, eller null när primärkälla saknas. */
+  tariff: string | null;
+  /** Kort värde till faktarutan på batterisidan, eller null. */
+  tariffShort: string | null;
 };
 
 export type City = {
@@ -20,44 +44,121 @@ export type City = {
   region: string;
   /** Kort intro under H1 (en mening, 15–25 ord). */
   oneLiner: string;
-  /** Längre intro-copy, 80–120 ord, city-specifik. Visas i hero-sektionen. */
+  /** Längre intro-copy, city-specifik. Visas i hero-sektionen. */
   intro: string;
   /** Fakta-bullets som visas som rutor under hero. */
   facts: CityFact[];
-  /** Lokala förutsättningar – 2-3 stycken, 60-100 ord vardera. */
+  /** Lokala förutsättningar – 2-3 stycken. */
   localContext: { title: string; body: string }[];
+  /** Nätägare och effektavgift, delas med /batteri/[stad]. */
+  grid: CityGrid;
+  /** Källor för uppgifterna på sidan. */
+  sources: CitySource[];
+  /** Datum då uppgifterna senast kontrollerades mot källorna (ISO). */
+  checkedAt: string;
   /** Slug:s för närliggande kommuner (för cross-linking). */
   neighbors: string[];
 };
+
+const CHECKED_AT = "2026-11-10";
+
+// --- Gemensamma källor ------------------------------------------------------
+
+const SRC_SCB: CitySource = {
+  title: "Folkmängd efter region, 31 december 2024",
+  publisher: "SCB",
+  url: "https://www.statistikdatabasen.scb.se/pxweb/sv/ssd/START__BE__BE0101__BE0101A/BefolkningNy/",
+};
+
+const SRC_BYGGLOV: CitySource = {
+  title: "Ändra fasad eller tak",
+  publisher: "Boverket",
+  url: "https://www.boverket.se/sv/byggande/bygglov-rivningslov-marklov-och-anmalan/vad-far-jag-bygga-utan-bygglov/andra-fasad-eller-tak/",
+};
+
+const SRC_PVGIS: CitySource = {
+  title:
+    "PVGIS 5.3: Stockholm (59,33° N, 18,07° E), 1 kWp, söder, 30° lutning, 14 % förluster, soldata 2005–2023",
+  publisher: "EU-kommissionens gemensamma forskningscentrum (JRC)",
+  url: "https://re.jrc.ec.europa.eu/pvg_tools/en/",
+};
+
+const SRC_ELLEVIO_AREA: CitySource = {
+  title: "Ellevio nu och då (nätområde Stockholm)",
+  publisher: "Ellevio",
+  url: "https://www.ellevio.se/om-oss/om-foretaget/ellevio-nu-och-da/",
+};
+
+const SRC_ELLEVIO_TARIFF: CitySource = {
+  title: "Ellevio återinför en prismodell utan effektavgift (pressmeddelande 20 april 2026)",
+  publisher: "Ellevio",
+  url: "https://www.ellevio.se/nyheter/pressmeddelanden/ellevio-aterinfor-en-prismodell-utan-effektavgift/",
+};
+
+const SRC_VATTENFALL_AREA: CitySource = {
+  title: "Nätutvecklingsplan 2025–2034, bilaga 1: prognos lokalnät per kommun",
+  publisher: "Vattenfall Eldistribution",
+  url: "https://www.vattenfalleldistribution.se/globalassets/4.-var-verksamhet/om-elnatet/kapacitet-och-flexibilitet/natutvecklingsplaner/bilaga-1-prognos-lokalnat-per-kommun.pdf",
+};
+
+const SRC_VATTENFALL_TARIFF: CitySource = {
+  title: "Effektguiden",
+  publisher: "Vattenfall Eldistribution",
+  url: "https://www.vattenfalleldistribution.se/abonnemang-och-avgifter/avtal-och-avgifter/effektguiden/",
+};
+
+// --- Återkommande formuleringar --------------------------------------------
+
+const BYGGLOV_RULE =
+  "Sedan den 1 december 2025 krävs inget bygglov för solceller på tak eller fasad på villor, radhus och andra en- och tvåbostadshus, enligt Boverket. Undantag gäller för hus och områden som är särskilt värdefulla och där detaljplanen har utökad lovplikt.";
+
+const ELLEVIO_TARIFF =
+  "Ellevio tog bort effektavgiften den 1 juni 2026 för villa, radhus och fritidshus. Nu gäller en fast avgift efter säkringsstorlek plus en överföringsavgift per kWh.";
+
+const VATTENFALL_TARIFF =
+  "Vattenfall Eldistribution har ingen effektavgift i dag. Bolaget har pausat det planerade införandet hösten 2026 i väntan på nya föreskrifter från Energimarknadsinspektionen.";
+
+const ANMALAN =
+  "Vi gör föranmälan innan arbetet börjar och färdiganmälan innan anläggningen tas i drift.";
 
 export const CITIES: City[] = [
   {
     slug: "solna",
     name: "Solna",
     preposition: "i",
-    region: "Solna stad · 7 km från Stockholm City",
-    oneLiner:
-      "Solpaneler installerade i Solna av elektriker från Vallgatan 9.",
+    region: "Solna stad · Stockholms län",
+    oneLiner: "Solceller i Solna, installerade från vårt kontor på Vallgatan 9.",
     intro:
-      "Solna är Optimera Energis hemmakommun. Vårt kontor ligger på Vallgatan 9, nära villaägarna i Bergshamra, Råsunda, Huvudsta, Hagalund och Järva. Eftersom vi själva bor här vet vi vilka taklutningar, skuggningsmönster och nätbolagsrutiner som gäller – och vi har korta vägar när något behöver följas upp.",
+      "Solna är Optimera Energis hemmakommun. Kontoret ligger på Vallgatan 9, så vägen är kort till Bergshamra, Råsunda, Huvudsta och Hagalund, både vid hembesöket och om något behöver följas upp efter driftsättning. Elnätet i hela Solna ägs av Vattenfall, och det är dit vi anmäler din anläggning.",
     facts: [
-      { k: "Befolkning", v: "~85 000" },
-      { k: "Nätägare", v: "Ellevio" },
-      { k: "Solinstrålning", v: "~1 000 kWh/m²/år" },
+      { k: "Befolkning", v: "85 789 (2024)" },
+      { k: "Nätägare", v: "Vattenfall Eldistribution" },
+      { k: "Elområde", v: "SE3" },
       { k: "Vårt kontor", v: "Vallgatan 9" },
     ],
     localContext: [
       {
         title: "Bygglov i Solna",
-        body:
-          "För vanliga villatak inom detaljplan krävs ofta inget bygglov för solpaneler så länge de följer takfallet och inte ändrar byggnadens utseende väsentligt. Solna stad har en relativt rak hantering jämfört med en del andra Stockholm-kommuner. Vi hjälper dig med bygglovsansökan om din byggnad är kulturhistoriskt skyddad eller om panelerna ska placeras på fasad.",
+        body: `${BYGGLOV_RULE} Är du osäker på vad som gäller ditt hus hjälper vi dig att reda ut det med Solna stad, och med ansökan om bygglov behövs.`,
       },
       {
-        title: "Nät och elhandel",
-        body:
-          "Solna ligger i elområde SE3. Ellevio är nätägare för merparten av kommunen – föranmälan och färdiganmälan görs via deras installatörsportal. Vi sköter all kommunikation med Ellevio åt dig. Solna är gynnsamt för stödtjänster (FCR-D / aFRR) tack vare närheten till Stockholms balansansvariga aktörer.",
+        title: "Nät och anmälan",
+        body: `Solna ligger i elområde SE3. Enligt Solna stad äger Vattenfall det lokala elnätet i hela kommunen. ${ANMALAN} ${VATTENFALL_TARIFF}`,
       },
     ],
+    grid: {
+      operator: "Vattenfall Eldistribution",
+      ownership: "Enligt Solna stad äger Vattenfall det lokala elnätet i hela Solna.",
+      tariff: VATTENFALL_TARIFF,
+      tariffShort: "Nej, införandet pausat",
+    },
+    sources: [
+      { title: "Fjärrvärme och elnät", publisher: "Solna stad", url: "https://www.solna.se/bygga-bo--miljo/energi-och-uppvarmning/fjarrvarme-och-elnat" },
+      SRC_VATTENFALL_TARIFF,
+      SRC_BYGGLOV,
+      SRC_SCB,
+    ],
+    checkedAt: CHECKED_AT,
     neighbors: ["sundbyberg", "stockholm", "danderyd", "sollentuna"],
   },
   {
@@ -65,28 +166,38 @@ export const CITIES: City[] = [
     name: "Stockholm",
     preposition: "i",
     region: "Stockholms stad · SE3",
-    oneLiner:
-      "Solpaneler installerade i Stockholm av certifierade elektriker.",
+    oneLiner: "Solceller i Stockholm, installerade av certifierade elektriker.",
     intro:
-      "Stockholms innerstad är en sak, ytterstadens villaområden en helt annan. Vi installerar i Bromma, Spånga, Tensta, Hägersten, Älvsjö, Farsta, Skarpnäck och Enskede – där takfallen är breda och paneler får riktig solinstrålning. För kulturskyddade fastigheter i innerstaden tar vi diskussionen med Stadsbyggnadskontoret innan vi ens lämnar offert. Vi säger nej till installationer som inte fungerar, det är så vi bygger en hållbar affär över 25 år.",
+      "Stockholms innerstad är en sak, ytterstadens villaområden en annan. Vi installerar i hela kommunen, till exempel i Bromma, Spånga, Hägersten, Älvsjö, Farsta, Skarpnäck och Enskede. För hus i kulturhistoriskt värdefulla miljöer reder vi ut med Stadsbyggnadskontoret vad som gäller innan vi lämnar offert. Vi säger nej till installationer som inte ger en rimlig kalkyl.",
     facts: [
-      { k: "Befolkning", v: "~990 000" },
+      { k: "Befolkning", v: "995 574 (2024)" },
       { k: "Elområde", v: "SE3" },
-      { k: "Nätägare", v: "Ellevio + Stockholm Exergi" },
-      { k: "Solinstrålning", v: "~1 000 kWh/m²/år" },
+      { k: "Nätägare", v: "Ellevio" },
+      { k: "Solinstrålning", v: "ca 990 kWh/m² och år" },
     ],
     localContext: [
       {
         title: "Bygglov i Stockholms stad",
-        body:
-          "Stockholm stad kräver oftast inget bygglov för solpaneler inom detaljplan om panelerna följer takfallet. För fastigheter med kulturhistoriskt skydd, fasadinstallation eller om byggnadens utseende ändras väsentligt krävs ansökan. Vi tar dialogen med Stadsbyggnadskontoret åt dig och kan ofta avgöra inom en arbetsdag om bygglov behövs.",
+        body: `${BYGGLOV_RULE} I Stockholm finns många kulturhistoriskt värdefulla miljöer, och där kan bygglov krävas. Stadsbyggnadskontoret avgör vad som gäller för ditt hus.`,
       },
       {
-        title: "Takförutsättningar",
+        title: "Så mycket ger taket",
         body:
-          "Villaområden som Bromma, Hägersten, Älvsjö och Enskede har 70- och 80-talsvillor med sadeltak och pulpettak. Mansardtak finns mest i innerstaden. Vi gör drönarbesiktning på alla tak innan offert – inga schabloner, ingen gissning om vad som ryms.",
+          "I Stockholm ger solceller cirka 940–970 kWh per kWp och år mot söder med 30 graders lutning, enligt EU-kommissionens beräkningsverktyg PVGIS. Mot öster eller väster ger samma tak cirka 730–760 kWh per kWp. Vi besiktar taket med drönare före offert, så att kalkylen bygger på ditt tak och inte på en schablon.",
+      },
+      {
+        title: "Nät och anmälan",
+        body: `Ellevio äger elnätet i Stockholms stad. ${ANMALAN} ${ELLEVIO_TARIFF}`,
       },
     ],
+    grid: {
+      operator: "Ellevio",
+      ownership: "Ellevio äger elnätet i Stockholms stad.",
+      tariff: ELLEVIO_TARIFF,
+      tariffShort: "Nej, borttagen 1 juni 2026",
+    },
+    sources: [SRC_ELLEVIO_AREA, SRC_ELLEVIO_TARIFF, SRC_PVGIS, SRC_BYGGLOV, SRC_SCB],
+    checkedAt: CHECKED_AT,
     neighbors: ["solna", "sundbyberg", "lidingo", "nacka"],
   },
   {
@@ -94,57 +205,74 @@ export const CITIES: City[] = [
     name: "Sundbyberg",
     preposition: "i",
     region: "Sundbybergs stad · Sveriges minsta kommun till ytan",
-    oneLiner:
-      "Solpaneler installerade i Sundbyberg av elektriker från grannkommunen Solna.",
+    oneLiner: "Solceller i Sundbyberg, installerade från grannkommunen Solna.",
     intro:
-      "Sundbyberg är Sveriges minsta kommun till ytan och en av Stockholmsområdets tätaste – många kunder bor i radhus, kedjehus och småhus med begränsad takyta. Vi specialiserar oss på att räkna fram exakt vilken paneluppsättning som ryms innan vi sätter en skruv. Bromsten, Hallonbergen, Ör och centrala Sundbyberg har alla olika takmönster och vi anpassar oss efter det.",
+      "Sundbyberg är Sveriges minsta kommun till ytan och tätt bebyggd, med radhus, kedjehus och småhus där takytan ofta är begränsad. Därför räknar vi fram vilken paneluppsättning som faktiskt ryms innan vi lämnar pris. Vi installerar i hela kommunen, från Duvbo och Lilla Alby till Hallonbergen, Ör och Ursvik.",
     facts: [
-      { k: "Befolkning", v: "~55 000" },
+      { k: "Befolkning", v: "56 274 (2024)" },
       { k: "Elområde", v: "SE3" },
-      { k: "Nätägare", v: "Ellevio" },
-      { k: "Genomsnittlig takyta", v: "mindre än Solna" },
+      { k: "Nätägare", v: "Vattenfall Eldistribution" },
+      { k: "Vårt kontor", v: "Solna, grannkommun" },
     ],
     localContext: [
       {
-        title: "Optimerad placering på små tak",
+        title: "Små tak kräver noggrann placering",
         body:
-          "I Sundbyberg är takytan oftast den begränsande faktorn, inte takets orientering. Vi dimensionerar för att maxa energi per kvadratmeter takyta snarare än absolut effekt. Det betyder JA Solar 500 W-paneler där det går (22,6 % effektivitet) och 455 W där takytan är ojämn.",
+          "På ett litet tak är ytan den begränsande faktorn, inte takets riktning. Vi dimensionerar för mest energi per kvadratmeter, med JA Solar 500 W (22,6 % verkningsgrad) där panelen får plats och den mindre 455 W-panelen där taket är uppdelat.",
       },
       {
-        title: "Bygglov och samfälligheter",
-        body:
-          "Många bostadsområden i Sundbyberg är organiserade som bostadsrättsföreningar eller samfälligheter. Vi hjälper styrelser och husägare att förstå vad som kräver styrelsegodkännande och vad som inte gör det innan vi går vidare med projektering.",
+        title: "Bostadsrätt, bygglov och nät",
+        body: `Bor du i en bostadsrättsförening är det föreningen som äger huset, och den måste godkänna installationen. ${BYGGLOV_RULE} Vattenfall Eldistribution har lokalnätet i Sundbyberg. ${ANMALAN} ${VATTENFALL_TARIFF}`,
       },
     ],
+    grid: {
+      operator: "Vattenfall Eldistribution",
+      ownership: "Vattenfall Eldistribution har lokalnätet i Sundbyberg.",
+      tariff: VATTENFALL_TARIFF,
+      tariffShort: "Nej, införandet pausat",
+    },
+    sources: [SRC_VATTENFALL_AREA, SRC_VATTENFALL_TARIFF, SRC_BYGGLOV, SRC_SCB],
+    checkedAt: CHECKED_AT,
     neighbors: ["solna", "stockholm", "sollentuna"],
   },
   {
     slug: "taby",
     name: "Täby",
     preposition: "i",
-    region: "Täby kommun · 15 km norr om Stockholm City",
-    oneLiner:
-      "Solpaneler installerade i Täby av elektriker som tar med drönaren själv.",
+    region: "Täby kommun · norr om Stockholm",
+    oneLiner: "Solceller i Täby, med drönarbesiktning av taket före offert.",
     intro:
-      "Täby är klassiskt villasverige med stora tomter, breda sadeltak och oftast bra söderläge. Här ligger förutsättningarna för solel på topp – och vi ser ofta installationer på 12–20 kW i Täby där det i Solna ryms 6–10 kW. Näsbypark, Roslags-Näsby, Viggbyholm, Gribbylund och Skarpäng är områden där vi installerat mest.",
+      "Täby har stora villaområden som Näsbypark, Roslags-Näsby, Viggbyholm, Gribbylund och Skarpäng. Ett stort tak ger plats för en större anläggning, och då spelar dimensioneringen roll: vi utgår från din förbrukning och takets läge, inte från hur många paneler som går att få upp.",
     facts: [
-      { k: "Befolkning", v: "~75 000" },
+      { k: "Befolkning", v: "77 744 (2024)" },
       { k: "Elområde", v: "SE3" },
       { k: "Nätägare", v: "Ellevio" },
-      { k: "Vanlig anläggningsstorlek", v: "12–20 kW" },
+      { k: "Bygglov", v: "Krävs oftast inte" },
     ],
     localContext: [
       {
-        title: "Större anläggningar än snittet",
+        title: "Större tak, större anläggning",
         body:
-          "Täbys takytor klarar ofta 20+ paneler vilket gör batterilager och Solis 15 kW-växelriktare till standardval snarare än undantag. Med stödtjänster aktiverat hamnar årsekonomin på en helt annan nivå än för en mindre installation – ofta 15 000–25 000 kr i ren stödtjänstintäkt.",
+          "På ett stort tak ryms ofta fler paneler än huset behöver. Vi räknar på hur mycket av solelen du använder själv, eftersom en egenanvänd kilowattimme är värd mer än en såld, och föreslår batteri när det höjer egenanvändningen. Med ett batteri som prisstyr betalar sig sol och batteri tillsammans på ungefär 4–7 år.",
       },
       {
-        title: "Bygglov i Täby",
-        body:
-          "Täby har generellt sett en konstruktiv hantering av solpaneler. Bygglov krävs sällan inom detaljplan om panelerna följer takfallet. För Täby Park och nybyggnationer kan styrelsegodkännande eller områdesregler påverka, vilket vi reder ut innan offert.",
+        title: "Bygglov och nät i Täby",
+        body: `${BYGGLOV_RULE} Enligt Täby kommun äger och ansvarar Ellevio för elnätet i kommunen. ${ANMALAN} ${ELLEVIO_TARIFF}`,
       },
     ],
+    grid: {
+      operator: "Ellevio",
+      ownership: "Enligt Täby kommun äger och ansvarar Ellevio för elnätet i Täby.",
+      tariff: ELLEVIO_TARIFF,
+      tariffShort: "Nej, borttagen 1 juni 2026",
+    },
+    sources: [
+      { title: "Elnät", publisher: "Täby kommun", url: "https://www.taby.se/bygga-bo-och-miljo/boendemiljo/elnat" },
+      SRC_ELLEVIO_TARIFF,
+      SRC_BYGGLOV,
+      SRC_SCB,
+    ],
+    checkedAt: CHECKED_AT,
     neighbors: ["solna", "danderyd", "sollentuna"],
   },
   {
@@ -152,28 +280,33 @@ export const CITIES: City[] = [
     name: "Lidingö",
     preposition: "på",
     region: "Lidingö stad · ö i Stockholms inlopp",
-    oneLiner:
-      "Solpaneler installerade på Lidingö av elektriker som klarar både villa och fritidshus.",
+    oneLiner: "Solceller på Lidingö, för villa och radhus.",
     intro:
-      "Lidingö har en blandning av äldre villaområden och nybyggda fastigheter. Många hus är arkitektoniskt distinkta och vi har stor erfarenhet av att placera paneler så att de följer takets linjer snarare än stör dem. Skärsätra, Brevik, Sticklinge, Bodal och Larsberg är alla områden där vi installerat – och där vi ofta sätter mansardtak eller valmade tak i bilden.",
+      "Vi installerar på hela Lidingö, i stadsdelar som Skärsätra, Brevik, Sticklinge och Bodal. På hus med flera takfall och vinklar lägger vi panelerna så att de följer takets linjer. Ellevio har elnätet på ön.",
     facts: [
-      { k: "Befolkning", v: "~48 000" },
+      { k: "Befolkning", v: "48 377 (2024)" },
       { k: "Elområde", v: "SE3" },
       { k: "Nätägare", v: "Ellevio" },
-      { k: "Vanlig taktyp", v: "sadeltak, mansardtak" },
+      { k: "Bygglov", v: "Krävs oftast inte" },
     ],
     localContext: [
       {
-        title: "Estetiskt känsliga tak",
-        body:
-          "Lidingö stad har områden med kulturhistoriskt värde och vi tar alltid en diskussion med Stadsbyggnadskontoret innan vi lämnar offert om byggnaden är skyddad. Vi rekommenderar oftast helsvarta paneler (all-black) på Lidingö-tak eftersom kontrasten mot rödt eller plåttak ofta missklär.",
+        title: "Tak som syns",
+        body: `${BYGGLOV_RULE} Lidingö stad avgör vad som gäller för ditt hus. Där taket syns mycket föreslår vi ofta helsvarta paneler, som smälter in bättre mot mörka tak.`,
       },
       {
-        title: "Lokalt nät och förbindelser",
-        body:
-          "Ellevio är nätägare för hela ön. Vi har gjort tillräckligt många installationer här för att veta vilka kabeldragningar som är värt extra arbete och vilka som inte är det. Vi tar med oss allt material från lagret i Solna.",
+        title: "Nät och anmälan",
+        body: `Lidingö ingår i Ellevios nätområde Stockholm. ${ANMALAN} ${ELLEVIO_TARIFF}`,
       },
     ],
+    grid: {
+      operator: "Ellevio",
+      ownership: "Lidingö ingår i Ellevios nätområde Stockholm.",
+      tariff: ELLEVIO_TARIFF,
+      tariffShort: "Nej, borttagen 1 juni 2026",
+    },
+    sources: [SRC_ELLEVIO_AREA, SRC_ELLEVIO_TARIFF, SRC_BYGGLOV, SRC_SCB],
+    checkedAt: CHECKED_AT,
     neighbors: ["stockholm", "nacka", "danderyd"],
   },
   {
@@ -181,28 +314,40 @@ export const CITIES: City[] = [
     name: "Sollentuna",
     preposition: "i",
     region: "Sollentuna kommun · norra Storstockholm",
-    oneLiner:
-      "Solpaneler installerade i Sollentuna av elektriker med eget lager i Solna.",
+    oneLiner: "Solceller i Sollentuna, installerade från vårt kontor i Solna.",
     intro:
-      "Sollentuna är ett av Storstockholms snabbast växande villaområden – Edsberg, Helenelund, Häggvik, Rotebro och Tureberg har en mix av äldre 70-talsvillor och nybyggda hus. Vi installerar lika ofta små starter-anläggningar (10 paneler + 15 kWh batteri) som maxade hus med både värmepump, batteri och laddbox.",
+      "I Sollentuna finns villaområden som Edsberg, Helenelund, Häggvik, Rotebro och Tureberg, med både äldre villor och nybyggda hus. Här äger kommunens eget bolag, Sollentuna Energi & Miljö, elnätet, och nätavgiften har en effektavgift. Därför bör sol, batteri och värmepump dimensioneras tillsammans.",
     facts: [
-      { k: "Befolkning", v: "~75 000" },
+      { k: "Befolkning", v: "77 624 (2024)" },
       { k: "Elområde", v: "SE3" },
-      { k: "Nätägare", v: "Ellevio" },
-      { k: "Genomsnittlig anläggning", v: "10–18 kW" },
+      { k: "Nätägare", v: "Sollentuna Energi & Miljö" },
+      { k: "Effektavgift", v: "Ja" },
     ],
     localContext: [
       {
-        title: "Helhetsprojekt vanligt",
+        title: "Effektavgift hos Sollentuna Energi & Miljö",
         body:
-          "I Sollentuna ser vi att kunder ofta tar hela paketet på en gång – sol, batteri och värmepump i samma projekt. Det är mer ekonomiskt än att dela upp i flera installationer, och vi kan optimera dimensioneringen av växelriktare, batterikapacitet och värmepumpens elbehov tillsammans.",
+          "Sollentuna Energi & Miljö äger elnätet i Sollentuna och har effektavgift: en del av nätavgiften beror på hur mycket el du använder samtidigt och när på dygnet. Solceller sänker inte effekttoppen en mörk vinterkväll, men ett batteri med effektvakt kan göra det. Därför räknar vi på effekten och inte bara på kilowattimmarna.",
       },
       {
-        title: "Bygglov och kommun",
-        body:
-          "Sollentuna kommun har en effektiv handläggning av solanmälningar. Bygglov krävs sällan men anmälan ska göras. Vi sköter all kommunikation med både kommun och nätägare.",
+        title: "Bygglov och anmälan",
+        body: `${BYGGLOV_RULE} ${ANMALAN} Anmälningarna går till Sollentuna Energi & Miljö, och vi sköter kontakten.`,
       },
     ],
+    grid: {
+      operator: "Sollentuna Energi & Miljö",
+      ownership: "Sollentuna Energi & Miljö, som ägs av kommunen, äger elnätet i Sollentuna.",
+      tariff:
+        "Sollentuna Energi & Miljö har effektavgift: en del av nätavgiften beror på hur mycket el du använder samtidigt och när på dygnet.",
+      tariffShort: "Ja",
+    },
+    sources: [
+      { title: "Elnät", publisher: "Sollentuna Energi & Miljö", url: "https://www.seom.se/el/elnat/" },
+      { title: "Så funkar effektavgiften", publisher: "Sollentuna Energi & Miljö", url: "https://www.seom.se/elnat/priser-och-villkor/sa-funkar-effektavgiften/" },
+      SRC_BYGGLOV,
+      SRC_SCB,
+    ],
+    checkedAt: CHECKED_AT,
     neighbors: ["solna", "taby", "stockholm"],
   },
   {
@@ -210,61 +355,95 @@ export const CITIES: City[] = [
     name: "Nacka",
     preposition: "i",
     region: "Nacka kommun · östra Stockholm",
-    oneLiner:
-      "Solpaneler installerade i Nacka av elektriker med drönarbesiktning på varje tak.",
+    oneLiner: "Solceller i Nacka, med drönarbesiktning av taket före offert.",
     intro:
-      "Nacka är en av landets största kommuner till ytan och har allt från radhus i Sickla till stora villor i Saltsjöbaden, Älta och Boo. Vi gör drönarbesiktning på varje tak innan offert – det är enda sättet att veta vilken effekt vi faktiskt kan installera utan att gissa.",
+      "Nacka sträcker sig från Sickla och Henriksdal till Saltsjöbaden, Älta och Boo, med allt från radhus till stora villor. Elnätet är delat mellan två bolag: Nacka Energi i större delen av kommunen och Boo Energi i Saltsjö-Boo. Vilket bolag du har avgör både anmälan och nätavgift.",
     facts: [
-      { k: "Befolkning", v: "~110 000" },
+      { k: "Befolkning", v: "112 112 (2024)" },
       { k: "Elområde", v: "SE3" },
-      { k: "Nätägare", v: "Vattenfall Eldistribution" },
-      { k: "Yta", v: "Stockholms-områdets största" },
+      { k: "Nätägare", v: "Nacka Energi och Boo Energi" },
+      { k: "Bygglov", v: "Krävs oftast inte" },
     ],
     localContext: [
       {
-        title: "Vattenfall som nätägare",
-        body:
-          "Nacka avviker från flertalet Storstockholm-kommuner genom att Vattenfall Eldistribution är nätägare (inte Ellevio). Vi har full erfarenhet av Vattenfalls installatörsportal, föranmälan och färdiganmälan – kunden märker ingen skillnad.",
+        title: "Två nätbolag i Nacka",
+        body: `Nacka Energi, som ägs av Nacka kommun, har elnätet från Henriksdal till Skurusundet samt i Älta och Saltsjöbaden. Boo Energi har Saltsjö-Boo. Nacka Energi har haft effektavgift sedan 2020, medan Boo Energi har pausat sitt införande och tar ut en fast avgift efter säkringsstorlek. ${ANMALAN} Anmälningarna går till det bolag som har nätet där du bor.`,
       },
       {
-        title: "Skogsskuggning ett krav",
-        body:
-          "Nacka har mycket skogsmark inblandat och vi ser ofta tak där 1-2 paneler skuggas under delar av dagen. Vi använder MPPT-optimerare eller mikroväxelriktare där det krävs så att en skuggad panel inte drar ner hela strängens produktion.",
+        title: "Skugga och bygglov",
+        body: `Ligger huset nära skog eller höga träd kan en eller ett par paneler skuggas delar av dagen. Då räknar vi på skuggningen i projekteringen och väljer en lösning där en skuggad panel inte drar ner resten av anläggningen. ${BYGGLOV_RULE}`,
       },
     ],
+    grid: {
+      operator: "Nacka Energi och Boo Energi",
+      ownership:
+        "Nacka Energi har elnätet från Henriksdal till Skurusundet samt i Älta och Saltsjöbaden. Boo Energi har Saltsjö-Boo.",
+      tariff:
+        "Nacka Energi har haft effektavgift sedan 2020. Boo Energi har pausat sitt införande och tar ut en fast avgift efter säkringsstorlek.",
+      tariffShort: "Nacka Energi: ja · Boo Energi: nej",
+    },
+    sources: [
+      { title: "Det här är Nacka Energi", publisher: "Nacka Energi", url: "https://www.nackaenergi.se/om-nacka-energi/det-har-ar-nacka-energi" },
+      { title: "Frågor & svar om effektavgiften (uppdaterad 1 juli 2026)", publisher: "Nacka Energi", url: "https://www.nackaenergi.se/kundservice-och-faq/vara-elnatspriser/fragor--svar-om-effektavgiften" },
+      { title: "Elnät", publisher: "Boo Energi", url: "https://www.booenergi.se/privat/elnat/" },
+      { title: "Vi pausar införandet av effektavgifter", publisher: "Boo Energi", url: "https://www.booenergi.se/effektavgift/" },
+      SRC_BYGGLOV,
+      SRC_SCB,
+    ],
+    checkedAt: CHECKED_AT,
     neighbors: ["stockholm", "lidingo"],
   },
   {
     slug: "danderyd",
     name: "Danderyd",
     preposition: "i",
-    region: "Danderyds kommun · norr om Stockholm City",
-    oneLiner:
-      "Solpaneler installerade i Danderyd av elektriker som tar premiumtak på allvar.",
+    region: "Danderyds kommun · norr om Stockholm",
+    oneLiner: "Solceller i Danderyd, med omsorg om hur taket ser ut.",
     intro:
-      "Danderyd har Sveriges högsta andel villaägare och en stor del av husen är arkitektoniskt distinkta. I Stocksund, Djursholm och Enebyberg har vi installerat på allt från klassiska tegelförsedda 30-talsvillor till moderna platta tak. Vi rekommenderar nästan alltid all-black-paneler här – kontrasten är värd det estetiska lyftet.",
+      "Danderyd består av kommundelarna Danderyd, Djursholm, Enebyberg och Stocksund. Här finns många äldre villor, och vi lägger vikt vid hur panelerna placeras på taket. E.ON ansvarar för elnätet i kommunen.",
     facts: [
-      { k: "Befolkning", v: "~33 000" },
+      { k: "Befolkning", v: "32 425 (2024)" },
       { k: "Elområde", v: "SE3" },
-      { k: "Nätägare", v: "Ellevio" },
-      { k: "Vanlig taktyp", v: "sadeltak, valmat tak" },
+      { k: "Nätägare", v: "E.ON Energidistribution" },
+      { k: "Bygglov", v: "Krävs oftast inte" },
     ],
     localContext: [
       {
-        title: "Estetik på premium-nivå",
-        body:
-          "Danderyd-kunder lägger ofta värde på hur installationen ser ut, inte bara hur den presterar. Vi använder all-black-paneler, dolda kabeldragningar och anpassar montagebleck efter takets linjer. Det kostar lite mer i material men ger en installation som du faktiskt vill visa upp.",
+        title: "Paneler som passar huset",
+        body: `Vi föreslår ofta helsvarta paneler, drar kablar dolt där det går och anpassar placeringen efter takets linjer. ${BYGGLOV_RULE} Danderyds kommun avgör vad som gäller för ditt hus.`,
       },
       {
-        title: "Större batterier än snittet",
-        body:
-          "Danderyd-villor har ofta hög elförbrukning och bra plats för batterilager. Eway 46–61 kWh och SAJ HS3 20 kWh är vanliga val. Med solceller betalar sig ett batteri på ungefär 3–7 år, och snabbast i hus med hög förbrukning.",
+        title: "Nät och batteri",
+        body: `Enligt Danderyds kommun är det E.ON som ansvarar för elnätet. ${ANMALAN} Har huset hög förbrukning kan ett batteri löna sig: med solceller betalar det sig på ungefär 3–7 år.`,
       },
     ],
+    grid: {
+      operator: "E.ON Energidistribution",
+      ownership: "Enligt Danderyds kommun är det E.ON som ansvarar för elnätet i kommunen.",
+      tariff: null,
+      tariffShort: null,
+    },
+    sources: [
+      { title: "Fjärrvärme och elnät", publisher: "Danderyds kommun", url: "https://www.danderyd.se/bygga-bo-och-miljo/energi/fjarrvarme-och-elnat/" },
+      SRC_BYGGLOV,
+      SRC_SCB,
+    ],
+    checkedAt: CHECKED_AT,
     neighbors: ["solna", "taby", "stockholm"],
   },
 ];
 
 export function findCity(slug: string): City | undefined {
   return CITIES.find((c) => c.slug === slug);
+}
+
+const MONTHS = [
+  "januari", "februari", "mars", "april", "maj", "juni",
+  "juli", "augusti", "september", "oktober", "november", "december",
+];
+
+/** "2026-11-10" -> "10 november 2026". */
+export function formatCheckedAt(iso: string): string {
+  const [y, m, d] = iso.split("-").map(Number);
+  return `${d} ${MONTHS[m - 1]} ${y}`;
 }
