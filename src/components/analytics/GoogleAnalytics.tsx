@@ -7,7 +7,10 @@ import Script from "next/script";
  *   1. Consent Mode sätts till "denied" som default (beforeInteractive),
  *      innan gtag och Cookiebot hinner ladda. GA4 samlar då ingen
  *      persondata / sätter inga cookies förrän besökaren samtycker.
- *   2. gtag.js laddas afterInteractive så det inte blockerar LCP.
+ *   2. gtag.js laddas uppskjutet (se TrackerScheduler): vid besökarens
+ *      första interaktion eller några sekunder efter att sidan laddat
+ *      klart. Köade anrop (config, events) ligger kvar i dataLayer och
+ *      skickas när biblioteket väl är inne, så ingen mätning tappas.
  *   3. När besökaren accepterar statistik-cookies i Cookiebot uppgraderas
  *      analytics_storage via en CookiebotOnAccept-lyssnare. Detta gör
  *      lösningen robust även om "Google Consent Mode" inte är påslaget i
@@ -38,14 +41,20 @@ export function GoogleAnalytics() {
           gtag('set', 'url_passthrough', true);
         `}
       </Script>
-      <Script
-        src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
-        strategy="afterInteractive"
-      />
       <Script id="ga-init" strategy="afterInteractive">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
+          // Själva biblioteket hämtas uppskjutet via den gemensamma kön.
+          (window.__oeDeferred = window.__oeDeferred || []).push(function(){
+            var s = document.createElement('script');
+            s.async = true;
+            s.src = 'https://www.googletagmanager.com/gtag/js?id=${GA_ID}';
+            // Consent Mode styr vad som skickas, så Cookiebots auto-blockering
+            // ska inte hålla tillbaka skriptet (samma beteende som tidigare).
+            s.setAttribute('data-cookieconsent', 'ignore');
+            document.head.appendChild(s);
+          });
           gtag('js', new Date());
           gtag('config', '${GA_ID}', { anonymize_ip: true });
 

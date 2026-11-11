@@ -1,24 +1,27 @@
-import Link from "next/link";
 import { PressBanner } from "@/components/site/PressBanner";
 import { getFeaturedPressRelease } from "@/lib/press";
 import { getMedia } from "@/lib/media";
-import { Disclosure } from "@/components/site/Disclosure";
-import { DemoHero } from "@/components/demo/DemoHero";
-import { DemoSection } from "@/components/demo/DemoSection";
-import { DemoBrandRow } from "@/components/demo/DemoBrandRow";
-import { EnergySystem } from "@/components/home/EnergySystem";
 import { getVisibleReviews } from "@/lib/reviews";
-import { DemoProcess } from "@/components/demo/DemoProcess";
-import { DemoManifesto } from "@/components/demo/DemoManifesto";
-import { Testimonials } from "@/components/home/Testimonials";
-import { CtaPanel } from "@/components/home/CtaPanel";
-import { RecoBadge } from "@/components/site/RecoBadge";
+import { getVisibleTeam } from "@/lib/team";
 import { getRecoStats } from "@/lib/reco-live";
 import {
   JsonLd,
   faqPageSchema,
   localBusinessSchema,
 } from "@/components/seo/JsonLd";
+import { RevealObserver } from "@/components/landing/RevealObserver";
+import { LandingHero } from "@/components/landing/LandingHero";
+import { BrandMarquee } from "@/components/landing/BrandMarquee";
+import { HouseDay } from "@/components/landing/HouseDay";
+import { FourParts } from "@/components/landing/FourParts";
+import { CalculatorTeaser } from "@/components/landing/CalculatorTeaser";
+import { ProcessGrid } from "@/components/landing/ProcessGrid";
+import { OriginStory } from "@/components/landing/OriginStory";
+import { ReviewWall } from "@/components/landing/ReviewWall";
+import { Principles } from "@/components/landing/Principles";
+import { TeamGrid, type TeamCard } from "@/components/landing/TeamGrid";
+import { HomeFaq } from "@/components/landing/HomeFaq";
+import { BookingCta } from "@/components/landing/BookingCta";
 
 // Köpar-språk-frågor som matchar Google Suggest och AI-search-frågor för
 // "Optimera Energi" + lokala intent-termer. Hjälper både rich snippets och
@@ -54,14 +57,27 @@ const HOME_FAQ = [
 // högst en gång i timmen så att antalet omdömen följer Reco.
 export const revalidate = 3600;
 
+/**
+ * Startsidan. Sektionerna ligger i components/landing och är i huvudsak
+ * serverkomponenter. Det enda som körs i webbläsaren är dygnsväljaren,
+ * kalkylen (laddas först när den närmar sig bild), sifferuppräkningen och
+ * en liten observatör som tänder skroll-animationerna.
+ */
 export default async function HomePage() {
   const reco = await getRecoStats();
   // Banderoll bara på landningssidan. Läses server-side, dismissal
   // sker client-side via localStorage i komponenten.
   const featured = getFeaturedPressRelease();
-  // Frostad hero-bakgrund: bild + frostningsgrad väljs i /admin/media
-  // (slot demo:hero-landningsida). Utan bild: ren bone-bakgrund.
-  const heroBg = getMedia("demo:hero-landningsida");
+  // Teamet redigeras i /admin/team, porträtten i /admin/media (team:<id>).
+  const team: TeamCard[] = getVisibleTeam().map((m) => {
+    const photo = getMedia(`team:${m.id}`);
+    return {
+      ...m,
+      photoUrl: photo?.url ?? null,
+      photoAlt: photo?.alt || `${m.name}, ${m.role} på Optimera Energi`,
+    };
+  });
+
   return (
     <>
       {featured && (
@@ -69,116 +85,23 @@ export default async function HomePage() {
       )}
       <JsonLd data={faqPageSchema(HOME_FAQ)} />
       <JsonLd data={localBusinessSchema} />
+      <RevealObserver />
 
-      <DemoHero
-        heroImageUrl={heroBg?.url}
-        heroImageAlt={heroBg?.alt}
-        heroFrost={heroBg?.frost}
-        recoAverage={reco.average}
-      />
-
-      {/* Social proof DIREKT under hero. Kureras i /admin/recensioner,
-          källa: företagets Reco-profil. */}
-      <DemoSection
-        eyebrow="Recensioner · via Reco"
-        title={<>Kunderna säger det bäst.</>}
-        className="!py-16 md:!py-24"
-        // Badgen ligger bredvid rubriken på desktop och nere vid betygsraden
-        // på mobil (där rubrikraden är för smal för den).
-        aside={<RecoBadge size={116} tilt className="hidden md:block" />}
-      >
-        <Testimonials reviews={getVisibleReviews()} />
-        {/* Betyg + länk till källan. Antal och snittbetyg hämtas live från
-            Reco (lib/reco-live.ts); data-reco-source visar om siffrorna är
-            live eller reservsiffrorna i lib/reco.ts. */}
-        <div className="mt-8 flex items-center gap-4">
-          <RecoBadge size={66} tilt className="md:hidden" />
-          <p
-            className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[14px] text-ink/60"
-            data-reco-source={reco.live ? "live" : "fallback"}
-          >
-            <span className="text-amber-deep">★</span>
-            <span>{reco.average} av 5 i betyg ({reco.count} omdömen) på</span>
-            {/* Officiella Reco-loggan (hämtad från reco.se). */}
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/reco.svg" alt="Reco" className="h-[18px] w-auto" />
-            <span>–</span>
-            <a
-              href={reco.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline underline-offset-4 decoration-ink/30 hover:text-ink hover:decoration-ink/60 transition"
-            >
-              läs alla omdömen
-            </a>
-          </p>
-        </div>
-      </DemoSection>
-
-      {/* Systemet: sol + batteri + laddbox som EN helhet. Ersätter den
-          gamla tjänste-griden; korten länkar till tjänstesidorna.
-          Ingen ingress: den sa "Tillsammans gör de villan inte bara
-          energisnål – den kan till och med gå plus över året", alltså
-          ordagrant samma poäng som bannern längst ned i sektionen.
-          Rubriken + de tre korten bär upplägget; bannern levererar
-          slutsatsen en gång. */}
-      <DemoSection
-        eyebrow="Så går det ihop"
-        title={
-          <>
-            Sol, batteri och laddbox.{" "}
-            <span className="italic font-serif text-indigo">Ett system.</span>
-          </>
-        }
-      >
-        <EnergySystem />
-      </DemoSection>
-
-      {/* Lugn statisk varumärkesrad */}
-      <DemoBrandRow />
-
-      {/* Konsoliderat "Så jobbar vi" – ETT huvud i stället för tre sektioner */}
-      <DemoSection eyebrow="Så jobbar vi" title={<>Sex steg, inga genvägar.</>}>
-        <DemoProcess />
-        <div className="mt-24">
-          <DemoManifesto />
-        </div>
-      </DemoSection>
-
+      <LandingHero reco={reco} />
+      <BrandMarquee />
+      <HouseDay />
+      <FourParts />
+      <CalculatorTeaser />
+      <ProcessGrid />
+      <OriginStory teamCount={team.length} />
+      {/* Omdömen kureras i /admin/recensioner, källa: företagets Reco-profil. */}
+      <ReviewWall reviews={getVisibleReviews()} reco={reco} />
+      <Principles />
+      <TeamGrid team={team} />
       {/* Synlig FAQ speglar FAQPage-schemat ovan (Google rich results +
           AI-citation-text). */}
-      <DemoSection title={<>Vanliga frågor.</>} className="!py-16 md:!py-24">
-        <div className="divide-y divide-ink/10 border-y border-ink/10">
-          {HOME_FAQ.map((q) => (
-            <Disclosure key={q.q} question={q.q}>
-              <p className="text-ink/75 leading-relaxed text-[15px]">{q.a}</p>
-            </Disclosure>
-          ))}
-        </div>
-        {/* Beskrivande interna länkar från sajtens starkaste sida till
-            FAQ-hubben och solcellsbatteri-pelarsidan (AI-search/PageRank). */}
-        <p className="mt-6 text-[14px] text-ink/60 leading-relaxed">
-          Fler frågor? Läs våra{" "}
-          <Link
-            href="/fragor-och-svar"
-            className="text-indigo hover:underline underline-offset-2"
-          >
-            samlade frågor och svar
-          </Link>
-          . Funderar du på batteri? Läs guiden{" "}
-          <Link
-            href="/solcellsbatteri"
-            className="text-indigo hover:underline underline-offset-2"
-          >
-            solcellsbatteri till villa – pris, storlek och grönt avdrag
-          </Link>
-          .
-        </p>
-      </DemoSection>
-
-      <DemoSection>
-        <CtaPanel />
-      </DemoSection>
+      <HomeFaq items={HOME_FAQ} />
+      <BookingCta />
     </>
   );
 }

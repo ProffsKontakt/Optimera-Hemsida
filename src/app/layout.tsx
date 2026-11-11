@@ -14,6 +14,7 @@ import {
   GoogleTagManagerNoScript,
 } from "@/components/analytics/GoogleTagManager";
 import { MetaPixel } from "@/components/analytics/MetaPixel";
+import { TrackerScheduler } from "@/components/analytics/TrackerScheduler";
 import { MetaPixelPageView } from "@/components/analytics/MetaPixelPageView";
 import { JsonLd, organizationSchema, webSiteSchema } from "@/components/seo/JsonLd";
 import { Analytics } from "@vercel/analytics/next";
@@ -36,6 +37,9 @@ const fraunces = Fraunces({
   variable: "--font-fraunces",
   display: "swap",
   style: ["italic"],
+  // Förladdas inte: accenttypsnittet ska inte tävla med hjältebilden om
+  // bandbredden under första renderingen. Det laddas när det behövs.
+  preload: false,
 });
 
 // Mono används bara för eyebrows + monospace-små-detaljer. En vikt räcker.
@@ -44,6 +48,8 @@ const jetbrains = JetBrains_Mono({
   weight: ["400", "500"],
   variable: "--font-jetbrains",
   display: "swap",
+  // Förladdas inte (små etiketter), av samma skäl som Fraunces.
+  preload: false,
 });
 
 const SITE_URL =
@@ -150,9 +156,19 @@ export default function RootLayout({
   return (
     <html
       lang="sv"
+      // Inline-skriptet i <head> lägger till klassen "anim" före hydreringen.
+      suppressHydrationWarning
       className={`${poppins.variable} ${fraunces.variable} ${jetbrains.variable} scroll-smooth`}
     >
       <head>
+        {/* Slår på skroll-animationerna (globals.css: .anim [data-reveal]).
+            Körs före första renderingen så att inget blinkar till. Utan
+            JavaScript sätts klassen aldrig och allt innehåll syns direkt. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: "document.documentElement.classList.add('anim')",
+          }}
+        />
         {/* Cookiebot med strategy="afterInteractive" – tidigare hade vi
             beforeInteractive, men det blockerade LCP på mobile (Largest
             Contentful Paint trycktes över 2,5s). Auto-blocking-läget
@@ -173,6 +189,9 @@ export default function RootLayout({
         <GoogleTagManager />
         {/* Meta Pixel (1378950624383966) – consent-gated via Cookiebot. */}
         <MetaPixel />
+        {/* Kör spårningsbibliotekens laddare vid första interaktion eller
+            några sekunder efter laddning. Ska ligga efter de tre ovan. */}
+        <TrackerScheduler />
         {/* Promptwatch: besök från AI-sök – laddas efter statistik-samtycke. */}
         <PromptwatchVisitors />
       </head>

@@ -14,6 +14,11 @@ const DATASHEETS = {
 const nextConfig = {
   reactStrictMode: true,
   images: {
+    // AVIF först (klart mindre filer än WebP), WebP som reserv.
+    formats: ["image/avif", "image/webp"],
+    // Optimerade bilder cachas i 31 dagar. Bilder som byts får nytt
+    // filnamn eller ?v=-parameter, så lång cache är säker.
+    minimumCacheTTL: 2678400,
     remotePatterns: [
       { protocol: "https", hostname: "images.unsplash.com" },
       { protocol: "https", hostname: "cdn.higgsfield.ai" },

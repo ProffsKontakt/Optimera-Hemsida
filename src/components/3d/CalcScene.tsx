@@ -1,6 +1,7 @@
 "use client";
 
 import { Canvas, useFrame } from "@react-three/fiber";
+import { PauseWhenHidden } from "./PauseWhenHidden";
 import { Grid, OrbitControls } from "@react-three/drei";
 import { SceneLabel } from "./SceneLabel";
 import { useMemo, useRef } from "react";
@@ -36,6 +37,7 @@ export function CalcScene({ input }: { input: CalcInput }) {
       gl={{ antialias: true, alpha: true }}
       className="!absolute inset-0"
     >
+      <PauseWhenHidden />
       <color attach="background" args={["#EFE9DC"]} />
       {/* Samma produktljus som tjänstescenerna: skuggor + ljusbanker som
           speglas i panelglas, lack och krom. */}

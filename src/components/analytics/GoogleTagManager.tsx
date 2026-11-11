@@ -3,7 +3,8 @@ import Script from "next/script";
 /**
  * Google Tag Manager (container GTM-5HD9BPW6).
  *
- * GTM laddas afterInteractive så det inte blockerar LCP, och delar dataLayer
+ * GTM laddas uppskjutet (se TrackerScheduler) så att det inte konkurrerar
+ * med sidans första rendering, och delar dataLayer
  * med gtag/Consent Mode (som GoogleAnalytics-komponenten sätter till "denied"
  * beforeInteractive). Cookiebots auto-blocking + Consent Mode ser till att
  * inga taggar i containern fyrar förrän besökaren samtyckt.
@@ -19,11 +20,14 @@ export function GoogleTagManager() {
   if (!GTM_ID) return null;
   return (
     <Script id="gtm-loader" strategy="afterInteractive">
-      {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      {`(window.__oeDeferred = window.__oeDeferred || []).push(function(){
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','${GTM_ID}');`}
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;
+j.setAttribute('data-cookieconsent','ignore');f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','${GTM_ID}');
+});`}
     </Script>
   );
 }

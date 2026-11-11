@@ -28,6 +28,14 @@ const config: Config = {
           deep: "#283495",
           soft: "#E2E5F5",
         },
+        // Mörk nattblå för startsidans mörka sektioner och hjältebild, samt
+        // en något djupare sandton för omväxlande sektionsbakgrunder.
+        night: {
+          DEFAULT: "#14162A",
+          soft: "#1F2240",
+          line: "#2E3152",
+        },
+        sand: "#EAE4D6",
         sun: {
           DEFAULT: "#FFDD6C",
           deep: "#E0BC44",

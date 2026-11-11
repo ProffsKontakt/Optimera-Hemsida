@@ -11,6 +11,9 @@ import Script from "next/script";
  *   3. Metas <noscript>-bild är MEDVETET utelämnad – den kan inte
  *      samtyckes-gatas och skulle spåra besökare utan JS utan samtycke.
  *
+ * fbevents.js laddas uppskjutet (se TrackerScheduler). Anrop som görs
+ * innan dess köas av stubben och släpps när biblioteket är inne.
+ *
  * PageView vid SPA-navigering sköts av MetaPixelPageView (client) i layout.
  * Lead-konverteringen skickas från tack-sidan (/offert/klar).
  */
@@ -22,14 +25,22 @@ export function MetaPixel() {
   return (
     <Script id="meta-pixel" strategy="afterInteractive">
       {`
-        !function(f,b,e,v,n,t,s)
-        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        // Metas standardstubbe: fbq köar anrop tills biblioteket är inne.
+        // Biblioteket (fbevents.js) hämtas uppskjutet via den gemensamma
+        // kön i stället för direkt, så det inte tävlar med sidans rendering.
+        !function(f,n){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
         n.callMethod.apply(n,arguments):n.queue.push(arguments)};
         if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-        n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)}(window, document,'script',
-        'https://connect.facebook.net/en_US/fbevents.js');
+        n.queue=[];}(window);
+        (window.__oeDeferred = window.__oeDeferred || []).push(function(){
+          var t = document.createElement('script');
+          t.async = true;
+          t.src = 'https://connect.facebook.net/en_US/fbevents.js';
+          // Pixelns eget consent-läge (revoke/grant nedan) styr vad som
+          // skickas, precis som tidigare.
+          t.setAttribute('data-cookieconsent', 'ignore');
+          document.head.appendChild(t);
+        });
         fbq('consent', 'revoke');
         fbq('init', '${PIXEL_ID}');
         fbq('track', 'PageView');

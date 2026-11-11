@@ -1,6 +1,7 @@
 "use client";
 
 import { Canvas, useFrame } from "@react-three/fiber";
+import { PauseWhenHidden } from "./PauseWhenHidden";
 import { Grid, OrbitControls } from "@react-three/drei";
 import { useRef } from "react";
 import * as THREE from "three";
@@ -53,6 +54,7 @@ export function HeroLab() {
       shadows
       className="!absolute inset-0"
     >
+      <PauseWhenHidden />
       <color attach="background" args={["#EFE9DC"]} />
       <StudioLights envIntensity={0.45} keyIntensity={1.35} />
 

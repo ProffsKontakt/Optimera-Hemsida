@@ -1,15 +1,15 @@
 "use client";
 
 import { useId, useState } from "react";
-import { motion } from "framer-motion";
 
 /**
- * Animerad accordion-disclosure. Använder framer-motion för smooth
- * höjd-animation, både vid open och close. Drop-in ersättning för
+ * Animerad accordion-disclosure. Höjden animeras i ren CSS (grid-rader
+ * 0fr -> 1fr), så komponenten drar inte in något animationsbibliotek på
+ * de många sidor som har vanliga frågor. Drop-in ersättning för
  * <details><summary>...</summary>...</details>.
  *
  * VIKTIGT för AI-search/GEO: svarstexten renderas ALLTID i DOM:en, även när
- * panelen är kollapsad (`initial={{ height: 0 }}` clippar bara höjden, barnen
+ * panelen är kollapsad (grid-raden är 0fr och clippar bara höjden, barnen
  * finns kvar i server-HTML:en). Tidigare låg svaret bakom `{open && …}` vilket
  * gjorde att texten saknades helt i initial HTML – då kunde ChatGPT/Claude/
  * Perplexity/Google AI bara läsa svaret via JSON-LD, aldrig som synlig passage.
@@ -47,17 +47,17 @@ export function Disclosure({
           <span className="font-mono text-[14px] leading-none">+</span>
         </span>
       </button>
-      <motion.div
+      <div
         id={bodyId}
-        initial={{ height: 0 }}
-        animate={{ height: open ? "auto" : 0 }}
-        transition={{ height: { duration: 0.32, ease: [0.32, 0.72, 0, 1] } }}
-        style={{ overflow: "hidden" }}
+        className="grid transition-[grid-template-rows] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] motion-reduce:transition-none"
+        style={{ gridTemplateRows: open ? "1fr" : "0fr" }}
       >
-        <div className="pt-4 pb-1 max-w-2xl text-ink/70 leading-relaxed">
-          {children}
+        <div className="min-h-0 overflow-hidden">
+          <div className="pt-4 pb-1 max-w-2xl text-ink/70 leading-relaxed">
+            {children}
+          </div>
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 }

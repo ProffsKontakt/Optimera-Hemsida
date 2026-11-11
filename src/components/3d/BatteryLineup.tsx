@@ -1,6 +1,7 @@
 "use client";
 
 import { Canvas } from "@react-three/fiber";
+import { PauseWhenHidden } from "./PauseWhenHidden";
 import { Bounds, PresentationControls } from "@react-three/drei";
 import { EwayBattery, ewayModules, ewayStackHeight } from "./products/EwayBattery";
 import { SajHS3, sajHeight, sajModules } from "./products/SajHS3";
@@ -36,6 +37,7 @@ export function BatteryLineup() {
   });
   return (
     <Canvas shadows camera={{ position: [0.4, 0.9, 5.2], fov: 24 }} dpr={[1, 2]} className="!absolute inset-0" gl={{ antialias: true, alpha: true }}>
+      <PauseWhenHidden />
       <color attach="background" args={["#ECE6D8"]} />
       <StudioLights />
       <PresentationControls global={false} cursor snap speed={1.2} polar={[-0.08, 0.15]} azimuth={[-0.5, 0.5]}>

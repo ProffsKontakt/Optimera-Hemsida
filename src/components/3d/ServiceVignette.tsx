@@ -1,6 +1,7 @@
 "use client";
 
 import { Canvas } from "@react-three/fiber";
+import { PauseWhenHidden } from "./PauseWhenHidden";
 import { Bounds, PresentationControls, RoundedBox } from "@react-three/drei";
 import type { ServiceSlug } from "@/lib/services";
 import { SceneLabel } from "./SceneLabel";
@@ -29,6 +30,7 @@ export function ServiceVignette({ kind }: { kind: ServiceSlug }) {
       className="!absolute inset-0"
       gl={{ antialias: true, alpha: true }}
     >
+      <PauseWhenHidden />
       <color attach="background" args={[backgroundFor(kind)]} />
       <StudioLights />
       <PresentationControls

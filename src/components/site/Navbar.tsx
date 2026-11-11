@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { usePathname } from "next/navigation";
 import {
   Sun,
   BatteryCharging,
@@ -73,6 +73,14 @@ const MENU_ACCENTS = [
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  // Startsidan har en mörk hjältebild som går ända upp bakom menyn. Där
+  // ligger menyn genomskinlig med ljus text tills man skrollar eller öppnar
+  // mobilmenyn. Övriga sidor har ljus bakgrund och mörk text som förut.
+  const pathname = usePathname();
+  const onHero = pathname === "/" && !scrolled && !open;
+  const linkTone = onHero
+    ? "text-white/85 hover:text-white hover:bg-white/10"
+    : "text-ink/75 hover:text-ink hover:bg-ink/5";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -87,7 +95,9 @@ export function Navbar() {
         "fixed inset-x-0 top-0 z-50 transition-all duration-300",
         scrolled
           ? "bg-bone/85 backdrop-blur-xl border-b border-ink/8"
-          : "bg-transparent",
+          : open
+            ? "bg-bone"
+            : "bg-transparent",
       ].join(" ")}
     >
       <div className="container-edge flex h-20 items-center justify-between">
@@ -97,18 +107,29 @@ export function Navbar() {
           onClick={() => setOpen(false)}
           aria-label="Optimera Energi – startsidan"
         >
-          <Image
-            src="/logo.svg"
-            alt="Optimera Energi"
-            width={332}
-            height={114}
-            className="h-9 w-auto"
-            fetchPriority="high"
-          />
+          <span className="relative block">
+            <Image
+              src="/logo.svg"
+              alt="Optimera Energi"
+              width={332}
+              height={114}
+              className={`h-9 w-auto transition-opacity duration-300 ${onHero ? "opacity-0" : "opacity-100"}`}
+              fetchPriority="high"
+            />
+            {/* Ljus logga för den mörka hjältebilden på startsidan. */}
+            <Image
+              src="/logo-dark.svg"
+              alt=""
+              aria-hidden
+              width={332}
+              height={114}
+              className={`absolute inset-0 h-9 w-auto transition-opacity duration-300 ${onHero ? "opacity-100" : "opacity-0"}`}
+            />
+          </span>
           {/* Taglinen göms i spannet 1024–1279px: där får den fulla menyn
               (åtta flikar) inte plats bredvid den. Två rader så att den inte
               blir bredare än den gamla korta taglinen. */}
-          <span className="hidden md:block lg:hidden xl:block font-mono text-[9.5px] leading-[1.45] uppercase tracking-[0.16em] text-ink/55 border-l border-ink/15 pl-3 ml-1">
+          <span className={`hidden md:block lg:hidden xl:block font-mono text-[9.5px] leading-[1.45] uppercase tracking-[0.16em] transition-colors duration-300 ${onHero ? "text-white/70 border-white/25" : "text-ink/55 border-ink/15"} border-l pl-3 ml-1`}>
             <span className="block whitespace-nowrap">För dig som vill Optimera</span>
             <span className="block whitespace-nowrap">din energianvändning</span>
           </span>
@@ -120,12 +141,12 @@ export function Navbar() {
               <div key={l.href} className="group relative">
                 <Link
                   href={l.href}
-                  className="inline-flex items-center gap-1 whitespace-nowrap px-2.5 xl:px-3.5 py-2 text-[13.5px] text-ink/75 hover:text-ink rounded-full hover:bg-ink/5 transition-colors"
+                  className={`inline-flex items-center gap-1 whitespace-nowrap px-2.5 xl:px-3.5 py-2 text-[13.5px] rounded-full transition-colors ${linkTone}`}
                 >
                   {l.label}
                   <ChevronDown
                     size={13}
-                    className="text-ink/45 transition-transform duration-200 group-hover:rotate-180 group-focus-within:rotate-180"
+                    className={`transition-transform duration-200 group-hover:rotate-180 group-focus-within:rotate-180 ${onHero ? "text-white/60" : "text-ink/45"}`}
                   />
                 </Link>
                 {/* pt-2 överbryggar glappet så att hover inte bryts på
@@ -157,7 +178,7 @@ export function Navbar() {
               <Link
                 key={l.href}
                 href={l.href}
-                className="whitespace-nowrap px-2.5 xl:px-3.5 py-2 text-[13.5px] text-ink/75 hover:text-ink rounded-full hover:bg-ink/5 transition-colors"
+                className={`whitespace-nowrap px-2.5 xl:px-3.5 py-2 text-[13.5px] rounded-full transition-colors ${linkTone}`}
               >
                 {l.label}
               </Link>
@@ -171,22 +192,24 @@ export function Navbar() {
           <button
             aria-label="Meny"
             aria-expanded={open}
-            className="lg:hidden inline-flex h-11 w-11 items-center justify-center rounded-full border border-ink/15 bg-cream"
+            className={`lg:hidden inline-flex h-11 w-11 items-center justify-center rounded-full border transition-colors duration-300 ${
+              onHero ? "border-white/30 bg-white/10 backdrop-blur" : "border-ink/15 bg-cream"
+            }`}
             onClick={() => setOpen(!open)}
           >
             <span className="relative block h-[14px] w-[18px]">
               <span
-                className={`absolute left-0 top-0 h-[2px] w-full rounded-full bg-ink transition-all duration-300 ${
+                className={`absolute left-0 top-0 h-[2px] w-full rounded-full transition-all duration-300 ${onHero ? "bg-white" : "bg-ink"} ${
                   open ? "top-1/2 -translate-y-1/2 rotate-45" : ""
                 }`}
               />
               <span
-                className={`absolute left-0 top-1/2 h-[2px] w-full -translate-y-1/2 rounded-full bg-ink transition-all duration-200 ${
+                className={`absolute left-0 top-1/2 h-[2px] w-full -translate-y-1/2 rounded-full transition-all duration-200 ${onHero ? "bg-white" : "bg-ink"} ${
                   open ? "opacity-0 scale-x-0" : ""
                 }`}
               />
               <span
-                className={`absolute left-0 bottom-0 h-[2px] w-full rounded-full bg-ink transition-all duration-300 ${
+                className={`absolute left-0 bottom-0 h-[2px] w-full rounded-full transition-all duration-300 ${onHero ? "bg-white" : "bg-ink"} ${
                   open ? "bottom-1/2 translate-y-1/2 -rotate-45" : ""
                 }`}
               />
@@ -195,77 +218,79 @@ export function Navbar() {
         </div>
       </div>
 
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.32, ease: [0.32, 0.72, 0, 1] }}
-            className="lg:hidden overflow-hidden border-t border-ink/8 bg-bone"
-          >
-            <div className="container-edge py-4 flex flex-col">
-              {links.map((l, i) => (
-                <motion.div
-                  key={l.href}
-                  initial={{ opacity: 0, x: -14 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.08 + i * 0.05, duration: 0.3 }}
+      {/* Mobilmenyn. Fälls ut med CSS (grid-rader 0fr -> 1fr) och länkarna
+          tonar in en i taget med stegrad fördröjning. Inget
+          animationsbibliotek behövs, så menyn tynger inte varje sida. */}
+      <div
+        className={`lg:hidden grid border-ink/8 bg-bone transition-[grid-template-rows,visibility] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] motion-reduce:transition-none ${
+          open ? "visible grid-rows-[1fr] border-t" : "invisible grid-rows-[0fr]"
+        }`}
+        aria-hidden={!open}
+      >
+        <div className="min-h-0 overflow-hidden">
+          <div className="container-edge py-4 flex flex-col">
+            {links.map((l, i) => (
+              <div
+                key={l.href}
+                className={`transition-[opacity,transform] duration-300 motion-reduce:transition-none ${
+                  open ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-3"
+                }`}
+                style={{ transitionDelay: open ? `${80 + i * 50}ms` : "0ms" }}
+              >
+                <Link
+                  href={l.href}
+                  onClick={() => setOpen(false)}
+                  className={`group flex items-center gap-4 py-3.5 ${
+                    l.children ? "" : "border-b border-ink/8"
+                  }`}
                 >
-                  <Link
-                    href={l.href}
-                    onClick={() => setOpen(false)}
-                    className={`group flex items-center gap-4 py-3.5 ${
-                      l.children ? "" : "border-b border-ink/8"
+                  <span
+                    className={`grid h-9 w-9 shrink-0 place-items-center rounded-full transition-transform duration-300 group-active:scale-90 ${
+                      MENU_ACCENTS[i % MENU_ACCENTS.length]
                     }`}
                   >
-                    <span
-                      className={`grid h-9 w-9 shrink-0 place-items-center rounded-full transition-transform duration-300 group-active:scale-90 ${
-                        MENU_ACCENTS[i % MENU_ACCENTS.length]
-                      }`}
-                    >
-                      {MENU_ICONS[l.href] ?? <Zap size={16} />}
-                    </span>
-                    {/* Samma typsnitt som hero-radens "sol och batteri i
-                        Stockholm" (Fraunces, kursiv serif). */}
-                    <span className="font-serif italic text-[26px] leading-none">
-                      {l.label}
-                    </span>
-                  </Link>
-                  {l.children && (
-                    <div className="flex flex-wrap gap-2 border-b border-ink/8 pb-4 pl-[52px]">
-                      {l.children.map((c) => (
-                        <Link
-                          key={c.href}
-                          href={c.href}
-                          onClick={() => setOpen(false)}
-                          className="rounded-full border border-ink/15 bg-cream px-3.5 py-1.5 text-[13.5px] text-ink/80 active:scale-95 transition-transform"
-                        >
-                          {c.label}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </motion.div>
-              ))}
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.08 + links.length * 0.05, duration: 0.3 }}
-              >
-                {/* Mobilmenyn -> wizarden (steg-flödet). Desktop-headern
-                    behåller /offert – jämförs i /admin/funnel + GA4. */}
-                <QuoteButton
-                  href="/offert-start"
-                  className="mt-5 w-full"
-                  innerClassName="w-full justify-center"
-                  onClick={() => setOpen(false)}
-                />
-              </motion.div>
+                    {MENU_ICONS[l.href] ?? <Zap size={16} />}
+                  </span>
+                  {/* Samma typsnitt som hero-radens kursiva accent
+                      (Fraunces, kursiv serif). */}
+                  <span className="font-serif italic text-[26px] leading-none">
+                    {l.label}
+                  </span>
+                </Link>
+                {l.children && (
+                  <div className="flex flex-wrap gap-2 border-b border-ink/8 pb-4 pl-[52px]">
+                    {l.children.map((c) => (
+                      <Link
+                        key={c.href}
+                        href={c.href}
+                        onClick={() => setOpen(false)}
+                        className="rounded-full border border-ink/15 bg-cream px-3.5 py-1.5 text-[13.5px] text-ink/80 active:scale-95 transition-transform"
+                      >
+                        {c.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+            <div
+              className={`transition-[opacity,transform] duration-300 motion-reduce:transition-none ${
+                open ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
+              }`}
+              style={{ transitionDelay: open ? `${80 + links.length * 50}ms` : "0ms" }}
+            >
+              {/* Mobilmenyn -> wizarden (steg-flödet). Desktop-headern
+                  behåller /offert – jämförs i /admin/funnel + GA4. */}
+              <QuoteButton
+                href="/offert-start"
+                className="mt-5 w-full"
+                innerClassName="w-full justify-center"
+                onClick={() => setOpen(false)}
+              />
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          </div>
+        </div>
+      </div>
     </header>
   );
 }
