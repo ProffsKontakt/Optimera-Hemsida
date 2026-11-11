@@ -14,12 +14,13 @@ export function OriginStory({ teamCount }: { teamCount: number }) {
         <div className="lg:col-span-6" data-reveal="left">
           <div className="lp-parallax-box group relative aspect-[4/3] overflow-hidden rounded-[30px] shadow-[0_40px_80px_-50px_rgba(20,22,42,0.7)]">
             <Image
-              src="/kb/bat-ekonomi.jpg"
-              alt="Hus bland björkar i skymningen med tända fönster och solpaneler på taket"
+              src="/start/borjan.jpg"
+              alt="Grått trähus bland björkar i skymningen, med tända fönster och solpaneler i två jämna rader på taket"
               fill
-              sizes="(min-width: 1024px) 46vw, 92vw"
-              quality={68}
-              className="lp-parallax object-cover"
+              // Bilden ritas bredare än rutan (beskärning plus parallax).
+              sizes="(min-width: 1024px) 58vw, 116vw"
+              quality={80}
+              className="lp-parallax object-cover object-right"
             />
           </div>
         </div>

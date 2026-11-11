@@ -31,16 +31,17 @@ export function LandingHero({ reco }: { reco: RecoStats }) {
           då blir den LCP-element och måste ritas om för varje bildruta. */}
       <div className="absolute inset-0" aria-hidden="true">
         <Image
-          src="/kb/sol-batteri-elbil-och-varmepump.jpg"
+          src="/start/hero.jpg"
           alt=""
           fill
           priority
           fetchPriority="high"
           // På en stående mobilskärm beskärs den liggande bilden hårt och
-          // förstoras, så där begärs en större fil för att hålla skärpan.
-          sizes="(max-width: 767px) 220vw, 100vw"
-          quality={70}
-          className="lp-kenburns object-cover object-[64%_center]"
+          // förstoras, så där begärs en större fil för att hålla skärpan
+          // (170vw håller mobilen under den allra största filen).
+          sizes="(max-width: 767px) 170vw, 100vw"
+          quality={82}
+          className="lp-kenburns object-cover object-[55%_30%]"
         />
         {/* En enda skuggning i neutral svart: mörk där texten står, öppen
             över huset och himlen så att bilden behåller sin värme. */}

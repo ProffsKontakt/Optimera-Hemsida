@@ -14,12 +14,12 @@ export function BookingCta({ reco }: { reco: RecoStats }) {
           className="lp-parallax-box relative isolate overflow-hidden rounded-[30px] bg-night px-7 py-14 text-white sm:px-12 md:py-20 lg:px-20 lg:py-24"
         >
           <Image
-            src="/kb/bat-trygghet.jpg"
+            src="/start/boka.jpg"
             alt=""
             fill
-            sizes="(min-width: 1480px) 1350px, 92vw"
-            quality={66}
-            className="lp-parallax -z-10 object-cover object-[72%_center] brightness-[1.35] saturate-[1.15]"
+            sizes="(min-width: 1480px) 1350px, (min-width: 640px) 92vw, 170vw"
+            quality={80}
+            className="lp-parallax -z-10 object-cover object-[90%_10%]"
           />
           <div className="absolute inset-0 -z-10 bg-gradient-to-r from-night/95 via-night/55 to-night/5" />
 

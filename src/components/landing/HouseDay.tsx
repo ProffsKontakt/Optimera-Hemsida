@@ -21,6 +21,8 @@ type DayState = {
   /** Bild för läget. Bilderna tonar över i varandra när läget byts. */
   img: string;
   alt: string;
+  /** Vilken del av bilden som ska synas när rutan beskär den (Tailwind-klass). */
+  pos: string;
   /** Ruta: namn, vad den gör just nu, och om den är aktiv (gul) eller vilar. */
   tiles: [string, string, boolean][];
   title: string;
@@ -33,8 +35,9 @@ const STATES: DayState[] = [
     big: "02:00",
     sub: "Natt",
     hour: 2,
-    img: "/kb/guide-laddbox.jpg",
-    alt: "Elbil som laddar utanför ett rött hus i skymningen",
+    img: "/start/dygn-02.jpg",
+    alt: "Elbil som laddar vid ett rött garage en höstnatt",
+    pos: "object-[88%_center]",
     tiles: [
       ["Solpaneler", "Vilar", false],
       ["Batteri", "Laddar billigt", true],
@@ -49,8 +52,9 @@ const STATES: DayState[] = [
     big: "07:00",
     sub: "Morgon",
     hour: 7,
-    img: "/kb/guide-ekonomi.jpg",
-    alt: "Gult hus i lågt morgonljus",
+    img: "/start/dygn-07.jpg",
+    alt: "Gul trävilla med solpaneler på taket i lågt morgonljus",
+    pos: "object-[64%_center]",
     tiles: [
       ["Solpaneler", "Vaknar", false],
       ["Batteri", "Driver huset", true],
@@ -65,8 +69,9 @@ const STATES: DayState[] = [
     big: "12:00",
     sub: "Dag",
     hour: 12,
-    img: "/kb/sol-produktion-och-teknik.jpg",
-    alt: "Solpaneler under en ljus himmel",
+    img: "/start/dygn-12.jpg",
+    alt: "Svarta solpaneler på ett tegeltak under blå himmel",
+    pos: "object-center",
     tiles: [
       ["Solpaneler", "Full produktion", true],
       ["Batteri", "Fylls av solen", true],
@@ -81,8 +86,9 @@ const STATES: DayState[] = [
     big: "18:00",
     sub: "Kväll",
     hour: 18,
-    img: "/kb/bat-elnat.jpg",
-    alt: "Kraftledningar mot kvällshimlen över en sjö",
+    img: "/start/dygn-18.jpg",
+    alt: "Vitt hus med solpaneler och tända fönster i skymningen",
+    pos: "object-[62%_center]",
     tiles: [
       ["Solpaneler", "Ger lite", false],
       ["Batteri", "Driver huset", true],
@@ -97,8 +103,9 @@ const STATES: DayState[] = [
     big: "24/7",
     sub: "Dygnet runt",
     hour: null,
-    img: "/kb/guide-gront-avdrag.jpg",
-    alt: "Batteri och växelriktare monterade i ett ljust garage",
+    img: "/start/dygn-247.jpg",
+    alt: "Fox ESS-batteri, en vit stapel med moduler, mot en grå vägg",
+    pos: "object-center",
     tiles: [
       ["Solpaneler", "Följs i appen", true],
       ["Batteri", "Prisstyrs", true],
@@ -200,8 +207,12 @@ export function HouseDay() {
 
         <div className="mt-8 grid gap-5 sm:mt-12 md:mt-16 md:gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-14">
           {/* Bild per läge med tid och fyra lägesrutor */}
-          <div data-reveal="left" className="lg:h-full">
-            <div className="relative aspect-square overflow-hidden rounded-[30px] bg-night-soft ring-1 ring-white/10 sm:aspect-[4/3] lg:aspect-auto lg:h-full lg:min-h-[520px]">
+          {/* Rutorna ligger ovanpå bildens nederkant där det finns plats för
+              fyra i bredd (640–1023 px och från 1280 px). På mobil och i det
+              smala tvåspaltsläget (1024–1279 px) ligger de under bilden, så
+              att de inte täcker motivet. */}
+          <div data-reveal="left" className="relative lg:flex lg:h-full lg:flex-col">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-[30px] bg-night-soft ring-1 ring-white/10 lg:aspect-auto lg:min-h-[400px] lg:flex-1 xl:min-h-[520px]">
               {STATES.map(
                 (st, i) =>
                   seen.includes(i) && (
@@ -211,9 +222,11 @@ export function HouseDay() {
                       alt={i === active ? st.alt : ""}
                       aria-hidden={i !== active}
                       fill
-                      sizes="(min-width: 1024px) 46vw, 92vw"
-                      quality={68}
-                      className={`object-cover transition-opacity duration-[900ms] ease-out motion-reduce:transition-none ${
+                      // Bilden beskärs till rutans höjd och ritas därför bredare
+                      // än rutan: storlekarna anger den ritade bredden.
+                      sizes="(min-width: 1024px) 800px, (min-width: 640px) 112vw, 140vw"
+                      quality={80}
+                      className={`object-cover ${st.pos} transition-opacity duration-[900ms] ease-out motion-reduce:transition-none ${
                         i === active ? "opacity-100" : "opacity-0"
                       }`}
                     />
@@ -239,9 +252,11 @@ export function HouseDay() {
                 </div>
               </div>
 
-              {/* Rutorna ligger kvar när läget byts. Bara texten och färgen
-                  ändras: gul ruta arbetar, ljus ruta vilar. */}
-              <ul className="absolute inset-x-3 bottom-3 grid grid-cols-2 gap-2 sm:grid-cols-4 md:inset-x-5 md:bottom-5 lg:grid-cols-2 xl:grid-cols-4">
+            </div>
+
+            {/* Rutorna ligger kvar när läget byts. Bara texten och färgen
+                ändras: gul ruta arbetar, ljus ruta vilar. */}
+            <ul className="mt-2.5 grid grid-cols-2 gap-2 sm:absolute sm:inset-x-3 sm:bottom-3 sm:mt-0 sm:grid-cols-4 md:inset-x-5 md:bottom-5 lg:static lg:mt-2.5 lg:grid-cols-2 xl:absolute xl:mt-0 xl:grid-cols-4">
                 {s.tiles.map(([k, v, on]) => (
                   <li
                     key={k}
@@ -256,7 +271,6 @@ export function HouseDay() {
                   </li>
                 ))}
               </ul>
-            </div>
           </div>
 
           {/* Tidsval, förklaring och spotprisexempel */}

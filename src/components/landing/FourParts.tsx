@@ -14,9 +14,9 @@ const PARTS = [
     body: "Glas-glas-paneler med 30 års produktgaranti, dimensionerade efter takets riktning, lutning och skugga. Typvillan landar runt 50 000 kr inkl. moms efter avdrag.",
     cta: "Om solpaneler",
     href: "/tjanster/solpaneler",
-    img: "/kb/sol-kostnad-och-lonsamhet.jpg",
-    alt: "Rött hus med svarta solpaneler på tegeltaket",
-    pos: "object-[70%_center]",
+    img: "/start/kort-sol.jpg",
+    alt: "Rött trähus med svarta solpaneler i två jämna rader på taket",
+    pos: "object-[50%_32%]",
   },
   {
     tag: "Lagrar",
@@ -24,9 +24,9 @@ const PARTS = [
     body: "Sparar solen till kvällen och köper el när den är billig. Med solceller betalar sig batteriet typiskt på 3–7 år.",
     cta: "Om batterier",
     href: "/tjanster/batterier",
-    img: "/kb/bat-grunder.jpg",
-    alt: "Vitt batteri monterat på en träpanelvägg",
-    pos: "object-[58%_center]",
+    img: "/start/kort-batteri.jpg",
+    alt: "Fox ESS-batteri, en vit stapel med moduler på justerbara fötter",
+    pos: "object-[50%_80%]",
   },
   {
     tag: "Värmer",
@@ -34,9 +34,9 @@ const PARTS = [
     body: "Berg, luft-vatten och frånluft. Rätt flöde och rätt styrning betyder mer än märket på pumpen.",
     cta: "Om värmepumpar",
     href: "/tjanster/vaermepumpar",
-    img: "/kb/guide-villaeffekten.jpg",
-    alt: "Värmepump vid en gul trävilla en höstdag",
-    pos: "object-[42%_center]",
+    img: "/start/kort-varmepump.jpg",
+    alt: "Vit luft-vatten-värmepump på betongplintar vid en gul trävilla",
+    pos: "object-[50%_40%] sm:object-[50%_50%]",
   },
   {
     tag: "Laddar",
@@ -44,9 +44,9 @@ const PARTS = [
     body: "Laddar på nattens billigaste timmar eller på ditt solöverskott, med lastbalansering som alltid ingår.",
     cta: "Om laddboxar",
     href: "/tjanster/laddboxar",
-    img: "/kb/guide-ladda-elbil-hemma.jpg",
-    alt: "Elbil som laddar framför ett rött garage",
-    pos: "object-[52%_center]",
+    img: "/start/kort-laddbox.jpg",
+    alt: "Elbil som laddar från en laddbox på en röd garagevägg",
+    pos: "object-[50%_12%]",
   },
 ];
 
@@ -71,13 +71,13 @@ export function FourParts() {
                 href={p.href}
                 className="group flex h-full flex-col overflow-hidden rounded-[30px] bg-[#FFFDF8] shadow-[0_1px_0_rgba(14,14,12,0.04)] ring-1 ring-ink/[0.06] transition duration-500 hover:-translate-y-1.5 hover:shadow-[0_28px_60px_-28px_rgba(20,22,42,0.45)]"
               >
-                <div className="relative aspect-[4/3] overflow-hidden sm:aspect-[5/6]">
+                <div className="relative aspect-square overflow-hidden sm:aspect-[5/6]">
                   <Image
                     src={p.img}
                     alt={p.alt}
                     fill
                     sizes="(min-width: 1280px) 22vw, (min-width: 640px) 45vw, 92vw"
-                    quality={68}
+                    quality={80}
                     className={`object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.07] ${p.pos}`}
                   />
                   <span className="absolute left-3.5 top-3.5 rounded-full bg-bone/90 px-3 py-1.5 font-mono text-[11.5px] uppercase tracking-[0.18em] text-ink/75 backdrop-blur">
