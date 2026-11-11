@@ -11,6 +11,7 @@ import {
   localBusinessSchema,
 } from "@/components/seo/JsonLd";
 import { RevealObserver } from "@/components/landing/RevealObserver";
+import { RevealBoot } from "@/components/landing/RevealBoot";
 import { LandingHero } from "@/components/landing/LandingHero";
 import { BrandMarquee } from "@/components/landing/BrandMarquee";
 import { HouseDay } from "@/components/landing/HouseDay";
@@ -131,6 +132,7 @@ export default async function HomePage() {
           som dessutom har tre frågor från /fragor-och-svar. */}
       <HomeFaq items={VISIBLE_FAQ} />
       <BookingCta reco={reco} />
+      <RevealBoot />
     </>
   );
 }

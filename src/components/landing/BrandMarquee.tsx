@@ -26,6 +26,7 @@ function Row({ hidden = false }: { hidden?: boolean }) {
         hidden ? "motion-reduce:hidden" : ""
       }`}
       aria-hidden={hidden || undefined}
+      aria-label={hidden ? undefined : "Märken vi installerar"}
     >
       {BRANDS.map((b) => (
         <li
@@ -41,10 +42,22 @@ function Row({ hidden = false }: { hidden?: boolean }) {
 
 export function BrandMarquee() {
   return (
-    <div
-      className="lp-marquee-wrap ticker-mask overflow-hidden border-b border-ink/10 bg-bone py-5 motion-reduce:[mask-image:none] motion-reduce:[-webkit-mask-image:none]"
-      aria-label="Märken vi installerar"
-    >
+    // En dold kryssruta pausar rullningen: ett tryck på remsan (den täcks av
+    // en osynlig <label>) eller mellanslag när rutan har fokus. Hovring
+    // pausar också, och med "minska rörelse" står remsan still. Se
+    // globals.css (.lp-marquee-wrap).
+    <div className="lp-marquee-wrap ticker-mask relative overflow-hidden border-b border-ink/10 bg-bone py-5 motion-reduce:[mask-image:none] motion-reduce:[-webkit-mask-image:none]">
+      <input
+        id="lp-marquee-toggle"
+        type="checkbox"
+        className="lp-marquee-toggle sr-only motion-reduce:hidden"
+        aria-label="Pausa den rullande listan med märken"
+      />
+      <label
+        htmlFor="lp-marquee-toggle"
+        aria-hidden="true"
+        className="absolute inset-0 z-10 cursor-pointer motion-reduce:hidden"
+      />
       <div className="lp-marquee flex w-max motion-reduce:w-full">
         <Row />
         <Row hidden />

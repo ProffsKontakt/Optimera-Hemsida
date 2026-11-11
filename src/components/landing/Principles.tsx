@@ -26,7 +26,7 @@ const ITEMS = [
 
 export function Principles() {
   return (
-    <section className="lp-night bg-night py-20 text-white md:py-28">
+    <section className="lp-night bg-night py-14 text-white sm:py-20 md:py-28">
       <div className="container-edge">
         <SectionHead
           tone="dark"

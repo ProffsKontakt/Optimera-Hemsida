@@ -66,7 +66,7 @@ export function NextStep({
         data-reveal="line"
       />
       <div className="mt-7 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6" data-reveal style={delay(150)}>
-        <Link href="/offert" className={dark ? "lp-btn-sun" : "lp-btn-ink"}>
+        <Link href="/offert" className={`shrink-0 self-start sm:self-auto ${dark ? "lp-btn-sun" : "lp-btn-ink"}`}>
           Boka kostnadsfritt hembesök <ArrowRight size={17} aria-hidden="true" />
         </Link>
         <p className={`max-w-[34rem] text-[15.5px] leading-relaxed ${dark ? "text-white/70" : "text-ink/65"}`}>

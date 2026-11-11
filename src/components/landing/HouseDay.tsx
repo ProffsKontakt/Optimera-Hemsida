@@ -81,8 +81,8 @@ const STATES: DayState[] = [
     big: "18:00",
     sub: "Kväll",
     hour: 18,
-    img: "/kb/sol-elnat-forsaljning-och-skatt.jpg",
-    alt: "Hus med solpaneler på ett fält i kvällsljus",
+    img: "/kb/bat-elnat.jpg",
+    alt: "Kraftledningar mot kvällshimlen över en sjö",
     tiles: [
       ["Solpaneler", "Ger lite", false],
       ["Batteri", "Driver huset", true],
@@ -124,6 +124,9 @@ export function HouseDay() {
   const [active, setActive] = useState(2);
   const [auto, setAuto] = useState(true);
   const [inView, setInView] = useState(false);
+  // Pekaren vilar över sektionen: växlingen (och förloppslinjen) pausas.
+  const [hover, setHover] = useState(false);
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
   // Bilder som hunnit behövas. Startbilden laddas direkt; övriga monteras
   // när deras läge visas (och nästa läge i förväg), så att sektionen inte
   // hämtar fem bilder på en gång.
@@ -147,19 +150,41 @@ export function HouseDay() {
     return () => io.disconnect();
   }, []);
 
-  useEffect(() => {
-    if (!auto || !inView) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const id = window.setInterval(() => {
-      if (!document.hidden) setActive((i) => (i + 1) % STATES.length);
-    }, STEP_MS);
-    return () => window.clearInterval(id);
-  }, [auto, inView]);
+  // Växlingen drivs av förloppslinjens CSS-animation (onAnimationEnd längre
+  // ner), inte av en egen timer. Då kan linjen och växlingen aldrig gå i
+  // otakt, och allt som pausar linjen (pekaren över sektionen, "minska
+  // rörelse") pausar också växlingen.
+  const next = () => setActive((i) => (i + 1) % STATES.length);
+
+  /** Piltangenter, Home och End flyttar mellan tiderna, som i en flikrad. */
+  const onTabKey = (e: React.KeyboardEvent) => {
+    const n = STATES.length;
+    const to =
+      e.key === "ArrowRight"
+        ? (active + 1) % n
+        : e.key === "ArrowLeft"
+          ? (active - 1 + n) % n
+          : e.key === "Home"
+            ? 0
+            : e.key === "End"
+              ? n - 1
+              : -1;
+    if (to < 0) return;
+    e.preventDefault();
+    setActive(to);
+    setAuto(false);
+    tabRefs.current[to]?.focus();
+  };
 
   const s = STATES[active];
 
   return (
-    <section ref={ref} className="lp-night bg-night py-20 text-white md:py-28">
+    <section
+      ref={ref}
+      className="lp-night bg-night py-14 text-white sm:py-20 md:py-28"
+      onPointerEnter={(e) => e.pointerType === "mouse" && setHover(true)}
+      onPointerLeave={() => setHover(false)}
+    >
       <div className="container-edge">
         <SectionHead
           tone="dark"
@@ -216,7 +241,7 @@ export function HouseDay() {
 
               {/* Rutorna ligger kvar när läget byts. Bara texten och färgen
                   ändras: gul ruta arbetar, ljus ruta vilar. */}
-              <ul className="absolute inset-x-3 bottom-3 grid grid-cols-2 gap-2 sm:grid-cols-4 md:inset-x-5 md:bottom-5">
+              <ul className="absolute inset-x-3 bottom-3 grid grid-cols-2 gap-2 sm:grid-cols-4 md:inset-x-5 md:bottom-5 lg:grid-cols-2 xl:grid-cols-4">
                 {s.tiles.map(([k, v, on]) => (
                   <li
                     key={k}
@@ -236,7 +261,14 @@ export function HouseDay() {
 
           {/* Tidsval, förklaring och spotprisexempel */}
           <div data-reveal="right" style={delay(100)} className="flex flex-col">
-            <div role="tablist" aria-label="Tid på dygnet" className="relative grid grid-cols-5 gap-2">
+            {/* Tangentbordsfokus i flikraden stoppar den automatiska växlingen. */}
+            <div
+              role="tablist"
+              aria-label="Tid på dygnet"
+              className="lp-dygn-tabs relative grid grid-cols-5 gap-2"
+              onKeyDown={onTabKey}
+              onFocus={() => setAuto(false)}
+            >
               {/* Gul markering som glider till vald tid. */}
               <span
                 aria-hidden="true"
@@ -250,7 +282,13 @@ export function HouseDay() {
                     key={st.tab}
                     type="button"
                     role="tab"
+                    id={`dygn-flik-${i}`}
+                    aria-controls="dygn-panel"
                     aria-selected={on}
+                    tabIndex={on ? 0 : -1}
+                    ref={(el) => {
+                      tabRefs.current[i] = el;
+                    }}
                     onClick={() => {
                       setActive(i);
                       setAuto(false);
@@ -268,12 +306,15 @@ export function HouseDay() {
             </div>
 
             {/* Förloppslinje: fylls medan sektionen växlar själv. */}
-            <div className="mt-4 h-[5px] overflow-hidden rounded-full bg-white/10 md:mt-6">
+            <div className="lp-dygn-tabs mt-4 h-[5px] overflow-hidden rounded-full bg-white/10 md:mt-6">
               {auto && inView ? (
                 <div
                   key={`p-${active}`}
-                  className="lp-progress h-full rounded-full bg-gradient-to-r from-indigo to-sun"
+                  className={`lp-progress h-full rounded-full bg-gradient-to-r from-indigo to-sun ${
+                    hover ? "lp-progress-paused" : ""
+                  }`}
                   style={{ "--dur": `${STEP_MS}ms` } as React.CSSProperties}
+                  onAnimationEnd={next}
                 />
               ) : (
                 <div className="h-full rounded-full bg-gradient-to-r from-indigo to-sun" />
@@ -282,19 +323,44 @@ export function HouseDay() {
 
             {/* Alla fem lägen ligger i samma ruta, så att höjden styrs av den
                 längsta texten och sidan inte hoppar när läget byts. */}
-            <div className="mt-5 grid md:mt-8" aria-live={auto ? "off" : "polite"}>
+            <div
+              role="tabpanel"
+              id="dygn-panel"
+              aria-labelledby={`dygn-flik-${active}`}
+              className="lp-dygn-panels mt-5 grid md:mt-8"
+              aria-live={auto ? "off" : "polite"}
+            >
               {STATES.map((st, i) => (
                 <div
                   key={st.tab}
                   aria-hidden={i !== active}
-                  className={`col-start-1 row-start-1 transition-[opacity,transform] duration-500 ease-out motion-reduce:transition-none ${
-                    i === active ? "opacity-100" : "pointer-events-none translate-y-2 opacity-0"
+                  // Den gamla texten tonar ut fort och den nya väntar in det,
+                  // så att två texter aldrig syns ovanpå varandra.
+                  className={`lp-dygn-panel col-start-1 row-start-1 transition-[opacity,transform] ease-out motion-reduce:transition-none ${
+                    i === active
+                      ? "opacity-100 delay-150 duration-500"
+                      : "pointer-events-none translate-y-2 opacity-0 duration-150"
                   }`}
                 >
+                  {/* Syns bara utan JavaScript, då alla lägen visas under
+                      varandra (se globals.css, .lp-dygn-nojs). */}
+                  <div className="lp-dygn-nojs mb-2 hidden font-mono text-[12px] uppercase tracking-[0.16em] text-sun">
+                    {st.hour === null ? st.sub : `Klockan ${st.tab}`}
+                  </div>
                   <h3 className="font-display text-[1.75rem] font-medium leading-tight tracking-[-0.02em] text-white">
                     {st.title}
                   </h3>
                   <p className="mt-3 text-[17px] leading-relaxed text-white/75">{st.body}</p>
+                  {/* Lägesrutornas text finns här för alla fem lägen, så att
+                      den står i sidans HTML även för de lägen som inte visas
+                      i bilden just nu. */}
+                  <ul className="lp-dygn-nojs mt-3 hidden text-[15px] leading-relaxed text-white/70">
+                    {st.tiles.map(([k, v]) => (
+                      <li key={k}>
+                        {k}: {v}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               ))}
             </div>

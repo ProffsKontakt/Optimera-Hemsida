@@ -10,15 +10,25 @@ import { useEffect } from "react";
  */
 export function RevealObserver() {
   useEffect(() => {
-    // Talar om för CSS:en att observatören är igång, så att reservvisningen
-    // (som annars tänder allt efter några sekunder) inte behövs.
-    document.documentElement.classList.add("reveal-on");
+    const root = document.documentElement;
     const els = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]:not(.is-in)"));
-    if (!els.length) return;
-    if (typeof IntersectionObserver === "undefined") {
+    // Kommer skripten sent kan reservvisningen (som tänder allt efter några
+    // sekunder) redan ha visat innehållet. Låt det då stå kvar i stället
+    // för att släcka det och tona in det en gång till. Avläsningen måste
+    // göras innan .reveal-on sätts.
+    const probe = root.classList.contains("reveal-on")
+      ? undefined
+      : els.find((el) => el.dataset.reveal !== "line");
+    const late = probe ? getComputedStyle(probe).opacity !== "0" : false;
+    if (late || typeof IntersectionObserver === "undefined") {
       els.forEach((el) => el.classList.add("is-in"));
+      root.classList.add("reveal-on");
       return;
     }
+    // Talar om för CSS:en att observatören är igång, så att reservvisningen
+    // inte behövs.
+    root.classList.add("reveal-on");
+    if (!els.length) return;
     const io = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {

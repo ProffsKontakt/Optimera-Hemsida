@@ -11,23 +11,39 @@ const MAX_REVIEWS = 9;
 /** Längre omdömen än så här kortas till nio rader med en "Läs hela"-knapp. */
 const CLAMP_FROM = 430;
 
+/** På mobil är korten smalare, så där kortas omdömen redan från den här längden. */
+const CLAMP_FROM_MOBILE = 250;
+
+type Placed = { r: Review; order: number };
+
 /**
- * Lägger de längsta omdömena en bit in i spalterna i stället för överst, så
- * att väggen får en jämnare rytm. Urvalet och den kurerade ordningen från
- * admin är desamma; bara de två längsta flyttas.
+ * Fördelar omdömena på tre spalter i den ordning de ligger i
+ * /admin/recensioner: nästa omdöme hamnar i den spalt som är kortast. Med
+ * fasta spalter (i stället för CSS-spalter som balanseras om) växer bara den
+ * egna spalten när ett omdöme fälls ut, och inga kort byter plats.
+ *
+ * Långa omdömen läggs i de två första spalterna. På surfplatta ligger den
+ * tredje spalten under de andra, uppdelad i två, och där ska inget kort
+ * kunna växa.
  */
-function arrange(list: Review[]): Review[] {
-  if (list.length < 5) return list;
-  const [longest, second] = [...list].sort((a, b) => b.text.length - a.text.length);
-  // Ordningen från /admin/recensioner behålls för alla utom de två längsta.
-  const out = list.filter((r) => r !== longest && r !== second);
-  out.splice(1, 0, longest);
-  out.splice(Math.min(5, out.length), 0, second);
-  return out;
+function toColumns(list: Review[]): Placed[][] {
+  const cols: Placed[][] = [[], [], []];
+  const height = [0, 0, 0];
+  list.forEach((r, order) => {
+    const long = r.text.length > CLAMP_FROM;
+    // Ungefärlig korthöjd: synlig text plus stjärnor, namnrad och luft.
+    const weight = Math.min(r.text.length, 330) + 185;
+    const candidates = long ? [0, 1] : [0, 1, 2];
+    const c = candidates.reduce((best, k) => (height[k] < height[best] ? k : best), candidates[0]);
+    cols[c].push({ r, order });
+    height[c] += weight;
+  });
+  return cols;
 }
 
 export function ReviewWall({ reviews, reco }: { reviews: Review[]; reco: RecoStats }) {
-  const shown = arrange(reviews.slice(0, MAX_REVIEWS));
+  const shown = reviews.slice(0, MAX_REVIEWS);
+  const columns = toColumns(shown);
   return (
     <section className="bg-bone py-14 sm:py-20 md:py-28">
       <div className="container-edge">
@@ -75,44 +91,89 @@ export function ReviewWall({ reviews, reco }: { reviews: Review[]; reco: RecoSta
           </span>
           <span>Svep →</span>
         </p>
-        <ul className="lp-snap mt-3 gap-3 [column-fill:_balance] max-sm:-mx-6 max-sm:flex max-sm:snap-x max-sm:snap-mandatory max-sm:items-start max-sm:overflow-x-auto max-sm:px-6 max-sm:pb-2 sm:mt-12 sm:columns-2 sm:gap-5 md:mt-14 lg:columns-3">
-          {shown.map((r) => {
-            const long = r.text.length > CLAMP_FROM;
-            return (
-            <li key={r.id} data-reveal data-stagger className="break-inside-avoid max-sm:w-[84%] max-sm:shrink-0 max-sm:snap-center sm:mb-5">
-              {/* Hover-lyftet ligger på ett inre element: skroll-animationen
-                  äger transform på yttre elementet. */}
-              <div className="relative rounded-[20px] bg-[#FFFDF8] p-6 ring-1 ring-ink/[0.07] transition duration-500 hover:-translate-y-1 hover:shadow-[0_26px_50px_-34px_rgba(20,22,42,0.55)]">
-              {r.rating ? <Stars rating={r.rating} className="text-[19px] text-amber-deep" /> : null}
-              {/* Hela omdömet finns alltid i sidan. Kryssrutan (osynlig men
-                  nåbar med tangentbord) tar bort radbegränsningen. Kortet är
-                  "relative" så att den dolda rutan stannar inne i kortet och
-                  inte gör sidan bredare när korten ligger i en svepbar rad. */}
-              {long && <input type="checkbox" id={`omdome-${r.id}`} className="peer sr-only" />}
-              <blockquote
-                className={`mt-3.5 text-[16px] leading-[1.6] text-ink/85 ${
-                  long ? "line-clamp-[9] peer-checked:line-clamp-none" : ""
-                }`}
-              >
-                ”{r.text}”
-              </blockquote>
-              {long && (
-                <label
-                  htmlFor={`omdome-${r.id}`}
-                  className="-mb-2 mt-1 inline-block cursor-pointer py-2 text-[14.5px] font-medium text-indigo underline-offset-4 hover:underline peer-checked:hidden peer-focus-visible:rounded peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-4 peer-focus-visible:outline-indigo"
-                >
-                  Läs hela omdömet
-                </label>
-              )}
-              <footer className="mt-5 flex items-center justify-between gap-3 rounded-[14px] px-4 py-3 font-mono text-[11px] uppercase tracking-[0.16em] text-ink/60 ring-1 ring-inset ring-ink/10">
-                <span>{r.author}</span>
-                <span className="text-right">{r.place}</span>
-              </footer>
-              </div>
-            </li>
-            );
-          })}
-        </ul>
+        <div className="lp-snap mt-3 gap-3 max-sm:-mx-6 max-sm:flex max-sm:snap-x max-sm:snap-mandatory max-sm:overflow-x-auto max-sm:px-6 max-sm:pb-2 sm:mt-12 sm:grid sm:grid-cols-2 sm:items-start sm:gap-5 md:mt-14 lg:grid-cols-3">
+          {columns.map((col, ci) => (
+            // Mobil: listorna "löses upp" så att alla kort ligger i samma
+            // svepbara rad, i ordningen från admin (order). Från 640 px är
+            // varje lista en spalt; den tredje ligger under de andra på
+            // surfplatta och bredvid dem från 1024 px.
+            <ul
+              key={ci}
+              className={`max-sm:contents ${
+                ci === 2 ? "sm:col-span-2 sm:columns-2 sm:gap-5 lg:col-span-1 lg:columns-1" : ""
+              }`}
+            >
+              {col.map(({ r, order }) => {
+                const long = r.text.length > CLAMP_FROM;
+                const longMobile = !long && r.text.length > CLAMP_FROM_MOBILE;
+                const clamp = long || longMobile;
+                // Omdömen som bara kortas på mobil har ingen knapp från 640 px.
+                const onlyMobile = longMobile ? "sm:!hidden" : "";
+                return (
+                  <li
+                    key={r.id}
+                    data-reveal
+                    data-stagger
+                    style={{ order }}
+                    className="break-inside-avoid max-sm:w-[84%] max-sm:shrink-0 max-sm:snap-center sm:mb-5 sm:last:mb-0"
+                  >
+                    {/* Hover-lyftet ligger på ett inre element: skroll-animationen
+                        äger transform på yttre elementet. Kortet är "relative" så
+                        att den dolda kryssrutan stannar inne i kortet och inte
+                        gör sidan bredare när korten ligger i en svepbar rad. */}
+                    <div className="relative rounded-[20px] bg-[#FFFDF8] p-6 ring-1 ring-ink/[0.07] transition duration-500 hover:-translate-y-1 hover:shadow-[0_26px_50px_-34px_rgba(20,22,42,0.55)]">
+                      {r.rating ? <Stars rating={r.rating} className="text-[19px] text-amber-deep" /> : null}
+                      {/* Hela omdömet finns alltid i sidan. Kryssrutan (osynlig men
+                          nåbar med tangentbord) tar bort radbegränsningen. */}
+                      {clamp && (
+                        <input
+                          type="checkbox"
+                          id={`omdome-${r.id}`}
+                          className={`peer sr-only ${onlyMobile}`}
+                          aria-label={`Visa hela omdömet från ${r.author}`}
+                        />
+                      )}
+                      <blockquote
+                        className={`mt-3.5 text-[16px] leading-[1.6] text-ink/85 ${
+                          long
+                            ? "line-clamp-[9] peer-checked:line-clamp-none"
+                            : longMobile
+                              ? "max-sm:line-clamp-[9] max-sm:peer-checked:line-clamp-none"
+                              : ""
+                        }`}
+                      >
+                        ”{r.text}”
+                      </blockquote>
+                      {clamp && (
+                        <>
+                          <label
+                            htmlFor={`omdome-${r.id}`}
+                            className={`-mb-2 mt-1 cursor-pointer py-2 text-[14.5px] font-medium text-indigo underline-offset-4 hover:underline peer-focus-visible:rounded peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-4 peer-focus-visible:outline-indigo inline-block peer-checked:hidden ${onlyMobile}`}
+                          >
+                            Läs hela omdömet
+                          </label>
+                          <label
+                            htmlFor={`omdome-${r.id}`}
+                            aria-hidden="true"
+                            className={`-mb-2 mt-1 cursor-pointer py-2 text-[14.5px] font-medium text-indigo underline-offset-4 hover:underline peer-focus-visible:rounded peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-4 peer-focus-visible:outline-indigo hidden peer-checked:inline-block ${onlyMobile}`}
+                          >
+                            Visa mindre
+                          </label>
+                        </>
+                      )}
+                      {/* Mobil: fyller ut kortet så att namnraden hamnar i nederkant. */}
+                      <div className="max-sm:grow" aria-hidden="true" />
+                      <footer className="mt-5 flex items-center justify-between gap-3 rounded-[14px] px-4 py-3 font-mono text-[11px] uppercase tracking-[0.16em] text-ink/60 ring-1 ring-inset ring-ink/10 max-sm:flex-col max-sm:items-start max-sm:gap-0.5">
+                        <span className="whitespace-nowrap">{r.author}</span>
+                        <span className="text-right max-sm:text-left">{r.place}</span>
+                      </footer>
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+          ))}
+        </div>
 
         <p className="mt-4 text-[15px] text-ink/60 sm:mt-6" data-reveal>
           <a

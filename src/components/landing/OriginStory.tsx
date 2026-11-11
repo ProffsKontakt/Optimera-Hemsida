@@ -9,7 +9,7 @@ import { delay } from "./shared";
  */
 export function OriginStory({ teamCount }: { teamCount: number }) {
   return (
-    <section className="bg-[linear-gradient(to_bottom,#F4F1EA_0%,#F4F1EA_34%,#EAE4D6_34%,#EAE4D6_100%)] pb-14 pt-4 sm:pb-20 md:pb-28">
+    <section className="bg-[linear-gradient(to_bottom,#F4F1EA_36vw,#EAE4D6_36vw)] lg:bg-[linear-gradient(to_bottom,#F4F1EA_0%,#F4F1EA_34%,#EAE4D6_34%,#EAE4D6_100%)] pb-14 pt-4 sm:pb-20 md:pb-28">
       <div className="container-edge grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-14">
         <div className="lg:col-span-6" data-reveal="left">
           <div className="lp-parallax-box group relative aspect-[4/3] overflow-hidden rounded-[30px] shadow-[0_40px_80px_-50px_rgba(20,22,42,0.7)]">

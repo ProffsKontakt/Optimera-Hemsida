@@ -53,8 +53,8 @@ export function LandingHero({ reco }: { reco: RecoStats }) {
             <h1>
               {/* Sökordsraden ligger i h1 som en liten etikett ovanför rubriken. */}
               <span className="lp-eyebrow lp-rise text-white/85" style={delay(80)}>
-                Solna · Solceller, batteri, värmepump, laddbox
-              </span>
+                Solna · Solceller, batteri, värmepump och laddbox i Stockholm
+              </span>{" "}
               {/* Från 640 px är raderna egna block som glider upp bakom sin
                   kant. På smalare skärm flödar texten fritt och stiger som
                   resten av hjälten. */}
@@ -71,7 +71,7 @@ export function LandingHero({ reco }: { reco: RecoStats }) {
             </h1>
             <p className="lp-lede lp-rise mt-4 max-w-[46rem] text-white/85 sm:mt-6" style={delay(280)}>
               Vi mäter din förbrukning först och dimensionerar sedan sol, batteri och laddbox efter hur
-              ni bor. Fast pris, grönt avdrag direkt på fakturan och en fast kontaktperson från hembesök
+              ni bor. Fast pris, grönt avdrag direkt på fakturan och samma kontaktperson från hembesök
               till uppföljning.
             </p>
             {/* Mobil: betyget står före knapparna, så att det syns på första

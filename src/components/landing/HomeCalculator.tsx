@@ -50,6 +50,7 @@ function Range({
   value,
   onChange,
   label,
+  valueText,
 }: {
   min: number;
   max: number;
@@ -57,6 +58,8 @@ function Range({
   value: number;
   onChange: (v: number) => void;
   label: string;
+  /** Värdet i klartext för skärmläsare, till exempel "23 kWh". */
+  valueText: string;
 }) {
   const fill = ((value - min) / (max - min)) * 100;
   return (
@@ -64,6 +67,7 @@ function Range({
       type="range"
       className="lp-range"
       aria-label={label}
+      aria-valuetext={valueText}
       min={min}
       max={max}
       step={step}
@@ -213,6 +217,7 @@ export default function HomeCalculator() {
           <Field label="Dina solceller" value={`${String(input.existingSolarKWp).replace(".", ",")} kW`}>
             <Range
               label="Befintliga solceller i kilowatt"
+              valueText={`${String(input.existingSolarKWp).replace(".", ",")} kilowatt`}
               min={3}
               max={20}
               step={0.5}
@@ -228,6 +233,7 @@ export default function HomeCalculator() {
             >
               <Range
                 label="Antal solpaneler"
+                valueText={`${input.panelCount} paneler`}
                 min={6}
                 max={30}
                 step={1}
@@ -242,6 +248,7 @@ export default function HomeCalculator() {
           <Field label="Batteri" value={`${kWhLabel(input.batteryCapacityKWh)} kWh`}>
             <Range
               label="Batteriets storlek"
+              valueText={`${kWhLabel(input.batteryCapacityKWh)} kilowattimmar`}
               min={0}
               max={BATTERY.capacities.length - 1}
               step={1}
@@ -254,6 +261,7 @@ export default function HomeCalculator() {
         <Field label="Elförbrukning per år" value={`${formatNumber(input.annualConsumptionKWh)} kWh`}>
           <Range
             label="Elförbrukning per år i kilowattimmar"
+            valueText={`${formatNumber(input.annualConsumptionKWh)} kilowattimmar per år`}
             min={5000}
             max={35000}
             step={500}
@@ -286,12 +294,12 @@ export default function HomeCalculator() {
         )}
 
         <div className="mt-7 text-[14px] text-white/60">Uppskattad återbetalning</div>
-        <div
-          key={s.range}
-          className="lp-pop mt-1 font-display text-[clamp(2.6rem,6vw,4.4rem)] font-medium leading-none tracking-[-0.04em] text-sun"
-          aria-live="polite"
-        >
-          {s.range}
+        {/* Live-regionen ligger kvar i sidan; bara innehållet byts, annars
+            läses det nya värdet inte upp. */}
+        <div className="mt-1 font-display text-[clamp(2.6rem,6vw,4.4rem)] font-medium leading-none tracking-[-0.04em] text-sun" aria-live="polite" aria-atomic="true">
+          <span key={s.range} className="lp-pop inline-block">
+            {s.range}
+          </span>
         </div>
 
         {s.span && <YearScale min={s.span.min} max={s.span.max} band={s.band} />}

@@ -252,7 +252,7 @@ blockquote {
   }
   .lp-eyebrow::before {
     content: "";
-    @apply block h-[9px] w-[9px] rounded-full bg-sun;
+    @apply block h-[9px] w-[9px] shrink-0 rounded-full bg-sun;
     box-shadow: 0 0 0 3px rgba(255, 221, 108, 0.28);
   }
   .lp-lede {
@@ -441,6 +441,44 @@ blockquote {
 .lp-snap::-webkit-scrollbar {
   display: none;
 }
+/* Svepraden: alla kort lika höga, med namnraden i nederkant. När ett omdöme
+   fälls ut får korten sin egen höjd, så att bara det utfällda växer. */
+@media (max-width: 639px) {
+  .lp-snap {
+    align-items: stretch;
+  }
+  .lp-snap:has(input:checked) {
+    align-items: flex-start;
+  }
+  .lp-snap li > div {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .lp-snap li > div > label {
+    align-self: flex-start;
+  }
+}
+/* "Husets dygn" utan JavaScript (ingen .anim på <html>): tidsknapparna gör
+   inget då, så de döljs och alla fem lägen visas under varandra med sin
+   tid som etikett. */
+html:not(.anim) .lp-dygn-tabs {
+  display: none;
+}
+html:not(.anim) .lp-dygn-panels {
+  display: block;
+}
+html:not(.anim) .lp-dygn-panel {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+html:not(.anim) .lp-dygn-panel + .lp-dygn-panel {
+  margin-top: 1.75rem;
+}
+html:not(.anim) .lp-dygn-nojs {
+  display: block;
+}
 /* Mörka sektioner får lite djup: ett svagt blått sken uppe till höger och
    ett svagt gult nere till vänster. */
 .lp-night {
@@ -492,12 +530,20 @@ blockquote {
 .lp-marquee {
   animation: lp-marquee 46s linear infinite;
 }
-.lp-marquee-wrap:hover .lp-marquee {
+.lp-marquee-wrap:hover .lp-marquee,
+.lp-marquee-wrap:has(.lp-marquee-toggle:checked) .lp-marquee {
   animation-play-state: paused;
+}
+.lp-marquee-wrap:has(.lp-marquee-toggle:focus-visible) {
+  outline: 2px solid #3648c3;
+  outline-offset: -2px;
 }
 .lp-progress {
   transform-origin: left center;
   animation: lp-progress var(--dur, 5s) linear both;
+}
+.lp-progress-paused {
+  animation-play-state: paused;
 }
 .lp-pulse-dot {
   animation: lp-pulse-dot 2.4s ease-out infinite;
@@ -548,6 +594,22 @@ blockquote {
     .anim [data-reveal="scale"] {
       transform: scale(0.98);
     }
+    /* Korten i svepraden tonas inte in ett och ett: då ser raden tom ut
+       medan man sveper. */
+    .anim .lp-snap [data-reveal] {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+    /* Tidslinjen i "Sex steg" ritas neråt när steget kommer i bild. */
+    .anim [data-reveal] .lp-step-rail {
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) 0.15s;
+    }
+    .anim [data-reveal].is-in .lp-step-rail {
+      transform: none;
+    }
   }
   /* På smala skärmar ligger kolumnerna staplade: då glider allt in
      underifrån i stället för från sidan. */
@@ -557,7 +619,8 @@ blockquote {
       transform: translate3d(0, var(--rise, 30px), 0);
     }
   }
-  .anim [data-reveal].is-in {
+  .anim [data-reveal].is-in,
+  .anim [data-reveal]:focus-within {
     opacity: 1;
     transform: none;
     animation: none;

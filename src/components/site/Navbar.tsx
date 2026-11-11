@@ -83,15 +83,23 @@ export function Navbar() {
   // lämnats byter menyn till ljus bakgrund och mörk text, som på övriga sidor.
   const pathname = usePathname();
   const [pastHero, setPastHero] = useState(false);
+  // Sant när komponenten körts i webbläsaren. Fram till dess (och helt utan
+  // JavaScript) ligger startsidans meny inte fast: den är ljus text utan
+  // bakgrund, gjord för att stå över hjältebilden, och ska då följa med
+  // hjälten upp ur bild i stället för att bli oläslig över ljust innehåll.
+  const [mounted, setMounted] = useState(false);
   const onHero = pathname === "/" && !pastHero && !open;
 
   useEffect(() => {
     const hero = document.querySelector("[data-hero]");
+    setMounted(true);
     if (!hero || typeof IntersectionObserver === "undefined") {
       setPastHero(true);
       return;
     }
-    setPastHero(false);
+    // Läget läses av direkt, så att menyn får rätt färg i samma rendering
+    // som den börjar ligga fast, även om besökaren redan skrollat förbi.
+    setPastHero(hero.getBoundingClientRect().bottom <= 80);
     const io = new IntersectionObserver(([entry]) => setPastHero(!entry.isIntersecting), {
       rootMargin: "-80px 0px 0px 0px",
     });
@@ -127,7 +135,8 @@ export function Navbar() {
   return (
     <header
       className={[
-        "fixed inset-x-0 top-0 z-50 transition-all duration-300",
+        pathname === "/" && !mounted ? "absolute" : "fixed",
+        "inset-x-0 top-0 z-50 transition-all duration-300",
         onHero
           ? scrolled
             ? "bg-night/55 backdrop-blur-xl border-b border-white/10"

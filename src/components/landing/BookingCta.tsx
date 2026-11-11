@@ -35,7 +35,7 @@ export function BookingCta({ reco }: { reco: RecoStats }) {
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link href="/offert" className="lp-btn-sun">
-                Begär hembesök <ArrowRight size={17} aria-hidden="true" />
+                Boka hembesök <ArrowRight size={17} aria-hidden="true" />
               </Link>
               <a href="tel:+46763053732" className="lp-btn-glass">
                 Ring 076 305 37 32
