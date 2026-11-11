@@ -26,7 +26,7 @@ const MANIFEST = "data/media-manifest.json";
 const MAX_BYTES = 20 * 1024 * 1024; // 20 MB in – komprimeras ändå ned direkt
 
 /** WebP-kvalitet. 82 = visuellt identisk med originalet i praktiken. */
-const WEBP_QUALITY = 82;
+const WEBP_QUALITY = 90;
 
 /**
  * Ger admin GitHubs egen förklaring ("token har gått ut → förnya

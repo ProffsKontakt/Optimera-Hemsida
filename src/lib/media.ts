@@ -42,7 +42,7 @@ export type MediaSlot = {
 };
 
 /** Fallback-bredd för slots utan egen maxWidth. */
-export const DEFAULT_MAX_WIDTH = 1600;
+export const DEFAULT_MAX_WIDTH = 2560;
 
 /**
  * Antal foto-platser i installationsgalleriet på om-oss. Galleriet visar
@@ -88,7 +88,7 @@ export function listMediaSlots(): MediaSlot[] {
       aspect: "4 / 5",
       hint: "Stående porträtt. Visas annars som färggradient.",
       // Kortet är ~460px brett på desktop, ~190px på mobil -> 900 = 2x.
-      maxWidth: 900,
+      maxWidth: 1400,
     })),
     {
       id: "om-oss:grundarfilm",
@@ -113,7 +113,7 @@ export function listMediaSlots(): MediaSlot[] {
       aspect: "4 / 5",
       hint: "Riktigt foto från en färdig installation (elskåp, batteri, tak). Alt-texten visas som bildtext – t.ex. \"Easyway 23 kWh inomhus, Bromma\". Tomma platser syns inte på sajten.",
       // Rutorna är ~300px breda på desktop, ~170px på mobil -> 900 räcker för 2x.
-      maxWidth: 900,
+      maxWidth: 1400,
     })),
     ...GUIDES.map((g) => ({
       id: `guide:${g.slug}`,

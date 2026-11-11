@@ -32,6 +32,7 @@ export function KbHeroImage({
         fill
         priority
         sizes="(min-width: 800px) 768px, 100vw"
+        quality={85}
         className="object-cover"
       />
       {label && (
@@ -55,6 +56,7 @@ export function KbHubImage({ image, tone }: { image: KbImage; tone: KbTone }) {
         fill
         priority
         sizes="(min-width: 1024px) 40vw, 0px"
+        quality={85}
         className="object-cover"
       />
       <span aria-hidden className={`absolute inset-x-0 top-0 h-1.5 ${KB_TONES[tone].bar}`} />
@@ -93,6 +95,7 @@ export function KbTiles({
               alt=""
               fill
               sizes="(min-width: 1024px) 30vw, 50vw"
+              quality={80}
               className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
             />
             <span aria-hidden className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/45 to-ink/5" />

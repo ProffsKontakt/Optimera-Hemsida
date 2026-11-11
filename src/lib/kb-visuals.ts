@@ -10,9 +10,10 @@
  * och som bildband överst på varje sida i kategorin – så att även nya sidor
  * som rutinen lägger till får en bild utan att något behöver genereras.
  *
- * Fotona är genererade (Higgsfield) enligt samma bildregler som nyheterna:
- * stående paneler med tunna mellanrum och blank glasyta, inga personer,
- * ingen text, inga logotyper. De ligger i public/kb/ och kan bytas mot
+ * Fotona är genererade (nov 2026) efter ägarens bildregler: verkliga motiv,
+ * panelfält i raka rader med lika stora stående moduler (cirka 1,13 x 1,76 m)
+ * och fritt tak runt om, inga personer, ingen text, inga logotyper.
+ * Batteribilden är ägarens egen bild av Fox ESS-batteriet. De ligger i public/kb/ och kan bytas mot
  * riktiga installationsfoton i admin → Media ("Kunskapsbank – bilder",
  * bildplats kb:<namn>) utan kodändring.
  *
@@ -74,11 +75,11 @@ export const KB_DB_TONE = {
 export const KB_IMAGES = {
   "sol-kostnad-och-lonsamhet": {
     label: "Solcellsfrågor · Kostnad och lönsamhet",
-    alt: "Rött trähus med en rad stående solpaneler på tegeltaket en solig sensommardag",
+    alt: "Grått trähus bland björkar i skymningen, med solpaneler i två jämna rader på taket",
   },
   "sol-produktion-och-teknik": {
     label: "Solcellsfrågor · Produktion och teknik",
-    alt: "Närbild på blanka solpaneler som speglar vita moln och blå himmel",
+    alt: "Fyra svarta solpaneler sida vid sida på ett tegeltak under blå himmel",
   },
   "guide-batterier-3d": {
     label: "Guider",
@@ -86,43 +87,43 @@ export const KB_IMAGES = {
   },
   "sol-planering-tak-och-bygglov": {
     label: "Solcellsfrågor · Planering, tak och bygglov",
-    alt: "Villatak med tre stående solpaneler och tomma monteringsskenor för fler paneler",
+    alt: "Tegeltak med åtta solpaneler i två rader, fritt från skorstenen och takfönstret",
   },
   "sol-elnat-forsaljning-och-skatt": {
     label: "Solcellsfrågor · Elnät, försäljning och skatt",
-    alt: "Kraftledning längs en grusväg och ett vitt hus med solpaneler på landsbygden i kvällssol",
+    alt: "Elstolpe längs en grusväg och ett vitt hus med solpaneler på landsbygden i kvällssol",
   },
   "sol-drift-sakerhet-och-livslangd": {
     label: "Solcellsfrågor · Drift, säkerhet och livslängd",
-    alt: "Stående solpaneler i snö med glittrande frostdroppar i lågt vintersolsken",
+    alt: "Solpaneler på ett vintertak där snön har glidit av den övre raden",
   },
   "sol-batteri-elbil-och-varmepump": {
     label: "Solcellsfrågor · Batteri, elbil och värmepump",
-    alt: "Villa med solpaneler, värmepump vid husväggen och en elbil som laddar på uppfarten i solnedgången",
+    alt: "Mörk trävilla med solpaneler, värmepump vid husväggen och en elbil som laddar på uppfarten i solnedgången",
   },
   "bat-grunder": {
     label: "Batteriskolan · Grunderna",
-    alt: "Vitt hembatteri i tre moduler på en ljus trävägg i ett tvättstugerum",
+    alt: "Fox ESS-batteri, en vit stapel med moduler på justerbara fötter, mot en grå vägg",
   },
   "bat-ekonomi": {
     label: "Batteriskolan · Ekonomi och styrning",
-    alt: "Villa med solpaneler i skymningen, med varmt ljus i alla fönster",
+    alt: "Vit villa med solpaneler i skymningen, med varmt ljus i alla fönster",
   },
   "bat-elnat": {
     label: "Batteriskolan · Elnät och stödtjänster",
-    alt: "Kraftledningsstolpar över skog och sjö i skymningen",
+    alt: "Kraftledning på trästolpar genom skogen ner mot en sjö i skymningen",
   },
   "bat-trygghet": {
     label: "Batteriskolan · Trygghet och regler",
-    alt: "Upplyst villa en snöig vinterkväll medan gatan runt omkring ligger mörk",
+    alt: "Rött trähus med solpaneler och tända fönster en snöig vinterkväll",
   },
   "guide-varmepump": {
     label: "Guider · Värmepump",
-    alt: "Frostig fläkt på en värmepumps utedel framför ett gult trähus en höstmorgon",
+    alt: "Vit luft-vatten-värmepump på betongplintar vid en gul trävilla en frostig höstmorgon",
   },
   "guide-laddbox": {
     label: "Guider · Laddbox",
-    alt: "Laddkabel i laddluckan på en vit elbil framför ett rött trähus i skymningen",
+    alt: "Vit elbil som laddar vid ett rött garage en höstnatt",
   },
   "guide-elpris": {
     label: "Guider · Elpris",
@@ -130,7 +131,7 @@ export const KB_IMAGES = {
   },
   "guide-ekonomi": {
     label: "Guider · Stöd och ekonomi",
-    alt: "Gult tegelhus från 1960-talet i höstsol",
+    alt: "Gul trävilla med solpaneler på taket i lågt morgonljus",
   },
 } as const;
 
@@ -138,7 +139,7 @@ export type KbImageKey = keyof typeof KB_IMAGES;
 
 /** Versionssträng som byts när en bild i /public/kb ersätts – Vercel och
  *  webbläsare cachar annars den gamla bilden på samma adress. */
-const KB_IMAGE_VERSION = "20261101";
+const KB_IMAGE_VERSION = "20261111";
 
 export function defaultKbImage(key: KbImageKey): KbImage {
   return { src: `/kb/${key}.jpg?v=${KB_IMAGE_VERSION}`, alt: KB_IMAGES[key].alt };

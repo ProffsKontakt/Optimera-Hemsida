@@ -561,7 +561,7 @@ export const GUIDES: Guide[] = [
   {
     slug: "villaeffekten-bidrag",
     status: "published",
-    heroImage: { src: "/kb/guide-villaeffekten.jpg", alt: "Luft-vattenvärmepumpens utedel på en betongplatta intill en gul träfasad" },
+    heroImage: { src: "/kb/guide-villaeffekten-v2.jpg", alt: "Luft-vattenvärmepumpens utedel på betongplintar intill en gul träfasad" },
     title: "Vad är Villaeffekten och vem kan söka bidraget 2026?",
     excerpt: "Villaeffekten ger 30 % av materialkostnaden, högst 60 000 kr, för energiåtgärder i småhus med värdeår före 1990. Så söker du hos Boverket och Länsstyrelsen.",
     category: "Ekonomi",
@@ -617,7 +617,7 @@ export const GUIDES: Guide[] = [
   {
     slug: "ladda-elbil-hemma-kostnad",
     status: "published",
-    heroImage: { src: "/kb/guide-ladda-elbil-hemma.jpg", alt: "Elbil som laddar vid en laddbox på garagets vägg en höstkväll" },
+    heroImage: { src: "/kb/guide-ladda-elbil-hemma-v2.jpg", alt: "Elbil som laddar vid en laddbox på garagets vägg en höstkväll" },
     title: "Vad kostar det att ladda elbilen hemma – och behöver man en laddbox?",
     excerpt: "Att ladda elbilen hemma kostar cirka 4 kr per mil vid 2 kr/kWh och 2 kWh/mil. Elsäkerhetsverket avråder från vanligt vägguttag. Laddbox ger 50 % avdrag 2026.",
     category: "Laddbox",
@@ -871,7 +871,7 @@ export const GUIDES: Guide[] = [
   {
     slug: "gront-avdrag-2026",
     status: "published",
-    heroImage: { src: "/kb/guide-gront-avdrag.jpg", alt: "Hembatteri och hybridväxelriktare installerade på väggen i ett garage" },
+    heroImage: { src: "/kb/guide-gront-avdrag-v2.jpg", alt: "Fox ESS-batteri, en vit stapel med moduler, mot en grå vägg" },
     title: "Hur mycket grönt avdrag får man 2026 – och vad gäller 2027?",
     excerpt: "Grönt avdrag 2026: 15 % för solceller, 50 % för batteri och laddbox, högst 50 000 kr per person och år. Villkor, vad som ingår, värmepump och läget inför 2027.",
     category: "Ekonomi",
