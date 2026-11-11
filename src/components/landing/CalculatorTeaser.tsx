@@ -11,7 +11,7 @@ const SPANS: PaybackSpans = {
 
 export function CalculatorTeaser() {
   return (
-    <section className="bg-sand py-20 md:py-28">
+    <section className="bg-sand py-14 sm:py-20 md:py-28">
       <div className="container-edge">
         <SectionHead
           eyebrow="Kalkyl"
@@ -20,9 +20,9 @@ export function CalculatorTeaser() {
               Hur snabbt <span className="text-indigo">betalar det sig</span> i ditt hus?
             </>
           }
-          lede="Kalkylen bygger på en simulering med verkliga kvartspriser i ditt elområde och våra egna priser. Var i spannet du hamnar avgörs av elområde, förbrukning och storlek."
+          lede="Spannen för batteri är vår bedömning. Var i spannet ditt val hamnar räknas på verkliga kvartspriser i SE1–SE4 och våra egna priser. Kalkylen visar en riktning, exakt siffra räknar vi fram vid hembesöket."
         />
-        <div className="mt-12 md:mt-16" data-reveal>
+        <div className="mt-8 sm:mt-12 md:mt-16" data-reveal>
           <LazyCalculator spans={SPANS} />
         </div>
       </div>

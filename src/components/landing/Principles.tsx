@@ -1,4 +1,4 @@
-import { delay, SectionHead } from "./shared";
+import { delay, NextStep, SectionHead } from "./shared";
 
 /** Mörk sektion: "Vi säger nej när vi måste." Fyra principer. */
 const ITEMS = [
@@ -15,7 +15,7 @@ const ITEMS = [
   {
     label: "Handplockat sortiment",
     title: "Det vi säljer har vi valt.",
-    body: "Valt efter hundratals tester för mest värde över 25 år. LFP-celler är vårt standardval för batteri, för säkerhet och livslängd.",
+    body: "Valt efter hundratals tester för mest värde över 25 år. LFP-celler är vårt standardval för batteri, för säkerhet och livslängd.",
   },
   {
     label: "Erfarenhet",
@@ -26,7 +26,7 @@ const ITEMS = [
 
 export function Principles() {
   return (
-    <section className="bg-night py-20 text-white md:py-28">
+    <section className="lp-night bg-night py-20 text-white md:py-28">
       <div className="container-edge">
         <SectionHead
           tone="dark"
@@ -38,7 +38,7 @@ export function Principles() {
           }
           lede="Bra rådgivning är inte alltid bekväm rådgivning. Ska du vänta, dimensionera mindre eller lägga pengarna på batteri i stället för fler paneler, så säger vi det."
         />
-        <ul className="mt-12 grid gap-x-8 gap-y-10 sm:grid-cols-2 md:mt-16 lg:grid-cols-4">
+        <ul className="mt-8 grid gap-x-8 gap-y-10 sm:mt-12 sm:grid-cols-2 md:mt-16 lg:grid-cols-4">
           {ITEMS.map((it, i) => (
             <li key={it.label} className="relative pt-6">
               <span
@@ -56,6 +56,11 @@ export function Principles() {
             </li>
           ))}
         </ul>
+        <NextStep
+          tone="dark"
+          className="mt-14 md:mt-16"
+          note="Vi räknar ärligt på ditt hus och säger nej om det inte går ihop."
+        />
       </div>
     </section>
   );

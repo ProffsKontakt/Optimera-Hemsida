@@ -73,11 +73,46 @@ const MENU_ACCENTS = [
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  // Startsidan har en mörk hjältebild som går ända upp bakom menyn. Där
-  // ligger menyn genomskinlig med ljus text tills man skrollar eller öppnar
-  // mobilmenyn. Övriga sidor har ljus bakgrund och mörk text som förut.
+  // Mobilmenyns innehåll renderas först när menyn öppnats en gång. Annars
+  // tvingar de dolda länkarna in accenttypsnittet (Fraunces) på varje
+  // mobilsida, i konkurrens med sidans huvudinnehåll.
+  const [menuMounted, setMenuMounted] = useState(false);
+  // Startsidan har en mörk hjältebild som går ända upp bakom menyn. Så länge
+  // hjälten är i bild ligger menyn ovanpå den med ljus text: genomskinlig
+  // högst upp, mörkt frostad när man börjat skrolla. Först när hjälten
+  // lämnats byter menyn till ljus bakgrund och mörk text, som på övriga sidor.
   const pathname = usePathname();
-  const onHero = pathname === "/" && !scrolled && !open;
+  const [pastHero, setPastHero] = useState(false);
+  const onHero = pathname === "/" && !pastHero && !open;
+
+  useEffect(() => {
+    const hero = document.querySelector("[data-hero]");
+    if (!hero || typeof IntersectionObserver === "undefined") {
+      setPastHero(true);
+      return;
+    }
+    setPastHero(false);
+    const io = new IntersectionObserver(([entry]) => setPastHero(!entry.isIntersecting), {
+      rootMargin: "-80px 0px 0px 0px",
+    });
+    io.observe(hero);
+    return () => io.disconnect();
+  }, [pathname]);
+
+  const toggleMenu = () => {
+    if (open) {
+      setOpen(false);
+      return;
+    }
+    if (menuMounted) {
+      setOpen(true);
+      return;
+    }
+    // Första öppningen: montera innehållet, öppna i nästa bildruta så att
+    // utfällningen animeras.
+    setMenuMounted(true);
+    requestAnimationFrame(() => requestAnimationFrame(() => setOpen(true)));
+  };
   const linkTone = onHero
     ? "text-white/85 hover:text-white hover:bg-white/10"
     : "text-ink/75 hover:text-ink hover:bg-ink/5";
@@ -93,11 +128,15 @@ export function Navbar() {
     <header
       className={[
         "fixed inset-x-0 top-0 z-50 transition-all duration-300",
-        scrolled
-          ? "bg-bone/85 backdrop-blur-xl border-b border-ink/8"
-          : open
-            ? "bg-bone"
-            : "bg-transparent",
+        onHero
+          ? scrolled
+            ? "bg-night/55 backdrop-blur-xl border-b border-white/10"
+            : "bg-transparent"
+          : scrolled
+            ? "bg-bone/85 backdrop-blur-xl border-b border-ink/8"
+            : open
+              ? "bg-bone"
+              : "bg-transparent",
       ].join(" ")}
     >
       <div className="container-edge flex h-20 items-center justify-between">
@@ -123,6 +162,7 @@ export function Navbar() {
               aria-hidden
               width={332}
               height={114}
+              loading="eager"
               className={`absolute inset-0 h-9 w-auto transition-opacity duration-300 ${onHero ? "opacity-100" : "opacity-0"}`}
             />
           </span>
@@ -187,7 +227,20 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <QuoteButton className="hidden md:inline-flex" />
+          <QuoteButton className="hidden md:inline-flex" glass={onHero} />
+          {/* Mobil, bara startsidan: när hjälten (med sina egna knappar) har
+              lämnat bild tonar en boka-knapp in i menyraden, så att nästa
+              steg alltid finns nära. Pekar på steg-flödet som övriga
+              mobilytor. Tjänstesidorna har redan en egen flytande knapp. */}
+          <span
+            className={`md:hidden max-[359px]:hidden transition-[opacity,transform,visibility] duration-300 ease-out motion-reduce:transition-none ${
+              pathname === "/" && pastHero && !open
+                ? "visible scale-100 opacity-100"
+                : "invisible scale-90 opacity-0"
+            }`}
+          >
+            <QuoteButton href="/offert-start" />
+          </span>
           {/* Hamburgare som morfar till kryss (tre linjer -> X). */}
           <button
             aria-label="Meny"
@@ -195,7 +248,7 @@ export function Navbar() {
             className={`lg:hidden inline-flex h-11 w-11 items-center justify-center rounded-full border transition-colors duration-300 ${
               onHero ? "border-white/30 bg-white/10 backdrop-blur" : "border-ink/15 bg-cream"
             }`}
-            onClick={() => setOpen(!open)}
+            onClick={toggleMenu}
           >
             <span className="relative block h-[14px] w-[18px]">
               <span
@@ -227,8 +280,11 @@ export function Navbar() {
         }`}
         aria-hidden={!open}
       >
-        <div className="min-h-0 overflow-hidden">
-          <div className="container-edge py-4 flex flex-col">
+        {/* Menyn får aldrig bli högre än skärmen: då skrollar den i sig
+            själv, och boka-knappen ligger kvar i nederkanten. */}
+        <div className="lp-menu-panel min-h-0 overflow-y-auto overscroll-contain">
+          {menuMounted && (
+          <div className="container-edge pt-4 flex flex-col">
             {links.map((l, i) => (
               <div
                 key={l.href}
@@ -264,7 +320,7 @@ export function Navbar() {
                         key={c.href}
                         href={c.href}
                         onClick={() => setOpen(false)}
-                        className="rounded-full border border-ink/15 bg-cream px-3.5 py-1.5 text-[13.5px] text-ink/80 active:scale-95 transition-transform"
+                        className="rounded-full border border-ink/15 bg-cream px-3.5 py-2.5 text-[13.5px] text-ink/80 active:scale-95 transition-transform"
                       >
                         {c.label}
                       </Link>
@@ -274,7 +330,7 @@ export function Navbar() {
               </div>
             ))}
             <div
-              className={`transition-[opacity,transform] duration-300 motion-reduce:transition-none ${
+              className={`sticky bottom-0 -mx-6 bg-bone/95 px-6 pb-[max(1rem,env(safe-area-inset-bottom))] pt-3 backdrop-blur sm:-mx-10 sm:px-10 transition-[opacity,transform] duration-300 motion-reduce:transition-none ${
                 open ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
               }`}
               style={{ transitionDelay: open ? `${80 + links.length * 50}ms` : "0ms" }}
@@ -283,12 +339,13 @@ export function Navbar() {
                   behåller /offert – jämförs i /admin/funnel + GA4. */}
               <QuoteButton
                 href="/offert-start"
-                className="mt-5 w-full"
+                className="w-full"
                 innerClassName="w-full justify-center"
                 onClick={() => setOpen(false)}
               />
             </div>
           </div>
+          )}
         </div>
       </div>
     </header>
@@ -305,13 +362,27 @@ function QuoteButton({
   innerClassName = "",
   onClick,
   href = "/offert",
+  glass = false,
 }: {
   className?: string;
   innerClassName?: string;
   onClick?: () => void;
   /** Mobilytor pekar mot wizarden (/offert-start) för A/B-jämförelse. */
   href?: string;
+  /** Lugn glasvariant över startsidans mörka hjältebild. */
+  glass?: boolean;
 }) {
+  if (glass) {
+    return (
+      <Link
+        href={href}
+        onClick={onClick}
+        className={`inline-flex items-center justify-center whitespace-nowrap rounded-full border border-white/35 bg-white/10 px-5 py-2.5 text-[13.5px] font-medium text-white backdrop-blur-md transition duration-300 hover:bg-white/20 ${className}`}
+      >
+        Begär offert
+      </Link>
+    );
+  }
   return (
     <Link
       href={href}

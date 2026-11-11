@@ -82,6 +82,7 @@ export function HeroLab() {
       {/* Mild auto-rotate så scenen lever. OrbitControls låter användaren
           ta tag i den om dom vill. */}
       <OrbitControls
+        makeDefault
         enablePan={false}
         enableZoom={false}
         minPolarAngle={Math.PI / 3.6}

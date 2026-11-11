@@ -87,6 +87,14 @@ function scenarioOf(input: CalcInput): Scenario | "solar" | null {
   return null;
 }
 
+/** Optimeras spann (år) för det valda fallet. null när valet saknar batteri. */
+export function paybackBand(input: CalcInput): { lo: number; hi: number } | null {
+  const scenario = scenarioOf(input);
+  if (!scenario || scenario === "solar") return null;
+  const { lo, hi } = PAYBACK_BANDS[scenario];
+  return { lo, hi };
+}
+
 /** Simulerad återbetalning: investering efter avdrag delat med årlig besparing (perfekt styrning). */
 export function simulatedPayback(input: CalcInput): { years: number; priceEstimated: boolean } | null {
   const zone = input.elzon;

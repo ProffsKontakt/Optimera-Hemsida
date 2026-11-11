@@ -6,7 +6,7 @@
  */
 import { PANELS, BATTERIES, CHARGERS, EMS_OPTIONS, HEAT_PUMPS } from "./catalog";
 import { formatNumber, type CalcInput } from "./calc";
-import { estimatePayback, formatPayback } from "./payback";
+import { estimatePayback, formatPayback, paybackBand } from "./payback";
 
 /** Utgångsläget i kalkylatorn. */
 export const DEFAULT_CALC_INPUT: CalcInput = {
@@ -48,6 +48,14 @@ export function calcScenario(input: CalcInput) {
   const addBattery = input.enabled.batteri;
   const estimate = estimatePayback(input);
   const range = formatPayback(estimate);
+  // Samma spann som i texten, avrundat till halvår på samma sätt, för den
+  // som vill rita det på en skala. Saknas när tiden inte går att ange.
+  const band = paybackBand(input);
+  const half = (x: number) => Math.round(x * 2) / 2;
+  const span =
+    estimate.kind === "years" && half(estimate.max) <= 25
+      ? { min: half(estimate.min), max: half(estimate.max) }
+      : null;
   const zone = `SE${input.elzon}`;
   const use = `${formatNumber(input.annualConsumptionKWh)} kWh per år`;
   const estimatedPrice =
@@ -57,6 +65,8 @@ export function calcScenario(input: CalcInput) {
   if (existingSolar && addBattery)
     return {
       range,
+      span,
+      band,
       tag: "Batteri till befintliga solceller",
       lead: `${kWhLabel(input.batteryCapacityKWh)} kWh till dina ${String(input.existingSolarKWp).replace(".", ",")} kWp i ${zone}, med en förbrukning på ${use}. Batteriet tjänar på prisstyrning och på att solelen används själv i stället för att säljas. Har ditt nätbolag effektavgift blir tiden kortare, eftersom batteriet också kapar effekttopparna.${estimatedPrice}`,
       note: BATTERY_NOTE,
@@ -64,6 +74,8 @@ export function calcScenario(input: CalcInput) {
   if (addSolar && addBattery)
     return {
       range,
+      span,
+      band,
       tag: "Sol och batteri",
       lead: `${input.panelCount} paneler och ${kWhLabel(input.batteryCapacityKWh)} kWh i ${zone}, med en förbrukning på ${use}. Solcellerna står för det mesta av besparingen, och batteriet flyttar solel till kvällen och prisstyr resten av året.${estimatedPrice}`,
       note: BATTERY_NOTE,
@@ -72,6 +84,8 @@ export function calcScenario(input: CalcInput) {
     return {
       tag: "Solceller",
       range,
+      span,
+      band,
       lead: `${input.panelCount} paneler i ${zone}, med en förbrukning på ${use}. Taket, väderstrecket och hur mycket solel du använder själv avgör var i spannet du hamnar.`,
       note: "Längst om panelerna ger 20 % mindre än normalt – till exempel av skugga eller sämre väderstreck",
     };
@@ -79,12 +93,16 @@ export function calcScenario(input: CalcInput) {
     return {
       tag: "Batteri utan solceller",
       range,
+      span,
+      band,
       lead: `Utan egen solel blir det inget grönt avdrag, och besparingen kommer bara från prisstyrning. Det lönar sig bäst där priset svänger mest – i ${zone} med ${use} blir det så här. Vi räknar ärligt på ditt hus och säger nej om det inte går ihop.${estimatedPrice}`,
       note: BATTERY_NOTE,
     };
   return {
     tag: "",
     range: "Välj ovan",
+    span: null,
+    band: null,
     lead: "Kryssa i vad du vill ha, så visar vi vad det brukar innebära.",
     note: "",
   };

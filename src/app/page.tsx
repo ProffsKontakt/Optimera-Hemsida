@@ -3,6 +3,7 @@ import { getFeaturedPressRelease } from "@/lib/press";
 import { getMedia } from "@/lib/media";
 import { getVisibleReviews } from "@/lib/reviews";
 import { getVisibleTeam } from "@/lib/team";
+import { visibleServiceText } from "@/lib/services";
 import { getRecoStats } from "@/lib/reco-live";
 import {
   JsonLd,
@@ -22,6 +23,7 @@ import { Principles } from "@/components/landing/Principles";
 import { TeamGrid, type TeamCard } from "@/components/landing/TeamGrid";
 import { HomeFaq } from "@/components/landing/HomeFaq";
 import { BookingCta } from "@/components/landing/BookingCta";
+import { FAQ_CATEGORIES } from "@/lib/faq-content";
 
 // Köpar-språk-frågor som matchar Google Suggest och AI-search-frågor för
 // "Optimera Energi" + lokala intent-termer. Hjälper både rich snippets och
@@ -29,7 +31,7 @@ import { BookingCta } from "@/components/landing/BookingCta";
 const HOME_FAQ = [
   {
     q: "Vad gör Optimera Energi?",
-    a: "Optimera Energilösningar i Mälardalen AB är en svensk elinstallatör i Solna som installerar solpaneler, batterier och laddboxar för villor och bostadsrättsföreningar i Stockholms län. Installationerna görs av noggrant utvalda, certifierade installatörer som vi tar fullt ansvar för.",
+    a: `Optimera Energilösningar i Mälardalen AB är en svensk elinstallatör i Solna som installerar ${visibleServiceText("plural")} för villor och bostadsrättsföreningar i Stockholms län. Installationerna görs av noggrant utvalda, certifierade installatörer som vi tar fullt ansvar för.`,
   },
   {
     q: "Var ligger Optimera Energi?",
@@ -52,6 +54,33 @@ const HOME_FAQ = [
     a: "Garantin på vår installation gäller även när du sålt huset, den följer fastigheten. Om något krånglar tre år senare är det fortfarande oss du ringer – vi tar fullt ansvar för installationen.",
   },
 ];
+
+/** Hämtar en redan granskad fråga ur /fragor-och-svar (lib/faq-content.ts). */
+function sharedFaq(q: string) {
+  for (const cat of FAQ_CATEGORIES) {
+    const hit = cat.items.find((it) => it.q === q);
+    if (hit) return { q: hit.q, a: hit.a };
+  }
+  return null;
+}
+
+// Den synliga listan börjar med det besökaren undrar strax före bokningen:
+// vad hembesöket kostar, vad anläggningen kostar och när den betalar sig.
+// Tre frågor lånas ordagrant från /fragor-och-svar, där de redan finns i
+// FAQ-schemat; därför ligger de inte i startsidans schema (samma fråga ska
+// bara märkas upp på en sida). Försvinner en fråga där, försvinner den här.
+const byQ = (q: string) => HOME_FAQ.find((it) => it.q === q) ?? null;
+const VISIBLE_FAQ = [
+  sharedFaq("Vad kostar ett hembesök?"),
+  byQ("Vad kostar solceller hos Optimera Energi?"),
+  byQ("Hur lång är återbetalningstiden?"),
+  byQ("Hur stort är det gröna avdraget 2026?"),
+  sharedFaq("Vem utför installationen?"),
+  sharedFaq("Är ett batteri säkert i hemmet?"),
+  byQ("Vad gäller efter husförsäljning?"),
+  byQ("Vad gör Optimera Energi?"),
+  byQ("Var ligger Optimera Energi?"),
+].filter((it): it is { q: string; a: string } => it !== null);
 
 // Reco-betyget hämtas live (lib/reco-live.ts) – sidan byggs om i bakgrunden
 // högst en gång i timmen så att antalet omdömen följer Reco.
@@ -98,10 +127,10 @@ export default async function HomePage() {
       <ReviewWall reviews={getVisibleReviews()} reco={reco} />
       <Principles />
       <TeamGrid team={team} />
-      {/* Synlig FAQ speglar FAQPage-schemat ovan (Google rich results +
-          AI-citation-text). */}
-      <HomeFaq items={HOME_FAQ} />
-      <BookingCta />
+      {/* Alla frågor i FAQPage-schemat ovan finns i den synliga listan,
+          som dessutom har tre frågor från /fragor-och-svar. */}
+      <HomeFaq items={VISIBLE_FAQ} />
+      <BookingCta reco={reco} />
     </>
   );
 }

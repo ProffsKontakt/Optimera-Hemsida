@@ -9,7 +9,7 @@ const BATTERY_SLUGS = new Set(BATTERY_CITIES.map((c) => c.slug));
 
 export function Footer() {
   return (
-    <footer className="mt-32 bg-cream border-t border-ink/10 text-ink">
+    <footer className="mt-16 md:mt-32 bg-cream border-t border-ink/10 text-ink">
       {/* Stockholm-kommuner: intern länkning till city-landing-sidor.
           Hjälper Google upptäcka /solceller/[stad]- och /batteri/[stad]-
           routes från footern och visar besökaren var vi arbetar.

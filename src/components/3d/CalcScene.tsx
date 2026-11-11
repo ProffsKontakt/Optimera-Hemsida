@@ -79,6 +79,7 @@ export function CalcScene({ input }: { input: CalcInput }) {
       <FlowLines input={input} />
 
       <OrbitControls
+        makeDefault
         enablePan={false}
         enableZoom={false}
         enableRotate

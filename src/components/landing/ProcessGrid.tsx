@@ -1,14 +1,14 @@
-import { delay, SectionHead } from "./shared";
+import { NextStep, SectionHead } from "./shared";
 
 /** "Sex steg. Inga genvägar." Samma sex steg som tidigare, som ett rutnät. */
 const STEPS = [
   {
     title: "Du hör av dig",
-    body: "Mejl, telefon eller offertformulär. Vi svarar inom 24 timmar, alltid en människa.",
+    body: "Mejl, telefon eller offertformulär. Vi svarar inom 24 timmar, alltid en människa.",
   },
   {
     title: "Hembesök",
-    body: "Vi kommer hem, tittar på taket, går igenom elskåpet och pratar om vad du faktiskt vill ha. Bullarna står vi för.",
+    body: "Vi kommer hem, tittar på taket, går igenom elskåpet och pratar om vad du faktiskt vill ha.",
   },
   {
     title: "Vi räknar på förutsättningarna",
@@ -24,13 +24,13 @@ const STEPS = [
   },
   {
     title: "Driftsättning och uppföljning",
-    body: "Vi visar dig appen, märker upp i skåpet och ringer dig efter 14 dagar och 6 månader för finjustering.",
+    body: "Vi visar dig appen, märker upp i skåpet och ringer dig efter 14 dagar och 6 månader för finjustering.",
   },
 ];
 
 export function ProcessGrid() {
   return (
-    <section className="bg-bone py-20 md:py-28">
+    <section className="bg-bone py-14 sm:py-20 md:py-28">
       <div className="container-edge">
         <SectionHead
           eyebrow="Så jobbar vi"
@@ -41,12 +41,12 @@ export function ProcessGrid() {
           }
           lede="Priset på offerten är priset på fakturan. Allt material, installation och avdrag står på en sida innan du tackar ja."
         />
-        <ol className="mt-12 grid gap-4 sm:grid-cols-2 md:mt-16 lg:grid-cols-3">
+        <ol className="mt-8 grid gap-4 sm:mt-12 sm:grid-cols-2 md:mt-16 lg:grid-cols-3">
           {STEPS.map((s, i) => (
-            <li key={s.title} data-reveal style={delay((i % 3) * 90)} className="flex">
+            <li key={s.title} data-reveal data-stagger className="flex">
               {/* Hover-lyftet ligger på ett inre element: skroll-animationen
                   äger transform på yttre elementet. */}
-              <div className="group relative w-full overflow-hidden rounded-[26px] bg-[#FFFDF8] p-6 ring-1 ring-ink/[0.07] transition duration-500 hover:-translate-y-1 hover:ring-indigo/30 md:p-7">
+              <div className="group relative w-full overflow-hidden rounded-[20px] bg-[#FFFDF8] p-6 ring-1 ring-ink/[0.07] transition duration-500 hover:-translate-y-1 hover:ring-indigo/30 md:p-7">
               {/* Tunn linje som växer ut i överkanten vid hover. */}
               <span className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-indigo to-sun transition-transform duration-500 group-hover:scale-x-100" />
               <span className="font-mono text-[12px] tracking-[0.14em] text-indigo">
@@ -58,6 +58,7 @@ export function ProcessGrid() {
             </li>
           ))}
         </ol>
+        <NextStep className="mt-12 md:mt-14" note="Hembesöket är kostnadsfritt och utan förpliktelser." />
       </div>
     </section>
   );

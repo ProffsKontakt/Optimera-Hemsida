@@ -57,22 +57,35 @@
     @apply mx-auto w-full max-w-[1480px] px-6 sm:px-10 lg:px-16;
   }
   /* Lugnt drivande gradient (fram och tillbaka) – används på "Begär
-     offert"-knappens gradientram. Stängs av vid reduced motion. */
+     offert"-knappens gradientram. Gradienten ligger i ett pseudo-element
+     som förskjuts med transform, så att animationen sköts av kompositorn.
+     (Tidigare animerades background-position, vilket ritade om knappen 60
+     gånger i sekunden på varje sida.) Stängs av vid reduced motion. */
   .animate-gradient-drift {
-    background-size: 250% 250%;
-    animation: gradient-drift 5s ease-in-out infinite;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background-image: none !important;
+  }
+  .animate-gradient-drift::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    z-index: -1;
+    width: 250%;
+    background-image: linear-gradient(90deg, #3648c3, #ffdd6c, #3648c3);
+    animation: gradient-drift 5s ease-in-out infinite alternate;
   }
   @keyframes gradient-drift {
-    0%,
-    100% {
-      background-position: 0% 50%;
+    from {
+      transform: translate3d(0, 0, 0);
     }
-    50% {
-      background-position: 100% 50%;
+    to {
+      transform: translate3d(-60%, 0, 0);
     }
   }
   @media (prefers-reduced-motion: reduce) {
-    .animate-gradient-drift {
+    .animate-gradient-drift::before {
       animation: none;
     }
   }
@@ -225,17 +238,17 @@ blockquote {
 @layer components {
   /* Stora rubriker på startsidan: medium vikt och tät spärrning. */
   .lp-h1 {
-    @apply font-display font-medium text-[clamp(2.3rem,5.6vw,5rem)] leading-[1.07] tracking-[-0.04em];
+    @apply font-display font-medium text-[clamp(2rem,9.2vw,2.5rem)] leading-[1.07] tracking-[-0.04em] sm:text-[clamp(2.3rem,5.6vw,5rem)];
   }
   .lp-h2 {
-    @apply font-display font-medium text-[clamp(2.05rem,4.1vw,3.6rem)] leading-[1.1] tracking-[-0.03em];
+    @apply font-display font-medium text-[clamp(1.9rem,3.7vw,3.3rem)] leading-[1.1] tracking-[-0.035em];
   }
   .lp-h3 {
     @apply font-display font-medium text-[1.45rem] leading-[1.2] tracking-[-0.02em];
   }
   /* Etikett ovanför rubriken, med en liten solprick. */
   .lp-eyebrow {
-    @apply inline-flex items-center gap-2.5 font-mono text-[11.5px] uppercase tracking-[0.18em];
+    @apply inline-flex items-center gap-2.5 font-mono text-[11.5px] font-normal uppercase tracking-[0.18em];
   }
   .lp-eyebrow::before {
     content: "";
@@ -243,11 +256,11 @@ blockquote {
     box-shadow: 0 0 0 3px rgba(255, 221, 108, 0.28);
   }
   .lp-lede {
-    @apply text-[1.06rem] md:text-[1.2rem] leading-[1.62];
+    @apply text-[1rem] leading-[1.55] sm:text-[1.06rem] sm:leading-[1.62] md:text-[1.2rem];
   }
   /* Knappar på startsidan. */
   .lp-btn {
-    @apply inline-flex items-center justify-center gap-2.5 rounded-full px-6 py-3.5 text-[15.5px] font-semibold transition duration-300;
+    @apply inline-flex items-center justify-center gap-2.5 rounded-full px-6 py-3.5 text-[15.5px] font-medium transition duration-300 active:scale-[0.97] active:duration-100;
   }
   .lp-btn svg {
     @apply transition-transform duration-300;
@@ -266,10 +279,13 @@ blockquote {
   }
 }
 
-/* --- Inträdesanimationer i hjälten (ren CSS, startar direkt vid laddning) -- */
+/* --- Inträdesanimationer i hjälten (ren CSS, startar direkt vid laddning) --
+   Startvärdet är opacity 0.001 och inte 0: text som är helt genomskinlig vid
+   första renderingen räknas inte som målad, vilket skjuter fram uppmätt LCP
+   tills animationen kommit en bit. */
 @keyframes lp-rise {
   from {
-    opacity: 0;
+    opacity: 0.001;
     transform: translate3d(0, 26px, 0);
   }
   to {
@@ -279,7 +295,7 @@ blockquote {
 }
 @keyframes lp-slide-left {
   from {
-    opacity: 0;
+    opacity: 0.001;
     transform: translate3d(36px, 0, 0);
   }
   to {
@@ -289,10 +305,10 @@ blockquote {
 }
 @keyframes lp-kenburns {
   from {
-    transform: scale(1.001);
+    transform: scale(1.08);
   }
   to {
-    transform: scale(1.09);
+    transform: scale(1);
   }
 }
 @keyframes lp-marquee {
@@ -313,7 +329,7 @@ blockquote {
 }
 @keyframes lp-pop {
   from {
-    opacity: 0;
+    opacity: 0.001;
     transform: translate3d(0, 10px, 0) scale(0.97);
   }
   to {
@@ -341,17 +357,137 @@ blockquote {
   animation: lp-rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
   animation-delay: var(--d, 0ms);
 }
+/* Hjältens rubrik. Smal skärm: hela rubriken stiger. Från 640 px: varje rad
+   är ett eget block som glider upp bakom sin egen kant. Utfyllnaden och den
+   negativa marginalen ger plats åt g, p och ö så att de inte kapas. */
+@keyframes lp-line-up {
+  from {
+    transform: translate3d(0, 112%, 0);
+  }
+  to {
+    transform: none;
+  }
+}
+.lp-headline {
+  animation: lp-rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation-delay: var(--d, 0ms);
+}
+.lp-line,
+.lp-line > span {
+  display: inline;
+}
+@media (min-width: 640px) {
+  .lp-headline {
+    animation: none;
+  }
+  .lp-line {
+    display: block;
+    overflow: hidden;
+    padding: 0.14em 0.06em 0.3em;
+    margin: -0.14em -0.06em -0.3em;
+  }
+  .lp-line > span {
+    display: block;
+    animation: lp-line-up 1s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation-delay: var(--d, 0ms);
+  }
+}
 .lp-slide-left {
   animation: lp-slide-left 1s cubic-bezier(0.2, 0.7, 0.2, 1) both;
   animation-delay: var(--d, 0ms);
 }
+@media (max-width: 1279px) {
+  .lp-slide-left {
+    animation-name: lp-rise;
+  }
+}
 .lp-kenburns {
-  animation: lp-kenburns 24s ease-out both;
+  animation: lp-kenburns 16s cubic-bezier(0.2, 0.7, 0.2, 1) both;
   transform-origin: 60% 55%;
+}
+/* Hjältens skuggning. Mobil: jämnt mörk nertill där texten står. Bred skärm:
+   mörk till vänster och i nederkanten, öppen över huset och himlen. */
+.lp-hero-shade {
+  background: linear-gradient(
+    180deg,
+    rgba(14, 14, 12, 0.58) 0%,
+    rgba(14, 14, 12, 0.42) 30%,
+    rgba(14, 14, 12, 0.78) 62%,
+    rgba(14, 14, 12, 0.92) 100%
+  );
+}
+@media (min-width: 1024px) {
+  .lp-hero-shade {
+    background:
+      linear-gradient(90deg, rgba(14, 14, 12, 0.5) 0%, rgba(14, 14, 12, 0.18) 45%, rgba(14, 14, 12, 0) 70%),
+      linear-gradient(
+        180deg,
+        rgba(14, 14, 12, 0.5) 0%,
+        rgba(14, 14, 12, 0) 26%,
+        rgba(14, 14, 12, 0) 40%,
+        rgba(14, 14, 12, 0.86) 100%
+      );
+  }
+}
+/* Mobilmenyn får aldrig bli högre än skärmen under menyraden. */
+.lp-menu-panel {
+  max-height: calc(100vh - 5rem);
+  max-height: calc(100dvh - 5rem);
+}
+/* Svepbar rad (omdömen på mobil): ingen rullningslist. */
+.lp-snap {
+  scrollbar-width: none;
+}
+.lp-snap::-webkit-scrollbar {
+  display: none;
+}
+/* Mörka sektioner får lite djup: ett svagt blått sken uppe till höger och
+   ett svagt gult nere till vänster. */
+.lp-night {
+  background-image:
+    radial-gradient(70% 55% at 88% 0%, rgba(54, 72, 195, 0.28), rgba(54, 72, 195, 0) 62%),
+    radial-gradient(45% 40% at 0% 100%, rgba(255, 221, 108, 0.07), rgba(255, 221, 108, 0) 70%);
+}
+/* Lugn parallax på sektionsbilder, där webbläsaren stöder skroll-styrda
+   animationer. Sköts av kompositorn. Utan stöd står bilden still. */
+@keyframes lp-parallax {
+  from {
+    translate: 0 -5%;
+  }
+  to {
+    translate: 0 5%;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .lp-parallax-box {
+      view-timeline: --lp-px block;
+    }
+    .lp-parallax {
+      scale: 1.12;
+      animation: lp-parallax linear both;
+      animation-timeline: --lp-px;
+      animation-range: cover 0% cover 100%;
+    }
+  }
 }
 .lp-pop {
   animation: lp-pop 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
   animation-delay: var(--d, 0ms);
+}
+/* Mjukt byte av en text på plats (klockslag, lägestext). */
+@keyframes lp-swap {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 6px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.lp-swap {
+  animation: lp-swap 0.4s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
 .lp-marquee {
   animation: lp-marquee 46s linear infinite;
@@ -381,10 +517,10 @@ blockquote {
   }
   .anim [data-reveal] {
     opacity: 0;
-    transform: translate3d(0, 30px, 0);
+    transform: translate3d(0, var(--rise, 30px), 0);
     transition:
-      opacity 0.8s cubic-bezier(0.2, 0.7, 0.2, 1),
-      transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+      opacity var(--rd, 0.8s) cubic-bezier(0.2, 0.7, 0.2, 1),
+      transform var(--rd, 0.8s) cubic-bezier(0.2, 0.7, 0.2, 1);
     transition-delay: var(--d, 0ms);
   }
   .anim:not(.reveal-on) [data-reveal] {
@@ -401,6 +537,25 @@ blockquote {
   }
   .anim [data-reveal="scale"] {
     transform: scale(0.955);
+  }
+  /* På mobil skrollar man fort: kortare väg och kortare tid, så att
+     innehållet står klart när det är mitt på skärmen. */
+  @media (max-width: 639px) {
+    .anim {
+      --rise: 16px;
+      --rd: 0.5s;
+    }
+    .anim [data-reveal="scale"] {
+      transform: scale(0.98);
+    }
+  }
+  /* På smala skärmar ligger kolumnerna staplade: då glider allt in
+     underifrån i stället för från sidan. */
+  @media (max-width: 1023px) {
+    .anim [data-reveal="left"],
+    .anim [data-reveal="right"] {
+      transform: translate3d(0, var(--rise, 30px), 0);
+    }
   }
   .anim [data-reveal].is-in {
     opacity: 1;
@@ -419,9 +574,12 @@ blockquote {
 
 @media (prefers-reduced-motion: reduce) {
   .lp-rise,
+  .lp-headline,
+  .lp-line > span,
   .lp-slide-left,
   .lp-kenburns,
   .lp-pop,
+  .lp-swap,
   .lp-marquee,
   .lp-progress,
   .lp-pulse-dot {
@@ -436,6 +594,21 @@ blockquote {
 }
 .lp-faq summary::-webkit-details-marker {
   display: none;
+}
+@keyframes lp-faq-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -6px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .lp-faq details[open] > p {
+    animation: lp-faq-in 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
 }
 .lp-faq details[open] .lp-faq-plus {
   transform: rotate(45deg);
@@ -466,6 +639,12 @@ blockquote {
   height: 22px;
   background: transparent;
   cursor: pointer;
+  touch-action: pan-y;
+}
+@media (pointer: coarse) {
+  .lp-range {
+    height: 44px;
+  }
 }
 .lp-range::-webkit-slider-runnable-track {
   height: 4px;
@@ -523,11 +702,22 @@ blockquote {
   0%,
   70%,
   100% {
-    background-color: rgba(255, 255, 255, 0.17);
+    opacity: 0;
   }
   20% {
-    background-color: #ffdd6c;
+    opacity: 1;
   }
+}
+.lp-bar-sweep {
+  position: relative;
+}
+.lp-bar-sweep::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: #ffdd6c;
+  opacity: 0;
 }
 @media (prefers-reduced-motion: no-preference) {
   .anim [data-reveal] .lp-bar {
@@ -539,7 +729,7 @@ blockquote {
   .anim [data-reveal].is-in .lp-bar {
     transform: scaleY(1);
   }
-  .lp-bar-sweep {
+  .lp-bar-sweep::after {
     animation: lp-bar-sweep 3.6s ease-in-out infinite;
     animation-delay: calc(var(--i, 0) * 90ms);
   }

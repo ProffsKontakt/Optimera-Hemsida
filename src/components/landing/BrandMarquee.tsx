@@ -30,7 +30,7 @@ function Row({ hidden = false }: { hidden?: boolean }) {
       {BRANDS.map((b) => (
         <li
           key={b}
-          className="whitespace-nowrap px-7 font-mono text-[13px] uppercase tracking-[0.26em] text-ink/50 md:px-10"
+          className="whitespace-nowrap px-7 font-mono text-[13px] uppercase tracking-[0.26em] text-ink/65 md:px-10"
         >
           {b}
         </li>
@@ -42,7 +42,7 @@ function Row({ hidden = false }: { hidden?: boolean }) {
 export function BrandMarquee() {
   return (
     <div
-      className="lp-marquee-wrap overflow-hidden border-b border-ink/10 bg-bone py-5"
+      className="lp-marquee-wrap ticker-mask overflow-hidden border-b border-ink/10 bg-bone py-5 motion-reduce:[mask-image:none] motion-reduce:[-webkit-mask-image:none]"
       aria-label="Märken vi installerar"
     >
       <div className="lp-marquee flex w-max motion-reduce:w-full">

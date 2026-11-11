@@ -23,7 +23,17 @@ export function RevealObserver() {
       (entries) => {
         for (const entry of entries) {
           if (!entry.isIntersecting) continue;
-          entry.target.classList.add("is-in");
+          const el = entry.target as HTMLElement;
+          // Kort i rutnät (data-stagger) tänds som en våg från vänster till
+          // höger, oavsett hur många spalter rutnätet har på den här
+          // skärmen. Läget finns redan i observatörens mätning, så det
+          // kostar ingen extra layout. På mobil ligger korten i en spalt
+          // (eller sveps in från sidan) och tänds direkt.
+          if (el.hasAttribute("data-stagger") && window.innerWidth >= 640) {
+            const share = entry.boundingClientRect.left / Math.max(1, window.innerWidth);
+            el.style.setProperty("--d", `${Math.round(Math.max(0, Math.min(1, share)) * 280)}ms`);
+          }
+          el.classList.add("is-in");
           io.unobserve(entry.target);
         }
       },

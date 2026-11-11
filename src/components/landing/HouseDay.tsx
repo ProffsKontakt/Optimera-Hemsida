@@ -9,7 +9,8 @@ import { delay, SectionHead } from "./shared";
  *
  * Sektionen växlar själv mellan lägena tills besökaren klickar på en tid.
  * Den står still när den inte syns i bild och för besökare som valt
- * reducerad rörelse.
+ * reducerad rörelse. Varje läge har sin egen bild, och bilderna tonar över
+ * i varandra.
  */
 type DayState = {
   tab: string;
@@ -17,9 +18,11 @@ type DayState = {
   sub: string;
   /** Timme som markeras i spotprisdiagrammet (null = hela dygnet). */
   hour: number | null;
-  /** Färgton som läggs över bilden för att antyda tid på dygnet. */
-  tint: string;
-  tiles: [string, string][];
+  /** Bild för läget. Bilderna tonar över i varandra när läget byts. */
+  img: string;
+  alt: string;
+  /** Ruta: namn, vad den gör just nu, och om den är aktiv (gul) eller vilar. */
+  tiles: [string, string, boolean][];
   title: string;
   body: string;
 };
@@ -30,12 +33,13 @@ const STATES: DayState[] = [
     big: "02:00",
     sub: "Natt",
     hour: 2,
-    tint: "rgba(9, 13, 46, 0.62)",
+    img: "/kb/guide-laddbox.jpg",
+    alt: "Elbil som laddar utanför ett rött hus i skymningen",
     tiles: [
-      ["Solpaneler", "Vilar"],
-      ["Batteri", "Laddar billigt"],
-      ["Huset", "Går på nätet"],
-      ["Elbilen", "Laddar"],
+      ["Solpaneler", "Vilar", false],
+      ["Batteri", "Laddar billigt", true],
+      ["Huset", "Går på nätet", false],
+      ["Elbilen", "Laddar", true],
     ],
     title: "Natten är billigast",
     body: "På natten är elen oftast som billigast. Då laddas bilen, och batteriet fylls på inför morgonens dyrare timmar.",
@@ -45,12 +49,13 @@ const STATES: DayState[] = [
     big: "07:00",
     sub: "Morgon",
     hour: 7,
-    tint: "rgba(255, 176, 96, 0.2)",
+    img: "/kb/guide-ekonomi.jpg",
+    alt: "Gult hus i lågt morgonljus",
     tiles: [
-      ["Solpaneler", "Vaknar"],
-      ["Batteri", "Driver huset"],
-      ["Huset", "Går på batteri"],
-      ["Elbilen", "Fulladdad"],
+      ["Solpaneler", "Vaknar", false],
+      ["Batteri", "Driver huset", true],
+      ["Huset", "Går på batteri", true],
+      ["Elbilen", "Fulladdad", false],
     ],
     title: "Morgontoppen tas ur batteriet",
     body: "När alla vaknar samtidigt stiger elpriset. Huset går då på det batteriet laddade under natten i stället för dyr el från nätet.",
@@ -60,12 +65,13 @@ const STATES: DayState[] = [
     big: "12:00",
     sub: "Dag",
     hour: 12,
-    tint: "rgba(255, 255, 255, 0)",
+    img: "/kb/sol-produktion-och-teknik.jpg",
+    alt: "Solpaneler under en ljus himmel",
     tiles: [
-      ["Solpaneler", "Full produktion"],
-      ["Batteri", "Fylls av solen"],
-      ["Huset", "Går på egen sol"],
-      ["Elbilen", "Solöverskott"],
+      ["Solpaneler", "Full produktion", true],
+      ["Batteri", "Fylls av solen", true],
+      ["Huset", "Går på egen sol", true],
+      ["Elbilen", "Solöverskott", true],
     ],
     title: "Taket producerar",
     body: "Solelen går först till huset, sedan till batteriet. Överskottet säljs, eller laddar bilen på ditt eget solöverskott.",
@@ -75,12 +81,13 @@ const STATES: DayState[] = [
     big: "18:00",
     sub: "Kväll",
     hour: 18,
-    tint: "rgba(214, 92, 30, 0.26)",
+    img: "/kb/sol-elnat-forsaljning-och-skatt.jpg",
+    alt: "Hus med solpaneler på ett fält i kvällsljus",
     tiles: [
-      ["Solpaneler", "Ger lite"],
-      ["Batteri", "Driver huset"],
-      ["Huset", "Går på sparad sol"],
-      ["Elbilen", "Väntar på natten"],
+      ["Solpaneler", "Ger lite", false],
+      ["Batteri", "Driver huset", true],
+      ["Huset", "Går på sparad sol", true],
+      ["Elbilen", "Väntar på natten", false],
     ],
     title: "Kvällen går på sparad sol",
     body: "När solen går ner och elen är som dyrast använder huset det batteriet sparade under dagen.",
@@ -90,12 +97,13 @@ const STATES: DayState[] = [
     big: "24/7",
     sub: "Dygnet runt",
     hour: null,
-    tint: "rgba(255, 255, 255, 0)",
+    img: "/kb/guide-gront-avdrag.jpg",
+    alt: "Batteri och växelriktare monterade i ett ljust garage",
     tiles: [
-      ["Solpaneler", "Följs i appen"],
-      ["Batteri", "Prisstyrs"],
-      ["Huset", "Optimeras"],
-      ["Elbilen", "Schemaläggs"],
+      ["Solpaneler", "Följs i appen", true],
+      ["Batteri", "Prisstyrs", true],
+      ["Huset", "Optimeras", true],
+      ["Elbilen", "Schemaläggs", true],
     ],
     title: "Smart styrning hela tiden",
     body: "Styrningen följer förbrukningen och spotpriset timme för timme. När nätet behöver det kan batteriet också sälja stödtjänster.",
@@ -109,13 +117,27 @@ const PRICE_SHAPE = [
   22, 20, 18, 17, 17, 21, 34, 50, 58, 47, 38, 31, 27, 25, 27, 33, 44, 58, 70, 62, 49, 38, 30, 25,
 ];
 
-const STEP_MS = 5200;
+// Varje läge har rubrik, två rader text och fyra rutor: det tar en stund att läsa.
+const STEP_MS = 7000;
 
 export function HouseDay() {
   const [active, setActive] = useState(2);
   const [auto, setAuto] = useState(true);
   const [inView, setInView] = useState(false);
+  // Bilder som hunnit behövas. Startbilden laddas direkt; övriga monteras
+  // när deras läge visas (och nästa läge i förväg), så att sektionen inte
+  // hämtar fem bilder på en gång.
+  const [seen, setSeen] = useState<number[]>([2]);
   const ref = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    setSeen((cur) => {
+      const next = new Set(cur);
+      next.add(active);
+      if (inView) next.add((active + 1) % STATES.length);
+      return next.size === cur.length ? cur : [...next];
+    });
+  }, [active, inView]);
 
   useEffect(() => {
     const el = ref.current;
@@ -137,7 +159,7 @@ export function HouseDay() {
   const s = STATES[active];
 
   return (
-    <section ref={ref} className="bg-night py-20 text-white md:py-28">
+    <section ref={ref} className="lp-night bg-night py-20 text-white md:py-28">
       <div className="container-edge">
         <SectionHead
           tone="dark"
@@ -148,46 +170,64 @@ export function HouseDay() {
               runt.
             </>
           }
-          lede="Välj en tid på dygnet och se vad anläggningen gör just då. Batteriet är hjärnan: det sparar solen till kvällen, köper el när den är billig och laddar bilen på nattens lägsta priser."
+          lede="Välj en tid på dygnet och se vad anläggningen gör just då. Batteriet är hjärnan: det sparar solen till kvällen och köper el när den är billig. Laddboxen laddar bilen på nattens lägsta priser."
         />
 
-        <div className="mt-12 grid gap-10 md:mt-16 lg:grid-cols-2 lg:gap-16">
-          {/* Bild med tid, färgton och fyra lägesrutor */}
-          <div data-reveal="left">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-[30px] bg-night-soft ring-1 ring-white/10">
-              <Image
-                src="/kb/guide-gront-avdrag.jpg"
-                alt="Batteri och växelriktare monterade i ett ljust garage"
-                fill
-                sizes="(min-width: 1024px) 46vw, 92vw"
-                quality={70}
-                className="object-cover"
-              />
+        <div className="mt-8 grid gap-5 sm:mt-12 md:mt-16 md:gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-14">
+          {/* Bild per läge med tid och fyra lägesrutor */}
+          <div data-reveal="left" className="lg:h-full">
+            <div className="relative aspect-square overflow-hidden rounded-[30px] bg-night-soft ring-1 ring-white/10 sm:aspect-[4/3] lg:aspect-auto lg:h-full lg:min-h-[520px]">
+              {STATES.map(
+                (st, i) =>
+                  seen.includes(i) && (
+                    <Image
+                      key={st.img}
+                      src={st.img}
+                      alt={i === active ? st.alt : ""}
+                      aria-hidden={i !== active}
+                      fill
+                      sizes="(min-width: 1024px) 46vw, 92vw"
+                      quality={68}
+                      className={`object-cover transition-opacity duration-[900ms] ease-out motion-reduce:transition-none ${
+                        i === active ? "opacity-100" : "opacity-0"
+                      }`}
+                    />
+                  ),
+              )}
               <div
-                className="absolute inset-0 transition-[background-color] duration-1000 ease-out"
-                style={{ backgroundColor: s.tint, mixBlendMode: s.hour === 2 ? "multiply" : "soft-light" }}
+                className="absolute inset-0 bg-gradient-to-b from-night/55 via-transparent to-night/70"
                 aria-hidden="true"
               />
-              <div className="absolute inset-0 bg-gradient-to-b from-night/45 via-transparent to-night/55" aria-hidden="true" />
 
-              <div key={`t-${active}`} className="lp-pop absolute left-5 top-4 md:left-7 md:top-6">
-                <div className="font-display text-[54px] font-medium leading-none tracking-[-0.04em] [text-shadow:0_2px_24px_rgba(20,22,42,0.55)] md:text-[68px]">
+              <div className="absolute left-5 top-4 md:left-7 md:top-6">
+                <div
+                  key={`t-${active}`}
+                  className="lp-swap font-mono text-[46px] leading-none tracking-[-0.04em] tabular-nums [text-shadow:0_2px_24px_rgba(20,22,42,0.6)] md:text-[62px]"
+                >
                   {s.big}
                 </div>
-                <div className="mt-2 inline-block rounded-full bg-night/55 px-2.5 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-white backdrop-blur-sm">
+                <div
+                  key={`s-${active}`}
+                  className="lp-swap mt-2 inline-block rounded-full bg-night/55 px-2.5 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-white backdrop-blur-sm"
+                >
                   {s.sub}
                 </div>
               </div>
 
+              {/* Rutorna ligger kvar när läget byts. Bara texten och färgen
+                  ändras: gul ruta arbetar, ljus ruta vilar. */}
               <ul className="absolute inset-x-3 bottom-3 grid grid-cols-2 gap-2 sm:grid-cols-4 md:inset-x-5 md:bottom-5">
-                {s.tiles.map(([k, v], i) => (
+                {s.tiles.map(([k, v, on]) => (
                   <li
-                    key={`${active}-${k}`}
-                    className="lp-pop rounded-2xl bg-sun px-3.5 py-3 text-ink shadow-lg shadow-black/20"
-                    style={delay(i * 70)}
+                    key={k}
+                    className={`rounded-[14px] px-3.5 py-3 text-ink shadow-lg shadow-black/20 transition-colors duration-500 ${
+                      on ? "bg-sun" : "bg-[#FAF8F2]/90"
+                    }`}
                   >
-                    <div className="text-[13.5px] font-semibold leading-tight">{k}</div>
-                    <div className="mt-1 text-[13px] leading-tight text-ink/75">{v}</div>
+                    <div className="text-[13.5px] font-medium leading-tight">{k}</div>
+                    <div key={v} className="lp-swap mt-1 text-[13px] leading-tight text-ink/75">
+                      {v}
+                    </div>
                   </li>
                 ))}
               </ul>
@@ -195,8 +235,14 @@ export function HouseDay() {
           </div>
 
           {/* Tidsval, förklaring och spotprisexempel */}
-          <div data-reveal="right" style={delay(100)}>
-            <div role="tablist" aria-label="Tid på dygnet" className="grid grid-cols-5 gap-2">
+          <div data-reveal="right" style={delay(100)} className="flex flex-col">
+            <div role="tablist" aria-label="Tid på dygnet" className="relative grid grid-cols-5 gap-2">
+              {/* Gul markering som glider till vald tid. */}
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-y-0 left-0 w-[calc((100%-2rem)/5)] rounded-[14px] bg-sun shadow-[0_10px_30px_-12px_rgba(255,221,108,0.8)] transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none"
+                style={{ transform: `translate3d(calc(${active} * (100% + 0.5rem)), 0, 0)` }}
+              />
               {STATES.map((st, i) => {
                 const on = i === active;
                 return (
@@ -209,10 +255,10 @@ export function HouseDay() {
                       setActive(i);
                       setAuto(false);
                     }}
-                    className={`rounded-2xl px-1 py-3.5 font-mono text-[13px] tracking-[0.06em] transition duration-300 sm:text-[14px] ${
+                    className={`relative z-10 min-h-[44px] rounded-[14px] px-1 py-3.5 font-mono text-[13px] tracking-[0.06em] transition-colors duration-300 sm:text-[14px] ${
                       on
-                        ? "bg-sun text-ink shadow-[0_10px_30px_-12px_rgba(255,221,108,0.8)]"
-                        : "bg-white/[0.03] text-white/85 ring-1 ring-inset ring-white/20 hover:bg-white/10 hover:ring-white/40"
+                        ? "text-ink"
+                        : "text-white/85 ring-1 ring-inset ring-white/20 hover:bg-white/10 hover:ring-white/40"
                     }`}
                   >
                     {st.tab}
@@ -222,7 +268,7 @@ export function HouseDay() {
             </div>
 
             {/* Förloppslinje: fylls medan sektionen växlar själv. */}
-            <div className="mt-6 h-[5px] overflow-hidden rounded-full bg-white/10">
+            <div className="mt-4 h-[5px] overflow-hidden rounded-full bg-white/10 md:mt-6">
               {auto && inView ? (
                 <div
                   key={`p-${active}`}
@@ -236,7 +282,7 @@ export function HouseDay() {
 
             {/* Alla fem lägen ligger i samma ruta, så att höjden styrs av den
                 längsta texten och sidan inte hoppar när läget byts. */}
-            <div className="mt-8 grid" aria-live={auto ? "off" : "polite"}>
+            <div className="mt-5 grid md:mt-8" aria-live={auto ? "off" : "polite"}>
               {STATES.map((st, i) => (
                 <div
                   key={st.tab}
@@ -253,7 +299,7 @@ export function HouseDay() {
               ))}
             </div>
 
-            <div className="mt-6">
+            <div className="mt-6 lg:mt-auto lg:pt-6">
               <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-white/55">
                 Spotpris över dygnet, exempel
               </div>
@@ -264,7 +310,7 @@ export function HouseDay() {
                   return (
                     <span
                       key={h}
-                      className={`lp-bar block flex-1 rounded-[4px] ${s.hour === null ? "lp-bar-sweep" : ""}`}
+                      className={`lp-bar block flex-1 rounded-[4px] ${s.hour === null && inView ? "lp-bar-sweep" : ""}`}
                       style={
                         {
                           height: `${v}%`,
@@ -283,7 +329,7 @@ export function HouseDay() {
                   );
                 })}
               </div>
-              <div className="mt-2 flex justify-between font-mono text-[10.5px] text-white/45" aria-hidden="true">
+              <div className="mt-2 flex justify-between font-mono text-[11.5px] text-white/60" aria-hidden="true">
                 <span>00</span>
                 <span>06</span>
                 <span>12</span>

@@ -21,7 +21,14 @@ const STATS = [
 
 export function LandingHero({ reco }: { reco: RecoStats }) {
   return (
-    <section className="relative -mt-20 flex min-h-[100svh] flex-col justify-end overflow-hidden bg-night text-white">
+    <section
+      data-hero
+      className="relative -mt-20 flex min-h-[100svh] flex-col justify-end overflow-hidden bg-night text-white"
+    >
+      {/* Bilden täcker hela hjälten, även på mobil. En bild som fyller hela
+          skärmen räknas som bakgrund, så sidans största element (LCP) blir
+          rubriken och texten, som syns direkt. Kapa eller maska inte bilden:
+          då blir den LCP-element och måste ritas om för varje bildruta. */}
       <div className="absolute inset-0" aria-hidden="true">
         <Image
           src="/kb/sol-batteri-elbil-och-varmepump.jpg"
@@ -29,34 +36,60 @@ export function LandingHero({ reco }: { reco: RecoStats }) {
           fill
           priority
           fetchPriority="high"
-          sizes="100vw"
+          // På en stående mobilskärm beskärs den liggande bilden hårt och
+          // förstoras, så där begärs en större fil för att hålla skärpan.
+          sizes="(max-width: 767px) 220vw, 100vw"
           quality={70}
           className="lp-kenburns object-cover object-[64%_center]"
         />
-        {/* Mörkare nertill och till vänster så att texten alltid går att läsa. */}
-        <div className="absolute inset-0 bg-gradient-to-t from-night via-night/45 to-night/25" />
-        <div className="absolute inset-0 bg-gradient-to-r from-night/80 via-night/25 to-transparent" />
+        {/* En enda skuggning i neutral svart: mörk där texten står, öppen
+            över huset och himlen så att bilden behåller sin värme. */}
+        <div className="lp-hero-shade absolute inset-0" />
       </div>
 
-      <div className="container-edge relative z-10 pb-10 pt-36 md:pb-14 lg:pb-16">
-        <div className="grid gap-9 xl:grid-cols-12 xl:items-end xl:gap-8">
-          <div className="xl:col-span-8">
+      <div className="container-edge relative z-10 pb-8 pt-[6.5rem] sm:pb-10 sm:pt-36 md:pb-14 lg:pb-20">
+        <div className="grid gap-6 sm:gap-9 xl:grid-cols-[minmax(0,1.5fr)_minmax(0,0.95fr)] xl:items-end xl:gap-12">
+          <div>
             <h1>
               {/* Sökordsraden ligger i h1 som en liten etikett ovanför rubriken. */}
               <span className="lp-eyebrow lp-rise text-white/85" style={delay(80)}>
                 Solna · Solceller, batteri, värmepump, laddbox
               </span>
-              <span className="lp-h1 lp-rise mt-5 block" style={delay(160)}>
-                Ditt hus kan göra <br className="hidden sm:block" />
-                mer än att <span className="text-sun">köpa el.</span>
+              {/* Från 640 px är raderna egna block som glider upp bakom sin
+                  kant. På smalare skärm flödar texten fritt och stiger som
+                  resten av hjälten. */}
+              <span className="lp-h1 lp-headline mt-4 block sm:mt-5" style={delay(160)}>
+                <span className="lp-line">
+                  <span style={delay(160)}>Ditt hus kan göra </span>
+                </span>
+                <span className="lp-line">
+                  <span style={delay(250)}>
+                    mer än att <span className="text-sun">köpa el.</span>
+                  </span>
+                </span>
               </span>
             </h1>
-            <p className="lp-lede lp-rise mt-6 max-w-[46rem] text-white/85" style={delay(280)}>
+            <p className="lp-lede lp-rise mt-4 max-w-[46rem] text-white/85 sm:mt-6" style={delay(280)}>
               Vi mäter din förbrukning först och dimensionerar sedan sol, batteri och laddbox efter hur
               ni bor. Fast pris, grönt avdrag direkt på fakturan och en fast kontaktperson från hembesök
               till uppföljning.
             </p>
-            <div className="lp-rise mt-8 flex flex-wrap gap-3" style={delay(400)}>
+            {/* Mobil: betyget står före knapparna, så att det syns på första
+                skärmen. Från 640 px står det i rutan till höger. */}
+            <a
+              href={reco.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="lp-rise mt-5 flex items-center gap-2.5 text-[14.5px] text-white/90 sm:hidden"
+              style={delay(340)}
+            >
+              <Stars decorative className="text-[15px] text-sun" />
+              <span>
+                <strong className="font-medium text-white">{reco.average} av 5</strong> på Reco ·{" "}
+                {reco.count} omdömen
+              </span>
+            </a>
+            <div className="lp-rise mt-5 flex flex-wrap gap-3 sm:mt-8" style={delay(400)}>
               <Link href="/offert" className="lp-btn-sun">
                 Boka kostnadsfritt hembesök <ArrowRight size={17} aria-hidden="true" />
               </Link>
@@ -67,7 +100,7 @@ export function LandingHero({ reco }: { reco: RecoStats }) {
           </div>
 
           <aside
-            className="lp-slide-left rounded-[28px] border border-white/20 bg-white/[0.11] p-5 shadow-2xl shadow-black/30 backdrop-blur-xl sm:p-6 md:max-w-[46rem] xl:col-span-4 xl:max-w-none"
+            className="lp-slide-left rounded-3xl border border-white/25 bg-white/[0.12] p-5 shadow-[0_30px_60px_-30px_rgba(0,0,0,0.55),inset_0_1px_0_rgba(255,255,255,0.22)] backdrop-blur-lg backdrop-saturate-150 sm:p-6 md:max-w-[46rem] xl:max-w-none"
             style={delay(520)}
             aria-label="Omdömen och villkor i korthet"
           >
@@ -75,7 +108,7 @@ export function LandingHero({ reco }: { reco: RecoStats }) {
               href={reco.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center gap-4"
+              className="group flex items-center gap-4 max-sm:hidden"
               data-reco-source={reco.live ? "live" : "fallback"}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -87,21 +120,21 @@ export function LandingHero({ reco }: { reco: RecoStats }) {
                 className="h-[66px] w-[66px] shrink-0 transition-transform duration-500 group-hover:rotate-[-8deg] group-hover:scale-105"
               />
               <span>
-                <Stars className="text-[18px] text-sun" />
+                <Stars decorative className="text-[18px] text-sun" />
                 <span className="mt-1 block text-[16.5px] text-white/90">
-                  <strong className="font-semibold text-white">{reco.average} av 5</strong> på Reco,{" "}
+                  <strong className="font-medium text-white">{reco.average} av 5</strong> på Reco,{" "}
                   {reco.count} omdömen
                 </span>
               </span>
             </a>
-            <dl className="mt-5 grid grid-cols-2 gap-2.5 md:grid-cols-4 xl:grid-cols-2">
+            <dl className="grid grid-cols-2 gap-2.5 sm:mt-5 md:grid-cols-4 xl:grid-cols-2">
               {STATS.map((s, i) => (
                 <div
                   key={s.label}
-                  className="lp-pop flex flex-col-reverse justify-end rounded-2xl bg-white/[0.09] px-4 py-3.5 ring-1 ring-inset ring-white/10 transition-colors duration-300 hover:bg-white/[0.16]"
+                  className="lp-pop flex flex-col-reverse justify-end rounded-[14px] bg-white/10 px-4 py-3.5 transition-colors duration-300 hover:bg-white/[0.17]"
                   style={delay(700 + i * 90)}
                 >
-                  <dt className="mt-1 text-[12.5px] leading-snug text-white/70">{s.label}</dt>
+                  <dt className="mt-1 text-[13px] leading-snug text-white/85 xl:whitespace-nowrap">{s.label}</dt>
                   <dd className="font-display text-[23px] font-medium leading-tight tracking-[-0.02em]">
                     {s.n}
                   </dd>

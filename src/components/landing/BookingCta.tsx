@@ -1,15 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import type { RecoStats } from "@/lib/reco-live";
+import { Stars } from "./shared";
 
 /** Avslutande bokningsruta: mörkt kort med vinterbild. */
-export function BookingCta() {
+export function BookingCta({ reco }: { reco: RecoStats }) {
   return (
-    <section className="bg-bone pb-14 pt-10 md:pb-20 md:pt-12">
+    <section className="bg-bone pb-0 pt-10 md:pt-12">
       <div className="container-edge">
         <div
           data-reveal="scale"
-          className="group relative isolate overflow-hidden rounded-[34px] bg-night px-7 py-14 text-white sm:px-12 md:py-20 lg:px-20 lg:py-24"
+          className="lp-parallax-box relative isolate overflow-hidden rounded-[30px] bg-night px-7 py-14 text-white sm:px-12 md:py-20 lg:px-20 lg:py-24"
         >
           <Image
             src="/kb/bat-trygghet.jpg"
@@ -17,7 +19,7 @@ export function BookingCta() {
             fill
             sizes="(min-width: 1480px) 1350px, 92vw"
             quality={66}
-            className="-z-10 object-cover object-[72%_center] brightness-[1.35] saturate-[1.15] transition-transform duration-[2400ms] ease-out group-hover:scale-[1.05]"
+            className="lp-parallax -z-10 object-cover object-[72%_center] brightness-[1.35] saturate-[1.15]"
           />
           <div className="absolute inset-0 -z-10 bg-gradient-to-r from-night/95 via-night/55 to-night/5" />
 
@@ -27,17 +29,30 @@ export function BookingCta() {
               Boka ett hembesök. <span className="block">Vi tar med bullarna.</span>
             </h2>
             <p className="lp-lede mt-5 text-white/80">
-              Berätta lite om ditt hus, så hör vi av oss inom 24 timmar med förslag på datum. Utan
-              kostnad och utan förpliktelse. Är du allergisk, säg till så tar vi med något annat.
+              Välj dag och tid direkt i kalendern, så ringer vi dagen innan och bekräftar vem som
+              kommer. Hembesöket är kostnadsfritt och utan förpliktelser. Är du allergisk mot kanel,
+              säg till så tar vi med något annat.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link href="/offert" className="lp-btn-sun">
                 Begär hembesök <ArrowRight size={17} aria-hidden="true" />
               </Link>
               <a href="tel:+46763053732" className="lp-btn-glass">
-                Ring 076 305 37 32
+                Ring 076 305 37 32
               </a>
             </div>
+            <a
+              href={reco.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-flex items-center gap-2.5 text-[15px] text-white/85 underline-offset-4 hover:underline"
+            >
+              <Stars decorative className="text-[16px] text-sun" />
+              <span>
+                <strong className="font-medium text-white">{reco.average} av 5</strong> på Reco,{" "}
+                {reco.count} omdömen
+              </span>
+            </a>
           </div>
         </div>
       </div>
