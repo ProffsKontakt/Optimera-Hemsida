@@ -234,11 +234,23 @@ export function HouseDay() {
               )}
             </div>
 
-            <div key={`c-${active}`} className="lp-pop mt-8 min-h-[9.5rem]" aria-live={auto ? "off" : "polite"}>
-              <h3 className="font-display text-[1.75rem] font-medium leading-tight tracking-[-0.02em] text-white">
-                {s.title}
-              </h3>
-              <p className="mt-3 text-[17px] leading-relaxed text-white/75">{s.body}</p>
+            {/* Alla fem lägen ligger i samma ruta, så att höjden styrs av den
+                längsta texten och sidan inte hoppar när läget byts. */}
+            <div className="mt-8 grid" aria-live={auto ? "off" : "polite"}>
+              {STATES.map((st, i) => (
+                <div
+                  key={st.tab}
+                  aria-hidden={i !== active}
+                  className={`col-start-1 row-start-1 transition-[opacity,transform] duration-500 ease-out motion-reduce:transition-none ${
+                    i === active ? "opacity-100" : "pointer-events-none translate-y-2 opacity-0"
+                  }`}
+                >
+                  <h3 className="font-display text-[1.75rem] font-medium leading-tight tracking-[-0.02em] text-white">
+                    {st.title}
+                  </h3>
+                  <p className="mt-3 text-[17px] leading-relaxed text-white/75">{st.body}</p>
+                </div>
+              ))}
             </div>
 
             <div className="mt-6">

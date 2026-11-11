@@ -11,14 +11,14 @@ const MAX_REVIEWS = 9;
 
 /**
  * Lägger de längsta omdömena en bit in i spalterna i stället för överst, så
- * att väggen får en jämnare rytm. Urvalet är detsamma, bara ordningen ändras.
+ * att väggen får en jämnare rytm. Urvalet och den kurerade ordningen från
+ * admin är desamma; bara de två längsta flyttas.
  */
 function arrange(list: Review[]): Review[] {
   if (list.length < 5) return list;
-  const byLength = [...list].sort((a, b) => a.text.length - b.text.length);
-  const longest = byLength.pop()!;
-  const second = byLength.pop()!;
-  const out = [...byLength];
+  const [longest, second] = [...list].sort((a, b) => b.text.length - a.text.length);
+  // Ordningen från /admin/recensioner behålls för alla utom de två längsta.
+  const out = list.filter((r) => r !== longest && r !== second);
   out.splice(1, 0, longest);
   out.splice(Math.min(5, out.length), 0, second);
   return out;
@@ -64,18 +64,17 @@ export function ReviewWall({ reviews, reco }: { reviews: Review[]; reco: RecoSta
 
         <ul className="mt-12 gap-5 [column-fill:_balance] sm:columns-2 md:mt-14 lg:columns-3">
           {shown.map((r, i) => (
-            <li
-              key={r.id}
-              data-reveal
-              style={delay((i % 3) * 90)}
-              className="mb-5 break-inside-avoid rounded-[24px] bg-[#FFFDF8] p-6 ring-1 ring-ink/[0.07] transition duration-500 hover:-translate-y-1 hover:shadow-[0_26px_50px_-34px_rgba(20,22,42,0.55)]"
-            >
+            <li key={r.id} data-reveal style={delay((i % 3) * 90)} className="mb-5 break-inside-avoid">
+              {/* Hover-lyftet ligger på ett inre element: skroll-animationen
+                  äger transform på yttre elementet. */}
+              <div className="rounded-[24px] bg-[#FFFDF8] p-6 ring-1 ring-ink/[0.07] transition duration-500 hover:-translate-y-1 hover:shadow-[0_26px_50px_-34px_rgba(20,22,42,0.55)]">
               {r.rating ? <Stars rating={r.rating} className="text-[19px] text-amber-deep" /> : null}
               <blockquote className="mt-3.5 text-[16px] leading-[1.6] text-ink/85">”{r.text}”</blockquote>
               <footer className="mt-5 flex items-center justify-between gap-3 rounded-2xl px-4 py-3 font-mono text-[11px] uppercase tracking-[0.16em] text-ink/60 ring-1 ring-inset ring-ink/10">
                 <span>{r.author}</span>
                 <span className="text-right">{r.place}</span>
               </footer>
+              </div>
             </li>
           ))}
         </ul>

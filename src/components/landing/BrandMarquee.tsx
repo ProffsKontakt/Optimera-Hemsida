@@ -21,7 +21,12 @@ const BRANDS = [
 
 function Row({ hidden = false }: { hidden?: boolean }) {
   return (
-    <ul className="flex shrink-0 items-center" aria-hidden={hidden || undefined}>
+    <ul
+      className={`flex shrink-0 items-center motion-reduce:w-full motion-reduce:min-w-0 motion-reduce:shrink motion-reduce:flex-wrap motion-reduce:justify-center motion-reduce:gap-y-3 ${
+        hidden ? "motion-reduce:hidden" : ""
+      }`}
+      aria-hidden={hidden || undefined}
+    >
       {BRANDS.map((b) => (
         <li
           key={b}
@@ -40,7 +45,7 @@ export function BrandMarquee() {
       className="lp-marquee-wrap overflow-hidden border-b border-ink/10 bg-bone py-5"
       aria-label="Märken vi installerar"
     >
-      <div className="lp-marquee flex w-max motion-reduce:flex-wrap">
+      <div className="lp-marquee flex w-max motion-reduce:w-full">
         <Row />
         <Row hidden />
       </div>

@@ -10,6 +10,9 @@ import { useEffect } from "react";
  */
 export function RevealObserver() {
   useEffect(() => {
+    // Talar om för CSS:en att observatören är igång, så att reservvisningen
+    // (som annars tänder allt efter några sekunder) inte behövs.
+    document.documentElement.classList.add("reveal-on");
     const els = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]:not(.is-in)"));
     if (!els.length) return;
     if (typeof IntersectionObserver === "undefined") {

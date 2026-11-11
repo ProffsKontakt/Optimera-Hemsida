@@ -23,7 +23,7 @@ const BATTERY_KWH = 53.76; // 7 Easyway-moduler, som på produktbilden
 
 export function ServiceVignette({ kind }: { kind: ServiceSlug }) {
   return (
-    <Canvas
+    <Canvas frameloop="demand"
       shadows
       camera={{ position: [2.4, 1.3, 3.6], fov: 30 }}
       dpr={[1, 2]}

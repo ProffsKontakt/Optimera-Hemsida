@@ -47,7 +47,7 @@ const ROOF_COLOR = "#3F5236";
 
 export function HeroLab() {
   return (
-    <Canvas
+    <Canvas frameloop="demand"
       camera={{ position: [4.6, 3.2, 5.4], fov: 36 }}
       dpr={[1, 2]}
       gl={{ antialias: true, alpha: true }}

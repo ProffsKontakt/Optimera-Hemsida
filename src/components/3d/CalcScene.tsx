@@ -30,7 +30,7 @@ export function CalcScene({ input }: { input: CalcInput }) {
   const en = input.enabled;
   const result = useMemo<CalcResult>(() => computeCalc(input), [input]);
   return (
-    <Canvas
+    <Canvas frameloop="demand"
       camera={{ position: [5.5, 3.4, 6.5], fov: 36 }}
       shadows
       dpr={[1, 2]}

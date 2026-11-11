@@ -43,12 +43,10 @@ export function ProcessGrid() {
         />
         <ol className="mt-12 grid gap-4 sm:grid-cols-2 md:mt-16 lg:grid-cols-3">
           {STEPS.map((s, i) => (
-            <li
-              key={s.title}
-              data-reveal
-              style={delay((i % 3) * 90)}
-              className="group relative overflow-hidden rounded-[26px] bg-[#FFFDF8] p-6 ring-1 ring-ink/[0.07] transition duration-500 hover:-translate-y-1 hover:ring-indigo/30 md:p-7"
-            >
+            <li key={s.title} data-reveal style={delay((i % 3) * 90)} className="flex">
+              {/* Hover-lyftet ligger på ett inre element: skroll-animationen
+                  äger transform på yttre elementet. */}
+              <div className="group relative w-full overflow-hidden rounded-[26px] bg-[#FFFDF8] p-6 ring-1 ring-ink/[0.07] transition duration-500 hover:-translate-y-1 hover:ring-indigo/30 md:p-7">
               {/* Tunn linje som växer ut i överkanten vid hover. */}
               <span className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-indigo to-sun transition-transform duration-500 group-hover:scale-x-100" />
               <span className="font-mono text-[12px] tracking-[0.14em] text-indigo">
@@ -56,6 +54,7 @@ export function ProcessGrid() {
               </span>
               <h3 className="lp-h3 mt-3">{s.title}</h3>
               <p className="mt-2 text-[15px] leading-relaxed text-ink/65">{s.body}</p>
+              </div>
             </li>
           ))}
         </ol>

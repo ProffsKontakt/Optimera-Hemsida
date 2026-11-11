@@ -39,8 +39,8 @@ export function LandingHero({ reco }: { reco: RecoStats }) {
       </div>
 
       <div className="container-edge relative z-10 pb-10 pt-36 md:pb-14 lg:pb-16">
-        <div className="grid gap-10 lg:grid-cols-12 lg:items-end lg:gap-8">
-          <div className="lg:col-span-8">
+        <div className="grid gap-9 xl:grid-cols-12 xl:items-end xl:gap-8">
+          <div className="xl:col-span-8">
             <h1>
               {/* Sökordsraden ligger i h1 som en liten etikett ovanför rubriken. */}
               <span className="lp-eyebrow lp-rise text-white/85" style={delay(80)}>
@@ -67,7 +67,7 @@ export function LandingHero({ reco }: { reco: RecoStats }) {
           </div>
 
           <aside
-            className="lp-slide-left rounded-[28px] border border-white/20 bg-white/[0.11] p-5 shadow-2xl shadow-black/30 backdrop-blur-xl sm:p-6 lg:col-span-4"
+            className="lp-slide-left rounded-[28px] border border-white/20 bg-white/[0.11] p-5 shadow-2xl shadow-black/30 backdrop-blur-xl sm:p-6 md:max-w-[46rem] xl:col-span-4 xl:max-w-none"
             style={delay(520)}
             aria-label="Omdömen och villkor i korthet"
           >
@@ -94,7 +94,7 @@ export function LandingHero({ reco }: { reco: RecoStats }) {
                 </span>
               </span>
             </a>
-            <dl className="mt-5 grid grid-cols-2 gap-2.5">
+            <dl className="mt-5 grid grid-cols-2 gap-2.5 md:grid-cols-4 xl:grid-cols-2">
               {STATS.map((s, i) => (
                 <div
                   key={s.label}
