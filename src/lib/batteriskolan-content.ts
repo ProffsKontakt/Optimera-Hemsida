@@ -950,7 +950,7 @@ export const CONCEPTS: BatteryConcept[] = [
       {
         h2: "Så höjer batteriet självförbrukningen",
         paragraphs: [
-          "Batteriet laddas med överskottet mitt på dagen och laddar ur när huset drar mer än solcellerna ger. Optimera Energi anger att ett batteri typiskt höjer självförbrukningen från 30–40 procent till 70–80 procent. Hur mycket det blir hos dig beror på batteriets storlek i förhållande till solcellerna och på hur mycket el du använder på kvällen.",
+          "Batteriet laddas med överskottet mitt på dagen och laddar ur när huset drar mer än solcellerna ger. Enligt Energimyndigheten ger ett batteri generellt mer egenanvändning, men hur mycket beror på batteriets storlek i förhållande till solcellerna och på hur mycket el du använder på kvällen. I exemplet nedan flyttar ett 10 kWh-batteri cirka 1 350 kWh per år. Med 7 000 kWh solel per år och 35 procents självförbrukning utan batteri, samma antaganden som i kunskapsbankens räkneexempel för solceller, höjer det andelen från cirka 35 till drygt 50 procent.",
           "Du kan också flytta förbrukning till soltimmarna, till exempel genom att ladda elbilen mitt på dagen. Energimyndigheten kallar det laststyrning, och det fungerar med eller utan batteri."
         ]
       },
@@ -995,7 +995,7 @@ export const CONCEPTS: BatteryConcept[] = [
       },
       {
         q: "Hur hög självförbrukning har man utan batteri?",
-        a: "Optimera Energi anger typiskt 30–40 procent för en villa utan batteri. Andelen blir högre om någon är hemma dagtid eller om elbilen laddas mitt på dagen, och lägre om solcellsanläggningen är stor i förhållande till förbrukningen."
+        a: "Det varierar mycket mellan hus. Elbehovet i en normal villa är ofta störst morgon och kväll, medan solcellerna producerar mest mitt på dagen, enligt Energimyndigheten. Energimyndighetens solelkalkyl utgår från 40 procent för en typisk villa, och kunskapsbankens räkneexempel från 35 procent. Andelen blir högre om någon är hemma dagtid eller om elbilen laddas mitt på dagen, och lägre om solcellsanläggningen är stor i förhållande till förbrukningen."
       },
       {
         q: "Lönar det sig mer att använda solelen själv nu när 60-öringen är borta?",
@@ -1046,6 +1046,11 @@ export const CONCEPTS: BatteryConcept[] = [
         title: "Vanliga frågor",
         publisher: "CheckWatt",
         url: "https://checkwatt.com/sv/faq-vanliga-fragor/"
+      },
+      {
+        title: "Solelkalkylen (förifyllda värden för en typisk villa)",
+        publisher: "Energimyndigheten",
+        url: "https://www.energimyndigheten.se/effektiv-energianvandning/guider/solelportalen/vad-kostar-det/solelkalkyl/"
       }
     ],
     related: [
@@ -1069,7 +1074,7 @@ export const CONCEPTS: BatteryConcept[] = [
         label: "Räkna på sol och batteri i kalkylatorn"
       }
     ],
-    updatedAt: "2026-10-03"
+    updatedAt: "2026-11-09"
   },
   {
     slug: "spotprisstyrning",

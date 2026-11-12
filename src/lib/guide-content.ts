@@ -34,6 +34,189 @@ export type GuideContent = {
 };
 
 export const GUIDE_CONTENT: Record<string, GuideContent> = {
+  "vad-ar-bergvarme": {
+    answer: "Bergvärme är en värmepump som hämtar värme ur ett borrhål i berggrunden och ger både värme och varmvatten till huset. En vätska i en slang i borrhålet tar upp värmen, och värmepumpen höjer temperaturen med en eldriven kompressor. Enligt Energimyndighetens värmepumpsguide från 2025 har bergvärme en årsvärmefaktor (SCOP) på 4,0–5,5, alltså 4–5,5 kWh värme per kWh el. Huset behöver vattenburen värme.",
+    keyFacts: [
+      {
+        label: "Värme ur borrhålet",
+        value: "Cirka 145 kWh per meter borrhål och år, enligt Energi- och klimatrådgivningen",
+      },
+      {
+        label: "Årsvärmefaktor (SCOP)",
+        value: "4,0–5,5 för bergvärme och 3,0–4,5 för luft-vatten, enligt värmepumpsguiden 2025",
+      },
+      {
+        label: "Pris med installation (2023)",
+        value: "Omkring 120 000–250 000 kr för en villa, enligt Energi- och klimatrådgivningen",
+      },
+      {
+        label: "Krav på huset",
+        value: "Vattenburet värmesystem med radiatorer eller golvvärme, och anmälan till kommunen före borrningen",
+      },
+      {
+        label: "Passar bäst",
+        value: "Hus som behöver 15 000–25 000 kWh värme och varmvatten per år eller mer",
+      },
+    ],
+    sections: [
+      {
+        h2: "Vad är bergvärme?",
+        body: [
+          "Bergvärme är uppvärmning med värme som finns lagrad i berggrunden. En bergvärmepump hämtar värmen från ett borrhål i berget och producerar både värme och varmvatten till huset, enligt Energi- och klimatrådgivningen. Borrhålet kallas också energibrunn.",
+          "Värmen utvinns ur ett eller flera borrhål. Grundvattnet hjälper till att föra över värmen, så borrhål med stort grundvattenflöde fungerar särskilt bra eftersom temperaturen där är konstant. Bergvärme påverkas inte av utomhustemperaturen, enligt Energimyndighetens värmepumpsguide. På sommaren återladdas borrhålet med värme, enligt Boverket.",
+        ],
+      },
+      {
+        h2: "Hur fungerar en bergvärmepump?",
+        body: [
+          "Bergvärmepumpen flyttar värme från borrhålet till husets värmesystem med hjälp av el. En köldbärarvätska pumpas runt i en dubbelvikt slang i borrhålet och tar upp värmen från berget.",
+          "I värmepumpen förångas ett köldmedium vid lågt tryck och låg temperatur. En eldriven kompressor höjer trycket så att köldmediet avger sin värme till vattnet i husets värmesystem. Köldmediet blir då flytande igen, passerar en expansionsventil och processen börjar om.",
+          "En bergvärmepump dimensioneras efter husets värmeeffektbehov, och en vanlig tumregel är att den täcker cirka 95 procent av husets årliga energibehov. Under mycket kalla perioder hjälper oftast en elpatron i värmepumpen till, enligt Energi- och klimatrådgivningen.",
+        ],
+      },
+      {
+        h2: "Hur mycket värme ger bergvärme per kWh el?",
+        body: [
+          "Ungefär 4–5,5 kWh värme per kWh el räknat över ett år. Energimyndighetens värmepumpsguide (2025) anger en årsvärmefaktor (SCOP) på 4,0–5,5 för bergvärme, mot 3,0–4,5 för luft-vattenvärmepumpar och 3,5–5,0 för luft-luftvärmepumpar.",
+          "Källorna går isär något. På sin webbplats skriver Energi- och klimatrådgivningen att en bergvärmepump brukar ge 3–4 gånger så mycket värme som den använder el, och Boverket skriver att en värmepump för berg, jord eller sjö kan ge upp till fyra gånger mer energi än den använder. SCOP är ett säsongsmedelvärde, och Sverige räknas till klimatzonen för kallt klimat. Jämför därför SCOP för samma klimatzon.",
+          "Räkneexempel: ett hus som behöver 20 000 kWh värme och varmvatten per år använder med en årsvärmefaktor på 4 cirka 5 000 kWh el till värmepumpen, och med 5 cirka 4 000 kWh. Exemplet bortser från elpatronens tillskott.",
+        ],
+      },
+      {
+        h2: "Vad krävs för att installera bergvärme?",
+        body: [
+          "Huset måste ha ett vattenburet värmesystem med radiatorer eller golvvärme, enligt Boverket. Bergvärmepumpen värmer vattnet i det systemet och ger också varmvatten.",
+          "Du måste anmäla borrningen till kommunen enligt förordningen (1998:899) om miljöfarlig verksamhet och hälsoskydd. Inom särskilt utpekade områden, som vattenskyddsområden, kan det vara förbjudet eller kräva tillstånd. Borrhål bör ligga minst 20 meter från varandra, 10 meter från tomtgränsen och 4 meter från huset, enligt Energi- och klimatrådgivningen.",
+          "Byter du från en panna som gav spillvärme i källaren kan ventilationen och fuktförhållandena ändras, och källaren kan behöva kompletteras med radiatorer, enligt Boverket. Värmepumpar där köldmediekretsen kopplas ihop på plats får bara installeras av certifierad personal, enligt Naturvårdsverket. Förfyllda, hermetiskt slutna enheter omfattas inte av det kravet. Elinstallationen ska alltid göras av ett registrerat elföretag.",
+        ],
+      },
+      {
+        h2: "Vad kostar bergvärme och vilka bidrag finns?",
+        body: [
+          "För en villa är en vanlig kostnad omkring 120 000–250 000 kr för en berg-, jord- eller sjövärmepump, enligt Energi- och klimatrådgivningen (2023). Bergvärme passar bäst i hus med stort behov av värme och varmvatten, till exempel 15 000–25 000 kWh per år eller mer.",
+          "Installationen ger rotavdrag. Vid fast pris för hela installationen räknar Skatteverket 35 procent av totalpriset som arbetskostnad för en vätska-vattenvärmepump, till exempel bergvärme. Avdraget är 30 procent av arbetskostnaden, alltså cirka 10,5 procent av totalpriset.",
+          "En styrbar bergvärmepump finns också bland åtgärderna som just nu ger bidrag för energieffektivisering i småhus, enligt Boverket. Rotavdraget och bidraget har egna villkor, så kontrollera dem innan du skriver avtal.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Vad är en bergvärmepump?",
+        a: "En bergvärmepump är värmepumpen i ett bergvärmesystem. Den hämtar värme från ett borrhål i berget via en köldbärarvätska och höjer temperaturen med en eldriven kompressor, så att den kan värma huset och varmvattnet.",
+      },
+      {
+        q: "Hur fungerar ett bergvärmesystem?",
+        a: "Systemet består av borrhålet med en slang, bergvärmepumpen och husets vattenburna värmesystem. Vätskan i slangen hämtar värme ur berget, värmepumpen höjer temperaturen och vattnet i radiatorerna eller golvvärmen fördelar värmen i huset.",
+      },
+      {
+        q: "Vad är köldmedium i en bergvärmepump?",
+        a: "Köldmediet är ämnet i värmepumpens slutna krets som förångas vid låg temperatur och tryck och avger värme när kompressorn höjer trycket. Det är inte samma sak som köldbärarvätskan i borrhålet. Service på köldmediekretsen och avtappning av köldmedium får bara göras av certifierad personal, enligt Naturvårdsverket.",
+      },
+      {
+        q: "Fungerar bergvärme när det är kallt ute?",
+        a: "Ja. Bergvärme påverkas inte av utomhustemperaturen, eftersom värmen hämtas ur berget. Under mycket kalla perioder kan en elpatron i värmepumpen behöva hjälpa till.",
+      },
+      {
+        q: "Kan man få bidrag för bergvärme?",
+        a: "Ja, om villkoren är uppfyllda. En styrbar bergvärmepump finns bland åtgärderna i bidraget för energieffektivisering i småhus (Villaeffekten), som gäller hus med värdeår före 1990 utan fjärrvärme där ägaren bor. Installationen ger också rotavdrag, vid fast pris cirka 10,5 procent av totalpriset.",
+      },
+    ],
+  },
+  "varmepump-service": {
+    answer: "En värmepump bör få service en gång om året eller vartannat år, helst inför uppvärmningssäsongen, enligt Energimyndighetens värmepumpsguide (2025). Servicen omfattar ofta kontroll och rengöring av filter, fläktar, köldmedium, temperaturmätare och värmeväxlare. Filtret rengör du själv regelbundet. Ingrepp i köldmediet får bara certifierad personal göra, och servicen ger inget rotavdrag, men felsökning och reparation gör det.",
+    keyFacts: [
+      {
+        label: "Serviceintervall",
+        value: "En gång om året eller vartannat år, helst inför uppvärmningssäsongen (Energimyndighetens värmepumpsguide 2025)",
+      },
+      {
+        label: "Det gör du själv",
+        value: "Läser av larm, rengör filtret och håller utedelen fri från löv, snö och is",
+      },
+      {
+        label: "Läckagekontroll",
+        value: "Minst var 12:e månad vid 5–50 ton CO2e köldmedium, till exempel från 2,4 kg R410A (Naturvårdsverket)",
+      },
+      {
+        label: "Rotavdrag 2026",
+        value: "Inget för service, kontroll och översyn – 30 % av arbetskostnaden för felsökning och reparation (Skatteverket)",
+      },
+      {
+        label: "Vem får göra det",
+        value: "Service och läckagekontroll av köldmediekretsen kräver certifierad personal",
+      },
+    ],
+    sections: [
+      {
+        h2: "Hur ofta behöver en värmepump service?",
+        body: [
+          "En gång om året eller vartannat år, helst inför uppvärmningssäsongen. Det rekommenderar Energimyndighetens värmepumpsguide från 2025, och rådet gäller värmepumpar i allmänhet, både luftvärmepump och bergvärmepump. Guiden jämför med bilen: värmepumpen består av många komponenter som ska fungera tillsammans, och ett haveri kan bli kostsamt.",
+          "Tillverkarnas egna råd kan skilja sig. NIBE ställer till exempel inga krav på årlig service men rekommenderar en funktionskontroll vart 2–3:e år. Följ skötselanvisningen och garantivillkoren för din modell.",
+          "Ett fel märks inte alltid. Slutar värmepumpen fungera tar spetsvärmen över, så huset blir varmt men energianvändningen blir avsevärt högre – kanske utan att du märker det förrän nästa energiräkning kommer, enligt guiden.",
+        ],
+      },
+      {
+        h2: "Vad ingår i service av en värmepump?",
+        body: [
+          "Kontroll och rengöring av filter, fläktar, köldmedium, temperaturmätare och värmeväxlare. Dessutom granskas systemets tryck och tryckutjämningskärl och eventuella larm eller felkoder, enligt Energi- och klimatrådgivningen.",
+          "Servicen är också ett tillfälle att justera inställningarna. Anteckna gärna under året när det varit för varmt eller för kallt inne och vilket väder det var. Då kan serviceteknikern i många fall ställa in styrenheten för ett bättre inomhusklimat och en mer energieffektiv drift.",
+        ],
+      },
+      {
+        h2: "Vilket underhåll kan du göra själv?",
+        body: [
+          "Det enkla underhållet gör du själv mellan servicebesöken, enligt Energi- och klimatrådgivningen och Boverket:",
+        ],
+        bullets: [
+          "Läs av kontrollpanelen regelbundet. Larm syns ofta bara där, men många moderna värmepumpar kan skicka meddelanden till mobilen.",
+          "Rengör värmepumpens filter regelbundet, särskilt om du har gjort något i värmesystemet, som att byta en radiator.",
+          "Håll utedelen till en luft-luftvärmepump fri från löv, snö och is.",
+          "Kontrollera att värmekurvan och vattentrycket i värmesystemet är rätt inställda, gärna med hjälp av en expert.",
+          "Efter installation av berg-, jord- eller sjövärme kan köldbärarvätska behöva fyllas på i expansionskärlet under den första vintern.",
+        ],
+      },
+      {
+        h2: "Får man serva värmepumpen själv?",
+        body: [
+          "Inte köldmediekretsen. Enligt Naturvårdsverket är det förbjudet för privatpersoner att själva installera, demontera, göra läckagekontroll och utföra service på värmepumpsutrustning. Det måste göras av någon som är certifierad, och du ska kontrollera att företaget har giltiga certifikat.",
+          "Elinstallationer, som att installera en värmepump, måste dessutom utföras av ett registrerat elföretag, enligt Energi- och klimatrådgivningen. Filtret, utedelen och kontrollpanelen sköter du däremot själv.",
+        ],
+      },
+      {
+        h2: "Behöver värmepumpen läckagekontroll?",
+        body: [
+          "Det beror på hur mycket köldmedium den innehåller. Enligt EU:s f-gasförordning (2024/573) ska utrustning med 5–50 ton koldioxidekvivalenter köldmedium läckagekontrolleras minst var 12:e månad, eller var 24:e månad med ett läckagevarningssystem. För köldmediet R410A motsvarar 5 ton cirka 2,4 kg, enligt Naturvårdsverket.",
+          "Hermetiskt slutna system som är märkta som sådana och innehåller mindre än 10 ton koldioxidekvivalenter är undantagna från den återkommande kontrollen. Läckagekontroll krävs också när värmepumpen installeras, byggs om eller när någon gör ingrepp i köldmediesystemet.",
+          "Privatpersoner omfattas av samma regler som företag. Den som har utrustning som kräver läckagekontroll ska föra register över den.",
+        ],
+      },
+      {
+        h2: "Ger service av värmepump rotavdrag?",
+        body: [
+          "Nej, inte själva servicen. Skatteverket ger inget rotavdrag för servicearbeten eller kontroll och översyn av maskiner och inventarier. Felsökning av en värmepump ger däremot rotavdrag, liksom reparation, installation och byte.",
+          "Rotavdraget är 30 procent av arbetskostnaden. Be om en faktura där det framgår vad som är felsökning eller reparation och vad som är service.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Behöver man serva värmepumpen?",
+        a: "Ja. Energi- och klimatrådgivningen rekommenderar service en gång om året eller vartannat år, helst inför uppvärmningssäsongen. Utan service kan ett fel gå obemärkt förbi, eftersom spetsvärmen tar över och energianvändningen ökar.",
+      },
+      {
+        q: "Hur ofta ska man göra service på en luftvärmepump?",
+        a: "En gång om året eller vartannat år, enligt Energi- och klimatrådgivningens råd för värmepumpar. Rengör filtret regelbundet och håll utedelen fri från löv, snö och is mellan servicebesöken.",
+      },
+      {
+        q: "Hur ofta ska en bergvärmepump ha service?",
+        a: "Samma råd gäller: en gång om året eller vartannat år, helst inför uppvärmningssäsongen. Tillverkarnas egna råd kan skilja sig. NIBE ställer till exempel inga krav på årlig service men rekommenderar en funktionskontroll vart 2–3:e år. Följ skötselanvisningen och garantivillkoren för din modell. Innehåller pumpen så mycket köldmedium att den omfattas av krav på läckagekontroll ska den dessutom kontrolleras minst var 12:e månad.",
+      },
+      {
+        q: "Får man göra läckagekontroll av värmepumpen själv?",
+        a: "Nej. Läckagekontroll och service på köldmediekretsen måste göras av certifierad personal, enligt Naturvårdsverket. Privatpersoner med utrustning som kräver läckagekontroll ska också föra register över den.",
+      },
+    ],
+  },
   "sigenergy-sigenstor-granskning": {
     answer: "Sigenergy SigenStor är ett välbyggt allt-i-ett som går snabbt att installera, men hyllningarna vilar på Sigenergys egna påståenden. Batteriet är lågspänningsmoduler med en DC/DC-optimerare i varje modul, Sigenergy publicerar ingen verkningsgrad för batteriet, AI-besparingarna kommer från bolagets egna fallstudier, och extern styrning kräver att installatören låser upp Modbus. Vår recension landar i att ett öppet system med högspänningsbatteri i serie, hybridväxelriktare och fristående spotprisstyrning ger färre omvandlingssteg och fri styrning.",
     keyFacts: [
@@ -657,7 +840,7 @@ export const GUIDE_CONTENT: Record<string, GuideContent> = {
         body: [
           "Rörligt pris har historiskt ofta blivit billigare, medan fast pris fungerar som en försäkring mot prisökningar under avtalstiden. Sedan januari 2012 har det rörliga priset varit lägre än medelpriset för ettåriga fastprisavtal vid ungefär 60 procent av tillfällena, enligt Konsumenternas Energimarknadsbyrå.",
           "Ei förklarar varför fast pris ofta blir dyrare: elhandlaren måste ta höjd för att inköpen kan bli dyrare än det pris ni har avtalat. Du betalar alltså för tryggheten. Enligt Energimarknadsbyrån finns heller inget tydligt mönster för vilken årstid det lönar sig att teckna fast pris.",
-          "Fast pris tecknas oftast på 1, 2 eller 3 år. Elhandlaren ska meddela dig tidigast 90 och senast 60 dagar innan ett tidsbestämt avtal löper ut. Väljer du inget nytt avtal inom uppsägningstiden tecknar elhandlaren dig på det avtal som villkoren anger, till priset i beskedet.",
+          "Att binda elavtalet betyder i regel att du tecknar fast pris. Priset per kWh är då detsamma under hela avtalstiden, och de vanligaste bindningstiderna är ett, två eller tre år, enligt Ei. Ett avtal med månadspris får ha högst tre månaders bindnings- eller uppsägningstid. Elhandlaren ska meddela dig tidigast 90 och senast 60 dagar innan ett tidsbestämt avtal löper ut. Väljer du inget nytt avtal inom uppsägningstiden tecknar elhandlaren dig på det avtal som villkoren anger, till priset i beskedet.",
         ],
       },
       {
@@ -1335,7 +1518,7 @@ export const GUIDE_CONTENT: Record<string, GuideContent> = {
         bullets: [
           "Nettopris: totalpriset minus grönt avdrag. Avdraget är 15 % av kostnaden för arbete och material för solceller och 50 % för batteri. Vid fast pris räknas 97 % av totalpriset som arbete och material, så avdraget blir 14,55 % respektive 48,5 % av totalpriset. Taket är 50 000 kr per person och år för all grön teknik.",
           "Årsproduktion: effekten i kWp, kilowatt toppeffekt, gånger antalet kWh per kWp och år. Energimyndigheten anger 800–1 100 kWh per kW och år som normalt för ett fast system utan skuggning.",
-          "Egenanvändning: den del av solelen du använder själv i samma stund som den produceras. En vanlig villa har 20–50 %, enligt Energimyndigheten. Resten matas ut på nätet och säljs.",
+          "Egenanvändning: den del av solelen du använder själv i samma stund som den produceras. Energimyndighetens solelkalkyl utgår från 40 % för en typisk villa. Resten matas ut på nätet och säljs.",
           "Värde per kWh: egenanvänd el ersätter spotpris, elhandlarens påslag, energiskatt, rörlig nätavgift och moms. Såld el ger ungefär spotpriset, alltså elbörsens pris, plus några öre i nätnytta från nätbolaget.",
           "Återbetalningstid = nettopris ÷ (egenanvända kWh × köppris + sålda kWh × säljpris).",
         ],
