@@ -130,7 +130,7 @@ export function ReviewWall({ reviews, reco }: { reviews: Review[]; reco: RecoSta
                           type="checkbox"
                           id={`omdome-${r.id}`}
                           className={`peer sr-only ${onlyMobile}`}
-                          aria-label={`Visa hela omdömet från ${r.author}`}
+                          aria-label={`Läs hela omdömet från ${r.author}`}
                         />
                       )}
                       <blockquote

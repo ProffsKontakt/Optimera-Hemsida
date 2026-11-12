@@ -165,15 +165,19 @@ export function Navbar() {
               fetchPriority="high"
             />
             {/* Ljus logga för den mörka hjältebilden på startsidan. */}
-            <Image
-              src="/logo-dark.svg"
-              alt=""
-              aria-hidden
-              width={332}
-              height={114}
-              loading="eager"
-              className={`absolute inset-0 h-9 w-auto transition-opacity duration-300 ${onHero ? "opacity-100" : "opacity-0"}`}
-            />
+            {/* Den vita loggan används bara över startsidans hjälte. På övriga
+                sidor renderas den inte alls, så att den inte hämtas i onödan. */}
+            {pathname === "/" && (
+              <Image
+                src="/logo-dark.svg"
+                alt=""
+                aria-hidden
+                width={332}
+                height={114}
+                loading="eager"
+                className={`absolute inset-0 h-9 w-auto transition-opacity duration-300 ${onHero ? "opacity-100" : "opacity-0"}`}
+              />
+            )}
           </span>
           {/* Taglinen göms i spannet 1024–1279px: där får den fulla menyn
               (åtta flikar) inte plats bredvid den. Två rader så att den inte
@@ -248,7 +252,7 @@ export function Navbar() {
                 : "invisible scale-90 opacity-0"
             }`}
           >
-            <QuoteButton href="/offert-start" />
+            <QuoteButton href="/offert-start" prefetch={pathname === "/" ? undefined : false} />
           </span>
           {/* Hamburgare som morfar till kryss (tre linjer -> X). */}
           <button
@@ -372,6 +376,7 @@ function QuoteButton({
   onClick,
   href = "/offert",
   glass = false,
+  prefetch,
 }: {
   className?: string;
   innerClassName?: string;
@@ -380,6 +385,8 @@ function QuoteButton({
   href?: string;
   /** Lugn glasvariant över startsidans mörka hjältebild. */
   glass?: boolean;
+  /** false = hämta inte målsidan i förväg (knappen är dold på den här sidan). */
+  prefetch?: boolean;
 }) {
   if (glass) {
     return (
@@ -396,6 +403,7 @@ function QuoteButton({
     <Link
       href={href}
       onClick={onClick}
+      prefetch={prefetch}
       className={`group inline-flex rounded-full p-[3px] bg-gradient-to-r from-indigo via-sun to-indigo animate-gradient-drift transition-transform duration-300 hover:scale-[1.02] ${className}`}
     >
       <span

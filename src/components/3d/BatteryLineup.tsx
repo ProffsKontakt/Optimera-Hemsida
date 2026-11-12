@@ -36,7 +36,7 @@ export function BatteryLineup() {
     return { ...b, cx };
   });
   return (
-    <Canvas frameloop="demand" shadows camera={{ position: [0.4, 0.9, 5.2], fov: 24 }} dpr={[1, 2]} className="!absolute inset-0" gl={{ antialias: true, alpha: true }}>
+    <Canvas frameloop="demand" resize={{ scroll: false }} shadows camera={{ position: [0.4, 0.9, 5.2], fov: 24 }} dpr={[1, 2]} className="!absolute inset-0" gl={{ antialias: true, alpha: true }}>
       <PauseWhenHidden />
       <color attach="background" args={["#ECE6D8"]} />
       <StudioLights />

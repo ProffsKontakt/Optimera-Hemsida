@@ -625,6 +625,11 @@ html:not(.anim) .lp-dygn-nojs {
     transform: none;
     animation: none;
   }
+  /* Ett element som får tangentbordsfokus ska synas direkt, utan sin
+     stegrade fördröjning. */
+  .anim [data-reveal]:focus-within {
+    transition-delay: 0s;
+  }
   /* Linje som "ritas" från vänster när den kommer i bild. */
   .anim [data-reveal="line"] {
     opacity: 1;
@@ -795,5 +800,14 @@ html:not(.anim) .lp-dygn-nojs {
   .lp-bar-sweep::after {
     animation: lp-bar-sweep 3.6s ease-in-out infinite;
     animation-delay: calc(var(--i, 0) * 90ms);
+  }
+}
+
+/* Utskrift: skroll-animationerna får inte dölja innehåll. */
+@media print {
+  .anim [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
   }
 }

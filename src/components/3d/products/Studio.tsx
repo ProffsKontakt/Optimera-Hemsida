@@ -65,10 +65,14 @@ export function Sway({
   baseYaw?: number;
 }) {
   const ref = useRef<THREE.Group>(null);
+  const t = useRef(0);
   const reduced = usePrefersReducedMotion();
-  useFrame(({ clock }) => {
+  useFrame((_, delta) => {
     if (!ref.current) return;
-    ref.current.rotation.y = baseYaw + (reduced ? 0 : Math.sin(clock.elapsedTime * speed) * amplitude);
+    // Egen tid som bara går medan bildrutor ritas (klampat steg), så att
+    // pendlingen inte hoppar när scenen stått still (frameloop="demand").
+    t.current += Math.min(delta, 0.05);
+    ref.current.rotation.y = baseYaw + (reduced ? 0 : Math.sin(t.current * speed) * amplitude);
   });
   return (
     <group ref={ref} rotation={[0, baseYaw, 0]}>
