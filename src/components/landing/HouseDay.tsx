@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import type { StartImage, StartImageKey } from "@/lib/start-images";
 import { delay, SectionHead } from "./shared";
 
 /**
@@ -18,6 +19,8 @@ type DayState = {
   sub: string;
   /** Timme som markeras i spotprisdiagrammet (null = hela dygnet). */
   hour: number | null;
+  /** Bildplats i admin (lib/start-images.ts). */
+  slot: StartImageKey;
   /** Bild för läget. Bilderna tonar över i varandra när läget byts. */
   img: string;
   alt: string;
@@ -35,6 +38,7 @@ const STATES: DayState[] = [
     big: "02:00",
     sub: "Natt",
     hour: 2,
+    slot: "dygn-02",
     img: "/start/dygn-02.jpg",
     alt: "Elbil som laddar vid ett rött garage en höstnatt",
     pos: "object-[88%_center]",
@@ -52,6 +56,7 @@ const STATES: DayState[] = [
     big: "07:00",
     sub: "Morgon",
     hour: 7,
+    slot: "dygn-07",
     img: "/start/dygn-07.jpg",
     alt: "Gul trävilla med solpaneler på taket i lågt morgonljus",
     pos: "object-[64%_center]",
@@ -69,6 +74,7 @@ const STATES: DayState[] = [
     big: "12:00",
     sub: "Dag",
     hour: 12,
+    slot: "dygn-12",
     img: "/start/dygn-12.jpg",
     alt: "Svarta solpaneler på ett tegeltak under blå himmel",
     pos: "object-center",
@@ -86,6 +92,7 @@ const STATES: DayState[] = [
     big: "18:00",
     sub: "Kväll",
     hour: 18,
+    slot: "dygn-18",
     img: "/start/dygn-18.jpg",
     alt: "Vitt hus med solpaneler och tända fönster i skymningen",
     pos: "object-[62%_center]",
@@ -103,6 +110,7 @@ const STATES: DayState[] = [
     big: "24/7",
     sub: "Dygnet runt",
     hour: null,
+    slot: "dygn-247",
     img: "/start/dygn-247.jpg",
     alt: "Fox ESS-batteri, en vit stapel med moduler, mot en grå vägg",
     pos: "object-center",
@@ -127,7 +135,7 @@ const PRICE_SHAPE = [
 // Varje läge har rubrik, två rader text och fyra rutor: det tar en stund att läsa.
 const STEP_MS = 7000;
 
-export function HouseDay() {
+export function HouseDay({ images }: { images?: Partial<Record<StartImageKey, StartImage>> }) {
   const [active, setActive] = useState(2);
   const [auto, setAuto] = useState(true);
   const [inView, setInView] = useState(false);
@@ -213,25 +221,29 @@ export function HouseDay() {
               att de inte täcker motivet. */}
           <div data-reveal="left" className="relative lg:flex lg:h-full lg:flex-col">
             <div className="relative aspect-[4/3] overflow-hidden rounded-[30px] bg-night-soft ring-1 ring-white/10 lg:aspect-auto lg:min-h-[400px] lg:flex-1 xl:min-h-[520px]">
-              {STATES.map(
-                (st, i) =>
+              {STATES.map((st, i) => {
+                // Uppladdat foto från admin om det finns, annars standardbilden.
+                const img = images?.[st.slot];
+                const pos = img?.uploaded ? "object-center" : st.pos;
+                return (
                   seen.includes(i) && (
                     <Image
-                      key={st.img}
-                      src={st.img}
-                      alt={i === active ? st.alt : ""}
+                      key={st.slot}
+                      src={img?.src ?? st.img}
+                      alt={i === active ? (img?.alt ?? st.alt) : ""}
                       aria-hidden={i !== active}
                       fill
                       // Bilden beskärs till rutans höjd och ritas därför bredare
                       // än rutan: storlekarna anger den ritade bredden.
                       sizes="(min-width: 1024px) 800px, (min-width: 640px) 112vw, 140vw"
                       quality={80}
-                      className={`object-cover ${st.pos} transition-opacity duration-[900ms] ease-out motion-reduce:transition-none ${
+                      className={`object-cover ${pos} transition-opacity duration-[900ms] ease-out motion-reduce:transition-none ${
                         i === active ? "opacity-100" : "opacity-0"
                       }`}
                     />
-                  ),
-              )}
+                  )
+                );
+              })}
               <div
                 className="absolute inset-0 bg-gradient-to-b from-night/55 via-transparent to-night/70"
                 aria-hidden="true"

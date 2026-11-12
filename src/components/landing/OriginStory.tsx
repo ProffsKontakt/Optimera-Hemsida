@@ -1,26 +1,27 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import type { StartImage } from "@/lib/start-images";
 import { delay } from "./shared";
 
 /**
  * "Så började det": bild till vänster, berättelsen och tre nyckeltal till
  * höger. Bakgrunden byter ton en bit ner, så att bilden kliver över kanten.
  */
-export function OriginStory({ teamCount }: { teamCount: number }) {
+export function OriginStory({ teamCount, image }: { teamCount: number; image: StartImage }) {
   return (
     <section className="bg-[linear-gradient(to_bottom,#F4F1EA_36vw,#EAE4D6_36vw)] lg:bg-[linear-gradient(to_bottom,#F4F1EA_0%,#F4F1EA_34%,#EAE4D6_34%,#EAE4D6_100%)] pb-14 pt-4 sm:pb-20 md:pb-28">
       <div className="container-edge grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-14">
         <div className="lg:col-span-6" data-reveal="left">
           <div className="lp-parallax-box group relative aspect-[4/3] overflow-hidden rounded-[30px] shadow-[0_40px_80px_-50px_rgba(20,22,42,0.7)]">
             <Image
-              src="/start/borjan.jpg"
-              alt="Grått trähus bland björkar i skymningen, med tända fönster och solpaneler i två jämna rader på taket"
+              src={image.src}
+              alt={image.alt}
               fill
               // Bilden ritas bredare än rutan (beskärning plus parallax).
               sizes="(min-width: 1024px) 58vw, 116vw"
               quality={80}
-              className="lp-parallax object-cover object-right"
+              className={`lp-parallax object-cover ${image.uploaded ? "object-center" : "object-right"}`}
             />
           </div>
         </div>

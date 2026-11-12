@@ -4,6 +4,7 @@ import { GUIDES } from "./guides";
 import { NEWS } from "./news";
 import { KB_IMAGES, defaultKbImage, type KbImage, type KbImageKey } from "./kb-visuals";
 import { getTeam } from "./team";
+import { START_IMAGES, START_IMAGE_KEYS, defaultStartImage, type StartImage, type StartImageKey } from "./start-images";
 
 /**
  * Media-CMS: admin väljer vilken bild som ligger i vilken "slot" (t.ex. ett
@@ -70,8 +71,8 @@ export function listMediaSlots(): MediaSlot[] {
   return [
     {
       id: "demo:hero-landningsida",
-      group: "Startsida",
-      label: "Hero-bakgrund (första vyn)",
+      group: "Demosida (bara i admin)",
+      label: "Hero på den gamla demosidan (används inte på startsidan)",
       // Stående förhandsvisning – bilden används främst som mobilens
       // fullskärmsbakgrund (porträttläge) och beskärs med object-cover.
       aspect: "9 / 16",
@@ -81,6 +82,15 @@ export function listMediaSlots(): MediaSlot[] {
       // vara knivskarp.
       maxWidth: 1400,
     },
+    // Startsidans foton (lib/start-images.ts). Tom plats = standardbilden.
+    ...START_IMAGE_KEYS.map((key) => ({
+      id: `start:${key}`,
+      group: "Startsida",
+      label: START_IMAGES[key].label,
+      aspect: START_IMAGES[key].aspect,
+      hint: START_IMAGES[key].hint,
+      maxWidth: START_IMAGES[key].maxWidth,
+    })),
     ...getTeam().map((m) => ({
       id: `team:${m.id}`,
       group: "Team (om-oss)",
@@ -159,6 +169,15 @@ export function getMediaManifest(): MediaManifest {
 export function getMedia(slotId: string): MediaEntry | null {
   const entry = getMediaManifest()[slotId];
   return entry && entry.url ? entry : null;
+}
+
+/** Startsidans foto för en plats: uppladdat i admin om det finns, annars standardbilden. */
+export function startImage(key: StartImageKey): StartImage {
+  const uploaded = getMedia(`start:${key}`);
+  if (!uploaded) return defaultStartImage(key);
+  // Hjälten och bokningsrutan är rent dekorativa (tom alt-text).
+  const decorative = START_IMAGES[key].alt === "";
+  return { src: uploaded.url, alt: decorative ? "" : uploaded.alt || START_IMAGES[key].alt, uploaded: true };
 }
 
 /** Kunskapsbankens foto för en nyckel: uppladdat i admin om det finns, annars standardbilden. */

@@ -2,10 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import type { RecoStats } from "@/lib/reco-live";
+import type { StartImage } from "@/lib/start-images";
 import { Stars } from "./shared";
 
 /** Avslutande bokningsruta: mörkt kort med vinterbild. */
-export function BookingCta({ reco }: { reco: RecoStats }) {
+export function BookingCta({ reco, image }: { reco: RecoStats; image: StartImage }) {
   return (
     <section className="bg-bone pb-0 pt-10 md:pt-12">
       <div className="container-edge">
@@ -14,12 +15,12 @@ export function BookingCta({ reco }: { reco: RecoStats }) {
           className="lp-parallax-box relative isolate overflow-hidden rounded-[30px] bg-night px-7 py-14 text-white sm:px-12 md:py-20 lg:px-20 lg:py-24"
         >
           <Image
-            src="/start/boka.jpg"
+            src={image.src}
             alt=""
             fill
             sizes="(min-width: 1480px) 1350px, (min-width: 640px) 92vw, 170vw"
             quality={80}
-            className="lp-parallax -z-10 object-cover object-[90%_10%]"
+            className={`lp-parallax -z-10 object-cover ${image.uploaded ? "object-[75%_center]" : "object-[90%_10%]"}`}
           />
           <div className="absolute inset-0 -z-10 bg-gradient-to-r from-night/95 via-night/55 to-night/5" />
 

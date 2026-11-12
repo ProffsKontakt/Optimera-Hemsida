@@ -1,6 +1,7 @@
 import { PressBanner } from "@/components/site/PressBanner";
 import { getFeaturedPressRelease } from "@/lib/press";
-import { getMedia } from "@/lib/media";
+import { getMedia, startImage } from "@/lib/media";
+import { START_IMAGE_KEYS, type StartImage, type StartImageKey } from "@/lib/start-images";
 import { getVisibleReviews } from "@/lib/reviews";
 import { getVisibleTeam } from "@/lib/team";
 import { visibleServiceText } from "@/lib/services";
@@ -98,6 +99,13 @@ export default async function HomePage() {
   // Banderoll bara på landningssidan. Läses server-side, dismissal
   // sker client-side via localStorage i komponenten.
   const featured = getFeaturedPressRelease();
+  // Startsidans foton: uppladdade i /admin/media (start:<namn>) om de finns,
+  // annars standardbilderna i public/start.
+  const images = Object.fromEntries(START_IMAGE_KEYS.map((k) => [k, startImage(k)])) as Record<
+    StartImageKey,
+    StartImage
+  >;
+
   // Teamet redigeras i /admin/team, porträtten i /admin/media (team:<id>).
   const team: TeamCard[] = getVisibleTeam().map((m) => {
     const photo = getMedia(`team:${m.id}`);
@@ -117,13 +125,13 @@ export default async function HomePage() {
       <JsonLd data={localBusinessSchema} />
       <RevealObserver />
 
-      <LandingHero reco={reco} />
+      <LandingHero reco={reco} image={images.hero} />
       <BrandMarquee />
-      <HouseDay />
-      <FourParts />
+      <HouseDay images={images} />
+      <FourParts images={images} />
       <CalculatorTeaser />
       <ProcessGrid />
-      <OriginStory teamCount={team.length} />
+      <OriginStory teamCount={team.length} image={images.borjan} />
       {/* Omdömen kureras i /admin/recensioner, källa: företagets Reco-profil. */}
       <ReviewWall reviews={getVisibleReviews()} reco={reco} />
       <Principles />
@@ -131,7 +139,7 @@ export default async function HomePage() {
       {/* Alla frågor i FAQPage-schemat ovan finns i den synliga listan,
           som dessutom har tre frågor från /fragor-och-svar. */}
       <HomeFaq items={VISIBLE_FAQ} />
-      <BookingCta reco={reco} />
+      <BookingCta reco={reco} image={images.boka} />
       <RevealBoot />
     </>
   );

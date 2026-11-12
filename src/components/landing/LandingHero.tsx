@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import type { RecoStats } from "@/lib/reco-live";
+import type { StartImage } from "@/lib/start-images";
 import { delay, Stars } from "./shared";
 
 /**
@@ -19,7 +20,7 @@ const STATS = [
   { n: "25 år", label: "garanti som följer huset" },
 ];
 
-export function LandingHero({ reco }: { reco: RecoStats }) {
+export function LandingHero({ reco, image }: { reco: RecoStats; image: StartImage }) {
   return (
     <section
       data-hero
@@ -31,7 +32,7 @@ export function LandingHero({ reco }: { reco: RecoStats }) {
           då blir den LCP-element och måste ritas om för varje bildruta. */}
       <div className="absolute inset-0" aria-hidden="true">
         <Image
-          src="/start/hero.jpg"
+          src={image.src}
           alt=""
           fill
           priority
@@ -41,7 +42,8 @@ export function LandingHero({ reco }: { reco: RecoStats }) {
           // (170vw håller mobilen under den allra största filen).
           sizes="(max-width: 767px) 170vw, 100vw"
           quality={82}
-          className="lp-kenburns object-cover object-[55%_30%]"
+          // Standardbildens utsnitt är inpassat för hand; ett uppladdat foto centreras.
+          className={`lp-kenburns object-cover ${image.uploaded ? "object-center" : "object-[55%_30%]"}`}
         />
         {/* En enda skuggning i neutral svart: mörk där texten står, öppen
             över huset och himlen så att bilden behåller sin värme. */}
