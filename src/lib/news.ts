@@ -74,6 +74,86 @@ export type NewsArticle = {
 
 export const NEWS: NewsArticle[] = [
   {
+    slug: "forsmark-3-stopp-kortslutning-fyra-av-sex-reaktorer",
+    status: "published",
+    title:
+      "Forsmark 3 stopp efter kortslutning – när startar den igen? Fyra av sex reaktorer står still",
+    excerpt:
+      "Forsmark 3 stoppades vid midnatt natten till lördagen den 14 november efter ett fel i en kabel till ett av reaktorns reservkylsystem. Därmed står fyra av Sveriges sex reaktorer still, och 4 485 megawatt kärnkraft saknas. Vattenfall räknar med att Forsmark 3 är tillbaka den 20 november, men i meddelandet till elbörsen kallas datumet osäkert. Här är läget reaktor för reaktor, när kärnkraften väntas tillbaka och vad stoppet kan betyda för elpriset.",
+    category: "Elpriser",
+    publishedAt: "2026-11-15",
+    updatedAt: "2026-11-15",
+    readTimeMin: 6,
+    image: {
+      src: "/news/forsmark-3-stopp-kortslutning-fyra-av-sex-reaktorer.jpg",
+      alt: "Forsmarks kärnkraftverk vid havet en sommardag: två vita reaktorbyggnader med höga skorstenar bakom en rad träd, med vatten och stenar i förgrunden. Arkivbild",
+      credit: "Foto: Vattenfall",
+      creditUrl: "https://group.vattenfall.com/se/nyheter-och-press/mediebank/kraftverk-och-kontor",
+    },
+    searchPhrases: [
+      "forsmark 3 kortslutning",
+      "forsmark 3 stopp",
+      "när startar forsmark 3 igen",
+      "forsmark 3 återstart",
+      "när startar forsmark igen",
+      "hur många reaktorer står stilla",
+      "reaktorer ur drift",
+      "kärnkraft sverige status",
+    ],
+    sources: [
+      {
+        title: "Forsmark 3 tillfälligt avställd (14 november 2026)",
+        publisher: "Vattenfall",
+        url: "https://group.vattenfall.com/se/nyheter-och-press/nyheter/2026/forsmark-3-tillfalligt-avstalld",
+      },
+      {
+        title: "Marknadsmeddelanden (UMM) om otillgänglig kapacitet i Forsmark 1–3 och Ringhals 3–4, november 2026",
+        publisher: "Nord Pool",
+        url: "https://umm.nordpoolgroup.com/",
+      },
+      {
+        title: "Control room: Production status O3",
+        publisher: "OKG",
+        url: "https://okg.se/en/our-business/control-room/",
+      },
+      {
+        title: "Information från driften, vecka 46 (uppdaterad 9 november 2026)",
+        publisher: "Svenska kraftnät",
+        url: "https://www.svk.se/om-kraftsystemet/kraftsystemdata/information-fran-driften/",
+      },
+      {
+        title: "Reaktorstopp på Forsmarks kärnkraftverk (14 november 2026)",
+        publisher: "Upsala Nya Tidning",
+        url: "https://unt.se/nyheter/osthammar/artikel/reaktorstopp-pa-forsmarks-karnkraftverk/rxqwyevj",
+      },
+      {
+        title: "Forsmarkstopp – ännu högre elpriser väntas (TT, 14 november 2026)",
+        publisher: "Sundsvalls Tidning",
+        url: "https://www.st.nu/sverige/forsmarkstopp-kan-ge-dubbel-effekt-pa-elpriset",
+      },
+      {
+        title: "JUST NU: Risk för rusande elpris – Forsmark 3 akutstoppad (14 november 2026)",
+        publisher: "Skaraborgs Nyheter",
+        url: "https://skaraborgsnyheter.se/ekonomi-och-naringsliv/just-nu-risk-for-rusande-elpris-forsmark-3-akutstoppad",
+      },
+      {
+        title: "Day-ahead-priser per elområde, dygnssnitt 1–15 november 2026 (15 november preliminärt)",
+        publisher: "Nord Pool",
+        url: "https://data.nordpoolgroup.com/auction/day-ahead/prices?deliveryDate=2026-11-15&currency=SEK&aggregation=Daily&deliveryAreas=SE1,SE2,SE3,SE4",
+      },
+      {
+        title: "Elisabeth Svantesson presenterar budget för 2027 (12 november 2026)",
+        publisher: "Aktuell Hållbarhet",
+        url: "https://www.aktuellhallbarhet.se/miljo-och-klimat/klimatpolitik/budget-utan-ny-politik-pengar-till-klimatklivet-kvar/",
+      },
+      {
+        title: "Presentationsbilder från pressträff den 3 november 2026 om högkostnadsskyddets utformning",
+        publisher: "Regeringskansliet",
+        url: "https://www.regeringen.se/contentassets/47b2f5d87ff64cecb95afea2f98255dc/presentationsbilder-fran-presstraff-den-3-november-2026-om-hogkostnadsskyddets-utformning.pdf",
+      },
+    ],
+  },
+  {
     slug: "behover-man-soka-elstod-forsakringskassan-utbetalning-2027",
     status: "published",
     title:
