@@ -38,6 +38,87 @@ export type NewsContent = {
 };
 
 const CONTENT: Record<string, NewsContent> = {
+  "forsmark-3-stopp-kortslutning-fyra-av-sex-reaktorer": {
+    tldr: [
+      "Bara Forsmark 2 och Oskarshamn 3 producerar el. Ringhals 4 och Forsmark 3 planeras åter 20 november, Ringhals 3 den 27:e och Forsmark 1 på full effekt efter 3 december.",
+      "Årets dyraste dygn hittills blev 10 november, med 4,44 kr/kWh i elområde 4 och 3,03 i elområde 3. Söndagen 15 november, första dygnet som prissattes efter stoppet, blev månadens billigaste: 1,10 respektive 0,67.",
+      "November ligger hittills på 2,86 kr/kWh i elområde 4 och 1,78 i elområde 3, över gränsen för elstöd. Något elstöd efter nyår finns inte i övergångsbudgeten.",
+    ],
+    sections: [
+      {
+        h2: "Varför står Forsmark 3 still?",
+        body: [
+          "Forsmark 3 stoppades vid midnatt natten till lördagen den 14 november. Felet upptäcktes på fredagen, när ett skydd löste ut i elmatningen till ett av reservsystemen för kylning, enligt Martin Danielsson, kommunikatör i beredskap på Forsmark, till UNT. ”Vi har felsökt och lokaliserat felet till en kabel som behöver bytas ut. Skyddet löste ut när kabeln felfungerade”, säger han.",
+          "Enligt Forsmark måste samtliga säkerhetssystem fungera för att reaktorn ska kunna vara i drift. Därför står hela Forsmark 3 still medan kabeln byts. Vattenfall skriver att reaktorn har ställts av för att åtgärda ett kablage. I nyhetsrapporteringen beskrivs felet som en kortslutning i kablaget.",
+          "Under stoppet passar Forsmark på att kontrollera drivdonsmotorer. Det arbetet var planerat till ett kortare stopp den 11–15 december, och det stoppet kan nu ställas in, enligt Vattenfall.",
+        ],
+      },
+      {
+        h2: "När startar Forsmark 3 igen?",
+        body: [
+          "Vattenfall räknar med att arbetet pågår till den 20 november, då Forsmark 3 ”åter går upp mot full produktion”. I meddelandet till elbörsen Nord Pool anges reaktorn som otillgänglig till och med den 20 november, men Forsmark skriver samtidigt att slutdatumet är osäkert och att meddelandet uppdateras när mer information finns.",
+          "Forsmark 3 är den största av Forsmarks tre reaktorer, med 1 172 megawatt. Det är ungefär en fjärdedel av den kärnkraft som nu saknas. Håller planen för återstarten har reaktorn stått still i en vecka.",
+        ],
+      },
+      {
+        h2: "Hur många reaktorer står stilla – och när startar Forsmark igen?",
+        body: [
+          "Fyra av Sveriges sex reaktorer står stilla: Forsmark 1, Forsmark 3, Ringhals 3 och Ringhals 4. Tillsammans är det 4 485 megawatt, enligt reaktorägarnas meddelanden till Nord Pool. Bara Forsmark 2 och Oskarshamn 3 producerar el. Oskarshamn 3 är i drift enligt OKG, som driver reaktorn.",
+          "När vi skrev om reaktorerna den 24 oktober stod tre reaktorer still, och Ringhals 3 skulle vara tillbaka den 18 november. Den 30 oktober flyttades återstarten till den 27 november, med motiveringen att de planerade åtgärderna tar längre tid än väntat. Ringhals 3 har då stått still sedan den 4 maj.",
+          "Forsmark 1 har haft revision sedan den 6 september och kopplas in igen den 17 november, men bara med den ena av två turbiner: 549 av 1 098 megawatt. Arbetet med den andra turbinen pågår till och med den 3 december, enligt det senaste meddelandet till Nord Pool den 10 november. Svenska kraftnät angav den 9 november i stället den 12 december för den andra generatorn.",
+          "Forsmark 2 har dessutom ett planerat stopp från den 27 november till den 2 december. Håller alla planer går de sex reaktorerna samtidigt först i början av december. Så här ser status ut för kärnkraften i Sverige den 15 november:",
+        ],
+        bullets: [
+          "Forsmark 1 (1 098 MW): revision sedan 6 september. Halv effekt från 17 november, full effekt efter 3 december.",
+          "Forsmark 2 (1 121 MW): i drift. Planerat stopp 27 november–2 december.",
+          "Forsmark 3 (1 172 MW): ur drift sedan 14 november på grund av kabelfelet. Planerad åter 20 november, datumet är osäkert.",
+          "Ringhals 3 (1 081 MW): ur drift sedan 4 maj. Planerad åter 27 november.",
+          "Ringhals 4 (1 134 MW): ur drift sedan 2 september. Planerad åter 20 november.",
+          "Oskarshamn 3: i drift enligt OKG.",
+        ],
+      },
+      {
+        h2: "Vad betyder stoppet för elpriset?",
+        body: [
+          "Elmarknadsanalytikern Christian Holtz säger till TT att stoppet ”får stora konsekvenser för elpriset i södra Sverige framför allt”. Enligt honom blir effekten dubbel: det produceras mindre el i södra Sverige, och det blir svårare att föra över el norrifrån.",
+          "Svenska kraftnät pekade redan den 9 november på låga europeiska gaslager, ett osäkert omvärldsläge, ansträngda vattenmagasin i södra Norge och den begränsade kärnkraftsproduktionen som orsaker till den höga prisnivån.",
+          "Än så länge har priset ändå sjunkit. Elpriset för ett dygn sätts på elbörsen dagen före, så lördagens priser var redan satta när Forsmark meddelade stoppet till elbörsen på fredagskvällen. Årets dyraste dygn hittills var tisdagen den 10 november, med 4,44 kronor per kilowattimme i elområde 4 och 3,03 kronor i elområde 3, enligt Nord Pool. Sedan sjönk priset. Söndagen den 15 november, det första dygnet som prissattes efter stoppet, blev novembers billigaste hittills: 1,10 kronor i elområde 4 och 0,67 kronor i elområde 3, enligt Nord Pools preliminära priser.",
+          "Över hela november har elen hittills kostat 2,86 kronor per kilowattimme i elområde 4 och 1,78 kronor i elområde 3. I norr har snittet legat på 29 öre i både elområde 1 och 2. Alla priser är spotpriser utan moms, energiskatt, nätavgift och elhandlarens påslag.",
+        ],
+      },
+      {
+        h2: "Vad betyder det för din kalkyl?",
+        body: [
+          "Elstödet för november avgörs av hela månadens snittpris. Högkostnadsskyddet ersätter den del av snittpriset som ligger över 1,50 kronor per kilowattimme, för 90 procent av den el hushållet har använt. Räkneillustration: landar november på 2,86 kronor i elområde 4 blir stödet cirka 1 230 kronor per 1 000 kilowattimmar som hushållet använder i november. I elområde 3 skulle 1,78 kronor ge cirka 250 kronor. Stödet för oktober, november och december betalas ut samlat under vårvintern 2027.",
+          "Efter nyår finns i dag inget beslutat elstöd. Övergångsbudgeten som lämnades till riksdagen den 12 november innehåller ingen förlängning. ”Vi har ingen befogenhet att förlänga elstödet. Det blir upp till en ny regering att avgöra”, säger finansminister Elisabeth Svantesson (M) enligt Aktuell Hållbarhet. Budgetramarna ska beslutas den 9 december.",
+          "Med rörligt elpris eller kvartspris betalar du det pris som gäller när du använder elen. Skillnaden inom ett dygn kan vara stor: den 10 november kostade en kvart i elområde 4 mellan 2,35 och 6,54 kronor. Priserna för nästa dygn syns dagen före, och det lönar sig att flytta disk, tvätt och elbilsladdning till de billigaste kvartarna.",
+          "Räkna inte med att reaktorerna är tillbaka exakt på utsatt dag. Ringhals 3:s återstart har flyttats flera gånger sedan i somras, och för Forsmark 3 kallas slutdatumet osäkert.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Varför står Forsmark 3 still?",
+        a: "Ett skydd löste ut den 13 november i elmatningen till ett av reaktorns reservsystem för kylning. Felet har spårats till en kabel som måste bytas. Eftersom alla säkerhetssystem måste fungera för att reaktorn ska få vara i drift står den still sedan midnatt natten till den 14 november.",
+      },
+      {
+        q: "När startar Forsmark 3 igen?",
+        a: "Enligt Vattenfall den 20 november, då reaktorn åter går upp mot full produktion. I meddelandet till Nord Pool skriver Forsmark att slutdatumet är osäkert.",
+      },
+      {
+        q: "Hur många reaktorer står stilla?",
+        a: "Fyra av sex den 15 november: Forsmark 1, Forsmark 3, Ringhals 3 och Ringhals 4, sammanlagt 4 485 megawatt. Forsmark 2 och Oskarshamn 3 är i drift.",
+      },
+      {
+        q: "När startar Forsmark igen?",
+        a: "Forsmark 1 kopplas in med halv effekt den 17 november och väntas ge full effekt efter den 3 december. Forsmark 3 planeras åter den 20 november. Forsmark 2 har ett planerat stopp mellan den 27 november och den 2 december.",
+      },
+      {
+        q: "Blir elpriset dyrare när Forsmark 3 står still?",
+        a: "Elmarknadsanalytikern Christian Holtz säger till TT att stoppet får stora konsekvenser för elpriset, framför allt i södra Sverige. Det första dygnet som prissattes efter stoppet, söndagen den 15 november, blev ändå novembers billigaste hittills i elområde 3 och 4.",
+      },
+    ],
+  },
   "behover-man-soka-elstod-forsakringskassan-utbetalning-2027": {
     tldr: [
       "Elkunderna i elområde 4 delar på 30 miljoner kronor för oktober, enligt finansminister Elisabeth Svantesson. En villa med direktverkande el får ”runt hundra kronor”, sa Ebba Busch.",
