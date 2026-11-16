@@ -46,6 +46,115 @@ export type Guide = {
 
 export const GUIDES: Guide[] = [
   {
+    slug: "varmvattenberedare-med-inbyggd-varmepump",
+    status: "published",
+    title: "Vad är en varmvattenberedare med inbyggd värmepump – och ger den bidrag?",
+    excerpt: "En värmepumpsberedare värmer varmvattnet med värme ur luften och drar mindre el än en vanlig elberedare. Så fungerar den och så får du Villaeffekten 2026.",
+    category: "Värmepump",
+    publishedAt: "2026-11-16",
+    updatedAt: "2026-11-16",
+    readTimeMin: 5,
+    searchPhrases: [
+      "varmvattenberedare med inbyggd värmepump",
+      "installation av en styrbar varmvattenberedare med inbyggd värmepump",
+      "värmepumpsberedare",
+      "värmepumpsberedare bidrag",
+      "varmvattenberedare med värmepump",
+    ],
+    services: [
+      "vaermepumpar",
+    ],
+    sources: [
+      {
+        title: "Möjliga åtgärder vid ansökan om bidrag för energieffektivisering i småhus",
+        publisher: "Boverket",
+        url: "https://www.boverket.se/sv/bidrag--garantier/bidrag-for-energieffektivisering-i-smahus/mojliga-energieffektiviseringsatgarder/",
+      },
+      {
+        title: "Bidrag för energieffektivisering i småhus",
+        publisher: "Boverket",
+        url: "https://www.boverket.se/sv/bidrag--garantier/bidrag-for-energieffektivisering-i-smahus/",
+      },
+      {
+        title: "Husguiden: För dig med direktverkande el",
+        publisher: "Energimyndigheten",
+        url: "https://www.energimyndigheten.se/effektiv-energianvandning/guider/husguiden-for-dig-som-vill-energieffektivisera-ditt-hus/se-over-husets-uppvarmningssystem/for-dig-med-direktverkande-el/",
+      },
+      {
+        title: "Husguiden: Varmvatten",
+        publisher: "Energimyndigheten",
+        url: "https://www.energimyndigheten.se/effektiv-energianvandning/guider/husguiden-for-dig-som-vill-energieffektivisera-ditt-hus/minska-behovet-av-varme-och-varmvatten/varmvatten/",
+      },
+      {
+        title: "Ger arbetet rätt till rotavdrag?",
+        publisher: "Skatteverket",
+        url: "https://www.skatteverket.se/foretag/skatterochavdrag/rotochrut/gerarbetetratttillrotavdrag.4.5c1163881590be297b5173bf.html",
+      },
+    ],
+  },
+  {
+    slug: "monoblock-eller-split-luft-vattenvarmepump",
+    status: "published",
+    title: "Monoblock eller split – vilken luft-vattenvärmepump ska man välja?",
+    excerpt: "Skillnaden mellan monoblock och split: var köldmediet sitter, vem som får installera, köldmediereglerna från 2027 och vad du ska tänka på för ditt hus.",
+    category: "Värmepump",
+    publishedAt: "2026-11-16",
+    updatedAt: "2026-11-16",
+    readTimeMin: 6,
+    searchPhrases: [
+      "monoblock eller split",
+      "monoblock eller split värmepump",
+      "monoblock värmepump",
+      "luft-vattenvärmepump monoblock",
+      "split luft vatten värmepump",
+    ],
+    services: [
+      "vaermepumpar",
+    ],
+    sources: [
+      {
+        title: "Privatpersoner måste anlita certifierad personal för installation av värmepump",
+        publisher: "Naturvårdsverket",
+        url: "https://www.naturvardsverket.se/vagledning-och-stod/kemikalier/fluorerade-vaxthusgaser/privatpersoner-maste-anlita-certifierad-personal-for-installation-av-varmepump/",
+      },
+      {
+        title: "Förordning (EU) 2024/573 om fluorerade växthusgaser, bilaga I och IV",
+        publisher: "EUR-Lex",
+        url: "https://eur-lex.europa.eu/legal-content/SV/TXT/?uri=CELEX:32024R0573",
+      },
+      {
+        title: "Luft/vattenvärmepump",
+        publisher: "Energi- och klimatrådgivningen",
+        url: "https://energiochklimatradgivningen.se/hushall/uppvarmning/olikavarmesystem/varmepumpar/luftvattenvarmepump.858.html",
+      },
+      {
+        title: "Värmepumpar – en guide från energi- och klimatrådgivningen (ET 2025:05)",
+        publisher: "Energimyndigheten",
+        url: "https://energiochklimatradgivningen.se/download/18.5e9a579b195c021e865e6618/1742900645694/V%C3%A4rmepumpar_en%20guide%20fr%C3%A5n%20energi-%20och%20klimatr%C3%A5dgivningen%202025.pdf.pdf",
+      },
+      {
+        title: "Vad får jag göra själv med el?",
+        publisher: "Elsäkerhetsverket",
+        url: "https://elsakerhetsverket.se/privatpersoner/detta-far-du-gora-sjalv-med-el/vad-far-jag-gora-sjalv-med-el",
+      },
+      {
+        title: "Ger arbetet rätt till rotavdrag? (schablon vid installation av värmesystem)",
+        publisher: "Skatteverket",
+        url: "https://www.skatteverket.se/foretag/skatterochavdrag/rotochrut/gerarbetetratttillrotavdrag.4.5c1163881590be297b5173bf.html",
+      },
+      {
+        title: "Möjliga åtgärder vid ansökan om bidrag för energieffektivisering i småhus",
+        publisher: "Boverket",
+        url: "https://www.boverket.se/sv/bidrag--garantier/bidrag-for-energieffektivisering-i-smahus/mojliga-energieffektiviseringsatgarder/",
+      },
+      {
+        title: "Monoblock luft/vattenvärmepump (teknisk beskrivning)",
+        publisher: "Viessmann",
+        url: "https://www.viessmann.se/sv/information/teknik-och-system/monoblock-luft-vattenvarmepump.html",
+      },
+    ],
+  },
+  {
     slug: "vad-ar-bergvarme",
     status: "published",
     title: "Vad är bergvärme och hur fungerar det?",
@@ -359,11 +468,14 @@ export const GUIDES: Guide[] = [
     excerpt: "Jordvärme är i regel 20 000–30 000 kr billigare än bergvärme men kräver en stor tomt. Så skiljer de sig i djup, nackdelar, kyla och bidrag 2026.",
     category: "Värmepump",
     publishedAt: "2026-10-19",
-    updatedAt: "2026-10-19",
+    updatedAt: "2026-11-16",
     readTimeMin: 7,
     searchPhrases: [
       "jordvärme eller bergvärme",
       "bergvärme eller jordvärme",
+      "jordvärme vs bergvärme",
+      "jordvärme vs bergvärme kostnad",
+      "jordvärmepump vs bergvärmepump",
       "jordvärme pris",
       "jordvärme hur djupt",
       "jordvärme slang",

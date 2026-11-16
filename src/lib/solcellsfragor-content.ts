@@ -1110,7 +1110,7 @@ export const QUESTIONS: SolarQuestion[] = [
         paragraphs: [
           "Dagarna är korta och solen står lågt. I SMHI:s mätningar i Stockholm 2016–2025 fick marken i snitt cirka 0,2 kWh solinstrålning per kvadratmeter en decemberdag, mot drygt 6 kWh en junidag. Längre norrut är skillnaden större, och i Luleå och Kiruna ger december i praktiken ingen el.",
           "Exempel: 10 kWp i Stockholm, takmonterat mot söder med 30 graders lutning, ger enligt PVGIS cirka 100 kWh i december och 1 400 kWh i juni.",
-          "Kylan i sig är bra. Solceller ger mer effekt ju kallare de är, ungefär 0,3–0,4 procent per grad enligt forskningsinstitutet RISE och testlabbet Kiwa PVEL."
+          "Kylan i sig är bra. Solceller ger mer effekt ju kallare de är. Forskningsinstitutet RISE anger att effekten ökar med 10 procent när temperaturen sjunker 25 grader, alltså cirka 0,4 procent per grad. Testlabbet Kiwa PVEL:s mätningar 2026 ger lite lägre värden för dagens paneler, 0,26–0,32 procent per grad i median beroende på celltyp."
         ]
       },
       {
@@ -1175,7 +1175,7 @@ export const QUESTIONS: SolarQuestion[] = [
         label: "Nyhet: elprisprognosen inför vintern 2026"
       }
     ],
-    updatedAt: "2026-10-03"
+    updatedAt: "2026-11-16"
   },
   {
     slug: "hur-fungerar-solceller",
@@ -2140,7 +2140,7 @@ export const QUESTIONS: SolarQuestion[] = [
         h2: "Byggnadstypen avgör, inte hur panelerna sitter",
         paragraphs: [
           "Nya bygglovsregler började gälla den 1 december 2025. Solceller på tak och fasad räknas som en så kallad fasadändring, och enligt Boverket kräver fasadändringar inte bygglov på en- och tvåbostadshus och deras komplementbyggnader, som garage och förråd. Det gäller även uppvinklade paneler. Den äldre regeln att panelerna ska följa byggnadens form gäller inte längre, även om den finns kvar i äldre information.",
-          "För flerbostadshus och andra byggnader inom detaljplan krävs bygglov om ändringen görs på ett tak eller en fasad som vetter mot gata, torg eller park. Sedan den 1 juli 2026 är solenergianläggningar på högst 11 kW undantagna. För större anläggningar ska kommunen besluta inom tio veckor och får bara förlänga tiden med högst två veckor. Utanför detaljplan krävs i regel inget bygglov."
+          "För flerbostadshus och andra byggnader inom detaljplan krävs bygglov om ändringen görs på ett tak eller en fasad som vetter mot en allmän plats, till exempel en gata, ett torg eller en park. Sedan den 1 juli 2026 krävs inget bygglov för solenergianläggningar på högst 11 kW, utom där utökad lovplikt gäller. För större anläggningar ska kommunen besluta inom tio veckor och får bara förlänga tiden med högst två veckor. Utanför detaljplan krävs i regel inget bygglov."
         ]
       },
       {
@@ -2157,7 +2157,7 @@ export const QUESTIONS: SolarQuestion[] = [
       {
         h2: "Om du är osäker",
         paragraphs: [
-          "Fråga kommunens bygglovsenhet (byggnadsnämnden) vad som gäller för din fastighet. Vill du ha ett skriftligt besked kan du söka bygglov frivilligt. Även utan bygglov ska installationen vara varsam mot huset och inte strida mot detaljplanen, och taket ska klara lasten. Påverkas bärande delar som takstolar väsentligt krävs en anmälan.",
+          "Fråga kommunens bygglovsenhet (byggnadsnämnden) vad som gäller för din fastighet. Vill du ha ett skriftligt besked kan du söka bygglov frivilligt. Även utan bygglov ska installationen vara varsam mot huset, anpassas till omgivningen och följa detaljplanen, men en liten avvikelse som inte motverkar planens syfte är tillåten. Den får inte heller innebära en betydande olägenhet för grannarna, och taket eller fasaden ska klara lasten. Påverkas bärande delar som takstolar väsentligt krävs en anmälan.",
           "Bygglovet är inte det enda tillståndet: elarbetet ska göras av ett registrerat elinstallationsföretag, och elnätsföretaget ska godkänna anläggningen innan den tas i drift."
         ]
       }
@@ -2191,6 +2191,16 @@ export const QUESTIONS: SolarQuestion[] = [
         url: "https://www.boverket.se/sv/PBL-kunskapsbanken/lov--byggande/handlaggning/tidsfrister-for-handlaggning/"
       },
       {
+        title: "Flera regeländringar inom planering och byggande den 1 juli",
+        publisher: "Boverket",
+        url: "https://www.boverket.se/sv/om-boverket/nyheter-aktuellt/nyheter/pbl-och-pbf-den-1-juli-och-2-juli-2026/"
+      },
+      {
+        title: "Frågor och svar om nytt regelverk för bygglov – PBL kunskapsbanken",
+        publisher: "Boverket",
+        url: "https://www.boverket.se/sv/PBL-kunskapsbanken/lov--byggande/fragor-och-svar/"
+      },
+      {
         title: "Nya bygglovsregler",
         publisher: "Svensk Solenergi",
         url: "https://svensksolenergi.se/nya-bygglovsregler/"
@@ -2214,7 +2224,7 @@ export const QUESTIONS: SolarQuestion[] = [
         label: "Solpaneler: så går installationen till"
       }
     ],
-    updatedAt: "2026-10-03"
+    updatedAt: "2026-11-16"
   },
   {
     slug: "hur-manga-solpaneler-behover-jag",
