@@ -811,3 +811,10 @@ html:not(.anim) .lp-dygn-nojs {
     animation: none !important;
   }
 }
+
+/* Kampanjbanderollen (CampaignBar) döljs före första renderingen när
+   kampanjen tagit slut eller besökaren stängt den – se campaignHideScript
+   i src/lib/campaign.ts. */
+html.oe-campaign-hidden #oe-campaign-bar {
+  display: none;
+}
