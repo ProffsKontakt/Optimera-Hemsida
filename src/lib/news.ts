@@ -79,6 +79,86 @@ export type NewsArticle = {
 
 export const NEWS: NewsArticle[] = [
   {
+    slug: "far-man-tillbaka-pengar-pa-elen-svenska-kraftnat-flaskhalsinkomster",
+    status: "published",
+    title:
+      "Får man tillbaka pengar på elen? Svenska kraftnät vill återföra flaskhalsmiljarder till hårt drabbade elkunder",
+    excerpt:
+      "Kan man få tillbaka pengar på elen efter höstens höga priser i södra Sverige? Svenska kraftnäts generaldirektör Maja Lundbäck vill återföra delar av flaskhalsinkomsterna, som i år väntas bli minst 30 miljarder kronor, till de hushåll och företag som drabbas hårdast. Myndigheten ska utmana regelverket, men hur och hur mycket är inte klart. Här är vad förslaget innebär, vad som hände förra gången, vad Ebba Busch har sagt och vad som gäller för högkostnadsskyddet.",
+    category: "Energipolitik",
+    publishedAt: "2026-11-18",
+    updatedAt: "2026-11-18",
+    readTimeMin: 7,
+    image: {
+      src: "/news/far-man-tillbaka-pengar-pa-elen-svenska-kraftnat-flaskhalsinkomster-grafik.jpg",
+      alt: "Grafik: Svenska kraftnät väntar sig 30 miljarder kronor eller mer i flaskhalsinkomster 2026. Snittpriset 1–18 november 2026 var 0,32 kronor per kWh i elområde 1 och 2, 1,80 kronor i elområde 3 och 2,76 kronor i elområde 4",
+      credit: "Grafik: Optimera Energi · Källa: Svenska kraftnät, Nord Pool",
+    },
+    searchPhrases: [
+      "får man tillbaka pengar på elen",
+      "när får vi tillbaka pengar på elen",
+      "pengar tillbaka på elräkningen",
+      "få tillbaka pengar för elen",
+      "svenska kraftnät elstöd",
+      "flaskhalsintäkter ebba busch",
+      "nya elområden 2027",
+      "ta bort elområden",
+      "vilka partier vill ta bort elområden",
+    ],
+    sources: [
+      {
+        title: "”Vi vill återföra flaskhalsinkomster till hårt drabbade elkunder” (DN Debatt 13 november, publicerad på svk.se 16 november 2026)",
+        publisher: "Svenska kraftnät",
+        url: "https://www.svk.se/press-och-nyheter/nyheter/allmanna-nyheter/2026/vi-vill-aterfora-flaskhalsinkomster-till-hart-drabbade-elkunder/",
+      },
+      {
+        title: "Day-ahead-priser per elområde, dygnssnitt 1–18 november 2026",
+        publisher: "Nord Pool",
+        url: "https://data.nordpoolgroup.com/auction/day-ahead/prices?deliveryDate=2026-11-18&currency=SEK&aggregation=Daily&deliveryAreas=SE1,SE2,SE3,SE4",
+      },
+      {
+        title: "Användning av flaskhalsintäkter 2025 (Ei PM2026:01)",
+        publisher: "Energimarknadsinspektionen",
+        url: "https://ei.se/download/18.1128535519c985d003d168b/1772175289720/Anv%C3%A4ndning-av-flaskhalsint%C3%A4kter-2025-Ei-PM2026-01.pdf",
+      },
+      {
+        title: "Ansökan om att finansiera ett stöd till elslutkunder genom intäkter från överbelastning (oktober 2022)",
+        publisher: "Svenska kraftnät",
+        url: "https://www.svk.se/siteassets/om-oss/vart-uppdrag/regeringsuppdrag/nodatgarder/ansokan-om-att-finansiera-ett-stod-till-elslutkund.pdf",
+      },
+      {
+        title: "Användning av flaskhalsintäkter år 2023 (beslut 1 mars 2024)",
+        publisher: "Energimarknadsinspektionen",
+        url: "https://ei.se/download/18.49695d0118df2c18e1bcb4/1709289980289/Congestion-revenues-2024-Rapport-2024-anv%C3%A4ndning-av-flaskhalsint%C3%A4kter-%C3%A5r-2023.pdf",
+      },
+      {
+        title: "Svenska kraftnät får i uppdrag att beräkna överskott av flaskhalsinkomster och föreslå hur de ska användas (1 september 2026)",
+        publisher: "Regeringen",
+        url: "https://regeringen.se/pressmeddelanden/2026/09/svenska-kraftnat-far-i-uppdrag-att-berakna-overskott-av-flaskhalsinkomster-och-foresla-hur-de-ska-anvandas/",
+      },
+      {
+        title: "Frågor och svar om högkostnadsskyddet för el",
+        publisher: "Regeringen",
+        url: "https://www.regeringen.se/regeringens-politik/energi/fragor-och-svar-om-hogkostnadsskyddet-for-el/",
+      },
+      {
+        title: "”Nu tar vi steg mot färre elområden” (debattartikel 29 maj 2026)",
+        publisher: "Regeringen",
+        url: "https://regeringen.se/debattartiklar/2026/05/nu-tar-vi-steg-mot-farre-elomraden/",
+      },
+      {
+        title: "Talmannen har tagit emot rapport från Ulf Kristersson (M) (17 november 2026)",
+        publisher: "Sveriges riksdag",
+        url: "https://www.riksdagen.se/sv/aktuellt/aktuelltnotiser/2026/nov/17/talmannen-har-tagit-emot-rapport-fran-ulf_cms0e51d148-fb67-47ff-bd7d-05705c69738fsv/",
+      },
+      {
+        title: "Partiernas energipolitik inför valet 2026",
+        publisher: "Elbruk",
+        url: "https://www.elbruk.se/blogg/partiernas-energipolitik-2026",
+      },
+    ],
+  },
+  {
     slug: "forsmark-3-stopp-kortslutning-fyra-av-sex-reaktorer",
     status: "published",
     title:
