@@ -200,10 +200,21 @@ function SlotCard({
       {slot.hint && (
         <p className="mt-1 text-[12.5px] text-ink/55 leading-snug">{slot.hint}</p>
       )}
+      <p className="mt-2 text-[12px] leading-snug text-ink/70">
+        <strong>Bara egna bilder.</strong> Ladda aldrig upp bilder från tidningar, nyhetsbyråer (TT m.fl.),
+        Google-bildsök, bildbanker eller andras webbplatser – det ger ersättningskrav.
+      </p>
 
       <button
         type="button"
-        onClick={() => inputRef.current?.click()}
+        onClick={() => {
+          if (
+            confirm(
+              "Är bilden tagen eller skapad av oss själva (eller har vi skriftlig licens)?\n\nBilder från tidningar, nyhetsbyråer, bildsök och bildbanker får INTE laddas upp.",
+            )
+          )
+            inputRef.current?.click();
+        }}
         className="mt-4 block w-full overflow-hidden rounded-2xl border border-dashed border-ink/25 bg-bone hover:border-indigo/60 transition relative"
         style={{ aspectRatio: slot.aspect }}
       >

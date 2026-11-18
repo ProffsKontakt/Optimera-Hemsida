@@ -46,15 +46,20 @@ export type NewsArticle = {
    * granskas i samma PR som texten. Kan ersättas via media-CMS:en
    * (slot "news:<slug>") utan kodändring.
    *
-   * Bildpolicy (Julian 18/10 2026): bilden ska höra ihop med nyheten –
-   * pressbild på personen, händelsen eller organisationen i nyheten,
-   * ett fritt licensierat foto eller egen datagrafik. Inga AI-genererade
-   * hus med solpaneler, inga AI-bilder av verkliga personer och inga
-   * TV-skärmdumpar eller byråbilder utan licens.
+   * Bildpolicy (Julian 18/11 2026, skärpt efter upphovsrättskrav):
+   * ENDAST eget material. Tillåtet är egen datagrafik ("Grafik: Optimera
+   * Energi · Källa: …"), egna foton ("Foto: Optimera Energi") och egna
+   * genererade bilder utan verkliga personer, logotyper eller varumärken.
+   * FÖRBJUDET: bilder från nyhetsbyråer (TT, Getty m.fl.), tidningar,
+   * TV-skärmdumpar, bildsök, pressbilder och mediebanker (riksdagen,
+   * myndigheter, Vattenfall m.fl. – villkoren gäller redaktionellt bruk,
+   * inte ett företags webbplats) samt Wikimedia/CC-bilder. Hittar du ingen
+   * egen bild: gör en grafik av artikelns siffror. `npm run check:news`
+   * och bygget stoppar allt annat.
    *
-   * credit – fotobyline enligt bildgivarens villkor, t.ex.
-   * "Foto: Johan Asp/Svenska kraftnät". Visas under bilden.
-   * creditUrl – länk till källan eller licensen.
+   * credit – måste börja med "Grafik: Optimera Energi" eller
+   * "Foto: Optimera Energi". Visas under bilden.
+   * creditUrl – valfri länk till datakällan bakom grafiken.
    */
   image?: { src: string; alt: string; credit?: string; creditUrl?: string };
   /**
@@ -85,10 +90,9 @@ export const NEWS: NewsArticle[] = [
     updatedAt: "2026-11-15",
     readTimeMin: 6,
     image: {
-      src: "/news/forsmark-3-stopp-kortslutning-fyra-av-sex-reaktorer.jpg",
-      alt: "Forsmarks kärnkraftverk vid havet en sommardag: två vita reaktorbyggnader med höga skorstenar bakom en rad träd, med vatten och stenar i förgrunden. Arkivbild",
-      credit: "Foto: Vattenfall",
-      creditUrl: "https://group.vattenfall.com/se/nyheter-och-press/mediebank/kraftverk-och-kontor",
+      src: "/news/forsmark-3-stopp-kortslutning-fyra-av-sex-reaktorer-grafik.jpg",
+      alt: "Grafik över läget i kärnkraften den 15 november 2026: Forsmark 2 och Oskarshamn 3 är i drift, Forsmark 3 och Ringhals 4 planeras åter 20 november, Ringhals 3 den 27 november och Forsmark 1 på full effekt efter 3 december",
+      credit: "Grafik: Optimera Energi · Källa: Vattenfall, OKG",
     },
     searchPhrases: [
       "forsmark 3 kortslutning",
@@ -405,10 +409,9 @@ export const NEWS: NewsArticle[] = [
     updatedAt: "2026-10-24",
     readTimeMin: 7,
     image: {
-      src: "/news/nar-startar-ringhals-4-igen-karnkraft-ur-drift-november-2026.jpg",
-      alt: "Ringhals kärnkraftverk sett över vattnet: tre runda reaktorbyggnader med kupoltak, en hög skorsten och en mast, med mörka buskar i förgrunden",
-      credit: "Foto: Pernilla Lagerquist/Vattenfall",
-      creditUrl: "https://group.vattenfall.com/se/nyheter-och-press/mediebank/kraftverk-och-kontor",
+      src: "/news/nar-startar-ringhals-4-igen-karnkraft-ur-drift-november-2026-grafik.jpg",
+      alt: "Tidslinje över planerade återstarter: Forsmark 1 den 17 november med 520 av 1 098 megawatt, Ringhals 3 den 18 november och Ringhals 4 den 20 november",
+      credit: "Grafik: Optimera Energi · Källa: Vattenfall",
     },
     searchPhrases: [
       "när startar ringhals 4 igen",
@@ -486,10 +489,9 @@ export const NEWS: NewsArticle[] = [
     updatedAt: "2026-10-21",
     readTimeMin: 7,
     image: {
-      src: "/news/solcellsforetag-konkurs-garanti-forskott-2026.jpg",
-      alt: "Tre montörer monterar svarta solpaneler på ett rött tegeltak, med en byggnadsställning längs husets fasad",
-      credit: "Foto: W.carter, CC0, via Wikimedia Commons (beskuren)",
-      creditUrl: "https://commons.wikimedia.org/wiki/File:Three_men_installing_solar_panels_on_a_house.jpg",
+      src: "/news/solcellsforetag-konkurs-garanti-forskott-2026-grafik.jpg",
+      alt: "Grafik med fyra rutor om vad som gäller när ett solcellsföretag går i konkurs: reklamationsrätten upphör, tillverkarens garanti gäller, förskott blir oftast en oprioriterad fordran och krav kan riktas mot kreditgivaren",
+      credit: "Grafik: Optimera Energi · Källa: Konsumentverket",
     },
     searchPhrases: [
       "vad händer om solcellsföretag går i konkurs",
@@ -567,10 +569,9 @@ export const NEWS: NewsArticle[] = [
     updatedAt: "2026-10-18",
     readTimeMin: 8,
     image: {
-      src: "/news/blir-det-extra-val-andersson-nedrostad-budget-elskatt-elstod.jpg",
-      alt: "Storskärmen i riksdagens kammare visar resultatet av statsministeromröstningen om Magdalena Andersson: 99 ja, 248 nej, 0 avstår och 2 frånvarande",
-      credit: "Foto: Riksdagsförvaltningen/Sveriges riksdag",
-      creditUrl: "https://www.riksdagen.se/sv/kontakt-och-besok/press/pressbilder/",
+      src: "/news/blir-det-extra-val-andersson-nedrostad-budget-elskatt-elstod-grafik.jpg",
+      alt: "Stapeldiagram över statsministeromröstningen om Magdalena Andersson: 99 ja, 248 nej, 0 avstår och 2 frånvarande",
+      credit: "Grafik: Optimera Energi · Källa: Sveriges riksdag",
     },
     searchPhrases: [
       "blir det extra val",
@@ -648,10 +649,9 @@ export const NEWS: NewsArticle[] = [
     updatedAt: "2026-10-15",
     readTimeMin: 8,
     image: {
-      src: "/news/elbrist-i-vinter-svenska-kraftnat-effektbrist-elpriser.jpg",
-      alt: "Maja Lundbäck, generaldirektör för Svenska kraftnät",
-      credit: "Foto: Johan Asp/Svenska kraftnät",
-      creditUrl: "https://www.svk.se/press-och-nyheter/press/portrattbilder/",
+      src: "/news/elbrist-i-vinter-svenska-kraftnat-effektbrist-elpriser-grafik.jpg",
+      alt: "Grafik över Svenska kraftnäts vinterbedömning: låg risk för effektbrist, stor risk för höga elpriser, vattenmagasinen 75,3 procent fulla vecka 41 och 1,42 kronor per kWh i elområde 4 den 1–15 oktober",
+      credit: "Grafik: Optimera Energi · Källa: Svenska kraftnät, Nord Pool",
     },
     searchPhrases: [
       "elbrist i vinter",
@@ -803,10 +803,9 @@ export const NEWS: NewsArticle[] = [
     updatedAt: "2026-10-09",
     readTimeMin: 7,
     image: {
-      src: "/news/elnatsavgift-2027-flaskhalsintakter-8-miljarder-foto.jpg",
-      alt: "Flygbild över en av Svenska kraftnäts stamnätsledningar, där en kraftledningsstolpe står i en ledningsgata genom skogen",
-      credit: "Foto: Tomas Ärlemo/Svenska kraftnät",
-      creditUrl: "https://www.svk.se/press-och-nyheter/press/miljobilder-kartor/",
+      src: "/news/elnatsavgift-2027-flaskhalsintakter-8-miljarder-grafik.jpg",
+      alt: "Grafik över flaskhalsintäkterna 2027: drygt 8,3 miljarder kronor totalt, varav drygt 2 miljarder sänker energiavgiften och drygt 6,3 miljarder den fasta avgiften, medan den fasta stamnätsavgiften ändå höjs med cirka 20 procent",
+      credit: "Grafik: Optimera Energi · Källa: Svenska kraftnät",
     },
     searchPhrases: [
       "elnätsavgift 2027",
@@ -952,10 +951,9 @@ export const NEWS: NewsArticle[] = [
     updatedAt: "2026-10-03",
     readTimeMin: 6,
     image: {
-      src: "/news/andersson-sonderar-igen-statsministeromrostning-tidslinje-foto.jpg",
-      alt: "Magdalena Andersson (S) och talman Andreas Norlén skakar hand i riksdagen den 18 september 2026",
-      credit: "Foto: Linnea Bengtsson/Sveriges riksdag",
-      creditUrl: "https://www.riksdagen.se/sv/kontakt-och-besok/press/pressbilder/",
+      src: "/news/andersson-sonderar-igen-statsministeromrostning-tidslinje-grafik.jpg",
+      alt: "Tidslinje för regeringsbildningen i oktober 2026: sonderingsuppdraget startar 5 oktober, återrapport senast 12 oktober och statsministeromröstning tidigast 14 oktober",
+      credit: "Grafik: Optimera Energi · Källa: Sveriges riksdag",
     },
     searchPhrases: [
       "när blir det ny regering efter valet",
@@ -1034,10 +1032,9 @@ export const NEWS: NewsArticle[] = [
     updatedAt: "2026-10-03",
     readTimeMin: 6,
     image: {
-      src: "/news/regeringsbildningen-last-budgeten-12-november-elstoden-foto.jpg",
-      alt: "Finansminister Elisabeth Svantesson (M) lämnar över budgetpropositionen för 2026 till talman Andreas Norlén i riksdagens kammare den 22 september 2025",
-      credit: "Foto: Alessandro Raffaele Berellini/Sveriges riksdag",
-      creditUrl: "https://www.riksdagen.se/sv/kontakt-och-besok/press/pressbilder/",
+      src: "/news/regeringsbildningen-last-budgeten-12-november-elstoden-grafik.jpg",
+      alt: "Grafik om budgeten och grönt avdrag: budgeten lämnas senast 12 november, grönt avdrag 15 procent för solceller och 50 procent för batteri och laddbox, tak 50 000 kronor per person och år",
+      credit: "Grafik: Optimera Energi · Källa: Sveriges riksdag, Skatteverket",
     },
     searchPhrases: [
       "grönt avdrag 2027",
@@ -1109,10 +1106,9 @@ export const NEWS: NewsArticle[] = [
     updatedAt: "2026-09-27",
     readTimeMin: 6,
     image: {
-      src: "/news/kina-fasar-ut-exportrabatter-batteripriser-2027-foto.jpg",
-      alt: "Containerhamnen Yangshan utanför Shanghai, med kranar och staplade containrar vid havet",
-      credit: "Foto: Gmbsfd, CC BY-SA 4.0, via Wikimedia Commons (beskuren)",
-      creditUrl: "https://commons.wikimedia.org/wiki/File:Yangshan_Port_20170923-2.jpg",
+      src: "/news/kina-fasar-ut-exportrabatter-batteripriser-2027-grafik.jpg",
+      alt: "Stapeldiagram över Kinas exportrabatt på batterier: 9 procent tidigare, 6 procent under 2026 och 0 procent från 1 januari 2027",
+      credit: "Grafik: Optimera Energi · Källa: Senergia",
     },
     sources: [
       {
@@ -1166,10 +1162,9 @@ export const NEWS: NewsArticle[] = [
     updatedAt: "2026-10-03",
     readTimeMin: 6,
     image: {
-      src: "/news/vinterns-elpriser-2026-prognos-dyrare-soder-foto.jpg",
-      alt: "Kraftledningsstolpe i vinterlandskap med snötäckta fjäll i bakgrunden",
-      credit: "Foto: Tomas Ärlemo/Svenska kraftnät",
-      creditUrl: "https://www.svk.se/press-och-nyheter/press/miljobilder-kartor/",
+      src: "/news/vinterns-elpriser-2026-prognos-dyrare-soder-grafik.jpg",
+      alt: "Grafik över vinterprognosen: 100–110 öre per kWh i södra Sverige och 45–55 öre i norr, samt cirka 6 800 kronor mer för en villa i elområde 3 och runt 9 000 kronor mer i elområde 4 än förra vintern",
+      credit: "Grafik: Optimera Energi · Källa: Tibber, E.ON",
     },
     sources: [
       {
@@ -1222,10 +1217,9 @@ export const NEWS: NewsArticle[] = [
     updatedAt: "2026-09-21",
     readTimeMin: 5,
     image: {
-      src: "/news/valresultatet-faststallt-176-173-vad-hander-nu-elen-foto.jpg",
-      alt: "Riksdagshuset speglas i Strömmen i Stockholm, med Rosenbad till vänster",
-      credit: "Foto: Melker Dahlstrand/Sveriges riksdag",
-      creditUrl: "https://www.riksdagen.se/sv/kontakt-och-besok/press/pressbilder/",
+      src: "/news/valresultatet-faststallt-176-173-vad-hander-nu-elen-grafik.jpg",
+      alt: "Stapeldiagram över det fastställda valresultatet 2026: 176 mandat för S, MP, V och C mot 173 för Tidöpartierna, med majoritetsgränsen 175 markerad",
+      credit: "Grafik: Optimera Energi · Källa: Valmyndigheten",
     },
     sources: [
       {
@@ -1272,10 +1266,9 @@ export const NEWS: NewsArticle[] = [
     updatedAt: "2026-10-03",
     readTimeMin: 6,
     image: {
-      src: "/news/effektavgifter-2026-stoppat-krav-ny-modell-batteri-foto.jpg",
-      alt: "Ställverk med kraftledningsportaler i en transformatorstation",
-      credit: "Foto: Tomas Ärlemo/Svenska kraftnät",
-      creditUrl: "https://www.svk.se/press-och-nyheter/press/miljobilder-kartor/",
+      src: "/news/effektavgifter-2026-stoppat-krav-ny-modell-batteri-grafik.jpg",
+      alt: "Tidslinje för effektavgifterna: kravet stoppas i mars 2026, Ellevio tar bort sin effektavgift 1 juni, föreskrifterna upphävs senast 30 juni och Energimarknadsinspektionen föreslår ny modell senast 12 april 2027",
+      credit: "Grafik: Optimera Energi · Källa: Regeringen, Energimarknadsinspektionen, Ellevio",
     },
     sources: [
       {
@@ -1339,10 +1332,9 @@ export const NEWS: NewsArticle[] = [
     updatedAt: "2026-09-15",
     readTimeMin: 6,
     image: {
-      src: "/news/efter-valet-2026-rysarjamnt-vad-hander-med-elen-foto.jpg",
-      alt: "Händer som sorterar valkuvert på ett bord under rösträkningen",
-      credit: "Foto: Fialotta Bratt/Valmyndigheten",
-      creditUrl: "https://val.mediaflowportal.com/",
+      src: "/news/efter-valet-2026-rysarjamnt-vad-hander-med-elen-grafik.jpg",
+      alt: "Stapeldiagram över det preliminära valresultatet den 15 september 2026: 176 mandat för det rödgröna blocket mot 173 för Tidöpartierna, med majoritetsgränsen 175 markerad",
+      credit: "Grafik: Optimera Energi · Källa: Valmyndigheten",
     },
     sources: [
       {
@@ -1396,10 +1388,9 @@ export const NEWS: NewsArticle[] = [
     updatedAt: "2026-09-06",
     readTimeMin: 7,
     image: {
-      src: "/news/valet-2026-solceller-elpriser-en-vecka-kvar-foto.jpg",
-      alt: "En hand håller en mobil med ett digitalt röstkort för valet den 13 september 2026, framför en skylt med texten Här kan du rösta",
-      credit: "Foto: Fialotta Bratt/Valmyndigheten",
-      creditUrl: "https://val.mediaflowportal.com/",
+      src: "/news/valet-2026-solceller-elpriser-en-vecka-kvar-grafik.jpg",
+      alt: "Grafik över reglerna inför valet 2026: grönt avdrag 14,55 procent för solceller och 48,5 procent för batteri och laddbox, Villaeffekten 30 procent av materialkostnaden upp till 60 000 kronor, och 60-öringen borttagen sedan 1 januari 2026",
+      credit: "Grafik: Optimera Energi · Källa: Boverket m.fl.",
     },
     sources: [
       {
@@ -1462,4 +1453,28 @@ export function formatNewsDate(iso: string): string {
     year: "numeric",
     timeZone: "UTC",
   }).format(new Date(iso));
+}
+
+/**
+ * Bildspärr (upphovsrätt). Stoppar bygget om en nyhetsbild inte är eget
+ * material enligt bildpolicyn ovan – se NewsArticle["image"].
+ */
+export const OWN_IMAGE_CREDIT = /^(Grafik|Foto|Bild): Optimera Energi\b/;
+export function newsImageIssues(list: NewsArticle[] = NEWS): string[] {
+  const issues: string[] = [];
+  for (const n of list) {
+    if (!n.image) continue;
+    if (!n.image.src.startsWith("/news/"))
+      issues.push(`${n.slug}: bilden måste ligga i /public/news (inte ${n.image.src}).`);
+    if (!OWN_IMAGE_CREDIT.test(n.image.credit ?? ""))
+      issues.push(
+        `${n.slug}: credit "${n.image.credit ?? ""}" – bara eget material är tillåtet ("Grafik: Optimera Energi …" eller "Foto: Optimera Energi").`,
+      );
+  }
+  return issues;
+}
+{
+  const issues = newsImageIssues();
+  if (issues.length > 0)
+    throw new Error(`Bildpolicyn för nyheter bryts:\n${issues.join("\n")}`);
 }

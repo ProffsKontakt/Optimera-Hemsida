@@ -198,7 +198,7 @@ export default function NewsArticlePage({
             <ArrowLeft size={15} /> Alla nyheter
           </Link>
           {/* Hero-bilden ligger ovanför rubriken – färg och liv direkt.
-              Pressbilder och licensierade foton visar fotobyline under. */}
+              Bara eget material (se bildpolicyn i news.ts); byline visas under. */}
           {img && (
             <figure className="mb-6 md:mb-8">
               <div className="overflow-hidden rounded-2xl md:rounded-3xl border border-ink/10 aspect-[16/9] bg-cream">
