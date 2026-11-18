@@ -5,6 +5,8 @@ import { PromptwatchVisitors } from "@/components/analytics/PromptwatchVisitors"
 import { ChatMount } from "@/components/chat/ChatMount";
 import "./globals.css";
 import { Navbar } from "@/components/site/Navbar";
+import { CampaignBar } from "@/components/site/CampaignBar";
+import { activeCampaign, campaignHideScript } from "@/lib/campaign";
 import { Footer } from "@/components/site/Footer";
 import { AdminHotkey } from "@/components/site/AdminHotkey";
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
@@ -153,6 +155,9 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  // Pågående kampanj (src/lib/campaign.ts). Avgörs när sidan byggs; sidor
+  // som byggts före slutdatumet döljer banderollen själva i webbläsaren.
+  const campaign = activeCampaign();
   return (
     <html
       lang="sv"
@@ -169,6 +174,13 @@ export default function RootLayout({
             __html: "document.documentElement.classList.add('anim')",
           }}
         />
+        {/* Döljer kampanjbanderollen före första renderingen om kampanjen
+            har tagit slut eller besökaren redan stängt den. */}
+        {campaign && (
+          <script
+            dangerouslySetInnerHTML={{ __html: campaignHideScript(campaign) }}
+          />
+        )}
         {/* Cookiebot med strategy="afterInteractive" – tidigare hade vi
             beforeInteractive, men det blockerade LCP på mobile (Largest
             Contentful Paint trycktes över 2,5s). Auto-blocking-läget
@@ -212,6 +224,7 @@ export default function RootLayout({
         <AttributionCapture />
         <MetaPixelPageView />
         <Navbar />
+        {campaign && <CampaignBar campaign={campaign} />}
         <main id="main" className="pt-20">{children}</main>
         <Footer />
         {/* AI-chatt. Renderas bara när en API-nyckel finns i miljön. */}

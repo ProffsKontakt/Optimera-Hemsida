@@ -1,5 +1,6 @@
 import { PressBanner } from "@/components/site/PressBanner";
 import { getFeaturedPressRelease } from "@/lib/press";
+import { activeCampaign } from "@/lib/campaign";
 import { getMedia, startImage } from "@/lib/media";
 import { START_IMAGE_KEYS, type StartImage, type StartImageKey } from "@/lib/start-images";
 import { getVisibleReviews } from "@/lib/reviews";
@@ -118,7 +119,9 @@ export default async function HomePage() {
 
   return (
     <>
-      {featured && (
+      {/* Kampanjbanderollen (layouten) ligger på samma plats under menyn,
+          så pressbanderollen väntar medan en kampanj pågår. */}
+      {featured && !activeCampaign() && (
         <PressBanner slug={featured.slug} title={featured.title} />
       )}
       <JsonLd data={faqPageSchema(HOME_FAQ)} />
