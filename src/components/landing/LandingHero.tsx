@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { activeCampaign, CAMPAIGN_BAR_HEIGHT } from "@/lib/campaign";
 import type { RecoStats } from "@/lib/reco-live";
 import type { StartImage } from "@/lib/start-images";
 import { delay, Stars } from "./shared";
@@ -51,6 +52,12 @@ export function LandingHero({ reco, image }: { reco: RecoStats; image: StartImag
       </div>
 
       <div className="container-edge relative z-10 pb-8 pt-[6.5rem] sm:pb-10 sm:pt-36 md:pb-14 lg:pb-20">
+        {/* Plats för kampanjbanderollen, som ligger över hjälten under menyn.
+            Utan den täcker banderollen rubrikens första rad på mobil. Döljs
+            tillsammans med banderollen (globals.css). */}
+        {activeCampaign() && (
+          <div data-campaign-spacer aria-hidden="true" className={CAMPAIGN_BAR_HEIGHT} />
+        )}
         <div className="grid gap-6 sm:gap-9 xl:grid-cols-[minmax(0,1.5fr)_minmax(0,0.95fr)] xl:items-end xl:gap-12">
           <div>
             <h1>

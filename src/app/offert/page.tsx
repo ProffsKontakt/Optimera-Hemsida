@@ -48,8 +48,8 @@ export default async function OffertPage({
   return (
     <>
       <JsonLd data={reservePageSchema} />
-      <section className="container-edge pb-24 pt-12 md:pt-14">
-        <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-12 lg:gap-16">
+      <section className="container-edge pb-24 pt-8 md:pt-14">
+        <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5 lg:pt-6">
             <div className="eyebrow">Offert · svar nästa vardag</div>
             <h1 className="mt-4 font-display text-[40px] leading-[1.05] tracking-display-tight sm:text-[52px] md:text-[64px]">

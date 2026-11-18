@@ -57,8 +57,15 @@ export function activeCampaign(now: number = Date.now()): Campaign | null {
 /** localStorage-nyckel för stängd banderoll. Värdet är kampanjens id. */
 export const CAMPAIGN_DISMISS_KEY = "oe_dismissed_campaign";
 
-/** Klass på <html> som döljer banderollen (se globals.css). */
+/** Klass på <html> som döljer banderollen och dess platshållare (se globals.css). */
 export const CAMPAIGN_HIDDEN_CLASS = "oe-campaign-hidden";
+
+/**
+ * Banderollens höjd som Tailwind-klasser. Samma klasser på platshållarna
+ * (element med data-campaign-spacer) som håller plats för banderollen i
+ * sidflödet och i startsidans hjälte, så att den inte täcker innehåll.
+ */
+export const CAMPAIGN_BAR_HEIGHT = "h-11 sm:h-14";
 
 /**
  * Inline-skript för <head>: döljer banderollen före första renderingen om
