@@ -34,6 +34,175 @@ export type GuideContent = {
 };
 
 export const GUIDE_CONTENT: Record<string, GuideContent> = {
+  "varmvattenberedare-med-inbyggd-varmepump": {
+    answer: "En varmvattenberedare med inbyggd värmepump, även kallad värmepumpsberedare, värmer tappvarmvattnet med en värmepump som hämtar värme ur uteluften, rumsluften eller husets frånluft. Den drar mindre el än en beredare som bara värms med el, enligt Energimyndigheten. Är den styrbar ger den 2026 bidrag via Villaeffekten: 30 % av materialkostnaden, minst 10 000 kr och högst 60 000 kr per hus.",
+    keyFacts: [
+      {
+        label: "Värmekälla",
+        value: "Uteluften, luften i rummet där beredaren står eller frånluften från ventilationen, enligt Boverket",
+      },
+      {
+        label: "Elanvändning",
+        value: "Lägre än för en beredare som bara värms med el, enligt Energimyndigheten",
+      },
+      {
+        label: "Bidrag 2026 (Villaeffekten)",
+        value: "30 % av materialkostnaden, minst 10 000 kr och högst 60 000 kr per hus",
+      },
+      {
+        label: "Minsta materialkostnad för bidrag",
+        value: "33 334 kr – annars blir bidraget under 10 000 kr och lämnas inte",
+      },
+      {
+        label: "Krav på huset",
+        value: "Värdeår före 1990, ingen fjärrvärme, och du äger och bor i huset",
+      },
+      {
+        label: "Temperatur i tanken",
+        value: "Över 60 °C för att motverka legionella, enligt Energimyndigheten",
+      },
+    ],
+    sections: [
+      {
+        h2: "Vad är en varmvattenberedare med inbyggd värmepump?",
+        body: [
+          "Det är en varmvattenberedare som värmer tappvarmvattnet med en inbyggd värmepump. Värmepumpen tar vara på värme från uteluften, från luften i rummet där beredaren står eller från luften som lämnar huset genom ventilationen, enligt Boverket. Den kallas ibland också värmepumpsberedare.",
+          "Tappvarmvatten är vattnet till kranar och duschar. Beredaren värmer bara det, inte husets element. Energimyndigheten påpekar att en luft-luftvärmepump inte kan värma vattnet till kranar och duschar, och att det finns varmvattenberedare med värmepump som drar mindre el än beredare som bara värms med el. I ett hus med direktverkande el är beredaren därför ett sätt att minska elen till varmvattnet.",
+        ],
+      },
+      {
+        h2: "Hur mycket el sparar en värmepumpsberedare?",
+        body: [
+          "Den drar mindre el än en varmvattenberedare som bara värms med el, enligt Energimyndigheten. Hur mycket mindre beror på modellen, hur mycket varmvatten ni använder och var värmepumpen hämtar sin värme. Jämför därför modellernas energimärkning, som visar energiklassen och hur mycket vatten beredaren klarar av att producera.",
+          "Välj storlek efter behovet. En beredare i storleken medium kan vara lagom för ett litet hushåll, medan en större passar en villa där flera vill duscha direkt efter varandra, enligt Energimyndigheten.",
+          "Vattnet i tanken bör hålla över 60 °C. Högre temperatur än så är slöseri med energi, och lägre ger risk för legionellabakterier, skriver Energimyndigheten.",
+        ],
+      },
+      {
+        h2: "Kan man få bidrag för en värmepumpsberedare?",
+        body: [
+          "Ja, om den är styrbar och huset uppfyller villkoren. Installation av en styrbar varmvattenberedare med inbyggd värmepump är en av åtgärderna i Boverkets bidrag för energieffektivisering i småhus, som kallas Villaeffekten.",
+          "Bidraget är högst 30 procent av materialkostnaden inklusive moms och högst 60 000 kr per hus. Det lämnas inte om det blir under 10 000 kr, så materialet måste kosta minst 33 334 kr. Söker du bara för beredaren och den kostar mindre än så blir det alltså inget bidrag.",
+          "Huset ska ha värdeår före 1990 och inte vara anslutet till fjärrvärme, och du ska äga och stadigvarande bo i det. Produkten måste ligga i någon av de två högsta energiklasser som används i betydande grad inom produktgruppen, bedömt utifrån EU:s produktdatabas EPREL. Styrbar betyder i Boverkets beskrivning av styrbara värmepumpar att uppvärmningen planeras och justeras automatiskt efter till exempel temperaturen, ditt behov eller elpriset.",
+        ],
+      },
+      {
+        h2: "Hur söker man Villaeffekten för en värmepumpsberedare?",
+        body: [
+          "Du söker i Boverkets e-tjänst, och länsstyrelsen i det län där huset ligger handlägger ansökan. Ansökan ska komma in inom sex månader från att installationen påbörjades. Påbörjades åtgärden mellan den 17 oktober 2025 och den 31 augusti 2026 är sista dag den 28 februari 2027.",
+          "Bara material som beställts från och med den 17 oktober 2025 ger bidrag, och du ska kunna visa beställning eller kvitto om länsstyrelsen begär det. Bidraget betalas ut först när åtgärden är klar och du har begärt utbetalning. Det kan lämnas vid högst två tillfällen per hus, och bidrag som betalats ut i förra omgången 2023–2025 räknas in i maxbeloppet.",
+          "Arbetskostnaden ger inte bidrag, men eftersom bidraget bara gäller materialet kan du få rotavdrag för arbetet. Rotavdraget är 30 procent av arbetskostnaden, enligt Skatteverket.",
+        ],
+      },
+      {
+        h2: "Vad ska man tänka på när man byter varmvattenberedare?",
+        body: [
+          "Välj material efter vattenkvaliteten där du bor. Beredare finns i rostfritt stål, emaljerat stål och koppar, och Energimyndigheten råder dig att fråga en kommunal energi- och klimatrådgivare eller en VVS-installatör om vilket som passar.",
+          "Isolera nakna varmvattenrör och se till att beredaren är isolerad, så att vattnet håller värmen. Funderar du på solfångare kan det vara en idé att välja en beredare som också kan kopplas till dem, enligt Energimyndigheten.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Vad är en värmepumpsberedare?",
+        a: "Ett annat namn för en varmvattenberedare med inbyggd värmepump. Den värmer tappvarmvattnet med värme från uteluften, rumsluften eller frånluften, enligt Boverket, och drar mindre el än en beredare som bara värms med el.",
+      },
+      {
+        q: "Får man bidrag för värmepumpsberedare?",
+        a: "Ja, en styrbar värmepumpsberedare ingår i Villaeffekten 2026: 30 % av materialkostnaden, minst 10 000 kr och högst 60 000 kr per hus. Huset ska ha värdeår före 1990 och sakna fjärrvärme, och du ska äga och bo i det.",
+      },
+      {
+        q: "Får man rotavdrag för att installera en värmepumpsberedare?",
+        a: "Ja, för arbetskostnaden. Rotavdraget är 30 procent av arbetet. Eftersom Villaeffekten bara gäller materialet kan du få både bidrag och rotavdrag.",
+      },
+      {
+        q: "Vilken temperatur ska varmvattenberedaren ha?",
+        a: "Över 60 °C, enligt Energimyndigheten. Lägre temperatur ger risk för legionella, och högre är slöseri med energi.",
+      },
+    ],
+  },
+  "monoblock-eller-split-luft-vattenvarmepump": {
+    answer: "Skillnaden ligger i köldmediekretsen. I en monoblock sitter hela kretsen i en enhet, oftast utedelen, och värmen förs in i huset med vatten. I en split är kretsen delad mellan en utedel och en innedel, som kopplas ihop på plats av certifierad personal. Från 1 januari 2027 får nya luft-vattenvärmepumpar på upp till 12 kW, av båda typerna, inte släppas ut med köldmedier som har GWP 150 eller mer.",
+    keyFacts: [
+      {
+        label: "Monoblock",
+        value: "Hela köldmediekretsen i en enhet, oftast utedelen; värmen leds in via isolerade vattenrör",
+      },
+      {
+        label: "Split",
+        value: "Köldmediekretsen delad mellan utedel och innedel, som kopplas ihop på plats",
+      },
+      {
+        label: "Installation",
+        value: "Split kräver certifierad personal för köldmediet; elen kräver alltid ett registrerat elinstallationsföretag",
+      },
+      {
+        label: "Från 1 januari 2027",
+        value: "Nya luft-vattenvärmepumpar upp till 12 kW: köldmedium med GWP under 150 (EU 2024/573)",
+      },
+      {
+        label: "Köldmediet R32",
+        value: "GWP 675 enligt EU:s f-gasförordning",
+      },
+      {
+        label: "Pris för luft-vatten (2023)",
+        value: "Omkring 100 000–160 000 kr, enligt energi- och klimatrådgivningen",
+      },
+    ],
+    sections: [
+      {
+        h2: "Vad är skillnaden mellan monoblock och split?",
+        body: [
+          "Skillnaden är var köldmediekretsen sitter. I en monoblock sitter alla delar i köldmediekretsen i en enda enhet, oftast utedelen, och värmen förs in i huset via vattenrör, enligt tillverkaren Viessmann. En split är delad i en utedel, där värmen tas upp, och en innedel, där den avges, enligt Energimyndighetens värmepumpsguide.",
+          "I en split förbinds delarna med köldmedierör som kopplas ihop när pumpen installeras. Naturvårdsverket beskriver i stället monoblock som hermetiskt sluten utrustning, till exempel en förfylld värmepump där köldmediekretsen inte behöver installeras.",
+          "Båda typerna är luft-vattenvärmepumpar. De hämtar värme ur uteluften och är kopplade till ett vattenburet värmesystem, och de kan också värma tappvarmvattnet, enligt energi- och klimatrådgivningen.",
+        ],
+      },
+      {
+        h2: "Vem får installera en monoblock respektive en split?",
+        body: [
+          "En split måste installeras av certifierad personal, eftersom köldmediekretsen kopplas ihop på plats. Enligt EU:s f-gasförordning får utrustning som kräver installation bara säljas till dig om det kan visas att ett certifierat företag ska installera den, skriver Naturvårdsverket.",
+          "För en monoblock krävs inget sådant certifikat för köldmediedelen, eftersom kretsen levereras ihopsatt. Du kan ändå inte installera den själv. Ändringar i den fasta elinstallationen ska alltid göras av ett registrerat elinstallationsföretag, enligt Elsäkerhetsverket. Service och läckagekontroll av köldmediekretsen får bara göras av certifierad personal, enligt Naturvårdsverket.",
+          "Installationen ger rotavdrag. Vid fast pris räknar Skatteverket 30 procent av totalpriset som arbetskostnad för en luft-vattenvärmepump, och avdraget är 30 procent av arbetskostnaden, alltså cirka 9 procent av totalpriset.",
+        ],
+      },
+      {
+        h2: "Vilka köldmedier gäller för luft-vattenvärmepumpar från 2027?",
+        body: [
+          "Från den 1 januari 2027 får fristående värmepumpar, som monoblock, och delade luft-till-vatten-system på upp till 12 kW inte släppas ut på marknaden med fluorerade växthusgaser som har en GWP på 150 eller mer, enligt EU:s f-gasförordning 2024/573. Undantag finns om säkerhetskrav på platsen kräver det.",
+          "GWP anger hur mycket ett ämne värmer klimatet jämfört med koldioxid. Köldmediet R32, som enligt Energimyndighetens värmepumpsguide har börjat ersätta äldre köldmedier, har GWP 675 i förordningen och omfattas alltså av gränsen.",
+          "Reglerna skärps sedan ytterligare. Fristående värmepumpar upp till 12 kW får inte släppas ut med några fluorerade växthusgaser alls från 2032, och delade system upp till 12 kW från 2035. Förbuden gäller nya produkter som släpps ut på marknaden, inte pumpar som redan sitter i husen.",
+        ],
+      },
+      {
+        h2: "Vilken ska man välja – monoblock eller split?",
+        body: [
+          "Det finns inget svar som gäller alla hus. Valet beror på var utedelen kan stå, hur rören kan dras och vilken installatör du anlitar.",
+          "Med en monoblock dras vattenrör från utedelen in i huset. Rören måste vara väl isolerade för att inte frysa vid extrem kyla eller strömavbrott, och avståndet bör vara kort, enligt Viessmann. Med en split blir utedelen mindre och lättare att placera, men installationen är mer komplicerad och kräver certifierad personal.",
+          "Oavsett typ låter utedelens fläkt, och smältvattnet från avfrostningen ska ledas bort så att det inte bildas is. Husets värmesystem ska klara 55 grader, och pumpen ska klara att värma tappvarmvattnet till minst 60 grader för att motverka legionella, enligt energi- och klimatrådgivningen. En luft-vattenvärmepump kostar omkring 100 000–160 000 kr (2023).",
+          "En styrbar luft-vattenvärmepump finns bland åtgärderna i Boverkets bidrag för energieffektivisering i småhus, Villaeffekten. Bidraget gäller materialkostnaden och har egna villkor för huset.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Vad är en monoblock värmepump?",
+        a: "En värmepump där hela köldmediekretsen sitter i en enda enhet och levereras sluten från fabrik. Vid en luft-vattenvärmepump sitter enheten oftast utomhus, och värmen leds in i huset med vattenrör.",
+      },
+      {
+        q: "Kan man installera en monoblock själv?",
+        a: "Inte helt. Köldmediekretsen är färdig från fabrik, så ingen certifiering krävs för den delen. Elinstallationen ska ändå göras av ett registrerat elinstallationsföretag, och service av köldmediekretsen av certifierad personal.",
+      },
+      {
+        q: "Är monoblock eller split bäst?",
+        a: "Ingen av dem är bäst i alla hus. En monoblock kräver ingen kyltekniker för köldmediet, men vattenrören utomhus måste frostskyddas. En split har en mindre utedel men kräver certifierad installation av köldmedierören.",
+      },
+      {
+        q: "Gäller köldmediereglerna från 2027 både monoblock och split?",
+        a: "Ja, för luft-vattenvärmepumpar upp till 12 kW. Från 1 januari 2027 får båda typerna bara släppas ut på marknaden med köldmedier som har GWP under 150, om inte säkerhetskrav på platsen kräver annat.",
+      },
+    ],
+  },
   "vad-ar-bergvarme": {
     answer: "Bergvärme är en värmepump som hämtar värme ur ett borrhål i berggrunden och ger både värme och varmvatten till huset. En vätska i en slang i borrhålet tar upp värmen, och värmepumpen höjer temperaturen med en eldriven kompressor. Enligt Energimyndighetens värmepumpsguide från 2025 har bergvärme en årsvärmefaktor (SCOP) på 4,0–5,5, alltså 4–5,5 kWh värme per kWh el. Huset behöver vattenburen värme.",
     keyFacts: [
@@ -626,6 +795,10 @@ export const GUIDE_CONTENT: Record<string, GuideContent> = {
       },
     ],
     faq: [
+      {
+        q: "Jordvärme vs bergvärme – vad skiljer i kostnad och funktion?",
+        a: "Kostnaden för att installera jordvärme är i regel 20 000–30 000 kr lägre än för bergvärme, enligt Energi- och klimatrådgivningen, men jordvärme kräver en stor tomt där slangen grävs ner. Bergvärme tar lite plats, påverkas inte av utetemperaturen och kan ge frikyla. En jordvärmepump fungerar på liknande sätt som en bergvärmepump, och båda kräver vattenburen värme.",
+      },
       {
         q: "Är jordvärme billigare än bergvärme?",
         a: "Ja, att installera. Energi- och klimatrådgivningen anger att jordvärme i regel är 20 000–30 000 kr billigare än bergvärme. Driftkostnaden beror på husets värmebehov och elpriset, och SGU påpekar att verkningsgraden kan bli sämre när marken runt jordvärmeslangen fryser.",

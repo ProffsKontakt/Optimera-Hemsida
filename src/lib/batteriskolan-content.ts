@@ -1673,7 +1673,7 @@ export const CONCEPTS: BatteryConcept[] = [
         label: "Laddbox med lastbalansering"
       }
     ],
-    updatedAt: "2026-10-03"
+    updatedAt: "2026-11-16"
   },
   {
     slug: "sakringsabonnemang",

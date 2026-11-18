@@ -38,6 +38,95 @@ export type NewsContent = {
 };
 
 const CONTENT: Record<string, NewsContent> = {
+  "far-man-tillbaka-pengar-pa-elen-svenska-kraftnat-flaskhalsinkomster": {
+    tldr: [
+      "Elen kostade 2,76 kr/kWh i elområde 4 och 1,80 i elområde 3 den 1–18 november, mot 0,32 i norr. Det är prisskillnaderna som fyller på Svenska kraftnäts kassa.",
+      "Förebilden: Ei godkände hösten 2022 att upp till 55,6 miljarder kronor av kassan fick användas till stöd – 50 öre per kWh i elområde 3 och 79 öre i elområde 4.",
+      "Regeringsuppdraget om flaskhalspengarna redovisas senast 14 januari och elområdesutredningen 29 januari 2027. Högkostnadsskyddet för hösten betalas ut under vårvintern.",
+    ],
+    sections: [
+      {
+        h2: "Får man tillbaka pengar på elen?",
+        body: [
+          "Inte ännu. Svenska kraftnäts generaldirektör Maja Lundbäck skrev på DN Debatt den 13 november att myndigheten ”kommer att utmana regelverket med sikte på att återföra delar av flaskhalsinkomsterna – som i år väntas uppgå till minst 30 miljarder – till de hårdast drabbade hushållen och företagen”. Svenska kraftnät publicerade texten på sin webbplats den 16 november.",
+          "Hur det ska gå till är inte bestämt. ”Hur detta ska gå till i detalj och i vilken omfattning får vi återkomma till i samband med en återrapportering till Regeringskansliet”, skriver Maja Lundbäck. Huvudspåret är enligt henne ”en öppning i regelverket som enligt vår bedömning kan medge att under särskilda omständigheter göra ’återbetalning’ till de elanvändare som drabbas hårt av höga elpriser”. Det finns alltså inget belopp per hushåll och inget datum, bara beskedet att myndigheten undersöker möjligheten att återföra pengar i närtid.",
+          "Förslaget går längre än det Svenska kraftnät gör i dag. När vi skrev om flaskhalspengarna den 9 oktober gick de till stamnätet och till att sänka avgiften för det, och hushållen fick inga pengar direkt från Svenska kraftnät. Under normala förhållanden anser myndigheten fortfarande att investeringar i stamnätet är ett klokt sätt att använda pengarna. Men när prisskillnaderna ger ett inflöde som inte kan användas till nätåtgärder ”bör överskottet betalas tillbaka till elsystemanvändarna”, skriver Maja Lundbäck.",
+        ],
+      },
+      {
+        h2: "Varför har Svenska kraftnät så mycket pengar i år?",
+        body: [
+          "Flaskhalsinkomster uppstår när stamnätet inte räcker till för att föra över all el som efterfrågas mellan två elområden. Elen blir då dyrare där det saknas el, och prisskillnaden gånger flödet mellan områdena går till Svenska kraftnät. Pengarna får inte öka myndighetens vinst och ska enligt EU:s regler i första hand användas till att hålla uppe och öka överföringskapaciteten.",
+          "I höst är skillnaderna ovanligt stora. Den 1–18 november kostade elen i snitt 2,76 kronor per kilowattimme i elområde 4 och 1,80 kronor i elområde 3, men 0,32 kronor i elområde 1 och 2, enligt Nord Pools dygnspriser. Svenska kraftnät bedömer att elpriserna i oktober–december ger minst 5 miljarder kronor mer i flaskhalsinkomster än ett normalt år, 30 miljarder eller mer för helåret och ett extra tillskott av samma storlek under första kvartalet 2027.",
+          "”Vi har alltså en situation nu där prisskillnaderna stundtals är så stora att vi ser det som ett marknadsmisslyckande”, skriver Maja Lundbäck. Som orsaker till höstens höga priser i söder nämner hon höga europeiska gaspriser, låga vattenmagasin i södra Norge, avbrott i stamnätet för investeringar och underhåll och flera kärnkraftsreaktorer ur drift, samtidigt som norra Sverige har ett överskott av el.",
+          "Kassan var stor redan före hösten. I slutet av 2025 fanns 85,3 miljarder kronor i oanvända flaskhalsintäkter, enligt Energimarknadsinspektionen, Ei. Under 2025 kom 29,9 miljarder in, och Svenska kraftnät använde 5,1 miljarder till åtgärder för överföringskapaciteten och 4,6 miljarder till sänkta avgifter.",
+        ],
+      },
+      {
+        h2: "Så blev flaskhalsintäkter elstöd 2022",
+        body: [
+          "Det har hänt förut. I oktober 2022 ansökte Svenska kraftnät hos Ei om att få använda cirka 55,6 miljarder kronor av flaskhalsintäkterna till en utbetalning till elkunderna. Förslaget innebar 50 öre per kilowattimme i elområde 3 och 79 öre i elområde 4, räknat på förbrukningen oktober 2021–september 2022. Svenska kraftnät föreslog att en annan myndighet skulle sköta själva utbetalningen.",
+          "Ei godkände att upp till 55,6 miljarder kronor inklusive administration fick gå till elstöd, i ett beslut den 16 november 2022 och i senare beslut. Av 2022 års flaskhalsintäkter gick enligt Ei:s uppskattning 17,0 miljarder kronor till elstöd för hushållen i elområde 3 och 4. Under 2023 använde Svenska kraftnät knappt 26,8 miljarder till elstöd och förbrukningsreduktion, enligt myndighetens uppgifter till Ei.",
+          "Skillnaden mot i dag är rättsläget. Före hösten 2022 saknades enligt Svenska kraftnät tydligt lagstöd i EU:s elmarknadsförordning för att betala stöd med flaskhalsintäkter. Det som öppnade för det var en EU-förordning om krisintervention, antagen den 6 oktober 2022, som lät medlemsländerna använda överskott av flaskhalsintäkter till stöd för elkunderna. Den här gången bygger Svenska kraftnät på sin egen bedömning av att regelverket har en öppning.",
+        ],
+      },
+      {
+        h2: "Vad säger Ebba Busch och regeringen om flaskhalsintäkterna?",
+        body: [
+          "Den 1 september, före valet, gav regeringen Svenska kraftnät i uppdrag att beräkna hur stora överskott av flaskhalsinkomster som väntas de kommande fem åren och att föreslå nya användningsområden, så att pengarna snabbare kan komma elkunderna och kraftsystemet till nytta. ”Svenskarnas elpengar ska komma svenska hushåll och företag till nytta”, sa energi- och näringsminister Ebba Busch (KD). Finansminister Elisabeth Svantesson (M) kallade flaskhalsintäkterna ”i grunden svenska folkets pengar”. Uppdraget ska redovisas senast den 14 januari 2027.",
+          "Frågan drivs också i EU. I förhandlingarna om det europeiska nätpaketet ville regeringen ge Sverige större frihet att använda pengarna. Enligt regeringen begränsade den allmänna riktlinje som EU:s energiministrar antog den 26 juni förslaget om att flaskhalsinkomster ska gå till EU-gemensamma projekt, så att inkomster från elområdesgränser inom ett land och pengar som redan samlats in undantas helt.",
+          "Vem som fattar besluten framöver är inte klart. Den 17 november gav talman Andreas Norlén Ulf Kristersson (M) och övriga partiledare en veckas anstånd, eftersom det pågår ”intensiva förhandlingar på den rödgröna sidan”. Talmannen planerar en ny talmansrunda den 24 eller 25 november.",
+          "Inför valet svarade Socialdemokraterna i Elbruks enkät att de vill ha ett högkostnadsskydd finansierat av flaskhalsintäkterna. Kristdemokraterna svarade att de vill ha större nationellt inflytande över hur flaskhalsintäkter får användas. Det är partiernas positioner, inte beslut.",
+        ],
+      },
+      {
+        h2: "Blir det nya elområden 2027?",
+        body: [
+          "Svenska kraftnät analyserar på regeringens uppdrag förutsättningarna för att ändra elområdesindelningen, och uppdraget ska redovisas senast den 29 januari 2027. Myndigheten konstaterar redan nu att dagens indelning ”inte längre fullt ut speglar de faktiska begränsningarna i elsystemet och att förändringar därför kommer att behövas”.",
+          "Men det går inte fort. ”En förändring av elområden är ett stort ingrepp i elmarknaden som tar flera år att genomföra”, skriver Maja Lundbäck. Underlaget blir alltså klart i januari 2027, men själva förändringen tar flera år. Det är skälet till att Svenska kraftnät vill återföra pengar till elkunderna redan nu, i stället för att vänta på nya elområden.",
+          "Ska man ta bort elområden? Något sådant beslut finns inte. I maj skrev regeringen och Sverigedemokraterna att Svenska kraftnät ska ta fram underlag snabbare ”för att kunna möjliggöra färre elområden i Sverige, om regeringen så beslutar”. Färre elområden skulle enligt dem kunna ge enklare elhandel, minskade flaskhalsinkomster och högre likviditet på elmarknaden.",
+          "Vilka partier vill ta bort elområden? I Elbruks enkät inför valet svarade Centerpartiet och Sverigedemokraterna att de på sikt vill avskaffa elområdena, och Socialdemokraterna och Liberalerna att de på sikt vill ha samma elpris i hela landet. Moderaterna och Kristdemokraterna svarade färre elområden. Vänsterpartiet anser inte att områdena bör slopas helt, och Miljöpartiet vill behålla dagens indelning.",
+        ],
+      },
+      {
+        h2: "Vad betyder det för din kalkyl?",
+        body: [
+          "Räkna inte med att få tillbaka pengar för elen från Svenska kraftnät när du gör din budget. Förslaget saknar belopp och datum, och det bygger på myndighetens egen tolkning av regelverket.",
+          "Det som är beslutat är regeringens högkostnadsskydd, som är skilt från Svenska kraftnäts förslag. Det aviserades i budgetpropositionen för 2026 och gäller när spotpriset i ett elområde i snitt blir högre än 1,50 kronor per kilowattimme under en kalendermånad. Den del av priset som ligger över gränsen ersätts för 90 procent av de kilowattimmar hushållet har använt, utan moms. Försäkringskassan betalar ut pengarna samlat för oktober, november och december under vårvintern 2027, och den som tidigare har anmält kontouppgifter behöver inte göra något. För 2027 finns inget beslut om högkostnadsskydd.",
+          "För oktober blev stödet 7 öre per kilowattimme i elområde 4. I november ligger båda södra områdena hittills över gränsen. När vi skrev om elstödet den 6 november var snittet efter sex dagar 2,98 kronor i elområde 4 och 1,70 i elområde 3. Efter 18 dagar är det 2,76 respektive 1,80 kronor. Det är snittet för hela månaden som avgör.",
+          "Räkneexempel: om november skulle landa på samma snitt som de första 18 dagarna blir stödet cirka 1 130 kronor per 1 000 kilowattimmar som hushållet använder i november i elområde 4 och cirka 270 kronor i elområde 3. Det är ett räkneexempel, inte en prognos. Stödet räknas per använd kilowattimme och täcker bara en del av priset över 1,50 kronor, så det lönar sig fortfarande att använda mindre el.",
+        ],
+        bullets: [
+          "Svenska kraftnät vill återföra delar av minst 30 miljarder kronor i flaskhalsinkomster till hårt drabbade elkunder. Hur och hur mycket redovisas senare.",
+          "Högkostnadsskyddet ersätter den del av månadssnittet som överstiger 1,50 kronor per kWh, för 90 procent av förbrukningen. Utbetalning under vårvintern 2027.",
+          "Regeringsuppdraget om flaskhalsinkomsterna redovisas senast 14 januari 2027 och elområdesutredningen senast 29 januari 2027.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "När får vi tillbaka pengar på elen?",
+        a: "Högkostnadsskyddet för oktober, november och december 2026 betalas ut samlat av Försäkringskassan under vårvintern 2027, för de månader då snittpriset i ett elområde har varit högre än 1,50 kronor per kilowattimme. Svenska kraftnäts förslag om att återföra flaskhalsinkomster har inget datum. Myndigheten ska återkomma om hur och i vilken omfattning.",
+      },
+      {
+        q: "Pengar tillbaka på elräkningen – behöver man söka?",
+        a: "Nej. Högkostnadsskyddet betalas ut automatiskt av Försäkringskassan. Har du tidigare anmält kontouppgifter till Försäkringskassan behöver du inte göra något. Annars kan du anmäla dem när Försäkringskassan meddelar att det går – pengarna kommer ändå, men det tar längre tid. För Svenska kraftnäts förslag finns ingenting att söka, eftersom inget är beslutat.",
+      },
+      {
+        q: "Betalar Svenska kraftnät ut elstöd?",
+        a: "Inte i dag. Högkostnadsskyddet betalas ut av Försäkringskassan. Men elstödet 2022–2023 finansierades med Svenska kraftnäts flaskhalsintäkter, sedan Ei hade godkänt att upp till 55,6 miljarder kronor fick användas. Nu vill Svenska kraftnät återföra delar av årets flaskhalsinkomster till hårt drabbade elkunder, men hur är inte klart.",
+      },
+      {
+        q: "Vad har Ebba Busch sagt om flaskhalsintäkter?",
+        a: "När regeringen den 1 september gav Svenska kraftnät i uppdrag att föreslå nya användningsområden för överskottet sa energi- och näringsminister Ebba Busch (KD): ”Svenskarnas elpengar ska komma svenska hushåll och företag till nytta.” Uppdraget ska redovisas senast den 14 januari 2027.",
+      },
+      {
+        q: "Vilka partier vill ta bort elområden?",
+        a: "Enligt Elbruks enkät inför valet vill Centerpartiet och Sverigedemokraterna på sikt avskaffa elområdena, medan Socialdemokraterna och Liberalerna på sikt vill ha samma elpris i hela landet. Moderaterna och Kristdemokraterna svarade färre elområden, Vänsterpartiet anser inte att de bör slopas helt och Miljöpartiet vill behålla dagens indelning. Det är positioner, inte beslut.",
+      },
+    ],
+  },
+
   "forsmark-3-stopp-kortslutning-fyra-av-sex-reaktorer": {
     tldr: [
       "Bara Forsmark 2 och Oskarshamn 3 producerar el. Ringhals 4 och Forsmark 3 planeras åter 20 november, Ringhals 3 den 27:e och Forsmark 1 på full effekt efter 3 december.",
