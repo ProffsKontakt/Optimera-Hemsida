@@ -50,7 +50,7 @@ const CONTENT: Record<string, NewsContent> = {
         body: [
           "Inte som läget är nu. I budgetpropositionen för 2027 skriver regeringen att högkostnadsskyddet för höga el- och gaspriser, som har gällt från november 2025 till och med december 2026, upphör vid årsskiftet. Anslaget för energistöd minskas därför med en miljard kronor från 2027. På regeringens sida med frågor och svar om skyddet, publicerad den 9 november, är beskedet detsamma: ”Ett högkostnadsskydd är beslutat för 2026. För 2027 saknas ett sådant beslut.”",
           "Budgeten för 2027 är en övergångsbudget. Den lades fram den 12 november av övergångsregeringen, eftersom ingen ny regering har tillträtt efter valet. Förslagen utgår från den budget riksdagen beslutade för 2026, och enligt propositionen har ”uppenbart tillfälliga satsningar från tidigare budgetår som upphör vid utgången av 2026” inte förlängts.",
-          "”Vi har ingen befogenhet att förlänga elstödet. Det blir upp till en ny regering att avgöra”, sa finansminister Elisabeth Svantesson (M) till TT när budgeten presenterades. När vi skrev om elstödet för oktober den 30 oktober var budgeten ännu inte presenterad och frågan om 2027 öppen. Nu är beskedet att skyddet tar slut vid nyår, om inte en ny regering och riksdagen beslutar om något nytt.",
+          "”Vi har ingen befogenhet att förlänga elstödet. Det blir upp till en ny regering att avgöra”, sa finansminister Elisabeth Svantesson (M) till TT när budgeten presenterades. När vi skrev om elstödet för oktober den 30 oktober var budgeten ännu inte presenterad, men principerna för en övergångsbudget pekade redan dit. Nu är det bekräftat: skyddet tar slut vid nyår, om inte en ny regering och riksdagen beslutar om något nytt.",
         ],
       },
       {
