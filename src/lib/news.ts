@@ -79,6 +79,86 @@ export type NewsArticle = {
 
 export const NEWS: NewsArticle[] = [
   {
+    slug: "blir-det-elstod-2027-hogkostnadsskyddet-upphor-elomrade-3-november",
+    status: "published",
+    title:
+      "Blir det elstöd 2027? Inget beslut – skyddet upphör vid nyår, men elområde 3 ser ut att få stöd för november",
+    excerpt:
+      "Blir det elstöd 2027? Som läget är nu blir det inget. Övergångsbudgeten som finansminister Elisabeth Svantesson (M) lade fram den 12 november förlänger inte regeringens högkostnadsskydd, som upphör vid årsskiftet, och ett nytt elstöd blir en fråga för nästa regering. För november ser hushållen i elområde 3, där Stockholm ligger, däremot ut att få stöd för första gången i år. Här är vad som gäller, hur mycket elstöd område 3 kan få och om det kommer ett nytt elstöd.",
+    category: "Stöd & avdrag",
+    publishedAt: "2026-11-21",
+    updatedAt: "2026-11-21",
+    readTimeMin: 7,
+    image: {
+      src: "/news/blir-det-elstod-2027-hogkostnadsskyddet-upphor-elomrade-3-november-grafik.jpg",
+      alt: "Grafik: Regeringens högkostnadsskydd för el gäller till och med 31 december 2026, och för 2027 finns inget beslut. Snittpriset 1–21 november 2026 var 1,76 kronor per kWh i elområde 3, 2,67 kronor i elområde 4 och 0,37 kronor i elområde 1 och 2, mot gränsen 1,50 kronor",
+      credit: "Grafik: Optimera Energi · Källa: Regeringen, Nord Pool",
+    },
+    searchPhrases: [
+      "blir det elstöd 2027",
+      "blir det något elstöd 2027",
+      "elstöd 2027",
+      "får man elstöd 2027",
+      "kommer det ett nytt elstöd",
+      "hur mycket elstöd får område 3",
+      "elstöd stockholm",
+      "elstöd vinter 2027",
+      "sänkt elskatt och högkostnadsskydd",
+    ],
+    sources: [
+      {
+        title: "Frågor och svar om högkostnadsskyddet för el (publicerad 9 november 2026)",
+        publisher: "Regeringen",
+        url: "https://www.regeringen.se/regeringens-politik/energi/fragor-och-svar-om-hogkostnadsskyddet-for-el/",
+      },
+      {
+        title: "Budgetpropositionen för 2027 (prop. 2026/27:1), utgiftsområde 21 Energi",
+        publisher: "Regeringen",
+        url: "https://www.regeringen.se/contentassets/8fc046c8c0af47b487c3263425c3780a/utgiftsomrade-21-energi.pdf",
+      },
+      {
+        title: "Förslag till statens budget för 2027, finansplan m.m. (prop. 2026/27:1, bilaga 1: budgetens inkomster 2027)",
+        publisher: "Regeringen",
+        url: "https://www.regeringen.se/contentassets/8fc046c8c0af47b487c3263425c3780a/forslag-till-statens-budget-for-2027-finansplan-kapitel-1-12-bilagor-1-5.pdf",
+      },
+      {
+        title: "Inget elstöd efter nyår: ”Upp till en ny regering” (TT, 12 november 2026)",
+        publisher: "Kristianstadsbladet",
+        url: "https://www.kristianstadsbladet.se/nyheter/inget-elstod-efter-nyar-upp-till-en-ny-regering/",
+      },
+      {
+        title: "Day-ahead-priser per elområde, månadssnitt 2025–2026 och 1–21 november 2026",
+        publisher: "Nord Pool",
+        url: "https://data.nordpoolgroup.com/auction/day-ahead/prices?deliveryDate=2026-11-21&currency=SEK&aggregation=Monthly&deliveryAreas=SE1,SE2,SE3,SE4",
+      },
+      {
+        title: "Bixias vinterprognos: Dyr vinter väntar – elpriset nästan tre gånger högre i syd än i norr (17 november 2026)",
+        publisher: "Bixia",
+        url: "https://news.cision.com/se/bixia/r/bixias-vinterprognos--dyr-vinter-vantar---elpriset-nastan-tre-ganger-hogre-i-syd-an-i-norr,c4424996",
+      },
+      {
+        title: "SD:s krav – för att pressa elpriserna (20 november 2026)",
+        publisher: "Expressen",
+        url: "https://www.expressen.se/nyheter/politik/sds-krav-for-att--pressa-elpriserna/",
+      },
+      {
+        title: "Partiernas energipolitik inför valet 2026",
+        publisher: "Elbruk",
+        url: "https://www.elbruk.se/blogg/partiernas-energipolitik-2026",
+      },
+      {
+        title: "Talmannen har tagit emot rapport från Ulf Kristersson (M) (17 november 2026)",
+        publisher: "Sveriges riksdag",
+        url: "https://www.riksdagen.se/sv/aktuellt/aktuelltnotiser/2026/nov/17/talmannen-har-tagit-emot-rapport-fran-ulf_cms0e51d148-fb67-47ff-bd7d-05705c69738fsv/",
+      },
+      {
+        title: "Talmannen möter partiföreträdare den 24 november (20 november 2026)",
+        publisher: "Sveriges riksdag",
+        url: "https://www.riksdagen.se/sv/aktuellt/aktuelltnotiser/2026/nov/20/talmannen-moter-partiforetradare-den-24-november_cms7a4814cd-5083-4349-93c6-9438679990c5sv/",
+      },
+    ],
+  },
+  {
     slug: "far-man-tillbaka-pengar-pa-elen-svenska-kraftnat-flaskhalsinkomster",
     status: "published",
     title:

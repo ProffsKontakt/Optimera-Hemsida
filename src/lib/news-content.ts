@@ -38,6 +38,93 @@ export type NewsContent = {
 };
 
 const CONTENT: Record<string, NewsContent> = {
+  "blir-det-elstod-2027-hogkostnadsskyddet-upphor-elomrade-3-november": {
+    tldr: [
+      "Elområde 3 ligger på 1,76 kr/kWh och elområde 4 på 2,67 efter 21 dagar. Elområde 3 hamnar under gränsen bara om resten av november kostar under 0,88 kr i snitt.",
+      "Stödet täcker delen av månadssnittet över 1,50 kr, för 90 procent av förbrukningen och utan moms. Med snittet hittills blir det cirka 235 kr per 1 000 kWh i elområde 3.",
+      "Försäkringskassan betalar oktober–december samlat under vårvintern 2027. För januari och februari 2027 finns inget skydd, fast Bixia räknar med 1,50–1,80 kr/kWh i söder i vinter.",
+    ],
+    sections: [
+      {
+        h2: "Blir det elstöd 2027?",
+        body: [
+          "Inte som läget är nu. I budgetpropositionen för 2027 skriver regeringen att högkostnadsskyddet för höga el- och gaspriser, som har gällt från november 2025 till och med december 2026, upphör vid årsskiftet. Anslaget för energistöd minskas därför med en miljard kronor från 2027. På regeringens sida med frågor och svar om skyddet, publicerad den 9 november, är beskedet detsamma: ”Ett högkostnadsskydd är beslutat för 2026. För 2027 saknas ett sådant beslut.”",
+          "Budgeten för 2027 är en övergångsbudget. Den lades fram den 12 november av övergångsregeringen, eftersom ingen ny regering har tillträtt efter valet. Förslagen utgår från den budget riksdagen beslutade för 2026, och enligt propositionen har ”uppenbart tillfälliga satsningar från tidigare budgetår som upphör vid utgången av 2026” inte förlängts.",
+          "”Vi har ingen befogenhet att förlänga elstödet. Det blir upp till en ny regering att avgöra”, sa finansminister Elisabeth Svantesson (M) till TT när budgeten presenterades. När vi skrev om elstödet för oktober den 30 oktober var budgeten ännu inte presenterad och frågan om 2027 öppen. Nu är beskedet att skyddet tar slut vid nyår, om inte en ny regering och riksdagen beslutar om något nytt.",
+        ],
+      },
+      {
+        h2: "Blir det elstöd för november? Elområde 3 ligger hittills över gränsen",
+        body: [
+          "Det ser ut så, både i elområde 3 och 4. Efter 21 dagar är snittpriset 1,76 kronor per kilowattimme i elområde 3 och 2,67 kronor i elområde 4, enligt Nord Pools dygnspriser för 1–21 november. I elområde 1 och 2 är snittet 0,37 kronor, långt under gränsen på 1,50 kronor.",
+          "Det är snittet för hela kalendermånaden som avgör. För att elområde 3 ska hamna under 1,50 kronor måste de nio sista dagarna i november kosta under 0,88 kronor i snitt. Hittills i månaden har ett enda dygn varit så billigt: den 15 november, med 0,67 kronor. I elområde 4 skulle resten av månaden behöva kosta minus 1,23 kronor per kilowattimme i snitt, alltså kraftigt negativa priser nio dygn i sträck.",
+          "Om snittet står sig blir det första gången som elområde 3 passerar gränsen. Elområde 3 har inte legat över 1,50 kronor någon månad sedan skyddet började gälla i november 2025, och högst i år var februari med 1,10 kronor. I elområde 4 passerades gränsen i oktober, då snittet blev 1,57 kronor och stödet 7 öre per kilowattimme.",
+          "Bixia förklarar vinterns höga priser i södra Sverige med vattenbrist i Norge och höga gaspriser i Europa. Flera kärnkraftsreaktorer har dessutom haft förlängda driftstopp.",
+        ],
+      },
+      {
+        h2: "Hur mycket elstöd får område 3?",
+        body: [
+          "Stödet räknas på den del av månadssnittet som ligger över 1,50 kronor per kilowattimme och ges för 90 procent av de kilowattimmar hushållet har använt under månaden. Moms ingår inte. Alla hushåll som har avtal med ett elnätsföretag omfattas, och stödet räknas på elområdets snittpris: för oktober blev det 7 öre per kilowattimme för hushållen i elområde 4.",
+          "Räkneexempel för november: slutar månaden på samma snitt som de första 21 dagarna blir stödet 26 öre per kilowattimme i elområde 3. Använder hushållet 1 000 kilowattimmar i november ges stöd för 900 av dem, vilket blir cirka 235 kronor. I elområde 4 blir det 1,17 kronor per kilowattimme och cirka 1 050 kronor per 1 000 använda kilowattimmar. Det är räkneexempel, inte prognoser. Hur mycket el du använder i november ser du på elnätsfakturan eller i nätbolagets app.",
+          "Försäkringskassan betalar ut stödet för oktober, november och december samlat under vårvintern 2027. Man behöver inte söka. Har du tidigare anmält kontouppgifter till Försäkringskassan behöver du inte göra något, annars kan du anmäla dem när Försäkringskassan meddelar att det går. Pengarna kommer ändå, men det tar längre tid.",
+        ],
+      },
+      {
+        h2: "Kommer det ett nytt elstöd?",
+        body: [
+          "Det avgör nästa regering och riksdagen, och någon ny regering finns inte ännu. Den 17 november gav talman Andreas Norlén Ulf Kristersson (M) och övriga partiledare en veckas anstånd, eftersom det pågår ”intensiva förhandlingar på den rödgröna sidan”. Tisdagen den 24 november samråder talmannen med partiföreträdarna som ett led i arbetet med att ta fram ett förslag till ny statsminister.",
+          "Inför valet öppnade alla partier som svarade på Elbruks enkät för någon form av statlig åtgärd vid höga elpriser. Socialdemokraterna ville ha ett högkostnadsskydd finansierat med flaskhalsintäkter, Vänsterpartiet ett skydd med pristak på 75 öre per kilowattimme och Sverigedemokraterna stöd kombinerat med lägre energiskatt på sikt. Moderaterna ville kunna använda både stöd och skattesänkningar, och Centerpartiet och Liberalerna var öppna för båda. Kristdemokraterna ville främst använda stöd i extraordinära situationer, och Miljöpartiet ville utreda en elskatt som följer elpriset nedåt.",
+          "Sänkt elskatt och högkostnadsskydd är vad Sverigedemokraterna föreslog den 20 november. Enligt partiets ekonomisk-politiska talesperson Henrik Vinge ska ett förlängt högkostnadsskydd betalas med flaskhalsintäkter, vilket kräver att EU-kommissionen godkänner ett undantag. Lyckas det vill SD använda de pengar som i dag finns i statens budget för ändamålet till att sänka elskatten, i ett första steg med två miljarder kronor. Det skulle enligt Vinge kunna ge en genomsnittlig villa 500–1 000 kronor lägre elräkning nästa år. Vänsterpartiets energipolitiska talesperson Birger Lahti avfärdar förslaget: ”Huvudorsaken är den dysfunktionella elprissättningen och inget annat.”",
+          "Det är förslag och positioner, inte beslut. Ett nytt stöd för 2027 kräver pengar i statens budget, och dem beslutar riksdagen om. Utbetalningen tar också tid: stödet för oktober–december 2026 betalas ut först under vårvintern 2027.",
+        ],
+      },
+      {
+        h2: "Elstöd i vinter: december kan ge stöd – januari och februari 2027 inte",
+        body: [
+          "Skyddet gäller till och med december. Blir snittpriset i december högre än 1,50 kronor per kilowattimme i något elområde betalas stöd för december också, samlat med oktober och november.",
+          "Elhandlaren Bixia räknar i sin vinterprognos från den 17 november med att elen kostar 1,50 kronor per kilowattimme i snitt i elområde 3 under december–februari, 1,80 kronor i elområde 4 och 0,70 kronor i elområde 1 och 2. Det är 67 respektive 85 procent mer än förra vintern i elområde 3 och 4. Elområde 3 ligger alltså precis på gränsen i prognosen och elområde 4 över den. Samtidigt säger Bixias elmarknadsanalytiker Johan Sigvardsson att ”osäkerheten är ovanligt stor och priserna kan svänga kraftigt åt båda håll”.",
+          "Kärnkraften är ett orosmoment. Enligt Bixia är planen att 90–95 procent av kärnkraften ska vara i drift från början av december, men marknaden oroar sig för ytterligare förseningar. För januari och februari 2027 finns inget högkostnadsskydd, oavsett vad elen kostar.",
+        ],
+      },
+      {
+        h2: "Vad betyder det för din kalkyl?",
+        body: [
+          "Räkna inte med något elstöd för 2027 när du gör din budget. Det finns inget beslut, och även om en ny regering skulle vilja införa ett stöd kommer pengarna i efterhand.",
+          "Stödet för november ändrar inte vad elen kostar timme för timme. Det räknas på elområdets månadssnitt och på hur många kilowattimmar du använder, så flyttar du förbrukning till billigare timmar påverkas stödet inte. Använder du mindre minskar stödet med cirka 23 öre per kilowattimme i elområde 3, medan du sparar hela priset: 1,76 kronor i snitt hittills i november, plus energiskatt, elnätets rörliga avgift och moms.",
+          "För den som räknar på solceller eller batteri gäller samma sak som förut: kalkylen ska bära sig på elpriset och det gröna avdraget, inte på tillfälliga stöd. Skattereduktionen för installation av grön teknik finns med i budgeten för 2027, där regeringen räknar med att den minskar statens inkomster med cirka 3,8 miljarder kronor.",
+        ],
+        bullets: [
+          "Högkostnadsskyddet gäller till och med december 2026. För 2027 finns inget beslut, och anslaget minskas med en miljard kronor.",
+          "Stöd ges för den del av månadssnittet som ligger över 1,50 kr/kWh, för 90 procent av förbrukningen och utan moms.",
+          "Elområde 3 ligger på 1,76 kr/kWh och elområde 4 på 2,67 efter 21 dagar i november. Oktober–december betalas ut under vårvintern 2027.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Blir det något elstöd 2027?",
+        a: "Inget är beslutat. Högkostnadsskyddet gäller till och med december 2026, och övergångsbudgeten för 2027 förlänger det inte. Finansminister Elisabeth Svantesson (M) säger att det blir upp till en ny regering att avgöra. Sverigedemokraterna föreslog den 20 november ett förlängt skydd finansierat med flaskhalsintäkter, men det är ett förslag, inte ett beslut.",
+      },
+      {
+        q: "Hur mycket elstöd får område 3 för november?",
+        a: "Om november slutar på samma snitt som de första 21 dagarna, 1,76 kronor per kilowattimme, blir stödet 26 öre per kilowattimme för 90 procent av förbrukningen. Det är cirka 235 kronor per 1 000 använda kilowattimmar. Hamnar snittet under 1,50 kronor blir det inget stöd, men då måste resten av månaden kosta under 0,88 kronor i snitt.",
+      },
+      {
+        q: "Får man elstöd i Stockholm?",
+        a: "Stockholm ligger i elområde 3, där snittpriset hittills i november är 1,76 kronor per kilowattimme. Står sig snittet över 1,50 kronor får hushållen stöd för november, för första gången i år. Försäkringskassan betalar ut det automatiskt under vårvintern 2027, tillsammans med eventuellt stöd för december.",
+      },
+      {
+        q: "Får man elstöd 2027 om elpriset går över 1,50 kronor?",
+        a: "Nej, inte med dagens beslut. Högkostnadsskyddet gäller bara månaderna till och med december 2026. För januari och februari 2027 finns inget skydd, även om Bixia räknar med 1,50 kronor i elområde 3 och 1,80 i elområde 4 i snitt under december–februari.",
+      },
+      {
+        q: "Blir det elstöd för december?",
+        a: "Det beror på decemberpriset. Blir snittpriset i december högre än 1,50 kronor per kilowattimme i ett elområde betalas stöd för december, samlat med oktober och november under vårvintern 2027. Bixias prognos för december–februari ligger på 1,50 kronor i elområde 3 och 1,80 i elområde 4, men enligt Bixia är osäkerheten ovanligt stor.",
+      },
+    ],
+  },
+
   "far-man-tillbaka-pengar-pa-elen-svenska-kraftnat-flaskhalsinkomster": {
     tldr: [
       "Elen kostade 2,76 kr/kWh i elområde 4 och 1,80 i elområde 3 den 1–18 november, mot 0,32 i norr. Det är prisskillnaderna som fyller på Svenska kraftnäts kassa.",
