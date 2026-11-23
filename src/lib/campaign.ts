@@ -34,12 +34,12 @@ export type Campaign = {
 };
 
 export const ACTIVE_CAMPAIGN: Campaign | null = {
-  id: "black-month-2026",
-  label: "Black Month",
-  text: "Sista dagen att beställa batteri och få det installerat innan årsskiftet är 30/11. Beställ senast 30/11 och få 3 000 kr rabatt.",
-  mediumText: "Beställ batteri senast 30/11: 3 000 kr rabatt och installation innan årsskiftet.",
-  // Ska rymmas på en rad på en vanlig mobil (390 px) efter "Black Month:".
-  shortText: "−3 000 kr på batteri t.o.m. 30/11",
+  id: "black-week-2026",
+  label: "Black Week",
+  text: "23–30/11: beställ batteri under Black Week och få 3 000 kr rabatt. 30/11 är också sista dagen för installation innan årsskiftet.",
+  mediumText: "23–30/11: 3 000 kr rabatt på batteri och installation innan årsskiftet.",
+  // Ska rymmas på en rad på en vanlig mobil (390 px) efter "Black Week:".
+  shortText: "−3 000 kr på batteri 23–30/11",
   cta: "Begär offert",
   href: "/offert?tjanst=batterier",
   // Hela 30 november svensk tid (CET, UTC+1).
