@@ -33,7 +33,7 @@ const FAQ = [
   },
   {
     q: "Hur lång är återbetalningstiden för sol och batteri?",
-    a: "Med solceller betalar sig ett batteri på ungefär 3–7 år, och sol och batteri tillsammans på 4–7 år. Ett batteri utan solceller tar 5–9 år, eftersom det då inte ger något grönt avdrag. Lönsamheten kommer främst från prisstyrning – batteriet laddas när elen är billig och används när den är dyr – och från att solelen används hemma i stället för att säljas. Kortast blir tiden i SE4 och i hus med hög förbrukning. Bara solceller tar ungefär 7–8,5 år i SE3. Kalkylatorn ovan visar var i spannet ditt val hamnar, och exakt siffra för just din bostad räknar vi fram vid hembesöket.",
+    a: "Med solceller betalar sig ett batteri på ungefär 3–7 år, och sol och batteri tillsammans på 4–7 år. Ett batteri utan solceller tar 5–9 år, eftersom det då inte ger något grönt avdrag. Lönsamheten kommer främst från prisstyrning – batteriet laddas när elen är billig och används när den är dyr – och från att solelen används hemma i stället för att säljas. Kortast blir tiden i SE4 och i hus med hög förbrukning. Bara solceller tar längre: i kunskapsbankens räkneexempel för 7 kWp i SE3 cirka 8,5 år vid 50 000 kr netto, och längre om anläggningen kostar mer. Kalkylatorn ovan visar var i spannet ditt val hamnar, och exakt siffra för just din bostad räknar vi fram vid hembesöket.",
   },
   {
     q: "Vilka batterimärken installerar Optimera Energi?",

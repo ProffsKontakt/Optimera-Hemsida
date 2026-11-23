@@ -63,11 +63,11 @@ export const FAQ_CATEGORIES: FaqCategory[] = [
     items: [
       {
         q: "Hur stort grönt avdrag får jag på solceller och batteri?",
-        a: "Grönt avdrag 2026 är 15 % av arbete och material för solceller och 50 % för batteri och laddbox – vid fast pris 14,55 % respektive 48,5 % av totalpriset. Batteriet ska lagra egen solel för att ge avdrag. Värmepumpar ger i stället ROT-avdrag på 30 % av arbetskostnaden. Taket för grönt avdrag är 50 000 kr per person och år, så två ägare kan dela på två tak. Avdraget dras direkt på fakturan.",
+        a: "Grönt avdrag 2026 är 15 % av arbete och material för solceller och 50 % för batteri och laddbox – vid fast pris 14,55 % respektive 48,5 % av totalpriset. Batteriet ska lagra egen solel för att ge avdrag. Värmepumpar ger i stället ROT-avdrag på 30 % av arbetskostnaden. Taket för grönt avdrag är 50 000 kr per person och år, så två ägare kan dela på två tak. Avdraget dras direkt på fakturan. Budgetpropositionen för 2027 ändrar inte procentsatserna eller taket.",
       },
       {
         q: "Hur lång är återbetalningstiden för sol och batteri?",
-        a: "Med solceller betalar sig ett batteri på ungefär 3–7 år, och sol och batteri tillsammans på 4–7 år. Ett batteri utan solceller tar 5–9 år, eftersom det då inte ger något grönt avdrag. Lönsamheten kommer främst från prisstyrning – batteriet laddas när elen är billig och används när den är dyr – och från att solelen används hemma i stället för att säljas. Kortast blir tiden i SE4 och i hus med hög förbrukning. Bara solceller tar ungefär 7–8,5 år i SE3. Exakt siffra för din bostad räknar vi fram vid hembesöket.",
+        a: "Med solceller betalar sig ett batteri på ungefär 3–7 år, och sol och batteri tillsammans på 4–7 år. Ett batteri utan solceller tar 5–9 år, eftersom det då inte ger något grönt avdrag. Lönsamheten kommer främst från prisstyrning – batteriet laddas när elen är billig och används när den är dyr – och från att solelen används hemma i stället för att säljas. Kortast blir tiden i SE4 och i hus med hög förbrukning. Bara solceller tar längre: i kunskapsbankens räkneexempel för 7 kWp i SE3 cirka 8,5 år vid 50 000 kr netto, och längre om anläggningen kostar mer. Exakt siffra för din bostad räknar vi fram vid hembesöket.",
       },
       {
         q: "Kan jag få exakta siffror direkt i kalkylatorn?",
