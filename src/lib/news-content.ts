@@ -38,6 +38,94 @@ export type NewsContent = {
 };
 
 const CONTENT: Record<string, NewsContent> = {
+  "vem-far-elstod-2026-regler-flytt-lagenhet-fritidshus": {
+    tldr: [
+      "Stödet räknas på 90 procent av månadens förbrukning och på delen av snittpriset över 1,50 kr/kWh. Förbrukning över 5 000 kWh i månaden ger inget stöd.",
+      "Elområde 3 ligger på 1,75 kr/kWh efter 24 dagar i november och elområde 4 på 2,64. Elområde 3 hamnar under gränsen bara om resten av månaden kostar under 0,52 kr i snitt.",
+      "Försäkringskassan betalar oktober–december samlat under vårvintern 2027, utan ansökan. Remisstiden går ut den 1 december, och först därefter tar regeringen ställning.",
+    ],
+    sections: [
+      {
+        h2: "Vem får elstöd 2026?",
+        body: [
+          "Den som har ett elnätsavtal för sin bostad den sista dagen i månaden. Det framgår av utkastet till förordning om elstöd till konsumenter för oktober–december 2026, som Klimat- och näringslivsdepartementet skickade på remiss den 23 november. Stödet går till privatpersoner som tar ut el ur elnätet för privat bruk, och till dödsbon efter dem. Man behöver inte söka.",
+          "För oktober gäller förslaget bara elområde 4, där snittpriset blev cirka 1,57 kronor per kilowattimme. Det som krävs är att du hade avtal med elnätsföretaget den 31 oktober och att det gick åt el i bostaden någon gång under månaden. För november och december gäller samma villkor i de elområden där månadens snittpris går över 1,50 kronor, och då är det avtalet den 30 november respektive den 31 december som avgör.",
+          "Används samma anslutning både privat och i en verksamhet ges stöd bara för den privata förbrukningen. Företag och föreningar omfattas inte, eftersom förslaget bara gäller fysiska personer och dödsbon. Enligt promemorian kommer Försäkringskassan att behöva hantera cirka 990 000 utbetalningar, och utgifterna för oktober uppskattas till omkring 25 miljoner kronor. Det är antalet utbetalningar, inte personer: den som har flera elnätsavtal får stöd för varje avtal.",
+          "När vi skrev om elstödet den 21 november fanns regeringens frågor och svar från den 9 november, som beskrev modellen. Nu finns förslaget till förordning som ska styra utbetalningen. Regeringen tar ställning efter remissen, där sista svarsdag är den 1 december, så detaljerna kan ändras.",
+        ],
+      },
+      {
+        h2: "Hur fungerar nya elstödet? Reglerna i förslaget",
+        body: [
+          "Stödet räknas för varje uttagspunkt, alltså varje ställe där en bostad tar ut el ur elnätet. Försäkringskassan tar 90 procent av den el som gick åt där under månaden och multiplicerar med skillnaden mellan elområdets snittpris och 1,50 kronor per kilowattimme. Moms ingår inte, enligt regeringens frågor och svar. För elområde 4 i oktober blir det 7 öre per kilowattimme, så ett hushåll som använde 2 000 kilowattimmar får 126 kronor.",
+          "Det som inte stod i regeringens frågor och svar är ett tak: stöd ges inte för den del av förbrukningen som går över 5 000 kilowattimmar i månaden i en uttagspunkt. Det är tre gånger så mycket som en villa med elvärme använder i snitt per månad. Energimyndigheten anger cirka 20 000 kilowattimmar per år för en sådan villa, alltså cirka 1 700 i månaden.",
+          "Elnätsföretagen rapporterar förbrukningen till Försäkringskassan, tillsammans med namn, person- eller samordningsnummer och faktureringsadress för den som hade avtalet. Försäkringskassan räknar ut stödet och beslutar utifrån de uppgifterna, utan att först låta dig yttra dig över underlaget, men kan be dig om fler uppgifter om det behövs. För att stödet ska kunna betalas direkt till ett bankkonto ska Pensionsmyndigheten på begäran lämna kontonummer till Försäkringskassan.",
+          "Enligt regeringens frågor och svar betalas stödet för oktober, november och december ut samlat under vårvintern 2027. Har du anmält konto till Försäkringskassan vid tidigare stöd behöver du inte göra något. Vid elstödet för januari–februari 2026 betalade Försäkringskassan till konton i Swedbanks kontoregister, hos Försäkringskassan eller hos Pensionsmyndigheten. Hittades inget konto skickades en utbetalningsavi.",
+        ],
+      },
+      {
+        h2: "Elstöd om man flyttat – vem får pengarna?",
+        body: [
+          "Den som har elnätsavtalet den sista dagen i månaden får stödet för hela månadens förbrukning i bostaden. Elnätsföretaget rapporterar hur mycket el som gick åt i uttagspunkten under hela månaden och vem som hade avtalet den sista dagen. Samma princip gällde elstödet för januari–februari 2026, som Försäkringskassan betalade ut till cirka fem miljoner hushåll: pengarna gick till den som stod på elnätsavtalet den 28 februari.",
+          "Ett exempel: du flyttar från en villa till en lägenhet den 15 november. Har köparen tagit över elnätsavtalet för villan den 30 november får köparen stödet för villans förbrukning under hela november, även för veckorna då du bodde kvar. Har du ett eget elnätsavtal för lägenheten den 30 november får du stöd för lägenhetens förbrukning i november. Står ingen privatperson på avtalet för en bostad den sista dagen ges inget stöd för den.",
+          "Elstöd till dödsbo: har den som stod på avtalet avlidit den sista dagen i månaden eller senare får dödsboet stödet på samma villkor. Vid elstödet för januari–februari 2026 kunde efterlevande lösa in en utbetalningsavi till ett dödsbo på ett kontor hos Swedbank eller Sparbankerna, med bland annat bouppteckningen i original.",
+        ],
+      },
+      {
+        h2: "Elstöd om man bor i lägenhet – och får man elstöd för fritidshus?",
+        body: [
+          "Bor du i lägenhet och har ett eget elnätsavtal gäller samma regler som för en villa. Ingår elen i hyran eller i avgiften till föreningen har du inget eget elnätsavtal, och då ger förslaget inget stöd till dig. Bostadsrättsföreningar får inget elstöd heller, eftersom förslaget bara gäller fysiska personer och dödsbon. Föreningens egen el, till exempel i trapphus och tvättstuga, ger alltså inget stöd.",
+          "Ett fritidshus kan också ge stöd. Enligt promemorian kan en elkonsument ha flera elnätsavtal och får ersättning för varje avtal, och regeringens frågor och svar nämner just en fast bostad och en sommarbostad. Det krävs att det gick åt el i fritidshuset någon gång under månaden och att du hade avtalet den sista dagen. Taket på 5 000 kilowattimmar gäller för varje uttagspunkt för sig.",
+          "Det är elområdet där uttagspunkten finns som avgör. Ligger fritidshuset i elområde 1 eller 2, där snittpriset hittills i november är 0,36 kronor per kilowattimme, ser det inte ut att bli något stöd för det i november, även om du bor i elområde 3.",
+        ],
+      },
+      {
+        h2: "Tar Kronofogden elstödet?",
+        body: [
+          "Det kan den göra. I promemorian skriver departementet att ”Kronofogdemyndigheten har även möjlighet att utmäta stödet för skulder som har lämnats till Kronofogdemyndigheten för indrivning”. Elstödet räknas dessutom som inkomst när kommunen prövar rätten till ekonomiskt bistånd. Den som får bistånd får det sänkt lika mycket som elstödet, så hushållets ekonomi blir oförändrad.",
+          "Har stödet betalats ut felaktigt eller med för högt belopp ska Försäkringskassan kräva tillbaka det med ränta, men belopp under 300 kronor krävs inte tillbaka. Den som är missnöjd med beslutet kan överklaga till Förvaltningsrätten i Stockholm. Departementet räknar med cirka 300 överklaganden, utifrån erfarenheterna av de tidigare elstöden.",
+        ],
+      },
+      {
+        h2: "Vad betyder det för din kalkyl?",
+        body: [
+          "Stödet för november ser ut att betalas ut i elområde 3 och 4. Efter 24 dagar är snittpriset 1,75 kronor per kilowattimme i elområde 3 och 2,64 kronor i elområde 4, enligt Nord Pools dygnspriser för 1–24 november. Elområde 3 hamnar under gränsen bara om de sex sista dagarna kostar under 0,52 kronor i snitt, och inget dygn i november har varit så billigt: det billigaste var den 15 november med 0,67 kronor. Fjordkraft Företag räknar i sin marknadsrapport med 135–286 öre per kilowattimme i elområde 3 under vecka 48.",
+          "Med snittet hittills blir stödet 24,5 öre per kilowattimme i elområde 3. Använder hushållet 2 000 kilowattimmar i november ges stöd för 1 800 av dem, vilket blir cirka 440 kronor. I elområde 4 blir det 1,14 kronor per kilowattimme och cirka 2 050 kronor för samma förbrukning. Taket gör att stöd som mest kan ges för 4 500 kilowattimmar i månaden, alltså 90 procent av 5 000. Med snittet hittills blir stödet för november då som mest cirka 1 100 kronor per uttagspunkt i elområde 3 och cirka 5 100 kronor i elområde 4. Det är räkneexempel, inte prognoser.",
+          "Stödet för december avgörs av decemberpriset. Enligt Vattenfall skulle Ringhals 4 starta om natten mot den 24 november efter ett driftstopp sedan slutet av juni, medan återstarten av Ringhals 3 har flyttats fram till den 20 december på grund av ett läckage i en ventil.",
+          "Stödet ändrar inte vad elen kostar timme för timme. Det räknas på elområdets månadssnitt och på hur många kilowattimmar du använder, så det spelar ingen roll för stödet om du flyttar förbrukning till billigare timmar. Använder du mindre el minskar stödet med cirka 22 öre per kilowattimme i elområde 3, medan du sparar hela priset: 1,75 kronor i snitt hittills i november, plus energiskatt, elnätets rörliga avgift och moms.",
+          "För den som räknar på solceller eller batteri gäller samma sak som tidigare: kalkylen ska bära sig på elpriset och det gröna avdraget, inte på ett tillfälligt stöd. Högkostnadsskyddet är beslutat för 2026, och för 2027 saknas ett beslut, enligt regeringens frågor och svar.",
+        ],
+        bullets: [
+          "Stödet går till den som har elnätsavtalet den sista dagen i månaden, för hela månadens förbrukning i uttagspunkten.",
+          "Stöd ges för 90 procent av förbrukningen och för delen av snittpriset över 1,50 kr/kWh, men inte för förbrukning över 5 000 kWh i månaden.",
+          "Förslaget är på remiss till den 1 december. Oktober–december betalas ut samlat under vårvintern 2027.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Vem får elstöd 2026?",
+        a: "Enligt regeringens förslag får privatpersoner och dödsbon stöd om de har ett elnätsavtal för bostaden den sista dagen i månaden och snittpriset i elområdet går över 1,50 kronor per kilowattimme. För oktober gäller det elområde 4, och för november ligger elområde 3 och 4 hittills över gränsen. Man behöver inte söka, och företag omfattas inte.",
+      },
+      {
+        q: "Vem får elstödet om man har flyttat?",
+        a: "Den som har elnätsavtalet för bostaden den sista dagen i månaden får stödet för hela månadens förbrukning där. Flyttar du från en villa den 15 november och köparen har avtalet för villan den 30 november får köparen stödet för villans förbrukning i hela november. Du får i stället stöd för din nya bostad, om du har avtalet där den 30 november.",
+      },
+      {
+        q: "Får man elstöd om man bor i lägenhet?",
+        a: "Ja, om du har ett eget elnätsavtal för lägenheten. Då gäller samma regler som för en villa. Ingår elen i hyran eller avgiften har du inget eget avtal, och då ger förslaget inget stöd till dig. Bostadsrättsföreningar får inget stöd för sin egen el, eftersom förslaget bara gäller fysiska personer och dödsbon.",
+      },
+      {
+        q: "Får man elstöd för fritidshus?",
+        a: "Ja, om det gick åt el i fritidshuset under månaden, du hade elnätsavtalet den sista dagen och snittpriset i fritidshusets elområde gick över 1,50 kronor per kilowattimme. Man får stöd för varje elnätsavtal, och taket på 5 000 kilowattimmar gäller för varje uttagspunkt för sig. Ett fritidshus i elområde 1 eller 2 ser inte ut att ge stöd för november, där snittet hittills är 0,36 kronor.",
+      },
+      {
+        q: "Tar Kronofogden elstöd?",
+        a: "Det kan ske. Enligt regeringens promemoria kan Kronofogden utmäta elstödet för skulder som har lämnats till myndigheten för indrivning. Får du ekonomiskt bistånd från kommunen räknas elstödet som inkomst, och biståndet sänks lika mycket.",
+      },
+    ],
+  },
+
   "blir-det-elstod-2027-hogkostnadsskyddet-upphor-elomrade-3-november": {
     tldr: [
       "Elområde 3 ligger på 1,76 kr/kWh och elområde 4 på 2,67 efter 21 dagar. Elområde 3 hamnar under gränsen bara om resten av november kostar under 0,88 kr i snitt.",

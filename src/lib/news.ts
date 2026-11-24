@@ -79,6 +79,81 @@ export type NewsArticle = {
 
 export const NEWS: NewsArticle[] = [
   {
+    slug: "vem-far-elstod-2026-regler-flytt-lagenhet-fritidshus",
+    status: "published",
+    title:
+      "Vem får elstöd 2026? Förslaget på remiss: elnätsavtalet sista dagen i månaden avgör – och stödet har ett tak",
+    excerpt:
+      "Vem får elstöd 2026? Enligt regeringens förslag till förordning, som skickades på remiss den 23 november, går stödet för oktober–december till den som har ett elnätsavtal för bostaden den sista dagen i månaden. Reglerna avgör också hur det nya elstödet fungerar för den som har flyttat, bor i lägenhet eller har fritidshus, och enligt promemorian kan Kronofogden ta pengarna. Här är reglerna, läget för november och vad som återstår innan regeringen tar ställning.",
+    category: "Stöd & avdrag",
+    publishedAt: "2026-11-24",
+    updatedAt: "2026-11-24",
+    readTimeMin: 7,
+    image: {
+      src: "/news/vem-far-elstod-2026-regler-flytt-lagenhet-fritidshus-grafik.jpg",
+      alt: "Grafik: Enligt regeringens förslag till elstöd för oktober–december 2026 får den som har elnätsavtalet den 30 november stödet för hela novembers förbrukning. Stöd ges för 90 procent av förbrukningen, taket är 5 000 kWh i månaden per uttagspunkt, och snittpriset i elområde 3 var 1,75 kronor per kWh den 1–24 november, över gränsen 1,50 kronor",
+      credit: "Grafik: Optimera Energi · Källa: Regeringen, Nord Pool",
+    },
+    searchPhrases: [
+      "vem får elstöd 2026",
+      "hur fungerar nya elstödet",
+      "regler elstöd 2026",
+      "elstöd om man flyttat",
+      "elstöd om man bor i lägenhet",
+      "får bostadsrättsföreningar elstöd",
+      "får man elstöd för fritidshus",
+      "elstöd dödsbo",
+      "tar kronofogden elstöd",
+    ],
+    sources: [
+      {
+        title: "Remiss av promemoria och utkast till förordning om elstöd till konsumenter för oktober–december 2026, KN2026/02195 (23 november 2026)",
+        publisher: "Regeringen",
+        url: "https://www.regeringen.se/remisser/2026/11/remiss-av-promemoria-och-utkast-till-forordning-om-elstod-till-konsumenter-for-oktoberdecember-2026/",
+      },
+      {
+        title: "Promemoria: Elstöd till konsumenter för oktober–december 2026 (KN2026/02195)",
+        publisher: "Regeringen",
+        url: "https://www.regeringen.se/contentassets/d581053ed819488491c1a6d08eee33ac/elstod-till-konsumenter-for-oktoberdecember-2026.pdf",
+      },
+      {
+        title: "Utkast till förordning om elstöd till konsumenter för oktober–december 2026",
+        publisher: "Regeringen",
+        url: "https://www.regeringen.se/contentassets/d581053ed819488491c1a6d08eee33ac/utkast-till-forordning-om-elstod-till-konsumenter-for-oktoberdecember-2026.pdf",
+      },
+      {
+        title: "Frågor och svar om högkostnadsskyddet för el (publicerad 9 november 2026)",
+        publisher: "Regeringen",
+        url: "https://www.regeringen.se/regeringens-politik/energi/fragor-och-svar-om-hogkostnadsskyddet-for-el/",
+      },
+      {
+        title: "Utbetalning av elstöd 2026 (elstödet för januari–februari 2026, uppdaterad 4 november 2026)",
+        publisher: "Försäkringskassan",
+        url: "https://www.forsakringskassan.se/privatperson/utbetalning-av-elstod-2026",
+      },
+      {
+        title: "Day-ahead-priser per elområde, 1–24 november 2026",
+        publisher: "Nord Pool",
+        url: "https://data.nordpoolgroup.com/auction/day-ahead/prices?deliveryDate=2026-11-24&currency=SEK&aggregation=Monthly&deliveryAreas=SE1,SE2,SE3,SE4",
+      },
+      {
+        title: "Elpriset kan nå över 2,50 kronor även i norra Sverige – kraftig prisuppgång väntas (23 november 2026)",
+        publisher: "Fjordkraft Företag",
+        url: "https://www.mynewsdesk.com/se/fjordkraft/pressreleases/elpriset-kan-naa-oever-250-kronor-aeven-i-norra-sverige-kraftig-prisuppgaang-vaentas-3481593",
+      },
+      {
+        title: "Bättre ekonomi med rätt anläggningsstorlek (elanvändning i en villa med och utan elvärme)",
+        publisher: "Energimyndigheten",
+        url: "https://www.energimyndigheten.se/effektiv-energianvandning/guider/solelportalen/hur-stor-anlaggning-passar-mig/battre-ekonomi-med-ratt-anlaggningsstorlek/",
+      },
+      {
+        title: "Ringhals 4 återstartar (uppdaterad 23 november 2026)",
+        publisher: "Vattenfall",
+        url: "https://group.vattenfall.com/se/nyheter-och-press/nyheter/2026/ringhals-4-aterstartar-24-november",
+      },
+    ],
+  },
+  {
     slug: "blir-det-elstod-2027-hogkostnadsskyddet-upphor-elomrade-3-november",
     status: "published",
     title:
