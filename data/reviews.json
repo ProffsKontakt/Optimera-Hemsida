@@ -1,5 +1,45 @@
 [
   {
+    "id": "kennet-h-reco",
+    "author": "Kennet H",
+    "place": "Reco · november 2026",
+    "text": "jättefin instalation bra komunikation",
+    "rating": 5,
+    "visible": true
+  },
+  {
+    "id": "hasse-m-reco",
+    "author": "Hasse M",
+    "place": "Reco · november 2026",
+    "text": "Bästa kundbemötandet! Allt de planerat utföra gjordes på bästa sätt. Batteriet är nu installerat och i full funktion!",
+    "rating": 5,
+    "visible": true
+  },
+  {
+    "id": "kjell-p-reco",
+    "author": "Kjell P",
+    "place": "Reco · november 2026",
+    "text": "Positiv känsla men väntar på kontakt för ytterligare info om hur allt fungerar, fått kontakt och är nöjd, mycket bra",
+    "rating": 5,
+    "visible": true
+  },
+  {
+    "id": "robert-m-reco",
+    "author": "Robert M",
+    "place": "Reco · november 2026",
+    "text": "Optimera Energi have been very informative, helpful and the installation went very smoothly. After sales service amazing! Can highly recommend their services",
+    "rating": 5,
+    "visible": true
+  },
+  {
+    "id": "ulf-b-reco",
+    "author": "Ulf B",
+    "place": "Reco · november 2026",
+    "text": "Jag behövde hjälp att förstå systemet Bara någon stund efter jag skrivit ringer dom upp och hjälper mej att förstå problemet det var en jättebra support och nu fungerar anläggningen allt går att lösa med lite hjälp jag är jätte nöjd med hjälpen MVH Ulf Broström",
+    "rating": 5,
+    "visible": true
+  },
+  {
     "id": "lars-b-reco",
     "author": "Lars B",
     "place": "Reco · oktober 2026",
