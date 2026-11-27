@@ -114,9 +114,9 @@ export const QUESTIONS: SolarQuestion[] = [
         bullets: [
           "Skugga och väderstreck. Skuggor kan ha stor påverkan på produktionen, enligt Energimyndigheten. Tak mot syd, sydost eller sydväst ger högre årsproduktion än andra väderstreck.",
           "Gammalt tak. Solceller håller oftast minst 25–30 år, och Energimyndigheten menar att det passar bra att skaffa solceller när taket ändå läggs om. Då kan du få rotavdrag för takarbetet och grönt avdrag för solcellerna.",
-          "Högt pris. Priset per kWp skiljer sig mycket mellan leverantörer och slår direkt på återbetalningstiden.",
+          "Högt pris. Ju mer anläggningen kostar per kWp, desto längre blir återbetalningstiden. Jämför därför priset per kWp i flera offerter.",
           "Lite elanvändning dagtid. Överskottet säljs, och sedan skattereduktionen på 60 öre/kWh slopades den 1 januari 2026 ger det mindre. En anläggning som är stor i förhållande till din elanvändning ger då mycket överskott.",
-          "Lågt elpris. Tibber räknar med 45–55 öre/kWh i SE1 och SE2 mot 100–110 öre i SE3 och SE4 under oktober–december 2026, så solel sparar mindre i norr.",
+          "Lågt elpris. I oktober 2026 var spotpriset i snitt 30 öre/kWh i SE1 och 37 öre i SE2, men 82 öre i SE3 och 157 öre i SE4, enligt Nord Pool. Solel som du använder själv sparar alltså mindre i norr.",
           "För lite skatt. Grönt avdrag kräver att du har betalat tillräckligt med skatt under året."
         ]
       }
@@ -148,9 +148,9 @@ export const QUESTIONS: SolarQuestion[] = [
         url: "https://www.skatteverket.se/privat/fastigheterochbostad/inkomsterfranbostad/mikroproduktionavfornybarelprivatbostad.4.12815e4f14a62bc048f41a7.html"
       },
       {
-        title: "Så blir elpriserna hösten och vintern 2026",
-        publisher: "Tibber",
-        url: "https://tibber.com/se/magazine/power-hacks/elpriser-host-vinter"
+        title: "Day-ahead-priser per elområde, månadssnitt oktober 2026",
+        publisher: "Nord Pool",
+        url: "https://data.nordpoolgroup.com/auction/day-ahead/prices?deliveryDate=2026-10-31&currency=SEK&aggregation=Monthly&deliveryAreas=SE1,SE2,SE3,SE4"
       }
     ],
     related: [
@@ -169,7 +169,7 @@ export const QUESTIONS: SolarQuestion[] = [
         label: "Guide: Återbetalningstid på solceller 2026"
       }
     ],
-    updatedAt: "2026-10-03"
+    updatedAt: "2026-11-23"
   },
   {
     slug: "vad-kostar-solceller-med-batteri",
@@ -520,7 +520,7 @@ export const QUESTIONS: SolarQuestion[] = [
       {
         h2: "Se över uppvärmningen samtidigt",
         paragraphs: [
-          "Funderar du också på att byta uppvärmning kan Boverkets bidrag för energieffektivisering i småhus, den så kallade villaeffekten, ge 30 procent av materialkostnaden, högst 60 000 kronor, för bland annat vattenburen värme och luft-vatten- eller bergvärmepump. Bidraget gäller permanentbostäder med värdeår (ofta byggåret) före 1990 som inte har fjärrvärme. Solceller omfattas inte."
+          "Funderar du också på att byta uppvärmning kan Boverkets bidrag för energieffektivisering i småhus, den så kallade villaeffekten, ge 30 procent av materialkostnaden, högst 60 000 kronor, för bland annat en nyinstallation av vattenburen värme och en styrbar luft-vatten- eller bergvärmepump. Bidraget gäller permanentbostäder med värdeår (ofta byggåret) före 1990 som inte har fjärrvärme. Solceller omfattas inte."
         ]
       }
     ],
@@ -573,9 +573,13 @@ export const QUESTIONS: SolarQuestion[] = [
       {
         href: "/guider/luft-luftvarmepump",
         label: "Guide: Vad kostar en luft-luftvärmepump?"
+      },
+      {
+        href: "/guider/varmepump-vattenburen-varme",
+        label: "Guide: Vilken värmepump passar vattenburen värme?"
       }
     ],
-    updatedAt: "2026-10-03"
+    updatedAt: "2026-11-23"
   },
   {
     slug: "bidrag-for-solceller",
@@ -4538,6 +4542,10 @@ export const QUESTIONS: SolarQuestion[] = [
       {
         href: "/guider/varmepump-service",
         label: "Guide: Hur ofta behöver en värmepump service?"
+      },
+      {
+        href: "/guider/byta-bergvarmepump",
+        label: "Guide: När ska man byta bergvärmepump?"
       }
     ],
     updatedAt: "2026-10-03"

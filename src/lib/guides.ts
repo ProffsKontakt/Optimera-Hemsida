@@ -46,6 +46,120 @@ export type Guide = {
 
 export const GUIDES: Guide[] = [
   {
+    slug: "varmepump-vattenburen-varme",
+    status: "published",
+    title: "Vilken värmepump passar vattenburen värme – och fungerar den med golvvärme?",
+    excerpt: "Berg-, jord-, luft-vatten- och frånluftsvärmepumpar värmer radiatorer, golvvärme och varmvatten. Så väljer du, och därför blir pumpen effektivare med golvvärme.",
+    category: "Värmepump",
+    publishedAt: "2026-11-23",
+    updatedAt: "2026-11-23",
+    readTimeMin: 6,
+    searchPhrases: [
+      "värmepump vatten",
+      "värmepump vattenburen värme",
+      "värmepump vattenburen golvvärme",
+      "värmepump vattenburen",
+      "värmepump vattentank",
+    ],
+    services: [
+      "vaermepumpar",
+    ],
+    sources: [
+      {
+        title: "Välj rätt värmepump (Husguiden, uppdaterad 19 oktober 2026)",
+        publisher: "Energimyndigheten",
+        url: "https://www.energimyndigheten.se/effektiv-energianvandning/guider/husguiden-for-dig-som-vill-energieffektivisera-ditt-hus/se-over-husets-uppvarmningssystem/valj-ratt-varmepump/",
+      },
+      {
+        title: "Tips till dig som ska byta till vattenburet värmesystem (ET 2023:11)",
+        publisher: "Energimyndigheten",
+        url: "https://energimyndigheten.a-w2m.se/System/TemplateView.aspx?p=Arkitektkopia&id=67478ad19c764c2097e2453e53149d3d&q=2023%3A11&lstqty=1",
+      },
+      {
+        title: "Värmepumpar – en guide från energi- och klimatrådgivningen (ET 2025:05)",
+        publisher: "Energi- och klimatrådgivningen",
+        url: "https://energiochklimatradgivningen.se/download/18.5e9a579b195c021e865e6618/1742900645694/V%C3%A4rmepumpar_en%20guide%20fr%C3%A5n%20energi-%20och%20klimatr%C3%A5dgivningen%202025.pdf.pdf",
+      },
+      {
+        title: "Installation av berg-, sjö- och jordvärmepumpar med smart styrning (Energiguiden)",
+        publisher: "Boverket",
+        url: "https://www.boverket.se/sv/energiguiden/energirenovera-smahus/5.valja_atgarder/berg--sjo--och-jordvarme/",
+      },
+      {
+        title: "Möjliga åtgärder vid ansökan om bidrag för energieffektivisering i småhus",
+        publisher: "Boverket",
+        url: "https://www.boverket.se/sv/bidrag--garantier/bidrag-for-energieffektivisering-i-smahus/mojliga-energieffektiviseringsatgarder/",
+      },
+      {
+        title: "Förordning (2023:402) om bidrag för energieffektivisering i småhus",
+        publisher: "Sveriges riksdag",
+        url: "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-2023402-om-bidrag-for_sfs-2023-402/",
+      },
+    ],
+  },
+  {
+    slug: "byta-bergvarmepump",
+    status: "published",
+    title: "När ska man byta bergvärmepump – och kan man behålla borrhålet?",
+    excerpt: "Så vet du när bergvärmepumpen behöver bytas, när det gamla borrhålet räcker och vad du får i rotavdrag och Villaeffekten för en ny pump 2026.",
+    category: "Värmepump",
+    publishedAt: "2026-11-23",
+    updatedAt: "2026-11-23",
+    readTimeMin: 6,
+    searchPhrases: [
+      "byta bergvärmepump",
+      "byta värmepump bergvärme",
+      "bergvärmepump livslängd",
+      "värmepump bergvärme livslängd",
+      "villaeffekten byta bergvärmepump",
+    ],
+    services: [
+      "vaermepumpar",
+    ],
+    sources: [
+      {
+        title: "Installation av berg-, sjö- och jordvärmepumpar med smart styrning (Energiguiden)",
+        publisher: "Boverket",
+        url: "https://www.boverket.se/sv/energiguiden/energirenovera-smahus/5.valja_atgarder/berg--sjo--och-jordvarme/",
+      },
+      {
+        title: "Värmepumpar – en guide från energi- och klimatrådgivningen (ET 2025:05)",
+        publisher: "Energi- och klimatrådgivningen",
+        url: "https://energiochklimatradgivningen.se/download/18.5e9a579b195c021e865e6618/1742900645694/V%C3%A4rmepumpar_en%20guide%20fr%C3%A5n%20energi-%20och%20klimatr%C3%A5dgivningen%202025.pdf.pdf",
+      },
+      {
+        title: "Välj rätt värmepump (Husguiden, uppdaterad 19 oktober 2026)",
+        publisher: "Energimyndigheten",
+        url: "https://www.energimyndigheten.se/effektiv-energianvandning/guider/husguiden-for-dig-som-vill-energieffektivisera-ditt-hus/se-over-husets-uppvarmningssystem/valj-ratt-varmepump/",
+      },
+      {
+        title: "Ger arbetet rätt till rotavdrag?",
+        publisher: "Skatteverket",
+        url: "https://www.skatteverket.se/foretag/skatterochavdrag/rotochrut/gerarbetetratttillrotavdrag.4.5c1163881590be297b5173bf.html",
+      },
+      {
+        title: "Förordning (2023:402) om bidrag för energieffektivisering i småhus",
+        publisher: "Sveriges riksdag",
+        url: "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-2023402-om-bidrag-for_sfs-2023-402/",
+      },
+      {
+        title: "Bidrag för energieffektivisering i småhus",
+        publisher: "Boverket",
+        url: "https://www.boverket.se/sv/bidrag--garantier/bidrag-for-energieffektivisering-i-smahus/",
+      },
+      {
+        title: "Möjliga åtgärder vid ansökan om bidrag för energieffektivisering i småhus",
+        publisher: "Boverket",
+        url: "https://www.boverket.se/sv/bidrag--garantier/bidrag-for-energieffektivisering-i-smahus/mojliga-energieffektiviseringsatgarder/",
+      },
+      {
+        title: "Förordning (1998:899) om miljöfarlig verksamhet och hälsoskydd, 17 §",
+        publisher: "Sveriges riksdag",
+        url: "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-1998899-om-miljofarlig-verksamhet-och_sfs-1998-899/",
+      },
+    ],
+  },
+  {
     slug: "varmvattenberedare-med-inbyggd-varmepump",
     status: "published",
     title: "Vad är en varmvattenberedare med inbyggd värmepump – och ger den bidrag?",
@@ -382,10 +496,11 @@ export const GUIDES: Guide[] = [
     excerpt: "Ett borrhål för bergvärme är vanligen 100–300 meter djupt enligt SGU. Så påverkar jorddjup och foderrör priset – plus anmälan, avstånd och kartan 2026.",
     category: "Värmepump",
     publishedAt: "2026-10-19",
-    updatedAt: "2026-10-19",
+    updatedAt: "2026-11-23",
     readTimeMin: 8,
     searchPhrases: [
       "borra bergvärme",
+      "borrhål bergvärme",
       "borra bergvärme pris",
       "borra bergvärme hur djupt",
       "bergvärme hur djupt ska man borra",
@@ -1095,7 +1210,7 @@ export const GUIDES: Guide[] = [
     excerpt: "Grönt avdrag 2026: 15 % för solceller, 50 % för batteri och laddbox, högst 50 000 kr per person och år. Villkor, vad som ingår, värmepump och läget inför 2027.",
     category: "Ekonomi",
     publishedAt: "2026-05-24",
-    updatedAt: "2026-10-05",
+    updatedAt: "2026-11-23",
     readTimeMin: 8,
     searchPhrases: [
       "grönt avdrag 2026",
@@ -1150,9 +1265,19 @@ export const GUIDES: Guide[] = [
         url: "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/betankande/forandrade-skattesubventioner-for-solceller-och_hc01sku17/",
       },
       {
-        title: "Skatteförslag som remitterats inför höstbudgeten 2027",
+        title: "Förslag till statens budget för 2027, finansplan m.m. (prop. 2026/27:1, bilaga 1: budgetens inkomster 2027)",
         publisher: "Regeringen",
-        url: "https://www.regeringen.se/regeringens-politik/skatt-och-tull/skatteforslag-som-remitterats-infor-hostbudgeten-2027/",
+        url: "https://www.regeringen.se/contentassets/8fc046c8c0af47b487c3263425c3780a/forslag-till-statens-budget-for-2027-finansplan-kapitel-1-12-bilagor-1-5.pdf",
+      },
+      {
+        title: "Budgetpropositionen för 2027 (prop. 2026/27:1), utgiftsområde 21 Energi – principer för övergångsbudgeten",
+        publisher: "Regeringen",
+        url: "https://www.regeringen.se/contentassets/8fc046c8c0af47b487c3263425c3780a/utgiftsomrade-21-energi.pdf",
+      },
+      {
+        title: "Betänkande 2026/27:SkU3 Effektivare kontrollmöjligheter i systemen för rot, rut, grön teknik och personalliggare (beslut 11 november 2026)",
+        publisher: "Sveriges riksdag",
+        url: "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/betankande/effektivare-kontrollmojligheter-i-systemen-for-rot_he01sku3/",
       },
       {
         title: "Proposition 2025/26:282 Effektivare kontrollmöjligheter i systemen för rot, rut, grön teknik och personalliggare",

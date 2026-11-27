@@ -34,6 +34,200 @@ export type GuideContent = {
 };
 
 export const GUIDE_CONTENT: Record<string, GuideContent> = {
+  "varmepump-vattenburen-varme": {
+    answer: "Vattenburen värme, alltså radiatorer eller golvvärme där varmt vatten cirkulerar, fungerar med bergvärme-, jordvärme-, sjövärme-, luft-vatten- och frånluftsvärmepumpar. De kan också värma tappvarmvattnet. En luft-luftvärmepump blåser ut varm luft och kopplas inte till radiatorerna. Med golvvärme blir värmepumpen effektivare, eftersom golvvärmen klarar sig med lägre vattentemperatur än radiatorer, enligt Energimyndigheten. Saknar huset vattenburen värme ger Villaeffekten 2026 bidrag för att installera det.",
+    keyFacts: [
+      {
+        label: "Fungerar med vattenburen värme",
+        value: "Berg-, jord-, sjö-, luft-vatten- och frånluftsvärmepump",
+      },
+      {
+        label: "Fungerar inte",
+        value: "Luft-luftvärmepump – den värmer rumsluften, inte vattnet i radiatorerna",
+      },
+      {
+        label: "Golvvärme",
+        value: "Gör värmepumpen effektivare, eftersom vattnet kan hålla lägre temperatur än i radiatorer",
+      },
+      {
+        label: "SCOP enligt energi- och klimatrådgivningen 2025",
+        value: "Bergvärme 4,0–5,5, jord- och sjövärme 4,0–5,0, luft-vatten 3,0–4,5, frånluft 2,5–4,0",
+      },
+      {
+        label: "Byta till vattenburet",
+        value: "Cirka 6 000–10 000 kr per radiator inklusive rördragning och moms (Energimyndigheten 2023); värmepumpen tillkommer",
+      },
+      {
+        label: "Villaeffekten 2026",
+        value: "30 % av materialet, högst 60 000 kr per hus, för nytt vattenburet system och styrbar värmepump",
+      },
+    ],
+    sections: [
+      {
+        h2: "Vilka värmepumpar fungerar med vattenburen värme?",
+        body: [
+          "Bergvärme-, jordvärme-, sjövärme-, luft-vatten- och frånluftsvärmepumpar fungerar med vattenburen värme. Värmepumpen värmer vatten som cirkulerar ut till husets radiatorer eller golvslingor, och den kan också värma tappvarmvattnet till kranar och duschar.",
+          "Vilken som passar beror på huset. Enligt Energimyndigheten är bergvärmepumpen ett alternativ för större hus med många boende, och den förutsätter att det går att borra där huset ligger. En markvärmepump, även kallad jordvärmepump, hämtar värmen ur ytjorden och passar där det inte går att borra men finns gott om mark. En luft-vattenvärmepump passar både mindre och större hus i södra Sverige men fungerar inte lika effektivt när det är riktigt kallt ute. En frånluftsvärmepump tar vara på värmen i ventilationsluften i hus med mekanisk ventilation, men luften räcker inte alltid till hela behovet av värme och varmvatten.",
+          "En luft-luftvärmepump fungerar annorlunda. Den blåser ut varm luft i rummet genom en innedel och kopplas inte till radiatorerna, och den gör sig bäst i hus med öppen planlösning, skriver energi- och klimatrådgivningen. Enligt Energimyndigheten kan den komplettera annan uppvärmning, och den är ett av få enklare alternativ för den som har direktverkande el.",
+        ],
+      },
+      {
+        h2: "Fungerar värmepump med vattenburen golvvärme?",
+        body: [
+          "Ja, och golvvärme gör värmepumpen effektivare än radiatorer. Enligt Energimyndigheten blir alla värmepumpar utom luft-luftvärmepumpen ännu mer effektiva med vattenburen golvvärme, eftersom golvvärmen kan hålla lägre temperatur än radiatorerna.",
+          "Det handlar om framledningstemperaturen, alltså temperaturen på vattnet som går ut till golvslingorna eller elementen. Ju lägre den är, desto mindre behöver värmepumpen värma vattnet och desto mindre spetsvärme behövs, skriver energi- och klimatrådgivningen. Spetsvärme är den extra värme, i villor oftast el, som tar över när värmepumpen inte räcker till.",
+          "Golvvärme ger dessutom en jämn temperatur, och enligt Energimyndigheten upplever många att ett varmt golv ökar komforten. Har du radiatorer fungerar värmepumpen ändå. Se till att värmekurvan, som styr hur varmt vattnet blir vid olika utetemperaturer, är rätt inställd, råder Boverket.",
+        ],
+      },
+      {
+        h2: "Vilken värmepump är mest effektiv med vattenburen värme?",
+        body: [
+          "Bergvärme har högst årsvärmefaktor i energi- och klimatrådgivningens jämförelse från 2025, med SCOP 4,0–5,5. Jord- och sjövärme ligger på 4,0–5,0, luft-vatten på 3,0–4,5 och frånluft på 2,5–4,0. SCOP är ett säsongsmedelvärde för hur många kilowattimmar värme pumpen ger per kilowattimme el.",
+          "Värdena varierar mycket med teknisk lösning och var huset ligger. Jämför därför SCOP för kallt klimat, som är det som gäller i Sverige, och titta på energimärkningen. Enligt Energimyndigheten hamnar bergvärmepumpar i klass A++ eller A+++ och luft-vattenvärmepumpar i A+, A++ och ibland A+++ på skalan för att värma rummen.",
+        ],
+      },
+      {
+        h2: "Behöver värmepumpen en vattentank?",
+        body: [
+          "Ofta har den en. Det är vanligt att värmepumpar som är kopplade till vattenburen värme har en ackumulatortank, en isolerad tank som lagrar varmvatten och jämnar ut energianvändningen över tid, enligt energi- och klimatrådgivningen.",
+          "Med en ackumulatortank kan du värma vatten när elen är billig. Boverket föreslår att du överväger en tank för att lagra energi när spotpriset är lågt, vilket kräver ett elavtal med timpris. Har du solceller kan solelen värma vatten på dagen som används på kvällen och natten.",
+          "Ett vattenburet system har också ett expansionskärl, oftast rött, som tar upp vattnets volymförändringar när temperaturen ändras. Knackar du på kärlet ska det låta dovt. Låter det dämpat och stumt kan kärlet behöva bytas, enligt energi- och klimatrådgivningen.",
+        ],
+      },
+      {
+        h2: "Vad kostar det att byta till vattenburen värme?",
+        body: [
+          "En fingervisning från Energimyndigheten är 6 000–10 000 kr per radiator, inklusive rördragning och moms. Värmepumpen, pannan eller fjärrvärmecentralen tillkommer. Siffran är från 2023, och kostnaden beror framför allt på husets storlek och planlösning och på hur många element eller hur stor golvyta du behöver.",
+          "Minska värmebehovet först, till exempel med tätare fönster och dörrar eller bättre isolering, så slipper du betala för ett för stort system. I ett hus med två våningar kan det räcka med vattenburen värme på nedervåningen och direktverkande el kvar på övervåningen, enligt Energimyndigheten. Efter bytet kan du troligen säkra ned huvudsäkringen – kontakta elnätsföretaget.",
+          "Villaeffekten ger 2026 bidrag med 30 % av materialkostnaden, högst 60 000 kr per hus, för en nyinstallation av vattenburen värme. Att byta enstaka radiatorer räknas inte. Huset ska ha värdeår före 1990 och inte vara anslutet till fjärrvärme, och du ska äga och bo i det. Bidrag under 10 000 kr betalas inte ut.",
+        ],
+      },
+      {
+        h2: "Hur stor värmepump behöver huset?",
+        body: [
+          "Låt installatören räkna på husets hela behov av värme och varmvatten. En för stor värmepump blir en onödig kostnad, och en för liten kräver mycket spetsvärme till hög driftkostnad, skriver energi- och klimatrådgivningen. Det är vanligt att värmepumpen inte dimensioneras för hela behovet, utan kompletteras med el de kallaste dagarna.",
+          "Kontrollera också med elnätsföretaget att elnätet räcker för värmepumpen. Beroende på vad du har i dag kan du behöva en större huvudsäkring eller ett annat elnätsavtal, vilket kan påverka kostnaden.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Kan man ha luft-luftvärmepump med vattenburen värme?",
+        a: "Den kan inte kopplas till radiatorerna, eftersom den värmer rumsluften genom en innedel. Däremot kan den komplettera ett vattenburet system, och den gör sig bäst i rum med öppen planlösning.",
+      },
+      {
+        q: "Är golvvärme eller radiatorer bäst med värmepump?",
+        a: "Golvvärme gör värmepumpen effektivast, eftersom den klarar sig med lägre vattentemperatur än radiatorer, enligt Energimyndigheten. Radiatorer fungerar också. Håll framledningstemperaturen så låg som möjligt och se till att värmekurvan är rätt inställd.",
+      },
+      {
+        q: "Vad är en ackumulatortank?",
+        a: "En isolerad tank som lagrar varmvatten från värmepumpen och jämnar ut energianvändningen över tid. Med ett elavtal med timpris kan du värma vattnet när elen är billig, och med solceller kan dagens solel värma vatten till kvällen.",
+      },
+      {
+        q: "Får man bidrag för att byta till vattenburen värme?",
+        a: "Ja, Villaeffekten ger 2026 bidrag för en nyinstallation av vattenburen värme, men inte för att byta enstaka radiatorer. Bidraget är 30 % av materialkostnaden, minst 10 000 och högst 60 000 kr per hus, och huset ska ha värdeår före 1990 och sakna fjärrvärme. Ansökan görs till länsstyrelsen inom sex månader från att arbetet börjat.",
+      },
+      {
+        q: "Kan man ha vattenburen värme på bara en våning?",
+        a: "Ja. Energimyndigheten nämner att du i ett tvåvåningshus kan installera vattenburen värme på nedervåningen och behålla direktverkande el på övervåningen, vilket gör bytet billigare.",
+      },
+    ],
+  },
+  "byta-bergvarmepump": {
+    answer: "Det finns ingen fast livslängd för en bergvärmepump: varken Energimyndighetens eller energi- och klimatrådgivningens värmepumpsguide anger ett antal år. Tecken på att det kan vara dags att byta är att pumpen larmar eller står still medan elen tar över, vilket syns på elräkningen, eller att den går på ett köldmedium som inte längre får användas. Borrhålet kan behållas om det räcker för den nya pumpens effekt. Ett byte ger 2026 rotavdrag och kan ge Villaeffekten.",
+    keyFacts: [
+      {
+        label: "Livslängd",
+        value: "Ingen officiell siffra – service en gång om året eller vartannat år, enligt energi- och klimatrådgivningen",
+      },
+      {
+        label: "Tecken på att byta",
+        value: "Larm, stopp när elen tar över, stigande elräkning eller köldmedium som inte längre får användas",
+      },
+      {
+        label: "Borrhålet",
+        value: "Kan behållas om längden räcker för den nya pumpens effekt och husets behov",
+      },
+      {
+        label: "Rotavdrag 2026",
+        value: "30 % av arbetet; vid fast pris räknas 35 % av totalpriset som arbete, alltså cirka 10,5 % i avdrag",
+      },
+      {
+        label: "Villaeffekten 2026",
+        value: "30 % av materialet, högst 60 000 kr per hus, för en styrbar bergvärmepump i hus med värdeår före 1990",
+      },
+      {
+        label: "Anmälan",
+        value: "Krävs för att inrätta en anläggning, till exempel ett nytt borrhål – fråga kommunen om ett rent pumpbyte",
+      },
+    ],
+    sections: [
+      {
+        h2: "Hur länge håller en bergvärmepump?",
+        body: [
+          "Det finns ingen officiell livslängd. Varken Energimyndighetens guide för att välja värmepump eller energi- och klimatrådgivningens värmepumpsguide från 2025 anger hur många år en bergvärmepump håller. Energi- och klimatrådgivningen betonar i stället skötseln: service en gång om året eller vartannat år, helst före uppvärmningssäsongen.",
+          "Borrhålet är en annan sak än pumpen. Det laddas upp med värme igen varje sommar, enligt Boverket. Om det räcker för en ny pump avgörs av dimensioneringen, se nedan.",
+        ],
+      },
+      {
+        h2: "När är det dags att byta bergvärmepump?",
+        body: [
+          "Tecken på att det är dags är att pumpen larmar, står still eller behöver repareras ofta. Går pumpen sönder tar spetsvärmen över, i villor oftast el. Huset blir fortfarande varmt men energianvändningen avsevärt högre, och det kan märkas först på nästa elräkning, skriver energi- och klimatrådgivningen. Läs därför av kontrollpanelen regelbundet eller koppla pumpen till mobilen så att du får larmen.",
+          "Köldmediet kan också avgöra. Sedan 2020 är köldmedier med för högt klimatavtryck förbjudna enligt EU:s F-gasförordning, och reglerna skärps löpande. Vissa köldmedier får inte längre användas, och byter du pump bör du välja ett köldmedium som håller över tid, råder energi- och klimatrådgivningen.",
+          "En pump med högre årsvärmefaktor drar mindre el för samma värme. Bergvärmepumpar ligger på SCOP 4,0–5,5 i energi- och klimatrådgivningens jämförelse från 2025 och hamnar i energiklass A++ eller A+++ enligt Energimyndigheten. Hur mycket du sparar beror på hur mycket värme och varmvatten huset behöver, vilken pump du väljer och vad elen kostar.",
+        ],
+      },
+      {
+        h2: "Kan man behålla borrhålet när man byter bergvärmepump?",
+        body: [
+          "Ja, om borrhålet räcker för den nya pumpen. Dimensioneringen gäller både pumpens effekt och borrhålets längd, och en installatör ska se till att borrhålet är rätt dimensionerat, enligt Boverket.",
+          "Har huset fått mindre värmebehov sedan borrhålet gjordes, till exempel efter tilläggsisolering eller nya fönster, kan en mindre pump räcka. Boverket skriver att borrhålet då inte behöver bli lika djupt. Ska den nya pumpen ge mer effekt än den gamla behöver installatören kontrollera att borrhålet klarar det.",
+          "Behövs ett nytt eller djupare hål gäller samma regler som vid en ny installation: anmälan till kommunen och, som tumregel, minst 20 meter till andra borrhål, enligt energi- och klimatrådgivningen.",
+        ],
+      },
+      {
+        h2: "Behöver man göra en ny anmälan när man byter bergvärmepump?",
+        body: [
+          "Det beror på vad som görs. Enligt förordningen om miljöfarlig verksamhet och hälsoskydd får ingen inrätta en värmepumpsanläggning för att ta värme ur mark, ytvatten eller grundvatten utan att först anmäla det till kommunen. Kommunen får också kräva tillstånd i hela eller delar av kommunen, till exempel i vattenskyddsområden. Ett nytt eller djupare borrhål ska alltså anmälas.",
+          "Byter du bara pumpen och behåller borrhålet säger förordningen inget uttryckligt. Fråga kommunens miljöförvaltning innan arbetet börjar.",
+        ],
+      },
+      {
+        h2: "Vad får man i rotavdrag och Villaeffekten när man byter bergvärmepump?",
+        body: [
+          "Att byta ut en värmepump ger rotavdrag med 30 % av arbetskostnaden. Vid fast pris räknas arbetet enligt Skatteverkets schablon som 35 % av totalpriset för en vätska-vattenvärmepump som bergvärme, så avdraget blir cirka 10,5 % av totalpriset.",
+          "Villaeffekten kan ge 30 % av materialkostnaden, högst 60 000 kr per hus, för en styrbar bergvärmepump. Förordningen kräver inte att huset saknar värmepump, så även ett byte kan ge bidrag om övriga villkor är uppfyllda: huset ska ha värdeår före 1990 och inte vara anslutet till fjärrvärme, och du ska äga och bo i det. Bidrag under 10 000 kr betalas inte ut, och pumpen får inte ha lägre energimärkning än de två högsta klasserna som i betydande grad används för produktgruppen, enligt Boverket. Länsstyrelsen prövar ansökan, så fråga där innan du beställer.",
+          "Räkneexempel med påhittat pris: en ny bergvärmepump i befintligt borrhål för 120 000 kr till fast pris, varav 78 000 kr material på fakturan. Arbetet räknas som 42 000 kr och rotavdraget blir 12 600 kr. Villaeffekten blir 23 400 kr. Rotavdraget räknas på arbetet och bidraget på materialet.",
+        ],
+      },
+      {
+        h2: "Vad ska man tänka på när man väljer ny bergvärmepump?",
+        body: [
+          "Ge installatören korrekta uppgifter om husets energianvändning. En för stor pump blir en onödig kostnad och en för liten kräver mycket spetsvärme, enligt energi- och klimatrådgivningen. Har värmebehovet ändrats sedan den gamla pumpen installerades är det ett skäl att räkna om.",
+          "Välj en styrbar pump om du vill ha Villaeffekten. Styrbar betyder att värmen kan planeras och justeras automatiskt efter till exempel utetemperatur eller elpris, enligt Boverket. En bergvärmepump kan också kompletteras med frikyla, som kyler huset på sommaren med hjälp av den cirka 10 grader kalla vätskan från borrhålet.",
+          "Efter bytet: kontrollera att värmekurvan och vattentrycket är rätt inställda, fyll vid behov på köldbärarvätska i expansionskärlet under den första vintern och följ upp elanvändningen det första året, råder Boverket.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Hur länge håller en bergvärmepump?",
+        a: "Det finns ingen officiell siffra. Energimyndighetens och energi- och klimatrådgivningens värmepumpsguider anger ingen livslängd i år, och energi- och klimatrådgivningen betonar service en gång om året eller vartannat år. Borrhålet laddas upp med värme varje sommar och kan användas av en ny pump om det räcker för dess effekt.",
+      },
+      {
+        q: "Måste man borra nytt när man byter bergvärmepump?",
+        a: "Nej, inte om borrhålet räcker för den nya pumpen och husets behov. Det ska installatören kontrollera. Behöver den nya pumpen mer effekt än hålet klarar kan det behövas ett djupare eller ett nytt hål, och det ska anmälas till kommunen.",
+      },
+      {
+        q: "Kan man få Villaeffekten för att byta bergvärmepump?",
+        a: "Ja, förordningen ger bidrag för installation av en styrbar bergvärmepump och kräver inte att huset saknar värmepump. Huset ska ha värdeår före 1990 och inte ha fjärrvärme, och du ska äga och bo i det. Bidraget är 30 % av materialkostnaden, minst 10 000 och högst 60 000 kr per hus. Fråga länsstyrelsen innan du beställer.",
+      },
+      {
+        q: "Ger byte av värmepump rotavdrag?",
+        a: "Ja. Skatteverket räknar installation och byte av värmepumpar som rotarbete. Avdraget är 30 % av arbetskostnaden, och vid fast pris räknas arbetet som 35 % av totalpriset för bergvärme.",
+      },
+    ],
+  },
   "varmvattenberedare-med-inbyggd-varmepump": {
     answer: "En varmvattenberedare med inbyggd värmepump, även kallad värmepumpsberedare, värmer tappvarmvattnet med en värmepump som hämtar värme ur uteluften, rumsluften eller husets frånluft. Den drar mindre el än en beredare som bara värms med el, enligt Energimyndigheten. Är den styrbar ger den 2026 bidrag via Villaeffekten: 30 % av materialkostnaden, minst 10 000 kr och högst 60 000 kr per hus.",
     keyFacts: [
@@ -1790,7 +1984,7 @@ export const GUIDE_CONTENT: Record<string, GuideContent> = {
   },
 
   "gront-avdrag-2026": {
-    answer: "Grönt avdrag 2026 är 15 % av kostnaden för arbete och material när ett företag installerar solceller, och 50 % för batteri som lagrar egenproducerad el och för laddbox till elbil. Vid fast pris blir det 14,55 % respektive 48,5 % av totalpriset. Avdraget är högst 50 000 kr per person och år för all grön teknik och dras direkt på fakturan. För 2027 är inga ändringar beslutade per 5 oktober 2026.",
+    answer: "Grönt avdrag 2026 är 15 % av kostnaden för arbete och material när ett företag installerar solceller, och 50 % för batteri som lagrar egenproducerad el och för laddbox till elbil. Vid fast pris blir det 14,55 % respektive 48,5 % av totalpriset. Avdraget är högst 50 000 kr per person och år för all grön teknik och dras direkt på fakturan. Budgetpropositionen för 2027 ändrar inte procentsatserna eller taket.",
     keyFacts: [
       {
         label: "Solceller 2026",
@@ -1814,7 +2008,7 @@ export const GUIDE_CONTENT: Record<string, GuideContent> = {
       },
       {
         label: "Grönt avdrag 2027",
-        value: "Inga ändringar beslutade per 5 oktober 2026; budgetpropositionen senast 12 november 2026",
+        value: "Samma procentsatser och tak i budgetpropositionen för 2027; skärpt kontroll från 1 januari 2027",
       },
     ],
     sections: [
@@ -1877,10 +2071,10 @@ export const GUIDE_CONTENT: Record<string, GuideContent> = {
       {
         h2: "Vad gäller för grönt avdrag 2027?",
         body: [
-          "För 2027 är inga ändringar av grönt avdrag beslutade per 5 oktober 2026, så dagens procentsatser och tak gäller tills riksdagen beslutar något annat.",
-          "Under ett valår lämnas budgetpropositionen tre veckor efter statsministeromröstningen eller regeringsskiftet. Budgetpropositionen för 2027 ska enligt regeringen lämnas till riksdagen senast den 12 november 2026. I regeringens sammanställning från maj 2026 över skatteförslag som skickats på remiss inför höstbudgeten 2027 finns inget om grönt avdrag. Regeringen skriver samtidigt att det beror på bland annat valutgången och det ekonomiska läget om förslagen kommer med i budgeten.",
-          "Ett förslag som rör grönt avdrag från 1 januari 2027 ligger redan hos riksdagen: effektivare kontroll av rot, rut och grön teknik (proposition 2025/26:282). Företaget ska då bland annat ange om underentreprenörer eller bemanningsföretag har anlitats, och uppgifterna ska lämnas på heder och samvete. Förslaget gäller inte procentsatserna eller taket, och riksdagen har ännu inte beslutat om det.",
-          "Avdraget räknas till det år du slutbetalar och mot det årets tak. Planerar du en installation kring årsskiftet bör du läsa om reglerna på nytt när budgetpropositionen har lämnats.",
+          "Grönt avdrag 2027 ser ut att bli detsamma som 2026: 15 % för solceller och 50 % för batteri och laddbox, högst 50 000 kr per person och år. Budgetpropositionen för 2027, som övergångsregeringen lade fram den 12 november 2026, innehåller inga förslag som ändrar avdraget. Regeringen räknar med att skattereduktionen för grön teknik minskar statens inkomster med cirka 3,8 miljarder kronor 2027.",
+          "Budgeten är en övergångsbudget, eftersom ingen ny regering har tillträtt efter valet. Den utgår från den budget riksdagen beslutade för 2026 och följer särskilda principer för en övergångsregering. En ny regering kan lägga fram ändringar senare, men regeringen har i dag inga förslag om grönt avdrag.",
+          "Det som ändras från 1 januari 2027 är kontrollen. Riksdagen sa den 11 november 2026 ja till regeringens förslag om effektivare kontroll av rot, rut och grön teknik (proposition 2025/26:282). Företaget ska då lämna uppgifterna i begäran om utbetalning på heder och samvete och ange om underentreprenörer eller bemanningsföretag har anlitats. Skatteverket får också möjlighet till efterbeskattning i vissa fall. Procentsatserna och taket påverkas inte.",
+          "Avdraget räknas till det år du slutbetalar och mot det årets tak. Slutbetalar du en installation i januari 2027 räknas den alltså mot 2027 års tak på 50 000 kr.",
         ],
       },
     ],

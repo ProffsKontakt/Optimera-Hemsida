@@ -38,6 +38,179 @@ export type NewsContent = {
 };
 
 const CONTENT: Record<string, NewsContent> = {
+  "kommer-60-oringen-tillbaka-centerpartiet-kristersson-regering": {
+    tldr: [
+      "Skattereduktionen var 60 öre per inmatad kWh, högst 18 000 kr per år, och gäller inte el som matas in från 1 januari 2026. Deklarationen 2027 blir den första utan.",
+      "I Ny Tekniks valenkät svarade C ja till att återinföra den, medan M, KD och L svarade nej. Vad fyrpartiöverenskommelsen innehåller är inte känt.",
+      "Riksdagen röstar om Kristersson måndag 30 november klockan 13. Förslaget faller bara om minst 175 av 349 ledamöter röstar nej.",
+    ],
+    sections: [
+      {
+        h2: "Kommer 60-öringen tillbaka?",
+        body: [
+          "Det finns inget beslut om det. Skattereduktionen för mikroproduktion av förnybar el, som brukar kallas 60-öringen, gäller inte el som matas in på elnätet från och med den 1 januari 2026. Det var riksdagen som beslutade att den skulle försvinna, enligt Skatteverket, och det krävs ett nytt beslut för att den ska komma tillbaka.",
+          "Frågan är aktuell igen eftersom Centerpartiet, som vill återinföra 60-öringen, kan bli regeringsparti. Den 24 november lade talman Andreas Norlén fram Ulf Kristersson (M) som förslag till statsminister för en regering av Moderaterna, Centerpartiet, Kristdemokraterna och Liberalerna. Två dagar senare rekommenderade Centerpartiets partistyrelse och riksdagsgrupp att partiet röstar ja och tar plats i regeringen. Beslutet hade majoritet men var inte enhälligt, skriver partiet.",
+          "Vad de fyra partierna har kommit överens om är inte känt, enligt Ny Teknik. C-ledaren Elisabeth Thand Ringqvist beskriver överenskommelsen som en politik för tillväxt och klimatarbete, men i partiets besked den 26 november nämns inte 60-öringen.",
+        ],
+      },
+      {
+        h2: "Vad tycker partierna om att återinföra 60-öringen?",
+        body: [
+          "Centerpartiet vill återinföra den. I Elbruks enkät före valet skrev partiet: ”Vi vill också återinföra skattereduktionen (60-öringen) för såld solel”. I Ny Tekniks valenkät svarade Centerpartiet ja på frågan om 60-öringen ska återinföras, medan Moderaterna, Kristdemokraterna och Liberalerna svarade nej.",
+          "De tre partierna har andra prioriteringar för solel. Moderaterna skrev till Elbruk att partiet under mandatperioden har ”minskat subventionen till solkraft då det är en fullt mogen teknik”. Kristdemokraterna vill att ekonomiska incitament i första hand ska gå till energilagring snarare än till solel, och Liberalerna vill bredda och utöka det gröna avdraget.",
+          "I oppositionen vill Vänsterpartiet och Miljöpartiet också återinföra skattelättnaden för solel, enligt Elbruk. Socialdemokraterna vill i stället höja rotavdraget till 50 procent för energieffektivisering, till exempel solceller. Det är partiernas positioner före valet, inte beslut.",
+        ],
+      },
+      {
+        h2: "Vad var 60-öringen värd?",
+        body: [
+          "Skattereduktionen var 60 öre per kilowattimme som matades in på elnätet. Underlaget kunde aldrig bli större än den el man tog ut från nätet under året, och högst 30 000 kilowattimmar. Därför var den högsta skattereduktionen 18 000 kronor per år. I Skatteverkets räkneexempel ger 2 000 inmatade kilowattimmar 1 200 kronor.",
+          "Den sista skattereduktionen gavs i deklarationen våren 2026, för el som matades in under 2025. Deklarationen 2027 blir den första utan, enligt Skatteverket. Det som försvann var alltså skattereduktionen ovanpå ersättningen för den sålda elen.",
+        ],
+      },
+      {
+        h2: "Blir Kristersson statsminister? Så går omröstningen till",
+        body: [
+          "Riksdagen prövar talmannens förslag måndagen den 30 november klockan 13. Förslaget går inte igenom om minst 175 av riksdagens 349 ledamöter röstar nej. Annars är det godkänt, så det krävs ingen majoritet som röstar ja.",
+          "Sverigedemokraterna har sagt att partiet lägger ned sina röster och i praktiken tolererar Kristersson som statsminister i en fyrpartiregering. SD-ledaren Jimmie Åkesson skriver samtidigt att inget stöd garanteras på förhand och att SD går i opposition. Socialdemokraterna, Vänsterpartiet och Miljöpartiet har 151 mandat tillsammans. Om SD lägger ned sina röster och Centerpartiet röstar ja eller avstår kan förslaget alltså inte falla. Då skulle minst 24 av Centerpartiets 25 ledamöter behöva rösta nej för att fälla det, även om alla ledamöter i S, V och MP gör det.",
+          "Först ska Centerpartiets förtroenderåd, som har 59 medlemmar, ta ställning till ledningens rekommendation. Enligt uppgifter till Aftonbladet möts rådet på söndag. Thand Ringqvist har sagt att hon avgår om det blir extra val eller om Vänsterpartiet släpps in i regeringen.",
+          "Det är den tredje statsministeromröstningen sedan valet. Talmannen har fyra försök på sig, och får inget förslag tillräckligt stöd blir det extra val inom tre månader.",
+        ],
+      },
+      {
+        h2: "Vad händer om Kristersson blir statsminister?",
+        body: [
+          "Då utser han ministrarna och lämnar en regeringsförklaring i riksdagen, där han redogör för den politik regeringen vill driva. Regeringsskiftet sker formellt vid en konselj på slottet. Det är i regeringsförklaringen och i budgetarbetet som det kan bli tydligt vad fyrpartiregeringen vill med 60-öringen.",
+          "Centerpartiet skiljer sig från M, KD och L i fler energifrågor. I Ny Tekniks valenkät svarade C nej till att bygga ut kärnkraften med statlig finansiering, nej till fortsatt uranbrytning och ja till att staten ska bekosta utbyggnaden av stamnätet till havs. De tre andra partierna svarade tvärtom.",
+          "Samtidigt pågår arbetet med budgeten för 2027. Sverigedemokraterna lade den 25 november fram sin budgetmotion, där partiet bland annat vill införa ett nytt elstöd till hushållen och slopa den årliga uppräkningen av elskatten. Enligt uppgifter till TV4 ska M, KD och L lägga fram ett gemensamt budgetförslag som även speglar Centerpartiets prioriteringar. Centerpartiet skriver att det inte finns något avtal om ett strukturerat budgetsamarbete med Sverigedemokraterna.",
+        ],
+      },
+      {
+        h2: "Vad betyder det för din kalkyl?",
+        body: [
+          "Räkna utan 60-öringen. Det finns inget beslut om att återinföra den, och även om en ny regering skulle vilja det krävs ett riksdagsbeslut. Två av de tre partier som skulle regera med Centerpartiet har dessutom pekat på andra stöd: Kristdemokraterna på energilagring och Liberalerna på ett bredare grönt avdrag.",
+          "Så mycket handlar det om: säljer du 4 000 kilowattimmar solel på ett år, och tar ut minst lika mycket från nätet, skulle 60-öringen ge 2 400 kronor. I dag ger den inget. Utan skattereduktionen är såld solel mindre värd än förut, och det gör det viktigare hur stor del av solelen du använder själv.",
+          "Om 60-öringen kommer tillbaka i en framtida budget blir det en extra intäkt för den som har solceller då. Det ändrar inte vad som gäller för el som matas in nu.",
+        ],
+        bullets: [
+          "60-öringen gäller inte el som matas in från 1 januari 2026. Det finns inget beslut om att återinföra den.",
+          "C vill återinföra den, men M, KD och L svarade nej i Ny Tekniks valenkät.",
+          "Riksdagen röstar om Kristersson som statsminister måndag 30 november klockan 13.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Kommer 60-öringen tillbaka?",
+        a: "Inget är beslutat. Skattereduktionen för såld solel gäller inte el som matas in från 1 januari 2026. Centerpartiet vill återinföra den och kan bli regeringsparti, men Moderaterna, Kristdemokraterna och Liberalerna svarade nej till det i Ny Tekniks valenkät. Vad fyrpartiöverenskommelsen innehåller är inte känt.",
+      },
+      {
+        q: "Blir Kristersson statsminister?",
+        a: "Det avgörs i riksdagen måndagen den 30 november klockan 13. Förslaget faller bara om minst 175 av 349 ledamöter röstar nej. Centerpartiets ledning rekommenderar ja, och SD har sagt att partiet lägger ned sina röster. Gör SD det och C röstar ja eller avstår går förslaget igenom.",
+      },
+      {
+        q: "När röstar riksdagen om Kristersson?",
+        a: "Måndagen den 30 november klockan 13. Talmannen lade fram förslaget den 24 november, och det bordläggs i kammaren två gånger, den 26 och den 27 november, före omröstningen. Det är den tredje statsministeromröstningen sedan valet.",
+      },
+      {
+        q: "Vad är förtroenderådet i Centerpartiet?",
+        a: "Det är förtroenderådet som ska avgöra om Centerpartiet röstar ja till Kristersson. Det har 59 medlemmar, enligt Aftonbladet. Partistyrelsen och riksdagsgruppen har rekommenderat rådet att ställa sig bakom att C röstar ja och tar plats i fyrpartiregeringen.",
+      },
+      {
+        q: "Vad är en fyrpartiregering?",
+        a: "I det här fallet en regering av Moderaterna, Centerpartiet, Kristdemokraterna och Liberalerna med Ulf Kristersson som statsminister. Det är den regering talmannen har lagt fram för riksdagen. Sverigedemokraterna ingår inte, och enligt Centerpartiet finns inget avtal om ett strukturerat budgetsamarbete med SD.",
+      },
+    ],
+  },
+
+  "vem-far-elstod-2026-regler-flytt-lagenhet-fritidshus": {
+    tldr: [
+      "Stödet räknas på 90 procent av månadens förbrukning och på delen av snittpriset över 1,50 kr/kWh. Förbrukning över 5 000 kWh i månaden ger inget stöd.",
+      "Elområde 3 ligger på 1,75 kr/kWh efter 24 dagar i november och elområde 4 på 2,64. Elområde 3 hamnar under gränsen bara om resten av månaden kostar under 0,52 kr i snitt.",
+      "Försäkringskassan betalar oktober–december samlat under vårvintern 2027, utan ansökan. Remisstiden går ut den 1 december, och först därefter tar regeringen ställning.",
+    ],
+    sections: [
+      {
+        h2: "Vem får elstöd 2026?",
+        body: [
+          "Den som har ett elnätsavtal för sin bostad den sista dagen i månaden. Det framgår av utkastet till förordning om elstöd till konsumenter för oktober–december 2026, som Klimat- och näringslivsdepartementet skickade på remiss den 23 november. Stödet går till privatpersoner som tar ut el ur elnätet för privat bruk, och till dödsbon efter dem. Man behöver inte söka.",
+          "För oktober gäller förslaget bara elområde 4, där snittpriset blev cirka 1,57 kronor per kilowattimme. Det som krävs är att du hade avtal med elnätsföretaget den 31 oktober och att det gick åt el i bostaden någon gång under månaden. För november och december gäller samma villkor i de elområden där månadens snittpris går över 1,50 kronor, och då är det avtalet den 30 november respektive den 31 december som avgör.",
+          "Används samma anslutning både privat och i en verksamhet ges stöd bara för den privata förbrukningen. Företag och föreningar omfattas inte, eftersom förslaget bara gäller fysiska personer och dödsbon. Enligt promemorian kommer Försäkringskassan att behöva hantera cirka 990 000 utbetalningar, och utgifterna för oktober uppskattas till omkring 25 miljoner kronor. Det är antalet utbetalningar, inte personer: den som har flera elnätsavtal får stöd för varje avtal.",
+          "När vi skrev om elstödet den 21 november fanns regeringens frågor och svar från den 9 november, som beskrev modellen. Nu finns förslaget till förordning som ska styra utbetalningen. Regeringen tar ställning efter remissen, där sista svarsdag är den 1 december, så detaljerna kan ändras.",
+        ],
+      },
+      {
+        h2: "Hur fungerar nya elstödet? Reglerna i förslaget",
+        body: [
+          "Stödet räknas för varje uttagspunkt, alltså varje ställe där en bostad tar ut el ur elnätet. Försäkringskassan tar 90 procent av den el som gick åt där under månaden och multiplicerar med skillnaden mellan elområdets snittpris och 1,50 kronor per kilowattimme. Moms ingår inte, enligt regeringens frågor och svar. För elområde 4 i oktober blir det 7 öre per kilowattimme, så ett hushåll som använde 2 000 kilowattimmar får 126 kronor.",
+          "Det som inte stod i regeringens frågor och svar är ett tak: stöd ges inte för den del av förbrukningen som går över 5 000 kilowattimmar i månaden i en uttagspunkt. Det är tre gånger så mycket som en villa med elvärme använder i snitt per månad. Energimyndigheten anger cirka 20 000 kilowattimmar per år för en sådan villa, alltså cirka 1 700 i månaden.",
+          "Elnätsföretagen rapporterar förbrukningen till Försäkringskassan, tillsammans med namn, person- eller samordningsnummer och faktureringsadress för den som hade avtalet. Försäkringskassan räknar ut stödet och beslutar utifrån de uppgifterna, utan att först låta dig yttra dig över underlaget, men kan be dig om fler uppgifter om det behövs. För att stödet ska kunna betalas direkt till ett bankkonto ska Pensionsmyndigheten på begäran lämna kontonummer till Försäkringskassan.",
+          "Enligt regeringens frågor och svar betalas stödet för oktober, november och december ut samlat under vårvintern 2027. Har du anmält konto till Försäkringskassan vid tidigare stöd behöver du inte göra något. Vid elstödet för januari–februari 2026 betalade Försäkringskassan till konton i Swedbanks kontoregister, hos Försäkringskassan eller hos Pensionsmyndigheten. Hittades inget konto skickades en utbetalningsavi.",
+        ],
+      },
+      {
+        h2: "Elstöd om man flyttat – vem får pengarna?",
+        body: [
+          "Den som har elnätsavtalet den sista dagen i månaden får stödet för hela månadens förbrukning i bostaden. Elnätsföretaget rapporterar hur mycket el som gick åt i uttagspunkten under hela månaden och vem som hade avtalet den sista dagen. Samma princip gällde elstödet för januari–februari 2026, som Försäkringskassan betalade ut till cirka fem miljoner hushåll: pengarna gick till den som stod på elnätsavtalet den 28 februari.",
+          "Ett exempel: du flyttar från en villa till en lägenhet den 15 november. Har köparen tagit över elnätsavtalet för villan den 30 november får köparen stödet för villans förbrukning under hela november, även för veckorna då du bodde kvar. Har du ett eget elnätsavtal för lägenheten den 30 november får du stöd för lägenhetens förbrukning i november. Står ingen privatperson på avtalet för en bostad den sista dagen ges inget stöd för den.",
+          "Elstöd till dödsbo: har den som stod på avtalet avlidit den sista dagen i månaden eller senare får dödsboet stödet på samma villkor. Vid elstödet för januari–februari 2026 kunde efterlevande lösa in en utbetalningsavi till ett dödsbo på ett kontor hos Swedbank eller Sparbankerna, med bland annat bouppteckningen i original.",
+        ],
+      },
+      {
+        h2: "Elstöd om man bor i lägenhet – och får man elstöd för fritidshus?",
+        body: [
+          "Bor du i lägenhet och har ett eget elnätsavtal gäller samma regler som för en villa. Ingår elen i hyran eller i avgiften till föreningen har du inget eget elnätsavtal, och då ger förslaget inget stöd till dig. Bostadsrättsföreningar får inget elstöd heller, eftersom förslaget bara gäller fysiska personer och dödsbon. Föreningens egen el, till exempel i trapphus och tvättstuga, ger alltså inget stöd.",
+          "Ett fritidshus kan också ge stöd. Enligt promemorian kan en elkonsument ha flera elnätsavtal och får ersättning för varje avtal, och regeringens frågor och svar nämner just en fast bostad och en sommarbostad. Det krävs att det gick åt el i fritidshuset någon gång under månaden och att du hade avtalet den sista dagen. Taket på 5 000 kilowattimmar gäller för varje uttagspunkt för sig.",
+          "Det är elområdet där uttagspunkten finns som avgör. Ligger fritidshuset i elområde 1 eller 2, där snittpriset hittills i november är 0,36 kronor per kilowattimme, ser det inte ut att bli något stöd för det i november, även om du bor i elområde 3.",
+        ],
+      },
+      {
+        h2: "Tar Kronofogden elstödet?",
+        body: [
+          "Det kan den göra. I promemorian skriver departementet att ”Kronofogdemyndigheten har även möjlighet att utmäta stödet för skulder som har lämnats till Kronofogdemyndigheten för indrivning”. Elstödet räknas dessutom som inkomst när kommunen prövar rätten till ekonomiskt bistånd. Den som får bistånd får det sänkt lika mycket som elstödet, så hushållets ekonomi blir oförändrad.",
+          "Har stödet betalats ut felaktigt eller med för högt belopp ska Försäkringskassan kräva tillbaka det med ränta, men belopp under 300 kronor krävs inte tillbaka. Den som är missnöjd med beslutet kan överklaga till Förvaltningsrätten i Stockholm. Departementet räknar med cirka 300 överklaganden, utifrån erfarenheterna av de tidigare elstöden.",
+        ],
+      },
+      {
+        h2: "Vad betyder det för din kalkyl?",
+        body: [
+          "Stödet för november ser ut att betalas ut i elområde 3 och 4. Efter 24 dagar är snittpriset 1,75 kronor per kilowattimme i elområde 3 och 2,64 kronor i elområde 4, enligt Nord Pools dygnspriser för 1–24 november. Elområde 3 hamnar under gränsen bara om de sex sista dagarna kostar under 0,52 kronor i snitt, och inget dygn i november har varit så billigt: det billigaste var den 15 november med 0,67 kronor. Fjordkraft Företag räknar i sin marknadsrapport med 135–286 öre per kilowattimme i elområde 3 under vecka 48.",
+          "Med snittet hittills blir stödet 24,5 öre per kilowattimme i elområde 3. Använder hushållet 2 000 kilowattimmar i november ges stöd för 1 800 av dem, vilket blir cirka 440 kronor. I elområde 4 blir det 1,14 kronor per kilowattimme och cirka 2 050 kronor för samma förbrukning. Taket gör att stöd som mest kan ges för 4 500 kilowattimmar i månaden, alltså 90 procent av 5 000. Med snittet hittills blir stödet för november då som mest cirka 1 100 kronor per uttagspunkt i elområde 3 och cirka 5 100 kronor i elområde 4. Det är räkneexempel, inte prognoser.",
+          "Stödet för december avgörs av decemberpriset. Enligt Vattenfall skulle Ringhals 4 starta om natten mot den 24 november efter ett driftstopp sedan slutet av juni, medan återstarten av Ringhals 3 har flyttats fram till den 20 december på grund av ett läckage i en ventil.",
+          "Stödet ändrar inte vad elen kostar timme för timme. Det räknas på elområdets månadssnitt och på hur många kilowattimmar du använder, så det spelar ingen roll för stödet om du flyttar förbrukning till billigare timmar. Använder du mindre el minskar stödet med cirka 22 öre per kilowattimme i elområde 3, medan du sparar hela priset: 1,75 kronor i snitt hittills i november, plus energiskatt, elnätets rörliga avgift och moms.",
+          "För den som räknar på solceller eller batteri gäller samma sak som tidigare: kalkylen ska bära sig på elpriset och det gröna avdraget, inte på ett tillfälligt stöd. Högkostnadsskyddet är beslutat för 2026, och för 2027 saknas ett beslut, enligt regeringens frågor och svar.",
+        ],
+        bullets: [
+          "Stödet går till den som har elnätsavtalet den sista dagen i månaden, för hela månadens förbrukning i uttagspunkten.",
+          "Stöd ges för 90 procent av förbrukningen och för delen av snittpriset över 1,50 kr/kWh, men inte för förbrukning över 5 000 kWh i månaden.",
+          "Förslaget är på remiss till den 1 december. Oktober–december betalas ut samlat under vårvintern 2027.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Vem får elstöd 2026?",
+        a: "Enligt regeringens förslag får privatpersoner och dödsbon stöd om de har ett elnätsavtal för bostaden den sista dagen i månaden och snittpriset i elområdet går över 1,50 kronor per kilowattimme. För oktober gäller det elområde 4, och för november ligger elområde 3 och 4 hittills över gränsen. Man behöver inte söka, och företag omfattas inte.",
+      },
+      {
+        q: "Vem får elstödet om man har flyttat?",
+        a: "Den som har elnätsavtalet för bostaden den sista dagen i månaden får stödet för hela månadens förbrukning där. Flyttar du från en villa den 15 november och köparen har avtalet för villan den 30 november får köparen stödet för villans förbrukning i hela november. Du får i stället stöd för din nya bostad, om du har avtalet där den 30 november.",
+      },
+      {
+        q: "Får man elstöd om man bor i lägenhet?",
+        a: "Ja, om du har ett eget elnätsavtal för lägenheten. Då gäller samma regler som för en villa. Ingår elen i hyran eller avgiften har du inget eget avtal, och då ger förslaget inget stöd till dig. Bostadsrättsföreningar får inget stöd för sin egen el, eftersom förslaget bara gäller fysiska personer och dödsbon.",
+      },
+      {
+        q: "Får man elstöd för fritidshus?",
+        a: "Ja, om det gick åt el i fritidshuset under månaden, du hade elnätsavtalet den sista dagen och snittpriset i fritidshusets elområde gick över 1,50 kronor per kilowattimme. Man får stöd för varje elnätsavtal, och taket på 5 000 kilowattimmar gäller för varje uttagspunkt för sig. Ett fritidshus i elområde 1 eller 2 ser inte ut att ge stöd för november, där snittet hittills är 0,36 kronor.",
+      },
+      {
+        q: "Tar Kronofogden elstöd?",
+        a: "Det kan ske. Enligt regeringens promemoria kan Kronofogden utmäta elstödet för skulder som har lämnats till myndigheten för indrivning. Får du ekonomiskt bistånd från kommunen räknas elstödet som inkomst, och biståndet sänks lika mycket.",
+      },
+    ],
+  },
+
   "blir-det-elstod-2027-hogkostnadsskyddet-upphor-elomrade-3-november": {
     tldr: [
       "Elområde 3 ligger på 1,76 kr/kWh och elområde 4 på 2,67 efter 21 dagar. Elområde 3 hamnar under gränsen bara om resten av november kostar under 0,88 kr i snitt.",

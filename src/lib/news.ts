@@ -79,6 +79,160 @@ export type NewsArticle = {
 
 export const NEWS: NewsArticle[] = [
   {
+    slug: "kommer-60-oringen-tillbaka-centerpartiet-kristersson-regering",
+    status: "published",
+    title:
+      "Kommer 60-öringen tillbaka? C vill återinföra den – och kan bli regeringsparti med Kristersson",
+    excerpt:
+      "Kommer 60-öringen tillbaka? Inget är beslutat. Skattereduktionen för såld solel slopades den 1 januari 2026, och Centerpartiet vill återinföra den. Nu rekommenderar C-ledningen att partiet röstar ja till Ulf Kristersson (M) som statsminister den 30 november och går in i en fyrpartiregering med M, KD och L – tre partier som svarade nej till att återinföra 60-öringen före valet. Här är vad som är känt, vad skattereduktionen var värd och vad det betyder för solcellskalkylen.",
+    category: "Stöd & avdrag",
+    publishedAt: "2026-11-27",
+    updatedAt: "2026-11-27",
+    readTimeMin: 7,
+    image: {
+      src: "/news/kommer-60-oringen-tillbaka-centerpartiet-kristersson-regering-grafik.jpg",
+      alt: "Grafik: Kommer 60-öringen tillbaka? Riksdagen röstar den 30 november om Ulf Kristersson som statsminister för M, C, KD och L. I Ny Tekniks valenkät svarade C ja till att återinföra 60-öringen och M, KD och L nej. Den högsta skattereduktionen var 18 000 kronor per år",
+      credit: "Grafik: Optimera Energi · Källa: Skatteverket, Ny Teknik, Sveriges riksdag",
+    },
+    searchPhrases: [
+      "kommer 60 öringen tillbaka",
+      "återinföra 60 öringen",
+      "60 öringen beslut",
+      "blir kristersson statsminister",
+      "när röstar riksdagen om kristersson",
+      "vad händer om kristersson blir statsminister",
+      "förtroenderådet centerpartiet",
+      "fyrpartiregering",
+    ],
+    sources: [
+      {
+        title: "Mikroproduktion av förnybar el – privatbostad (skattereduktionen försvinner från 1 januari 2026)",
+        publisher: "Skatteverket",
+        url: "https://www.skatteverket.se/privat/fastigheterochbostad/inkomsterfranbostad/mikroproduktionavfornybarelprivatbostad.4.12815e4f14a62bc048f41a7.html",
+      },
+      {
+        title: "Talmannen lägger fram Ulf Kristersson (M) som förslag till statsminister (24 november 2026)",
+        publisher: "Sveriges riksdag",
+        url: "https://www.riksdagen.se/sv/aktuellt/aktuelltnotiser/2026/nov/24/talmannen-lagger-fram-ulf-kristersson-m-som_cmsb026a253-0745-4baf-835b-ad90ad447402sv/",
+      },
+      {
+        title: "Så bildas regeringen",
+        publisher: "Sveriges riksdag",
+        url: "https://www.riksdagen.se/sv/sa-fungerar-riksdagen/demokrati/sa-bildas-regeringen/",
+      },
+      {
+        title: "Den nya riksdagen efter valet (mandatfördelningen)",
+        publisher: "Sveriges riksdag",
+        url: "https://www.riksdagen.se/sv/aktuellt/aktuelltnotiser/2026/sep/19/den-nya-riksdagen-efter-valet_cmsad780a37-f1ae-4d47-a4a7-b6ea2a69a21esv/",
+      },
+      {
+        title: "Centerpartiets partistyrelse och riksdagsgrupp rekommenderar förtroenderådet att ställa sig bakom att rösta grönt i tredje statsministeromröstningen (26 november 2026)",
+        publisher: "Centerpartiet",
+        url: "https://www.centerpartiet.se/nyheter/arkiv-2026/2026-11-26-centerpartiets-partistyrelse-och-riksdagsgrupp-rekommenderar-fortroenderadet-att-stalla-sig-bakom-att-rosta-gront-i-tredje-statsministeromrostningen",
+      },
+      {
+        title: "Besked från Centerpartiet: Partistyrelse säger ja till Kristersson-regering (26 november 2026)",
+        publisher: "Ny Teknik",
+        url: "https://www.nyteknik.se/samhaelle/besked-fran-centerpartiet-partistyrelse-saeger-ja-till-kristersson-regering/4517387",
+      },
+      {
+        title: "Partiernas energipolitik inför valet 2026",
+        publisher: "Elbruk",
+        url: "https://www.elbruk.se/blogg/partiernas-energipolitik-2026",
+      },
+      {
+        title: "Centerpartiets förtroenderåd möts på söndag (26 november 2026)",
+        publisher: "Aftonbladet",
+        url: "https://www.aftonbladet.se/nyheter/a/3BJWOL/centerpartiets-fortroenderad-mots-pa-sondag",
+      },
+      {
+        title: "Åkesson: Beredd att tolerera Kristersson-regering (24 november 2026)",
+        publisher: "EFN",
+        url: "https://efn.se/akesson-beredd-att-tolerera-kristersson-regering",
+      },
+      {
+        title: "SD vill sänka hushållens utgifter med nytt elstöd (TT, 25 november 2026)",
+        publisher: "Omni",
+        url: "https://omni.se/sd-vill-sanka-hushallens-utgifter-med-nytt-elstod/a/BrRpp9",
+      },
+    ],
+  },
+  {
+    slug: "vem-far-elstod-2026-regler-flytt-lagenhet-fritidshus",
+    status: "published",
+    title:
+      "Vem får elstöd 2026? Förslaget på remiss: elnätsavtalet sista dagen i månaden avgör – och stödet har ett tak",
+    excerpt:
+      "Vem får elstöd 2026? Enligt regeringens förslag till förordning, som skickades på remiss den 23 november, går stödet för oktober–december till den som har ett elnätsavtal för bostaden den sista dagen i månaden. Reglerna avgör också hur det nya elstödet fungerar för den som har flyttat, bor i lägenhet eller har fritidshus, och enligt promemorian kan Kronofogden ta pengarna. Här är reglerna, läget för november och vad som återstår innan regeringen tar ställning.",
+    category: "Stöd & avdrag",
+    publishedAt: "2026-11-24",
+    updatedAt: "2026-11-24",
+    readTimeMin: 7,
+    image: {
+      src: "/news/vem-far-elstod-2026-regler-flytt-lagenhet-fritidshus-grafik.jpg",
+      alt: "Grafik: Enligt regeringens förslag till elstöd för oktober–december 2026 får den som har elnätsavtalet den 30 november stödet för hela novembers förbrukning. Stöd ges för 90 procent av förbrukningen, taket är 5 000 kWh i månaden per uttagspunkt, och snittpriset i elområde 3 var 1,75 kronor per kWh den 1–24 november, över gränsen 1,50 kronor",
+      credit: "Grafik: Optimera Energi · Källa: Regeringen, Nord Pool",
+    },
+    searchPhrases: [
+      "vem får elstöd 2026",
+      "hur fungerar nya elstödet",
+      "regler elstöd 2026",
+      "elstöd om man flyttat",
+      "elstöd om man bor i lägenhet",
+      "får bostadsrättsföreningar elstöd",
+      "får man elstöd för fritidshus",
+      "elstöd dödsbo",
+      "tar kronofogden elstöd",
+    ],
+    sources: [
+      {
+        title: "Remiss av promemoria och utkast till förordning om elstöd till konsumenter för oktober–december 2026, KN2026/02195 (23 november 2026)",
+        publisher: "Regeringen",
+        url: "https://www.regeringen.se/remisser/2026/11/remiss-av-promemoria-och-utkast-till-forordning-om-elstod-till-konsumenter-for-oktoberdecember-2026/",
+      },
+      {
+        title: "Promemoria: Elstöd till konsumenter för oktober–december 2026 (KN2026/02195)",
+        publisher: "Regeringen",
+        url: "https://www.regeringen.se/contentassets/d581053ed819488491c1a6d08eee33ac/elstod-till-konsumenter-for-oktoberdecember-2026.pdf",
+      },
+      {
+        title: "Utkast till förordning om elstöd till konsumenter för oktober–december 2026",
+        publisher: "Regeringen",
+        url: "https://www.regeringen.se/contentassets/d581053ed819488491c1a6d08eee33ac/utkast-till-forordning-om-elstod-till-konsumenter-for-oktoberdecember-2026.pdf",
+      },
+      {
+        title: "Frågor och svar om högkostnadsskyddet för el (publicerad 9 november 2026)",
+        publisher: "Regeringen",
+        url: "https://www.regeringen.se/regeringens-politik/energi/fragor-och-svar-om-hogkostnadsskyddet-for-el/",
+      },
+      {
+        title: "Utbetalning av elstöd 2026 (elstödet för januari–februari 2026, uppdaterad 4 november 2026)",
+        publisher: "Försäkringskassan",
+        url: "https://www.forsakringskassan.se/privatperson/utbetalning-av-elstod-2026",
+      },
+      {
+        title: "Day-ahead-priser per elområde, 1–24 november 2026",
+        publisher: "Nord Pool",
+        url: "https://data.nordpoolgroup.com/auction/day-ahead/prices?deliveryDate=2026-11-24&currency=SEK&aggregation=Monthly&deliveryAreas=SE1,SE2,SE3,SE4",
+      },
+      {
+        title: "Elpriset kan nå över 2,50 kronor även i norra Sverige – kraftig prisuppgång väntas (23 november 2026)",
+        publisher: "Fjordkraft Företag",
+        url: "https://www.mynewsdesk.com/se/fjordkraft/pressreleases/elpriset-kan-naa-oever-250-kronor-aeven-i-norra-sverige-kraftig-prisuppgaang-vaentas-3481593",
+      },
+      {
+        title: "Bättre ekonomi med rätt anläggningsstorlek (elanvändning i en villa med och utan elvärme)",
+        publisher: "Energimyndigheten",
+        url: "https://www.energimyndigheten.se/effektiv-energianvandning/guider/solelportalen/hur-stor-anlaggning-passar-mig/battre-ekonomi-med-ratt-anlaggningsstorlek/",
+      },
+      {
+        title: "Ringhals 4 återstartar (uppdaterad 23 november 2026)",
+        publisher: "Vattenfall",
+        url: "https://group.vattenfall.com/se/nyheter-och-press/nyheter/2026/ringhals-4-aterstartar-24-november",
+      },
+    ],
+  },
+  {
     slug: "blir-det-elstod-2027-hogkostnadsskyddet-upphor-elomrade-3-november",
     status: "published",
     title:
