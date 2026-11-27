@@ -79,6 +79,85 @@ export type NewsArticle = {
 
 export const NEWS: NewsArticle[] = [
   {
+    slug: "kommer-60-oringen-tillbaka-centerpartiet-kristersson-regering",
+    status: "published",
+    title:
+      "Kommer 60-öringen tillbaka? C vill återinföra den – och kan bli regeringsparti med Kristersson",
+    excerpt:
+      "Kommer 60-öringen tillbaka? Inget är beslutat. Skattereduktionen för såld solel slopades den 1 januari 2026, och Centerpartiet vill återinföra den. Nu rekommenderar C-ledningen att partiet röstar ja till Ulf Kristersson (M) som statsminister den 30 november och går in i en fyrpartiregering med M, KD och L – tre partier som svarade nej till att återinföra 60-öringen före valet. Här är vad som är känt, vad skattereduktionen var värd och vad det betyder för solcellskalkylen.",
+    category: "Stöd & avdrag",
+    publishedAt: "2026-11-27",
+    updatedAt: "2026-11-27",
+    readTimeMin: 7,
+    image: {
+      src: "/news/kommer-60-oringen-tillbaka-centerpartiet-kristersson-regering-grafik.jpg",
+      alt: "Grafik: Kommer 60-öringen tillbaka? Riksdagen röstar den 30 november om Ulf Kristersson som statsminister för M, C, KD och L. I Ny Tekniks valenkät svarade C ja till att återinföra 60-öringen och M, KD och L nej. Den högsta skattereduktionen var 18 000 kronor per år",
+      credit: "Grafik: Optimera Energi · Källa: Skatteverket, Ny Teknik, Sveriges riksdag",
+    },
+    searchPhrases: [
+      "kommer 60 öringen tillbaka",
+      "återinföra 60 öringen",
+      "60 öringen beslut",
+      "blir kristersson statsminister",
+      "när röstar riksdagen om kristersson",
+      "vad händer om kristersson blir statsminister",
+      "förtroenderådet centerpartiet",
+      "fyrpartiregering",
+    ],
+    sources: [
+      {
+        title: "Mikroproduktion av förnybar el – privatbostad (skattereduktionen försvinner från 1 januari 2026)",
+        publisher: "Skatteverket",
+        url: "https://www.skatteverket.se/privat/fastigheterochbostad/inkomsterfranbostad/mikroproduktionavfornybarelprivatbostad.4.12815e4f14a62bc048f41a7.html",
+      },
+      {
+        title: "Talmannen lägger fram Ulf Kristersson (M) som förslag till statsminister (24 november 2026)",
+        publisher: "Sveriges riksdag",
+        url: "https://www.riksdagen.se/sv/aktuellt/aktuelltnotiser/2026/nov/24/talmannen-lagger-fram-ulf-kristersson-m-som_cmsb026a253-0745-4baf-835b-ad90ad447402sv/",
+      },
+      {
+        title: "Så bildas regeringen",
+        publisher: "Sveriges riksdag",
+        url: "https://www.riksdagen.se/sv/sa-fungerar-riksdagen/demokrati/sa-bildas-regeringen/",
+      },
+      {
+        title: "Den nya riksdagen efter valet (mandatfördelningen)",
+        publisher: "Sveriges riksdag",
+        url: "https://www.riksdagen.se/sv/aktuellt/aktuelltnotiser/2026/sep/19/den-nya-riksdagen-efter-valet_cmsad780a37-f1ae-4d47-a4a7-b6ea2a69a21esv/",
+      },
+      {
+        title: "Centerpartiets partistyrelse och riksdagsgrupp rekommenderar förtroenderådet att ställa sig bakom att rösta grönt i tredje statsministeromröstningen (26 november 2026)",
+        publisher: "Centerpartiet",
+        url: "https://www.centerpartiet.se/nyheter/arkiv-2026/2026-11-26-centerpartiets-partistyrelse-och-riksdagsgrupp-rekommenderar-fortroenderadet-att-stalla-sig-bakom-att-rosta-gront-i-tredje-statsministeromrostningen",
+      },
+      {
+        title: "Besked från Centerpartiet: Partistyrelse säger ja till Kristersson-regering (26 november 2026)",
+        publisher: "Ny Teknik",
+        url: "https://www.nyteknik.se/samhaelle/besked-fran-centerpartiet-partistyrelse-saeger-ja-till-kristersson-regering/4517387",
+      },
+      {
+        title: "Partiernas energipolitik inför valet 2026",
+        publisher: "Elbruk",
+        url: "https://www.elbruk.se/blogg/partiernas-energipolitik-2026",
+      },
+      {
+        title: "Centerpartiets förtroenderåd möts på söndag (26 november 2026)",
+        publisher: "Aftonbladet",
+        url: "https://www.aftonbladet.se/nyheter/a/3BJWOL/centerpartiets-fortroenderad-mots-pa-sondag",
+      },
+      {
+        title: "Åkesson: Beredd att tolerera Kristersson-regering (24 november 2026)",
+        publisher: "EFN",
+        url: "https://efn.se/akesson-beredd-att-tolerera-kristersson-regering",
+      },
+      {
+        title: "SD vill sänka hushållens utgifter med nytt elstöd (TT, 25 november 2026)",
+        publisher: "Omni",
+        url: "https://omni.se/sd-vill-sanka-hushallens-utgifter-med-nytt-elstod/a/BrRpp9",
+      },
+    ],
+  },
+  {
     slug: "vem-far-elstod-2026-regler-flytt-lagenhet-fritidshus",
     status: "published",
     title:

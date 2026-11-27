@@ -38,6 +38,91 @@ export type NewsContent = {
 };
 
 const CONTENT: Record<string, NewsContent> = {
+  "kommer-60-oringen-tillbaka-centerpartiet-kristersson-regering": {
+    tldr: [
+      "Skattereduktionen var 60 öre per inmatad kWh, högst 18 000 kr per år, och gäller inte el som matas in från 1 januari 2026. Deklarationen 2027 blir den första utan.",
+      "I Ny Tekniks valenkät svarade C ja till att återinföra den, medan M, KD och L svarade nej. Vad fyrpartiöverenskommelsen innehåller är inte känt.",
+      "Riksdagen röstar om Kristersson måndag 30 november klockan 13. Förslaget faller bara om minst 175 av 349 ledamöter röstar nej.",
+    ],
+    sections: [
+      {
+        h2: "Kommer 60-öringen tillbaka?",
+        body: [
+          "Det finns inget beslut om det. Skattereduktionen för mikroproduktion av förnybar el, som brukar kallas 60-öringen, gäller inte el som matas in på elnätet från och med den 1 januari 2026. Det var riksdagen som beslutade att den skulle försvinna, enligt Skatteverket, och det krävs ett nytt beslut för att den ska komma tillbaka.",
+          "Frågan är aktuell igen eftersom Centerpartiet, som vill återinföra 60-öringen, kan bli regeringsparti. Den 24 november lade talman Andreas Norlén fram Ulf Kristersson (M) som förslag till statsminister för en regering av Moderaterna, Centerpartiet, Kristdemokraterna och Liberalerna. Två dagar senare rekommenderade Centerpartiets partistyrelse och riksdagsgrupp att partiet röstar ja och tar plats i regeringen. Beslutet hade majoritet men var inte enhälligt, skriver partiet.",
+          "Vad de fyra partierna har kommit överens om är inte känt, enligt Ny Teknik. C-ledaren Elisabeth Thand Ringqvist beskriver överenskommelsen som en politik för tillväxt och klimatarbete, men i partiets besked den 26 november nämns inte 60-öringen.",
+        ],
+      },
+      {
+        h2: "Vad tycker partierna om att återinföra 60-öringen?",
+        body: [
+          "Centerpartiet vill återinföra den. I Elbruks enkät före valet skrev partiet: ”Vi vill också återinföra skattereduktionen (60-öringen) för såld solel”. I Ny Tekniks valenkät svarade Centerpartiet ja på frågan om 60-öringen ska återinföras, medan Moderaterna, Kristdemokraterna och Liberalerna svarade nej.",
+          "De tre partierna har andra prioriteringar för solel. Moderaterna skrev till Elbruk att partiet under mandatperioden har ”minskat subventionen till solkraft då det är en fullt mogen teknik”. Kristdemokraterna vill att ekonomiska incitament i första hand ska gå till energilagring snarare än till solel, och Liberalerna vill bredda och utöka det gröna avdraget.",
+          "I oppositionen vill Vänsterpartiet och Miljöpartiet också återinföra skattelättnaden för solel, enligt Elbruk. Socialdemokraterna vill i stället höja rotavdraget till 50 procent för energieffektivisering, till exempel solceller. Det är partiernas positioner före valet, inte beslut.",
+        ],
+      },
+      {
+        h2: "Vad var 60-öringen värd?",
+        body: [
+          "Skattereduktionen var 60 öre per kilowattimme som matades in på elnätet. Underlaget kunde aldrig bli större än den el man tog ut från nätet under året, och högst 30 000 kilowattimmar. Därför var den högsta skattereduktionen 18 000 kronor per år. I Skatteverkets räkneexempel ger 2 000 inmatade kilowattimmar 1 200 kronor.",
+          "Den sista skattereduktionen gavs i deklarationen våren 2026, för el som matades in under 2025. Deklarationen 2027 blir den första utan, enligt Skatteverket. Det som försvann var alltså skattereduktionen ovanpå ersättningen för den sålda elen.",
+        ],
+      },
+      {
+        h2: "Blir Kristersson statsminister? Så går omröstningen till",
+        body: [
+          "Riksdagen prövar talmannens förslag måndagen den 30 november klockan 13. Förslaget går inte igenom om minst 175 av riksdagens 349 ledamöter röstar nej. Annars är det godkänt, så det krävs ingen majoritet som röstar ja.",
+          "Sverigedemokraterna har sagt att partiet lägger ned sina röster och i praktiken tolererar Kristersson som statsminister i en fyrpartiregering. SD-ledaren Jimmie Åkesson skriver samtidigt att inget stöd garanteras på förhand och att SD går i opposition. Socialdemokraterna, Vänsterpartiet och Miljöpartiet har 151 mandat tillsammans. Om SD lägger ned sina röster och Centerpartiet röstar ja eller avstår kan förslaget alltså inte falla. Då skulle minst 24 av Centerpartiets 25 ledamöter behöva rösta nej för att fälla det, även om alla ledamöter i S, V och MP gör det.",
+          "Först ska Centerpartiets förtroenderåd, som har 59 medlemmar, ta ställning till ledningens rekommendation. Enligt uppgifter till Aftonbladet möts rådet på söndag. Thand Ringqvist har sagt att hon avgår om det blir extra val eller om Vänsterpartiet släpps in i regeringen.",
+          "Det är den tredje statsministeromröstningen sedan valet. Talmannen har fyra försök på sig, och får inget förslag tillräckligt stöd blir det extra val inom tre månader.",
+        ],
+      },
+      {
+        h2: "Vad händer om Kristersson blir statsminister?",
+        body: [
+          "Då utser han ministrarna och lämnar en regeringsförklaring i riksdagen, där han redogör för den politik regeringen vill driva. Regeringsskiftet sker formellt vid en konselj på slottet. Det är i regeringsförklaringen och i budgetarbetet som det kan bli tydligt vad fyrpartiregeringen vill med 60-öringen.",
+          "Centerpartiet skiljer sig från M, KD och L i fler energifrågor. I Ny Tekniks valenkät svarade C nej till att bygga ut kärnkraften med statlig finansiering, nej till fortsatt uranbrytning och ja till att staten ska bekosta utbyggnaden av stamnätet till havs. De tre andra partierna svarade tvärtom.",
+          "Samtidigt pågår arbetet med budgeten för 2027. Sverigedemokraterna lade den 25 november fram sin budgetmotion, där partiet bland annat vill införa ett nytt elstöd till hushållen och slopa den årliga uppräkningen av elskatten. Enligt uppgifter till TV4 ska M, KD och L lägga fram ett gemensamt budgetförslag som även speglar Centerpartiets prioriteringar. Centerpartiet skriver att det inte finns något avtal om ett strukturerat budgetsamarbete med Sverigedemokraterna.",
+        ],
+      },
+      {
+        h2: "Vad betyder det för din kalkyl?",
+        body: [
+          "Räkna utan 60-öringen. Det finns inget beslut om att återinföra den, och även om en ny regering skulle vilja det krävs ett riksdagsbeslut. Två av de tre partier som skulle regera med Centerpartiet har dessutom pekat på andra stöd: Kristdemokraterna på energilagring och Liberalerna på ett bredare grönt avdrag.",
+          "Så mycket handlar det om: säljer du 4 000 kilowattimmar solel på ett år, och tar ut minst lika mycket från nätet, skulle 60-öringen ge 2 400 kronor. I dag ger den inget. Utan skattereduktionen är såld solel mindre värd än förut, och det gör det viktigare hur stor del av solelen du använder själv.",
+          "Om 60-öringen kommer tillbaka i en framtida budget blir det en extra intäkt för den som har solceller då. Det ändrar inte vad som gäller för el som matas in nu.",
+        ],
+        bullets: [
+          "60-öringen gäller inte el som matas in från 1 januari 2026. Det finns inget beslut om att återinföra den.",
+          "C vill återinföra den, men M, KD och L svarade nej i Ny Tekniks valenkät.",
+          "Riksdagen röstar om Kristersson som statsminister måndag 30 november klockan 13.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Kommer 60-öringen tillbaka?",
+        a: "Inget är beslutat. Skattereduktionen för såld solel gäller inte el som matas in från 1 januari 2026. Centerpartiet vill återinföra den och kan bli regeringsparti, men Moderaterna, Kristdemokraterna och Liberalerna svarade nej till det i Ny Tekniks valenkät. Vad fyrpartiöverenskommelsen innehåller är inte känt.",
+      },
+      {
+        q: "Blir Kristersson statsminister?",
+        a: "Det avgörs i riksdagen måndagen den 30 november klockan 13. Förslaget faller bara om minst 175 av 349 ledamöter röstar nej. Centerpartiets ledning rekommenderar ja, och SD har sagt att partiet lägger ned sina röster. Gör SD det och C röstar ja eller avstår går förslaget igenom.",
+      },
+      {
+        q: "När röstar riksdagen om Kristersson?",
+        a: "Måndagen den 30 november klockan 13. Talmannen lade fram förslaget den 24 november, och det bordläggs i kammaren två gånger, den 26 och den 27 november, före omröstningen. Det är den tredje statsministeromröstningen sedan valet.",
+      },
+      {
+        q: "Vad är förtroenderådet i Centerpartiet?",
+        a: "Det är förtroenderådet som ska avgöra om Centerpartiet röstar ja till Kristersson. Det har 59 medlemmar, enligt Aftonbladet. Partistyrelsen och riksdagsgruppen har rekommenderat rådet att ställa sig bakom att C röstar ja och tar plats i fyrpartiregeringen.",
+      },
+      {
+        q: "Vad är en fyrpartiregering?",
+        a: "I det här fallet en regering av Moderaterna, Centerpartiet, Kristdemokraterna och Liberalerna med Ulf Kristersson som statsminister. Det är den regering talmannen har lagt fram för riksdagen. Sverigedemokraterna ingår inte, och enligt Centerpartiet finns inget avtal om ett strukturerat budgetsamarbete med SD.",
+      },
+    ],
+  },
+
   "vem-far-elstod-2026-regler-flytt-lagenhet-fritidshus": {
     tldr: [
       "Stödet räknas på 90 procent av månadens förbrukning och på delen av snittpriset över 1,50 kr/kWh. Förbrukning över 5 000 kWh i månaden ger inget stöd.",
